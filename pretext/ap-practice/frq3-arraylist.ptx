@@ -94,7 +94,7 @@
 
     <p>
       Suppose <c>inventory</c> contains the following seven <c>ItemInfo</c>
-      objects. 
+      objects.
       <figure align="center">
         <caption>ItemInventory with ArrayList of 7 ItemInfo objects</caption>
 
@@ -297,12 +297,11 @@
           You are iterating through the <c>inventory</c> <c>ArrayList</c>, and
           <c>currentItem</c> is the <c>ItemInfo</c> object in the current
           iteration. Which of the following condition correctly checks if
-          <c>currentItem</c> is 
+          <c>currentItem</c> is
           <strong>available</strong>
- AND its cost is
-          
+          AND its cost is
           <strong>between <c>lower</c> and <c>upper</c>, inclusive</strong>
- ?
+          ?
         </p>
       </statement>
 
@@ -327,12 +326,10 @@
             <p>
               This condition correctly checks if the item is available, but the
               cost range (<c>&gt; lower</c> and <c>&lt; upper</c>) is
-              
               <strong>exclusive</strong>
-. The problem requires the range to be
-              
+              . The problem requires the range to be
               <strong>inclusive</strong>
-, meaning it should include <c>lower</c>
+              , meaning it should include <c>lower</c>
               and <c>upper</c>.
             </p>
           </feedback>
@@ -359,9 +356,8 @@
               This condition uses the logical OR operator (<c>||</c>), which
               means the code block would execute if the item is available OR if
               its cost is within range, but the problem requires
-              
               <strong>both</strong>
- conditions to be true.
+              conditions to be true.
             </p>
           </feedback>
         </choice>
@@ -387,9 +383,9 @@
               Yes, this statement correctly uses the logical AND operator
               (<c>&amp;&amp;</c>) to combine the availability check with the
               cost range check. It also correctly uses <c>&gt;=</c> and
-              <c>&lt;=</c> to ensure the range is 
+              <c>&lt;=</c> to ensure the range is
               <strong>inclusive</strong>
- of
+              of
               <c>lower</c> and <c>upper</c>.
             </p>
           </feedback>

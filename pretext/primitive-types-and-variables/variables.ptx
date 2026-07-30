@@ -326,7 +326,8 @@
           Scratch
         </reference>
 
-        <target ids="scratch" names="scratch" refuri="http://scratch.mit.edu" /> with a
+        <target ids="scratch" names="scratch" refuri="http://scratch.mit.edu" />
+        with a
         score shown in the upper left.
       </caption>
 
@@ -542,7 +543,7 @@
         </p>
 
         <p>
-          <fillin answer="int" mode="string" /><c>age =</c> 
+          <fillin answer="int" mode="string" /><c>age =</c>
           <fillin mode="number" answer="5" /><!-- this will use a number input
           --><c>;</c>
         </p>

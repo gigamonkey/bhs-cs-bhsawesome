@@ -144,9 +144,8 @@
 
     <p>
       The method call <c>goodies.removeVariety("Brownie")</c> returns
-      
       <title_reference>0</title_reference>
- and does not change the master order.
+      and does not change the master order.
     </p>
   </introduction>
 
