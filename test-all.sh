@@ -2,6 +2,6 @@
 
 set -euo pipefail
 
-fd \.ptx pretext | while read -r f; do
+fd -e ptx . pretext | while read -r f; do
     ./test-idempotency.sh "$f"
 done
