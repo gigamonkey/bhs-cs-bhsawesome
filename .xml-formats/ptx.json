@@ -1,0 +1,18 @@
+{
+  "indent": 2,
+  "width": 80,
+  "inline": ["term", "url", "c", "h", "area", "em", "xref", "m", "pubtitle"],
+  "code": ["program"],
+  "preserve_whitespace": ["cline", "pre"],
+  "one_line": ["cline"],
+  "compact": ["cell", "idx", "premise"],
+  "compound_code": {
+    "program": { "code_children": ["preamble", "code", "postamble"] }
+  },
+  "rules": [
+    { "tag": "pre", "parent": "datafile", "without_attr": "source", "treat_as": "code" }
+  ],
+  "formatters": {
+    "code": ["java", "-jar", "google-java-format-1.25.2-all-deps.jar", "-a", "-"]
+  }
+}

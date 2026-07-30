@@ -77,22 +77,27 @@ inside the `.ptx` XML — the `.ptx` is the source of truth.** Any `*.java` file
 extracted under `pretext/**` are gitignored scratch artifacts; do not treat them
 as canonical.
 
-## Formatting `.ptx` files — `format-ptx.py`
+## Formatting `.ptx` files — `xml-format`
 
-`format-ptx.py` is a **custom, opinionated PreTeXt XML formatter** and is the
-single most important tool here. It re-serializes XML to a canonical layout
-(2-space indent, 80-col fill for prose, verbatim handling for `<program>`,
-CDATA when code contains `& < >`, special inline-tag set, etc.).
+Formatting is done with `xml-format` from
+[xml-tools](https://github.com/gigamonkey/xml-tools), installed on `PATH` with
+`uv tool install git+https://github.com/gigamonkey/xml-tools` (not via this
+project's venv). It re-serializes XML to a canonical layout (2-space indent,
+80-col fill for prose, verbatim handling for `<program>`, CDATA when code
+contains `& < >`, special inline-tag set, etc.), all driven by the checked-in
+config **`.xml-formats/ptx.json`**, which it discovers automatically for
+`.ptx` files anywhere under the repo.
 
 ```bash
-uv run format-ptx.py -i <file>   # reformat in place
-./reformat-all.sh                # reformat every pretext/**/*.ptx in place
-uv run format-ptx.py -f -i <f>   # also run google-java-format on code (needs the jar)
+xml-format -i <file>   # reformat in place
+./reformat-all.sh      # reformat every pretext/**/*.ptx in place
+xml-format -f -i <f>   # also run google-java-format on code (needs the jar)
 ```
 
-The formatter **must be idempotent** — `./test-all.sh` (or
+Formatting **must be idempotent** — `./test-all.sh` (or
 `./test-idempotency.sh <file>`) verifies that formatting twice yields a stable
-result, and prints any file that doesn't. Run this after changing `format-ptx.py`.
+result, and prints any file that doesn't. Run this after changing
+`.xml-formats/ptx.json`.
 
 The `-f` option shells out to `google-java-format-1.25.2-all-deps.jar`
 (gitignored; download separately) to format the Java inside `<program>` bodies.
@@ -120,5 +125,5 @@ order), `make-text.py` (generate the string/array-index SVG diagrams).
 - Every Runestone `<activity>` needs a `label` attribute — Runestone depends on
   it.
 - `TODO.md` tracks outstanding text/formatting cleanup work.
-- After editing any `.ptx` by hand, run it through `uv run format-ptx.py -i`
-  before committing so diffs stay canonical.
+- After editing any `.ptx` by hand, run it through `xml-format -i` before
+  committing so diffs stay canonical.

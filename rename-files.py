@@ -22,7 +22,7 @@ directory name, is fixed in place -- the root xml:id is corrected and every
 satisfy check-ids.py after a run. Pass --no-fix-ids to skip that pass and touch
 only the files in the config.
 
-Finally it runs format-ptx.py on every file it touched so the result stays in
+Finally it runs xml-format on every file it touched so the result stays in
 the canonical layout (rewriting a shorter/longer id can change line wrapping).
 
 The id-uniqueness check and the include/reference rewrite only consider files
@@ -157,7 +157,7 @@ def expected_root_id(path, root_tag):
 
 
 # ---------------------------------------------------------------------------
-# Text rewriting (targeted edits; format-ptx canonicalizes afterwards)
+# Text rewriting (targeted edits; xml-format canonicalizes afterwards)
 # ---------------------------------------------------------------------------
 
 def rewrite_ids(text, id_map):
@@ -265,7 +265,7 @@ def main():
         "--no-git", action="store_true", help="Use plain rename instead of git mv"
     )
     parser.add_argument(
-        "--no-format", action="store_true", help="Skip running format-ptx.py"
+        "--no-format", action="store_true", help="Skip running xml-format"
     )
     args = parser.parse_args()
 
@@ -506,9 +506,9 @@ def _do_mv(old_abs, new_abs, no_git, force=False):
 
 def run_format(paths):
     paths = sorted(set(str(p) for p in paths))
-    print(f"\nFormatting {len(paths)} file(s) with format-ptx.py ...")
+    print(f"\nFormatting {len(paths)} file(s) with xml-format ...")
     subprocess.run(
-        ["uv", "run", "format-ptx.py", "-q", "-i", *paths],
+        ["xml-format", "-q", "-i", *paths],
         cwd=SCRIPT_DIR, check=True,
     )
 
