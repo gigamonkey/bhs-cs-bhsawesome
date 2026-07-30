@@ -88,10 +88,16 @@ if __name__ == "__main__":
         prog="list-urls",
         description="List the URLs of the book's pages in reading order.",
     )
-    parser.add_argument(
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
         "-b", "--base",
         help="Base URL (default: the Runestone published-book URL "
         "derived from docinfo/document-id)",
+    )
+    group.add_argument(
+        "-c", "--course",
+        help="Course name to use in the Runestone URL in place of "
+        "docinfo/document-id",
     )
     parser.add_argument(
         "root",
@@ -107,8 +113,8 @@ if __name__ == "__main__":
 
     base = args.base
     if base is None:
-        document_id = root.findtext("docinfo/document-id").strip()
-        base = f"https://runestone.academy/ns/books/published/{document_id}/"
+        course = args.course or root.findtext("docinfo/document-id").strip()
+        base = f"https://runestone.academy/ns/books/published/{course}/"
     if not base.endswith("/"):
         base += "/"
 
