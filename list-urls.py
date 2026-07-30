@@ -35,6 +35,25 @@ STRUCTURAL = {
 # Divisions whose presence makes a division "structured" rather than a leaf.
 TRADITIONAL = {"part", "chapter", "section", "subsection", "subsubsection"}
 
+# Default titles (per pretext's en-US localization) for divisions that
+# needn't have an explicit <title>.
+DEFAULT_TITLES = {
+    "frontmatter": "Front Matter",
+    "backmatter": "Back Matter",
+    "index": "Index",
+    "preface": "Preface",
+    "colophon": "Colophon",
+    "dedication": "Dedication",
+    "acknowledgement": "Acknowledgements",
+    "biography": "Author Biography",
+    "exercises": "Exercises",
+    "worksheet": "Worksheet",
+    "reading-questions": "Reading Questions",
+    "solutions": "Solutions",
+    "references": "References",
+    "glossary": "Glossary",
+}
+
 
 def load(filename, sources):
     """Parse filename, recursively resolving <xi:include>s ourselves so we can
@@ -101,6 +120,34 @@ def visible_id(elem):
     return f"{visible_id(elem.getparent())}-{n}"
 
 
+def number(elem):
+    """The division's number ("12" for a chapter, "12.2" for a section), or
+    None for the book itself and the unnumbered front/backmatter divisions."""
+    if elem.tag in ("book", "article", "frontmatter", "backmatter"):
+        return None
+    parent = elem.getparent()
+    if parent.tag in ("frontmatter", "backmatter"):
+        return None
+    n = 1 + sum(
+        1
+        for s in elem.itersiblings(preceding=True)
+        if s.tag in STRUCTURAL and s.tag not in ("frontmatter", "backmatter")
+    )
+    above = number(parent)
+    return f"{above}.{n}" if above else str(n)
+
+
+def page_title(elem):
+    "The heading as rendered on the division's page, e.g. '12.2 Sorting algorithms'."
+    t = elem.find("title")
+    if t is not None:
+        text = " ".join("".join(t.itertext()).split())
+    else:
+        text = DEFAULT_TITLES.get(elem.tag, elem.tag.capitalize())
+    n = number(elem)
+    return f"{n} {text}" if n else text
+
+
 def pages(elem, chunk_level, has_parts):
     "Yield the divisions that get their own page, in reading order."
     if chunk_level == level(elem, has_parts) or is_leaf(elem):
@@ -134,6 +181,12 @@ if __name__ == "__main__":
         help="Emit a TSV of the source .ptx file of each page and its URL",
     )
     parser.add_argument(
+        "-t", "--titles",
+        action="store_true",
+        help="Add a column with the title rendered on each page, "
+        "e.g. '12.2 Sorting algorithms'",
+    )
+    parser.add_argument(
         "root",
         nargs="?",
         default=os.path.join(os.path.dirname(__file__), "pretext", "main.ptx"),
@@ -156,9 +209,10 @@ if __name__ == "__main__":
         book = root.find("article")
     has_parts = book.find("part") is not None
     for division in pages(book, default_chunk_level(root), has_parts):
-        url = urljoin(base, f"{visible_id(division)}.html")
+        columns = []
         if args.files:
-            path = os.path.relpath(source_file(division, sources))
-            print(f"{path}\t{url}")
-        else:
-            print(url)
+            columns.append(os.path.relpath(source_file(division, sources)))
+        columns.append(urljoin(base, f"{visible_id(division)}.html"))
+        if args.titles:
+            columns.append(page_title(division))
+        print("\t".join(columns))
