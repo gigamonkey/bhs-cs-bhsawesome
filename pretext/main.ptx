@@ -29,7 +29,6 @@
     <subtitle>AP CSA</subtitle>
 
     <introduction>
-
       <p>
         Welcome to BHSawesome! This version of BHSawesome is based on the latest
         version of CSAwesome which follows the College Board 2025-2026
@@ -59,9 +58,8 @@
     <xi:include href="./abstraction-and-program-design/toctree.ptx" />
     <xi:include href="./ap-practice/toctree.ptx" />
     <xi:include href="./free-response/toctree.ptx" />
-
-    <backmatter>
-      <index>
+    <backmatter xml:id="backmatter">
+      <index xml:id="book-index">
         <index-list />
       </index>
     </backmatter>
