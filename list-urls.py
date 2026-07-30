@@ -20,6 +20,9 @@ from lxml import etree
 XML_NS = "http://www.w3.org/XML/1998/namespace"
 XML_ID = f"{{{XML_NS}}}id"
 
+XI_NS = "http://www.w3.org/2001/XInclude"
+XI_INCLUDE = f"{{{XI_NS}}}include"
+
 # The STRUCTURAL entity from pretext's xsl/entities.ent.
 STRUCTURAL = {
     "book", "article", "slideshow", "letter", "memo", "frontmatter", "part",
@@ -31,6 +34,32 @@ STRUCTURAL = {
 
 # Divisions whose presence makes a division "structured" rather than a leaf.
 TRADITIONAL = {"part", "chapter", "section", "subsection", "subsubsection"}
+
+
+def load(filename, sources):
+    """Parse filename, recursively resolving <xi:include>s ourselves so we can
+    record which file each included element came from (libxml2's xinclude no
+    longer does base-URI fixup, so element.base can't tell us). parse="text"
+    includes are left alone; no division comes from them."""
+    root = etree.parse(filename).getroot()
+    sources[root] = filename
+    resolve_includes(root, os.path.dirname(filename), sources)
+    return root
+
+
+def resolve_includes(elem, base_dir, sources):
+    for child in list(elem):
+        if child.tag == XI_INCLUDE and child.get("parse") != "text":
+            included = load(os.path.join(base_dir, child.get("href")), sources)
+            elem.replace(child, included)
+        else:
+            resolve_includes(child, base_dir, sources)
+
+
+def source_file(elem, sources):
+    while elem not in sources:
+        elem = elem.getparent()
+    return sources[elem]
 
 
 def default_chunk_level(root):
@@ -100,6 +129,11 @@ if __name__ == "__main__":
         "docinfo/document-id",
     )
     parser.add_argument(
+        "-f", "--files",
+        action="store_true",
+        help="Emit a TSV of the source .ptx file of each page and its URL",
+    )
+    parser.add_argument(
         "root",
         nargs="?",
         default=os.path.join(os.path.dirname(__file__), "pretext", "main.ptx"),
@@ -107,9 +141,8 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    tree = etree.parse(args.root)
-    tree.xinclude()
-    root = tree.getroot()
+    sources = {}
+    root = load(args.root, sources)
 
     base = args.base
     if base is None:
@@ -123,4 +156,9 @@ if __name__ == "__main__":
         book = root.find("article")
     has_parts = book.find("part") is not None
     for division in pages(book, default_chunk_level(root), has_parts):
-        print(urljoin(base, f"{visible_id(division)}.html"))
+        url = urljoin(base, f"{visible_id(division)}.html")
+        if args.files:
+            path = os.path.relpath(source_file(division, sources))
+            print(f"{path}\t{url}")
+        else:
+            print(url)
