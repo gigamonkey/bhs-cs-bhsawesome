@@ -17,30 +17,18 @@
 
     <rename element="inlineexercise">Activity</rename>
 
-    <brandlogo url="./bhsawesome.html" source="_static/BHSawesomeLogo.png" alt="BHSawesome" />
-    <cross-references text="type-global-title" />
-    <programs language="java" />
-    <parsons language="java" />
+    <directories external="assets" />
+    <defaults>
+      <programs language="java" />
+      <parsons language="java" />
+      <xrefs text="type-global-title" />
+    </defaults>
   </docinfo>
 
-  <book xml:id="bhsawesome" permid="csa">
+  <book xml:id="bhsawesome">
     <title>BHSawesome</title>
 
     <subtitle>AP CSA</subtitle>
-
-    <introduction>
-      <p>
-        Welcome to BHSawesome! This version of BHSawesome is based on the latest
-        version of CSAwesome which follows the College Board 2025-2026
-        revisions.
-      </p>
-
-      <p>
-        To make sure the site saves your answers on questions, please click on
-        the person icon at the top to register or login to your Runestone
-        course.
-      </p>
-    </introduction>
 
     <xi:include href="./frontmatter/toctree.ptx" />
     <xi:include href="./introduction/toctree.ptx" />

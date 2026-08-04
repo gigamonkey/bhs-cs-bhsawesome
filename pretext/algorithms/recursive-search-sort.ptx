@@ -263,7 +263,7 @@
       array.
     </p>
 
-    <program interactive="activecode">
+    <program interactive="activecode" label="merge-sort-code">
       <![CDATA[
       import java.util.Arrays;
 

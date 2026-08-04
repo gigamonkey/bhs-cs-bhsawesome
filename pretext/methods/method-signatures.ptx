@@ -175,7 +175,7 @@
       the method we can’t refer to them.
     </p>
 
-    <activity>
+    <activity label="check-add-trace">
       <title>Trace call to add</title>
 
       <statement>
@@ -227,7 +227,7 @@
       such a program.
     </p>
 
-    <activity>
+    <activity label="find-duplicate-code">
       <title>Finding duplicate code</title>
 
       <statement>
@@ -275,7 +275,7 @@
       executes the next line.
     </p>
 
-    <activity>
+    <activity label="codelensSong1-trace">
       <title>Old MacDonald with methods</title>
 
       <statement>
@@ -652,7 +652,7 @@
       method, the original value outside the method is not changed.
     </p>
 
-    <activity>
+    <activity label="codelensSong2-trace">
       <title>Trace verse calls</title>
 
       <statement>

@@ -1293,7 +1293,7 @@
       </program>
     </activity>
 
-    <datafile label="GrideWorld.jar" filename="GridWorld.jar" editable="no" hide="yes">
+    <datafile label="GridWorld-jar" filename="GridWorld.jar" editable="no" hide="yes">
       <pre>
         <![CDATA[
         import java.util.ArrayList;

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<preface xml:id="how-to-use-this-book">
+  <title>How to Use This Book</title>
+
+  <p>
+    Welcome to BHSawesome an interactive AP CSA textbook. As you work your way
+    through this book you will encounter a number of interactive activities that
+    will ask you answer questions, rearrange blocks of code into correct
+    sequences, and write your own Java code which will be compiled and run for
+    you.
+  </p>
+
+  <p>
+    To make sure the site saves your answers on questions, please click on the
+    person icon at the top to register or login to your Runestone course.
+  </p>
+
+  <p>
+    The following <url
+    href="https://www.youtube.com/watch?v=Jn9_HaX3m7s">video</url> introduces
+    some of the features of this book. Note however, the video is made for
+    CSAwesome, another textbook from which this book was adapted. Thus the units
+    mentioned in the video are not exactly the same as in this book but the
+    kinds of exercises are the same.
+  </p>
+
+  <video youtube="Jn9_HaX3m7s" label="video-intro" />
+</preface>

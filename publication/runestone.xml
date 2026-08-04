@@ -2,7 +2,7 @@
 <publication>
 
   <source>
-    <directories external="assets" generated="generated"/>
+    <directories generated="generated"/>
   </source>
 
   <numbering>
@@ -15,6 +15,7 @@
 
   <html>
     <platform host="runestone"/>
+    <brandlogo url="./bhsawesome.html" source="_static/BHSawesomeLogo.png" alt="BHSawesome"/>
     <!-- knowled checkpoints interfere with ActiveCode problems -->
     <knowl exercise-inline="no" example="no" listing="no"/>
     <!-- for scratch code language -->
