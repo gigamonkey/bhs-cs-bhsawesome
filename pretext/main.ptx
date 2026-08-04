@@ -17,12 +17,10 @@
 
     <rename element="inlineexercise">Activity</rename>
 
-    <directories external="assets" />
-    <defaults>
-      <programs language="java" />
-      <parsons language="java" />
-      <xrefs text="type-global-title" />
-    </defaults>
+    <brandlogo url="./bhsawesome.html" source="_static/BHSawesomeLogo.png" alt="BHSawesome" />
+    <cross-references text="type-global-title" />
+    <programs language="java" />
+    <parsons language="java" />
   </docinfo>
 
   <book xml:id="bhsawesome">
