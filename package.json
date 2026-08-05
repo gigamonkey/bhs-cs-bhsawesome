@@ -3,6 +3,6 @@
   "private": true,
   "description": "BHSawesome book source. npm is here only for the push-content bin (@peterseibel/bhs-content) that mirrors build/out to the bhs-cs website's content overlay; the book itself builds with uv/pretext.",
   "devDependencies": {
-    "@peterseibel/bhs-content": "^0.6.0"
+    "@peterseibel/bhs-content": "^0.7.1"
   }
 }
