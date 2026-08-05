@@ -50,18 +50,29 @@ def book_files() -> list[Path]:
     return [f for f in files if f.is_file()]
 
 
-def graded_activities() -> dict[str, str]:
-    """label -> tests source text, for every live activity with tests."""
-    found: dict[str, str] = {}
+def graded_activities() -> dict[str, tuple[str, str | None]]:
+    """label -> (tests source, stdin text or None), for every live <tests>
+    block, keyed by the nearest labeled ancestor (activity, exercise,
+    project, task, ... — mirroring how PreTeXt derives the rendered
+    component id). The stdin is the program's <stdin> payload: on Runestone
+    the client ships it as the run input, and CodeTestHelper's constructor
+    runs main — which blocks (or dies) without it when the program reads
+    from Scanner."""
+    found: dict[str, tuple[str, str | None]] = {}
     for path in book_files():
         tree = etree.parse(str(path))
-        for element in tree.iter("activity", "exercise"):
-            label = element.get("label")
-            if not label or label in found:
+        for tests in tree.iter("tests"):
+            if not (tests.text and "class RunestoneTests" in tests.text):
                 continue
-            tests = element.find(".//tests")
-            if tests is not None and tests.text and "class RunestoneTests" in tests.text:
-                found[label] = tests.text
+            program = tests.getparent()
+            stdin = program.find("stdin") if program is not None else None
+            label = None
+            node = program
+            while node is not None and label is None:
+                label = node.get("label")
+                node = node.getparent()
+            if label and label not in found:
+                found[label] = (tests.text, stdin.text if stdin is not None else None)
     return found
 
 
@@ -97,9 +108,14 @@ def main() -> int:
             print(f"  MISSING: no live graded activity with label {label!r}")
             failures += 1
             continue
+        tests, stdin = activities[label]
         try:
-            (outdir / f"{label}.java").write_text(transform(activities[label]))
-            print(f"  {label} -> {label}.java (testClass book:{label})")
+            (outdir / f"{label}.java").write_text(transform(tests))
+            extra = ""
+            if stdin is not None:
+                (outdir / f"{label}.stdin").write_text(textwrap.dedent(stdin).strip() + "\n")
+                extra = " + stdin"
+            print(f"  {label} -> {label}.java{extra} (testClass book:{label})")
         except ValueError as e:
             print(f"  FAILED {label}: {e}")
             failures += 1

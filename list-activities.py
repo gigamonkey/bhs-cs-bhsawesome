@@ -35,7 +35,7 @@ signal.signal(signal.SIGPIPE, signal.SIG_DFL)
 ROOT = Path(__file__).resolve().parent
 PRETEXT = ROOT / "pretext"
 
-OPEN_TAG_RE = re.compile(r"<(activity|exercise|program|blocks|choices|areas|fillin|cardsort)\b")
+OPEN_TAG_RE = re.compile(r"<(activity|exercise|project|task|program|blocks|choices|areas|fillin|cardsort)\b")
 RESPONSE_RE = re.compile(r"<response\s*/>")
 LABEL_RE = re.compile(r'label="([^"]+)"')
 
@@ -96,7 +96,7 @@ def scan(path: Path) -> list[tuple[Path, int, str, str, str]]:
         tag = whole_tag(lines, i)
         element = m.group(1)
         line_no = i + 1
-        if element in ("activity", "exercise"):
+        if element in ("activity", "exercise", "project", "task"):
             if lm := LABEL_RE.search(tag):
                 label = lm.group(1)
         elif element == "program":
