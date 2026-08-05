@@ -90,6 +90,21 @@ TEXTAREA_RE = re.compile(r"<textarea[^>]*data-lang=\"java\"[^>]*>((?:(?!</textar
 AC_QUESTION_RE = re.compile(r"<div class=\"ac_question[^\"]*\"[^>]*>")
 
 
+def activecode_css_link() -> str:
+    """A <link> for the Runestone activecode chunk's stylesheet (toolbar
+    flex/centering, .CodeMirror, the ac-feedback results table...). Pages
+    only get it when the activecode JS chunk lazy-loads — so a page whose
+    activecodes are ALL converted (no Runestone activecode left to trigger
+    the load) would render the widget unstyled. Injected statically into
+    converted pages instead; identified by content since the chunk name is
+    hashed."""
+    for css in sorted((SRC / "_static").glob("prefix-*.css")):
+        if ".ptx-runestone-container .ac_actions" in css.read_text():
+            return f'<link href="_static/{css.name}" rel="stylesheet" type="text/css">'
+    print("  WARNING: no activecode css chunk found; converted pages may render unstyled")
+    return ""
+
+
 def converted_labels() -> set[str]:
     if not CONVERTED_FILE.is_file():
         return set()
@@ -120,7 +135,8 @@ def balanced_div(html: str, start: int) -> int:
     raise ValueError("unbalanced divs")
 
 
-def convert_exercises(html: str, page: Path, labels: set[str]) -> str:
+def convert_exercises(html: str, page: Path, labels: set[str], css_link: str) -> str:
+    converted_any = False
     for label in labels:
         anchor = html.find(f'id="rs-{label}"')
         if anchor == -1:
@@ -164,6 +180,11 @@ def convert_exercises(html: str, page: Path, labels: set[str]) -> str:
             "</div></div></div>"
         )
         html = html[:start] + replacement + html[end:]
+        converted_any = True
+    if converted_any and css_link and css_link not in html:
+        head_end = html.find("</head>")
+        if head_end != -1:
+            html = html[:head_end] + css_link + "\n" + html[head_end:]
     return html
 
 
@@ -294,6 +315,7 @@ def main() -> int:
 
     lib = datafile_library()
     converted = converted_labels()
+    css_link = activecode_css_link() if converted else ""
     if converted:
         print(f"converting {len(converted)} exercise(s) to the native widget")
     pages = 0
@@ -311,7 +333,7 @@ def main() -> int:
             html = inject_datafiles(html, src, lib)
             html = BUNDLE_TAG_RE.sub(r'<script data-bhs-defer-src="\1"></script>', html)
             if len(rel.parts) == 1:
-                html = convert_exercises(html, src, converted)
+                html = convert_exercises(html, src, converted, css_link)
             dst.write_text(html)
             pages += 1
             if len(rel.parts) == 1:  # top-level pages only, not knowls/iframes
