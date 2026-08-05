@@ -67,6 +67,19 @@ COMPONENT_TAG_RE = re.compile(r"<\w+[^>]*data-component=\"([a-z-]+)\"[^>]*>")
 ID_RE = re.compile(r"id=\"([^\"]+)\"")
 TITLE_RE = re.compile(r"<title>([^<]*)</title>")
 
+# PreTeXt inlines the full book ToC into every page; its link order IS the
+# book order, which exercises.json preserves (the website's grid index and
+# dashboard render pages in exercises.json order).
+TOC_RE = re.compile(r"<nav id=\"ptx-toc\".*?</nav>", re.S)
+TOC_HREF_RE = re.compile(r"href=\"([\w-]+)\.html")
+
+
+def toc_order(toc_html: str) -> dict[str, int]:
+    order: dict[str, int] = {}
+    for m in TOC_HREF_RE.finditer(toc_html):
+        order.setdefault(f"{m.group(1)}.html", len(order))
+    return order
+
 
 def page_exercises(html: str) -> list[dict[str, str]]:
     exercises = []
@@ -179,6 +192,7 @@ def main() -> int:
     pages = 0
     total = 0
     index = []
+    toc_html = None
     for src in sorted(SRC.rglob("*")):
         if src.is_dir():
             continue
@@ -192,6 +206,8 @@ def main() -> int:
             dst.write_text(html)
             pages += 1
             if len(rel.parts) == 1:  # top-level pages only, not knowls/iframes
+                if toc_html is None and (toc := TOC_RE.search(html)):
+                    toc_html = toc.group(0)
                 exercises = page_exercises(html)
                 if exercises:
                     title_match = TITLE_RE.search(html)
@@ -205,6 +221,11 @@ def main() -> int:
         else:
             shutil.copy2(src, dst)
         total += 1
+
+    order = toc_order(toc_html) if toc_html else {}
+    if not order:
+        print("  WARNING: no ToC found; exercises.json pages stay in filename order")
+    index.sort(key=lambda p: (order.get(p["file"], len(order)), p["file"]))
 
     (DST / "exercises.json").write_text(json.dumps({"book": "bhsawesome", "pages": index}, indent=1))
     print(f"exercises.json: {len(index)} pages, {sum(len(p['exercises']) for p in index)} exercises")
