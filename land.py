@@ -141,6 +141,9 @@ def convert_exercises(html: str, page: Path, labels: set[str]) -> str:
         if "^^^^" in payload or "===!" in payload:
             print(f"  WARNING: {page.name}: rs-{label} uses prefix/visible-suffix sentinels; not converting")
             continue
+        if "data-datafile" in block:
+            print(f"  WARNING: {page.name}: rs-{label} uses datafiles (not wired natively); not converting")
+            continue
         starter = payload.split("\n====\n")[0].strip("\n")
 
         statement = ""

@@ -3,3 +3,9 @@
 # monorepo (extract-tests.py -> java/src/main/resources/book-tests/) and a
 # deployed runner; land.py rewrites these exercises into the website widget.
 frq2019Q3A-delim
+printName
+sc2error1
+sc2error2
+sc2error3
+divideByZeroDemo
+challenge1-1
