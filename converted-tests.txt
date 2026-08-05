@@ -33,7 +33,7 @@ double_precision
 challenge1-5-average
 
 # Bulk conversion of the rest of the book (2026-08-05); skipped: datafile
-# users (35) and nullPointerTest (read-only-region markers ^^^!/===!).
+# users (35).
 # abstraction.html
 OldMacDonaldSongRepeated
 # array-algorithms.html
@@ -207,6 +207,7 @@ challenge-Magic8ball
 # if-traps.html
 if-missing-curlies
 # instance-methods.html
+nullPointerTest
 StudentObjExample
 StudentObjExample2
 StudentToString

@@ -145,7 +145,7 @@
 
       <program interactive="activecode">
 
-        <preamble>
+        <code>
           <![CDATA[
           public class Person {
 
@@ -168,19 +168,14 @@
               public boolean canVote() {
                   return age >= 18;
               }
-          ]]>
-        </preamble>
 
-        <code>
               public static void main(String[] args) {
                   Person person = null;
                   System.out.println(person.getName() + " can vote: " + person.canVote());
               }
-        </code>
-
-        <postamble>
           }
-        </postamble>
+          ]]>
+        </code>
 
         <tests>
           import static org.junit.Assert.*;
