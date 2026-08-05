@@ -39,7 +39,10 @@ jobs:
         with:
           node-version: "26"
 
-      - uses: astral-sh/setup-uv@v9 # v7+ runs on the node24 action runtime (node20 is deprecated)
+      # v7+ runs on the node24 action runtime (node20 is deprecated). Exact
+      # version: astral-sh maintains floating major tags only through v7, so
+      # @v8/@v9 don't resolve — bump this pin by hand.
+      - uses: astral-sh/setup-uv@v9.0.0
 
       - name: Build the web target (tolerates only the known-expected errors)
         run: uv run python build-web.py
