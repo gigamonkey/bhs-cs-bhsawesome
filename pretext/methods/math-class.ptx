@@ -39,7 +39,7 @@
     <p>
       There are more <c>Math</c> methods, outside of what you need on the AP
       exam, that you can find in the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Math.html"><c>Math</c>
+      href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/Math.html"><c>Math</c>
       class Javadocs</url>.
     </p>
   </introduction>

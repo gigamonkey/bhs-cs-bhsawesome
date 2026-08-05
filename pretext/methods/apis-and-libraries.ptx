@@ -672,7 +672,7 @@
 
         <p>
           Take a look at the <url
-          href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/package-summary.html">Javadocs
+          href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/package-summary.html">Javadocs
           for the <c>java.lang</c> package</url>. Can you find the documentation
           for the <c>System</c> class? The dot after <c>System</c> is the dot
           operator and since the name after the dot, <c>out</c> isn’t followed
@@ -681,7 +681,7 @@
           class. That should tell you that it is an instance of the class
           <c>PrintStream</c>. From there you can click on <c>PrintStream</c> to
           navigate to the <url
-          href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/io/PrintStream.html">Javadocs</url>
+          href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/io/PrintStream.html">Javadocs</url>
           for that class. Once you’re there, see if you can find the
           documentation for the various versions of the <c>println()</c> method
           that we use to print to the screen.

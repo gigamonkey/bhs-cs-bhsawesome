@@ -87,7 +87,7 @@
     <p>
       This is the tool used to generate the official documentation of Java’s
       built in classes, for example for the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/String.html">String
+      href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/String.html">String
       class</url>. While you don’t need to know about the details of how to
       format Javadoc comments for the AP Exam, it is useful to get in the habit
       of adding at least brief Javadoc-style comments before each class you

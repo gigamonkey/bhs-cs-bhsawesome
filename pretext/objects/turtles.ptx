@@ -839,7 +839,7 @@
                 Can you make yertle draw a square and change the pen color for
                 each side of the square? Try something like:
                 yertle.setColor(Color.red); This uses the <url
-                href="https://docs.oracle.com/en/java/javase/22/docs/api/java.desktop/java/awt/Color.html">Color</url>
+                href="https://docs.oracle.com/en/java/javase/26/docs/api/java.desktop/java/awt/Color.html">Color</url>
                 class in Java which has some colors predefined like red, yellow,
                 blue, magenta, cyan. You can also use more specific methods like
                 setPenColor, setBodyColor, and setShellColor.

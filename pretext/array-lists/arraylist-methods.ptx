@@ -29,7 +29,7 @@
       Thus to learn how to use it we just need to learn about its public API—the
       constructors and methods the class provides. The whole API is quite large
       and is fully documented in the <url
-      href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/ArrayList.html">class’s
+      href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/ArrayList.html">class’s
       Javadocs</url>. But for our purposes we only need to know a handful of
       methods which we’ll cover in this chapter.
     </p>

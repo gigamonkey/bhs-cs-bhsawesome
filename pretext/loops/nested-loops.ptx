@@ -455,7 +455,7 @@
           <p>
             Let’s add some more color! Add an <c>if</c>/<c>else</c> statement
             that changes the <url
-            href="https://docs.oracle.com/en/java/javase/22/docs/api/java.desktop/java/awt/Color.html">Color</url>
+            href="https://docs.oracle.com/en/java/javase/26/docs/api/java.desktop/java/awt/Color.html">Color</url>
             of the pen before the inner loop depending on whether the outer loop
             variable is odd or even. Remember that even numbers have no
             remainder when divided by 2.
