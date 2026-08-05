@@ -78,7 +78,10 @@ def graded_activities() -> dict[str, tuple[str, str | None]]:
 
 def transform(tests: str) -> str:
     source = textwrap.dedent(tests).strip() + "\n"
-    m = re.search(r"^public\s+class\s+RunestoneTests\b", source, re.M)
+    # A few tests have ragged indentation (a stray space on every line but
+    # the first, so dedent can't flatten it) — javac doesn't care, so allow
+    # leading whitespace before the class line.
+    m = re.search(r"^[ \t]*public\s+class\s+RunestoneTests\b", source, re.M)
     if not m:
         raise ValueError("no `public class RunestoneTests` found")
     return source[: m.start()] + IMPORTS + source[m.start() :]
