@@ -86,7 +86,10 @@ TOC_HREF_RE = re.compile(r"href=\"([\w-]+)\.html")
 
 CONVERTED_FILE = ROOT / "converted-tests.txt"
 
-TEXTAREA_RE = re.compile(r"<textarea[^>]*data-lang=\"java\"[^>]*>((?:(?!</textarea>)[\s\S])*)</textarea>")
+TEXTAREA_RE = re.compile(
+    r"(<textarea[^>]*data-lang=\"java\"[^>]*>)((?:(?!</textarea>)[\s\S])*)</textarea>"
+)
+STDIN_ATTR_RE = re.compile(r"data-stdin=\"([^\"]*)\"")
 AC_QUESTION_RE = re.compile(r"<div class=\"ac_question[^\"]*\"[^>]*>")
 
 
@@ -153,7 +156,13 @@ def convert_exercises(html: str, page: Path, labels: set[str], css_link: str) ->
         if not ta:
             print(f"  WARNING: {page.name}: no activecode payload for rs-{label}; not converting")
             continue
-        payload = unescape(ta.group(1))
+        # The canned stdin (ptx <stdin>) rides the textarea tag; carry it
+        # onto the widget container so its stdin box renders, prefilled
+        # (re-embedded verbatim — it's already attribute-escaped).
+        stdin_attr = ""
+        if sm := STDIN_ATTR_RE.search(ta.group(1)):
+            stdin_attr = f' data-stdin="{sm.group(1)}"'
+        payload = unescape(ta.group(2))
         if "^^^^" in payload or "===!" in payload:
             print(f"  WARNING: {page.name}: rs-{label} uses prefix/visible-suffix sentinels; not converting")
             continue
@@ -174,7 +183,7 @@ def convert_exercises(html: str, page: Path, labels: set[str], css_link: str) ->
         replacement = (
             '<div class="ptx-runestone-container">'
             '<div class="runestone explainer ac_section">'
-            f'<div class="bhs-book-exercise" id="rs-{label}" data-testclass="book:{label}">'
+            f'<div class="bhs-book-exercise" id="rs-{label}" data-testclass="book:{label}"{stdin_attr}>'
             f"{statement}"
             f'<textarea class="bhs-book-starter" hidden>{escape(starter)}</textarea>'
             "</div></div></div>"
