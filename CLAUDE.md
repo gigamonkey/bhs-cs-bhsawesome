@@ -153,4 +153,6 @@ with the Runestone publish (which is unchanged).
 - `.github/workflows/publish.yml` builds and mirrors `build/out` to the
   server with `push-content --only public/bhsawesome/` (needs the
   `BHS_CS_SERVER` variable + `SERVICE_KEYS_SECRET` secret configured on
-  GitHub).
+  GitHub). `push-content` is a bin of the pinned `@peterseibel/bhs-content`
+  devDependency — the only reason this repo has a `package.json`; `npm ci`
+  installs it, and bumping it is `npm update @peterseibel/bhs-content`.
