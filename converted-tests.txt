@@ -1,0 +1,5 @@
+# Activecodes converted to the native runner (plans/rehost-bhsawesome.md
+# phase 4a): one label per line. Each needs its extracted test in the
+# monorepo (extract-tests.py -> java/src/main/resources/book-tests/) and a
+# deployed runner; land.py rewrites these exercises into the website widget.
+frq2019Q3A-delim

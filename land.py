@@ -73,6 +73,90 @@ TITLE_RE = re.compile(r"<title>([^<]*)</title>")
 TOC_RE = re.compile(r"<nav id=\"ptx-toc\".*?</nav>", re.S)
 TOC_HREF_RE = re.compile(r"href=\"([\w-]+)\.html")
 
+# -- Converted exercises (phase 4a) ------------------------------------------
+#
+# Labels in converted-tests.txt name activecodes whose tests have been
+# extracted for the native runner (extract-tests.py -> bhs-cs.jar's
+# book-tests/ resources). For those, the landed page's Runestone activecode
+# block is rewritten into the website widget's container
+# (.bhs-book-exercise, built live by /js/bhsawesome.js): the statement is
+# kept, the starter code (the textarea payload up to the ==== test
+# sentinel) rides in a hidden textarea, and the tests never reach the
+# browser. Their exercises.json entries carry the book:<label> testClass.
+
+CONVERTED_FILE = ROOT / "converted-tests.txt"
+
+TEXTAREA_RE = re.compile(r"<textarea[^>]*data-lang=\"java\"[^>]*>((?:(?!</textarea>)[\s\S])*)</textarea>")
+AC_QUESTION_RE = re.compile(r"<div class=\"ac_question[^\"]*\"[^>]*>")
+
+
+def converted_labels() -> set[str]:
+    if not CONVERTED_FILE.is_file():
+        return set()
+    return {
+        line.strip()
+        for line in CONVERTED_FILE.read_text().splitlines()
+        if line.strip() and not line.startswith("#")
+    }
+
+
+def unescape(text: str) -> str:
+    return (
+        text.replace("&lt;", "<")
+        .replace("&gt;", ">")
+        .replace("&quot;", '"')
+        .replace("&#39;", "'")
+        .replace("&amp;", "&")
+    )
+
+
+def balanced_div(html: str, start: int) -> int:
+    """End index (exclusive) of the div whose '<div' starts at `start`."""
+    depth = 0
+    for m in re.finditer(r"<div\b|</div>", html[start:]):
+        depth += 1 if m.group(0) == "<div" else -1
+        if depth == 0:
+            return start + m.end()
+    raise ValueError("unbalanced divs")
+
+
+def convert_exercises(html: str, page: Path, labels: set[str]) -> str:
+    for label in labels:
+        anchor = html.find(f'id="rs-{label}"')
+        if anchor == -1:
+            continue
+        # The enclosing ptx-runestone-container div wraps the whole component.
+        start = html.rfind('<div class="ptx-runestone-container">', 0, anchor)
+        if start == -1:
+            print(f"  WARNING: {page.name}: no container around rs-{label}; not converting")
+            continue
+        end = balanced_div(html, start)
+        block = html[start:end]
+
+        ta = TEXTAREA_RE.search(block)
+        if not ta:
+            print(f"  WARNING: {page.name}: no activecode payload for rs-{label}; not converting")
+            continue
+        payload = unescape(ta.group(1))
+        if "^^^^" in payload or "===!" in payload:
+            print(f"  WARNING: {page.name}: rs-{label} uses prefix/visible-suffix sentinels; not converting")
+            continue
+        starter = payload.split("\n====\n")[0].strip("\n")
+
+        statement = ""
+        if q := AC_QUESTION_RE.search(block):
+            statement = block[q.start() : balanced_div(block, q.start())]
+
+        replacement = (
+            '<div class="ptx-runestone-container">'
+            f'<div class="bhs-book-exercise" id="rs-{label}" data-testclass="book:{label}">'
+            f"{statement}"
+            f'<textarea class="bhs-book-starter" hidden>{escape(starter)}</textarea>'
+            "</div></div>"
+        )
+        html = html[:start] + replacement + html[end:]
+    return html
+
 
 def toc_order(toc_html: str) -> dict[str, int]:
     order: dict[str, int] = {}
@@ -81,18 +165,29 @@ def toc_order(toc_html: str) -> dict[str, int]:
     return order
 
 
+WIDGET_RE = re.compile(r"<div class=\"bhs-book-exercise\" id=\"([^\"]+)\" data-testclass=\"([^\"]+)\"")
+
+
 def page_exercises(html: str) -> list[dict[str, str]]:
-    exercises = []
-    seen = set()
+    found: list[tuple[int, dict[str, str]]] = []
     for m in COMPONENT_TAG_RE.finditer(html):
         component = m.group(1)
         if component not in EXERCISE_TYPES:
             continue
         id_match = ID_RE.search(m.group(0))
-        if not id_match or id_match.group(1) in seen:
-            continue
-        seen.add(id_match.group(1))
-        exercises.append({"id": id_match.group(1), "type": component})
+        if id_match:
+            found.append((m.start(), {"id": id_match.group(1), "type": component}))
+    # Converted exercises (their Runestone data-component is gone); testClass
+    # rides into exercises.json for the page widget's config and the
+    # conversion ledger.
+    for m in WIDGET_RE.finditer(html):
+        found.append((m.start(), {"id": m.group(1), "type": "activecode", "testClass": m.group(2)}))
+    exercises = []
+    seen = set()
+    for _, e in sorted(found, key=lambda t: t[0]):
+        if e["id"] not in seen:
+            seen.add(e["id"])
+            exercises.append(e)
     return exercises
 
 # -- Datafiles ---------------------------------------------------------------
@@ -189,6 +284,9 @@ def main() -> int:
     DST.mkdir(parents=True)
 
     lib = datafile_library()
+    converted = converted_labels()
+    if converted:
+        print(f"converting {len(converted)} exercise(s) to the native widget")
     pages = 0
     total = 0
     index = []
@@ -203,6 +301,8 @@ def main() -> int:
             html = inject(src.read_text(), src)
             html = inject_datafiles(html, src, lib)
             html = BUNDLE_TAG_RE.sub(r'<script data-bhs-defer-src="\1"></script>', html)
+            if len(rel.parts) == 1:
+                html = convert_exercises(html, src, converted)
             dst.write_text(html)
             pages += 1
             if len(rel.parts) == 1:  # top-level pages only, not knowls/iframes
