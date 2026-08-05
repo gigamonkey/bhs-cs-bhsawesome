@@ -12,9 +12,23 @@ it can't be in the source because eBookConfig and the page skeleton are
 PreTeXt-emitted. Mirrors the BJC landing pass in bhs-cs-content
 (landBjcFile in build/build-bjc.ts).
 
+Phase 2 additions (the monorepo's plans/rehost-bhsawesome.md):
+
+- The Runestone bundle <script> tags are neutralized (src ->
+  data-bhs-defer-src) so /js/bhsawesome.js can fetch the reader's identity
+  from /whoami BEFORE the components construct, then load the bundles and
+  dispatch runestone:pre-login-complete itself. This makes the landed pages
+  depend on the website serving the phase-2 bootstrap — deploy the website
+  before pushing a re-landed book.
+
+- exercises.json (page -> interactive exercises, in document order) is
+  emitted into the landed tree; the website's teacher progress grid reads it
+  from the overlay for its page list and grid columns.
+
 Usage: uv run python land.py
 """
 
+import json
 import re
 import shutil
 import sys
@@ -28,6 +42,45 @@ DST = OUT / "public" / "bhsawesome"
 PRETEXT = ROOT / "pretext"
 
 SCRIPT_TAG = '<script src="/js/bhsawesome.js"></script>'
+
+# The Runestone service bundles (three webpack chunks, order-sensitive).
+BUNDLE_TAG_RE = re.compile(r'<script src="(_static/prefix-[^"]+\.bundle\.js)"></script>')
+
+# -- exercises.json ----------------------------------------------------------
+
+# The interactive, answer-producing component types (grid columns). Not
+# datafile (data, not an exercise), not answer/feedback (subcomponents), not
+# parsons-runnable (a parsons' hidden run box), not codelens (step-through,
+# no answers in this book).
+EXERCISE_TYPES = {
+    "activecode",
+    "parsons",
+    "hparsons",
+    "multiplechoice",
+    "clickablearea",
+    "fillintheblank",
+    "dragndrop",
+    "shortanswer",
+}
+
+COMPONENT_TAG_RE = re.compile(r"<\w+[^>]*data-component=\"([a-z-]+)\"[^>]*>")
+ID_RE = re.compile(r"id=\"([^\"]+)\"")
+TITLE_RE = re.compile(r"<title>([^<]*)</title>")
+
+
+def page_exercises(html: str) -> list[dict[str, str]]:
+    exercises = []
+    seen = set()
+    for m in COMPONENT_TAG_RE.finditer(html):
+        component = m.group(1)
+        if component not in EXERCISE_TYPES:
+            continue
+        id_match = ID_RE.search(m.group(0))
+        if not id_match or id_match.group(1) in seen:
+            continue
+        seen.add(id_match.group(1))
+        exercises.append({"id": id_match.group(1), "type": component})
+    return exercises
 
 # -- Datafiles ---------------------------------------------------------------
 #
@@ -125,7 +178,8 @@ def main() -> int:
     lib = datafile_library()
     pages = 0
     total = 0
-    for src in SRC.rglob("*"):
+    index = []
+    for src in sorted(SRC.rglob("*")):
         if src.is_dir():
             continue
         rel = src.relative_to(SRC)
@@ -134,11 +188,26 @@ def main() -> int:
         if src.suffix == ".html":
             html = inject(src.read_text(), src)
             html = inject_datafiles(html, src, lib)
+            html = BUNDLE_TAG_RE.sub(r'<script data-bhs-defer-src="\1"></script>', html)
             dst.write_text(html)
             pages += 1
+            if len(rel.parts) == 1:  # top-level pages only, not knowls/iframes
+                exercises = page_exercises(html)
+                if exercises:
+                    title_match = TITLE_RE.search(html)
+                    index.append(
+                        {
+                            "file": rel.name,
+                            "title": title_match.group(1).strip() if title_match else rel.name,
+                            "exercises": exercises,
+                        }
+                    )
         else:
             shutil.copy2(src, dst)
         total += 1
+
+    (DST / "exercises.json").write_text(json.dumps({"book": "bhsawesome", "pages": index}, indent=1))
+    print(f"exercises.json: {len(index)} pages, {sum(len(p['exercises']) for p in index)} exercises")
 
     size_mb = sum(f.stat().st_size for f in DST.rglob("*") if f.is_file()) / 2**20
     print(f"landed {total} files ({pages} html) into {DST.relative_to(ROOT)} ({size_mb:.0f} MB)")
