@@ -147,12 +147,18 @@ def convert_exercises(html: str, page: Path, labels: set[str]) -> str:
         if q := AC_QUESTION_RE.search(block):
             statement = block[q.start() : balanced_div(block, q.start())]
 
+        # The runestone/ac_section shell classes are what the shipped
+        # Runestone + theme CSS style — including the wider-than-prose
+        # layout (.ptx-runestone-container:has(.ac_section)) — so the widget
+        # looks like the activecodes around it. No data-component, so the
+        # Runestone JS ignores it.
         replacement = (
             '<div class="ptx-runestone-container">'
+            '<div class="runestone explainer ac_section">'
             f'<div class="bhs-book-exercise" id="rs-{label}" data-testclass="book:{label}">'
             f"{statement}"
             f'<textarea class="bhs-book-starter" hidden>{escape(starter)}</textarea>'
-            "</div></div>"
+            "</div></div></div>"
         )
         html = html[:start] + replacement + html[end:]
     return html
