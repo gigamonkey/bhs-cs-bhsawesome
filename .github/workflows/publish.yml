@@ -52,4 +52,6 @@ jobs:
         env:
           BHS_CS_SERVER: ${{ vars.BHS_CS_SERVER }}
           SERVICE_KEYS_SECRET: ${{ secrets.SERVICE_KEYS_SECRET }}
-        run: npx --yes --package @peterseibel/bhs-content push-content --only public/bhsawesome/
+        # The push-content bin comes from the pinned @peterseibel/bhs-content
+        # devDependency (package.json + lockfile).
+        run: npm ci && npx push-content --only public/bhsawesome/

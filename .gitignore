@@ -1,6 +1,7 @@
 # Pretext build and run stuff
 build/
 .cache
+node_modules/
 .error_schema.log
 author_build.log
 generated-assets/
