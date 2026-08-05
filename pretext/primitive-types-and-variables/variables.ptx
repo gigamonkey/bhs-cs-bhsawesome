@@ -544,8 +544,7 @@
 
         <p>
           <fillin answer="int" mode="string" /><c>age =</c>
-          <fillin mode="number" answer="5" /><!-- this will use a number input
-          --><c>;</c>
+          <fillin mode="number" answer="5" /><c>;</c>
         </p>
       </statement>
 
