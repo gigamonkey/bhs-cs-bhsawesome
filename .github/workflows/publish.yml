@@ -1,0 +1,55 @@
+# Build the book's web target and mirror it into the bhs-cs website's content
+# overlay, where it serves at /bhsawesome/. This repo is one of the overlay's
+# prefix-scoped publishers (the pattern from the monorepo's
+# plans/rehost-bhsawesome.md phase 1): it owns exactly public/bhsawesome/ —
+# the push mirrors and prunes only inside that prefix, so it can never touch
+# the bhs-cs-content publishers' files (whose main workflow correspondingly
+# pushes with --exclude public/bhsawesome/).
+#
+# PRs build (and land) only; pushes to main also mirror to the server.
+#
+# Auth/config (set on this repo in GitHub):
+#   - variable BHS_CS_SERVER: the website base URL
+#   - secret SERVICE_KEYS_SECRET: the shared master secret the push script
+#     derives the 'content'-scoped bearer key from (same value the
+#     bhs-cs-content repo uses)
+
+name: publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# One push at a time from this repo. (The bhs-cs-content workflows serialize
+# under their own repo-local group; cross-repo interleaving is safe because
+# every publisher stays inside its own prefixes.)
+concurrency:
+  group: publish-bhsawesome
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v6 # pretext's theme build (cssbuilder) needs node
+        with:
+          node-version: "26"
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Build the web target (tolerates only the known-expected errors)
+        run: uv run python build-web.py
+
+      - name: Land as an overlay tree (+ inject /js/bhsawesome.js)
+        run: uv run python land.py
+
+      - name: Push to the website content overlay
+        if: github.event_name != 'pull_request'
+        env:
+          BHS_CS_SERVER: ${{ vars.BHS_CS_SERVER }}
+          SERVICE_KEYS_SECRET: ${{ secrets.SERVICE_KEYS_SECRET }}
+        run: npx --yes --package @peterseibel/bhs-content push-content --only public/bhsawesome/

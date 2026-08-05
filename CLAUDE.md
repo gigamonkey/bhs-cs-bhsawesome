@@ -127,3 +127,30 @@ order), `make-text.py` (generate the string/array-index SVG diagrams).
 - `TODO.md` tracks outstanding text/formatting cleanup work.
 - After editing any `.ptx` by hand, run it through `xml-format -i` before
   committing so diffs stay canonical.
+
+## Website build (self-hosting on bhs-cs)
+
+This repo is one of the bhs-cs content overlay's prefix-scoped publishers
+(the monorepo's `plans/rehost-bhsawesome.md`, phase 1): it owns
+`public/bhsawesome/`, served at `/bhsawesome/` on the website, side by side
+with the Runestone publish (which is unchanged).
+
+- `uv run python build-web.py` — `pretext build web`, tolerating only the
+  known-expected PTX:ERRORs (the left-gutter sidebyside hack + listed dead
+  xrefs); any new error fails.
+- `uv run python land.py` — copy `output/build/html` to
+  `build/out/public/bhsawesome/`, inject `<script src="/js/bhsawesome.js">`
+  into every page (the website-served script that points the Runestone
+  components' Jobe config at the site's Java-running endpoints), and inject
+  hidden datafile provider divs into pages that reference a datafile not
+  rendered on that page (Runestone resolved those from its database; a
+  static site can't).
+- `xsl/web.xsl` (wired via `project.ptx` target `xsl=`) overrides
+  `activecode-host` so Java activecodes render interactive off-Runestone
+  instead of degrading to static listings.
+- `publication/html.xml` sets `short-answer-responses="always"` so
+  free-response boxes render off-Runestone.
+- `.github/workflows/publish.yml` builds and mirrors `build/out` to the
+  server with `push-content --only public/bhsawesome/` (needs the
+  `BHS_CS_SERVER` variable + `SERVICE_KEYS_SECRET` secret configured on
+  GitHub).

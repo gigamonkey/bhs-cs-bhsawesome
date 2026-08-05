@@ -1,4 +1,5 @@
 # Pretext build and run stuff
+build/
 .cache
 .error_schema.log
 author_build.log

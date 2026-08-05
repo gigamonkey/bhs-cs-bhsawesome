@@ -13,7 +13,9 @@
     <tableofcontents level="3" focused="yes"/>
   </common>
 
-  <html>
+  <!-- short-answer-responses="always": render the free-response boxes even
+       off-Runestone (they otherwise vanish from non-Runestone builds). -->
+  <html short-answer-responses="always">
     <platform host="web"/>
     <!-- knowled checkpoints interfere with ActiveCode problems -->
     <knowl exercise-inline="no" example="no" listing="no"/>

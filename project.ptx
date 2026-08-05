@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<project ptx-version="2" source="pretext" xsl="pretext">
+<!-- xsl="xsl" (the CLI default): custom-XSL paths resolve against xsl/, and the
+     CLI copies that whole directory per build - so it must hold only
+     stylesheets, never the source tree. -->
+<project ptx-version="2" source="pretext" xsl="xsl">
   <targets>
     <target
         name="web"
         format="html"
         publication="html.xml"
         source="main.ptx"
-        output-dir="build/html">
+        output-dir="build/html"
+        xsl="web.xsl">
 
       <stringparams author.tools="yes" html.css.extra="external/_static/css/custom.css" />
     </target>
