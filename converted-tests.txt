@@ -32,8 +32,7 @@ overfl
 double_precision
 challenge1-5-average
 
-# Bulk conversion of the rest of the book (2026-08-05); skipped: datafile
-# users (35).
+# Bulk conversion of the rest of the book (2026-08-05).
 # abstraction.html
 OldMacDonaldSongRepeated
 # array-algorithms.html
@@ -297,3 +296,56 @@ whileloop
 whileloopbugs
 # wrapper-classes.html
 listRem
+
+# Datafile users (2026-08-05): turtle/GridWorld classes from the runner's
+# nested book-classes.jar, data files via book-tests/<label>.datafiles.
+# apis-and-libraries.html
+TurtleAPI
+challenge1-7-TurtleShape
+# array-traversal.html
+challenge-spellchecker
+# boolean-expressions.html
+randomShapes
+# constructors.html
+TurtleConstructorDebug
+# data-sets.html
+pokeImages
+challenge-pokespeed
+challenge-pokemon-file
+challenge-file
+# documentation-and-invariants.html
+turtle-preconditions
+# for-loops.html
+challenge-TurtleLoopShapes
+# frq-practice.html
+frq2013Q3A-grid
+# input-files.html
+throws-exception-exercise
+loop-read-file
+read-pokemon-file
+read-pokemon-file-nio
+# instance-methods.html
+TurtleDistance
+# math-class.html
+challenge-random-dancing-turtles
+# nested-loops.html
+TurtleNestedLoop
+challenge-Turtle-Nested-Loop-Snowflakes
+# object-equality.html
+boolRef
+# searching.html
+challenge-search-coding
+# turtles.html
+TurtleTest
+TurtleTest2
+TurtleTest3
+TurtleConstructorTest
+TurtleDrawSeven
+TurtleDrawEight
+TurtleTestMethods1
+TurtleTestGetSet
+TurtleArea
+challenge-Turtle_Letter
+challenge-TurtleHouse
+# while-loops.html
+challenge-turtle-square-while
