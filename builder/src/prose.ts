@@ -1,0 +1,505 @@
+/*
+ * Prose emitters: ptx elements → semantic HTML5 wearing PreTeXt's
+ * content-area class vocabulary (custom.css and the component CSS target
+ * .para, .image-box, figure-like, etc., and keeping those names preserves
+ * the book's current look under our simplified chrome).
+ *
+ * Interactive components (activities with programs/choices/blocks/...) are
+ * NOT handled here — emitComponent in components.ts owns them; during the
+ * prose-prototype stage it emits a placeholder the diff harness skips.
+ */
+
+import type { Book } from './book.ts';
+import { type Attrs, escapeHtml, h, voidEl } from './html.ts';
+import { NUMBERED_BLOCKS, blockNumber, elementId } from './ids.ts';
+import { type XmlElement, elements, isElement, isText, textContent } from './xml.ts';
+
+export type Ctx = {
+  book: Book;
+  page: string; // filename of the page being emitted
+  headingLevel: number; // current division's heading level
+  emitComponent: (el: XmlElement, ctx: Ctx) => string;
+  warn: (msg: string) => void;
+};
+
+// Component-bearing blocks: activity/project/exercise whose body is an
+// interactive payload rather than prose. Detection: contains one of the
+// interactive payload elements.
+const INTERACTIVE_PAYLOADS = new Set(['choices', 'blocks', 'areas', 'cardsort', 'fillin', 'response', 'matches', 'datafile']);
+
+export function isInteractive(el: XmlElement): boolean {
+  if (!['activity', 'project', 'exercise'].includes(el.name)) return false;
+  // A display <program> (no @interactive) is ordinary prose — e.g. the
+  // trace-this-loop activities whose only "payload" is a code listing.
+  const scan = (e: XmlElement): boolean =>
+    e.children.some(
+      (c) =>
+        isElement(c) &&
+        (INTERACTIVE_PAYLOADS.has(c.name) ||
+          (c.name === 'program' && c.attributes.interactive !== undefined) ||
+          scan(c)),
+    );
+  return scan(el);
+}
+
+export function autopermalink(id: string, description: string): string {
+  return h(
+    'div',
+    { class: 'autopermalink', 'aria-hidden': 'true', 'data-description': description },
+    h(
+      'a',
+      {
+        tabindex: '-1',
+        href: `#${id}`,
+        title: `Copy heading and permalink for ${description}`,
+        'aria-label': `Copy heading and permalink for ${description}`,
+      },
+      '🔗',
+    ),
+  );
+}
+
+const HEADING_SPACE = () =>
+  h('span', { class: 'space heading-divison-mark heading-divison-mark__space' }, ' ');
+const HEADING_PERIOD = () =>
+  h('span', { class: 'period heading-divison-mark heading-divison-mark__period' }, '.');
+
+/**
+ * Block headings ("Activity 2.1.7. Variable declarations."): period after
+ * the number, title with a period appended (unless it ends in punctuation).
+ * `titleHtml` is pre-rendered markup (titles can contain <c> etc).
+ */
+export function blockHeadingSpans(type: string, number: string | null, titleHtml: string | null): string {
+  const parts = [h('span', { class: 'type' }, escapeHtml(type))];
+  if (number) {
+    parts.push(HEADING_SPACE(), h('span', { class: 'codenumber' }, escapeHtml(number)));
+  }
+  parts.push(HEADING_PERIOD());
+  if (titleHtml) {
+    const t = /[.?!]$/.test(titleHtml) ? titleHtml : `${titleHtml}.`;
+    parts.push(HEADING_SPACE(), h('span', { class: 'title' }, t));
+  }
+  return parts.join('');
+}
+
+/** The "Type N." heading span cluster, PreTeXt-style. */
+export function headingSpans(type: string | null, number: string | null, title: string | null, ctx: Ctx): string {
+  const parts: string[] = [];
+  const sep = h('span', { class: 'space heading-divison-mark heading-divison-mark__space' }, ' ');
+  if (type) parts.push(h('span', { class: 'type' }, escapeHtml(type)));
+  if (type && number) parts.push(sep);
+  if (number) parts.push(h('span', { class: 'codenumber' }, escapeHtml(number)));
+  if (title !== null) {
+    if (parts.length) parts.push(sep);
+    parts.push(h('span', { class: 'title' }, title));
+  } else {
+    parts.push(h('span', { class: 'period heading-divison-mark heading-divison-mark__period' }, '.'));
+  }
+  return parts.join('');
+}
+
+/*
+ * PreTeXt smart-quotes straight quotes in prose text (code contexts
+ * excluded — <c>, <pre>, <program> take textContent verbatim): an
+ * apostrophe between word characters curls right; double quotes curl by
+ * position.
+ */
+export function smartQuotes(text: string): string {
+  // Narrow by observation: word-internal apostrophes curl ("computer's" ->
+  // "computer’s"); straight double quotes pass through untouched ("").
+  return text.replace(/(\w)'(\w)/g, '$1’$2');
+}
+
+export function emitChildren(el: XmlElement, ctx: Ctx): string {
+  let out = '';
+  let pendingSkip = 0; // chars consumed from the next text node by <m>
+  for (let i = 0; i < el.children.length; i++) {
+    const c = el.children[i];
+    if (isText(c)) {
+      out += escapeHtml(smartQuotes(c.text.slice(pendingSkip)));
+      pendingSkip = 0;
+    } else if (isElement(c) && c.name === 'm') {
+      // PreTeXt pulls sentence punctuation following math INTO the math
+      // (`\(x\text{.}\)`) so it can't wrap onto its own line.
+      let math = textContent(c);
+      const next = el.children[i + 1];
+      if (isText(next)) {
+        const punct = next.text.match(/^[.,;:!?]+/)?.[0];
+        if (punct) {
+          math += `\\text{${punct}}`;
+          pendingSkip = punct.length;
+        }
+      }
+      out += h('span', { class: 'process-math' }, `\\(${escapeHtml(math)}\\)`);
+    } else if (isElement(c)) {
+      out += emitElement(c, ctx);
+    }
+  }
+  return out;
+}
+
+/** Children that are elements only (block context: whitespace between blocks dropped). */
+export function emitBlocks(el: XmlElement, ctx: Ctx): string {
+  let out = '';
+  for (const c of el.children) {
+    if (isElement(c)) out += emitElement(c, ctx);
+    else if (isText(c) && c.text.trim() !== '') {
+      ctx.warn(`stray text in block context <${el.name}>: ${JSON.stringify(c.text.trim().slice(0, 40))}`);
+    }
+  }
+  return out;
+}
+
+const BLOCK_TYPE_NAMES: Record<string, string> = {
+  activity: 'Activity',
+  project: 'Project',
+  exercise: 'Activity',
+  figure: 'Figure',
+  table: 'Table',
+  listing: 'Listing',
+  note: 'Note',
+  video: 'Video',
+};
+
+function capitalize(s: string): string {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+export function emitElement(el: XmlElement, ctx: Ctx): string {
+  // Standalone components outside activity wrappers: <datafile> displays
+  // and bare interactive <program>s (run-only demos, embedded codelens).
+  if (el.name === 'datafile') return ctx.emitComponent(el, ctx);
+  if (el.name === 'program' && el.attributes.interactive) return ctx.emitComponent(el, ctx);
+  if (isInteractive(el)) return ctx.emitComponent(el, ctx);
+  const emitter = EMITTERS[el.name];
+  if (!emitter) {
+    ctx.warn(`unhandled element <${el.name}>`);
+    return '';
+  }
+  return emitter(el, ctx);
+}
+
+const trimText = (s: string) => s.replace(/\s+/g, ' ');
+
+type Emitter = (el: XmlElement, ctx: Ctx) => string;
+
+const EMITTERS: Record<string, Emitter> = {
+  title: () => '', // consumed by the enclosing division/block emitter
+
+  p: (el, ctx) => {
+    const id = elementId(el);
+    return h('div', { class: 'para', id }, trimText(emitChildren(el, ctx)), autopermalink(id, 'Paragraph'));
+  },
+
+  // -- inline ----------------------------------------------------------------
+  c: (el, ctx) => h('code', { class: 'code-inline tex2jax_ignore' }, trimText(emitChildren(el, ctx))),
+  term: (el, ctx) => h('dfn', { class: 'terminology' }, trimText(emitChildren(el, ctx))),
+  em: (el, ctx) => h('em', { class: 'emphasis' }, trimText(emitChildren(el, ctx))),
+  strong: (el, ctx) => h('strong', {}, trimText(emitChildren(el, ctx))),
+  b: (el, ctx) => h('strong', {}, trimText(emitChildren(el, ctx))),
+  pubtitle: (el, ctx) => h('cite', {}, trimText(emitChildren(el, ctx))),
+  title_reference: (el, ctx) => h('cite', {}, trimText(emitChildren(el, ctx))),
+  // docutils-conversion leftovers: <reference> is an external link,
+  // <target> its invisible anchor definition.
+  reference: (el, ctx) =>
+    h('a', { class: 'external', href: el.attributes.refuri ?? '', target: '_blank' }, trimText(emitChildren(el, ctx))),
+  target: () => '',
+  url: (el, ctx) => {
+    const href = el.attributes.href ?? '';
+    const label = el.children.length ? trimText(emitChildren(el, ctx)) : escapeHtml(el.attributes.visual ?? href);
+    return h('a', { class: 'external', href, target: '_blank' }, label);
+  },
+  m: (el) => h('span', { class: 'process-math' }, `\\(${escapeHtml(textContent(el))}\\)`),
+  idx: () => '', // index machinery; the index page reads these in its own pass
+  xref: (el, ctx) => {
+    const ref = el.attributes.ref ?? '';
+    const division = ctx.book.byId.get(ref);
+    if (division) {
+      const d = division.division;
+      const typeName = d.kind === 'frontmatter' ? 'Front Matter' : capitalize(d.kind);
+      // PreTeXt's default xref text for divisions: "Chapter 8 Classes"
+      // (type, number, title), "Type N: Title" in the tooltip; the href is
+      // bare when the target starts its page. Unnumbered divisions whose
+      // title IS the type ("Preface") don't repeat it; @text="title"
+      // renders the bare title.
+      const text =
+        el.attributes.text === 'title'
+          ? d.title || typeName
+          : [typeName, d.number, d.title === typeName ? null : d.title].filter(Boolean).join(' ');
+      const href = d.page ?? `${division.pageOf.page}#${ref}`;
+      const tooltip = d.number ? `${typeName} ${d.number}: ${d.title}` : d.title || typeName;
+      return h('a', { href, class: 'internal', title: tooltip }, escapeHtml(text));
+    }
+    const label = ctx.book.labels.get(ref);
+    if (!label) {
+      // Faithful to current output: PreTeXt renders its error text inline
+      // for dangling refs (source bugs to fix upstream; see the warn log).
+      ctx.warn(`xref to unknown id ${ref}`);
+      return h(
+        'span',
+        { class: 'xref-error' },
+        escapeHtml(`[cross-reference to target(s) "${ref}" missing or not unique]`),
+      );
+    }
+    const typeName = BLOCK_TYPE_NAMES[label.el.name] ?? capitalize(label.el.name);
+    const number = blockNumber(label.el);
+    const titleEl = label.el.children.find((c) => isElement(c) && c.name === 'title') as
+      | XmlElement
+      | undefined;
+    const blockTitle = titleEl ? textContent(titleEl).replace(/\s+/g, ' ').trim() : null;
+    const text = [typeName, number, blockTitle].filter(Boolean).join(' ');
+    return h(
+      'a',
+      { href: `${label.pageOf.page}#${ref}`, class: 'internal', title: text },
+      escapeHtml(text),
+    );
+  },
+
+  // -- lists -----------------------------------------------------------------
+  ul: (el, ctx) => h('ul', { class: markerClass(el) }, emitBlocks(el, ctx)),
+  ol: (el, ctx) => h('ol', { class: markerClass(el) }, emitBlocks(el, ctx)),
+  li: (el, ctx) => {
+    // A list item is block context if it contains p's, inline otherwise.
+    const hasBlocks = el.children.some((c) => isElement(c) && ['p', 'ul', 'ol', 'program', 'pre', 'figure'].includes(c.name));
+    return h('li', { id: elementId(el) }, hasBlocks ? emitBlocks(el, ctx) : trimText(emitChildren(el, ctx)));
+  },
+  dl: (el, ctx) =>
+    h(
+      'dl',
+      {},
+      elements(el, 'li')
+        .map((li) => {
+          const title = li.children.find((c) => isElement(c) && c.name === 'title') as
+            | XmlElement
+            | undefined;
+          const body = li.children
+            .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
+            .map((c) => emitElement(c, ctx))
+            .join('');
+          return (
+            h('dt', {}, title ? trimText(emitChildren(title, ctx)).trim() : '') + h('dd', {}, body)
+          );
+        })
+        .join(''),
+    ),
+
+  // -- figures / images / video ---------------------------------------------
+  figure: (el, ctx) => {
+    const id = elementId(el);
+    const number = blockNumber(el);
+    const caption = el.children.find((c) => isElement(c) && c.name === 'caption') as XmlElement | undefined;
+    const body = el.children
+      .filter((c): c is XmlElement => isElement(c) && c.name !== 'caption')
+      .map((c) => emitElement(c, ctx))
+      .join('');
+    // Captionless figures still get their numbered figcaption.
+    const figcaption = h(
+      'figcaption',
+      {},
+      blockHeadingSpans('Figure', number ?? null, null),
+      caption ? ` ${trimText(emitChildren(caption, ctx))}` : '',
+    );
+    return h('figure', { class: 'figure figure-like', id }, body, figcaption, autopermalink(id, 'Figure'));
+  },
+  image: (el, ctx) => {
+    const source = el.attributes.source ?? '';
+    const width = Number.parseFloat(el.attributes.width ?? '100');
+    const margin = (100 - width) / 2;
+    const desc = el.children.find((c) => isElement(c) && c.name === 'shortdescription') as XmlElement | undefined;
+    return h(
+      'div',
+      {
+        class: 'image-box',
+        style: `width: ${width}%; margin-left: ${margin}%; margin-right: ${margin}%;`,
+      },
+      voidEl('img', {
+        src: `external/${source}`,
+        class: 'contained',
+        alt: desc ? trimText(textContent(desc)).trim() : undefined,
+      }),
+    );
+  },
+  shortdescription: () => '',
+  video: (el) => {
+    const yt = el.attributes.youtube ?? '';
+    const id = el.attributes.label ? el.attributes.label : elementId(el);
+    return h(
+      'div',
+      { class: 'video-box' },
+      h('iframe', {
+        class: 'video',
+        allowfullscreen: '',
+        src: `https://www.youtube-nocookie.com/embed/${yt}?&modestbranding=1&rel=0`,
+        id,
+      }),
+    );
+  },
+
+  // -- tables ----------------------------------------------------------------
+  table: (el, ctx) => {
+    const id = elementId(el);
+    const number = blockNumber(el);
+    const title = el.children.find((c) => isElement(c) && c.name === 'title') as XmlElement | undefined;
+    const body = el.children
+      .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
+      .map((c) => emitElement(c, ctx))
+      .join('');
+    // Table captions render ABOVE the table (figure captions go below) —
+    // except inside a sidebyside, where captions row below the panels.
+    const figcaption = h(
+      'figcaption',
+      {},
+      blockHeadingSpans('Table', number ?? null, null),
+      title ? ` ${trimText(emitChildren(title, ctx))}` : '',
+    );
+    return inSidebyside(el)
+      ? h('figure', { class: 'table table-like', id }, body, figcaption, autopermalink(id, 'Table'))
+      : h('figure', { class: 'table table-like', id }, figcaption, body, autopermalink(id, 'Table'));
+  },
+  tabular: (el, ctx) => {
+    const rows = el.children.filter((c): c is XmlElement => isElement(c) && c.name === 'row');
+    return h(
+      'div',
+      { class: 'tabular-box' },
+      h('table', { class: 'tabular' }, rows.map((r) => emitElement(r, ctx)).join('')),
+    );
+  },
+  row: (el, ctx) => {
+    const header = el.attributes.header === 'yes';
+    const cells = el.children.filter((c): c is XmlElement => isElement(c) && c.name === 'cell');
+    return h('tr', {}, cells.map((c) => h(header ? 'th' : 'td', {}, trimText(emitChildren(c, ctx)))).join(''));
+  },
+  col: () => '',
+
+  // -- blocks ----------------------------------------------------------------
+  note: (el, ctx) => {
+    const id = elementId(el);
+    const number = blockNumber(el);
+    const title = el.children.find((c) => isElement(c) && c.name === 'title') as XmlElement | undefined;
+    const heading = h(
+      `h${Math.min(6, ctx.headingLevel + 1)}`,
+      { class: 'heading' },
+      blockHeadingSpans('Note', number ?? null, title ? trimText(emitChildren(title, ctx)).trim() : null),
+    );
+    const body = el.children
+      .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
+      .map((c) => emitElement(c, ctx))
+      .join('');
+    return h('article', { class: 'note remark-like', id }, heading, body, autopermalink(id, 'Note'));
+  },
+  blockquote: (el, ctx) => h('blockquote', { class: 'blockquote', id: elementId(el) }, emitBlocks(el, ctx)),
+  attribution: (el, ctx) =>
+    h('cite', { class: 'attribution' }, `―${trimText(emitChildren(el, ctx)).trim()}`),
+
+  // Solution/answer/hint render as inline <details> knowls.
+  solution: (el, ctx) => knowlDetails('Solution', 'solution solution-like', el, ctx),
+  answer: (el, ctx) => knowlDetails('Answer', 'answer answer-like', el, ctx),
+  hint: (el, ctx) => knowlDetails('Hint', 'hint hint-like', el, ctx),
+
+  // NON-interactive activities/projects/exercises (a prose statement,
+  // maybe a display program, answer/solution knowls). Interactive ones
+  // never reach the dispatch table (emitElement routes them to
+  // emitComponent first).
+  activity: (el, ctx) => proseActivity(el, ctx, 'Activity', 'activity project-like'),
+  project: (el, ctx) => proseActivity(el, ctx, 'Project', 'project project-like'),
+  exercise: (el, ctx) => proseActivity(el, ctx, 'Activity', 'exercise exercise-like'),
+  pre: (el) => preBlock(textContent(el)),
+  listing: (el, ctx) => {
+    const id = elementId(el);
+    const number = blockNumber(el);
+    const titleEl = el.children.find(
+      (c) => isElement(c) && (c.name === 'title' || c.name === 'caption'),
+    ) as XmlElement | undefined;
+    const body = el.children
+      .filter((c): c is XmlElement => isElement(c) && c.name !== 'title' && c.name !== 'caption')
+      .map((c) => emitElement(c, ctx))
+      .join('');
+    const figcaption = h(
+      'figcaption',
+      {},
+      blockHeadingSpans('Listing', number ?? null, null),
+      titleEl ? ` ${trimText(emitChildren(titleEl, ctx))}` : '',
+    );
+    // Caption ABOVE the code (like tables) — except inside a sidebyside,
+    // where panel captions render in a row BELOW the panels.
+    return inSidebyside(el)
+      ? h('figure', { class: 'listing figure-like', id }, body, figcaption, autopermalink(id, 'Listing'))
+      : h('figure', { class: 'listing figure-like', id }, figcaption, body, autopermalink(id, 'Listing'));
+  },
+
+  // Non-interactive <program> in prose (interactive ones route to
+  // emitComponent before dispatch).
+  program: (el, ctx) => {
+    const code = el.children.find((c) => isElement(c) && c.name === 'code') as XmlElement | undefined;
+    return preBlock(dedent(textContent(code ?? el)));
+  },
+  code: (el) => preBlock(dedent(textContent(el))),
+
+  // -- layout ----------------------------------------------------------------
+  sidebyside: (el, ctx) => h('div', { class: 'sidebyside' }, h('div', { class: 'sbsrow' }, emitBlocks(el, ctx))),
+  stack: (el, ctx) => h('div', { class: 'sbsstack' }, emitBlocks(el, ctx)),
+  container: (el, ctx) => h('div', { class: 'sbscontainer' }, emitBlocks(el, ctx)),
+
+  // Prose-level exercise machinery for NON-interactive exercises.
+  statement: (el, ctx) => emitBlocks(el, ctx),
+  introduction: (el, ctx) => emitBlocks(el, ctx),
+  conclusion: (el, ctx) => emitBlocks(el, ctx),
+};
+
+function proseActivity(el: XmlElement, ctx: Ctx, typeName: string, classes: string): string {
+  const id = elementId(el);
+  const number = blockNumber(el);
+  const title = el.children.find((c) => isElement(c) && c.name === 'title') as XmlElement | undefined;
+  const heading = h(
+    `h${Math.min(6, ctx.headingLevel + 1)}`,
+    { class: 'heading' },
+    blockHeadingSpans(typeName, number ?? null, title ? trimText(emitChildren(title, ctx)).trim() : null),
+  );
+  const body = el.children
+    .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
+    .map((c) => emitElement(c, ctx))
+    .join('');
+  return h('article', { class: classes, id }, heading, body, autopermalink(id, typeName));
+}
+
+function inSidebyside(el: XmlElement): boolean {
+  for (let p = el.parent; p instanceof Object && 'name' in p; p = (p as XmlElement).parent) {
+    if ((p as XmlElement).name === 'sidebyside') return true;
+  }
+  return false;
+}
+
+function knowlDetails(type: string, classes: string, el: XmlElement, ctx: Ctx): string {
+  return h(
+    'details',
+    { class: 'knowl' },
+    h(
+      'summary',
+      { class: 'knowl__link' },
+      h('span', { class: 'type' }, type),
+      HEADING_PERIOD(),
+    ),
+    h('div', { class: `${classes} knowl__content` }, emitBlocks(el, ctx)),
+  );
+}
+
+function markerClass(el: XmlElement): string | undefined {
+  const marker = el.attributes.marker;
+  if (marker === undefined) return undefined;
+  return `marker-${marker.replace(/[^a-z0-9]/gi, '') || 'none'}`;
+}
+
+function preBlock(code: string): string {
+  return h(
+    'pre',
+    { class: 'code-display tex2jax_ignore' },
+    escapeHtml(code.replace(/^\n+/, '').trimEnd()),
+  );
+}
+
+export function dedent(text: string): string {
+  const lines = text.replace(/^\n+/, '').trimEnd().split('\n');
+  const indents = lines.filter((l) => l.trim() !== '').map((l) => l.match(/^ */)?.[0].length ?? 0);
+  const min = indents.length ? Math.min(...indents) : 0;
+  return lines.map((l) => l.slice(min)).join('\n');
+}
