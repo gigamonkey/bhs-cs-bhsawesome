@@ -169,6 +169,10 @@ def convert_exercises(html: str, page: Path, labels: set[str], css_link: str) ->
         # data-datafile needs nothing here: the runner satisfies datafiles
         # server-side (the turtle/GridWorld classes from its nested
         # book-classes.jar, data files from <label>.datafiles manifests).
+        # An activecode with no test section is UNGRADED — run-only: the
+        # widget just runs the student's main (book-run: spec) and shows
+        # the output, no results.
+        spec = f"book:{label}" if "\n====" in payload else f"book-run:{label}"
         starter = payload.split("\n====\n")[0].strip("\n")
 
         statement = ""
@@ -183,7 +187,7 @@ def convert_exercises(html: str, page: Path, labels: set[str], css_link: str) ->
         replacement = (
             '<div class="ptx-runestone-container">'
             '<div class="runestone explainer ac_section">'
-            f'<div class="bhs-book-exercise" id="rs-{label}" data-testclass="book:{label}"{stdin_attr}>'
+            f'<div class="bhs-book-exercise" id="rs-{label}" data-testclass="{spec}"{stdin_attr}>'
             f"{statement}"
             f'<textarea class="bhs-book-starter" hidden>{escape(starter)}</textarea>'
             "</div></div></div>"
@@ -220,7 +224,13 @@ def page_exercises(html: str) -> list[dict[str, str]]:
     # rides into exercises.json for the page widget's config and the
     # conversion ledger.
     for m in WIDGET_RE.finditer(html):
-        found.append((m.start(), {"id": m.group(1), "type": "activecode", "testClass": m.group(2)}))
+        # Run-only (ungraded) widgets stay testClass-less in exercises.json,
+        # exactly as their unconverted data-component form appeared — the
+        # book grid has no verdicts to expect from them.
+        e = {"id": m.group(1), "type": "activecode"}
+        if not m.group(2).startswith("book-run:"):
+            e["testClass"] = m.group(2)
+        found.append((m.start(), e))
     exercises = []
     seen = set()
     for _, e in sorted(found, key=lambda t: t[0]):
@@ -231,17 +241,13 @@ def page_exercises(html: str) -> list[dict[str, str]]:
 
 # -- Datafiles ---------------------------------------------------------------
 #
-# An activecode's data-datafile references are resolved by the Runestone JS
-# via document.querySelector('[data-filename="..."]') — i.e. the datafile must
-# be IN THE SAME PAGE. On Runestone that isn't true for many of this book's
-# datafiles (the turtle classes live in main.ptx, the CSVs in sections that
-# reference each other's files) because the Runestone server falls back to its
-# source_code database (GET /ns/logger/get_source_code). Self-hosted there is
-# no such database, so landing injects a hidden provider div into every page
-# that references a datafile it doesn't already carry. All the book's
-# datafiles are text (the ".jar" ones are Java source the client splits into
-# classes), so a plain hidden div whose textContent is the file works — the
-# JS reads .value || .textContent and never needs a real datafile component.
+# The datafile-source harvest, used by extract-datafiles.py (which imports
+# datafile_library) to ship the book's datafiles into the monorepo's runner
+# jar. All the book's datafiles are text: the ".jar" ones are concatenated
+# Java source (split per-class by the extractor), the rest plain data files.
+# (Landing used to inject hidden provider divs from this library for the
+# Jobe path's client-side datafile resolution; that retired with the Jobe
+# path when the last activecode converted to the native protocol.)
 
 DATAFILE_RE = re.compile(r"<datafile\b[^>]*?filename=\"([^\"]+)\".*?(?:</datafile>|/>)", re.S)
 PRE_SOURCE_RE = re.compile(r"<pre\s+source=\"([^\"]+)\"")
@@ -278,29 +284,6 @@ def datafile_library() -> dict[str, str]:
     return lib
 
 
-def inject_datafiles(html: str, path: Path, lib: dict[str, str]) -> str:
-    referenced: set[str] = set()
-    for m in re.finditer(r"data-datafile=\"([^\"]*)\"", html):
-        referenced.update(f.strip() for f in m.group(1).split(",") if f.strip())
-    present = set(re.findall(r"data-filename=\"([^\"]*)\"", html))
-    missing = referenced - present
-    if not missing:
-        return html
-    divs = []
-    for fname in sorted(missing):
-        if fname in lib:
-            divs.append(f'<div data-filename="{fname}" style="display: none">{lib[fname]}</div>')
-        else:
-            print(f"  WARNING: {path.name} references datafile {fname!r} with no known source")
-    if not divs:
-        return html
-    body_end = html.rfind("</body>")
-    if body_end == -1:
-        print(f"  no </body> in {path.name}; datafiles not injected")
-        return html
-    return html[:body_end] + "\n".join(divs) + "\n" + html[body_end:]
-
-
 def inject(html: str, path: Path) -> str:
     if SCRIPT_TAG in html:
         return html
@@ -322,7 +305,6 @@ def main() -> int:
         shutil.rmtree(DST)
     DST.mkdir(parents=True)
 
-    lib = datafile_library()
     converted = converted_labels()
     css_link = activecode_css_link() if converted else ""
     if converted:
@@ -339,7 +321,6 @@ def main() -> int:
         dst.parent.mkdir(parents=True, exist_ok=True)
         if src.suffix == ".html":
             html = inject(src.read_text(), src)
-            html = inject_datafiles(html, src, lib)
             html = BUNDLE_TAG_RE.sub(r'<script data-bhs-defer-src="\1"></script>', html)
             if len(rel.parts) == 1:
                 html = convert_exercises(html, src, converted, css_link)

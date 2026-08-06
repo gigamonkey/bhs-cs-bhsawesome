@@ -349,3 +349,11 @@ challenge-Turtle_Letter
 challenge-TurtleHouse
 # while-loops.html
 challenge-turtle-square-while
+
+# Ungraded run-only activecodes (2026-08-05): converted with the book-run:
+# spec (no tests; the widget just runs main and shows output).
+# apis-and-libraries.html
+turtle-api-demo
+# recursive-search-sort.html
+recursiveBinarySearch
+merge-sort-code
