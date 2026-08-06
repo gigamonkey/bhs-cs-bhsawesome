@@ -18,6 +18,9 @@ export type Ctx = {
   book: Book;
   page: string; // filename of the page being emitted
   headingLevel: number; // current division's heading level
+  // Per-page registry of <ol @marker> formats in first-appearance order
+  // (the ol-marker-N class PreTeXt pairs with ol-markers.css).
+  olMarkers: Map<string, number>;
   emitComponent: (el: XmlElement, ctx: Ctx) => string;
   warn: (msg: string) => void;
 };
@@ -79,6 +82,24 @@ export function blockHeadingSpans(type: string, number: string | null, titleHtml
     const t = /[.?!]$/.test(titleHtml) ? titleHtml : `${titleHtml}.`;
     parts.push(HEADING_SPACE(), h('span', { class: 'title' }, t));
   }
+  return parts.join('');
+}
+
+/**
+ * Figcaption headings nest the period INSIDE the codenumber span and are
+ * followed by a space span: `Figure <span>2.1.5<span>.</span></span><space>`.
+ */
+export function figcaptionHeading(type: string, number: string | null): string {
+  const parts = [h('span', { class: 'type' }, escapeHtml(type))];
+  if (number) {
+    parts.push(
+      HEADING_SPACE(),
+      h('span', { class: 'codenumber' }, escapeHtml(number), HEADING_PERIOD()),
+    );
+  } else {
+    parts.push(HEADING_PERIOD());
+  }
+  parts.push(HEADING_SPACE());
   return parts.join('');
 }
 
@@ -188,11 +209,21 @@ const EMITTERS: Record<string, Emitter> = {
 
   p: (el, ctx) => {
     const id = elementId(el);
-    return h('div', { class: 'para', id }, trimText(emitChildren(el, ctx)), autopermalink(id, 'Paragraph'));
+    // A p containing block-level content is a "logical paragraph".
+    const logical = el.children.some(
+      (c) => isElement(c) && ['ul', 'ol', 'dl', 'pre', 'program', 'figure', 'table', 'listing'].includes(c.name),
+    );
+    return h(
+      'div',
+      { class: logical ? 'para logical' : 'para', id },
+      trimText(emitChildren(el, ctx)).trim(),
+      autopermalink(id, 'Paragraph'),
+    );
   },
 
   // -- inline ----------------------------------------------------------------
-  c: (el, ctx) => h('code', { class: 'code-inline tex2jax_ignore' }, trimText(emitChildren(el, ctx))),
+  // Verbatim: no smart quotes inside code.
+  c: (el) => h('code', { class: 'code-inline tex2jax_ignore' }, escapeHtml(trimText(textContent(el)).trim())),
   term: (el, ctx) => h('dfn', { class: 'terminology' }, trimText(emitChildren(el, ctx))),
   em: (el, ctx) => h('em', { class: 'emphasis' }, trimText(emitChildren(el, ctx))),
   strong: (el, ctx) => h('strong', {}, trimText(emitChildren(el, ctx))),
@@ -256,12 +287,36 @@ const EMITTERS: Record<string, Emitter> = {
   },
 
   // -- lists -----------------------------------------------------------------
-  ul: (el, ctx) => h('ul', { class: markerClass(el) }, emitBlocks(el, ctx)),
-  ol: (el, ctx) => h('ol', { class: markerClass(el) }, emitBlocks(el, ctx)),
+  ul: (el, ctx) => {
+    const marker = el.attributes.marker;
+    const cls = marker === undefined ? 'disc' : (UL_MARKERS[marker] ?? 'disc');
+    return h('ul', { class: cls, id: elementId(el) }, emitBlocks(el, ctx));
+  },
+  ol: (el, ctx) => {
+    const marker = el.attributes.marker;
+    let cls = 'decimal';
+    if (marker !== undefined) {
+      const format = OL_MARKERS[marker.replace(/\.$/, '')] ?? 'decimal';
+      if (!ctx.olMarkers.has(marker)) ctx.olMarkers.set(marker, ctx.olMarkers.size + 1);
+      cls = `${format} ol-marker-${ctx.olMarkers.get(marker)}`;
+    }
+    return h('ol', { class: cls, id: elementId(el) }, emitBlocks(el, ctx));
+  },
   li: (el, ctx) => {
     // A list item is block context if it contains p's, inline otherwise.
     const hasBlocks = el.children.some((c) => isElement(c) && ['p', 'ul', 'ol', 'program', 'pre', 'figure'].includes(c.name));
-    return h('li', { id: elementId(el) }, hasBlocks ? emitBlocks(el, ctx) : trimText(emitChildren(el, ctx)));
+    const id = elementId(el);
+    // Bare (inline) item content gets wrapped in a derived para. Ordered
+    // lists number their items' permalink descriptions ("Item 1").
+    const body = hasBlocks
+      ? emitBlocks(el, ctx)
+      : h('div', { class: 'para', id: `p-derived-${id}` }, trimText(emitChildren(el, ctx)).trim());
+    const parent = el.parent as XmlElement | undefined;
+    let desc = 'Item';
+    if (parent && 'name' in parent && parent.name === 'ol') {
+      desc = `Item ${elements(parent, 'li').indexOf(el) + 1}`;
+    }
+    return h('li', { id }, body, autopermalink(id, desc));
   },
   dl: (el, ctx) =>
     h(
@@ -293,31 +348,35 @@ const EMITTERS: Record<string, Emitter> = {
       .map((c) => emitElement(c, ctx))
       .join('');
     // Captionless figures still get their numbered figcaption.
+    const desc = number ? `Figure ${number}` : 'Figure';
     const figcaption = h(
       'figcaption',
       {},
-      blockHeadingSpans('Figure', number ?? null, null),
-      caption ? ` ${trimText(emitChildren(caption, ctx))}` : '',
+      figcaptionHeading('Figure', number ?? null),
+      caption ? trimText(emitChildren(caption, ctx)).trim() : '',
+      autopermalink(id, desc),
     );
-    return h('figure', { class: 'figure figure-like', id }, body, figcaption, autopermalink(id, 'Figure'));
+    return h('figure', { class: 'figure figure-like', id }, body, figcaption);
   },
   image: (el, ctx) => {
     const source = el.attributes.source ?? '';
     const width = Number.parseFloat(el.attributes.width ?? '100');
     const margin = (100 - width) / 2;
     const desc = el.children.find((c) => isElement(c) && c.name === 'shortdescription') as XmlElement | undefined;
-    return h(
-      'div',
-      {
-        class: 'image-box',
-        style: `width: ${width}%; margin-left: ${margin}%; margin-right: ${margin}%;`,
-      },
-      voidEl('img', {
-        src: `external/${source}`,
-        class: 'contained',
-        alt: desc ? trimText(textContent(desc)).trim() : undefined,
-      }),
-    );
+    const img = voidEl('img', {
+      src: `external/${source}`,
+      class: 'contained',
+      alt: desc ? trimText(textContent(desc)).trim() : undefined,
+    });
+    // Inside a sidebyside the PANEL controls the width; the image-box is
+    // bare (the source @width is ignored there, as PreTeXt does).
+    return inSidebyside(el)
+      ? h('div', { class: 'image-box' }, img)
+      : h(
+          'div',
+          { class: 'image-box', style: `width: ${width}%; margin-left: ${margin}%; margin-right: ${margin}%;` },
+          img,
+        );
   },
   shortdescription: () => '',
   video: (el) => {
@@ -349,12 +408,14 @@ const EMITTERS: Record<string, Emitter> = {
     const figcaption = h(
       'figcaption',
       {},
-      blockHeadingSpans('Table', number ?? null, null),
-      title ? ` ${trimText(emitChildren(title, ctx))}` : '',
+      figcaptionHeading('Table', number ?? null),
+      title ? trimText(emitChildren(title, ctx)).trim() : '',
     );
+    const desc = number ? `Table ${number}` : 'Table';
+    const figcaptionWithLink = figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
     return inSidebyside(el)
-      ? h('figure', { class: 'table table-like', id }, body, figcaption, autopermalink(id, 'Table'))
-      : h('figure', { class: 'table table-like', id }, figcaption, body, autopermalink(id, 'Table'));
+      ? h('figure', { class: 'table table-like', id }, body, figcaptionWithLink)
+      : h('figure', { class: 'table table-like', id }, figcaptionWithLink, body);
   },
   tabular: (el, ctx) => {
     const rows = el.children.filter((c): c is XmlElement => isElement(c) && c.name === 'row');
@@ -385,7 +446,7 @@ const EMITTERS: Record<string, Emitter> = {
       .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
       .map((c) => emitElement(c, ctx))
       .join('');
-    return h('article', { class: 'note remark-like', id }, heading, body, autopermalink(id, 'Note'));
+    return h('article', { class: 'note remark-like', id }, heading, body, autopermalink(id, number ? `Note ${number}` : 'Note'));
   },
   blockquote: (el, ctx) => h('blockquote', { class: 'blockquote', id: elementId(el) }, emitBlocks(el, ctx)),
   attribution: (el, ctx) =>
@@ -417,28 +478,80 @@ const EMITTERS: Record<string, Emitter> = {
     const figcaption = h(
       'figcaption',
       {},
-      blockHeadingSpans('Listing', number ?? null, null),
-      titleEl ? ` ${trimText(emitChildren(titleEl, ctx))}` : '',
+      figcaptionHeading('Listing', number ?? null),
+      titleEl ? trimText(emitChildren(titleEl, ctx)).trim() : '',
     );
     // Caption ABOVE the code (like tables) — except inside a sidebyside,
     // where panel captions render in a row BELOW the panels.
+    const desc = number ? `Listing ${number}` : 'Listing';
+    const figcaptionWithLink = figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
     return inSidebyside(el)
-      ? h('figure', { class: 'listing figure-like', id }, body, figcaption, autopermalink(id, 'Listing'))
-      : h('figure', { class: 'listing figure-like', id }, figcaption, body, autopermalink(id, 'Listing'));
+      ? h('figure', { class: 'listing figure-like', id }, body, figcaptionWithLink)
+      : h('figure', { class: 'listing figure-like', id }, figcaptionWithLink, body);
   },
 
   // Non-interactive <program> in prose (interactive ones route to
-  // emitComponent before dispatch).
+  // emitComponent before dispatch): the clipboardable code box.
   program: (el, ctx) => {
     const code = el.children.find((c) => isElement(c) && c.name === 'code') as XmlElement | undefined;
-    return preBlock(dedent(textContent(code ?? el)));
+    const lang = el.attributes.language ?? 'java';
+    return h(
+      'div',
+      { class: 'code-box' },
+      h(
+        'pre',
+        { class: 'program clipboardable' },
+        h('code', { class: `language-${lang}` }, `${escapeHtml(dedent(textContent(code ?? el)))}\n`),
+      ),
+    );
   },
   code: (el) => preBlock(dedent(textContent(el))),
 
   // -- layout ----------------------------------------------------------------
-  sidebyside: (el, ctx) => h('div', { class: 'sidebyside' }, h('div', { class: 'sbsrow' }, emitBlocks(el, ctx))),
-  stack: (el, ctx) => h('div', { class: 'sbsstack' }, emitBlocks(el, ctx)),
-  container: (el, ctx) => h('div', { class: 'sbscontainer' }, emitBlocks(el, ctx)),
+  // Sidebyside: a CSS-grid row of panels. Widths are % of the CONTAINER in
+  // the source; the row spans (100 - margins), so grid-template-columns
+  // rescales each width relative to that span (15 -> 12.5 when the row is
+  // 120% wide) while the inter-panel gap stays unscaled — replicating
+  // PreTeXt's arithmetic exactly, 15-significant-digit formatting and all.
+  sidebyside: (el, ctx) => {
+    const panels = elements(el);
+    const n = panels.length;
+    const marginParts = (el.attributes.margins ?? '0% 0%').split(/\s+/).map((s) => Number.parseFloat(s));
+    const [ml, mr] = marginParts.length >= 2 ? marginParts : [marginParts[0], marginParts[0]];
+    const available = 100 - ml - mr;
+    const widths = el.attributes.widths
+      ? el.attributes.widths.split(/\s+/).map((s) => Number.parseFloat(s))
+      : Array.from({ length: n }, () => available / n);
+    const gap = n > 1 ? (available - widths.reduce((a, b) => a + b, 0)) / (n - 1) : 0;
+    const fmt = (x: number) => String(Number(x.toPrecision(15)));
+    const cols = widths.map((w) => `${fmt((w / available) * 100)}%`).join(' ');
+    const valign = el.attributes.valign ?? 'top';
+    const panelHtml = panels
+      .map((p) =>
+        h(
+          'div',
+          { class: `sbspanel sbspanel--${valign} ${valign}`, style: '' },
+          p.name === 'stack' || p.name === 'container' ? emitBlocks(p, ctx) : emitElement(p, ctx),
+        ),
+      )
+      .join('\n');
+    return h(
+      'div',
+      { class: 'sidebyside' },
+      h(
+        'div',
+        {
+          class: 'sbsrow',
+          style: `margin-left:${fmt(ml)}%;margin-right:${fmt(mr)}%;grid-template-columns:${cols};column-gap:${fmt(gap)}%;`,
+        },
+        panelHtml,
+      ),
+    );
+  },
+
+  // docutils leftover grouping element: pure passthrough (its @names is
+  // referenced by a dead custom.css selector; PreTeXt drops it too).
+  container: (el, ctx) => emitBlocks(el, ctx),
 
   // Prose-level exercise machinery for NON-interactive exercises.
   statement: (el, ctx) => emitBlocks(el, ctx),
@@ -459,7 +572,7 @@ function proseActivity(el: XmlElement, ctx: Ctx, typeName: string, classes: stri
     .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
     .map((c) => emitElement(c, ctx))
     .join('');
-  return h('article', { class: classes, id }, heading, body, autopermalink(id, typeName));
+  return h('article', { class: classes, id }, heading, body, autopermalink(id, number ? `${typeName} ${number}` : typeName));
 }
 
 function inSidebyside(el: XmlElement): boolean {
@@ -483,11 +596,21 @@ function knowlDetails(type: string, classes: string, el: XmlElement, ctx: Ctx): 
   );
 }
 
-function markerClass(el: XmlElement): string | undefined {
-  const marker = el.attributes.marker;
-  if (marker === undefined) return undefined;
-  return `marker-${marker.replace(/[^a-z0-9]/gi, '') || 'none'}`;
-}
+const UL_MARKERS: Record<string, string> = {
+  disc: 'disc',
+  circle: 'circle',
+  square: 'square',
+  '': 'no-marker',
+};
+
+const OL_MARKERS: Record<string, string> = {
+  '0': 'decimal',
+  '1': 'decimal',
+  a: 'lower-alpha',
+  A: 'upper-alpha',
+  i: 'lower-roman',
+  I: 'upper-roman',
+};
 
 function preBlock(code: string): string {
   return h(
@@ -498,7 +621,7 @@ function preBlock(code: string): string {
 }
 
 export function dedent(text: string): string {
-  const lines = text.replace(/^\n+/, '').trimEnd().split('\n');
+  const lines = text.replace(/^([ \t]*\n)+/, '').trimEnd().split('\n');
   const indents = lines.filter((l) => l.trim() !== '').map((l) => l.match(/^ */)?.[0].length ?? 0);
   const min = indents.length ? Math.min(...indents) : 0;
   return lines.map((l) => l.slice(min)).join('\n');

@@ -20,7 +20,10 @@ const idCache = new WeakMap<XmlElement, string>();
 export function elementId(el: XmlElement): string {
   const cached = idCache.get(el);
   if (cached) return cached;
-  const own = xmlId(el);
+  // A Runestone @label works like xml:id for id derivation: the activity
+  // article renders as id="<label>" and its descendants' auto-ids hang off
+  // it (statement paras like "asgn_order-1-1").
+  const own = xmlId(el) ?? el.attributes.label;
   if (own) {
     idCache.set(el, own);
     return own;
