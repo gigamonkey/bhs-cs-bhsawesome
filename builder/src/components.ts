@@ -17,7 +17,7 @@ import path from 'node:path';
 import type { Ctx } from './prose.ts';
 import { escapeAttr, escapeHtml, h } from './html.ts';
 import { blockNumber, elementId } from './ids.ts';
-import { autopermalink, blockHeadingSpans, dedent, emitBlocks, emitChildren, emitElement } from './prose.ts';
+import { autopermalink, blockHeadingSpans, dedent, emitBlocks, emitChildren, emitElement, smartQuotes, trimText } from './prose.ts';
 import { type XmlElement, child, elements, isElement, textContent } from './xml.ts';
 
 const ASSETS = path.resolve(import.meta.dirname, '..', '..', 'pretext', 'assets');
@@ -101,14 +101,311 @@ function emitPayload(el: XmlElement, label: string, ctx: Ctx): string {
   if (kind === 'activecode') {
     // The INTERACTIVE program — a statement may hold display programs too.
     const program = findInteractiveProgram(el);
-    if (program) return activecodeContainer(program, label, statementOf(el), ctx);
+    if (program) {
+      if (program.attributes.interactive === 'codelens') return emitCodelens(el, label, ctx);
+      return activecodeContainer(program, label, statementOf(el), ctx);
+    }
   }
+  if (kind === 'mcq') return emitMcq(el, label, ctx);
+  if (kind === 'shortanswer') return emitShortanswer(el, label, ctx);
+  if (kind === 'clickablearea') return emitClickablearea(el, label, ctx);
+  if (kind === 'cardsort') return emitCardsort(el, label, ctx);
+  if (kind === 'parsons') return emitParsons(el, label, ctx);
   return h('div', { class: 'ptx-runestone-container', 'data-bhs-todo': `${kind}:${label}` }, '');
+}
+
+const noPermalinks = (ctx: Ctx): Ctx => ({ ...ctx, permalinks: false });
+
+function statementBlocks(el: XmlElement, ctx: Ctx): string {
+  const s = statementOf(el);
+  return s ? emitBlocks(s, ctx) : '';
+}
+
+// -- multiple choice ---------------------------------------------------------
+
+function emitMcq(el: XmlElement, label: string, ctx: Ctx): string {
+  const choices = findDescendant(el, 'choices');
+  const choiceEls = choices ? elements(choices, 'choice') : [];
+  const correct = choiceEls.filter((c) => c.attributes.correct === 'yes').length;
+  const random = choices?.attributes.randomize === 'yes';
+  const items = choiceEls
+    .map((choice, i) => {
+      const letter = String.fromCharCode(97 + i);
+      const st = child(choice, 'statement');
+      const fb = child(choice, 'feedback');
+      const answer = h(
+        'li',
+        {
+          'data-component': 'answer',
+          id: `rs-${label}_opt_${letter}`,
+          ...(choice.attributes.correct === 'yes' ? { 'data-correct': '' } : {}),
+        },
+        st ? emitBlocks(st, noPermalinks(ctx)) : '',
+      );
+      const feedback = fb
+        ? h(
+            'li',
+            { 'data-component': 'feedback', id: `rs-${label}_opt_${letter}` },
+            emitBlocks(fb, noPermalinks(ctx)),
+          )
+        : '';
+      return answer + feedback;
+    })
+    .join('');
+  return h(
+    'div',
+    { class: 'ptx-runestone-container' },
+    h(
+      'div',
+      { class: 'runestone multiplechoice_section' },
+      h('div', { class: 'exercise-statement' }, statementBlocks(el, ctx)),
+      h(
+        'ul',
+        {
+          'data-component': 'multiplechoice',
+          class: 'exercise-interactives',
+          id: `rs-${label}`,
+          'data-multipleanswers': correct > 1 ? 'true' : 'false',
+          ...(random ? { 'data-random': '' } : {}),
+        },
+        items,
+      ),
+    ),
+  );
+}
+
+// -- short answer ------------------------------------------------------------
+
+const SHORTANSWER_PLACEHOLDER =
+  'You can write here, and it will be saved on this device, but your response will not be graded.';
+
+function emitShortanswer(el: XmlElement, label: string, ctx: Ctx): string {
+  return h(
+    'div',
+    { class: 'ptx-runestone-container' },
+    h(
+      'div',
+      { class: 'runestone shortanswer_section' },
+      h(
+        'div',
+        {
+          'data-component': 'shortanswer',
+          'data-question_label': '',
+          class: 'journal',
+          'data-mathjax': '',
+          id: `rs-${label}`,
+          'data-placeholder': SHORTANSWER_PLACEHOLDER,
+        },
+        statementBlocks(el, ctx),
+      ),
+    ),
+  );
+}
+
+// -- clickable area ----------------------------------------------------------
+
+function emitClickablearea(el: XmlElement, label: string, ctx: Ctx): string {
+  const areas = findDescendant(el, 'areas');
+  const feedback = child(el, 'feedback');
+  // Table form: areas wrapping a table (clickable cells) render the table;
+  // <area> inside cells becomes spans via the prose area emitter.
+  const tableEl = areas ? (child(areas, 'table') ?? child(areas, 'tabular')) : undefined;
+  const lines = areas
+    ? elements(areas, 'cline').map((cline) =>
+        cline.children
+          .map((c) => {
+            if (isElement(c) && c.name === 'area') {
+              const correct = c.attributes.correct === 'yes';
+              return h(
+                'span',
+                { [correct ? 'data-correct' : 'data-incorrect']: '' },
+                escapeHtml(smartQuotes(textContent(c)).trim()),
+              );
+            }
+            return isElement(c) ? escapeHtml(textContent(c)) : escapeHtml((c as { text: string }).text);
+          })
+          .join(''),
+      )
+    : [];
+  return h(
+    'div',
+    { class: 'ptx-runestone-container' },
+    h(
+      'div',
+      { class: 'runestone clickablearea_section' },
+      h(
+        'div',
+        {
+          'data-component': 'clickablearea',
+          'data-question_label': '',
+          style: 'visibility: hidden;',
+          id: `rs-${label}`,
+        },
+        h('span', { 'data-question': '' }, statementBlocks(el, ctx)),
+        feedback ? h('span', { 'data-feedback': '' }, emitBlocks(feedback, noPermalinks(ctx))) : '',
+        tableEl ? emitElement(tableEl, noPermalinks(ctx)) : h('pre', {}, `${lines.join('\n')}\n`),
+      ),
+    ),
+  );
+}
+
+// -- cardsort (dragndrop) ----------------------------------------------------
+
+function emitCardsort(el: XmlElement, label: string, ctx: Ctx): string {
+  const cardsort = findDescendant(el, 'cardsort');
+  const feedback = child(el, 'feedback');
+  const matches = cardsort ? elements(cardsort, 'match') : [];
+  const items = matches
+    .map((m, i) => {
+      const premise = child(m, 'premise');
+      const response = child(m, 'response');
+      const category = premise?.attributes.order ?? String(i + 1);
+      return (
+        h(
+          'li',
+          { 'data-subcomponent': 'draggable', id: `rs-${label}_drag${i + 1}`, 'data-category': category },
+          premise ? trimText(emitChildren(premise, noPermalinks(ctx))).trim() : '',
+        ) +
+        h(
+          'li',
+          { 'data-subcomponent': 'dropzone', for: `rs-${label}_drag${i + 1}`, 'data-category': category },
+          response ? trimText(emitChildren(response, noPermalinks(ctx))).trim() : '',
+        )
+      );
+    })
+    .join('\n');
+  return h(
+    'div',
+    { class: 'ptx-runestone-container' },
+    h(
+      'div',
+      { class: 'runestone cardsort_section' },
+      h(
+        'ul',
+        {
+          'data-component': 'dragndrop',
+          'data-question_label': '',
+          style: 'visibility: hidden;',
+          id: `rs-${label}`,
+        },
+        h('span', { 'data-subcomponent': 'question' }, statementBlocks(el, ctx)),
+        feedback
+          ? h('span', { 'data-subcomponent': 'feedback' }, emitBlocks(feedback, noPermalinks(ctx)))
+          : '',
+        items,
+      ),
+    ),
+  );
+}
+
+// -- parsons (vertical + horizontal) -----------------------------------------
+
+function emitParsons(el: XmlElement, label: string, ctx: Ctx): string {
+  const blocks = findDescendant(el, 'blocks');
+  if (!blocks) return h('div', { class: 'ptx-runestone-container', 'data-bhs-todo': `parsons:${label}` });
+  if (blocks.attributes.layout === 'horizontal') return emitHparsons(el, blocks, label, ctx);
+
+  const chunks: string[] = [];
+  for (const block of elements(blocks, 'block')) {
+    const choices = elements(block, 'choice');
+    if (choices.length) {
+      // choice-form: the correct choice, then each wrong one tagged #paired.
+      for (const choice of choices) {
+        const lines = elements(choice, 'cline').map((c) => textContent(c));
+        if (choice.attributes.correct === 'yes') chunks.push(lines.join('\n'));
+        else chunks.push(`${lines.join('\n')} #paired`);
+      }
+    } else {
+      const lines = elements(block, 'cline').map((c) => textContent(c));
+      if (block.attributes.correct === 'no') chunks.push(`${lines.join('\n')} #distractor`);
+      else chunks.push(lines.join('\n'));
+    }
+  }
+  const noindent = el.attributes.indentation === 'show' ? 'true' : 'false';
+  return h(
+    'div',
+    { class: 'ptx-runestone-container' },
+    h(
+      'div',
+      { class: 'runestone parsons_section', style: 'max-width: none;' },
+      h(
+        'div',
+        { 'data-component': 'parsons', class: 'parsons', id: `rs-${label}` },
+        h('div', { class: 'parsons_question parsons-text' }, statementBlocks(el, ctx)),
+        h(
+          'pre',
+          {
+            class: 'parsonsblocks',
+            'data-question_label': '',
+            style: 'visibility: hidden;',
+            'data-language': el.attributes.language ?? 'java',
+            'data-adaptive': el.attributes.adaptive === 'no' ? 'false' : 'true',
+            'data-noindent': noindent,
+          },
+          escapeHtml(chunks.join('\n---\n')),
+        ),
+      ),
+    ),
+  );
+}
+
+function emitHparsons(el: XmlElement, blocks: XmlElement, label: string, ctx: Ctx): string {
+  const blockEls = elements(blocks, 'block');
+  const answerIndices: number[] = [];
+  blockEls.forEach((b, i) => {
+    if (b.attributes.correct !== 'no') answerIndices.push(i);
+  });
+  const lines = blockEls.map((b) => trimText(textContent(b)).trim());
+  return h(
+    'div',
+    { class: 'ptx-runestone-container' },
+    h(
+      'div',
+      { class: 'runestone hparsons_section' },
+      h(
+        'div',
+        { 'data-component': 'hparsons', class: 'hparsons_section', id: `rs-${label}` },
+        h('div', { class: 'hp_question' }, statementBlocks(el, ctx)),
+        h('div', { class: 'hparsons' }, ''),
+        h(
+          'textarea',
+          {
+            style: 'visibility: hidden',
+            'data-language': el.attributes.language ?? 'java',
+            'data-randomize': 'true',
+            'data-reuse': 'false',
+            'data-blockanswer': answerIndices.join(' '),
+          },
+          escapeHtml(`\n--blocks--\n${lines.join('\n')}\n`),
+        ),
+      ),
+    ),
+  );
+}
+
+// -- embedded codelens -------------------------------------------------------
+
+function emitCodelens(el: XmlElement, label: string, ctx: Ctx): string {
+  return h(
+    'div',
+    { class: 'ptx-runestone-container' },
+    h(
+      'div',
+      { class: 'runestone codelens' },
+      h(
+        'div',
+        { class: 'cd_section', 'data-component': 'codelens', 'data-question_label': '' },
+        h('div', { class: 'exercise-statement' }, statementBlocks(el, ctx)),
+        `<div class="pytutorVisualizer exercise-interactive" id="rs-${label}" data-params='{"embeddedMode": true, "lang": "java", "jumpToEnd": false}'></div>`,
+      ),
+      h('script', { src: `generated/trace/${label}.js` }, ' '),
+    ),
+  );
 }
 
 function findInteractiveProgram(el: XmlElement): XmlElement | null {
   for (const c of elements(el)) {
-    if (c.name === 'program' && c.attributes.interactive === 'activecode') return c;
+    if (c.name === 'program' && c.attributes.interactive !== undefined) return c;
     const found = findInteractiveProgram(c);
     if (found) return found;
   }

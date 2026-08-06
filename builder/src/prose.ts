@@ -21,6 +21,8 @@ export type Ctx = {
   // Per-page registry of <ol @marker> formats in first-appearance order
   // (the ol-marker-N class PreTeXt pairs with ol-markers.css).
   olMarkers: Map<string, number>;
+  // false inside component answers/feedback, where paras render bare.
+  permalinks?: boolean;
   emitComponent: (el: XmlElement, ctx: Ctx) => string;
   warn: (msg: string) => void;
 };
@@ -126,9 +128,10 @@ export function headingSpans(type: string | null, number: string | null, title: 
  * position.
  */
 export function smartQuotes(text: string): string {
-  // Narrow by observation: word-internal apostrophes curl ("computer's" ->
-  // "computer’s"); straight double quotes pass through untouched ("").
-  return text.replace(/(\w)'(\w)/g, '$1’$2');
+  // Narrow by observation: apostrophes after a word character curl
+  // ("computer's" -> "computer’s", "strings'" -> "strings’"); straight
+  // double quotes pass through untouched ("").
+  return text.replace(/(\w)'/g, '$1’');
 }
 
 export function emitChildren(el: XmlElement, ctx: Ctx): string {
@@ -200,7 +203,12 @@ export function emitElement(el: XmlElement, ctx: Ctx): string {
   return emitter(el, ctx);
 }
 
-const trimText = (s: string) => s.replace(/\s+/g, ' ');
+/** Collapse whitespace runs — but never inside <pre>/<textarea> bodies. */
+export const trimText = (s: string) =>
+  s
+    .split(/(<pre[\s\S]*?<\/pre>|<textarea[\s\S]*?<\/textarea>)/)
+    .map((part, i) => (i % 2 === 1 ? part : part.replace(/\s+/g, ' ')))
+    .join('');
 
 type Emitter = (el: XmlElement, ctx: Ctx) => string;
 
@@ -210,14 +218,12 @@ const EMITTERS: Record<string, Emitter> = {
   p: (el, ctx) => {
     const id = elementId(el);
     // A p containing block-level content is a "logical paragraph".
-    const logical = el.children.some(
-      (c) => isElement(c) && ['ul', 'ol', 'dl', 'pre', 'program', 'figure', 'table', 'listing'].includes(c.name),
-    );
+    const logical = el.children.some((c) => isElement(c) && ['ul', 'ol', 'dl'].includes(c.name));
     return h(
       'div',
       { class: logical ? 'para logical' : 'para', id },
       trimText(emitChildren(el, ctx)).trim(),
-      autopermalink(id, 'Paragraph'),
+      ctx.permalinks === false ? '' : autopermalink(id, 'Paragraph'),
     );
   },
 
@@ -226,8 +232,11 @@ const EMITTERS: Record<string, Emitter> = {
   c: (el) => h('code', { class: 'code-inline tex2jax_ignore' }, escapeHtml(trimText(textContent(el)).trim())),
   term: (el, ctx) => h('dfn', { class: 'terminology' }, trimText(emitChildren(el, ctx))),
   em: (el, ctx) => h('em', { class: 'emphasis' }, trimText(emitChildren(el, ctx))),
-  strong: (el, ctx) => h('strong', {}, trimText(emitChildren(el, ctx))),
-  b: (el, ctx) => h('strong', {}, trimText(emitChildren(el, ctx))),
+  // PreTeXt has no <strong>/<b>: the tags drop, text passes through.
+  // (Restorable improvement later; kept for byte parity with the landed
+  // book — use <em> or a real ptx element in source to style these.)
+  strong: (el, ctx) => trimText(emitChildren(el, ctx)),
+  b: (el, ctx) => trimText(emitChildren(el, ctx)),
   pubtitle: (el, ctx) => h('cite', {}, trimText(emitChildren(el, ctx))),
   title_reference: (el, ctx) => h('cite', {}, trimText(emitChildren(el, ctx))),
   // docutils-conversion leftovers: <reference> is an external link,
@@ -236,7 +245,9 @@ const EMITTERS: Record<string, Emitter> = {
     h('a', { class: 'external', href: el.attributes.refuri ?? '', target: '_blank' }, trimText(emitChildren(el, ctx))),
   target: () => '',
   url: (el, ctx) => {
-    const href = el.attributes.href ?? '';
+    // Attribute whitespace (formatter-wrapped long URLs) percent-encodes,
+    // as PreTeXt emits it.
+    const href = (el.attributes.href ?? '').replace(/ /g, '%20');
     const label = el.children.length ? trimText(emitChildren(el, ctx)) : escapeHtml(el.attributes.visual ?? href);
     return h('a', { class: 'external', href, target: '_blank' }, label);
   },
@@ -354,7 +365,7 @@ const EMITTERS: Record<string, Emitter> = {
       {},
       figcaptionHeading('Figure', number ?? null),
       caption ? trimText(emitChildren(caption, ctx)).trim() : '',
-      autopermalink(id, desc),
+      ctx.permalinks === false ? '' : autopermalink(id, desc),
     );
     return h('figure', { class: 'figure figure-like', id }, body, figcaption);
   },
@@ -382,9 +393,14 @@ const EMITTERS: Record<string, Emitter> = {
   video: (el) => {
     const yt = el.attributes.youtube ?? '';
     const id = el.attributes.label ? el.attributes.label : elementId(el);
+    const width = Number.parseFloat(el.attributes.width ?? '100');
+    const margin = (100 - width) / 2;
     return h(
       'div',
-      { class: 'video-box' },
+      {
+        class: 'video-box',
+        style: `width: ${width}%;padding-top: ${width * 0.5625}%; margin-left: ${margin}%; margin-right: ${margin}%;`,
+      },
       h('iframe', {
         class: 'video',
         allowfullscreen: '',
@@ -412,24 +428,56 @@ const EMITTERS: Record<string, Emitter> = {
       title ? trimText(emitChildren(title, ctx)).trim() : '',
     );
     const desc = number ? `Table ${number}` : 'Table';
-    const figcaptionWithLink = figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
+    const figcaptionWithLink =
+      ctx.permalinks === false
+        ? figcaption
+        : figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
     return inSidebyside(el)
       ? h('figure', { class: 'table table-like', id }, body, figcaptionWithLink)
       : h('figure', { class: 'table table-like', id }, figcaptionWithLink, body);
   },
+  // PreTeXt's tabular model: per-cell classes `<halign> <valign> bN rN lN
+  // tN lines` where borders resolve cell > row/col > tabular; left borders
+  // apply only to a row's first cell, top borders only to the first row.
   tabular: (el, ctx) => {
-    const rows = el.children.filter((c): c is XmlElement => isElement(c) && c.name === 'row');
+    const cols = elements(el, 'col');
+    const rows = elements(el, 'row');
+    const rowHeaders = el.attributes['row-headers'] === 'yes';
+    const level = (v: string | undefined): number =>
+      v === 'minor' ? 1 : v === 'medium' ? 2 : v === 'major' ? 3 : 0;
+    const halignLetter = (v: string | undefined): string =>
+      v === 'center' ? 'c' : v === 'right' ? 'r' : 'l';
+    const valignLetter = (v: string | undefined): string =>
+      v === 'top' ? 't' : v === 'bottom' ? 'b' : 'm';
+    const trs = rows
+      .map((row, ri) => {
+        const headerRow = row.attributes.header === 'yes';
+        const cells = elements(row, 'cell');
+        const tds = cells
+          .map((cell, ci) => {
+            const col = cols[ci];
+            const b = level(cell.attributes.bottom ?? row.attributes.bottom ?? el.attributes.bottom);
+            const rBorder = level(cell.attributes.right ?? col?.attributes.right ?? el.attributes.right);
+            const l = ci === 0 ? level(row.attributes.left ?? el.attributes.left) : 0;
+            const t = ri === 0 ? level(col?.attributes.top ?? el.attributes.top) : 0;
+            const ha = halignLetter(cell.attributes.halign ?? col?.attributes.halign ?? el.attributes.halign);
+            const va = valignLetter(row.attributes.valign ?? el.attributes.valign);
+            const cls = `${ha} ${va} b${b} r${rBorder} l${l} t${t} lines`;
+            const tag = headerRow ? 'th' : rowHeaders && ci === 0 ? 'th' : 'td';
+            const scope = headerRow ? 'col' : rowHeaders && ci === 0 ? 'row' : undefined;
+            return h(tag, { ...(scope ? { scope } : {}), class: cls }, trimText(emitChildren(cell, ctx)).trim());
+          })
+          .join('\n');
+        return h('tr', headerRow ? { class: 'header-horizontal' } : {}, tds);
+      })
+      .join('\n');
     return h(
       'div',
-      { class: 'tabular-box' },
-      h('table', { class: 'tabular' }, rows.map((r) => emitElement(r, ctx)).join('')),
+      { class: 'tabular-box natural-width' },
+      h('table', { class: 'tabular' }, trs),
     );
   },
-  row: (el, ctx) => {
-    const header = el.attributes.header === 'yes';
-    const cells = el.children.filter((c): c is XmlElement => isElement(c) && c.name === 'cell');
-    return h('tr', {}, cells.map((c) => h(header ? 'th' : 'td', {}, trimText(emitChildren(c, ctx)))).join(''));
-  },
+  row: () => '', // handled by tabular
   col: () => '',
 
   // -- blocks ----------------------------------------------------------------
@@ -484,7 +532,10 @@ const EMITTERS: Record<string, Emitter> = {
     // Caption ABOVE the code (like tables) — except inside a sidebyside,
     // where panel captions render in a row BELOW the panels.
     const desc = number ? `Listing ${number}` : 'Listing';
-    const figcaptionWithLink = figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
+    const figcaptionWithLink =
+      ctx.permalinks === false
+        ? figcaption
+        : figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
     return inSidebyside(el)
       ? h('figure', { class: 'listing figure-like', id }, body, figcaptionWithLink)
       : h('figure', { class: 'listing figure-like', id }, figcaptionWithLink, body);
@@ -553,6 +604,14 @@ const EMITTERS: Record<string, Emitter> = {
   // referenced by a dead custom.css selector; PreTeXt drops it too).
   container: (el, ctx) => emitBlocks(el, ctx),
 
+  // Clickable-area marker (inside clickablearea payloads' clines/tables).
+  area: (el) =>
+    h(
+      'span',
+      { [el.attributes.correct === 'yes' ? 'data-correct' : 'data-incorrect']: '' },
+      escapeHtml(smartQuotes(textContent(el)).trim()),
+    ),
+
   // Prose-level exercise machinery for NON-interactive exercises.
   statement: (el, ctx) => emitBlocks(el, ctx),
   introduction: (el, ctx) => emitBlocks(el, ctx),
@@ -613,11 +672,7 @@ const OL_MARKERS: Record<string, string> = {
 };
 
 function preBlock(code: string): string {
-  return h(
-    'pre',
-    { class: 'code-display tex2jax_ignore' },
-    escapeHtml(code.replace(/^\n+/, '').trimEnd()),
-  );
+  return h('pre', { class: 'code-block tex2jax_ignore clipboardable' }, `${escapeHtml(dedent(code))}\n`);
 }
 
 export function dedent(text: string): string {
