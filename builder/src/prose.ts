@@ -47,6 +47,10 @@ export function isInteractive(el: XmlElement): boolean {
   return scan(el);
 }
 
+// Block-xref targets that need knowl pages emitted (filled during page
+// emission, consumed by build.ts).
+export const knowlTargets = new Set<string>();
+
 export function autopermalink(id: string, description: string): string {
   return h(
     'div',
@@ -283,16 +287,29 @@ const EMITTERS: Record<string, Emitter> = {
         escapeHtml(`[cross-reference to target(s) "${ref}" missing or not unique]`),
       );
     }
+    // Block targets render as knowl popups (with an href fallback); the
+    // knowl page itself is emitted at the end of the build.
+    knowlTargets.add(ref);
     const typeName = BLOCK_TYPE_NAMES[label.el.name] ?? capitalize(label.el.name);
     const number = blockNumber(label.el);
     const titleEl = label.el.children.find((c) => isElement(c) && c.name === 'title') as
       | XmlElement
       | undefined;
-    const blockTitle = titleEl ? textContent(titleEl).replace(/\s+/g, ' ').trim() : null;
+    const blockTitle =
+      el.attributes.text === 'type-global' || !titleEl
+        ? null
+        : textContent(titleEl).replace(/\s+/g, ' ').trim();
     const text = [typeName, number, blockTitle].filter(Boolean).join(' ');
     return h(
       'a',
-      { href: `${label.pageOf.page}#${ref}`, class: 'internal', title: text },
+      {
+        href: `${label.pageOf.page}#${ref}`,
+        class: 'xref',
+        'data-knowl': `./knowl/xref/${ref}.html`,
+        'data-reveal-label': 'Reveal',
+        'data-close-label': 'Close',
+        title: text,
+      },
       escapeHtml(text),
     );
   },

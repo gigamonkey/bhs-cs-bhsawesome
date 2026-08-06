@@ -84,6 +84,13 @@ function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boole
       inner.push(isInteractive(c) ? ctx.emitComponent(c, subCtx) : emitElement(c, subCtx));
     }
   }
+  if (!headingless) {
+    const kindLabel = KIND_LABELS[d.kind] ?? d.kind;
+    const desc = d.number
+      ? `${kindLabel} ${d.number}${d.title ? `: ${d.title}` : ''}`
+      : d.title || kindLabel;
+    inner.push(autopermalinkFor(d.id, desc));
+  }
   return h('section', { class: d.kind === 'subsection' ? 'subsection' : d.kind, id: d.id }, inner.join('\n'));
 }
 
@@ -104,11 +111,12 @@ function summaryLinks(d: Division): string {
         h(
           'a',
           { href: c.page as string, class: 'internal' },
-          h(
-            'span',
-            { class: 'title' },
-            c.number ? `${escapeHtml(c.number)} ${escapeHtml(c.title)}` : escapeHtml(c.title || 'Introduction'),
-          ),
+          [
+            c.number ? h('span', { class: 'codenumber' }, escapeHtml(c.number)) : '',
+            h('span', { class: 'title' }, escapeHtml(c.title || 'Introduction')),
+          ]
+            .filter(Boolean)
+            .join(' '),
         ),
       ),
     )
@@ -149,50 +157,4 @@ function chapterSummaryPage(d: Division, ctx: Ctx): string {
     headingSpans('Chapter', d.number, escapeHtml(d.title), ctx),
   );
   return h('section', { class: 'chapter', id: d.id }, heading, summaryLinks(d));
-}
-
-// -- Chrome ------------------------------------------------------------------
-
-export function renderPage(division: Division, ctx: Ctx, book: Book): string {
-  const content = pageContent(division, ctx);
-  const title = division.title || book.title;
-  const prev = neighbor(book, division, -1);
-  const next = neighbor(book, division, +1);
-  const nav = h(
-    'nav',
-    { class: 'ptx-navbar', id: 'ptx-navbar' },
-    prev ? h('a', { class: 'previous-button button', href: prev.page as string }, 'Prev') : '',
-    h('a', { class: 'up-button button', href: 'index.html' }, 'Top'),
-    next ? h('a', { class: 'next-button button', href: next.page as string }, 'Next') : '',
-  );
-  return `<!doctype html>
-<html lang="en" class="no-js">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${escapeHtml(title)} - ${escapeHtml(book.title)}</title>
-<link rel="stylesheet" type="text/css" href="_static/bhs-book.css">
-<link rel="stylesheet" type="text/css" href="external/_static/css/custom.css">
-</head>
-<body class="pretext book">
-<header class="ptx-masthead" id="ptx-masthead">
-<div class="ptx-banner"><div class="title-container"><h1 class="heading"><a href="index.html"><span class="title">${escapeHtml(book.title)}</span></a></h1></div></div>
-</header>
-${nav}
-<div class="ptx-page">
-<main class="ptx-main">
-<div id="ptx-content" class="ptx-content">
-${content}
-</div>
-</main>
-</div>
-</body>
-</html>
-`;
-}
-
-function neighbor(book: Book, d: Division, delta: number): Division | null {
-  const i = book.pages.indexOf(d);
-  if (i === -1) return null;
-  return book.pages[i + delta] ?? null;
 }
