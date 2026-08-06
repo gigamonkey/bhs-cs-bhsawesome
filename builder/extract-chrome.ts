@@ -31,7 +31,7 @@ const tocOpenEnd = html.indexOf('>', tocStart) + 1;
 const tocEnd = html.indexOf('</nav>', tocStart);
 html =
   html.slice(0, tocStart) +
-  '<nav id="ptx-toc" tabindex="-1" aria-label="Contents" class="ptx-toc depth3" data-preexpanded-levels="0" data-max-levels="3">{{TOC}}' +
+  '<nav id="ptx-toc" tabindex="-1" aria-label="Contents" class="ptx-toc depth3 focused" data-preexpanded-levels="0" data-max-levels="3">{{TOC}}' +
   html.slice(tocEnd);
 
 // Navbar treebuttons cluster.
