@@ -16,7 +16,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Ctx } from './prose.ts';
 import { escapeAttr, escapeHtml, h } from './html.ts';
-import { blockNumber, elementId } from './ids.ts';
+import { blockNumber, elementId, overrideId } from './ids.ts';
 import { autopermalink, blockHeadingSpans, dedent, emitBlocks, emitChildren, emitElement, smartQuotes, trimText } from './prose.ts';
 import { type XmlElement, child, elements, isElement, textContent } from './xml.ts';
 
@@ -106,6 +106,7 @@ function emitPayload(el: XmlElement, label: string, ctx: Ctx): string {
       return activecodeContainer(program, label, statementOf(el), ctx);
     }
   }
+  if (kind === 'fillin') return emitFillin(el, label, ctx);
   if (kind === 'mcq') return emitMcq(el, label, ctx);
   if (kind === 'shortanswer') return emitShortanswer(el, label, ctx);
   if (kind === 'clickablearea') return emitClickablearea(el, label, ctx);
@@ -119,6 +120,121 @@ const noPermalinks = (ctx: Ctx): Ctx => ({ ...ctx, permalinks: false });
 function statementBlocks(el: XmlElement, ctx: Ctx): string {
   const s = statementOf(el);
   return s ? emitBlocks(s, ctx) : '';
+}
+
+// -- fill in the blank -------------------------------------------------------
+//
+// The component's payload is a compiled JSON blob: the rendered statement
+// (fillins as <input>s), a blank-name index, and per-blank rule arrays.
+// Each blank's rules: an auto "Correct!" check from @answer, one rule per
+// source <test> (strcmp -> regex, numcmp -> number range, condition-less ->
+// an always-true solution_code), and a default "Incorrect.".
+
+const FILLIN_ELSE_CODE =
+  'function() {\n    var testResults = new Array();\n    testResults[0] = 1;\n    return (testResults[0]);\n}()';
+
+function emitFillin(el: XmlElement, label: string, ctx: Ctx): string {
+  const statement = statementOf(el);
+  const fillins: XmlElement[] = [];
+  const collect = (e: XmlElement): void => {
+    for (const c of elements(e)) {
+      if (c.name === 'fillin') fillins.push(c);
+      collect(c);
+    }
+  };
+  if (statement) collect(statement);
+
+  const problemHtml = statement
+    ? `\n${elements(statement)
+        .map((c) => emitElement(c, ctx))
+        .join('\n')}`
+    : '';
+
+  // Faithful to PreTeXt: unnamed fillins all default to "blank1", and the
+  // emitted JSON keeps the DUPLICATE keys (later entries win at parse).
+  const blankNames: [string, number][] = fillins.map((f, i) => [f.attributes.name ?? 'blank1', i]);
+
+  const evaluation = child(el, 'evaluation');
+  const evaluates = evaluation ? elements(evaluation, 'evaluate') : [];
+
+  // PreTeXt's id space numbers each evaluate's tests from 2: the implicit
+  // @answer check is the phantom first test.
+  for (const ev of evaluates) {
+    elements(ev, 'test').forEach((test, i) => {
+      overrideId(test, `${elementId(ev)}-${i + 2}`);
+    });
+  }
+
+  type Rule = Record<string, string>;
+  const feedbackArray: Rule[][] = fillins.map((f, i) => {
+    const answer = f.attributes.answer ?? '';
+    const isNumber = f.attributes.mode === 'number';
+    const answerRule = (feedback: string): Rule =>
+      isNumber
+        ? { number: `[${answer},${answer}]`, feedback }
+        : { regex: `^\\s*${answer}\\s*$`, regexFlags: '', feedback };
+    const rules: Rule[] = [answerRule('Correct!')];
+    const ev = evaluates[i];
+    for (const test of ev ? elements(ev, 'test') : []) {
+      const strcmp = child(test, 'strcmp');
+      const numcmp = child(test, 'numcmp');
+      const fb = fillinFeedback(child(test, 'feedback'), ctx);
+      if (strcmp) {
+        const pattern =
+          strcmp.attributes['use-answer'] === 'yes' ? answer : textContent(strcmp).trim();
+        rules.push({ regex: `^\\s*${pattern}\\s*$`, regexFlags: '', feedback: fb });
+      } else if (numcmp) {
+        rules.push({ number: `[${answer},${answer}]`, feedback: fb });
+      } else {
+        rules.push({ solution_code: FILLIN_ELSE_CODE, feedback: fb });
+      }
+    }
+    rules.push({ feedback: 'Incorrect.' });
+    return rules;
+  });
+
+  // PreTeXt's exact JSON layout: top-level keys on their own lines, rules
+  // inline, and "/" escaped as "\/" throughout.
+  const js = (v: unknown): string => JSON.stringify(v).replaceAll('/', '\\/');
+  // "number" rule values are raw JSON arrays ([5,5]); everything else is a
+  // string.
+  const ruleJson = (r: Rule): string =>
+    `{${Object.entries(r)
+      .map(([k, v]) => `"${k}": ${k === 'number' ? v : js(v)}`)
+      .join(', ')}}`;
+  const json =
+    `{\n"problemHtml": ${js(problemHtml)},\n` +
+    `"solutionHtml": ${js('')},\n` +
+    `"blankNames": {${blankNames.map(([k, v]) => `"${k}": ${v}`).join(', ')}},\n` +
+    `"feedbackArray": [${feedbackArray.map((g) => `[${g.map(ruleJson).join(', ')}]`).join(', ')}]\n}`;
+
+  return h(
+    'div',
+    { class: 'ptx-runestone-container' },
+    h(
+      'div',
+      { class: 'runestone' },
+      h(
+        'div',
+        {
+          'data-component': 'fillintheblank',
+          class: 'fillintheblank',
+          style: 'visibility: hidden;',
+          id: `rs-${label}`,
+        },
+        `<script type="application/json">${json}</script>`,
+      ),
+    ),
+  );
+}
+
+/** A test's feedback: bare text renders trimmed; paras render as
+ * permalink-less para divs prefixed with a newline. */
+function fillinFeedback(fb: XmlElement | undefined, ctx: Ctx): string {
+  if (!fb) return '';
+  const paras = elements(fb, 'p');
+  if (paras.length === 0) return trimText(emitChildren(fb, noPermalinks(ctx))).trim();
+  return `\n${paras.map((p) => emitElement(p, noPermalinks(ctx))).join('\n')}`;
 }
 
 // -- multiple choice ---------------------------------------------------------

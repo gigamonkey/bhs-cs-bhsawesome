@@ -17,6 +17,12 @@ import { type XmlElement, elements, xmlId } from './xml.ts';
 
 const idCache = new WeakMap<XmlElement, string>();
 
+/** Pre-seed an element's id (fillin tests are numbered off-by-one: the
+ * implicit @answer check occupies position 1 in PreTeXt's id space). */
+export function overrideId(el: XmlElement, id: string): void {
+  idCache.set(el, id);
+}
+
 export function elementId(el: XmlElement): string {
   const cached = idCache.get(el);
   if (cached) return cached;

@@ -604,6 +604,11 @@ const EMITTERS: Record<string, Emitter> = {
   // referenced by a dead custom.css selector; PreTeXt drops it too).
   container: (el, ctx) => emitBlocks(el, ctx),
 
+  // Fill-in-the-blank input (inside fillin payloads' statements). PreTeXt
+  // emits the XML self-closing form and an id of "-<name>".
+  fillin: (el) =>
+    `<input type="${el.attributes.mode === 'number' ? 'number' : 'text'}" id="-${el.attributes.name ?? 'blank1'}"/>`,
+
   // Clickable-area marker (inside clickablearea payloads' clines/tables).
   area: (el) =>
     h(

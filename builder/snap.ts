@@ -29,8 +29,13 @@ function balancedDiv(html: string, start: number): string {
 /** All component containers in a page: id -> subtree. */
 function componentsIn(html: string, page: string): Map<string, Instance> {
   const out = new Map<string, Instance>();
-  // Scripts can contain stray divs; drop them (none live inside payloads).
-  const clean = html.replace(/<script[\s\S]*?<\/script>/g, '<!--script-->');
+  // Scripts can contain stray divs (fillin JSON embeds HTML in strings);
+  // replace each with a digest so contents still must match exactly.
+  const clean = html.replace(/<script[\s\S]*?<\/script>/g, (s) => {
+    let hash = 0;
+    for (let i = 0; i < s.length; i++) hash = (hash * 31 + s.charCodeAt(i)) | 0;
+    return `<!--script:${hash}-->`;
+  });
   for (const m of clean.matchAll(/<div class="ptx-runestone-container"[^>]*>/g)) {
     let sub: string;
     try {
