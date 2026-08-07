@@ -119,7 +119,10 @@ if (!only) {
   fs.writeFileSync(path.join(OUT, 'lunr-pretext-search-index.js'), lunrIndexJs(book));
 }
 
-// Assets: external/ (the source assets tree), _static/ and generated/
+// Assets: external/ (the source assets tree), generated/ (the committed
+// vendor/ tree — just the 5 CodeLens traces, which only the external
+// pythontutor tracer service can regenerate; PreTeXt's qrcode/ and
+// datafile/ outputs were unreferenced and are dropped), and _static/
 // (vendored from the last PreTeXt build until re-homed; see the plan).
 function copyTree(src: string, dst: string): number {
   if (!fs.existsSync(src)) return 0;
@@ -145,7 +148,7 @@ if (withAssets && !only) {
   const copied =
     copyTree(path.join(ROOT, 'pretext', 'assets'), path.join(OUT, 'external')) +
     copyTree(path.join(ROOT, 'output', 'build', 'html', '_static'), path.join(OUT, '_static')) +
-    copyTree(path.join(ROOT, 'output', 'build', 'html', 'generated'), path.join(OUT, 'generated'));
+    copyTree(path.join(ROOT, 'vendor', 'generated'), path.join(OUT, 'generated'));
   if (copied) console.log(`assets: ${copied} file(s) copied`);
 }
 
