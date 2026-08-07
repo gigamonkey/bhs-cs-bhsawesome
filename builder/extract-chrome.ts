@@ -7,8 +7,12 @@
  *   {{TITLE}} {{TOC}} {{TREEBUTTONS}} {{TREEBUTTONS_FOOTER}} {{CONTENT}}
  *
  * This kills PreTeXt's theme machinery while keeping the exact current
- * look; the template is ours to hand-simplify from here. Re-run only if
- * you deliberately want to re-sync with a PreTeXt build.
+ * look; the template is ours to hand-simplify from here. HISTORICAL:
+ * chrome.html has since diverged from any PreTeXt output (the trimmed
+ * vendor/_static Runestone bundles replaced the CDN set, so the bundle
+ * script names differ and the activecode CSS link is gone — its rules
+ * live in the entry CSS now). Re-running this would resurrect the old
+ * names; treat chrome.html as hand-maintained.
  *
  *     node builder/extract-chrome.ts
  */

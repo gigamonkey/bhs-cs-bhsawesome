@@ -1,0 +1,69 @@
+--- a/bases/rsptx/interactives/webpack.index.js
++++ b/bases/rsptx/interactives/webpack.index.js
+@@ -44,34 +44,29 @@
+ // Dynamically loaded components
+ // =============================
+ // This provides a list of modules that components can dynamically import. Webpack will create a list of imports for each based on its analysis.
++// BHSawesome trimmed build: only the components the book actually uses
++// (native activecodes, no timed assessments, no Runestone-hosted extras).
++// The activecode module_map entry is gone but its stylesheet is still
++// needed -- the book's native activecode widget replicates the activecode
++// runtime DOM and is styled by activecode.less, so import it statically
++// (it lands in the entry CSS instead of a chunk CSS).
++import "./runestone/activecode/css/activecode.less";
++
+ const module_map = {
+     // Wrap each import in a function, so that it won't occur until the function is called. While something cleaner would be nice, webpack can't analyze things like ``import(expression)``.
+     //
+     // The keys must match the value of each component's ``data-component`` attribute -- the ``runestone_import`` and ``runestone_auto_import`` functions assume this.
+-    activecode: () => import("./runestone/activecode/js/acfactory.js"),
+-    // Always import the timed version of a component if available, since the timed components also define the component's factory and include the component as well. Note that ``acfactory`` imports the timed components of ActiveCode, so it follows this pattern.
+     clickablearea: () =>
+         import("./runestone/clickableArea/js/timedclickable.js"),
+     codelens: () => import("./runestone/codelens/js/codelens.js"),
+     datafile: () => import("./runestone/datafile/js/datafile.js"),
+     dragndrop: () => import("./runestone/dragndrop/js/timeddnd.js"),
+     fillintheblank: () => import("./runestone/fitb/js/timedfitb.js"),
+-    groupsub: () => import("./runestone/groupsub/js/groupsub.js"),
+-    matching: () => import("./runestone/matching/js/matching.js"),
+     multiplechoice: () => import("./runestone/mchoice/js/timedmc.js"),
+     hparsons: () => import("./runestone/hparsons/js/hparsons.js"),
+     parsons: () => import("./runestone/parsons/js/timedparsons.js"),
+-    poll: () => import("./runestone/poll/js/poll.js"),
+-    selectquestion: () => import("./runestone/selectquestion/js/selectone.js"),
+     shortanswer: () =>
+         import("./runestone/shortanswer/js/timed_shortanswer.js"),
+-    showeval: () => import("./runestone/showeval/js/showEval.js"),
+-    tabbedStuff: () => import("./runestone/tabbedStuff/js/tabbedstuff.js"),
+-    timedAssessment: () => import("./runestone/timed/js/timed.js"),
+-    // TODO: since this isn't in a ``data-component``, need to trigger an import of this code manually.
+-    webwork: () => import("./runestone/webwork/js/webwork.js"),
+-    youtube: () => import("./runestone/video/js/runestonevideo.js"),
+-    doenet: () => Promise.resolve(), // Doenet is loaded separately
+ };
+ 
+ const module_map_cache = {};
+--- a/bases/rsptx/interactives/runestone/hparsons/js/hparsons.js
++++ b/bases/rsptx/interactives/runestone/hparsons/js/hparsons.js
+@@ -1,7 +1,9 @@
+ import RunestoneBase from "../../common/js/runestonebase.js";
+ import "../css/hljs-xcode.css";
+ import BlockFeedback from "./BlockFeedback.js";
+-import SQLFeedback from "./SQLFeedback.js";
++// BHSawesome trimmed build: SQLFeedback (execution-based SQL grading)
++// drags in Handsontable + sql.js; the book uses only block-grading
++// micro-parsons, so it is stubbed out.
+ // The micro-parsons element source now lives alongside hparsons in ./micro-parsons.
+ // It is compiled directly by the interactives webpack/ts-loader build (no separate
+ // repo or npm tarball). micro-parsons.ts imports its own style/style.css.
+@@ -65,7 +67,9 @@
+         if (this.isBlockGrading) {
+             this.feedbackController = new BlockFeedback(this);
+         } else {
+-            this.feedbackController = new SQLFeedback(this);
++            throw new Error(
++                "SQL micro-parsons are not supported in this trimmed build",
++            );
+         }
+ 
+         // creating UI components
