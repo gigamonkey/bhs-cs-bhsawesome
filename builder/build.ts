@@ -119,11 +119,14 @@ if (!only) {
   fs.writeFileSync(path.join(OUT, 'lunr-pretext-search-index.js'), lunrIndexJs(book));
 }
 
-// Assets: external/ (the source assets tree), generated/ (the committed
-// vendor/ tree — just the 5 CodeLens traces, which only the external
-// pythontutor tracer service can regenerate; PreTeXt's qrcode/ and
-// datafile/ outputs were unreferenced and are dropped), and _static/
-// (vendored from the last PreTeXt build until re-homed; see the plan).
+// Assets: external/ (the source assets tree) plus the committed vendor/
+// trees frozen from the last PreTeXt build: generated/ (just the 5
+// CodeLens traces, which only the external pythontutor tracer service
+// can regenerate; PreTeXt's qrcode/ and datafile/ outputs were
+// unreferenced and are dropped) and _static/ (the Runestone webpack
+// bundles minus their .map/.gz/AppleDouble freight, plus only the eight
+// pretext/ theme+runtime files the chrome references — 7MB in place of
+// PreTeXt's 34MB tree).
 function copyTree(src: string, dst: string): number {
   if (!fs.existsSync(src)) return 0;
   let n = 0;
@@ -147,7 +150,7 @@ function copyTree(src: string, dst: string): number {
 if (withAssets && !only) {
   const copied =
     copyTree(path.join(ROOT, 'pretext', 'assets'), path.join(OUT, 'external')) +
-    copyTree(path.join(ROOT, 'output', 'build', 'html', '_static'), path.join(OUT, '_static')) +
+    copyTree(path.join(ROOT, 'vendor', '_static'), path.join(OUT, '_static')) +
     copyTree(path.join(ROOT, 'vendor', 'generated'), path.join(OUT, 'generated'));
   if (copied) console.log(`assets: ${copied} file(s) copied`);
 }
