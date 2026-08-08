@@ -1,4 +1,0 @@
-{
-  "//": "Content our build deliberately RESTORES that PreTeXt's output loses (verified against the source; the ids are stripped from OUR side before diffing). math-class: PreTeXt silently drops a <note> nested in the gutter-image sidebyside <stack> — the note text exists only in its search index.",
-  "math-class.html": ["random-numbers-4-2-2"]
-}

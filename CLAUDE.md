@@ -4,35 +4,45 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-This is **BHSawesome2**, an AP Computer Science A (Java) textbook written in
-[PreTeXt](https://pretextbook.org/) and published to the
-[Runestone](https://runestone.academy/) interactive ebook platform. It is
-adapted from **CSAwesome2** (the `CSAawesome2`/`CSAwesome2` upstream referenced
-in recent commits) and follows the College Board's 2025 AP CSA revision, but
-reorders the material and does not mirror the College Board unit/topic numbering.
+This is **BHSawesome2**, an AP Computer Science A (Java) textbook served at
+`/bhsawesome/` on the bhs-cs website. The source format is PreTeXt-flavored
+XML, but the PreTeXt toolchain itself is fully retired (the monorepo's
+`plans/bhsawesome-next-steps.md` phase 1): the book is built by our own
+`builder/` and the schema is ours to evolve. It is adapted from
+**CSAwesome2** and follows the College Board's 2025 AP CSA revision, but
+reorders the material and does not mirror the College Board unit/topic
+numbering. (The book formerly published to Runestone; that era is over —
+zero Runestone dependencies remain.)
 
-The "source code" is almost entirely XML prose: ~324 `.ptx` files under
+The "source code" is almost entirely XML prose: the `.ptx` files under
 `pretext/`. The Python/Perl/XSLT/shell scripts at the repo root are authoring
 *tooling*, not the product.
 
 ## Build & preview
 
-Python tooling is managed by **uv** (`pyproject.toml`, `uv.lock`, Python ≥3.13).
-Run everything through `uv run` so the pinned `pretext`/`lxml`/`ruff` are used.
+The build is Node only (`npm ci` once; Node 26 type-strips the TypeScript):
 
 ```bash
-uv run pretext build web        # build the standalone HTML target
-uv run pretext build runestone  # build the Runestone-hosted target
-uv run pretext view web         # build + serve locally with live reload
-./watch                         # watchman-triggered rebuild on any pretext/ change
+node builder/build.ts     # the whole site -> build/site/ (~400ms)
+node builder/watch.ts     # rebuild on any pretext/, builder/, or vendor/ change
 ```
 
-Targets are defined in `project.ptx`: **web** (HTML, `publication/html.xml`),
-**runestone** (`publication/runestone.xml`), and **print** (PDF). Both HTML
-targets build from `pretext/main.ptx`.
+`builder/` parses the `.ptx` source directly (`@rgrove/parse-xml`, own
+xi:include assembly) and emits every page plus the contents/backmatter/index
+pages, xref knowl popups, video pages, `exercises.json`, and the lunr search
+corpus; `vendor/` holds the committed static trees (Runestone component
+bundles built from source, the pretext theme files the chrome still uses,
+the CodeLens traces — see `vendor/README.md`). The page chrome is the
+committed, hand-maintained `builder/chrome.html`.
 
-`pretext.rnc` is the RELAX NG schema for validation/editor support; refresh it
-after a pretext upgrade with `./update-schema`.
+Python tooling for the root scripts is managed by **uv** (`pyproject.toml`,
+`uv.lock`, Python ≥3.13; lxml + ruff — run lxml-using scripts through
+`uv run`).
+
+`pretext/pretext.rnc` is the RELAX NG schema for validation/editor support.
+It is a frozen copy from the last PreTeXt install — ours to evolve as the
+source format grows beyond PreTeXt (schema changes need a matching emitter
+case in `builder/src/prose.ts` and possibly `.xml-formats/ptx.json`).
 
 ## Document structure
 
@@ -128,31 +138,26 @@ order), `make-text.py` (generate the string/array-index SVG diagrams).
 - After editing any `.ptx` by hand, run it through `xml-format -i` before
   committing so diffs stay canonical.
 
-## Website build (self-hosting on bhs-cs)
+## Publishing (the bhs-cs content overlay)
 
 This repo is one of the bhs-cs content overlay's prefix-scoped publishers
-(the monorepo's `plans/rehost-bhsawesome.md`, phase 1): it owns
-`public/bhsawesome/`, served at `/bhsawesome/` on the website, side by side
-with the Runestone publish (which is unchanged).
+(the monorepo's `plans/done/rehost-bhsawesome.md`): it owns
+`public/bhsawesome/`, served at `/bhsawesome/` on the website.
 
-- `uv run python build-web.py` — `pretext build web`, tolerating only the
-  known-expected PTX:ERRORs (the left-gutter sidebyside hack + listed dead
-  xrefs); any new error fails.
-- `uv run python land.py` — copy `output/build/html` to
-  `build/out/public/bhsawesome/`, inject `<script src="/js/bhsawesome.js">`
-  into every page (the website-served script that points the Runestone
-  components' Jobe config at the site's Java-running endpoints), and inject
-  hidden datafile provider divs into pages that reference a datafile not
-  rendered on that page (Runestone resolved those from its database; a
-  static site can't).
-- `xsl/web.xsl` (wired via `project.ptx` target `xsl=`) overrides
-  `activecode-host` so Java activecodes render interactive off-Runestone
-  instead of degrading to static listings.
-- `publication/html.xml` sets `short-answer-responses="always"` so
-  free-response boxes render off-Runestone.
-- `.github/workflows/publish.yml` builds and mirrors `build/out` to the
-  server with `push-content --only public/bhsawesome/` (needs the
+- `.github/workflows/publish.yml` runs `npm ci`, `node builder/build.ts`,
+  stages `build/site` as `build/out/public/bhsawesome`, and mirrors it to
+  the server with `push-content --only public/bhsawesome/` (needs the
   `BHS_CS_SERVER` variable + `SERVICE_KEYS_SECRET` secret configured on
-  GitHub). `push-content` is a bin of the pinned `@peterseibel/bhs-content`
-  devDependency — the only reason this repo has a `package.json`; `npm ci`
-  installs it, and bumping it is `npm update @peterseibel/bhs-content`.
+  GitHub — `./setup.sh` provisions both). Keep the workflow file named
+  `publish.yml` — the monorepo's `scripts/republish` dispatches it by that
+  exact name. `push-content` is a bin of the pinned
+  `@peterseibel/bhs-content` devDependency; bumping it is
+  `npm update @peterseibel/bhs-content`.
+- The two extract scripts feed the **monorepo's** runner jar and read the
+  ptx source, not any build output: `uv run python extract-tests.py
+  --outdir <monorepo>/java/src/main/resources/book-tests --all` (the
+  `<tests>` JUnit classes → `book-tests/` resources; lxml) and
+  `python3 extract-datafiles.py --monorepo <monorepo>` (datafiles →
+  `book-src/` + `book-datafiles/`; stdlib, but shells out to
+  `node builder/datafile-uses.ts` for the label→datafiles map). Re-run
+  them after editing tests or datafiles in the source.

@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-
-cp ~/.ptx/$(pretext --version)/core/schema/pretext.rnc pretext/pretext.rnc

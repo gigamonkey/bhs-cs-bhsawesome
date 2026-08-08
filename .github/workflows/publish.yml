@@ -6,10 +6,8 @@
 # so it can never touch the bhs-cs-content publishers' files (whose main
 # workflow correspondingly pushes with --exclude public/bhsawesome/).
 #
-# The build is builder/build.ts (phase 3) — the PreTeXt/uv toolchain no
-# longer runs in CI. land.py and build-web.py survive in-repo only to
-# produce the landed-truth tree the diff/snap parity harnesses compare
-# against; they go entirely once that confidence is no longer wanted.
+# The build is builder/build.ts — the PreTeXt toolchain is fully retired
+# (bhsawesome-next-steps.md phase 1); nothing but Node runs here.
 #
 # NOTE: the monorepo's scripts/republish dispatches this workflow by this
 # exact filename (publish.yml) — rename it and republish breaks.
@@ -52,10 +50,9 @@ jobs:
       - name: Build the site (builder/build.ts)
         run: node builder/build.ts
 
-      # push-content pushes the build/out tree (hardcoded); locally that
-      # directory belongs to land.py's landed-truth output for the parity
-      # harnesses, so the builder keeps emitting to build/site and CI stages
-      # a copy at the prefix the overlay expects.
+      # push-content pushes the build/out tree (hardcoded); the builder
+      # emits the site itself to build/site (what the dev overlay serves),
+      # so CI stages a copy at the prefix the overlay expects.
       - name: Stage as an overlay tree
         run: mkdir -p build/out/public && cp -a build/site build/out/public/bhsawesome
 

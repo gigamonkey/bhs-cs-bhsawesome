@@ -1,14 +1,6 @@
-# Pretext build and run stuff
+# Build output (builder/build.ts -> build/site; CI stages build/out)
 build/
-.cache
 node_modules/
-.error_schema.log
-author_build.log
-generated-assets/
-logs/
-output/
-pretext/generated
-published/
 
 # Compiled files
 *.pyc

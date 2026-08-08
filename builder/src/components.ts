@@ -4,12 +4,11 @@
  * step 2). Each component emits its article wrapper + heading (part of the
  * prose/numbering fabric) around a payload:
  *
- * - activecode -> the native .bhs-book-exercise widget (the same markup
- *   land.py's convert_exercises rewrites into the PreTeXt pages today).
+ * - activecode -> the native .bhs-book-exercise widget.
  * - datafile -> fully static display component.
- * - The remaining Runestone kinds emit byte-compatible payloads one type
- *   at a time (builder/snap.ts verifies against the landed truth);
- *   unconverted kinds still emit a data-bhs-todo placeholder.
+ * - The remaining Runestone kinds emit the byte-compatible payloads their
+ *   component JS expects (originally verified against the last PreTeXt
+ *   build's output by the retired builder/snap.ts harness).
  */
 
 import fs from 'node:fs';
