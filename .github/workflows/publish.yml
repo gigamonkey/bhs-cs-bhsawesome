@@ -1,12 +1,20 @@
-# Build the book's web target and mirror it into the bhs-cs website's content
-# overlay, where it serves at /bhsawesome/. This repo is one of the overlay's
-# prefix-scoped publishers (the pattern from the monorepo's
-# plans/rehost-bhsawesome.md phase 1): it owns exactly public/bhsawesome/ —
-# the push mirrors and prunes only inside that prefix, so it can never touch
-# the bhs-cs-content publishers' files (whose main workflow correspondingly
-# pushes with --exclude public/bhsawesome/).
+# Build the book with the bespoke builder and mirror it into the bhs-cs
+# website's content overlay, where it serves at /bhsawesome/. This repo is
+# one of the overlay's prefix-scoped publishers (the pattern from the
+# monorepo's plans/rehost-bhsawesome.md phase 1): it owns exactly
+# public/bhsawesome/ — the push mirrors and prunes only inside that prefix,
+# so it can never touch the bhs-cs-content publishers' files (whose main
+# workflow correspondingly pushes with --exclude public/bhsawesome/).
 #
-# PRs build (and land) only; pushes to main also mirror to the server.
+# The build is builder/build.ts (phase 3) — the PreTeXt/uv toolchain no
+# longer runs in CI. land.py and build-web.py survive in-repo only to
+# produce the landed-truth tree the diff/snap parity harnesses compare
+# against; they go entirely once that confidence is no longer wanted.
+#
+# NOTE: the monorepo's scripts/republish dispatches this workflow by this
+# exact filename (publish.yml) — rename it and republish breaks.
+#
+# PRs build only; pushes to main also mirror to the server.
 #
 # Auth/config (set on this repo in GitHub):
 #   - variable BHS_CS_SERVER: the website base URL
@@ -35,30 +43,30 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v6 # pretext's theme build (cssbuilder) needs node
+      - uses: actions/setup-node@v6
         with:
           node-version: "26"
 
-      # v7+ runs on the node24 action runtime (node20 is deprecated). Exact
-      # version: astral-sh maintains floating major tags only through v7, so
-      # @v8/@v9 don't resolve — bump this pin by hand.
-      - uses: astral-sh/setup-uv@v9.0.0
+      - run: npm ci
 
-      - name: Build the web target (tolerates only the known-expected errors)
-        run: uv run python build-web.py
+      - name: Build the site (builder/build.ts)
+        run: node builder/build.ts
 
-      - name: Land as an overlay tree (+ inject /js/bhsawesome.js)
-        run: uv run python land.py
+      # push-content pushes the build/out tree (hardcoded); locally that
+      # directory belongs to land.py's landed-truth output for the parity
+      # harnesses, so the builder keeps emitting to build/site and CI stages
+      # a copy at the prefix the overlay expects.
+      - name: Stage as an overlay tree
+        run: mkdir -p build/out/public && cp -a build/site build/out/public/bhsawesome
 
       - name: Push to the website content overlay
         if: github.event_name != 'pull_request'
         env:
           BHS_CS_SERVER: ${{ vars.BHS_CS_SERVER }}
           SERVICE_KEYS_SECRET: ${{ secrets.SERVICE_KEYS_SECRET }}
-        # The push-content bin comes from the pinned @peterseibel/bhs-content
-        # devDependency (package.json + lockfile). Invoked by .bin path, NOT
-        # bare npx: `npx push-content --only …` lets npm's config parser eat
-        # the flags (the push silently runs UNSCOPED, defeating the prune
-        # protection) and falls back to fetching a registry package named
-        # "push-content" when the local bin is missing.
-        run: npm ci && node_modules/.bin/push-content --only public/bhsawesome/
+        # Invoked by .bin path, NOT bare npx: `npx push-content --only …`
+        # lets npm's config parser eat the flags (the push silently runs
+        # UNSCOPED, defeating the prune protection) and falls back to
+        # fetching a registry package named "push-content" when the local
+        # bin is missing.
+        run: node_modules/.bin/push-content --only public/bhsawesome/

@@ -27,18 +27,62 @@ Everything written is generated-but-committed in the monorepo; re-run this
 after editing the book's datafiles.
 """
 
+import json
 import re
 import sys
 from argparse import ArgumentParser
 from pathlib import Path
+from subprocess import run
 
-from land import SRC, datafile_library, unescape
+ROOT = Path(__file__).resolve().parent
+PRETEXT = ROOT / "pretext"
 
 FAKE_JARS = {"turtleClasses.jar", "turtleClasses2.jar", "GridWorld.jar"}
 
-TA_RE = re.compile(r"<textarea[^>]*data-lang=\"java\"[^>]*>")
-DATAFILE_ATTR_RE = re.compile(r"data-datafile=\"([^\"]*)\"")
-ID_RE = re.compile(r"id=\"([^\"]*)_editor\"")
+# <datafile> harvesting from the ptx source (formerly land.py's).
+DATAFILE_RE = re.compile(r"<datafile\b[^>]*?filename=\"([^\"]+)\".*?(?:</datafile>|/>)", re.S)
+PRE_SOURCE_RE = re.compile(r"<pre\s+source=\"([^\"]+)\"")
+XI_TEXT_RE = re.compile(r"<xi:include\s+parse=\"text\"\s+href=\"([^\"]+)\"")
+INLINE_PRE_RE = re.compile(r"<pre>(.*?)</pre>", re.S)
+
+
+def escape(text: str) -> str:
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def unescape(text: str) -> str:
+    return (
+        text.replace("&lt;", "<")
+        .replace("&gt;", ">")
+        .replace("&quot;", '"')
+        .replace("&#39;", "'")
+        .replace("&amp;", "&")
+    )
+
+
+def datafile_library() -> dict[str, str]:
+    """filename -> HTML-escaped content, from every <datafile> in the source
+    (legacy trees included — harmless, and some live pages reference datafiles
+    defined outside the live tree)."""
+    lib: dict[str, str] = {}
+    for ptx in sorted(PRETEXT.rglob("*.ptx")):
+        for m in DATAFILE_RE.finditer(ptx.read_text()):
+            fname, block = m.group(1), m.group(0)
+            if fname in lib:
+                continue
+            if src := PRE_SOURCE_RE.search(block):
+                # @source is relative to the external (assets) directory.
+                path = PRETEXT / "assets" / src.group(1)
+                if path.is_file():
+                    lib[fname] = escape(path.read_text())
+            elif xi := XI_TEXT_RE.search(block):
+                path = (ptx.parent / xi.group(1)).resolve()
+                if path.is_file():
+                    lib[fname] = escape(path.read_text())
+            elif inline := INLINE_PRE_RE.search(block):
+                # PreTeXt escaping for &, <, > is HTML escaping; keep as-is.
+                lib[fname] = inline.group(1)
+    return lib
 
 
 def parse_java_classes(source: str) -> list[tuple[str, str]]:
@@ -119,19 +163,18 @@ def parse_java_classes(source: str) -> list[tuple[str, str]]:
 
 
 def label_datafiles() -> dict[str, list[str]]:
-    """label -> data-datafile filenames, from the rendered pages (the same
-    ground truth the conversion list is built from)."""
-    uses: dict[str, list[str]] = {}
-    for page in sorted(SRC.glob("*.html")):
-        html = page.read_text()
-        for m in TA_RE.finditer(html):
-            tag = m.group(0)
-            dfm = DATAFILE_ATTR_RE.search(tag)
-            idm = ID_RE.search(tag)
-            if dfm and idm:
-                label = idm.group(1).removeprefix("rs-")
-                uses[label] = [f.strip() for f in dfm.group(1).split(",") if f.strip()]
-    return uses
+    """label -> datafile filenames, from the builder's source model
+    (builder/datafile-uses.ts walks the assembled live book — no rendered
+    pages involved)."""
+    out = run(
+        ["node", str(ROOT / "builder" / "datafile-uses.ts")],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    if out.stderr.strip():
+        print(out.stderr.strip())
+    return json.loads(out.stdout)
 
 
 def main() -> int:
