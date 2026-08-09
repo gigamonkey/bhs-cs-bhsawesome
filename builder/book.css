@@ -205,15 +205,6 @@ g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-fr
   fill: none;
 }
 
-g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
 g[data-mml-node="mtable"] > g > svg {
   overflow: visible;
 }
@@ -581,7 +572,7 @@ body.pretext>a.assistive:focus {
     min-width: 0;
 }
 
-.ptx-navbar:has(.ptx-read-aloud-player:not([hidden])) .ptx-navbar-contents>*:not(.treebuttons,.nav-runestone-controls) {
+.ptx-navbar:has(.ptx-read-aloud-player:not([hidden])) .ptx-navbar-contents>*:not(.treebuttons) {
     flex-shrink: 0;
 }
 
@@ -788,17 +779,12 @@ body.pretext:has(.ptx-read-aloud-player:not([hidden])) {
     margin-left: 0;
 }
 
-.ptx-navbar :is(.treebuttons,.nav-runestone-controls,.nav-other-controls) {
+.ptx-navbar :is(.treebuttons,.nav-other-controls) {
     display: flex;
 }
 
 .ptx-navbar .treebuttons {
     flex: 1 1 210px;
-    justify-content: end;
-}
-
-.ptx-navbar .nav-runestone-controls {
-    flex: 1 1 70px;
     justify-content: end;
 }
 
@@ -942,7 +928,7 @@ body.pretext:has(.ptx-read-aloud-player:not([hidden])) {
     display: none;
 }
 
-.ptx-navbar :is(.runestone-profile,.activecode-toggle,.ptx-search-button,.ptx-calculator-toggle,.ptx-embed-button,.ptx-readability-options-button,.ptx-read-aloud-button) .name {
+.ptx-navbar :is(.ptx-search-button,.ptx-readability-options-button,.ptx-read-aloud-button) .name {
     clip: rect(1px,1px,1px,1px);
     clip-path: inset(50%);
     height: 1px;
@@ -970,7 +956,7 @@ body.pretext:has(.ptx-read-aloud-player:not([hidden])) {
     border-right-width: 0;
 }
 
-.ptx-navbar-contents :is(.treebuttons,.nav-runestone-controls,.nav-other-controls) {
+.ptx-navbar-contents :is(.treebuttons,.nav-other-controls) {
     gap: 1px;
     background: var(--page-border-color);
 }
@@ -989,10 +975,6 @@ body.pretext {
 
 .ptx-navbar .ptx-navbar-contents {
     max-width: 100vw;
-}
-
-.ptx-navbar .nav-runestone-controls {
-    flex: 0;
 }
 
 .ptx-navbar .toc-toggle {
@@ -1045,10 +1027,6 @@ body.pretext {
     background: var(--toc-background);
     margin: 0;
     font-size: .9rem;
-}
-
-.ptx-toc:is(.depth1,.parts.depth2) {
-    --codenumber-pad-right: .5rem;
 }
 
 .ptx-toc .toc-item-list {
@@ -1344,27 +1322,6 @@ body.pretext {
     max-width: 765px;
 }}
 
-.aside-like>.knowl__link {
-    color: var(--aside-like-link-color);
-    border-bottom-color: var(--aside-like-link-color);
-}
-
-.aside-like>.knowl__content {
-    margin-left: 30px;
-    margin-right: 30px;
-    border: 2px solid var(--aside-like-border-color);
-    background-color: var(--aside-like-body-background);
-}
-
-@media screen and (min-width:1820px){
-
-details.aside-like>.knowl__content {
-    margin-left: 0;
-    margin-right: 0;
-    background-color: var(--aside-like-body-background);
-    z-index: 100;
-}}
-
 .code-box {
     overflow-x: auto;
 }
@@ -1423,24 +1380,12 @@ details.aside-like>.knowl__content {
     display: none;
 }}
 
-:is(.cols2,.cols3,.cols4,.cols5,.cols6) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-}
-
 .exercise-like>.heading {
     font-size: inherit;
 }
 
 .exercise-like>*:is(.solutions) {
     margin-top: .5em;
-}
-
-.knowl .exercise-wrapper,
-.knowl .exercise-wrapper form,
-.knowl .exercise-wrapper form>div:first-child {
-    width: 100%;
 }
 
 .sbsrow {
@@ -1562,12 +1507,6 @@ summary.knowl__link {
     background-color: var(--knowl-background);
 }
 
-.knowl__content .incontext {
-    display: block;
-    font-size: 85%;
-    text-align: right;
-}
-
 .knowl__content .knowl__content {
     background-color: var(--knowl-nested-1-background);
 }
@@ -1600,25 +1539,7 @@ summary.knowl__link {
     margin-top: 0;
 }
 
-.assemblage-like:not(.knowl__content,.born-hidden-knowl) {
-    border: 2px solid var(--assemblage-like-border-color);
-    background-color: var(--assemblage-like-body-background);
-    padding: 10px;
-    border-radius: 2px;
-}
-
-.assemblage-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    display: block;
-    color: var(--block-head-color);
-    margin-bottom: .5em;
-}
-
-.assemblage-like:not(.knowl__content,.born-hidden-knowl)>*:first-child {
-    margin-top: 0;
-}
-
-.ptx-content:not(:has(>.worksheet)) .conclusion:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl),
-.ptx-content:not(:has(>.worksheet)) .goal-like:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl) {
+.ptx-content .conclusion:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl) {
     border: 3px solid var(--goal-like-border-color);
     background-color: var(--goal-like-body-background);
     padding: 20px;
@@ -1626,8 +1547,7 @@ summary.knowl__link {
     margin-top: 2.5em!important;
 }
 
-.ptx-content:not(:has(>.worksheet)) .conclusion:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl)>.heading:first-child,
-.ptx-content:not(:has(>.worksheet)) .goal-like:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
+.ptx-content .conclusion:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
     background-color: var(--goal-like-border-color);
     display: block;
     color: #fff;
@@ -1638,107 +1558,8 @@ summary.knowl__link {
     border: 0;
 }
 
-.ptx-content:not(:has(>.worksheet)) .conclusion:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after,
-.ptx-content:not(:has(>.worksheet)) .goal-like:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after {
+.ptx-content .conclusion:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after {
     display: none;
-}
-
-.knowl__content *:first-child .ptx-content:not(:has(>.worksheet)) .conclusion:not(.ptx-runestone-container *),
-.knowl__content *:first-child .ptx-content:not(:has(>.worksheet)) .goal-like:not(.ptx-runestone-container *) {
-    margin-top: 1em;
-}
-
-.theorem-like:not(.knowl__content,.born-hidden-knowl) {
-    border-left: 1px solid var(--theorem-like-border-color);
-    border-bottom: 1px solid var(--theorem-like-border-color);
-    background-color: var(--content-background-background);
-    padding: 0 0 12px 12px;
-    border-bottom-left-radius: 2px;
-}
-
-.theorem-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    background-color: var(--theorem-like-border-color);
-    display: inline-block;
-    color: #fff;
-    padding: 5px 10px;
-    margin-left: -12px;
-    margin-top: 0;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
-
-.theorem-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after {
-    display: none;
-}
-
-.theorem-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    margin-bottom: 12px;
-}
-
-.theorem-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child+* {
-    margin-top: 0;
-}
-
-.definition-like:not(.knowl__content,.born-hidden-knowl) {
-    border-left: 1px solid var(--definition-like-border-color);
-    border-bottom: 1px solid var(--definition-like-border-color);
-    background-color: var(--content-background-background);
-    padding: 0 0 12px 12px;
-    border-bottom-left-radius: 2px;
-}
-
-.definition-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    background-color: var(--definition-like-border-color);
-    display: inline-block;
-    color: #fff;
-    padding: 5px 10px;
-    margin-left: -12px;
-    margin-top: 0;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
-
-.definition-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after {
-    display: none;
-}
-
-.definition-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    margin-bottom: 12px;
-}
-
-.definition-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child+* {
-    margin-top: 0;
-}
-
-.example-like:not(.knowl__content,.born-hidden-knowl) {
-    border-left: 1px solid var(--example-like-border-color);
-    border-bottom: 1px solid var(--example-like-border-color);
-    background-color: var(--content-background-background);
-    padding: 0 0 12px 12px;
-    border-bottom-left-radius: 2px;
-}
-
-.example-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    background-color: var(--example-like-border-color);
-    display: inline-block;
-    color: #fff;
-    padding: 5px 10px;
-    margin-left: -12px;
-    margin-top: 0;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
-
-.example-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after {
-    display: none;
-}
-
-.example-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    margin-bottom: 12px;
-}
-
-.example-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child+* {
-    margin-top: 0;
 }
 
 .project-like:not(.knowl__content,.born-hidden-knowl) {
@@ -1772,69 +1593,7 @@ summary.knowl__link {
     margin-top: 0;
 }
 
-.computation-like:not(.knowl__content,.born-hidden-knowl) {
-    border-left: 1px solid var(--computation-like-border-color);
-    border-bottom: 1px solid var(--computation-like-border-color);
-    background-color: var(--content-background-background);
-    padding: 0 0 12px 12px;
-    border-bottom-left-radius: 2px;
-}
-
-.computation-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    background-color: var(--computation-like-border-color);
-    display: inline-block;
-    color: #fff;
-    padding: 5px 10px;
-    margin-left: -12px;
-    margin-top: 0;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
-
-.computation-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after {
-    display: none;
-}
-
-.computation-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    margin-bottom: 12px;
-}
-
-.computation-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child+* {
-    margin-top: 0;
-}
-
-.proof-like:not(.knowl__content,.born-hidden-knowl) {
-    border-left: 1px solid var(--proof-like-border-color);
-    border-bottom: 1px solid var(--proof-like-border-color);
-    background-color: var(--content-background-background);
-    padding: 0 0 12px 12px;
-    border-bottom-left-radius: 2px;
-}
-
-.proof-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    background-color: var(--proof-like-border-color);
-    display: inline-block;
-    color: #fff;
-    padding: 5px 10px;
-    margin-left: -12px;
-    margin-top: 0;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
-
-.proof-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after {
-    display: none;
-}
-
-.proof-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    margin-bottom: 12px;
-}
-
-.proof-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child+* {
-    margin-top: 0;
-}
-
-.ptx-content:not(:has(>.worksheet)) .exercise-like:not(.knowl__content,.born-hidden-knowl) {
+.ptx-content .exercise-like:not(.knowl__content,.born-hidden-knowl) {
     border-left: 1px solid var(--exercise-like-border-color);
     border-bottom: 1px solid var(--exercise-like-border-color);
     background-color: var(--content-background-background);
@@ -1842,7 +1601,7 @@ summary.knowl__link {
     border-bottom-left-radius: 2px;
 }
 
-.ptx-content:not(:has(>.worksheet)) .exercise-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
+.ptx-content .exercise-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
     background-color: var(--exercise-like-border-color);
     display: inline-block;
     color: #fff;
@@ -1853,34 +1612,16 @@ summary.knowl__link {
     border-bottom-right-radius: 2px;
 }
 
-.ptx-content:not(:has(>.worksheet)) .exercise-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after {
+.ptx-content .exercise-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child:after {
     display: none;
 }
 
-.ptx-content:not(:has(>.worksheet)) .exercise-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
+.ptx-content .exercise-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
     margin-bottom: 12px;
 }
 
-.ptx-content:not(:has(>.worksheet)) .exercise-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child+* {
+.ptx-content .exercise-like:not(.knowl__content,.born-hidden-knowl)>.heading:first-child+* {
     margin-top: 0;
-}
-
-.ptx-content:has(>.worksheet) .exercise-like>.heading:first-child {
-    display: inline;
-    line-height: initial;
-    border-bottom: 0;
-}
-
-.ptx-content:has(>.worksheet) .exercise-like>.heading:first-child:after {
-    content: "\2009";
-}
-
-.ptx-content:has(>.worksheet) .exercise-like>.heading:first-child+:is(.para,.para.logical,.introduction) {
-    display: inline;
-}
-
-.ptx-content:has(>.worksheet) .exercise-like>.heading:first-child+:is(.para,.para.logical,.introduction)>.para:first-child {
-    display: inline;
 }
 
 * {
@@ -1901,7 +1642,7 @@ summary.knowl__link {
     margin-top: 1em;
 }
 
-.ptx-content :is(ul,td,li,dd,.blockquote,.sbspanel,.para.logical)>*:not(:first-child) {
+.ptx-content :is(ul,td,li,dd,.blockquote,.sbspanel)>*:not(:first-child) {
     margin-top: .5em;
 }}
 
@@ -1917,26 +1658,6 @@ ul.disc {
     list-style-type: disc;
 }
 
-dl:is(.description-list,.glossary) {
-    margin: 0;
-}
-
-dl:is(.description-list,.glossary) dt {
-    font-weight: 700;
-    max-width: 55ex;
-}
-
-dl:is(.description-list,.glossary) dd:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-.para>dl:is(.description-list) {
-    margin-top: .5em;
-    margin-bottom: .5em;
-}
-
 .ptx-content li {
     margin-top: .5em;
 }
@@ -1948,15 +1669,6 @@ dl:is(.description-list,.glossary) dd:after {
 
 ol>li {
     padding-left: .25em;
-}
-
-.fillin {
-    display: inline-block;
-    border: none;
-    border-width: 1px;
-    margin-right: .1em;
-    margin-left: .1em;
-    margin-bottom: -.25em;
 }
 
 :root.dark-mode {
@@ -2359,8 +2071,7 @@ em+.indexknowl {
     margin-left: 2em;
 }
 
-.subindexitem .indexknowl,
-.subsubindexitem .indexknowl {
+.subindexitem .indexknowl {
     font-size: 95%;
 }
 
@@ -2494,8 +2205,8 @@ pre[class*=language-] ::selection {
     background: #b3d4fc;
 }
 
-code[class*=language-] .token:is(.comment,.prolog,.doctype,.cdata),
-pre[class*=language-] .token:is(.comment,.prolog,.doctype,.cdata) {
+code[class*=language-] .token.comment,
+pre[class*=language-] .token.comment {
     color: #2a9716;
 }
 
@@ -2504,19 +2215,19 @@ pre[class*=language-] .token:is(.property,.tag,.boolean,.number,.constant,.symbo
     color: #29780f;
 }
 
-code[class*=language-] .token:is(.selector,.attr-name,.string,.char,.builtin,.regex,.inserted),
-pre[class*=language-] .token:is(.selector,.attr-name,.string,.char,.builtin,.regex,.inserted) {
+code[class*=language-] .token:is(.selector,.string,.char,.builtin,.regex,.inserted),
+pre[class*=language-] .token:is(.selector,.string,.char,.builtin,.regex,.inserted) {
     color: #a11;
 }
 
-code[class*=language-] .token:is(.operator,.entity,.url),
-pre[class*=language-] .token:is(.operator,.entity,.url) {
+code[class*=language-] .token:is(.operator,.url),
+pre[class*=language-] .token:is(.operator,.url) {
     color: #000;
     background: none;
 }
 
-code[class*=language-] .token:is(.atrule,.attr-value,.keyword),
-pre[class*=language-] .token:is(.atrule,.attr-value,.keyword) {
+code[class*=language-] .token.keyword,
+pre[class*=language-] .token.keyword {
     color: #0679b7;
 }
 
@@ -2543,8 +2254,8 @@ pre[class*=language-] .token:is(.atrule,.attr-value,.keyword) {
     z-index: 1;
 }
 
-:root.dark-mode code[class*=language-] .token:is(.comment,.prolog,.doctype,.cdata),
-:root.dark-mode pre[class*=language-] .token:is(.comment,.prolog,.doctype,.cdata) {
+:root.dark-mode code[class*=language-] .token.comment,
+:root.dark-mode pre[class*=language-] .token.comment {
     color: #68a950;
 }
 
@@ -2553,18 +2264,18 @@ pre[class*=language-] .token:is(.atrule,.attr-value,.keyword) {
     color: #abc792;
 }
 
-:root.dark-mode code[class*=language-] .token:is(.selector,.attr-name,.string,.char,.builtin,.regex,.inserted),
-:root.dark-mode pre[class*=language-] .token:is(.selector,.attr-name,.string,.char,.builtin,.regex,.inserted) {
+:root.dark-mode code[class*=language-] .token:is(.selector,.string,.char,.builtin,.regex,.inserted),
+:root.dark-mode pre[class*=language-] .token:is(.selector,.string,.char,.builtin,.regex,.inserted) {
     color: #ca9147;
 }
 
-:root.dark-mode code[class*=language-] .token:is(.operator,.entity,.url),
-:root.dark-mode pre[class*=language-] .token:is(.operator,.entity,.url) {
+:root.dark-mode code[class*=language-] .token:is(.operator,.url),
+:root.dark-mode pre[class*=language-] .token:is(.operator,.url) {
     color: #fff;
 }
 
-:root.dark-mode code[class*=language-] .token:is(.atrule,.attr-value,.keyword),
-:root.dark-mode pre[class*=language-] .token:is(.atrule,.attr-value,.keyword) {
+:root.dark-mode code[class*=language-] .token.keyword,
+:root.dark-mode pre[class*=language-] .token.keyword {
     color: #2d94fb;
 }
 
@@ -2579,11 +2290,6 @@ mjx-container {
 
 .process-math mjx-container svg {
     background: none;
-}
-
-[data-knowl]>mjx-mrow .TEX-I {
-    font-family: MJXZERO!important;
-    font-style: normal!important;
 }
 
 .knowl mjx-mtext>mjx-utext,
@@ -2646,7 +2352,6 @@ body.pretext>a.assistive,
     margin: 0;
 }
 
-.ptx-sagecell,
 .tabular,
 .table-like,
 .figure-like,
@@ -2889,55 +2594,6 @@ body.pretext>a.assistive,
     --ptx-search-resultshighlight: rgba(255, 255, 0, 15%);
 }
 
-body.ptx-runestone-template .ptx-main>.ptx-content {
-    max-width: unset;
-}
-
-body.ptx-runestone-template .ptx-button {
-    font: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10px;
-    gap: 10px;
-    min-height: 34px;
-    color: var(--button-text-color);
-    background-color: var(--button-background);
-    border-width: 1px;
-    border-color: var(--button-border-color);
-    border-style: solid;
-    border-radius: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: pointer;
-    user-select: none;
-}
-
-body.ptx-runestone-template .ptx-button:hover:not(.disabled) {
-    color: var(--button-hover-text-color);
-    background-color: var(--button-hover-background);
-}
-
-body.ptx-runestone-template .ptx-button:focus-visible {
-    outline: 2px solid var(--button-text-color);
-    outline-offset: -2px;
-}
-
-body.ptx-runestone-template .ptx-button.disabled {
-    opacity: .4;
-    cursor: not-allowed;
-}
-
-body.ptx-runestone-template .ptx-button.hidden {
-    display: none;
-}
-
-body.ptx-runestone-template .ptx-button.open {
-    color: var(--button-hover-text-color);
-    background-color: var(--button-hover-background);
-}
-
 .ptx-content .ptx-runestone-container .runestone {
     margin: unset;
     border-radius: 0;
@@ -3060,70 +2716,6 @@ ul[data-component=timedAssessment] {
 
 .clipboardable .code-copy.copied .checkmark {
     display: inline;
-}
-
-.clipboardable:has(.code-display) {
-    margin: .25em 0;
-}
-
-.webwork+.knowl-output img {
-    max-width: 100%;
-}
-
-.sagecell_sessionOutput pre {
-    font-family: var(--font-monospace);
-}
-
-.sagecell {
-    white-space: normal;
-    margin-top: 1.25em;
-    margin-bottom: 1.25em;
-}
-
-.sage-interact.sagecell {
-    margin: 0;
-}
-
-.sagecell_evalButton {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    padding: 0 .65em;
-}
-
-.sagecell_evalButton {
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    user-select: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border-width: 1px;
-    border-style: solid;
-    font-weight: 700;
-    border-radius: 3px;
-}
-
-.sagecell_evalButton {
-    color: #383838;
-    background-image: linear-gradient(#f7f7f7,#bbb);
-    border-color: #c4c4c4;
-}
-
-.sagecell_evalButton:hover {
-    color: #181868;
-    background-image: linear-gradient(#bbb,#f7f7f7);
-}
-
-.sagecell_evalButton:focus,
-.sagecell_evalButton:active {
-    color: #20160b;
-    background-image: linear-gradient(#ff6852,#ffd7d1);
-    border-color: #ff2822;
-}
-
-.sagecell .sagecell_editor {
-    margin-bottom: 8px;
 }
 
 section,
@@ -3306,7 +2898,7 @@ figure.table-like {
 
 @container ptx-main (width > 821px){
 
-:is(.timedAssessment,.theorem-like,.definition-like,.example-like,.exercise-like,.project-like,.remark-like,.openproblem-like,.openproblems-like,.computation-like,.knowl__content):has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
+:is(.timedAssessment,.exercise-like,.project-like,.remark-like,.knowl__content):has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
     --max-width: min((100cqw - 2 * 48px), 10000px) ;
     min-width: 100%;
     clear: right;
@@ -3315,12 +2907,12 @@ figure.table-like {
     margin-left: calc(-.5*(100cqw - 821px));
 }}
 
-:is(.timedAssessment,.theorem-like,.definition-like,.example-like,.exercise-like,.project-like,.remark-like,.openproblem-like,.openproblems-like,.computation-like,.knowl__content):has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) :is(.timedAssessment,.theorem-like,.definition-like,.example-like,.exercise-like,.project-like,.remark-like,.openproblem-like,.openproblems-like,.computation-like,.knowl__content):has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
+:is(.timedAssessment,.exercise-like,.project-like,.remark-like,.knowl__content):has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) :is(.timedAssessment,.exercise-like,.project-like,.remark-like,.knowl__content):has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
     width: 100%;
     margin-left: auto;
 }
 
-:is(.timedAssessment,.theorem-like,.definition-like,.example-like,.exercise-like,.project-like,.remark-like,.openproblem-like,.openproblems-like,.computation-like,.knowl__content) .ptx-runestone-container:has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
+:is(.timedAssessment,.exercise-like,.project-like,.remark-like,.knowl__content) .ptx-runestone-container:has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
     width: 100%;
     margin-left: 0;
 }
@@ -3366,10 +2958,6 @@ figure.table-like {
     margin-right: auto;
 }
 
-.ptx-runestone-template :is(.timedAssessment,.theorem-like,.definition-like,.example-like,.exercise-like,.project-like,.remark-like,.openproblem-like,.openproblems-like,.computation-like,.knowl__content):has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
-    margin-left: unset;
-}
-
 @container ptx-main (width < 850px){
 
 .ptx-runestone-container:has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
@@ -3377,12 +2965,12 @@ figure.table-like {
     margin-left: calc(-.5*(100cqw - 100%));
 }
 
-:is(.timedAssessment,.theorem-like,.definition-like,.example-like,.exercise-like,.project-like,.remark-like,.openproblem-like,.openproblems-like,.computation-like,.knowl__content):has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
+:is(.timedAssessment,.exercise-like,.project-like,.remark-like,.knowl__content):has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
     width: 100cqw;
     margin-left: calc(-.5*(100cqw - 100%));
 }
 
-:is(.timedAssessment,.theorem-like,.definition-like,.example-like,.exercise-like,.project-like,.remark-like,.openproblem-like,.openproblems-like,.computation-like,.knowl__content) .ptx-runestone-container:has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
+:is(.timedAssessment,.exercise-like,.project-like,.remark-like,.knowl__content) .ptx-runestone-container:has(.ac_section,.codelens,.parsons_section,.hparsons_section,.datafile) {
     width: 100%;
     margin-left: -5px;
 }}
@@ -3872,29 +3460,10 @@ div.clickablearea_section > div > div:has(> div.para) {
     margin: 1em 0;
 }
 
-div.time {
-    display: flex;
-    flex-direction: row;
-    gap: 0.25em;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: #999;
-    svg {
-      fill: #999;
-      background: #0000;
-    }
-}
-
 .ptx-content cite {
   display: block;
   text-align: right;
   margin-right: 2em;
-}
-
-.ptx-content section.section:has(div.time) {
-    padding-top: 1.5em;
 }
 
 /* Default spacing between paragraphs is too much. */
@@ -3959,12 +3528,6 @@ div.time {
   color: inherit;
 }
 
-.ptx-content .code-display {
-  color: var(--codeColor);
-  overflow-x: auto;
-  margin-left: 2em;
-}
-
 /* I'm not sure why the .code-block:before rule exists in PtX but it just adds extra gorp. */
 .ptx-content .code-block:before {
   content: none;
@@ -4007,11 +3570,6 @@ div.time {
   font-size: inherit;
 }
 
-.ptx-content #summary ul.simple li
-{
-  padding-top: 1em;
-}
-
 .ptx-content figure.table-like {
      margin-left: 0px;
 }
@@ -4047,37 +3605,13 @@ div.autopermalink[data-description="Paragraph"] {
 }
 
 /*
- * Time estimates at the top right of some pages.
- */
-div.unit-time,
-.ptx-content div.unit-time
-{
-  clear: right;
-  float: right;
-  width: 50%;
-  text-align: right;
-  font-size: 1em;
-  padding: 1em;
-  color: grey;
-}
-
-div.unit-time svg,
-.ptx-content div.unit-time svg {
-  display: inline;
-  vertical-align: middle;
-}
-
-/*
  * Give paragraphs immediately after certain elements a bit of breathing room.
  * This could also be achieved by giving some margin-bottom to those preceding
  * elements but this seems simpler for now.
  */
 
 iframe + p,
-div.highlight-java + p,
-.ptx-content iframe + p,
-.ptx-content div.highlight-java + p,
-.ptx-content div.highlight-text + p
+.ptx-content iframe + p
 {
   margin-top: 10px;
 }
@@ -4134,11 +3668,7 @@ div.highlight-java + p,
     padding: 5px;
 }
 
-table.random-recipes tbody tr td:first-child {
-  text-align: left;
-}
-
-table .align-default, td {
+td {
   text-align: left;
 }
 

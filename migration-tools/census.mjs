@@ -49,6 +49,15 @@ const OVERRIDES = new Map([
   ['bhs-book-exercise', ['ours-js-hook', 'book-exercise.ts builds the editor UI on this']],
   ['bhs-book-starter', ['ours-js-hook', 'starter-code textarea read by book-exercise.ts']],
   // Evidence hand-checked 2026-08-09:
+  // Runtime STATE classes the generic guard would misfile as dead-css —
+  // pretext-core classList-toggles all of these (ToC active trail + open
+  // knowl links, dialog open/hidden, sidebar visible/hidden, clipboard
+  // copied feedback):
+  ['active', ['frozen-pretext-js', 'set at runtime: ToC trail (classList.add on li), open knowl links']],
+  ['open', ['frozen-pretext-js', 'set at runtime: dialog/dropdown state']],
+  ['hidden', ['frozen-pretext-js', 'set at runtime: sidebar/dialog-button state']],
+  ['visible', ['frozen-pretext-js', 'set at runtime: sidebar state']],
+  ['copied', ['frozen-pretext-js', 'set at runtime: clipboard-button feedback']],
   ['para', ['live-ours', 'renegotiable despite the hits: rs-css is ONE rule (`.multiplechoice_section label>.para{display:inline}` in prefix-919 — compensate with a `label>p` rule); pretext-core only *generates* `.para` divs in knowl-error markup; read-aloud has bare `p` in its CONTAINER_SELECTOR (its `div.para` entry is dead legacy) — segmentation + math speech verified live 2026-08-09 via PTXReadAloud.collect(); the 56-bundle hit is Portuguese prose ("para resolver")']],
   ['code-inline', ['live-ours', 'renegotiable: the rs-css hit is one prefix-580 rule (`.datafile_caption code.code-inline{...}`) over markup WE emit — recreate as `.datafile_caption code` in book.css at step 4']],
 ]);

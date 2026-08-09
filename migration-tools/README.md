@@ -26,8 +26,15 @@ evidence and as the ledger's destination.
 
 Known blind spots, called out in the doc where they bite: attribute
 selectors (`[class*=language-]`) aren't seen as consumers, and a class
-name a script constructs at runtime evades the string scan. The shot
-harness is the backstop.
+name a script constructs at runtime evades the string scan. The
+backstops are the shot harness and **`runtime-census.mjs`**, which loads
+the shot pages in Chromium, pokes the stateful chrome, and records every
+class in the live DOM (`shots/runtime-classes.txt`) — check purge
+candidates against that before deleting rules. The criterion for
+deleting a rule is "can this selector ever match our DOM" (static HTML ∪
+runtime DOM ∪ emitter-supported), which is deliberately broader than the
+ledger's name classification: a name can stay *frozen* for JS purposes
+while our CSS for it is still unmatchable and deletable.
 
 ## shoot.mjs / compare.mjs — the screenshot harness
 
