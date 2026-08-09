@@ -4,7 +4,9 @@
   "description": "BHSawesome book source. npm is here only for the push-content bin (@peterseibel/bhs-content) that mirrors build/out to the bhs-cs website's content overlay; the book itself builds with uv/pretext.",
   "devDependencies": {
     "@peterseibel/bhs-content": "^0.8.2",
-    "@rgrove/parse-xml": "^4.2.3"
+    "@rgrove/parse-xml": "^4.2.3",
+    "mathjax-full": "^3.2.1",
+    "prismjs": "^1.30.0"
   },
   "type": "module"
 }

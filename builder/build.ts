@@ -151,8 +151,13 @@ function copyTree(src: string, dst: string): number {
 }
 
 // The stylesheet is OURS (builder/book.css; see its header) — copied to
-// the site root beside the pages.
+// the site root beside the pages, with the self-hosted font files it
+// references under fonts/.
 fs.copyFileSync(path.join(ROOT, 'builder', 'book.css'), path.join(OUT, 'book.css'));
+fs.mkdirSync(path.join(OUT, 'fonts'), { recursive: true });
+for (const f of fs.readdirSync(path.join(ROOT, 'builder', 'fonts'))) {
+  fs.copyFileSync(path.join(ROOT, 'builder', 'fonts', f), path.join(OUT, 'fonts', f));
+}
 
 if (withAssets && !only) {
   const copied =

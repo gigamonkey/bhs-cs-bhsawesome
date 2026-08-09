@@ -10,8 +10,10 @@
  */
 
 import type { Book } from './book.ts';
+import { highlight } from './highlight.ts';
 import { type Attrs, escapeHtml, h, voidEl } from './html.ts';
 import { NUMBERED_BLOCKS, blockNumber, elementId } from './ids.ts';
+import { renderMath } from './math.ts';
 import { type XmlElement, elements, isElement, isText, textContent } from './xml.ts';
 
 export type Ctx = {
@@ -149,8 +151,9 @@ export function emitChildren(el: XmlElement, ctx: Ctx): string {
       out += escapeHtml(smartQuotes(c.text.slice(pendingSkip)));
       pendingSkip = 0;
     } else if (isElement(c) && c.name === 'm') {
-      // PreTeXt pulls sentence punctuation following math INTO the math
-      // (`\(x\text{.}\)`) so it can't wrap onto its own line.
+      // Sentence punctuation following math is pulled INTO the math
+      // (`x\text{.}`) so it can't wrap onto its own line; the TeX then
+      // prerenders to a self-contained inline SVG (builder/src/math.ts).
       let math = textContent(c);
       const next = el.children[i + 1];
       if (isText(next)) {
@@ -160,7 +163,7 @@ export function emitChildren(el: XmlElement, ctx: Ctx): string {
           pendingSkip = punct.length;
         }
       }
-      out += h('span', { class: 'process-math' }, `\\(${escapeHtml(math)}\\)`);
+      out += renderMath(math);
     } else if (isElement(c)) {
       out += emitElement(c, ctx);
     }
@@ -262,7 +265,8 @@ const EMITTERS: Record<string, Emitter> = {
     const label = el.children.length ? trimText(emitChildren(el, ctx)) : escapeHtml(el.attributes.visual ?? href);
     return h('a', { class: 'external', href, target: '_blank' }, label);
   },
-  m: (el) => h('span', { class: 'process-math' }, `\\(${escapeHtml(textContent(el))}\\)`),
+  // Math prerenders at build time (builder/src/math.ts) — no MathJax runtime.
+  m: (el) => renderMath(textContent(el)),
   idx: () => '', // index machinery; the index page reads these in its own pass
   xref: (el, ctx) => {
     const ref = el.attributes.ref ?? '';
@@ -562,7 +566,8 @@ const EMITTERS: Record<string, Emitter> = {
   },
 
   // Non-interactive <program> in prose (interactive ones route to
-  // emitComponent before dispatch): the clipboardable code box.
+  // emitComponent before dispatch): the clipboardable code box,
+  // syntax-highlighted at build time (builder/src/highlight.ts).
   program: (el, ctx) => {
     const code = el.children.find((c) => isElement(c) && c.name === 'code') as XmlElement | undefined;
     const lang = el.attributes.language ?? 'java';
@@ -572,7 +577,7 @@ const EMITTERS: Record<string, Emitter> = {
       h(
         'pre',
         { class: 'program clipboardable' },
-        h('code', { class: `language-${lang}` }, `${escapeHtml(dedent(textContent(code ?? el)))}\n`),
+        h('code', { class: `language-${lang}` }, `${highlight(dedent(textContent(code ?? el)), lang)}\n`),
       ),
     );
   },
