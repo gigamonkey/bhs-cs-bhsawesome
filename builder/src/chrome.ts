@@ -7,7 +7,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Book, Division } from './book.ts';
 import { escapeHtml, h } from './html.ts';
-import { tocHtml } from './toc.ts';
 
 const TEMPLATE = fs.readFileSync(path.join(import.meta.dirname, '..', 'chrome.html'), 'utf8');
 
@@ -47,7 +46,6 @@ export function renderChrome(
 ): string {
   const buttons = treeButtons(nav.prev, nav.up, nav.next);
   return TEMPLATE.replace('{{TITLE}}', escapeHtml(title))
-    .replace('{{TOC}}', () => tocHtml(book, page))
     .replace('{{TREEBUTTONS}}', () => buttons)
     .replace('{{TREEBUTTONS_FOOTER}}', () => buttons)
     .replace('{{CONTENT}}', () => content);

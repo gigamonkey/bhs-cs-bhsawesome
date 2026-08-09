@@ -7,16 +7,16 @@
 import type { Book, Division } from './book.ts';
 import { escapeHtml, h } from './html.ts';
 
-export function tocHtml(book: Book, currentPage: string): string {
+export function tocHtml(book: Book): string {
   const items: string[] = [];
   // Front matter + chapters + back matter, mirroring the landed ToC.
   for (const d of book.divisions.children) {
-    items.push(tocItem(d, currentPage));
+    items.push(tocItem(d));
   }
   items.push(
     h(
       'li',
-      { class: `toc-item toc-backmatter${currentPage === 'backmatter.html' ? ' active' : ''}` },
+      { class: 'toc-item toc-backmatter' },
       h(
         'div',
         { class: 'toc-title-box' },
@@ -27,7 +27,7 @@ export function tocHtml(book: Book, currentPage: string): string {
         { id: 'ptx-toc-group-backmatter', class: 'structural toc-item-list' },
         h(
           'li',
-          { class: `toc-item toc-index${currentPage === 'book-index.html' ? ' active' : ''}` },
+          { class: 'toc-item toc-index' },
           h(
             'div',
             { class: 'toc-title-box' },
@@ -36,7 +36,7 @@ export function tocHtml(book: Book, currentPage: string): string {
         ),
         h(
           'li',
-          { class: `toc-item toc-colophon${currentPage === 'colophon.html' ? ' active' : ''}` },
+          { class: 'toc-item toc-colophon' },
           h(
             'div',
             { class: 'toc-title-box' },
@@ -46,23 +46,11 @@ export function tocHtml(book: Book, currentPage: string): string {
       ),
     ),
   );
-  const anyActive = items.some((i) => i.includes(' active') || i.includes('contains-active'));
-  return h(
-    'ul',
-    { class: `structural toc-item-list${anyActive ? ' contains-active' : ''}` },
-    items.join('\n'),
-  );
+  return h('ul', { class: 'structural toc-item-list' }, items.join('\n'));
 }
 
-function containsPage(d: Division, page: string): boolean {
-  if (d.page === page) return true;
-  return d.children.some((c) => containsPage(c, page));
-}
-
-function tocItem(d: Division, currentPage: string): string {
-  const active = d.page === currentPage;
-  const contains = !active && containsPage(d, currentPage);
-  const classes = `toc-item toc-${d.kind}${active ? ' active' : ''}${contains ? ' contains-active' : ''}`;
+function tocItem(d: Division): string {
+  const classes = `toc-item toc-${d.kind}`;
   const label = [
     d.number ? h('span', { class: 'codenumber' }, escapeHtml(d.number)) : '',
     h('span', { class: 'title' }, escapeHtml(d.title || (d.kind === 'introduction' ? 'Introduction' : d.kind === 'frontmatter' ? 'Front Matter' : d.title))),
@@ -79,7 +67,7 @@ function tocItem(d: Division, currentPage: string): string {
   // their section page.
   const subItems: string[] = [];
   for (const c of d.children) {
-    if (c.page) subItems.push(tocItem(c, currentPage));
+    if (c.page) subItems.push(tocItem(c));
     else if (c.kind === 'subsection') {
       subItems.push(
         h(
@@ -108,4 +96,31 @@ function tocItem(d: Division, currentPage: string): string {
       ? h('ul', { id: `ptx-toc-group-${d.id}`, class: 'structural toc-item-list' }, subItems.join('\n'))
       : '';
   return h('li', { class: classes }, titleBox, group);
+}
+
+/**
+ * The shared ToC as a deferred script (phase 5): injects the one ToC into
+ * #ptx-toc and applies the active/contains-active marks client-side from
+ * location — all before DOMContentLoaded (defer guarantees it), so
+ * pretext-core's chevron/expansion/scroll init works unmodified.
+ */
+export function tocJs(book: Book): string {
+  return `(function () {
+  var nav = document.getElementById('ptx-toc');
+  if (!nav) return;
+  nav.innerHTML = ${JSON.stringify(tocHtml(book))};
+  var file = window.location.pathname.split('/').pop() || 'bhsawesome.html';
+  var link = nav.querySelector('a[href="' + file + '"]');
+  if (!link) return;
+  var li = link.closest('li');
+  li.classList.add('active');
+  var p = li.parentElement && li.parentElement.closest('li.toc-item');
+  while (p) {
+    p.classList.add('contains-active');
+    p = p.parentElement && p.parentElement.closest('li.toc-item');
+  }
+  var root = nav.querySelector('ul.structural');
+  if (root) root.classList.add('contains-active');
+})();
+`;
 }

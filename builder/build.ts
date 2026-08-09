@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { loadBook } from './src/book.ts';
 import { navFor, renderChrome } from './src/chrome.ts';
+import { tocJs } from './src/toc.ts';
 import { numberBlocks } from './src/ids.ts';
 import { initMath } from './src/math.ts';
 import { makeCtx, pageContent } from './src/page.ts';
@@ -156,6 +157,8 @@ function copyTree(src: string, dst: string): number {
 // the site root beside the pages, with the self-hosted font files it
 // references under fonts/.
 fs.copyFileSync(path.join(ROOT, 'builder', 'book.css'), path.join(OUT, 'book.css'));
+// The shared ToC script (one cacheable file instead of inline ToC per page).
+fs.writeFileSync(path.join(OUT, 'toc.js'), tocJs(book));
 fs.mkdirSync(path.join(OUT, 'fonts'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'builder', 'fonts'))) {
   fs.copyFileSync(path.join(ROOT, 'builder', 'fonts', f), path.join(OUT, 'fonts', f));
