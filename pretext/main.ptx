@@ -56,6 +56,11 @@
           build it from the original PreTeXt sources without all the generality
           of full PreTeXt.
         </p>
+
+        <p>
+          Mathematical notation in this book is provided via MathJax, code
+          highlighting via Prism, and code editing via CodeMirror6.
+        </p>
       </colophon>
     </backmatter>
 
