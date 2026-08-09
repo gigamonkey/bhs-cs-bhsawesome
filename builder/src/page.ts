@@ -156,12 +156,18 @@ function autopermalinkFor(id: string, description: string): string {
   );
 }
 
-/** Chapter page: heading + linked summary of its page-children. */
+/** Chapter page: heading, the inline introduction (our schema — same
+ * treatment as the frontmatter's), then the linked summary of its
+ * page-children. */
 function chapterSummaryPage(d: Division, ctx: Ctx): string {
   const heading = h(
     'h1',
     { class: 'heading hide-type' },
     headingSpans('Chapter', d.number, escapeHtml(d.title), ctx),
   );
-  return h('section', { class: 'chapter', id: d.id }, heading, summaryLinks(d));
+  const intro = d.children.find((c) => c.kind === 'introduction' && !c.page);
+  const introHtml = intro
+    ? h('section', { class: 'introduction', id: intro.id }, blocksOf(intro.el, ctx))
+    : '';
+  return h('section', { class: 'chapter', id: d.id }, heading, introHtml, summaryLinks(d));
 }

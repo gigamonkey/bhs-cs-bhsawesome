@@ -114,8 +114,11 @@ export function loadBook(mainPtx: string): Book {
     const startsPage =
       (d.kind === 'frontmatter' ||
         (depth <= 2 && d.kind !== 'book') ||
-        (d.parent?.kind === 'chapter' && (d.kind === 'section' || d.kind === 'introduction'))) &&
-      !(d.kind === 'introduction' && d.parent?.kind === 'frontmatter');
+        (d.parent?.kind === 'chapter' && d.kind === 'section')) &&
+      // Our schema: a division's introduction renders ON that division's
+      // page (frontmatter's under the book title, a chapter's on its
+      // contents page), never as a page of its own.
+      !(d.kind === 'introduction' && (d.parent?.kind === 'frontmatter' || d.parent?.kind === 'chapter'));
     if (startsPage) {
       d.page = `${d.id}.html`;
       pages.push(d);
