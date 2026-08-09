@@ -144,7 +144,7 @@
         </p>
       </statement>
 
-      <program interactive="activecode">
+      <program interactive="activecode" run-only="yes">
         <![CDATA[
         public class RecursiveBinarySearch {
             public static int search(int[] nums, int low, int high, int target) {
@@ -263,7 +263,7 @@
       array.
     </p>
 
-    <program interactive="activecode" label="merge-sort-code">
+    <program interactive="activecode" label="merge-sort-code" run-only="yes">
       <![CDATA[
       import java.util.Arrays;
 

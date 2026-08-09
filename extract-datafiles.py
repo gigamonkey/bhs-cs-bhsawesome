@@ -1,171 +1,43 @@
 #!/usr/bin/env python3
 
 """Extract activecode datafiles for the bhs-cs native runner
-(the monorepo's plans/rehost-bhsawesome.md, phase 4a datafile support):
+(the monorepo's plans/done/rehost-bhsawesome.md, phase 4a datafile
+support):
 
-    uv run python extract-datafiles.py --monorepo <path-to-bhs-cs>
+    python3 extract-datafiles.py --monorepo <path-to-bhs-cs>
 
-The book's datafiles are all text. Two kinds:
+Plain data files (dictionary.txt, *.csv) go to the monorepo's
+`java/src/main/resources/book-datafiles/`, and each exercise that reads
+them gets a `book-tests/<label>.datafiles` manifest (one filename per
+line) so BookTestRunner copies them into the run's working directory.
 
-- The ".jar" ones (turtleClasses.jar, turtleClasses2.jar, GridWorld.jar)
-  are concatenated Java SOURCE that Runestone's client splits into
-  per-class files (activecode's parseJavaClasses, ported below). We split
-  them once here and write the pieces to the monorepo's `java/book-src/`,
-  which the java build compiles into a nested `book-classes.jar` resource
-  that BookTestRunner puts on book runs' classpaths (NOT the fat jar's
-  root: default-package classes there would shadow same-named student
-  classes in normal assignment grading, whose in-memory classloader is
-  parent-first).
+Which exercise uses which files comes from the source model
+(`node builder/datafile-uses.ts` — the `datafile` attributes on live
+`<program>` elements), and the file contents come straight from
+`pretext/assets/_static/datasets/` (every plain datafile lives there;
+the old `<datafile>`-element harvest is gone with the PreTeXt
+toolchain). Jar "datafiles" (turtleClasses.jar & co — concatenated Java
+source Runestone's client used to split per-class) are skipped entirely:
+their split per-class copies in the monorepo's `java/book-src/` are
+CANONICAL, hand-editable sources now, compiled into the runner's nested
+book-classes.jar.
 
-- Plain data files (dictionary.txt, *.csv) go to the monorepo's
-  `java/src/main/resources/book-datafiles/`, and each converted exercise
-  that reads them gets a `book-tests/<label>.datafiles` manifest (one
-  filename per line) so BookTestRunner copies them into the run's working
-  directory.
-
-Everything written is generated-but-committed in the monorepo; re-run this
-after editing the book's datafiles.
+Everything written is generated-but-committed in the monorepo; re-run
+this after editing the book's datasets or a `datafile` attribute.
 """
 
 import json
-import re
 import sys
 from argparse import ArgumentParser
 from pathlib import Path
 from subprocess import run
 
 ROOT = Path(__file__).resolve().parent
-PRETEXT = ROOT / "pretext"
-
-FAKE_JARS = {"turtleClasses.jar", "turtleClasses2.jar", "GridWorld.jar"}
-
-# <datafile> harvesting from the ptx source (formerly land.py's).
-DATAFILE_RE = re.compile(r"<datafile\b[^>]*?filename=\"([^\"]+)\".*?(?:</datafile>|/>)", re.S)
-PRE_SOURCE_RE = re.compile(r"<pre\s+source=\"([^\"]+)\"")
-XI_TEXT_RE = re.compile(r"<xi:include\s+parse=\"text\"\s+href=\"([^\"]+)\"")
-INLINE_PRE_RE = re.compile(r"<pre>(.*?)</pre>", re.S)
-
-
-def escape(text: str) -> str:
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
-
-def unescape(text: str) -> str:
-    return (
-        text.replace("&lt;", "<")
-        .replace("&gt;", ">")
-        .replace("&quot;", '"')
-        .replace("&#39;", "'")
-        .replace("&amp;", "&")
-    )
-
-
-def datafile_library() -> dict[str, str]:
-    """filename -> HTML-escaped content, from every <datafile> in the source
-    (legacy trees included — harmless, and some live pages reference datafiles
-    defined outside the live tree)."""
-    lib: dict[str, str] = {}
-    for ptx in sorted(PRETEXT.rglob("*.ptx")):
-        for m in DATAFILE_RE.finditer(ptx.read_text()):
-            fname, block = m.group(1), m.group(0)
-            if fname in lib:
-                continue
-            if src := PRE_SOURCE_RE.search(block):
-                # @source is relative to the external (assets) directory.
-                path = PRETEXT / "assets" / src.group(1)
-                if path.is_file():
-                    lib[fname] = escape(path.read_text())
-            elif xi := XI_TEXT_RE.search(block):
-                path = (ptx.parent / xi.group(1)).resolve()
-                if path.is_file():
-                    lib[fname] = escape(path.read_text())
-            elif inline := INLINE_PRE_RE.search(block):
-                # PreTeXt escaping for &, <, > is HTML escaping; keep as-is.
-                lib[fname] = inline.group(1)
-    return lib
-
-
-def parse_java_classes(source: str) -> list[tuple[str, str]]:
-    """Split concatenated Java source into (filename, content) per top-level
-    type — a direct port of Runestone activecode's parseJavaClasses: scan
-    character-wise skipping comments/strings/chars/parens, and at each
-    top-level closing brace emit everything since the previous type's end,
-    named for the token before extends/implements (else the last header
-    token)."""
-    e = source.strip()
-    in_type = False
-    depth = 0
-    brace_pos = 0
-    out: list[tuple[str, str]] = []
-    unit_start = 0
-    header_start = 0
-    a = 0
-    while a < len(e):
-        l = e[a]
-        if l == "/":
-            a += 1
-            if a < len(e) and e[a] == "/":
-                a += 1
-                while a < len(e) and e[a] != "\n":
-                    a += 1
-                if not in_type:
-                    header_start = a
-            elif a < len(e) and e[a] == "*":
-                a += 1
-                while a + 1 < len(e) and not (e[a] == "*" and e[a + 1] == "/"):
-                    a += 1
-                if not in_type:
-                    header_start = a
-        elif l == '"':
-            a += 1
-            while a < len(e) and e[a] != '"':
-                a += 1
-        elif l == "'":
-            a += 1
-            while a < len(e) and e[a] != "'":
-                a += 1
-        elif l == "(":
-            parens = 1
-            a += 1
-            while parens > 0 and a < len(e):
-                if e[a] == "(":
-                    parens += 1
-                elif e[a] == ")":
-                    parens -= 1
-                a += 1
-        if a >= len(e):
-            break
-        if not in_type and e[a] == "{":
-            brace_pos = a
-            in_type = True
-            depth = 1
-        elif in_type:
-            if e[a] == "{":
-                depth += 1
-            elif e[a] == "}":
-                depth -= 1
-        if in_type and depth == 0:
-            end = a + 1
-            tokens = e[header_start:brace_pos].split()
-            name = tokens[-1] if tokens else "Unknown"
-            for i, tok in enumerate(tokens):
-                if tok in ("extends", "implements"):
-                    name = tokens[i - 1]
-                    break
-            # Generic types (Grid<E>) name their file for the raw type.
-            name = name.split("<")[0]
-            out.append((name + ".java", e[unit_start:end]))
-            in_type = False
-            unit_start = end
-            header_start = end
-        a += 1
-    return out
+DATASETS = ROOT / "pretext" / "assets" / "_static" / "datasets"
 
 
 def label_datafiles() -> dict[str, list[str]]:
-    """label -> datafile filenames, from the builder's source model
-    (builder/datafile-uses.ts walks the assembled live book — no rendered
-    pages involved)."""
+    """label -> datafile filenames, from the builder's source model."""
     out = run(
         ["node", str(ROOT / "builder" / "datafile-uses.ts")],
         capture_output=True,
@@ -183,59 +55,38 @@ def main() -> int:
     args = parser.parse_args()
 
     monorepo = Path(args.monorepo)
-    book_src = monorepo / "java" / "book-src"
     resources = monorepo / "java" / "src" / "main" / "resources"
     datafiles_dir = resources / "book-datafiles"
     tests_dir = resources / "book-tests"
-    for d in (book_src, datafiles_dir):
-        d.mkdir(parents=True, exist_ok=True)
+    datafiles_dir.mkdir(parents=True, exist_ok=True)
     if not tests_dir.is_dir():
         print(f"error: {tests_dir} is not a directory")
         return 1
 
-    def clean(content: str) -> str:
-        # Inline <pre> datafiles (GridWorld.jar) keep their CDATA wrapper in
-        # the harvested library; strip it.
-        c = unescape(content).strip()
-        if c.startswith("<![CDATA["):
-            c = c.removeprefix("<![CDATA[").removesuffix("]]>").strip()
-        return c + "\n"
-
-    lib = {name: clean(content) for name, content in datafile_library().items()}
     uses = label_datafiles()
-
-    plain_needed = sorted({f for files in uses.values() for f in files if f not in FAKE_JARS})
-    jar_needed = sorted({f for files in uses.values() for f in files if f in FAKE_JARS})
-
-    classes = 0
-    for jar in jar_needed:
-        if jar not in lib:
-            print(f"error: no source for {jar}")
-            return 1
-        for fname, content in parse_java_classes(lib[jar]):
-            (book_src / fname).write_text(content + "\n")
-            classes += 1
-            print(f"  {jar} -> book-src/{fname}")
+    plain_needed = sorted(
+        {f for files in uses.values() for f in files if not f.endswith(".jar")}
+    )
 
     for fname in plain_needed:
-        if fname not in lib:
-            print(f"error: no source for datafile {fname}")
+        src = DATASETS / fname
+        if not src.is_file():
+            print(f"error: no {src} for datafile {fname}")
             return 1
-        (datafiles_dir / fname).write_text(lib[fname])
+        # Preserve the historical normalization: exact content with a
+        # guaranteed trailing newline.
+        (datafiles_dir / fname).write_text(src.read_text().strip() + "\n")
         print(f"  {fname} -> book-datafiles/{fname}")
 
     manifests = 0
     for label, files in sorted(uses.items()):
-        plain = [f for f in files if f not in FAKE_JARS]
+        plain = [f for f in files if not f.endswith(".jar")]
         if plain:
             (tests_dir / f"{label}.datafiles").write_text("".join(f + "\n" for f in plain))
             manifests += 1
             print(f"  {label} -> book-tests/{label}.datafiles ({', '.join(plain)})")
 
-    print(
-        f"wrote {classes} classes from {len(jar_needed)} fake jars, "
-        f"{len(plain_needed)} data files, {manifests} manifests"
-    )
+    print(f"wrote {len(plain_needed)} data files, {manifests} manifests")
     return 0
 
 

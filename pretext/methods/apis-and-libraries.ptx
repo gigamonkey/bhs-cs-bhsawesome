@@ -57,7 +57,7 @@
       see a turtle in action.
     </p>
 
-    <program interactive="activecode" label="turtle-api-demo" datafile="turtleClasses.jar,turtleClasses2.jar">
+    <program interactive="activecode" label="turtle-api-demo" run-only="yes" datafile="turtleClasses.jar,turtleClasses2.jar">
       import java.awt.*;
       import java.util.*;
 

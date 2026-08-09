@@ -17,7 +17,7 @@ import type { Ctx } from './prose.ts';
 import { escapeAttr, escapeHtml, h } from './html.ts';
 import { blockNumber, elementId, overrideId } from './ids.ts';
 import { autopermalink, blockHeadingSpans, dedent, emitBlocks, emitChildren, emitElement, smartQuotes, trimText } from './prose.ts';
-import { type XmlElement, child, elements, isElement, textContent } from './xml.ts';
+import { type XmlElement, attr, child, elements, isElement, textContent } from './xml.ts';
 
 const ASSETS = path.resolve(import.meta.dirname, '..', '..', 'pretext', 'assets');
 
@@ -558,7 +558,10 @@ function activecodeContainer(
 ): string {
   const code = child(program, 'code');
   const starter = dedent(textContent(code ?? program));
-  const graded = child(program, 'tests') !== undefined;
+  // Graded is the default; the few ungraded demos carry run-only="yes"
+  // (our schema — the tests themselves live in the monorepo's book-tests/,
+  // not in the source, since bhsawesome-next-steps.md phase 2).
+  const graded = attr(program, 'run-only') !== 'yes';
   const stdinEl = child(program, 'stdin');
   const stdin = stdinEl ? `${dedent(textContent(stdinEl))}\n` : undefined;
   // The interactive program can live inside the statement; don't render it
