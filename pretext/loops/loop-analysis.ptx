@@ -389,11 +389,13 @@
       will take on and the limit, which is one greater than the largest value.
       I.e. these are the initial value and the value to the right of the &lt; in
       the condition of a canonical loop. Then the number of times the loop will
-      run is just <m>limit - smallestValue</m>.
+      run is just <m>\operatorname{limit} - \operatorname{smallestValue}</m>.
     </p>
 
     <table>
-      <title>Using <m>limit - smallestValue</m> formula</title>
+      <title>
+        Using <m>\operatorname{limit} - \operatorname{smallestValue}</m> formula
+      </title>
 
       <tabular halign="center">
         <col halign="left" right="minor" />

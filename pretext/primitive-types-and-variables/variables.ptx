@@ -80,7 +80,7 @@
           and 60293.93032. Computer people call these “floating point” numbers
           because the decimal point “floats” relative to the magnitude of the
           number, similar to the way it does in scientific notation like <m>6.5
-          ✕ 10^8</m>. The name <c>double</c> comes from the fact that
+          \times 10^8</m>. The name <c>double</c> comes from the fact that
           <c>double</c> values are represented using sixty-four bits, double the
           thirty-two bits used for the type <c>float</c> which used to be the
           normal size floating point number when most computers did math in
