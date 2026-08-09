@@ -1256,17 +1256,22 @@ body.pretext {
     line-height: 1.2;
 }
 
-.code-inline {
+/* Inline code (<c>/<k>) is a bare <code>, styled by element. The two
+   opt-outs: [class*=language-] (our prerendered listings — they keep
+   pre.program's inherited weight and inline display) and .prettyprint
+   (the code lines the parsons component mints at runtime). This is the
+   consolidated effective style the old theme+custom cascade computed:
+   custom.css had already neutralized the theme's box styling
+   (background, border, padding), so none is declared. */
+code:not([class*=language-], .prettyprint) {
     font-family: var(--font-monospace);
-    white-space: pre;
-    color: var(--body-text-color);
-    background: var(--code-inline-background);
-    border-radius: .2em;
+    white-space: collapse nowrap;
+    color: var(--codeColor);
+    font-weight: 600;
     display: inline-block;
     overflow-x: auto;
     max-width: 100%;
     vertical-align: middle;
-    padding: 0 .15em;
     translate: 0 -1px;
     line-height: calc(var(--content-line-height) - .15);
 }
@@ -2050,10 +2055,6 @@ figcaption {
     margin-top: .5em;
 }
 
-figcaption code.code-inline {
-    white-space: pre;
-}
-
 figcaption .codenumber,
 figcaption .type {
     font-weight: 700;
@@ -2086,7 +2087,7 @@ figure.table-like {
  * :root.dark-mode variants below are their ONLY styling. This is not a
  * stock Prism theme: the palette (light and dark) is the book's own, and
  * the base rules integrate with our variables (--code-background,
- * --font-monospace) and the code-inline treatment. If a new language is
+ * --font-monospace) and the inline-code treatment. If a new language is
  * ever added in highlight.ts, its grammar may emit token types with no
  * rule here — they render in the plain text color until colors are added.
  */
@@ -2116,14 +2117,6 @@ pre[class*=language-] {
     line-height: 1.2;
     tab-size: 4;
     hyphens: none;
-}
-
-code[class*=language-].code-inline,
-pre[class*=language-].code-inline {
-    padding: 0 .15em;
-    translate: 0 -1px;
-    line-height: calc(var(--content-line-height) - .15);
-    border: 1px solid color-mix(in oklab,var(--code-inline-background) 50%,#888);
 }
 
 code[class*=language-]::selection,
@@ -2285,11 +2278,6 @@ body.pretext>a.assistive,
 
 .heading {
     break-after: avoid;
-}
-
-.code-inline {
-    border: unset;
-    background: unset;
 }
 
 @page {margin:.75in}}
@@ -3427,20 +3415,16 @@ html:root {
     font-style: normal;
 }
 
-.ptx-content .code-inline
+.ptx-content .heading code,
+.ptx-content span.title code,
+.ptx-content .terminology code
 {
-  color: var(--codeColor);
-  white-space: collapse nowrap;
-  padding: 0;
-  border: none;
-  background: none;
-  font-weight: 600;
+  color: inherit;
 }
 
-.ptx-content .heading .code-inline,
-.ptx-content span.title .code-inline,
-.ptx-content .terminology .code-inline
-{
+/* The runestone stylesheet used to give datafile-caption code
+   color:inherit via a class our inline code no longer wears. */
+.datafile_caption code {
   color: inherit;
 }
 
@@ -3622,8 +3606,10 @@ td {
   margin-left: unset;
 }
 
-/* <k> — language keywords, as distinct from general inline code (<c>). */
-.code-inline.keyword {
+/* <k> — language keywords, as distinct from general inline code (<c>).
+   Visually identical today (all inline code is 600); the class keeps the
+   distinction stylable. */
+code.keyword {
     font-weight: 600;
 }
 

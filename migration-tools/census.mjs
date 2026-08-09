@@ -100,6 +100,9 @@ const FROZEN_PATTERNS = [
   /_section$/, /^ac_/, /^parsons/, /^hparsons/, /^hp_/, /^ptx-runestone/,
   /^runestone/, /^cd_/, /^pytutor/i, /^codelens/, /^fillintheblank$/,
   /^datafile/, /^clickable/, /^cardsort/, /^draggable/,
+  // the code lines the parsons component mints at runtime (book.css's
+  // bare-code rule opts them out by this class)
+  /^prettyprint$/,
 ];
 
 // Names common enough that a string-literal hit in a minified bundle is
