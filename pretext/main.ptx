@@ -48,6 +48,15 @@
       <index xml:id="book-index">
         <index-list />
       </index>
+      <colophon>
+        <p>
+          BHSawesome was originally hosted on Runestone Academy and written in
+          the PreTeXt markup language. In the summer of 2026 we moved it to be
+          hosted on the bhs-cs.gigamonkeys.com website and built tooling to
+          build it from the original PreTeXt sources without all the generality
+          of full PreTeXt.
+        </p>
+      </colophon>
     </backmatter>
 
     <conclusion>
