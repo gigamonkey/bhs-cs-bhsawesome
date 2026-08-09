@@ -73,10 +73,12 @@ export function autopermalink(id: string, description: string): string {
   );
 }
 
-const HEADING_SPACE = () =>
-  h('span', { class: 'space heading-divison-mark heading-divison-mark__space' }, ' ');
-const HEADING_PERIOD = () =>
-  h('span', { class: 'period heading-divison-mark heading-divison-mark__period' }, '.');
+/*
+ * Heading markup: only the pieces the CSS actually addresses get spans —
+ * .type (hide-type hides it), .codenumber, .title. Separator spaces and
+ * periods are plain text (the PreTeXt span wrappers around them had no
+ * styling and no consumers).
+ */
 
 /**
  * Block headings ("Activity 2.1.7. Variable declarations."): period after
@@ -86,46 +88,42 @@ const HEADING_PERIOD = () =>
 export function blockHeadingSpans(type: string, number: string | null, titleHtml: string | null): string {
   const parts = [h('span', { class: 'type' }, escapeHtml(type))];
   if (number) {
-    parts.push(HEADING_SPACE(), h('span', { class: 'codenumber' }, escapeHtml(number)));
+    parts.push(' ', h('span', { class: 'codenumber' }, escapeHtml(number)));
   }
-  parts.push(HEADING_PERIOD());
+  parts.push('.');
   if (titleHtml) {
     const t = /[.?!]$/.test(titleHtml) ? titleHtml : `${titleHtml}.`;
-    parts.push(HEADING_SPACE(), h('span', { class: 'title' }, t));
+    parts.push(' ', h('span', { class: 'title' }, t));
   }
   return parts.join('');
 }
 
 /**
- * Figcaption headings nest the period INSIDE the codenumber span and are
- * followed by a space span: `Figure <span>2.1.5<span>.</span></span><space>`.
+ * Figcaption headings keep the period inside the codenumber span and end
+ * with a separating space: `Figure <span>2.1.5.</span> `.
  */
 export function figcaptionHeading(type: string, number: string | null): string {
   const parts = [h('span', { class: 'type' }, escapeHtml(type))];
   if (number) {
-    parts.push(
-      HEADING_SPACE(),
-      h('span', { class: 'codenumber' }, escapeHtml(number), HEADING_PERIOD()),
-    );
+    parts.push(' ', h('span', { class: 'codenumber' }, escapeHtml(number), '.'));
   } else {
-    parts.push(HEADING_PERIOD());
+    parts.push('.');
   }
-  parts.push(HEADING_SPACE());
+  parts.push(' ');
   return parts.join('');
 }
 
-/** The "Type N." heading span cluster, PreTeXt-style. */
+/** The "Type N Title" division-heading spans. */
 export function headingSpans(type: string | null, number: string | null, title: string | null, ctx: Ctx): string {
   const parts: string[] = [];
-  const sep = h('span', { class: 'space heading-divison-mark heading-divison-mark__space' }, ' ');
   if (type) parts.push(h('span', { class: 'type' }, escapeHtml(type)));
-  if (type && number) parts.push(sep);
+  if (type && number) parts.push(' ');
   if (number) parts.push(h('span', { class: 'codenumber' }, escapeHtml(number)));
   if (title !== null) {
-    if (parts.length) parts.push(sep);
+    if (parts.length) parts.push(' ');
     parts.push(h('span', { class: 'title' }, title));
   } else {
-    parts.push(h('span', { class: 'period heading-divison-mark heading-divison-mark__period' }, '.'));
+    parts.push('.');
   }
   return parts.join('');
 }
@@ -719,7 +717,7 @@ function knowlDetails(type: string, classes: string, el: XmlElement, ctx: Ctx): 
       'summary',
       { class: 'knowl__link' },
       h('span', { class: 'type' }, type),
-      HEADING_PERIOD(),
+      '.',
     ),
     h('div', { class: `${classes} knowl__content` }, emitBlocks(el, ctx)),
   );

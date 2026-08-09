@@ -207,7 +207,7 @@ export function bookIndexContent(book: Book): string {
   return h(
     'section',
     { class: 'index', id: 'book-index' },
-    `<h1 class="heading hide-type">\n<span class="type">Index</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Index</span>\n</h1>`,
+    `<h1 class="heading hide-type">\n<span class="type">Index</span> <span class="codenumber"></span> <span class="title">Index</span>\n</h1>`,
     letters.join('\n'),
   );
 }

@@ -43,6 +43,11 @@ function visibleText(html) {
     .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(Number.parseInt(n, 16)))
     .replace(/&([a-z]+);/gi, (m, name) => ENTITIES[name.toLowerCase()] ?? m)
     .replace(/\s+/g, ' ')
+    // Tag boundaries become spaces above, so dissolving an inline wrapper
+    // around punctuation ("2.1.5<span>.</span>" -> "2.1.5.") would read
+    // as a text change when the rendering is identical. Normalize space
+    // before punctuation away.
+    .replace(/ ([.,;:!?])/g, '$1')
     .trim();
 }
 
