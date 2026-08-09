@@ -95,12 +95,13 @@
     <p>
       Suppose <c>inventory</c> contains the following seven <c>ItemInfo</c>
       objects.
-      <figure align="center">
-        <caption>ItemInventory with ArrayList of 7 ItemInfo objects</caption>
-
-        <image source="Unit4-Data-Collections/Figures/itemInventory.png" width="100%" alt="itemInventory" />
-      </figure>
     </p>
+
+    <figure align="center">
+      <caption>ItemInventory with ArrayList of 7 ItemInfo objects</caption>
+
+      <image source="Unit4-Data-Collections/Figures/itemInventory.png" width="100%" alt="itemInventory" />
+    </figure>
 
     <p>
       For the inventory shown, <c>averageWithinRange(10.0, 50.0)</c> should

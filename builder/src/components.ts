@@ -228,7 +228,7 @@ function emitFillin(el: XmlElement, label: string, ctx: Ctx): string {
 }
 
 /** A test's feedback: bare text renders trimmed; paras render as
- * permalink-less para divs prefixed with a newline. */
+ * permalink-less paras prefixed with a newline. */
 function fillinFeedback(fb: XmlElement | undefined, ctx: Ctx): string {
   if (!fb) return '';
   const paras = elements(fb, 'p');

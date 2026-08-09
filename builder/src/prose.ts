@@ -52,8 +52,10 @@ export function isInteractive(el: XmlElement): boolean {
 export const knowlTargets = new Set<string>();
 
 export function autopermalink(id: string, description: string): string {
+  // A span, not a div: permalinks live inside <p> now (phase 4), where a
+  // div would auto-close the paragraph. The CSS is class-based throughout.
   return h(
-    'div',
+    'span',
     { class: 'autopermalink', 'aria-hidden': 'true', 'data-description': description },
     h(
       'a',
@@ -221,11 +223,16 @@ const EMITTERS: Record<string, Emitter> = {
 
   p: (el, ctx) => {
     const id = elementId(el);
-    // A p containing block-level content is a "logical paragraph".
-    const logical = el.children.some((c) => isElement(c) && ['ul', 'ol', 'dl'].includes(c.name));
+    // Real paragraphs (phase 4): the source guarantees inline-only
+    // content — block children live as siblings now. Warn if one sneaks
+    // back in (a browser would silently auto-close the <p> around it).
+    const block = el.children.find(
+      (c) => isElement(c) && ['ul', 'ol', 'dl', 'program', 'pre', 'console', 'blockquote', 'image', 'tabular'].includes(c.name),
+    );
+    if (block && isElement(block)) ctx.warn(`<p> contains block <${block.name}> — move it out to a sibling`);
     return h(
-      'div',
-      { class: logical ? 'para logical' : 'para', id },
+      'p',
+      { class: 'para', id },
       trimText(emitChildren(el, ctx)).trim(),
       ctx.permalinks === false ? '' : autopermalink(id, 'Paragraph'),
     );
@@ -334,7 +341,7 @@ const EMITTERS: Record<string, Emitter> = {
     // lists number their items' permalink descriptions ("Item 1").
     const body = hasBlocks
       ? emitBlocks(el, ctx)
-      : h('div', { class: 'para', id: `p-derived-${id}` }, trimText(emitChildren(el, ctx)).trim());
+      : h('p', { class: 'para', id: `p-derived-${id}` }, trimText(emitChildren(el, ctx)).trim());
     const parent = el.parent as XmlElement | undefined;
     let desc = 'Item';
     if (parent && 'name' in parent && parent.name === 'ol') {
