@@ -20,6 +20,7 @@ import {
   backmatterContent,
   bookIndexContent,
   collectVideos,
+  colophonContent,
   contentsPageContent,
   lunrIndexJs,
   pageExercises,
@@ -50,7 +51,7 @@ const makeWarn = (page: string) => (msg: string) => {
 };
 
 // The book-order page sequence for prev/next, and each page's Up target.
-const sequence = ['bhsawesome.html', ...book.pages.map((d) => d.page as string), 'backmatter.html', 'book-index.html'];
+const sequence = ['bhsawesome.html', ...book.pages.map((d) => d.page as string), 'backmatter.html', 'book-index.html', 'colophon.html'];
 const upOf = new Map<string, string | null>();
 upOf.set('bhsawesome.html', null);
 for (const d of book.pages) {
@@ -58,6 +59,7 @@ for (const d of book.pages) {
 }
 upOf.set('backmatter.html', 'bhsawesome.html');
 upOf.set('book-index.html', 'backmatter.html');
+upOf.set('colophon.html', 'backmatter.html');
 
 const exercisesIndex: { file: string; title: string; exercises: object[] }[] = [];
 let emitted = 0;
@@ -84,6 +86,7 @@ const specialCtx = makeCtx(book, 'bhsawesome.html', makeWarn('special'));
 writePage('bhsawesome.html', book.title, contentsPageContent(book));
 writePage('backmatter.html', 'Back Matter', backmatterContent(book, makeCtx(book, 'backmatter.html', makeWarn('backmatter'))));
 writePage('book-index.html', 'Index', bookIndexContent(book));
+writePage('colophon.html', 'Colophon', colophonContent(book, makeCtx(book, 'colophon.html', makeWarn('colophon'))));
 if (!only) fs.writeFileSync(path.join(OUT, 'index.html'), redirectPage());
 
 // Standalone video pages.

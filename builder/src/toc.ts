@@ -34,6 +34,15 @@ export function tocHtml(book: Book, currentPage: string): string {
             h('a', { href: 'book-index.html', class: 'internal' }, h('span', { class: 'title' }, 'Index')),
           ),
         ),
+        h(
+          'li',
+          { class: `toc-item toc-colophon${currentPage === 'colophon.html' ? ' active' : ''}` },
+          h(
+            'div',
+            { class: 'toc-title-box' },
+            h('a', { href: 'colophon.html', class: 'internal' }, h('span', { class: 'title' }, 'Colophon')),
+          ),
+        ),
       ),
     ),
   );

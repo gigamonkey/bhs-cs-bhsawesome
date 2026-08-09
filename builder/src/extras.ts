@@ -41,36 +41,38 @@ export function contentsPageContent(book: Book): string {
 }
 
 export function backmatterContent(book: Book, ctx: Ctx): string {
-  // The index gets its own page (book-index.html); backmatter's OTHER
-  // children — e.g. the colophon — render inline here below the summary
-  // links. A colophon gets a type-only heading like an anonymous
-  // introduction; anything else goes through the normal emitters (and
-  // warns if unknown).
+  // The index and the colophon get their own pages; any OTHER backmatter
+  // child renders inline here through the normal emitters (warning if
+  // unknown).
   const backmatter = elements(book.bookEl).find((c) => c.name === 'backmatter');
   const inner: string[] = [];
+  const links: string[] = [];
   for (const c of backmatter ? elements(backmatter) : []) {
-    if (c.name === 'index') continue;
-    if (c.name === 'colophon') {
-      inner.push(
-        h(
-          'section',
-          { class: 'colophon', id: elementId(c) },
-          h('h2', { class: 'heading' }, h('span', { class: 'type' }, 'Colophon')),
-          elements(c)
-            .map((e) => emitElement(e, ctx))
-            .join('\n'),
-        ),
-      );
-    } else {
-      inner.push(emitElement(c, ctx));
-    }
+    if (c.name === 'index') links.push(summaryLi('book-index.html', null, 'Index'));
+    else if (c.name === 'colophon') links.push(summaryLi('colophon.html', null, 'Colophon'));
+    else inner.push(emitElement(c, ctx));
   }
   return h(
     'section',
     { class: 'backmatter', id: 'backmatter' },
     h('h1', { class: 'heading ptx-backmatter-heading' }, 'Back Matter'),
-    h('nav', { class: 'summary-links' }, h('ul', {}, summaryLi('book-index.html', null, 'Index'))),
+    h('nav', { class: 'summary-links' }, h('ul', {}, links.join('\n'))),
     inner.join('\n'),
+  );
+}
+
+/** The colophon's own page (linked under Back Matter in the ToC). */
+export function colophonContent(book: Book, ctx: Ctx): string {
+  const backmatter = elements(book.bookEl).find((c) => c.name === 'backmatter');
+  const colophon = backmatter && elements(backmatter).find((c) => c.name === 'colophon');
+  if (!colophon) return '';
+  return h(
+    'section',
+    { class: 'colophon', id: elementId(colophon) },
+    h('h1', { class: 'heading' }, h('span', { class: 'type' }, 'Colophon')),
+    elements(colophon)
+      .map((e) => emitElement(e, ctx))
+      .join('\n'),
   );
 }
 
