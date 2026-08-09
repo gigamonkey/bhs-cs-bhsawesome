@@ -2162,6 +2162,17 @@ figure.table-like {
     overflow-x: auto;
 }}
 
+/* == code highlighting — the book's own Prism theme ==
+ *
+ * highlight.ts runs Prism at build time (Java is the only loaded grammar)
+ * and emits bare .token spans; the rules from here through the
+ * :root.dark-mode variants below are their ONLY styling. This is not a
+ * stock Prism theme: the palette (light and dark) is the book's own, and
+ * the base rules integrate with our variables (--code-background,
+ * --font-monospace) and the code-inline treatment. If a new language is
+ * ever added in highlight.ts, its grammar may emit token types with no
+ * rule here — they render in the plain text color until colors are added.
+ */
 pre[class*=language-] {
     margin: 0;
     overflow: auto;
