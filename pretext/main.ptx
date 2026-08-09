@@ -68,14 +68,14 @@
         </p>
 
         <p>
-          The interactive exercises other than the code editors still run on
-          Runestone's open-source <url
+          Interactive exercises other than the Java code problems are built on
+          Runestone's <url
           href="https://github.com/RunestoneInteractive/rs">component
-          library</url>, the CodeLens visualizations are powered by Philip Guo's
+          library</url>; CodeLens visualizations are powered by Philip Guo's
           <url href="https://pythontutor.com">Online Python Tutor</url> and
           David Pritchard's <url
-          href="https://github.com/daveagp/java_jail">Java tracer</url>, and
-          search by <url href="https://lunrjs.com">Lunr</url>.
+          href="https://github.com/daveagp/java_jail">Java tracer</url>; and
+          search is powered by <url href="https://lunrjs.com">Lunr</url>.
         </p>
       </colophon>
     </backmatter>
