@@ -575,6 +575,10 @@ const EMITTERS: Record<string, Emitter> = {
   // syntax-highlighted at build time (builder/src/highlight.ts).
   program: (el, ctx) => {
     const code = el.children.find((c) => isElement(c) && c.name === 'code') as XmlElement | undefined;
+    // An empty language attribute is a source bug: it slips past the
+    // java default (empty isn't nullish) and emits class="language-".
+    // Output-showing programs are language="text".
+    if (el.attributes.language === '') ctx.warn('<program language=""> — use language="text" for output blocks');
     const lang = el.attributes.language ?? 'java';
     return h(
       'div',

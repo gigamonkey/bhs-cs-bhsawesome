@@ -142,7 +142,7 @@
 
     <p>to get output like:</p>
 
-    <program language="">
+    <program language="text">
       Name: Sally Sue; Age: 17
     </program>
 
