@@ -82,7 +82,7 @@ for (const division of book.pages) {
 // Special pages.
 const specialCtx = makeCtx(book, 'bhsawesome.html', makeWarn('special'));
 writePage('bhsawesome.html', book.title, contentsPageContent(book));
-writePage('backmatter.html', 'Back Matter', backmatterContent());
+writePage('backmatter.html', 'Back Matter', backmatterContent(book, makeCtx(book, 'backmatter.html', makeWarn('backmatter'))));
 writePage('book-index.html', 'Index', bookIndexContent(book));
 if (!only) fs.writeFileSync(path.join(OUT, 'index.html'), redirectPage());
 

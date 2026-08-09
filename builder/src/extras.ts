@@ -40,12 +40,37 @@ export function contentsPageContent(book: Book): string {
   );
 }
 
-export function backmatterContent(): string {
+export function backmatterContent(book: Book, ctx: Ctx): string {
+  // The index gets its own page (book-index.html); backmatter's OTHER
+  // children — e.g. the colophon — render inline here below the summary
+  // links. A colophon gets a type-only heading like an anonymous
+  // introduction; anything else goes through the normal emitters (and
+  // warns if unknown).
+  const backmatter = elements(book.bookEl).find((c) => c.name === 'backmatter');
+  const inner: string[] = [];
+  for (const c of backmatter ? elements(backmatter) : []) {
+    if (c.name === 'index') continue;
+    if (c.name === 'colophon') {
+      inner.push(
+        h(
+          'section',
+          { class: 'colophon', id: elementId(c) },
+          h('h2', { class: 'heading' }, h('span', { class: 'type' }, 'Colophon')),
+          elements(c)
+            .map((e) => emitElement(e, ctx))
+            .join('\n'),
+        ),
+      );
+    } else {
+      inner.push(emitElement(c, ctx));
+    }
+  }
   return h(
     'section',
     { class: 'backmatter', id: 'backmatter' },
     h('h1', { class: 'heading ptx-backmatter-heading' }, 'Back Matter'),
     h('nav', { class: 'summary-links' }, h('ul', {}, summaryLi('book-index.html', null, 'Index'))),
+    inner.join('\n'),
   );
 }
 
