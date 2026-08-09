@@ -4,23 +4,25 @@ Tooling for the class-vocabulary renegotiation (the bhs-cs monorepo's
 `plans/bhsawesome-css-cleanup.md`). **This whole directory gets deleted
 when that plan is done** — nothing else may depend on it.
 
-## class-audit.md — the ledger
+## census.mjs — the audit
 
 Who consumes every class name in the built book (static HTML, book.css,
 the vendored pretext scripts, the Runestone bundles/stylesheets, the
-bhs-cs client bundle), classified by what we may do with it. Regenerate
-after each cleanup step:
+bhs-cs client bundle), classified by what we may do with it. The
+generated ledger lives in the **monorepo**, beside the plan it serves:
+`bhs-cs/plans/bhsawesome-class-audit.md`. Regenerate after each cleanup
+step:
 
 ```sh
 node builder/build.ts
-node migration-tools/census.mjs     # rewrites class-audit.md
+node migration-tools/census.mjs     # rewrites bhs-cs/plans/bhsawesome-class-audit.md
 ```
 
 Hand judgments (verified evidence, reclassifications) live in the
 `OVERRIDES` / `NOTES` maps **in census.mjs**, so a re-run is idempotent —
 edit the script, never the generated doc. Needs the bhs-cs checkout as a
-sibling (`../bhs-cs`) or via `BHS_CS=<path>` for the client-bundle
-evidence.
+sibling (`../bhs-cs`) or via `BHS_CS=<path>`, both for the client-bundle
+evidence and as the ledger's destination.
 
 Known blind spots, called out in the doc where they bite: attribute
 selectors (`[class*=language-]`) aren't seen as consumers, and a class
