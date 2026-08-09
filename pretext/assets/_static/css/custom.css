@@ -336,3 +336,11 @@ table .align-default, td {
 .code-inline.keyword {
     font-weight: 600;
 }
+
+/* Real <p> paragraphs (phase 4): zero out the UA default margins so
+   spacing comes from the theme's .para rules exactly as it did when
+   paragraphs were divs (which have no UA margins). Deliberately low
+   specificity — the theme's .para+.para etc. rules override it. */
+p.para {
+    margin: 0;
+}
