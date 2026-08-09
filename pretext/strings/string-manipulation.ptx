@@ -752,7 +752,7 @@
       work on primitive types such as <c>==</c>, <c>&lt;</c>, and <c>&gt;</c>.
       We also mentioned that we can’t really use them with <c>String</c> values.
       Technically we can use <c>==</c> but it probably doesn’t do what we want
-      for reasons we’ll discuss in <xref ref="comparing-objects" /> and we can’t
+      for reasons we’ll discuss in <xref ref="string-equality" /> and we can’t
       use use <c>&lt;</c> or <c>&gt;</c> at all.
     </p>
 

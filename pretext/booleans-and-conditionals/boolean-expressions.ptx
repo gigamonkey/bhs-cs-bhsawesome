@@ -213,7 +213,7 @@
     <p>
       For <c>String</c> and other reference types we’ll discuss later, they
       “work” but maybe not in the way you’d expect. We’ll discuss that in detail
-      in <xref ref="comparing-objects" />.
+      in <xref ref="object-equality" />.
     </p>
 
     <p>

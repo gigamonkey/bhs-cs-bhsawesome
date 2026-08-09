@@ -236,11 +236,9 @@ const EMITTERS: Record<string, Emitter> = {
   c: (el) => h('code', { class: 'code-inline tex2jax_ignore' }, escapeHtml(trimText(textContent(el)).trim())),
   term: (el, ctx) => h('dfn', { class: 'terminology' }, trimText(emitChildren(el, ctx))),
   em: (el, ctx) => h('em', { class: 'emphasis' }, trimText(emitChildren(el, ctx))),
-  // PreTeXt has no <strong>/<b>: the tags drop, text passes through.
-  // (Restorable improvement later; kept for byte parity with the landed
-  // book — use <em> or a real ptx element in source to style these.)
-  strong: (el, ctx) => trimText(emitChildren(el, ctx)),
-  b: (el, ctx) => trimText(emitChildren(el, ctx)),
+  // Our schema: <strong> is real bold emphasis (PreTeXt silently dropped
+  // it; the browser's native strong rendering is the styling).
+  strong: (el, ctx) => h('strong', {}, trimText(emitChildren(el, ctx))),
   pubtitle: (el, ctx) => h('cite', {}, trimText(emitChildren(el, ctx))),
   title_reference: (el, ctx) => h('cite', {}, trimText(emitChildren(el, ctx))),
   // docutils-conversion leftovers: <reference> is an external link,
@@ -249,9 +247,7 @@ const EMITTERS: Record<string, Emitter> = {
     h('a', { class: 'external', href: el.attributes.refuri ?? '', target: '_blank' }, trimText(emitChildren(el, ctx))),
   target: () => '',
   url: (el, ctx) => {
-    // Attribute whitespace (formatter-wrapped long URLs) percent-encodes,
-    // as PreTeXt emits it.
-    const href = (el.attributes.href ?? '').replace(/ /g, '%20');
+    const href = el.attributes.href ?? '';
     const label = el.children.length ? trimText(emitChildren(el, ctx)) : escapeHtml(el.attributes.visual ?? href);
     return h('a', { class: 'external', href, target: '_blank' }, label);
   },
@@ -278,14 +274,10 @@ const EMITTERS: Record<string, Emitter> = {
     }
     const label = ctx.book.labels.get(ref);
     if (!label) {
-      // Faithful to current output: PreTeXt renders its error text inline
-      // for dangling refs (source bugs to fix upstream; see the warn log).
+      // A dangling ref is a source bug: warn in the build log and leave a
+      // visible marker in the page.
       ctx.warn(`xref to unknown id ${ref}`);
-      return h(
-        'span',
-        { class: 'xref-error' },
-        escapeHtml(`[cross-reference to target(s) "${ref}" missing or not unique]`),
-      );
+      return h('span', { class: 'xref-error' }, escapeHtml(`[missing xref: ${ref}]`));
     }
     // Block targets render as knowl popups (with an href fallback); the
     // knowl page itself is emitted at the end of the build.

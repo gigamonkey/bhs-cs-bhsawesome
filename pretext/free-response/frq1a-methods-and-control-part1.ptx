@@ -83,7 +83,7 @@
     </p>
 
     <p>
-      <b>Example</b>
+      <strong>Example</strong>
       : The orderCoffee and calculateTotal methods are in the
       same class, so you can call them with the method name. Make sure you pass
       appropriate arguments.
@@ -481,7 +481,7 @@
     </p>
 
     <p>
-      <b>Example</b>
+      <strong>Example</strong>
       : The <c>Match</c> class has two instance variables <c>team1</c> and <c>team2</c> of type <c>Team</c>. We can call the getScore() method that is part of Team using
             the name of the team object and the method name: <c>team1.getScore()</c> and <c>team2.getScore()</c>.
     </p>
