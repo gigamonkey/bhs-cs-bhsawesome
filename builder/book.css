@@ -2242,6 +2242,16 @@ pre[class*=language-] .token.keyword {
     color: #0679b7;
 }
 
+code[class*=language-] .token:is(.function,.class-name),
+pre[class*=language-] .token:is(.function,.class-name) {
+    color: #30a;
+}
+
+/* Package paths in imports (both modes). */
+.token.namespace {
+    opacity: .9;
+}
+
 :root.dark-mode pre[class*=language-] {
     border: 1px solid #3d3d3d;
 }
@@ -2288,6 +2298,11 @@ pre[class*=language-] .token.keyword {
 :root.dark-mode code[class*=language-] .token.keyword,
 :root.dark-mode pre[class*=language-] .token.keyword {
     color: #2d94fb;
+}
+
+:root.dark-mode code[class*=language-] .token:is(.function,.class-name),
+:root.dark-mode pre[class*=language-] .token:is(.function,.class-name) {
+    color: #e3e1c2;
 }
 
 mjx-container {
