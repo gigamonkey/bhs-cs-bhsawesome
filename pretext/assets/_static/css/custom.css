@@ -338,9 +338,15 @@ table .align-default, td {
 }
 
 /* Real <p> paragraphs (phase 4): zero out the UA default margins so
-   spacing comes from the theme's .para rules exactly as it did when
-   paragraphs were divs (which have no UA margins). Deliberately low
-   specificity — the theme's .para+.para etc. rules override it. */
-p.para {
-    margin: 0;
+   spacing comes from the theme's rules exactly as it did when
+   paragraphs were divs (which have no UA margins). This must live IN
+   the theme's `spacing` cascade layer: unlayered it would beat every
+   layered spacing rule regardless of specificity; inside the layer its
+   low specificity loses to the theme's .para+.para and
+   section>*:not(:first-child) rules while still overriding the UA
+   default. */
+@layer spacing {
+    p.para {
+        margin: 0;
+    }
 }
