@@ -435,8 +435,8 @@
       which stands for <term>Comma Separated Values</term>. All spreadsheets can
       be saved as CSV text files, and spreadsheet software can easily open CSV
       files as spreadsheets. You can take a look at the <url
-      href="external/_static/datasets/pokemon.csv">pokemon.csv</url> file
-      contents below. For now we’ll just read the lines of the file into an
+      href="/bhsawesome/external/_static/datasets/pokemon.csv">pokemon.csv</url>
+      file contents below. For now we’ll just read the lines of the file into an
       <c>ArrayList</c>; in the next section we’ll look at how to break each line
       up into individual pieces of data about specific Pokémon.
     </p>

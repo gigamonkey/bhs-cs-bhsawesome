@@ -19,7 +19,11 @@ export type Division = {
   id: string;
   title: string;
   number: string | null; // "2", "2.1", "2.1.3"; null = unnumbered
-  page: string | null; // filename if this division starts a page
+  // The extensionless URL path if this division starts a page — its
+  // ancestor page-divisions' ids joined with '/' (e.g. "introduction",
+  // "introduction/intro-to-java"). urls.ts turns it into the served URL
+  // and the on-disk <path>/index.html.
+  page: string | null;
   parent: Division | null;
   children: Division[];
 };
@@ -120,7 +124,10 @@ export function loadBook(mainPtx: string): Book {
       // contents page), never as a page of its own.
       !(d.kind === 'introduction' && (d.parent?.kind === 'frontmatter' || d.parent?.kind === 'chapter'));
     if (startsPage) {
-      d.page = `${d.id}.html`;
+      // Nested under the closest ancestor page (sections under their
+      // chapter, prefaces under frontmatter); chapters and frontmatter
+      // hang off the root.
+      d.page = d.parent?.page ? `${d.parent.page}/${d.id}` : d.id;
       pages.push(d);
     }
     for (const c of d.children) assignPages(c);

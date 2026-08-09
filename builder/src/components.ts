@@ -17,6 +17,7 @@ import type { Ctx } from './prose.ts';
 import { escapeAttr, escapeHtml, h } from './html.ts';
 import { blockNumber, elementId, overrideId } from './ids.ts';
 import { blockHeadingSpans, dedent, emitBlocks, emitChildren, emitElement, smartQuotes, trimText } from './prose.ts';
+import { BASE } from './urls.ts';
 import { type XmlElement, attr, child, elements, isElement, textContent } from './xml.ts';
 
 const ASSETS = path.resolve(import.meta.dirname, '..', '..', 'pretext', 'assets');
@@ -510,7 +511,7 @@ function emitCodelens(el: XmlElement, label: string, ctx: Ctx): string {
         h('div', { class: 'exercise-statement' }, statementBlocks(el, ctx)),
         `<div class="pytutorVisualizer exercise-interactive" id="rs-${label}" data-params='{"embeddedMode": true, "lang": "java", "jumpToEnd": false}'></div>`,
       ),
-      h('script', { src: `generated/trace/${label}.js` }, ' '),
+      h('script', { src: `${BASE}/generated/trace/${label}.js` }, ' '),
     ),
   );
 }

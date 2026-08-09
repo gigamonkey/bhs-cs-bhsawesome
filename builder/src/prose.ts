@@ -14,11 +14,12 @@ import { highlight } from './highlight.ts';
 import { type Attrs, escapeHtml, h, voidEl } from './html.ts';
 import { NUMBERED_BLOCKS, blockNumber, elementId } from './ids.ts';
 import { renderMath } from './math.ts';
+import { BASE, href } from './urls.ts';
 import { type XmlElement, elements, isElement, isText, textContent } from './xml.ts';
 
 export type Ctx = {
   book: Book;
-  page: string; // filename of the page being emitted
+  page: string; // URL path of the page being emitted ('' = the site root)
   headingLevel: number; // current division's heading level
   emitComponent: (el: XmlElement, ctx: Ctx) => string;
   warn: (msg: string) => void;
@@ -235,9 +236,9 @@ const EMITTERS: Record<string, Emitter> = {
     h('a', { class: 'external', href: el.attributes.refuri ?? '', target: '_blank' }, trimText(emitChildren(el, ctx))),
   target: () => '',
   url: (el, ctx) => {
-    const href = el.attributes.href ?? '';
-    const label = el.children.length ? trimText(emitChildren(el, ctx)) : escapeHtml(el.attributes.visual ?? href);
-    return h('a', { class: 'external', href, target: '_blank' }, label);
+    const target = el.attributes.href ?? '';
+    const label = el.children.length ? trimText(emitChildren(el, ctx)) : escapeHtml(el.attributes.visual ?? target);
+    return h('a', { class: 'external', href: target, target: '_blank' }, label);
   },
   // Math prerenders at build time (builder/src/math.ts) — no MathJax runtime.
   m: (el) => renderMath(textContent(el)),
@@ -257,9 +258,10 @@ const EMITTERS: Record<string, Emitter> = {
         el.attributes.text === 'title'
           ? d.title || typeName
           : [typeName, d.number, d.title === typeName ? null : d.title].filter(Boolean).join(' ');
-      const href = d.page ?? `${division.pageOf.page}#${ref}`;
+      const target =
+        d.page !== null ? href(d.page) : `${href(division.pageOf.page as string)}#${ref}`;
       const tooltip = d.number ? `${typeName} ${d.number}: ${d.title}` : d.title || typeName;
-      return h('a', { href, class: 'internal', title: tooltip }, escapeHtml(text));
+      return h('a', { href: target, class: 'internal', title: tooltip }, escapeHtml(text));
     }
     const label = ctx.book.labels.get(ref);
     if (!label) {
@@ -284,8 +286,8 @@ const EMITTERS: Record<string, Emitter> = {
     return h(
       'a',
       {
-        href: `${label.pageOf.page}#${ref}`,
-        'data-knowl': `./knowl/xref/${ref}.html`,
+        href: `${href(label.pageOf.page as string)}#${ref}`,
+        'data-knowl': `${BASE}/knowl/xref/${ref}.html`,
         'data-reveal-label': 'Reveal',
         'data-close-label': 'Close',
         title: text,
@@ -366,7 +368,7 @@ const EMITTERS: Record<string, Emitter> = {
     const margin = (100 - width) / 2;
     const desc = el.children.find((c) => isElement(c) && c.name === 'shortdescription') as XmlElement | undefined;
     const img = voidEl('img', {
-      src: `external/${source}`,
+      src: `${BASE}/external/${source}`,
       alt: desc ? trimText(textContent(desc)).trim() : undefined,
     });
     // Inside a sidebyside the PANEL controls the width; the image-box is
@@ -555,7 +557,7 @@ const EMITTERS: Record<string, Emitter> = {
   // text). Children are the content blocks.
   gutterimage: (el, ctx) => {
     const img = voidEl('img', {
-      src: `external/${el.attributes.source ?? ''}`,
+      src: `${BASE}/external/${el.attributes.source ?? ''}`,
       alt: el.attributes.description,
     });
     return h(

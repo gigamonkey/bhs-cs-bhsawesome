@@ -586,10 +586,11 @@
       If your class has time, you can try the following open-ended challenge
       that uses a dataset of your choice. You could work in pairs for this
       challenge. Choose a dataset from the files <url
-      href="external/_static/datasets/pokemon.csv">pokemon.csv</url>, <url
-      href="external/_static/datasets/WorldIndicators2000.csv">WorldIndicators2000.csv</url>,
+      href="/bhsawesome/external/_static/datasets/pokemon.csv">pokemon.csv</url>,
+      <url
+      href="/bhsawesome/external/_static/datasets/WorldIndicators2000.csv">WorldIndicators2000.csv</url>,
       or <url
-      href="external/_static/datasets/StateData2020-CDC-Census.csv">StateData2020-CDC-Census.csv</url>
+      href="/bhsawesome/external/_static/datasets/StateData2020-CDC-Census.csv">StateData2020-CDC-Census.csv</url>
       to read into an array of objects. The activecode window below is set up to
       use these files. Look at the columns of the dataset you have chosen at the
       bottom of this web page to decide on the name and at least 3 attributes

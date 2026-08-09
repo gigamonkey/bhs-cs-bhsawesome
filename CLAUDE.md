@@ -23,17 +23,33 @@ The "source code" is almost entirely XML prose: the `.ptx` files under
 The build is Node only (`npm ci` once; Node 26 type-strips the TypeScript):
 
 ```bash
-node builder/build.ts     # the whole site -> build/site/ (~400ms)
-node builder/watch.ts     # rebuild on any pretext/, builder/, or vendor/ change
+node builder/build.ts        # the whole site -> build/site/ (~400ms)
+node builder/watch.ts        # rebuild on any pretext/, builder/, or vendor/ change
+node builder/serve.ts        # preview build/site at localhost:8237/bhsawesome/
+node builder/check-links.ts  # verify every internal ref resolves (CI runs it)
 ```
 
 `builder/` parses the `.ptx` source directly (`@rgrove/parse-xml`, own
 xi:include assembly) and emits every page plus the contents/backmatter/index
-pages, xref knowl popups, video pages, `exercises.json`, and the lunr search
-corpus; `vendor/` holds the committed static trees (Runestone component
-bundles built from source, the pretext theme files the chrome still uses,
-the CodeLens traces — see `vendor/README.md`). The page chrome is the
-committed, hand-maintained `builder/chrome.html`.
+pages, xref knowl popups, video pages, `redirects.json`, `exercises.json`,
+and the lunr search corpus; `vendor/` holds the committed static trees
+(Runestone component bundles built from source, the pretext theme files the
+chrome still uses, the CodeLens traces — see `vendor/README.md`). The page
+chrome is the committed, hand-maintained `builder/chrome.html`.
+
+**URL scheme** (the monorepo's `plans/bhsawesome-index-html-urls.md`):
+every page is an `index.html` in its own directory, addressed by a slashed
+root-relative URL — `/bhsawesome/` (contents), `/bhsawesome/<chapter>/`,
+`/bhsawesome/<chapter>/<section>/`, `/bhsawesome/frontmatter/<preface>/`,
+`/bhsawesome/backmatter/{book-index,colophon}/`, `/bhsawesome/video/<label>/`.
+A `Division.page` is the extensionless path; `builder/src/urls.ts` is the
+only place it becomes a URL (`href`) or an output file (`fileFor`), and
+every emitted ref is root-relative (pages sit at multiple depths, and the
+shared toc.js/search corpus can't be depth-relative). `redirects.json`
+maps each old flat `<id>.html` name to its new URL; the web app serves
+those as 301s. Because the refs are root-relative, preview through
+`builder/serve.ts` (or the dev website's overlay) — a static server rooted
+at `build/site` won't resolve them.
 
 Python tooling for the root scripts is managed by **uv** (`pyproject.toml`,
 `uv.lock`, Python ≥3.13; lxml + ruff — run lxml-using scripts through

@@ -3,12 +3,14 @@
 """
 List the URLs of the HTML pages of the book in reading order.
 
-This mimics PreTeXt's chunking algorithm (see xsl/pretext-common.xsl in the
-pretext distribution): with the default chunk level for a book without parts
-(2), the book and each chapter get an intermediate summary page and each
-section gets a full page, as do frontmatter/backmatter divisions. Each page is
-named <id>.html where <id> is the division's label or xml:id, or a generated
-parent-id-N value when it has neither.
+This mimics the builder's chunking (builder/src/book.ts, itself PreTeXt's
+default chunk level 2 for a book without parts): the book and each chapter
+get an intermediate summary page and each section gets a full page, as do
+frontmatter/backmatter divisions. Each page is a directory URL
+(plans/bhsawesome-index-html-urls.md): its ancestor page-divisions' ids
+joined with /, slash-terminated — the book itself is the base URL. An id is
+the division's label or xml:id, or a generated parent-id-N value when it
+has neither.
 """
 
 import os
@@ -164,16 +166,11 @@ if __name__ == "__main__":
         prog="list-urls",
         description="List the URLs of the book's pages in reading order.",
     )
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument(
+    parser.add_argument(
         "-b", "--base",
-        help="Base URL (default: the Runestone published-book URL "
-        "derived from docinfo/document-id)",
-    )
-    group.add_argument(
-        "-c", "--course",
-        help="Course name to use in the Runestone URL in place of "
-        "docinfo/document-id",
+        default="/bhsawesome/",
+        help="Base URL (default: /bhsawesome/, the site's mount on the "
+        "bhs-cs website)",
     )
     parser.add_argument(
         "-f", "--files",
@@ -198,9 +195,6 @@ if __name__ == "__main__":
     root = load(args.root, sources)
 
     base = args.base
-    if base is None:
-        course = args.course or root.findtext("docinfo/document-id").strip()
-        base = f"https://runestone.academy/ns/books/published/{course}/"
     if not base.endswith("/"):
         base += "/"
 
@@ -208,11 +202,25 @@ if __name__ == "__main__":
     if book is None:
         book = root.find("article")
     has_parts = book.find("part") is not None
-    for division in pages(book, default_chunk_level(root), has_parts):
+    page_list = list(pages(book, default_chunk_level(root), has_parts))
+    page_set = set(page_list)
+
+    def url_path(division):
+        "Ancestor page-divisions' ids joined with /; '' for the book itself."
+        parts = []
+        el = division
+        while el is not None and el.tag not in ("book", "article"):
+            if el in page_set:
+                parts.append(visible_id(el))
+            el = el.getparent()
+        return "/".join(reversed(parts))
+
+    for division in page_list:
         columns = []
         if args.files:
             columns.append(os.path.relpath(source_file(division, sources)))
-        columns.append(urljoin(base, f"{visible_id(division)}.html"))
+        path = url_path(division)
+        columns.append(urljoin(base, f"{path}/") if path else base)
         if args.titles:
             columns.append(page_title(division))
         print("\t".join(columns))

@@ -9,6 +9,7 @@ import { emitComponent } from './components.ts';
 import { escapeHtml, h } from './html.ts';
 import { elementId } from './ids.ts';
 import { type Ctx, emitChildren, emitElement, headingSpans, isInteractive } from './prose.ts';
+import { href } from './urls.ts';
 import { type XmlElement, elements } from './xml.ts';
 
 const DIVISION_KINDS = new Set(['introduction', 'section', 'subsection', 'conclusion']);
@@ -112,7 +113,7 @@ function summaryLinks(d: Division): string {
         {},
         h(
           'a',
-          { href: c.page as string, class: 'internal' },
+          { href: href(c.page as string), class: 'internal' },
           [
             c.number ? h('span', { class: 'codenumber' }, escapeHtml(c.number)) : '',
             h('span', { class: 'title' }, escapeHtml(c.title || 'Introduction')),

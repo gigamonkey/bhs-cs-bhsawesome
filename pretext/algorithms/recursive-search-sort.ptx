@@ -528,38 +528,4 @@
       </li>
     </ul>
   </subsection>
-
-  <subsection xml:id="summary-and-review-exercises">
-    <title>Summary and Review Exercises</title>
-
-    <p>
-      This lesson is the last lesson in Unit 4! Congratulations! Now, it’s time
-      to practice before the exam.
-    </p>
-
-    <p>
-      You can now do the following review lessons about recursion at the end of
-      the unit and College Board Progress Check for Unit 4 Part 3 in the AP
-      Classroom. The rest of this unit consists of the reviews for each section
-      of the unit.
-    </p>
-
-    <ul>
-      <li><url href="recursion-summary.html">Recursion Summary</url></li>
-
-      <li>
-        <url href="rParsonsPractice.html">Recursion Parsons Practice</url>
-      </li>
-
-      <li>
-        <url href="rMixedUpCodePractice.html">Recursion Mixed Up Code Practice</url>
-      </li>
-
-      <li>
-        <url href="recursionCodePractice.html">Recursion Code Practice</url>
-      </li>
-
-      <li><url href="recursion-Exercises.html">Recursion Exercises</url></li>
-    </ul>
-  </subsection>
 </section>

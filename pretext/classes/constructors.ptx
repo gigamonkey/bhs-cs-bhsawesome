@@ -1095,14 +1095,13 @@
     <project label="community-challenge2">
       <statement>
         <p>
-          Copy your class with its three instance variables from <url
-          href="topic-3-3-anatomy-of-class.html#groupwork-design-a-class-for-your-community">lesson
-          3.3 Community Challenge</url>. Add a constructor with three parameters
-          to set all of the instance variables to the given parameters. Write a
-          print() method that uses System.out.println to print out all the
-          instance variables. Write a main method that constructs at least 2
-          objects of your class using the constructors and then calls their
-          print() methods.
+          Copy your class with its three instance variables from <xref
+          ref="design-a-class-for-your-community-part1" />. Add a constructor
+          with three parameters to set all of the instance variables to the
+          given parameters. Write a print() method that uses System.out.println
+          to print out all the instance variables. Write a main method that
+          constructs at least 2 objects of your class using the constructors and
+          then calls their print() methods.
         </p>
       </statement>
 

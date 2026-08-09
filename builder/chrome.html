@@ -7,7 +7,10 @@
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{{TITLE}}</title>
-<link href="book.css" rel="stylesheet" type="text/css">
+<!-- All refs are root-relative (/bhsawesome/...): pages live at multiple
+     directory depths (plans/bhsawesome-index-html-urls.md), so relative
+     refs would break page-to-page. -->
+<link href="/bhsawesome/book.css" rel="stylesheet" type="text/css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
@@ -17,7 +20,7 @@
 <meta name="twitter:description" content="BHSawesome2 is a AP CSA textbook adapted from CSAwesome2 for use at Berkeley High School in Berkeley, California. It follow the latest (2025) revision of the AP Computer Science A Course and Exam Description but presents the material in a somewhat different order than CSAwesome2 and does not attempt to mirror the unit and topic structure of the College Board Course and Exam Description. If you want a text whose units and topic numbers line up exactly with those in the College Board outline, you will want to use CSAwesome2.">
 <meta property="og:description" content="BHSawesome2 is a AP CSA textbook adapted from CSAwesome2 for use at Berkeley High School in Berkeley, California. It follow the latest (2025) revision of the AP Computer Science A Course and Exam Description but presents the material in a somewhat different order than CSAwesome2 and does not attempt to mirror the unit and topic structure of the College Board Course and Exam Description. If you want a text whose units and topic numbers line up exactly with those in the College Board outline, you will want to use CSAwesome2.">
 <meta name="twitter:card" content="summary">
-<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/dist/pretext-core.js?v=2.47"></script><script src="_static/pretext/js/dist/pretext-read-aloud.js?v=2.47"></script><!-- The anonymous-baseline eBookConfig for the Runestone component JS.
+<script src="/bhsawesome/_static/pretext/js/jquery.min.js"></script><script src="/bhsawesome/_static/pretext/js/dist/pretext-core.js?v=2.47"></script><script src="/bhsawesome/_static/pretext/js/dist/pretext-read-aloud.js?v=2.47"></script><!-- The anonymous-baseline eBookConfig for the Runestone component JS.
      /js/bhsawesome.js overlays identity (isLoggedIn, username/email,
      useRunestoneServices, new_server_prefix) after fetching /whoami and
      pins course/basecourse; without it this static config applies:
@@ -35,9 +38,9 @@ eBookConfig.logLevel = 0;
 eBookConfig.runestone_version = '8.2.2';
 </script>
 <!--*** Runestone Services ***-->
-<script data-bhs-defer-src="_static/prefix-runtime.d6cecb5ab13310d5.bundle.js"></script><script data-bhs-defer-src="_static/prefix-926.5c8ed1d3d2a33b88.bundle.js"></script><script data-bhs-defer-src="_static/prefix-runestone.a82765517af58708.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.7ea10ac3a7ad35e8.css">
-<script src="_static/pretext/js/dist/pretext_search.js"></script>
+<script data-bhs-defer-src="/bhsawesome/_static/prefix-runtime.d6cecb5ab13310d5.bundle.js"></script><script data-bhs-defer-src="/bhsawesome/_static/prefix-926.5c8ed1d3d2a33b88.bundle.js"></script><script data-bhs-defer-src="/bhsawesome/_static/prefix-runestone.a82765517af58708.bundle.js"></script><link rel="stylesheet" type="text/css" href="/bhsawesome/_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="/bhsawesome/_static/prefix-runestone.7ea10ac3a7ad35e8.css">
+<script src="/bhsawesome/_static/pretext/js/dist/pretext_search.js"></script>
 <!-- Lazy search index (phase 5): the prebuilt index (lunr.Index.load, not
      a browser re-index) is large, so it and lunr.min.js load only when the
      reader first reaches for search — most never do, and pay nothing. The
@@ -52,10 +55,10 @@ eBookConfig.runestone_version = '8.2.2';
     if (loading) return;
     loading = true;
     var lunrScript = document.createElement("script");
-    lunrScript.src = "_static/lunr.min.js";
+    lunrScript.src = "/bhsawesome/_static/lunr.min.js";
     lunrScript.onload = function () {
       var idx = document.createElement("script");
-      idx.src = "lunr-pretext-search-index.js";
+      idx.src = "/bhsawesome/lunr-pretext-search-index.js";
       idx.onload = function () {
         var terms = document.getElementById("ptx-search-terms");
         if (terms && terms.value) terms.dispatchEvent(new Event("input"));
@@ -77,16 +80,16 @@ eBookConfig.runestone_version = '8.2.2';
      identical inline ToC per page. Deferred scripts run before
      DOMContentLoaded, so pretext-core's chevron/expansion/scroll init sees
      the injected ToC exactly as it saw the inline one. -->
-<script src="toc.js" defer></script>
-<script src="permalinks.js" defer></script>
+<script src="/bhsawesome/toc.js" defer></script>
+<script src="/bhsawesome/permalinks.js" defer></script>
 <script src="/js/bhsawesome.js"></script>
 </head>
 <body id="BHSawesome2" class="pretext book">
 <a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead" role="banner"><div class="ptx-banner">
-<a id="logo-link" class="logo-link" target="_blank" href="./bhsawesome.html"><img src="external/_static/BHSawesomeLogo.png" alt="Logo image"></a><div class="title-container">
-<div class="heading"><a href="bhsawesome.html"><span class="title">BHSawesome</span> <span class="subtitle">AP CSA</span></a></div></div>
+<a id="logo-link" class="logo-link" target="_blank" href="/bhsawesome/"><img src="/bhsawesome/external/_static/BHSawesomeLogo.png" alt="Logo image"></a><div class="title-container">
+<div class="heading"><a href="/bhsawesome/"><span class="title">BHSawesome</span> <span class="subtitle">AP CSA</span></a></div></div>
 </div></header><nav id="ptx-navbar" class="ptx-navbar"><div class="ptx-navbar-contents">
-<button id="ptx-toc-toggle" type="button" aria-controls="ptx-sidebar" class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="book-index.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="ptx-search-box">
+<button id="ptx-toc-toggle" type="button" aria-controls="ptx-sidebar" class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="/bhsawesome/backmatter/book-index/" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="ptx-search-box">
 <button id="ptx-search-button" type="button" class="ptx-search-button button" title="Search Book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button>
 <dialog id="ptx-search-dialog" class="ptx-dialog ptx-search-dialog"><div class="ptx-search-dialog-controls">
 <input aria-label="Search term" id="ptx-search-terms" class="ptx-search-terms" type="text" name="terms" placeholder="Search terms"><button aria-label="Close" id="ptx-search-close" class="ptx-search-close"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cd;</span></button>

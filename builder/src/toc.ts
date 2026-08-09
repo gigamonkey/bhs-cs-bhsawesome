@@ -6,6 +6,7 @@
 
 import type { Book, Division } from './book.ts';
 import { escapeHtml, h } from './html.ts';
+import { href } from './urls.ts';
 
 export function tocHtml(book: Book): string {
   const items: string[] = [];
@@ -20,7 +21,7 @@ export function tocHtml(book: Book): string {
       h(
         'div',
         { class: 'toc-title-box' },
-        h('a', { href: 'backmatter.html', class: 'internal' }, h('span', { class: 'title' }, 'Back Matter')),
+        h('a', { href: href('backmatter'), class: 'internal' }, h('span', { class: 'title' }, 'Back Matter')),
       ),
       h(
         'ul',
@@ -31,7 +32,7 @@ export function tocHtml(book: Book): string {
           h(
             'div',
             { class: 'toc-title-box' },
-            h('a', { href: 'book-index.html', class: 'internal' }, h('span', { class: 'title' }, 'Index')),
+            h('a', { href: href('backmatter/book-index'), class: 'internal' }, h('span', { class: 'title' }, 'Index')),
           ),
         ),
         h(
@@ -40,7 +41,7 @@ export function tocHtml(book: Book): string {
           h(
             'div',
             { class: 'toc-title-box' },
-            h('a', { href: 'colophon.html', class: 'internal' }, h('span', { class: 'title' }, 'Colophon')),
+            h('a', { href: href('backmatter/colophon'), class: 'internal' }, h('span', { class: 'title' }, 'Colophon')),
           ),
         ),
       ),
@@ -60,7 +61,7 @@ function tocItem(d: Division): string {
   const titleBox = h(
     'div',
     { class: 'toc-title-box' },
-    h('a', { href: d.page ?? '#', class: 'internal' }, label),
+    h('a', { href: d.page !== null ? href(d.page) : '#', class: 'internal' }, label),
   );
   const childItems = d.children.filter((c) => c.page || c.children.some((g) => g.page));
   // Subsections aren't pages but ARE ToC entries (depth 3): anchors into
@@ -78,7 +79,7 @@ function tocItem(d: Division): string {
             { class: 'toc-title-box' },
             h(
               'a',
-              { href: `${d.page}#${c.id}`, class: 'internal' },
+              { href: `${href(d.page as string)}#${c.id}`, class: 'internal' },
               [
                 c.number ? h('span', { class: 'codenumber' }, escapeHtml(c.number)) : '',
                 h('span', { class: 'title' }, escapeHtml(c.title)),
@@ -109,8 +110,11 @@ export function tocJs(book: Book): string {
   var nav = document.getElementById('ptx-toc');
   if (!nav) return;
   nav.innerHTML = ${JSON.stringify(tocHtml(book))};
-  var file = window.location.pathname.split('/').pop() || 'bhsawesome.html';
-  var link = nav.querySelector('a[href="' + file + '"]');
+  // ToC hrefs are root-relative slashed URLs; normalize the location the
+  // same way (a reader can arrive via the unslashed 301's cached form).
+  var path = window.location.pathname;
+  if (path.charAt(path.length - 1) !== '/') path += '/';
+  var link = nav.querySelector('a[href="' + path + '"]');
   if (!link) return;
   var li = link.closest('li');
   li.classList.add('active');

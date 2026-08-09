@@ -49,7 +49,7 @@
         <index-list />
       </index>
 
-      <colophon>
+      <colophon xml:id="colophon">
         <p>
           BHSawesome was originally hosted on <url
           href="https://runestone.academy">Runestone Academy</url> and written

@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Book, Division } from './book.ts';
 import { escapeHtml, h } from './html.ts';
+import { href } from './urls.ts';
 
 const TEMPLATE = fs.readFileSync(path.join(import.meta.dirname, '..', 'chrome.html'), 'utf8');
 
@@ -23,8 +24,8 @@ function navAnchor(
 ): string {
   const name = `<span class="name">${label}</span>`;
   const inner = iconAfter ? `${name}${ICON(icon)}` : `${ICON(icon)}${name}`;
-  if (!target) return `<span class="${cls} button disabled">${inner}</span>`;
-  return `<a class="${cls} button" href="${target}" title="${title}">${inner}</a>`;
+  if (target === null) return `<span class="${cls} button disabled">${inner}</span>`;
+  return `<a class="${cls} button" href="${href(target)}" title="${title}">${inner}</a>`;
 }
 
 export function treeButtons(prev: string | null, up: string | null, next: string | null): string {

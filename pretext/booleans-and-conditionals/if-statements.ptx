@@ -732,10 +732,9 @@
         exercise below, come up with 8 responses to yes-no questions. Write a
         program below that chooses a random number from 1 to 8 and then uses if
         statements to test the number and print out the associated random
-        response from 1-8. If you need help with random numbers, see the <url
-        href="../Unit1-Using-Objects-and-Methods/topic-1-11-Math.html">Math
-        lesson</url> and remember the formula <c>(int) (Math.random() * max) +
-        min</c>.
+        response from 1-8. If you need help with random numbers, see <xref
+        ref="random-numbers" /> and remember the formula <c>(int) (Math.random()
+        * max) + min</c>.
       </p>
     </gutterimage>
 

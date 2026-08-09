@@ -50,6 +50,11 @@ jobs:
       - name: Build the site (builder/build.ts)
         run: node builder/build.ts
 
+      # Every emitted /bhsawesome/... href/src/data-knowl must resolve
+      # inside build/site — a dead internal link fails the publish.
+      - name: Check internal links
+        run: node builder/check-links.ts
+
       # push-content pushes the build/out tree (hardcoded); the builder
       # emits the site itself to build/site (what the dev overlay serves),
       # so CI stages a copy at the prefix the overlay expects.

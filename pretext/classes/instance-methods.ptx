@@ -1618,12 +1618,12 @@
     <project label="community-challenge3">
       <statement>
         <p>
-          Copy your class from <url
-          href="topic-3-4-constructors.html#groupwork-design-a-class-for-your-community">lesson
-          3.4</url>. Add get, set, toString, and a method that takes a
-          parameter. For example, there could be a print method with arguments
-          that indicate how you want to print out the information, print(format)
-          where format is “plain” or “table”.
+          Copy your class from <xref
+          ref="design-a-class-for-your-community-part2" />. Add get, set,
+          toString, and a method that takes a parameter. For example, there
+          could be a print method with arguments that indicate how you want to
+          print out the information, print(format) where format is “plain” or
+          “table”.
         </p>
       </statement>
 

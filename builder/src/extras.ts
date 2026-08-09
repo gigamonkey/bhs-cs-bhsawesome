@@ -1,7 +1,7 @@
 /*
- * The non-division outputs: contents/backmatter/index pages, the redirect,
- * standalone video pages, xref knowl pages, exercises.json, and the lunr
- * search corpus (plans/rehost-bhsawesome.md 3a global features).
+ * The non-division outputs: contents/backmatter/index pages, standalone
+ * video pages, xref knowl pages, exercises.json, and the lunr search
+ * corpus (plans/rehost-bhsawesome.md 3a global features).
  */
 
 import fs from 'node:fs';
@@ -11,12 +11,13 @@ import type { Book, Division } from './book.ts';
 import { escapeHtml, h } from './html.ts';
 import { NUMBERED_BLOCKS, blockNumber, elementId } from './ids.ts';
 import { type Ctx, emitElement, isInteractive, smartQuotes } from './prose.ts';
+import { href } from './urls.ts';
 import { type XmlElement, child, elements, isElement, textContent, xmlId } from './xml.ts';
 
 const CHROME = fs.readFileSync(path.join(import.meta.dirname, '..', 'chrome.html'), 'utf8');
 const CHROME_HEAD = CHROME.slice(0, CHROME.indexOf('</head>'));
 
-// -- contents / backmatter / redirect ----------------------------------------
+// -- contents / backmatter ---------------------------------------------------
 
 function summaryLi(href: string, number: string | null, title: string): string {
   const label = [
@@ -30,9 +31,9 @@ function summaryLi(href: string, number: string | null, title: string): string {
 
 export function contentsPageContent(book: Book): string {
   const items = book.divisions.children.map((d) =>
-    summaryLi(d.page as string, d.number, d.title || (d.kind === 'frontmatter' ? 'Front Matter' : d.title)),
+    summaryLi(href(d.page as string), d.number, d.title || (d.kind === 'frontmatter' ? 'Front Matter' : d.title)),
   );
-  items.push(summaryLi('backmatter.html', null, 'Back Matter'));
+  items.push(summaryLi(href('backmatter'), null, 'Back Matter'));
   return h(
     'section',
     { class: 'book', id: book.divisions.id },
@@ -49,8 +50,8 @@ export function backmatterContent(book: Book, ctx: Ctx): string {
   const inner: string[] = [];
   const links: string[] = [];
   for (const c of backmatter ? elements(backmatter) : []) {
-    if (c.name === 'index') links.push(summaryLi('book-index.html', null, 'Index'));
-    else if (c.name === 'colophon') links.push(summaryLi('colophon.html', null, 'Colophon'));
+    if (c.name === 'index') links.push(summaryLi(href('backmatter/book-index'), null, 'Index'));
+    else if (c.name === 'colophon') links.push(summaryLi(href('backmatter/colophon'), null, 'Colophon'));
     else inner.push(emitElement(c, ctx));
   }
   return h(
@@ -75,21 +76,6 @@ export function colophonContent(book: Book, ctx: Ctx): string {
       .map((e) => emitElement(e, ctx))
       .join('\n'),
   );
-}
-
-export function redirectPage(): string {
-  const metas = CHROME_HEAD.match(/<meta (?:property|name)="(?:og|book|twitter)[^>]*>/g) ?? [];
-  return `<!DOCTYPE html>
-<html>
-<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="0; URL='bhsawesome.html'">
-${metas.join('\n')}
-</head>
-<body>
-</body>
-</html>
-`;
 }
 
 // -- the index page (from <idx> elements) ------------------------------------
@@ -121,7 +107,7 @@ export function collectIndexEntries(book: Book): IndexEntry[] {
         out.push({
           heading,
           sub,
-          page: curDiv.page ?? `${curPage.page}#${curDiv.id}`,
+          page: curDiv.page !== null ? href(curDiv.page) : `${href(curPage.page as string)}#${curDiv.id}`,
           type: curDiv.kind.charAt(0).toUpperCase() + curDiv.kind.slice(1),
           number: curDiv.number,
           title: curDiv.title,
@@ -301,7 +287,7 @@ export function lunrIndexJs(book: Book): string {
     docs.push({
       id: division.id,
       level: '1',
-      url: division.page as string,
+      url: href(division.page as string),
       type: kindLabel,
       number: division.number ?? '',
       title: division.title || 'Introduction',
@@ -318,7 +304,7 @@ export function lunrIndexJs(book: Book): string {
           docs.push({
             id,
             level: '2',
-            url: `${division.page}#${id}`,
+            url: `${href(division.page as string)}#${id}`,
             type: TYPE[c.name] ?? 'Activity',
             number: blockNumber(c) ?? '',
             title: title || (TYPE[c.name] ?? ''),
@@ -333,7 +319,7 @@ export function lunrIndexJs(book: Book): string {
   docs.push({
     id: 'book-index',
     level: '1',
-    url: 'book-index.html',
+    url: href('backmatter/book-index'),
     type: 'Index',
     number: '',
     title: 'Index',
