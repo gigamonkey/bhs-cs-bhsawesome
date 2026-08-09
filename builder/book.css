@@ -457,13 +457,6 @@ body.pretext>a.assistive:focus {
     max-height: 100%;
 }
 
-.ptx-masthead .byline {
-    color: var(--byline-color);
-    font-weight: 400;
-    margin: 0;
-    font-size: 62.5%;
-    min-height: inherit;
-}
 
 @media screen and (max-width:800px){
 
@@ -497,9 +490,7 @@ body.pretext>a.assistive:focus {
     line-height: 1em;
 }
 
-.ptx-masthead .byline {
-    font-size: 50%;
-}}
+}
 
 @media screen and (width<=480px){
 
@@ -509,8 +500,7 @@ body.pretext>a.assistive:focus {
     font-size: 1em;
 }
 
-.ptx-masthead .logo-link,
-.ptx-masthead .byline {
+.ptx-masthead .logo-link {
     display: none;
 }}
 
@@ -1635,17 +1625,14 @@ summary.knowl__link {
 @layer spacing{
 
 :is(section,article,.knowl__content,.introduction,.conclusion)>*:not(:first-child) {
-    margin-top: 1.5em;
+    margin-top: var(--block-gap, 1.5em);
 }
 
-/* p[id] = paragraphs the build emits (each carries its permalink id);
-   runestone-generated <p>s have no id and keep their own spacing — the
-   same distinction pretext-core draws with `.main p:not([id])`. The
-   attribute selector also keeps this rule's specificity above the
-   general sibling rule up top — with bare p+p that rule would win and
-   adjacent paragraphs would open up to 1.5em. */
-:is(section,article,.knowl__content,.introduction,.conclusion)>p[id]+p[id] {
-    margin-top: 1em;
+/* Adjacent paragraphs sit tighter. Setting the variable rather than
+   margin-top itself means this needn't out-specify the general sibling
+   rule above. */
+:is(section,article,.knowl__content,.introduction,.conclusion)>p+p {
+    --block-gap: 1em;
 }
 
 .ptx-content :is(ul,td,li,dd,.blockquote,.sbspanel)>*:not(:first-child) {
@@ -2351,7 +2338,7 @@ iframe {
     font-weight: 700;
 }
 
-p[id] {
+p {
     line-height: var(--ptx-content-line-height, 1.35);
 }
 
@@ -2752,7 +2739,7 @@ blockquote,
 figcaption,
 dt,
 .solution-like,
-p[id] {
+p {
     position: relative;
 }
 
@@ -3569,6 +3556,15 @@ html:root {
   display: block;
 }
 
+/* The bare-p rules (margin reset, line-height) describe the paragraphs
+   the BUILD emits; paragraphs a script generates opt back out here.
+   Today that's only the component captions — the codelens legend's own
+   stylesheet already pins its spacing, and nothing else makes <p>s. */
+.runestone_caption {
+  margin: revert;
+  line-height: inherit;
+}
+
 /* A potentialy gross hack to hide the footnotes PreTeXt loves to put on every link. */
 .ptx-content details.ptx-footnote,
 .ptx-content .ptx-runestone-container details.ptx-footnote
@@ -3576,9 +3572,9 @@ html:root {
   display: none;
 }
 
-.ptx-content p[id] a:link,
-.ptx-content p[id] a:hover,
-.ptx-content p[id] a:visited
+.ptx-content p a:link,
+.ptx-content p a:hover,
+.ptx-content p a:visited
 {
   text-decoration: underline dotted;
   font-weight: inherit;
@@ -3721,16 +3717,16 @@ td {
     font-weight: 600;
 }
 
-/* Zero the UA default margins on the paragraphs the build emits (p[id] —
-   see the note on the p[id]+p[id] rule) so spacing comes from the theme's
-   rules exactly as it did when paragraphs were divs. This must live IN
-   the theme's `spacing` cascade layer: unlayered it would beat every
-   layered spacing rule regardless of specificity; inside the layer its
-   low specificity loses to the p[id]+p[id] and
-   section>*:not(:first-child) rules while still overriding the UA
-   default. */
+/* Zero the UA default margins on paragraphs so spacing comes from the
+   theme's rules exactly as it did when paragraphs were divs. This must
+   live IN the theme's `spacing` cascade layer: unlayered it would beat
+   every layered spacing rule regardless of specificity; inside the
+   layer its low specificity loses to the sibling-margin rules while
+   still overriding the UA default. Paragraphs some script generates
+   opt back OUT of this and the other bare-p rules — see the
+   runestone_caption exception beside the caption display rules. */
 @layer spacing {
-    p[id] {
+    p {
         margin: 0;
     }
 }

@@ -234,8 +234,9 @@ const EMITTERS: Record<string, Emitter> = {
       (c) => isElement(c) && ['ul', 'ol', 'dl', 'program', 'pre', 'console', 'blockquote', 'image', 'tabular'].includes(c.name),
     );
     if (block && isElement(block)) ctx.warn(`<p> contains block <${block.name}> — move it out to a sibling`);
-    // No class: paragraphs are plain <p>. The CSS keys on p[id] where it
-    // must distinguish our paragraphs from runestone-generated ones.
+    // No class: paragraphs are plain <p>, styled by element; the few
+    // script-generated paragraphs opt out in book.css (the
+    // runestone_caption exception).
     return h(
       'p',
       { id },
