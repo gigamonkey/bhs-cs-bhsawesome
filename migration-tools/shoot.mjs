@@ -40,36 +40,38 @@ if (!outDir) {
 const only = new Set(process.argv.slice(3));
 
 // ---------------------------------------------------------------------------
-// The shot list. One entry per (page, state); names are stable — compare.mjs
+// The shot list. One entry per (page, state); pages are the served
+// /bhsawesome/... URLs (the directory-URLs scheme, bhs-cs
+// plans/bhsawesome-index-html-urls.md); names are stable — compare.mjs
 // matches on them. Keep every vocabulary the plan touches covered.
 // ---------------------------------------------------------------------------
 
 const SHOTS = [
   // Vocabulary coverage, default state:
-  { name: 'variables', page: 'variables.html' }, // prose, fillin
-  { name: 'boolean-manipulation', page: 'boolean-manipulation.html' }, // tabular-heavy
-  { name: 'array-traversal', page: 'array-traversal.html' }, // gutterimage/sidebyside, datafile, MCQ, activecode
-  { name: 'for-loops', page: 'for-loops.html' }, // parsons
-  { name: 'intro-to-java', page: 'intro-to-java.html' }, // hparsons
-  { name: 'assignment-statements', page: 'assignment-statements.html' }, // codelens
-  { name: 'frq-practice', page: 'frq-practice.html' }, // clickable-area, short-answer, FRQ styling
-  { name: 'arraylist-summary', page: 'arraylist-summary.html' }, // cardsort, MCQ
-  { name: 'abstraction', page: 'abstraction.html' }, // journal/short-answer, book exercises
-  { name: 'classes-chapter', page: 'classes.html' }, // chapter summary page
-  { name: 'frontmatter', page: 'bhsawesome.html' }, // title page
-  { name: 'book-index', page: 'book-index.html' }, // index backmatter
-  { name: 'colophon', page: 'colophon.html' },
-  { name: 'knowl-page', page: 'knowl/xref/complex-loop-trace-table.html' }, // bare knowl content
+  { name: 'variables', page: '/bhsawesome/primitive-types-and-variables/variables/' }, // prose, fillin
+  { name: 'boolean-manipulation', page: '/bhsawesome/booleans-and-conditionals/boolean-manipulation/' }, // tabular-heavy
+  { name: 'array-traversal', page: '/bhsawesome/arrays/array-traversal/' }, // gutterimage/sidebyside, datafile, MCQ, activecode
+  { name: 'for-loops', page: '/bhsawesome/loops/for-loops/' }, // parsons
+  { name: 'intro-to-java', page: '/bhsawesome/introduction/intro-to-java/' }, // hparsons
+  { name: 'assignment-statements', page: '/bhsawesome/primitive-types-and-variables/assignment-statements/' }, // codelens
+  { name: 'frq-practice', page: '/bhsawesome/ap-practice/frq-practice/' }, // clickable-area, short-answer, FRQ styling
+  { name: 'arraylist-summary', page: '/bhsawesome/array-lists/arraylist-summary/' }, // cardsort, MCQ
+  { name: 'abstraction', page: '/bhsawesome/abstraction-and-program-design/abstraction/' }, // journal/short-answer, book exercises
+  { name: 'classes-chapter', page: '/bhsawesome/classes/' }, // chapter summary page
+  { name: 'frontmatter', page: '/bhsawesome/' }, // title/contents page
+  { name: 'book-index', page: '/bhsawesome/backmatter/book-index/' }, // index backmatter
+  { name: 'colophon', page: '/bhsawesome/backmatter/colophon/' },
+  { name: 'knowl-page', page: '/bhsawesome/knowl/xref/complex-loop-trace-table.html' }, // bare knowl content
 
   // JS-injected states:
-  { name: 'variables-dark', page: 'variables.html', action: 'dark' },
-  { name: 'arraylist-summary-dark', page: 'arraylist-summary.html', action: 'dark' },
-  { name: 'frq-practice-dark', page: 'frq-practice.html', action: 'dark' },
-  { name: 'boolean-manipulation-dark', page: 'boolean-manipulation.html', action: 'dark' },
-  { name: 'if-traps-knowl-open', page: 'if-traps.html', action: 'knowl' },
-  { name: 'variables-search', page: 'variables.html', action: 'search' },
-  { name: 'variables-readability', page: 'variables.html', action: 'readability' },
-  { name: 'variables-permalinks', page: 'variables.html', action: 'permalinks' },
+  { name: 'variables-dark', page: '/bhsawesome/primitive-types-and-variables/variables/', action: 'dark' },
+  { name: 'arraylist-summary-dark', page: '/bhsawesome/array-lists/arraylist-summary/', action: 'dark' },
+  { name: 'frq-practice-dark', page: '/bhsawesome/ap-practice/frq-practice/', action: 'dark' },
+  { name: 'boolean-manipulation-dark', page: '/bhsawesome/booleans-and-conditionals/boolean-manipulation/', action: 'dark' },
+  { name: 'if-traps-knowl-open', page: '/bhsawesome/booleans-and-conditionals/if-traps/', action: 'knowl' },
+  { name: 'variables-search', page: '/bhsawesome/primitive-types-and-variables/variables/', action: 'search' },
+  { name: 'variables-readability', page: '/bhsawesome/primitive-types-and-variables/variables/', action: 'readability' },
+  { name: 'variables-permalinks', page: '/bhsawesome/primitive-types-and-variables/variables/', action: 'permalinks' },
 ];
 
 // ---------------------------------------------------------------------------
@@ -112,7 +114,10 @@ function startServer() {
       }
       return;
     }
-    let file = path.join(SITE, url === '/' ? 'index.html' : url);
+    // The site lives under /bhsawesome (every emitted ref is root-relative
+    // to that mount); serve it the way the website's static mounts do.
+    const rel = url === '/bhsawesome' ? '/' : url.startsWith('/bhsawesome/') ? url.slice('/bhsawesome'.length) : url;
+    let file = path.join(SITE, rel === '/' ? 'index.html' : rel);
     if (!file.startsWith(SITE)) {
       res.writeHead(403).end();
       return;
@@ -211,7 +216,7 @@ for (const shot of SHOTS) {
   // Determinism: nothing leaves localhost (YouTube iframes become blank).
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (route) => route.abort());
   try {
-    await page.goto(`${base}/${shot.page}`, { waitUntil: 'networkidle', timeout: 30000 });
+    await page.goto(`${base}${shot.page}`, { waitUntil: 'networkidle', timeout: 30000 });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(1000); // let the Runestone components settle
     if (shot.action) await ACTIONS[shot.action](page);
