@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<chapter xml:id="text-files" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Data from files</title>
+
+  <introduction>
+    <p>
+      When a Java program runs, the data it operates on has to be in the
+      computer’s memory. When we create a variable we are allocating a small bit
+      of memory which we can then initialize to hold one value. When we create
+      an array on an <c>ArrayList</c>, we are allocating a larger chunk of
+      memory that can hold lots of values. But where do any of those values come
+      from?
+    </p>
+
+    <p>They might come from our code. If we make an array like:</p>
+
+    <program>
+      String[] foods = new String[] { "egg", "chicken", "fruit cup" };
+    </program>
+
+    <p>we are creating an array that holds those three <c>String</c> values.</p>
+
+    <p>
+      But initializing values in our code this way is only reasonable when we’re
+      dealing with small amounts of data. It would be really cumbersome to
+      include a million element array of words in our source code. And if we
+      did, it would mean that if we wanted to run the program on different data,
+      we would need to change and recompile our program. So we need another way
+      to load data if we want to processes a lot of data or process different
+      data at different times with the same program.
+    </p>
+
+    <p>
+      Instead of embedding data directly in the source code of our programs, we
+      typically store data in <term>files</term> on the computer’s hard drive
+      and then load the data from those files into our programs. This allows us
+      to write a program once that can run the same computation on different
+      data just by loading a different file. (Programs can also write data to
+      files but we are not going to cover that in this course.)
+    </p>
+
+    <p>
+      All of the different ways that data can be stored in files is a bigger
+      topic than we can cover. Instead in this chapter we are going to focus on
+      files that contain <term>data sets</term>, collections of data made up of
+      many instances of the same basic kind of data such as a list words in a
+      dictionary, of students in a class, or books in a library.
+    </p>
+  </introduction>
+
+  <xi:include href="./input-files.ptx" />
+  <xi:include href="./data-sets.ptx" />
+</chapter>

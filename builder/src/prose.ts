@@ -234,6 +234,10 @@ const EMITTERS: Record<string, Emitter> = {
   // -- inline ----------------------------------------------------------------
   // Verbatim: no smart quotes inside code.
   c: (el) => h('code', { class: 'code-inline tex2jax_ignore' }, escapeHtml(trimText(textContent(el)).trim())),
+  // Our schema: <k> marks a language KEYWORD, as distinct from general
+  // inline code — same rendering base as <c> plus a keyword class
+  // (styled in custom.css).
+  k: (el) => h('code', { class: 'code-inline tex2jax_ignore keyword' }, escapeHtml(trimText(textContent(el)).trim())),
   term: (el, ctx) => h('dfn', { class: 'terminology' }, trimText(emitChildren(el, ctx))),
   em: (el, ctx) => h('em', { class: 'emphasis' }, trimText(emitChildren(el, ctx))),
   // Our schema: <strong> is real bold emphasis (PreTeXt silently dropped

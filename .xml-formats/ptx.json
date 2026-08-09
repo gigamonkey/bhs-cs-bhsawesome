@@ -1,7 +1,7 @@
 {
   "indent": 2,
   "width": 80,
-  "inline": ["term", "url", "c", "h", "area", "em", "xref", "m", "pubtitle"],
+  "inline": ["term", "url", "c", "k", "h", "area", "em", "strong", "xref", "m", "pubtitle"],
   "code": ["program"],
   "preserve_whitespace": ["cline", "pre"],
   "one_line": ["cline"],

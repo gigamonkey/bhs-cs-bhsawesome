@@ -331,3 +331,8 @@ table .align-default, td {
   width: unset;
   margin-left: unset;
 }
+
+/* <k> — language keywords, as distinct from general inline code (<c>). */
+.code-inline.keyword {
+    font-weight: 600;
+}
