@@ -573,6 +573,37 @@ const EMITTERS: Record<string, Emitter> = {
   // rescales each width relative to that span (15 -> 12.5 when the row is
   // 120% wide) while the inter-panel gap stays unscaled — replicating
   // PreTeXt's arithmetic exactly, 15-significant-digit formatting and all.
+  // Our schema (bhsawesome-next-steps.md phase 3): an image in the left
+  // margin gutter beside block content — what the old `<sidebyside
+  // widths="15% 100%" margins="-20% 0%">` + <image>/<stack> hack
+  // expressed (the construct PreTeXt could only reach via errors). Emits
+  // the same DOM with the fixed gutter geometry, so the theme CSS is
+  // untouched. Attributes: source (under external/), description (alt
+  // text). Children are the content blocks.
+  gutterimage: (el, ctx) => {
+    const img = voidEl('img', {
+      src: `external/${el.attributes.source ?? ''}`,
+      class: 'contained',
+      alt: el.attributes.description,
+    });
+    return h(
+      'div',
+      { class: 'sidebyside' },
+      h(
+        'div',
+        {
+          class: 'sbsrow',
+          style:
+            'margin-left:-20%;margin-right:0%;grid-template-columns:12.5% 83.3333333333333%;column-gap:5%;',
+        },
+        [
+          h('div', { class: 'sbspanel sbspanel--top top', style: '' }, h('div', { class: 'image-box' }, img)),
+          h('div', { class: 'sbspanel sbspanel--top top', style: '' }, emitBlocks(el, ctx)),
+        ].join('\n'),
+      ),
+    );
+  },
+
   sidebyside: (el, ctx) => {
     const panels = elements(el);
     const n = panels.length;

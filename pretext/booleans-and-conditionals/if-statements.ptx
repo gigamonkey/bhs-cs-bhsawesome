@@ -723,11 +723,7 @@
   <subsection xml:id="coding-challenge-magic-8-ball">
     <title>Coding Challenge: Magic 8 Ball</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit2-Selection-and-Iteration/Figures/Magic_eight_ball.png" width="18%">
-        <shortdescription>Magic 8 Ball</shortdescription>
-      </image>
-
+    <gutterimage source="Unit2-Selection-and-Iteration/Figures/Magic_eight_ball.png" description="Magic 8 Ball">
       <p>
         Have you ever seen a Magic 8 ball? You ask it a yes-no question and then
         shake it to get a random response like <c>Signs point to yes!</c>,
@@ -741,7 +737,7 @@
         lesson</url> and remember the formula <c>(int) (Math.random() * max) +
         min</c>.
       </p>
-    </sidebyside>
+    </gutterimage>
 
     <project label="challenge-Magic8ball">
       <statement>

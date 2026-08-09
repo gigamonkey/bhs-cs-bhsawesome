@@ -749,11 +749,7 @@
   <subsection>
     <title>Coding Challenge: Dog Years</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/dog-free.png" width="27%">
-        <shortdescription>dog</shortdescription>
-      </image>
-
+    <gutterimage source="Unit1-Using-Objects-and-Methods/Figures/dog-free.png" description="dog">
       <p>
         In this coding challenge, you will calculate your age, and your pet’s
         age from your birth dates, and your pet’s age in dog years. In the code
@@ -765,7 +761,7 @@
         out. If you are pair programming, switch drivers (who has control of the
         keyboard in pair programming) after every line of code.
       </p>
-    </sidebyside>
+    </gutterimage>
 
     <project label="challenge1-4">
       <title>Dog Years</title>

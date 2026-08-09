@@ -454,11 +454,7 @@
   <subsection>
     <title>Debugging Challenge</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/rubberduck.jpg" width="18%">
-        <shortdescription>Rubber Duck</shortdescription>
-      </image>
-
+    <gutterimage source="Unit1-Using-Objects-and-Methods/Figures/rubberduck.jpg" description="Rubber Duck">
       <p>
         In this course, you are encouraged to work together in pairs to complete
         the programming challenges. Pair programming is a successful software
@@ -471,7 +467,7 @@
         using <url href="https://rubberduckdebugging.com/">Rubber duck
         debugging</url>.
       </p>
-    </sidebyside>
+    </gutterimage>
 
     <p>
       Working in pairs, debug the following code. Can you find all the bugs and

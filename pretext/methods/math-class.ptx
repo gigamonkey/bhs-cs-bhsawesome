@@ -342,47 +342,40 @@
 
     <idx><h>Math</h><h>random</h></idx>
     <idx>random</idx>
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/dice.png">
-        <shortdescription>Dice</shortdescription>
-      </image>
+    <gutterimage source="Unit1-Using-Objects-and-Methods/Figures/dice.png" description="Dice">
+      <p>
+        Games would be boring if the same thing happened each time you played
+        the game. And many simulation techniques, including those used to train
+        Large Language Models like ChatGPT, depend on generating random
+        variations. The key to making games interesting and to running useful
+        simulations is the ability to generate random numbers. The
+        <c>Math.random()</c> is the simplest way to get random numbers in Java.
+      </p>
 
-      <stack>
+      <note>
         <p>
-          Games would be boring if the same thing happened each time you played
-          the game. And many simulation techniques, including those used to
-          train Large Language Models like ChatGPT, depend on generating random
-          variations. The key to making games interesting and to running useful
-          simulations is the ability to generate random numbers. The
-          <c>Math.random()</c> is the simplest way to get random numbers in
-          Java.
+          Ironically, given the dependence of so many kinds of programs on
+          randomness, computers are actually not capable of generating truly
+          random numbers. This is because computers are fundamentally
+          deterministic so from a given starting state and executing a given
+          algorithm they should always produce exactly the same result. Or as
+          John von Neumann, one of the early giants of computer science said.
         </p>
 
-        <note>
+        <blockquote>
           <p>
-            Ironically, given the dependence of so many kinds of programs on
-            randomness, computers are actually not capable of generating truly
-            random numbers. This is because computers are fundamentally
-            deterministic so from a given starting state and executing a given
-            algorithm they should always produce exactly the same result. Or as
-            John von Neumann, one of the early giants of computer science said.
+            Anyone who considers arithmetical methods of producing random digits
+            is, of course, in a state of sin.
           </p>
+        </blockquote>
 
-          <blockquote>
-            <p>
-              Anyone who considers arithmetical methods of producing random
-              digits is, of course, in a state of sin.
-            </p>
-          </blockquote>
-
-          <p>
-            However there are algorithms that produce <term>pseudorandom</term>
-            numbers which are good enough for most purposes. <c>Math.random</c>
-            is a pseudorandom number generator.
-          </p>
-        </note>
-      </stack>
-    </sidebyside>
+        <p>
+          However there are algorithms that produce <term>pseudorandom</term>
+          numbers which are good enough for most purposes. <c>Math.random</c> is
+          a pseudorandom number generator.
+        </p>
+      </note>
+    </gutterimage>
 
     <p>
       <c>Math.random()</c> is not a function in the mathematical sense—it
@@ -814,58 +807,51 @@
   <subsection xml:id="coding-challenge-random-numbers">
     <title>Coding challenge: Combo lock</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg">
-        <shortdescription>lock</shortdescription>
-      </image>
+    <gutterimage source="Unit1-Using-Objects-and-Methods/Figures/lock.jpg" description="lock">
+      <p>
+        You may have a combination lock on your locker at school where you have
+        to spin the dial to three separate numbers from 0 up to 39, inclusive.
+        What if you forgot your combination? Would you be able to guess it?
+      </p>
 
-      <stack>
-        <p>
-          You may have a combination lock on your locker at school where you
-          have to spin the dial to three separate numbers from 0 up to 39,
-          inclusive. What if you forgot your combination? Would you be able to
-          guess it?
-        </p>
+      <p>
+        <ol>
+          <li>
+            <p>
+              Write code that will generate 3 random integers from 0 up to 40
+              (but not including 40) using <term>Math.random()</term> in the
+              Active Code window below. Run it a couple times to see it generate
+              different numbers.
+            </p>
+          </li>
 
-        <p>
-          <ol>
-            <li>
-              <p>
-                Write code that will generate 3 random integers from 0 up to 40
-                (but not including 40) using <term>Math.random()</term> in the
-                Active Code window below. Run it a couple times to see it
-                generate different numbers.
-              </p>
-            </li>
+          <li>
+            <p>
+              How many times would you need to run it to guess your combination
+              correctly? Let’s have the code compute the number of permutations
+              possible in your combination lock using <term>Math.pow(number,
+              exponent)</term>. For example, if you had to spin the dial twice
+              on your combination lock where each spin can choose a digit from
+              0-9 (10 digits), there are <m>10^{2}</m> possible permutations. In
+              Java, this would be written as <term>Math.pow(10, 2)</term> which
+              means 10 to the power of 2. If you start listing all the
+              permutations possible, you can tell that there are <m>10^{2}</m>
+              or 100 possible permutations for a 2 spins on a dial lock from
+              0-9.
+            </p>
 
-            <li>
-              <p>
-                How many times would you need to run it to guess your
-                combination correctly? Let’s have the code compute the number of
-                permutations possible in your combination lock using
-                <term>Math.pow(number, exponent)</term>. For example, if you had
-                to spin the dial twice on your combination lock where each spin
-                can choose a digit from 0-9 (10 digits), there are <m>10^{2}</m>
-                possible permutations. In Java, this would be written as
-                <term>Math.pow(10, 2)</term> which means 10 to the power of 2.
-                If you start listing all the permutations possible, you can tell
-                that there are <m>10^{2}</m> or 100 possible permutations for a
-                2 spins on a dial lock from 0-9.
-              </p>
-
-              <p>
-                <pre>
+            <p>
+              <pre>
               00, 01, 02, 03, 04, 05, 06, 07, 08, 09
               10, 11, 12, 13, 14, 15, 16, 17, 18, 19
               ...
               90, 91, 92, 93, 94, 95, 96, 97, 98, 99
-                </pre>
-              </p>
-            </li>
-          </ol>
-        </p>
-      </stack>
-    </sidebyside>
+              </pre>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </gutterimage>
 
     <p>
       Now what about the combination lock for this challenge? You will need to
@@ -907,17 +893,13 @@
   <subsection>
     <title>Coding Challenge: Dancing turtles</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/dancing-turtle.png" width="36%">
-        <shortdescription>Random turtle drawing</shortdescription>
-      </image>
-
+    <gutterimage source="Unit1-Using-Objects-and-Methods/Figures/dancing-turtle.png" description="Random turtle drawing">
       <p>
         Here’s another challenge that is a lot of fun! Can you use random
         numbers to make dancing turtles? This idea was suggested by CSA teacher
         Zac Martin.
       </p>
-    </sidebyside>
+    </gutterimage>
 
     <project label="challenge-random-dancing-turtles">
       <title>Dancing turtles</title>
@@ -980,34 +962,27 @@
   <subsection>
     <title>Coding Challenge: Tower ladder</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" width="36%">
-        <shortdescription>Ladder on tower</shortdescription>
-      </image>
+    <gutterimage source="Unit1-Using-Objects-and-Methods/Figures/ladder.png" description="Ladder on tower">
+      <p>
+        The Pythagorean theorem states that the length of the hypotenuse (the
+        side opposite the right angle in a right triangle) is the square root of
+        the sum of the squares of the lengths of the other two sides, also
+        called the “legs” or the width and height of the triangle. Here’s the
+        formula for this theorem: <m>c = \sqrt{a^{2} + b^{2}}</m> where <m>a</m>
+        and <m>b</m> are the width and height of the triangle and <m>c</m> is
+        the length of the hypotenuse.
+      </p>
 
-      <stack>
-        <p>
-          The Pythagorean theorem states that the length of the hypotenuse (the
-          side opposite the right angle in a right triangle) is the square root
-          of the sum of the squares of the lengths of the other two sides, also
-          called the “legs” or the width and height of the triangle. Here’s the
-          formula for this theorem: <m>c = \sqrt{a^{2} + b^{2}}</m> where
-          <m>a</m> and <m>b</m> are the width and height of the triangle and
-          <m>c</m> is the length of the hypotenuse.
-        </p>
-
-        <p>
-          This may seems like a bunch of Greek to you but one common, real-world
-          use for the Pythagorean theorem is to calculate the length of ladder
-          you will need to reach the window of your beloved, given that their
-          cruel parents have locked them in a tower surrounded by a moat. The
-          ladder will be the hypotenuse of a triangle whose legs are the height
-          of the window of your beloved’s room in the tower and the width of the
-          moat since you have to place the base of the ladder on the edge of the
-          moat.
-        </p>
-      </stack>
-    </sidebyside>
+      <p>
+        This may seems like a bunch of Greek to you but one common, real-world
+        use for the Pythagorean theorem is to calculate the length of ladder you
+        will need to reach the window of your beloved, given that their cruel
+        parents have locked them in a tower surrounded by a moat. The ladder
+        will be the hypotenuse of a triangle whose legs are the height of the
+        window of your beloved’s room in the tower and the width of the moat
+        since you have to place the base of the ladder on the edge of the moat.
+      </p>
+    </gutterimage>
 
     <activity label="hypotenuse-java-mc">
       <title>Find correct hypotenuse</title>

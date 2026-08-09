@@ -1162,62 +1162,56 @@
   <subsection xml:id="coding-challenge-friends-and-birthdays">
     <title>Coding Challenge: Friends and Birthdays</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit3-Class-Creation/Figures/cake.png" width="23%">
-        <shortdescription>Birthday cake</shortdescription>
-      </image>
+    <gutterimage source="Unit3-Class-Creation/Figures/cake.png" description="Birthday cake">
+      <p>
+        In this challenge, you will create a class <c>Friend</c> which keeps
+        track of your friends’ names and birthdays using another class called
+        <c>Date</c>.
+      </p>
 
-      <stack>
-        <p>
-          In this challenge, you will create a class <c>Friend</c> which keeps
-          track of your friends’ names and birthdays using another class called
-          <c>Date</c>.
-        </p>
+      <p>
+        <ol>
+          <li>
+            <p>
+              Create a class called <c>Date</c> with the following instance
+              variables as ints: month, day, and year. Add a constructor,
+              getters, and setters for the instance variables.
+            </p>
+          </li>
 
-        <p>
-          <ol>
-            <li>
-              <p>
-                Create a class called <c>Date</c> with the following instance
-                variables as ints: month, day, and year. Add a constructor,
-                getters, and setters for the instance variables.
-              </p>
-            </li>
+          <li>
+            <p>
+              Create a class called <c>Friend</c> with the following instance
+              variables: name and birthdate which is of type <c>Date</c>.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                Create a class called <c>Friend</c> with the following instance
-                variables: name and birthdate which is of type <c>Date</c>.
-              </p>
-            </li>
+          <li>
+            <p>
+              Add a constructor that takes 2 parameters and initializes the
+              instance variables, making sure to copy the birthdate parameter
+              object.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                Add a constructor that takes 2 parameters and initializes the
-                instance variables, making sure to copy the birthdate parameter
-                object.
-              </p>
-            </li>
+          <li>
+            <p>
+              Add a method called <c>isBirthday</c> that returns true if the
+              birthdate matches the given date parameter.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                Add a method called <c>isBirthday</c> that returns true if the
-                birthdate matches the given date parameter.
-              </p>
-            </li>
-
-            <li>
-              <p>
-                Test your methods in the main method by creating a Friend object
-                with a friend’s name and birthday. Then, create a Date object
-                with today’s date and call the <c>isBirthday</c> method to see
-                if it is the friend’s birthday.
-              </p>
-            </li>
-          </ol>
-        </p>
-      </stack>
-    </sidebyside>
+          <li>
+            <p>
+              Test your methods in the main method by creating a Friend object
+              with a friend’s name and birthday. Then, create a Date object with
+              today’s date and call the <c>isBirthday</c> method to see if it is
+              the friend’s birthday.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </gutterimage>
 
     <project label="challenge-friend-birthday">
       <statement>

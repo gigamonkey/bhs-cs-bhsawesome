@@ -878,39 +878,32 @@
   <subsection xml:id="coding-challenge-turtle-house">
     <title>Coding Challenge: Turtle house</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" width="36%">
-        <shortdescription>simple house</shortdescription>
-      </image>
+    <gutterimage source="Unit1-Using-Objects-and-Methods/Figures/houseWithWindows.png" description="simple house">
+      <p>
+        This creative challenge is fun to do collaboratively in pairs. Design a
+        house and have the turtle draw it with different colors below. Can you
+        add windows and a door? Come up with your own house design as a team.
+      </p>
 
-      <stack>
-        <p>
-          This creative challenge is fun to do collaboratively in pairs. Design
-          a house and have the turtle draw it with different colors below. Can
-          you add windows and a door? Come up with your own house design as a
-          team.
-        </p>
+      <p>
+        To draw a window, you will need to call <c>penUp</c> and <c>moveTo</c>
+        to walk the turtle into position without drawing, for example:
+      </p>
 
-        <p>
-          To draw a window, you will need to call <c>penUp</c> and <c>moveTo</c>
-          to walk the turtle into position without drawing, for example:
-        </p>
+      <program>
+        t.penUp();
+        t.moveTo(120,200);
+        t.penDown();
+      </program>
 
-        <program>
-          t.penUp();
-          t.moveTo(120,200);
-          t.penDown();
-        </program>
-
-        <p>
-          It may help to act out the code pretending you are the turtle.
-          Remember that the angles you turn depend on which direction you are
-          facing, and the turtle begins facing up. When planning your
-          coordinates for the house, remember that the turtle starts at the
-          center of the screen (150,150) and the top left corner is (0,0).
-        </p>
-      </stack>
-    </sidebyside>
+      <p>
+        It may help to act out the code pretending you are the turtle. Remember
+        that the angles you turn depend on which direction you are facing, and
+        the turtle begins facing up. When planning your coordinates for the
+        house, remember that the turtle starts at the center of the screen
+        (150,150) and the top left corner is (0,0).
+      </p>
+    </gutterimage>
 
     <project label="challenge-TurtleHouse">
       <statement>

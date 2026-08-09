@@ -691,8 +691,7 @@
       <title>Random images</title>
 
       <statement>
-        <sidebyside widths="15% 100%" margins="-20% 0%">
-          <image source="Unit4-Data-Collections/array-images/cow.jpg" width="27%" />
+        <gutterimage source="Unit4-Data-Collections/array-images/cow.jpg">
           <p>
             This code contains an array of image filenames. Run the code and see
             that it displays images[0] which is “cow.jpg”. Can you change the
@@ -703,7 +702,7 @@
             number from <c>0</c> up to <c>max</c>. What’s the maximum number it
             can be for this array?
           </p>
-        </sidebyside>
+        </gutterimage>
       </statement>
 
       <program interactive="activecode">

@@ -1321,73 +1321,67 @@
   <subsection xml:id="coding-challenge-virtual-pet-class">
     <title>Coding Challenge: Virtual Pet Class</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit3-Class-Creation/Figures/virtualpet.jpg" width="23%">
-        <shortdescription>Virtual Pet</shortdescription>
-      </image>
+    <gutterimage source="Unit3-Class-Creation/Figures/virtualpet.jpg" description="Virtual Pet">
+      <p>
+        In the late 1990s and early 2000s, digital pets like in the photo were a
+        huge hit! You had to feed, play, and interact with your virtual pet in
+        order to keep it healthy and happy. Let’s think about how they were
+        programmed.
+      </p>
 
-      <stack>
-        <p>
-          In the late 1990s and early 2000s, digital pets like in the photo were
-          a huge hit! You had to feed, play, and interact with your virtual pet
-          in order to keep it healthy and happy. Let’s think about how they were
-          programmed.
-        </p>
+      <p>
+        <ol>
+          <li>
+            <p>
+              <term>Design:</term> In pairs, brainstorm about the
+              <term>object-oriented design</term> for the virtual pet. What data
+              or instance variables would you need to keep track of for a
+              virtual pet? What behaviors or methods would the virtual pet have?
+              (You could draw a Class Diagram for this class using <url
+              href="https://app.diagrams.net/">app.diagrams.net</url> or <url
+              href="https://creately.com">Creately.com</url>, although it is not
+              required). Then, using the <c>Person</c> class above as a guide,
+              write a <c>VirtualPet</c> class in the Active Code template below
+              with the following parts.
+            </p>
+          </li>
 
-        <p>
-          <ol>
-            <li>
-              <p>
-                <term>Design:</term> In pairs, brainstorm about the
-                <term>object-oriented design</term> for the virtual pet. What
-                data or instance variables would you need to keep track of for a
-                virtual pet? What behaviors or methods would the virtual pet
-                have? (You could draw a Class Diagram for this class using <url
-                href="https://app.diagrams.net/">app.diagrams.net</url> or <url
-                href="https://creately.com">Creately.com</url>, although it is
-                not required). Then, using the <c>Person</c> class above as a
-                guide, write a <c>VirtualPet</c> class in the Active Code
-                template below with the following parts.
-              </p>
-            </li>
+          <li>
+            <p>
+              <term>Instance Variables</term>: Declare at least 3 instance
+              variables in the <c>VirtualPet</c> class below. Two of the
+              instance variables should be called <c>name</c> and <c>health</c>
+              where health is a number from 0 to 10. The rest can be variables
+              from your design above. Don’t forget to add in their
+              <c>private</c> access modifiers.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                <term>Instance Variables</term>: Declare at least 3 instance
-                variables in the <c>VirtualPet</c> class below. Two of the
-                instance variables should be called <c>name</c> and
-                <c>health</c> where health is a number from 0 to 10. The rest
-                can be variables from your design above. Don’t forget to add in
-                their <c>private</c> access modifiers.
-              </p>
-            </li>
+          <li>
+            <p>
+              <term>Methods</term>: Complete the <c>print</c> method to print
+              out the instance variables of the <c>VirtualPet</c> object, and
+              complete the <c>feed</c> method to add 1 to the health instance
+              variable. Remember that the methods have direct access to the
+              instance variables. Create at least one more method that changes
+              one of the instance variables from your design. (The constructor
+              method and a get method is written for you below. You will learn
+              how to write constructors in detail in the next lesson.)
+            </p>
+          </li>
 
-            <li>
-              <p>
-                <term>Methods</term>: Complete the <c>print</c> method to print
-                out the instance variables of the <c>VirtualPet</c> object, and
-                complete the <c>feed</c> method to add 1 to the health instance
-                variable. Remember that the methods have direct access to the
-                instance variables. Create at least one more method that changes
-                one of the instance variables from your design. (The constructor
-                method and a get method is written for you below. You will learn
-                how to write constructors in detail in the next lesson.)
-              </p>
-            </li>
-
-            <li>
-              <p>
-                Complete the <c>main</c> method to construct at least 2
-                <c>VirtualPet</c> objects that call the <c>VirtualPet</c>
-                constructor given to you with arguments for name and health.
-                Then, use at least one of the objects to call its <c>feed</c>
-                and <c>print</c> methods.
-              </p>
-            </li>
-          </ol>
-        </p>
-      </stack>
-    </sidebyside>
+          <li>
+            <p>
+              Complete the <c>main</c> method to construct at least 2
+              <c>VirtualPet</c> objects that call the <c>VirtualPet</c>
+              constructor given to you with arguments for name and health. Then,
+              use at least one of the objects to call its <c>feed</c> and
+              <c>print</c> methods.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </gutterimage>
 
     <project label="challenge-VirtualPet-Class">
       <statement>
@@ -1457,94 +1451,86 @@
   <subsection xml:id="coding-challenge-class-pet">
     <title>Coding Challenge: Class Pet</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit3-Class-Creation/Figures/animalclinic.png" width="27%">
-        <shortdescription>Animal Clinic</shortdescription>
-      </image>
+    <gutterimage source="Unit3-Class-Creation/Figures/animalclinic.png" description="Animal Clinic">
+      <p>
+        You’ve been hired to create a software system for the Awesome Animal
+        Clinic! They would like to keep track of their animal patients. Here are
+        some attributes of the pets that they would like to track:
+      </p>
 
-      <stack>
-        <p>
-          You’ve been hired to create a software system for the Awesome Animal
-          Clinic! They would like to keep track of their animal patients. Here
-          are some attributes of the pets that they would like to track:
-        </p>
+      <p>
+        <ul>
+          <li>
+            <p>Name</p>
+          </li>
 
-        <p>
-          <ul>
-            <li>
-              <p>Name</p>
-            </li>
+          <li>
+            <p>Age</p>
+          </li>
 
-            <li>
-              <p>Age</p>
-            </li>
+          <li>
+            <p>Weight</p>
+          </li>
 
-            <li>
-              <p>Weight</p>
-            </li>
+          <li>
+            <p>Type (dog, cat, lizard, etc.)</p>
+          </li>
 
-            <li>
-              <p>Type (dog, cat, lizard, etc.)</p>
-            </li>
+          <li>
+            <p>Breed</p>
+          </li>
+        </ul>
+      </p>
 
-            <li>
-              <p>Breed</p>
-            </li>
-          </ul>
-        </p>
+      <p>
+        <ol>
+          <li>
+            <p>
+              Create a class that keeps track of the attributes above for pet
+              records at the animal clinic. Decide what instance variables are
+              needed and their data types. Make sure you use <c>int</c>,
+              <c>double</c>, and <c>String</c> data types. Make the instance
+              variables <c>private</c>.
+            </p>
+          </li>
 
-        <p>
-          <ol>
-            <li>
-              <p>
-                Create a class that keeps track of the attributes above for pet
-                records at the animal clinic. Decide what instance variables are
-                needed and their data types. Make sure you use <c>int</c>,
-                <c>double</c>, and <c>String</c> data types. Make the instance
-                variables <c>private</c>.
-              </p>
-            </li>
+          <li>
+            <p>
+              Create a constructor with many parameters to initialize all the
+              instance variables.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                Create a constructor with many parameters to initialize all the
-                instance variables.
-              </p>
-            </li>
+          <li>
+            <p>
+              Create accessor/getter methods for each of the instance variables.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                Create accessor/getter methods for each of the instance
-                variables.
-              </p>
-            </li>
+          <li>
+            <p>
+              Create a <c>toString</c> method that returns all the information
+              in a <c>Pet</c>.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                Create a <c>toString</c> method that returns all the information
-                in a <c>Pet</c>.
-              </p>
-            </li>
+          <li>
+            <p>
+              Create mutator/setter methods for each of the instance variables.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                Create mutator/setter methods for each of the instance
-                variables.
-              </p>
-            </li>
-
-            <li>
-              <p>
-                In the <c>main</c> method below, create 2 <c>Pet</c> objects
-                with different values and call the constructor, accessor
-                methods, mutator methods, and <c>toString</c> methods to test
-                all your code.
-              </p>
-            </li>
-          </ol>
-        </p>
-      </stack>
-    </sidebyside>
+          <li>
+            <p>
+              In the <c>main</c> method below, create 2 <c>Pet</c> objects with
+              different values and call the constructor, accessor methods,
+              mutator methods, and <c>toString</c> methods to test all your
+              code.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </gutterimage>
 
     <project label="challenge-Pet-Class">
       <statement>

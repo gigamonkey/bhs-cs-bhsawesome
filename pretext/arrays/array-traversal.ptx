@@ -779,11 +779,7 @@
       <title>Spellchecker</title>
 
       <statement>
-        <sidebyside widths="15% 100%" margins="-20% 0%">
-          <image source="Unit4-Data-Collections/Figures/spellcheck.png" width="18%">
-            <shortdescription>Spell Checker</shortdescription>
-          </image>
-
+        <gutterimage source="Unit4-Data-Collections/Figures/spellcheck.png" description="Spell Checker">
           <p>
             This challenge includes a dictionary file of 10,000 English words
             which is read into the array <c>dictionary</c> for you. You could
@@ -793,7 +789,7 @@
             lets you do input with your spell checker. We will learn how to read
             in files using Java later on in <xref ref="text-files" />.
           </p>
-        </sidebyside>
+        </gutterimage>
 
         <p>
           <ol>

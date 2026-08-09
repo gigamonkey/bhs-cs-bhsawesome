@@ -420,13 +420,12 @@
   <subsection xml:id="coding-challenge-pay-calculator">
     <title>Coding Challenge: Pay calculator</title>
 
-    <sidebyside widths="15% 100%" margins="-20% 0%">
-      <image source="Unit1-Using-Objects-and-Methods/Figures/dollarSign.png" width="18%" />
+    <gutterimage source="Unit1-Using-Objects-and-Methods/Figures/dollarSign.png">
       <p>
         In this coding challenge, you can work in pairs to create a pay
         calculator using math expressions and operators.
       </p>
-    </sidebyside>
+    </gutterimage>
 
     <project label="challenge1-3-pay-calculator">
       <title>Pay calculator</title>
