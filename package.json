@@ -6,7 +6,8 @@
     "@peterseibel/bhs-content": "^0.8.2",
     "@rgrove/parse-xml": "^4.2.3",
     "mathjax-full": "^3.2.1",
-    "prismjs": "^1.30.0"
+    "prismjs": "^1.30.0",
+    "speech-rule-engine": "^4.1.4"
   },
   "type": "module"
 }

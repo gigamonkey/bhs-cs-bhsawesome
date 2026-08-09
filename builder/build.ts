@@ -15,6 +15,7 @@ import path from 'node:path';
 import { loadBook } from './src/book.ts';
 import { navFor, renderChrome } from './src/chrome.ts';
 import { numberBlocks } from './src/ids.ts';
+import { initMath } from './src/math.ts';
 import { makeCtx, pageContent } from './src/page.ts';
 import {
   backmatterContent,
@@ -40,6 +41,7 @@ const only = onlyIdx === -1 ? null : new Set(args.slice(onlyIdx + 1).filter((a) 
 const withAssets = !args.includes('--no-assets');
 
 const started = performance.now();
+await initMath(); // the speech engine loads its locale async; emission is sync
 const book = loadBook(path.join(ROOT, 'pretext', 'main.ptx'));
 for (const page of book.pages) numberBlocks(page);
 

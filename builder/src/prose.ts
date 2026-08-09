@@ -163,7 +163,7 @@ export function emitChildren(el: XmlElement, ctx: Ctx): string {
           pendingSkip = punct.length;
         }
       }
-      out += renderMath(math);
+      out += renderMath(math, textContent(c));
     } else if (isElement(c)) {
       out += emitElement(c, ctx);
     }
