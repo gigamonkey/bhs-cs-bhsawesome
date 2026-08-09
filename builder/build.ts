@@ -150,6 +150,10 @@ function copyTree(src: string, dst: string): number {
   return n;
 }
 
+// The stylesheet is OURS (builder/book.css; see its header) — copied to
+// the site root beside the pages.
+fs.copyFileSync(path.join(ROOT, 'builder', 'book.css'), path.join(OUT, 'book.css'));
+
 if (withAssets && !only) {
   const copied =
     copyTree(path.join(ROOT, 'pretext', 'assets'), path.join(OUT, 'external')) +
