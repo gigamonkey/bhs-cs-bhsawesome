@@ -247,11 +247,11 @@ const EMITTERS: Record<string, Emitter> = {
 
   // -- inline ----------------------------------------------------------------
   // Verbatim: no smart quotes inside code.
-  c: (el) => h('code', { class: 'code-inline tex2jax_ignore' }, escapeHtml(trimText(textContent(el)).trim())),
+  c: (el) => h('code', { class: 'code-inline' }, escapeHtml(trimText(textContent(el)).trim())),
   // Our schema: <k> marks a language KEYWORD, as distinct from general
   // inline code — same rendering base as <c> plus a keyword class
   // (styled in custom.css).
-  k: (el) => h('code', { class: 'code-inline tex2jax_ignore keyword' }, escapeHtml(trimText(textContent(el)).trim())),
+  k: (el) => h('code', { class: 'code-inline keyword' }, escapeHtml(trimText(textContent(el)).trim())),
   term: (el, ctx) => h('dfn', { class: 'terminology' }, trimText(emitChildren(el, ctx))),
   em: (el, ctx) => h('em', { class: 'emphasis' }, trimText(emitChildren(el, ctx))),
   // Our schema: <strong> is real bold emphasis (PreTeXt silently dropped
@@ -737,7 +737,7 @@ const OL_MARKERS: Record<string, string> = {
 };
 
 function preBlock(code: string): string {
-  return h('pre', { class: 'code-block tex2jax_ignore clipboardable' }, `${escapeHtml(dedent(code))}\n`);
+  return h('pre', { class: 'code-block clipboardable' }, `${escapeHtml(dedent(code))}\n`);
 }
 
 export function dedent(text: string): string {

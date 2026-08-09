@@ -601,7 +601,7 @@ function emitDatafile(el: XmlElement): string {
   return h(
     'div',
     { class: 'runestone datafile' },
-    h('div', { class: 'datafile_caption' }, h('code', { class: 'code-inline tex2jax_ignore' }, `Data: ${filename}`)),
+    h('div', { class: 'datafile_caption' }, h('code', { class: 'code-inline' }, `Data: ${filename}`)),
     h(
       'pre',
       {
