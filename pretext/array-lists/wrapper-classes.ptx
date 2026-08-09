@@ -16,8 +16,8 @@
       types more generally) is that the element type of an <c>ArrayList</c> must
       be a reference type. So we can make an <c>ArrayList&lt;String&gt;</c> but
       not an <c>ArrayList&lt;int&gt;</c>. So what are we supposed to do if we
-      want to make a growable, shrinkable collection of <c>int</c> or
-      <c>double</c> values?
+      want to make a growable, shrinkable collection of <k>int</k> or
+      <k>double</k> values?
     </p>
 
     <p>
@@ -39,7 +39,7 @@
     </p>
 
     <p>
-      There are also a few <c>static</c> utility methods and constants defined
+      There are also a few <k>static</k> utility methods and constants defined
       in the wrapper classes related to the corresponding primitive type.
     </p>
   </introduction>
@@ -49,7 +49,7 @@
 
     <p>
       The main use of wrapper types is as type parameter in an <c>ArrayList</c>
-      declaration. If what we really want is a list of <c>int</c> values we can
+      declaration. If what we really want is a list of <k>int</k> values we can
       declare an <c>ArrayList&lt;Integer&gt;</c>.
     </p>
 
@@ -80,7 +80,7 @@
     </program>
 
     <p>
-      Slightly better is to use the <c>static</c> utility methods,
+      Slightly better is to use the <k>static</k> utility methods,
       <c>valueOf</c>, defined in the wrapper classes that take a primitive value
       and return a wrapped instance.
     </p>
@@ -122,7 +122,7 @@
       corresponding wrapper class or assigned to a variable of the corresponding
       wrapper class. So when we call <c>add</c> on an
       <c>ArrayList&lt;Integer&gt;</c> the compiler knows <c>add</c> expects an
-      <c>Integer</c>. If it sees that we’re passing an <c>int</c> it
+      <c>Integer</c>. If it sees that we’re passing an <k>int</k> it
       automatically gets an instance of <c>Integer</c>to wrap it, basically as
       if we had written a call to <c>Integer.valueOf</c>.
     </p>
@@ -194,7 +194,7 @@
 
           <feedback>
             <p>
-              ArrayLists cannot hold primitive types like <c>int</c>. You must
+              ArrayLists cannot hold primitive types like <k>int</k>. You must
               use the wrapper class <c>Integer</c>.
             </p>
           </feedback>
@@ -362,7 +362,7 @@
 
     <p>
       The AP curriculum covers the <c>ArrayList</c> method <c>E remove(int)</c>
-      which takes an <c>int</c> argument specifying the index of the element to
+      which takes an <k>int</k> argument specifying the index of the element to
       remove. That’s fine. But there’s another <c>remove</c> method, <c>boolean
       remove(Object)</c> that takes any reference type as an argument
       <c>ArrayList</c> and either removes the first object in the list that is
@@ -626,7 +626,7 @@
           (AP 4.7.A.2) <term>Autoboxing</term> is the automatic conversion that
           the Java compiler makes between primitive types and their
           corresponding object wrapper classes. This includes converting an
-          <c>int</c> to an <c>Integer</c> and a <c>double</c> to a
+          <k>int</k> to an <c>Integer</c> and a <k>double</k> to a
           <c>Double</c>. The Java compiler applies autoboxing when a primitive
           value is:
         </p>
@@ -649,8 +649,8 @@
         <p>
           (AP 4.7.A.3) <term>Unboxing</term> is the automatic conversion that
           the Java compiler makes from the wrapper class to the primitive type.
-          This includes converting an <c>Integer</c> to an <c>int</c> and a
-          <c>Double</c> to a <c>double</c>. The Java compiler applies unboxing
+          This includes converting an <c>Integer</c> to an <k>int</k> and a
+          <c>Double</c> to a <k>double</k>. The Java compiler applies unboxing
           when a wrapper class object is:
         </p>
 
@@ -673,7 +673,7 @@
           (AP 4.7.A.4) The following class <c>Integer</c> method—including what
           it does and when it is used—is part of the Java Quick Reference:
           <c>static int parseInt(String s)</c> returns the <c>String</c>
-          argument as a signed <c>int</c>.
+          argument as a signed <k>int</k>.
         </p>
       </li>
 
@@ -682,7 +682,7 @@
           (AP 4.7.A.5) The following class <c>Double</c> method—including what
           it does and when it is used—is part of the Java Quick Reference:
           <c>static double parseDouble(String s)</c> returns the <c>String</c>
-          argument as a signed <c>double</c>.
+          argument as a signed <k>double</k>.
         </p>
       </li>
     </ul>

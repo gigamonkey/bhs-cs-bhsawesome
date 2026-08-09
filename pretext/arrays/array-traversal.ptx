@@ -15,11 +15,11 @@
   </introduction>
 
   <subsection>
-    <title>Using a canonical <c>for</c> loop</title>
+    <title>Using a canonical <k>for</k> loop</title>
 
     <p>
       In the last lesson, we mentioned that we can use a variable or any other
-      <c>int</c> expression for the index in an array access expression. We can
+      <k>int</k> expression for the index in an array access expression. We can
       even do math inside the <c>[]</c>, like below.
     </p>
 
@@ -50,8 +50,8 @@
     <p>
       One of the most common situations where we will use a variable for the
       index into an array is when the variable is the loop variable in a
-      canonical <c>for</c> loop where the loop limit is the length of the array.
-      Indeed, it’s traditional to name the loop variable in a <c>for</c> loop
+      canonical <k>for</k> loop where the loop limit is the length of the array.
+      Indeed, it’s traditional to name the loop variable in a <k>for</k> loop
       <c>i</c> as an abbreviation for “index”.
     </p>
 
@@ -62,7 +62,7 @@
     </figure>
 
     <p>
-      Here’s a canonical <c>for</c> loop that loops over (or
+      Here’s a canonical <k>for</k> loop that loops over (or
       <term>traverses</term>) the <c>highScores</c> array. Try the code below in
       the <url
       href="http://www.pythontutor.com/visualize.html#code=public%20class%20ArrayLoop%0A%7B%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%0A%20%20%20%20%7B%0A%0A%20%20%20%20%20%20%20%20int%5B%5D%20highScores%20%3D%20%7B%2010,%209,%208,%208%7D%3B%0A%20%20%20%20%20%20%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20highScores.length%3B%20i%2B%2B%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%20%20highScores%5Bi%5D%20%29%3B%0A%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">visualizer</url>
@@ -128,7 +128,7 @@
     </activity>
 
     <p>
-      Using a canonical <c>for</c> loop pretty much ensures that we won’t create
+      Using a canonical <k>for</k> loop pretty much ensures that we won’t create
       any of the common looping bugs. Our loop variable will take on exactly the
       legal indices into our array, starting at <c>0</c> and going up to one
       less than the length so we won’t crash our program with an
@@ -246,11 +246,11 @@
   </subsection>
 
   <subsection>
-    <title>Enhanced <c>for</c> loop</title>
+    <title>Enhanced <k>for</k> loop</title>
 
     <p>
       There is a special kind of loop that can be used with arrays (and some
-      other data structures) called the <term>enhanced <c>for</c> loop</term> or
+      other data structures) called the <term>enhanced <k>for</k> loop</term> or
       a <term>for each loop</term>. This loop is designed for the common case
       where we just want to do something with each element of an array and don’t
       actually care about the index.
@@ -258,15 +258,15 @@
 
     <p>
       The basic structure looks like the loop on the left which is equivalent to
-      the normal <c>for</c> loop on the right, both looping over a <c>String</c>
+      the normal <k>for</k> loop on the right, both looping over a <c>String</c>
       array, <c>names</c>. The only difference is that in the enhanced
-      <c>for</c> loop the code doesn’t have to worry about the index variable
+      <k>for</k> loop the code doesn’t have to worry about the index variable
       <c>i</c>.
     </p>
 
     <sidebyside>
       <listing>
-        <title>Enhanced <c>for</c> loop</title>
+        <title>Enhanced <k>for</k> loop</title>
 
         <program>
           for (String s : names) {
@@ -277,7 +277,7 @@
       </listing>
 
       <listing>
-        <title>Regular <c>for</c> loop</title>
+        <title>Regular <k>for</k> loop</title>
 
         <program>
           <![CDATA[
@@ -291,7 +291,7 @@
     </sidebyside>
 
     <p>
-      In an enhanced <c>for</c> loop the loop variable before the <c>:</c> holds
+      In an enhanced <k>for</k> loop the loop variable before the <c>:</c> holds
       the value of each element of the array in turn without us having to use a
       separate index variable to get at it. This means the type of the variable
       has to be the same as the element type of the array. We can read this loop
@@ -320,14 +320,14 @@
     </program>
 
     <p>
-      We should use the enhanced <c>for</c> loop whenever we can, because it’s
+      We should use the enhanced <k>for</k> loop whenever we can, because it’s
       more concise and cuts down on errors. However it isn’t always applicable.
       The main limitation is that we don’t have access to the underlying index
       variable. So we can’t, for instance, easily compare adjacent elements of
       an array or modify the value at whatever position we are in, in the array.
-      For instance, there’s no way to use an enhanced <c>for</c> loop to write
-      something like this regular <c>for</c> loop which adds one to each element
-      of an array of <c>int</c>:
+      For instance, there’s no way to use an enhanced <k>for</k> loop to write
+      something like this regular <k>for</k> loop which adds one to each element
+      of an array of <k>int</k>:
     </p>
 
     <program>
@@ -340,25 +340,25 @@
 
     <p>
       Similarly, since we have no control over the order we access the elements
-      of the array we can’t use the enhanced <c>for</c> loop if we want to loop
+      of the array we can’t use the enhanced <k>for</k> loop if we want to loop
       backwards through an array or over only part of an array. And to use the
       enhanced loop we need something to loop over. That can be an array or a
       few other data types, such as <c>ArrayList</c> which we’ll learn about in
       <xref ref="array-lists" />. But we need <em>something</em> to loop over
-      whereas with a regular <c>for</c> loop we can loop using whatever
+      whereas with a regular <k>for</k> loop we can loop using whatever
       initializer, condition, and updater we want.
     </p>
 
     <p>
-      Because a regular <c>for</c> loop is more flexible than the enhanced
-      <c>for</c> loop, we can always rewrite an enhanced loop using a regular
+      Because a regular <k>for</k> loop is more flexible than the enhanced
+      <k>for</k> loop, we can always rewrite an enhanced loop using a regular
       loop but not always the other way around.
     </p>
 
     <activity label="foreach1">
       <statement>
         <p>
-          Try the following code. Notice the for each loop with an <c>int</c>
+          Try the following code. Notice the for each loop with an <k>int</k>
           array and a <c>String</c> array. Add another high score and another
           name to the arrays and run again.
         </p>
@@ -387,12 +387,12 @@
     </activity>
 
     <activity label="evenLoop">
-      <title>Rewrite as enhanced <c>for</c> loop</title>
+      <title>Rewrite as enhanced <k>for</k> loop</title>
 
       <statement>
         <p>
           Rewrite the following for loop which prints out the even numbers in
-          the array as an enhanced <c>for</c> loop. Make sure it works!
+          the array as an enhanced <k>for</k> loop. Make sure it works!
         </p>
       </statement>
 
@@ -458,7 +458,7 @@
       <statement>
         <p>
           Which of the following are reasons you would use an enhanced
-          <c>for</c> loop instead of a regular <c>for</c> loop?
+          <k>for</k> loop instead of a regular <k>for</k> loop?
         </p>
 
         <pre>
@@ -602,7 +602,7 @@
     <title>More complex loops</title>
 
     <p>
-      While we should us the enhanced <c>for</c> loop when we can, there are
+      While we should us the enhanced <k>for</k> loop when we can, there are
       cases where we will need the flexibility of a regular loop such as if we
       want to loop over a specific range in the array, to process the array in
       reverse order, or to use the index for something beyond just getting the
@@ -629,7 +629,7 @@
     </program>
 
     <p>
-      We couldn’t write this with an enhanced <c>for</c> loop for two reasons:
+      We couldn’t write this with an enhanced <k>for</k> loop for two reasons:
       we want to change the values in the array and we want to only loop over
       part of the array.
     </p>
@@ -924,15 +924,15 @@
 
       <li>
         <p>
-          (AP 4.4.A.2) Traversing an array with an indexed <c>for</c> loop or
-          <c>while</c> loop requires elements to be accessed using their
+          (AP 4.4.A.2) Traversing an array with an indexed <k>for</k> loop or
+          <k>while</k> loop requires elements to be accessed using their
           indices.
         </p>
       </li>
 
       <li>
         <p>
-          In <c>for</c> and <c>while</c> loops, make sure the index for an array
+          In <k>for</k> and <k>while</k> loops, make sure the index for an array
           starts at 0 and end at the number of elements − 1. <term>Off by
           one</term> errors are easy to make when traversing an array, resulting
           in an <term>ArrayIndexOutOfBoundsException</term> being thrown.
@@ -957,9 +957,9 @@
 
       <li>
         <p>
-          (AP 4.4.A.3) An enhanced <c>for</c> loop header includes a variable,
-          referred to as the enhanced <c>for</c> loop variable. For each
-          iteration of the enhanced <c>for</c> loop, the enhanced <c>for</c>
+          (AP 4.4.A.3) An enhanced <k>for</k> loop header includes a variable,
+          referred to as the enhanced <k>for</k> loop variable. For each
+          iteration of the enhanced <k>for</k> loop, the enhanced <k>for</k>
           loop variable is assigned a copy of an element without using its
           index.
         </p>
@@ -967,7 +967,7 @@
 
       <li>
         <p>
-          (AP 4.4.A.4) Assigning a new value to the enhanced <c>for</c> loop
+          (AP 4.4.A.4) Assigning a new value to the enhanced <k>for</k> loop
           variable does not change the value stored in the array. (So, you can’t
           change an array using the enhanced for loop.)
         </p>
@@ -976,7 +976,7 @@
       <li>
         <p>
           (AP 4.4.A.5) When an array stores object references, the attributes
-          can be modified by calling methods on the enhanced <c>for</c> loop
+          can be modified by calling methods on the enhanced <k>for</k> loop
           variable. This does not change the object references stored in the
           array. (So, you can change the attributes of an object in an array
           using the enhanced for loop.)
@@ -985,9 +985,9 @@
 
       <li>
         <p>
-          (AP 4.4.A.6) Code written using an enhanced <c>for</c> loop to
+          (AP 4.4.A.6) Code written using an enhanced <k>for</k> loop to
           traverse elements in an array can be rewritten using an indexed
-          <c>for</c> loop or a <c>while</c> loop.
+          <k>for</k> loop or a <k>while</k> loop.
         </p>
       </li>
     </ul>

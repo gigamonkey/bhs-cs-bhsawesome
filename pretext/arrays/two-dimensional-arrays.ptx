@@ -54,7 +54,7 @@
     <p>
       The key to understanding 2d arrays is to understanding that 1d arrays can
       contain any kind of value, which includes other arrays. So, to review, if
-      we want to make an array of <c>int</c> values, we use <c>int[]</c>. And
+      we want to make an array of <k>int</k> values, we use <c>int[]</c>. And
       for an array of <c>String</c> values we use <c>String[]</c>.
     </p>
 
@@ -118,9 +118,9 @@
 
     <p>
       The values in the inner arrays are filled with the appropriate zero type
-      for their element type, <c>int</c> for the inner arrays of
+      for their element type, <k>int</k> for the inner arrays of
       <c>ticketInfo</c> and <c>String</c> for the inner ararys of
-      <c>seatingChart</c>. So in total ticketInfo contains six <c>int</c> zeros
+      <c>seatingChart</c>. So in total ticketInfo contains six <k>int</k> zeros
       arranged into two three-element inner arrays while <c>seatingChart</c>
       contains six <c>null</c> refernces arranged into three two-element inner
       arrays.
@@ -146,7 +146,7 @@
     <p>
       Also similar to creating 1d arrays we can use array initializers to
       provide specific values. In this case, the syntactic sugar of not having
-      to include the <c>new</c> and the type of the arrays when we’re
+      to include the <k>new</k> and the type of the arrays when we’re
       initializing a newly declared array variable, makes things pretty compact
       and readable:
     </p>
@@ -621,7 +621,7 @@
     <p>
       Another similarity between one-dimensional and 2d arrays is the way we
       access the values. Normally we want to get and set the actual values in
-      the array, such as the <c>int</c> values in an <c>int[][]</c>. Just like
+      the array, such as the <k>int</k> values in an <c>int[][]</c>. Just like
       with a one-dimensional array we use an array access expression, but this
       time with two pairs of <c>[]</c> rather than just one. The expression in
       the first pair gives us the index into the outer array, or the row index,
@@ -1130,10 +1130,10 @@
 
       <li>
         <p>
-          (AP 4.11.A.2) When a 2D array is created using the keyword <c>new</c>,
+          (AP 4.11.A.2) When a 2D array is created using the keyword <k>new</k>,
           all of its elements are initialized to the default values for the
-          element data type. The default value for <c>int</c> is <c>0</c>, for
-          <c>double</c> is <c>0.0</c>, for <c>boolean</c> is <c>false</c>, and
+          element data type. The default value for <k>int</k> is <c>0</c>, for
+          <k>double</k> is <c>0.0</c>, for <k>boolean</k> is <c>false</c>, and
           for a reference type is <c>null</c>.
         </p>
       </li>

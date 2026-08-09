@@ -89,7 +89,7 @@
         compiled together so that they can interact. In Runestone, we cannot
         have separate files, so we put them in one coding area. In Runestone,
         only the class that has the main method can be public; the other classes
-        can leave out the <c>public</c> keyword.
+        can leave out the <k>public</k> keyword.
       </p>
     </note>
   </subsection>
@@ -268,14 +268,14 @@
   </subsection>
 
   <subsection xml:id="this-as-an-argument">
-    <title><c>this</c> as an Argument</title>
+    <title><k>this</k> as an Argument</title>
 
     <p>
-      The <c>this</c> variable can be used anywhere you need a reference to the
+      The <k>this</k> variable can be used anywhere you need a reference to the
       current class. For instance you can pass it to a method or constructor as
       an argument. Consider the classes below, <c>Pay</c> and <c>Overtime</c>.
       The <c>calculatePayWithOvertime</c> method in the <c>Pay</c> class
-      contstructs an <c>Overtime</c> object, passing in <c>this</c> (the current
+      contstructs an <c>Overtime</c> object, passing in <k>this</k> (the current
       <c>Pay</c> object) to its constructor so the <c>Overtime</c> object can
       compute the overtime with respect to that particular <c>Pay</c> object.
     </p>
@@ -283,7 +283,7 @@
     <p>
       Try this code in the active code exercise below with the Show CodeLens
       button to trace through it step by step. Here is an image that shows how
-      <c>this</c>, <c>myPay</c> and <c>p</c> all refer to the same object in
+      <k>this</k>, <c>myPay</c> and <c>p</c> all refer to the same object in
       memory.
     </p>
 
@@ -662,8 +662,8 @@
 
     <p>
       In general code in methods and constructors cannot access the
-      <c>private</c> data and methods of their parameters—that’s what it means
-      for something to be <c>private</c>. However if a parameter is of the same
+      <k>private</k> data and methods of their parameters—that’s what it means
+      for something to be <k>private</k>. However if a parameter is of the same
       type as the method or constructor’s enclosing class it can. We saw an
       example of that in the <c>Address</c> copy constructor in the code above.
       For another example, in the following code, the <c>Person</c> class
@@ -828,8 +828,8 @@
     <p>
       Methods can also return references to objects. Just like when we pass
       arguments <em>to</em> a method, when we return values <em>from</em> a
-      method we return a copy of the value. For primitive types like <c>int</c>
-      or <c>double</c> the value itself is copied, just like when we pass a
+      method we return a copy of the value. For primitive types like <k>int</k>
+      or <k>double</k> the value itself is copied, just like when we pass a
       primitive value as an argument. And just like when we pass an object as an
       argument to a method or constructor and a copy of the reference is passed,
       when we return an object from a method the value that is returned is also
@@ -1301,14 +1301,14 @@
           instance variables and one that only has 2 parameters for the name and
           account number and initializes the balance to 0. For the parameters,
           use the same variable names as your instance variables. Use the
-          <c>this</c> keyword to distinguish between the instance variables and
+          <k>this</k> keyword to distinguish between the instance variables and
           the parameter variables.
         </p>
       </li>
 
       <li>
         <p>
-          Write a <c>toString</c> method for the class. Use the <c>this</c>
+          Write a <c>toString</c> method for the class. Use the <k>this</k>
           keyword to return the instance variables.
         </p>
       </li>
@@ -1319,7 +1319,7 @@
           the class. The <c>withdraw</c> method should subtract the amount from
           the balance as long as there is enough money in the account (the
           balance is larger than the amount). And <c>deposit</c> should add the
-          amount to the balance. Use the <c>this</c> keyword to refer to the
+          amount to the balance. Use the <k>this</k> keyword to refer to the
           balance.
         </p>
       </li>
@@ -1339,7 +1339,7 @@
         <p>
           Create a class called BankAccount that keeps track of the account
           holder’s name, the account number, and the balance in the account.
-          Create 2 constructors using <c>this</c> (one constructor to initialize
+          Create 2 constructors using <k>this</k> (one constructor to initialize
           all 3 instance variables and one that only has 2 parameters for the
           name and account number and initializes the balance to 0), a
           toString() method, and withdraw(amount) and deposit(amount) methods.
@@ -1412,7 +1412,7 @@
       <li>
         <p>
           (AP 3.9.A.1) Within an instance method or a constructor, the keyword
-          <c>this</c> acts as a special variable that holds a reference to the
+          <k>this</k> acts as a special variable that holds a reference to the
           current object—the object whose method or constructor is being called.
         </p>
       </li>
@@ -1427,13 +1427,13 @@
 
       <li>
         <p>
-          (AP 3.9.A.2) The keyword <c>this</c> can be used to pass the current
+          (AP 3.9.A.2) The keyword <k>this</k> can be used to pass the current
           object as an argument in a method call.
         </p>
       </li>
 
       <li>
-        <p>(AP 3.9.A.3) Class methods do not have a <c>this</c> reference.</p>
+        <p>(AP 3.9.A.3) Class methods do not have a <k>this</k> reference.</p>
       </li>
     </ul>
   </subsection>

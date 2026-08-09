@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="if-statements">
-  <title>Booleans and <c>if</c> statements</title>
+  <title>Booleans and <k>if</k> statements</title>
 
   <introduction>
     <idx>selection</idx>
@@ -11,7 +11,7 @@
       Since the definition of a selection is a point in the code where the flow
       of control makes a decision to go down one branch or another based on some
       value, we need a data type to represent those values. Some older languages
-      just reuse an existing data type, such as their equivalent of <c>int</c>,
+      just reuse an existing data type, such as their equivalent of <k>int</k>,
       treating <c>0</c> as false and all other numbers as true. And some modern
       languages, in an attempt to be more lenient, will treat any value at all
       as a true or false value, following some oftentimes complicated rules
@@ -21,17 +21,17 @@
     <p>
       In Java, however, things are quite tidy with true and false represented by
       a special data type, the third primitive data type you need to know for
-      the AP exam, <c>boolean</c>. The data type is named for <url
+      the AP exam, <k>boolean</k>. The data type is named for <url
       href="https://en.wikipedia.org/wiki/George_Boole">George Boole</url>, a
       19th century English mathematician who invented Boolean algebra, a system
       for dealing with statements made up of only true and false values.
     </p>
 
     <p>
-      A <c>boolean</c> variable or expression can only have one of two values,
+      A <k>boolean</k> variable or expression can only have one of two values,
       true or false. There are two literals values we can use in Java to get
       these values: <c>true</c> and <c>false</c>. So we can declare
-      <c>boolean</c> variables like this:
+      <k>boolean</k> variables like this:
     </p>
 
     <program>
@@ -40,26 +40,26 @@
     </program>
 
     <p>
-      And that’s kind of it for <c>boolean</c> as a data type. Unlike <c>int</c>
-      and <c>double</c> there aren’t any gotchas about how they differ from
+      And that’s kind of it for <k>boolean</k> as a data type. Unlike <k>int</k>
+      and <k>double</k> there aren’t any gotchas about how they differ from
       idealized numbers in mathematics. And there aren’t complexities about
       different ways to write the same value.
     </p>
 
     <p>
-      However there are a lot of ways we can produce <c>boolean</c> values.
+      However there are a lot of ways we can produce <k>boolean</k> values.
       There are operators the operate <em>on</em> booleans to produce new
-      <c>boolean</c> values which allow us to express complex conditions. There
+      <k>boolean</k> values which allow us to express complex conditions. There
       are operators that operate on other kinds of values to produce
-      <c>boolean</c> values, like the <c>&gt;</c> operator that compares two
+      <k>boolean</k> values, like the <c>&gt;</c> operator that compares two
       numbers, producing <c>true</c> if the first number is greater than the
       second and <c>false</c> otherwise.
     </p>
 
     <p>
-      But before we look at all the different ways of producing <c>boolean</c>
+      But before we look at all the different ways of producing <k>boolean</k>
       values, let look at how they are used in Java’s most basic selection
-      control constructs, <c>if</c> statements.
+      control constructs, <k>if</k> statements.
     </p>
   </introduction>
 
@@ -69,9 +69,9 @@
     <p>
       Almost all programming languages have something like an <term>if
       statement</term> to choose between different paths in an algorithm. An
-      <c>if</c> statement is one of the simplest forms of the selection
+      <k>if</k> statement is one of the simplest forms of the selection
       construct that we need as one of our three algorithmic building blocks.
-      The simplest form of an <c>if</c> statement in Java looks like:
+      The simplest form of an <k>if</k> statement in Java looks like:
     </p>
 
     <program>
@@ -82,24 +82,24 @@
     </program>
 
     <p>
-      The expression in the parentheses must be a <c>boolean</c> expression: a
-      <c>boolean</c> literal (though that would be silly for reasons we’ll
-      discuss in a bit), a <c>boolean</c> variable, or some other expression
-      that evaluates to a <c>boolean</c>.
+      The expression in the parentheses must be a <k>boolean</k> expression: a
+      <k>boolean</k> literal (though that would be silly for reasons we’ll
+      discuss in a bit), a <k>boolean</k> variable, or some other expression
+      that evaluates to a <k>boolean</k>.
     </p>
 
     <p>
       And the code in <c>{}</c>s is called the <term>body</term> of the
-      <c>if</c> statement and contains the code to run if the <c>boolean</c>
+      <k>if</k> statement and contains the code to run if the <k>boolean</k>
       expression is true. It can contain any number of statements including, as
-      we’ll see other <c>if</c> statements and loops.
+      we’ll see other <k>if</k> statements and loops.
     </p>
 
     <p>
-      This form of <c>if</c> statement is called a <term>one-way
+      This form of <k>if</k> statement is called a <term>one-way
       selection</term> because it makes one choice and then either executes the
       body or does nothing. In either case, the normal flow of control picks up
-      after the <c>if</c> statement, continuing with whatever code comes next.
+      after the <k>if</k> statement, continuing with whatever code comes next.
     </p>
 
     <figure align="center">
@@ -121,7 +121,7 @@
 
       <statement>
         <p>
-          In the code below, the <c>boolean</c> variable <c>isRaining</c> is
+          In the code below, the <k>boolean</k> variable <c>isRaining</c> is
           used to control whether the message <c>Take an umbrella!</c> will be
           printed. Regardless of whether <c>isRaining</c> is true or false, then
           execution will continue with the next statement which will print
@@ -167,8 +167,8 @@
             <feedback>
               <p>
                 Correct. If the boolean is false, it will skip executing the
-                <c>println</c> controlled by the <c>if</c> but will still
-                execute the <c>println</c> after the <c>if</c> statement.
+                <c>println</c> controlled by the <k>if</k> but will still
+                execute the <c>println</c> after the <k>if</k> statement.
               </p>
             </feedback>
           </test>
@@ -307,8 +307,8 @@
     <idx>Multiway selection</idx>
     <idx>else if</idx>
     <p>
-      Since the body of an <c>if</c> statement or an <c>else</c> can contain any
-      code, we can nest <c>if</c> statements inside other <c>if</c> statements.
+      Since the body of an <k>if</k> statement or an <k>else</k> can contain any
+      code, we can nest <k>if</k> statements inside other <k>if</k> statements.
       There’s nothing magical about this: just the natural consequence of
       building programs out of simple pieces. Consider this code:
     </p>
@@ -324,9 +324,9 @@
     </program>
 
     <p>
-      The outer <c>if</c> is a one-way selection that will run some code if
-      <c>hungry</c> is true. The body of that <c>if</c> statement is another
-      <c>if</c> statement that implements a two-selection based on the value of
+      The outer <k>if</k> is a one-way selection that will run some code if
+      <c>hungry</c> is true. The body of that <k>if</k> statement is another
+      <k>if</k> statement that implements a two-selection based on the value of
       <c>sleepy</c>. So really this code is choosing between three outcomes, one
       when <c>hungry</c> and <c>sleepy</c> are both true, one when <c>hungry</c>
       is true but <c>sleepy</c> is false, and one when <c>hungry</c> is false.
@@ -334,8 +334,8 @@
     </p>
 
     <p>
-      Now look at another <c>if</c>, this time with another <c>if</c> nested in
-      the body of the <c>else</c>.
+      Now look at another <k>if</k>, this time with another <k>if</k> nested in
+      the body of the <k>else</k>.
     </p>
 
     <program>
@@ -373,7 +373,7 @@
     </program>
 
     <p>
-      When we chain together <c>if</c> statements like this, it is called a
+      When we chain together <k>if</k> statements like this, it is called a
       <term>multiway selection</term> because the code chooses not between
       running code or not as in a one-way selection, or between two pieces of
       code as in a two-way selection, but between as many different pieces of
@@ -425,7 +425,7 @@
     <note>
       <p>
         Another way to handle 3 or more conditional cases is to use a
-        <c>switch</c> statement but that is outside the AP curriculum. For a
+        <k>switch</k> statement but that is outside the AP curriculum. For a
         tutorial on using switch see <url
         href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html">The
         switch Statement</url> tutorial on Oracle’s website.

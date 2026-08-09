@@ -69,30 +69,30 @@
     <ul>
       <li>
         <p>
-          <c>int</c> which can represent integers, i.e. numbers with no
+          <k>int</k> which can represent integers, i.e. numbers with no
           fractional part such as 3, 0, -76, and 20393.
         </p>
       </li>
 
       <li>
         <p>
-          <c>double</c> which can represent non-integer numbers like 6.3 -0.9,
+          <k>double</k> which can represent non-integer numbers like 6.3 -0.9,
           and 60293.93032. Computer people call these “floating point” numbers
           because the decimal point “floats” relative to the magnitude of the
           number, similar to the way it does in scientific notation like <m>6.5
-          \times 10^8</m>. The name <c>double</c> comes from the fact that
-          <c>double</c> values are represented using sixty-four bits, double the
-          thirty-two bits used for the type <c>float</c> which used to be the
+          \times 10^8</m>. The name <k>double</k> comes from the fact that
+          <k>double</k> values are represented using sixty-four bits, double the
+          thirty-two bits used for the type <k>float</k> which used to be the
           normal size floating point number when most computers did math in
-          units of 32-bits. (<c>float</c> is rarely used these days and is not
+          units of 32-bits. (<k>float</k> is rarely used these days and is not
           part of the AP curriculum.)
         </p>
       </li>
 
       <li>
         <p>
-          <c>boolean</c> which can represent only two values: <c>true</c> and
-          <c>false</c>. We’ll discuss the <c>boolean</c> type in <xref
+          <k>boolean</k> which can represent only two values: <c>true</c> and
+          <c>false</c>. We’ll discuss the <k>boolean</k> type in <xref
           ref="booleans-and-conditionals" />
         </p>
       </li>
@@ -100,7 +100,7 @@
 
     <p>
       Another way to think of a data type is as a set of values and a set of
-      operations on those values. For example, the <c>int</c> datatype
+      operations on those values. For example, the <k>int</k> datatype
       represents the set of integers that can be represented in thirty-two bits
       (-2,147,483,648 to 2,147,483,647) and they support the normal arithmetic
       operations like addition, subtraction, multiplication, and division as
@@ -351,7 +351,7 @@
     <p>
       To create a variable, you must tell Java its data type and its name.
       Creating a variable is also called <term>declaring a variable</term>. The
-      type is a keyword like <c>int</c>, <c>double</c>, or <c>boolean</c>, but
+      type is a keyword like <k>int</k>, <k>double</k>, or <k>boolean</k>, but
       you get to make up the name for the variable. When you create a variable
       that will hold a primitive type, Java will set aside enough memory to hold
       a value of that type and will associate that memory location with the name
@@ -678,8 +678,8 @@
 
     <p>
       You can’t use any of the keywords or reserved words as variable names in
-      Java (<c>for</c>, <c>if</c>, <c>class</c>, <c>static</c>, <c>int</c>,
-      <c>double</c>, etc). For a complete list of keywords and reserved words,
+      Java (<k>for</k>, <k>if</k>, <k>class</k>, <k>static</k>, <k>int</k>,
+      <k>double</k>, etc). For a complete list of keywords and reserved words,
       see <url
       href="https://docs.oracle.com/javase/specs/jls/se22/html/jls-3.html#jls-3.9">https://docs.oracle.com/javase/specs/jls/se22/html/jls-3.html#jls-3.9</url>.
     </p>

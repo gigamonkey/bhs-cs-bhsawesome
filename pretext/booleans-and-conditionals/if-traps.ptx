@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <section xml:id="if-traps">
-  <title><c>if</c> statement traps and pitfalls</title>
+  <title><k>if</k> statement traps and pitfalls</title>
 
   <introduction>
     <p>
-      While <c>if</c> statements are pretty simple, they do present some traps
+      While <k>if</k> statements are pretty simple, they do present some traps
       for the unwary. Luckily there are also some practices we can adopt that
       will make it much less likely that we will fall into those traps. In this
       section we discuss some of those.
@@ -16,16 +16,16 @@
     <title>Always use braces</title>
 
     <p>
-      Strictly speaking, the curly braces around the body of the <c>if</c> are
-      not actually a part of the <c>if</c> syntax. They are a more general
+      Strictly speaking, the curly braces around the body of the <k>if</k> are
+      not actually a part of the <k>if</k> syntax. They are a more general
       feature of Java: in any context where Java expects a single statement, it
       will also accept a <term>block</term> of statements enclosed in braces.
     </p>
 
     <p>
-      The body of an <c>if</c> is such a place that accepts either a single
+      The body of an <k>if</k> is such a place that accepts either a single
       statement or a block enclosed in braces. So it is legal to leave out the
-      braces if the body of the <c>if</c> is just one statement. Thus this:
+      braces if the body of the <k>if</k> is just one statement. Thus this:
     </p>
 
     <program>
@@ -66,15 +66,15 @@
     </program>
 
     <p>
-      Now the <c>doSomething</c>, which used to be controlled by the <c>if</c>,
-      is always run and the <c>if</c> only controls the <c>println</c>.
+      Now the <c>doSomething</c>, which used to be controlled by the <k>if</k>,
+      is always run and the <k>if</k> only controls the <c>println</c>.
     </p>
 
     <p>
       The easiest way to avoid this kind of mistake is to always put the bodies
       of constructs that accept a statement or block in braces, even when they
-      are not technically required. This includes the body of the <c>if</c> and
-      the <c>else</c>, if any. It also applies to the loop constructs we’ll
+      are not technically required. This includes the body of the <k>if</k> and
+      the <k>else</k>, if any. It also applies to the loop constructs we’ll
       discuss in the next unit. All the code you seen on the AP exam will be
       written in that style.
     </p>
@@ -85,8 +85,8 @@
 
     <p>
       Always using braces also avoids another problem known as a <term>dangling
-      else</term> that occurs when an <c>if</c> is nested inside another
-      <c>if</c> without braces.
+      else</term> that occurs when an <k>if</k> is nested inside another
+      <k>if</k> without braces.
     </p>
 
     <p>Consider these two bits of code:</p>
@@ -156,7 +156,7 @@
 
     <p>
       Since Java can’t ask us what we meant, it uses a rule that in cases like
-      that, the <c>else</c> clause always attaches to the closest <c>if</c>. So
+      that, the <k>else</k> clause always attaches to the closest <k>if</k>. So
       both versions without braces are equivalent to <xref
       ref="indented-dangling-else-blocks" text="type-global" /> regardless of
       indentation.
@@ -267,8 +267,8 @@
     </program>
 
     <p>
-      The first <c>if</c> statement will always call <c>eat()</c>, regardless of
-      what <c>hungry</c> was before the <c>if</c>. And the second will never
+      The first <k>if</k> statement will always call <c>eat()</c>, regardless of
+      what <c>hungry</c> was before the <k>if</k>. And the second will never
       call <c>study()</c>, regardless of <c>hungry</c>’s prior value. And both
       of them will clobber the old value of <c>hungry</c> which will probably
       cause some confusion down the road.
@@ -310,8 +310,8 @@
     </program>
 
     <p>
-      The point is, <c>hungry</c> is already a <c>boolean</c>. Comparing it to a
-      literal like <c>true</c> doesn’t make it any more of a <c>boolean</c>.
+      The point is, <c>hungry</c> is already a <k>boolean</k>. Comparing it to a
+      literal like <c>true</c> doesn’t make it any more of a <k>boolean</k>.
       (Think of it this way: if you feel the need to write <c>hungry == true</c>
       why not write <c>hungry == true == true</c>?) And if you know that
       <c>!hungry</c> is pronunced “not hungry” then both of these bits of code
@@ -328,7 +328,7 @@
       <li>
         <p>
           Always use braces (<c>{</c> and <c>}</c>) to enclose the body of an
-          <c>if</c> or <c>else</c>, even if it’s just one statement to avoid
+          <k>if</k> or <k>else</k>, even if it’s just one statement to avoid
           misleading indentation and errors when you add lines to an existing
           body.
         </p>
@@ -337,20 +337,20 @@
       <li>
         <p>
           Consistently using braces also prevents dangling elses that don’t pair
-          up with the right <c>if</c>.
+          up with the right <k>if</k>.
         </p>
       </li>
 
       <li>
         <p>
           Be careful not to put in a semicolon <c>;</c> immediately after the
-          condition in the <c>if</c> even if it is on a line by itself.
+          condition in the <k>if</k> even if it is on a line by itself.
         </p>
       </li>
 
       <li>
         <p>
-          Avoid using <c>==</c> in the condition of an <c>if</c> statement since
+          Avoid using <c>==</c> in the condition of an <k>if</k> statement since
           it’s easy to mistakenly use an <c>=</c> instead.
         </p>
       </li>
@@ -361,7 +361,7 @@
     <title>Practice</title>
 
     <activity label="if-missing-curlies">
-      <title>Fix the <c>if</c> bugs</title>
+      <title>Fix the <k>if</k> bugs</title>
 
       <statement>
         <p>

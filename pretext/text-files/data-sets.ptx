@@ -99,8 +99,8 @@
       <c>Scanner.nextLine</c> or <c>Files.readAllLines</c> to get the contents
       of a file broken up into individual lines. But if we want to do
       computations with that data we will usually need to extract the individual
-      parts of each line and maybe convert them into types like <c>int</c> or
-      <c>double</c> to work with. The process of extracting structure from a
+      parts of each line and maybe convert them into types like <k>int</k> or
+      <k>double</k> to work with. The process of extracting structure from a
       linear sequence of such as the characters in a <c>String</c> is called
       <term>parsing</term>.
     </p>
@@ -253,14 +253,14 @@
       For values like a Pokémon’s name, using <c>String</c> is fine. But the
       attributes, HP, Attack, Defense, or Speed are numbers so if we want to
       answer questions about them, we will need to convert the <c>String</c>
-      values we get from <c>split</c> into <c>int</c> or <c>double</c> values we
+      values we get from <c>split</c> into <k>int</k> or <k>double</k> values we
       can do math with.
     </p>
 
     <p>
       The <c>Integer</c> and <c>Double</c> wrapper classes we learned about in
-      <xref ref="wrapper-classes" /> also have some useful <c>static</c> methods
-      for converting <c>String</c> values to <c>int</c> and <c>double</c>
+      <xref ref="wrapper-classes" /> also have some useful <k>static</k> methods
+      for converting <c>String</c> values to <k>int</k> and <k>double</k>
       values. They are <c>Integer.parseInt</c> and <c>Double.parseDouble</c>.
     </p>
 
@@ -268,14 +268,14 @@
       <li>
         <p>
           <c>static int parseInt(String s)</c> returns the <c>String</c>
-          argument as a signed <c>int</c>.
+          argument as a signed <k>int</k>.
         </p>
       </li>
 
       <li>
         <p>
           <c>static double parseDouble(String s)</c> returns the <c>String</c>
-          argument as a signed <c>double</c>.
+          argument as a signed <k>double</k>.
         </p>
       </li>
     </ul>
@@ -764,7 +764,7 @@
       <li>
         <p>
           (AP 4.6.A.5) The <c>File</c> and <c>IOException</c> classes are part
-          of the <c>java.io</c> package. An <c>import</c> statement must be used
+          of the <c>java.io</c> package. An <k>import</k> statement must be used
           to make these classes available for use in the program.
         </p>
       </li>
@@ -789,7 +789,7 @@
           <li>
             <p>
               <c>int nextInt()</c> returns the next int read from the file or
-              input source. If the next <c>int</c> does not exist, it will
+              input source. If the next <k>int</k> does not exist, it will
               result in an <c>InputMismatchException</c>. Note that this method
               does not read the end of the line, so the next call to
               <c>nextLine()</c> will return the rest of the line which will be
@@ -800,7 +800,7 @@
           <li>
             <p>
               <c>double nextDouble()</c> returns the next double read from the
-              file or input source. If the next <c>double</c> does not exist, it
+              file or input source. If the next <k>double</k> does not exist, it
               will result in an <c>InputMismatchException</c>.
             </p>
           </li>
@@ -808,7 +808,7 @@
           <li>
             <p>
               <c>boolean nextBoolean()</c> returns the next Boolean read from
-              the file or input source. If the next <c>boolean</c> does not
+              the file or input source. If the next <k>boolean</k> does not
               exist, it will result in an <c>InputMismatchException</c>.
             </p>
           </li>
@@ -881,7 +881,7 @@
 
       <li>
         <p>
-          (AP 4.6.A.9) A <c>while</c> loop can be used to detect if the file
+          (AP 4.6.A.9) A <k>while</k> loop can be used to detect if the file
           still contains elements to read by using the <c>hasNext</c> method as
           the condition of the loop.
         </p>

@@ -44,7 +44,7 @@
       <li>
         <p>
           <term>Autoboxing</term> - Automatically wrapping a primitive type in a
-          wrapper class object. For instance if you try to add an <c>int</c>
+          wrapper class object. For instance if you try to add an <k>int</k>
           value to a list, it will automatically be converted to an
           <c>Integer</c> object.
         </p>
@@ -135,15 +135,15 @@
       <li>
         <p>
           <term>Wrapper Class</term> - Classes used to create objects that hold
-          primitive type values like <c>Integer</c> for <c>int</c>,
-          <c>Double</c> for <c>double</c> and <c>Boolean</c> for <c>boolean</c>.
+          primitive type values like <c>Integer</c> for <k>int</k>,
+          <c>Double</c> for <k>double</k> and <c>Boolean</c> for <k>boolean</k>.
         </p>
       </li>
 
       <li>
         <p>
           <term>Unboxing</term> - Automatically converting a wrapper object like
-          an <c>Integer</c> into a primitive type such as an <c>int</c>.
+          an <c>Integer</c> into a primitive type such as an <k>int</k>.
         </p>
       </li>
     </ul>

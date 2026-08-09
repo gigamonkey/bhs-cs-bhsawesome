@@ -55,7 +55,7 @@
     <p>
       <c>Math.abs</c> is an example of an <term>overloaded</term> method meaning
       there are two methods with the same name but different signatures: one
-      that takes an <c>int</c> and one that takes a <c>double</c>. They each
+      that takes an <k>int</k> and one that takes a <k>double</k>. They each
       return the absolute value, i.e. the positive value of the number without
       its sign, of their argument. But the return type of each method also
       differs, being the same same as the type of the parameter.
@@ -69,14 +69,14 @@
     </program>
 
     <p>
-      <c>Math.pow</c> takes two arguments, both <c>double</c>s and returns a
-      <c>double</c> which is the first argument raised to the power of the
+      <c>Math.pow</c> takes two arguments, both <k>double</k>s and returns a
+      <k>double</k> which is the first argument raised to the power of the
       second argument. I.e. <c>pow(a, b)</c> is what we would write in math as
-      <m>a^b</m>. But because <c>int</c>s can be silently converted to
-      <c>double</c>s, we can call <c>Math.pow</c> with <c>int</c> arguments and
-      they will automatically be converted to <c>double</c>s. As a result, the
-      return value will always be a <c>double</c> even if it could be
-      represented by an <c>int</c>.
+      <m>a^b</m>. But because <k>int</k>s can be silently converted to
+      <k>double</k>s, we can call <c>Math.pow</c> with <k>int</k> arguments and
+      they will automatically be converted to <k>double</k>s. As a result, the
+      return value will always be a <k>double</k> even if it could be
+      represented by an <k>int</k>.
     </p>
 
     <program>
@@ -89,23 +89,23 @@
       <p>
         If you are a Desmos or graphical calculator user, note that <c>^</c> is
         <em>not</em> an exponentiation operator in Java. Worse luck, it is an
-        operator on <c>int</c>s but it does something completely different. So
-        if <c>a</c> and <c>b</c> are <c>int</c>s and you write <c>a ^ b</c>,
+        operator on <k>int</k>s but it does something completely different. So
+        if <c>a</c> and <c>b</c> are <k>int</k>s and you write <c>a ^ b</c>,
         intending to raise <c>a</c> to the <c>b</c>th power, the compiler won’t
         complain but your code will do something very different. If you want an
-        <c>int</c> result, use a cast: <c>(int) Math.pow(a, b)</c>. Though watch
+        <k>int</k> result, use a cast: <c>(int) Math.pow(a, b)</c>. Though watch
         out for overflow errors since even relatively small exponents can
         produce values greater than <c>Integer.MAX_VALUE</c>.
       </p>
     </note>
 
     <p>
-      <c>Math.sqrt</c> takes an <c>double</c> argument and returns a
-      <c>double</c> value which is the nearest approximation of the positive
+      <c>Math.sqrt</c> takes an <k>double</k> argument and returns a
+      <k>double</k> value which is the nearest approximation of the positive
       square root of the argument. As with <c>Math.pow</c>, we can call it with
-      an <c>int</c> argument but the argument will be converted to a
-      <c>double</c> and the result will always be a <c>double</c> even if it
-      could have been represented with an <c>int</c>.
+      an <k>int</k> argument but the argument will be converted to a
+      <k>double</k> and the result will always be a <k>double</k> even if it
+      could have been represented with an <k>int</k>.
     </p>
 
     <program>
@@ -381,9 +381,9 @@
       <c>Math.random()</c> is not a function in the mathematical sense—it
       doesn’t return the same value every time it is called with the same
       arguments. In fact, it doesn’t even take any arguments. But every time we
-      call it we will get a <c>double</c> greater than or equal to 0.0, and less
+      call it we will get a <k>double</k> greater than or equal to 0.0, and less
       than 1.0. For all practical purposes the number we get each time is random
-      and all numbers that can be represented by a <c>double</c> between zero
+      and all numbers that can be represented by a <k>double</k> between zero
       and one are equally likely.
     </p>
 
@@ -478,7 +478,7 @@
       You may have noticed that while the numbers generated were always in the
       range 0 to 10, all the numbers probably had a lot a digits after the
       decimal point. Often we want a random integer, with nothing after the
-      decimal point. Easy enough—casting a <c>double</c> to an <c>int</c> will
+      decimal point. Easy enough—casting a <k>double</k> to an <k>int</k> will
       throw away any values after the decimal point. For example,
     </p>
 
@@ -554,7 +554,7 @@
       So the general recipe for generating a random is to first stretch the
       value from <c>Math.random()</c> until it’s in a range of the right size by
       multiplying by the size of the range. Then if we want an integer value,
-      cast to <c>int</c> to discard the part after the decimal point. Then shift
+      cast to <k>int</k> to discard the part after the decimal point. Then shift
       the value up by adding the minimum value. The table below shows some
       applications of that general recipe.
     </p>

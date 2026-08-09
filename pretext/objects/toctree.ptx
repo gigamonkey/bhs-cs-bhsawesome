@@ -30,7 +30,7 @@
       in <xref ref="string-manipulation" />. And finally we’ll wrap up with some
       odds and ends about different kinds of variables that we now know enough
       to understand including finally being able to answer the question, “What
-      does <c>static</c> really mean?”
+      does <k>static</k> really mean?”
     </p>
   </introduction>
 

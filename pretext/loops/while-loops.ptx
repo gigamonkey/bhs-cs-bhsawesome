@@ -11,21 +11,21 @@
   <idx><h>loop</h><h>while</h></idx>
   <introduction>
     <p>
-      Java has two flavors of loop, <c>while</c> and <c>for</c>. Of the two the
-      <c>while</c> loop is simpler, with fewer moving parts so we’ll talk about
-      it first. The <c>for</c> loop, which we’ll discuss in the next section is
+      Java has two flavors of loop, <k>while</k> and <k>for</k>. Of the two the
+      <k>while</k> loop is simpler, with fewer moving parts so we’ll talk about
+      it first. The <k>for</k> loop, which we’ll discuss in the next section is
       actually the one you’ll use most of the time as it has some amenities to
       make it easier to express common looping patterns.
     </p>
 
     <p>
-      Syntactically, a <c>while</c> statement looks a lot like an <c>if</c>
+      Syntactically, a <k>while</k> statement looks a lot like an <k>if</k>
       statement, as you can see in the two listings below:
     </p>
 
     <sidebyside>
       <listing>
-        <title><c>if</c> statement</title>
+        <title><k>if</k> statement</title>
 
         <program>
           if (condition) {
@@ -35,7 +35,7 @@
       </listing>
 
       <listing>
-        <title><c>while</c> loop</title>
+        <title><k>while</k> loop</title>
 
         <program>
           while (condition) {
@@ -46,30 +46,30 @@
     </sidebyside>
 
     <p>
-      Like with an <c>if</c> statement, when the flow of control reaches a
-      <c>while</c> loop, the first thing that happens is the condition, which
-      must be a <c>boolean</c> expression, is evaluated. If it true, then the
+      Like with an <k>if</k> statement, when the flow of control reaches a
+      <k>while</k> loop, the first thing that happens is the condition, which
+      must be a <k>boolean</k> expression, is evaluated. If it true, then the
       body of the loop runs. However, when control reaches the end of the body,
       it loops back around to the top of the loop and evaluates the condition
       again, and runs the body again if the condition is true, and so on. When
-      the condition is false, the body is skipped, just like in an <c>if</c>
+      the condition is false, the body is skipped, just like in an <k>if</k>
       statement when its condition is false.
     </p>
 
     <p>
-      So the difference between an <c>if</c> statement and a <c>while</c> loop
-      is that the body of the <c>if</c> statement runs either zero or one times,
-      whereas the body of the <c>while</c> loop runs zero or many times.
+      So the difference between an <k>if</k> statement and a <k>while</k> loop
+      is that the body of the <k>if</k> statement runs either zero or one times,
+      whereas the body of the <k>while</k> loop runs zero or many times.
     </p>
 
     <p>
-      Here’s a flow chart for a <c>while</c> loop. Follow the arrows in this
+      Here’s a flow chart for a <k>while</k> loop. Follow the arrows in this
       diagram to see when the condition is checked versus when the body is
       executed.
     </p>
 
     <figure align="center">
-      <caption>Control flow in a <c>while</c> Loop</caption>
+      <caption>Control flow in a <k>while</k> Loop</caption>
 
       <image source="_static/img/while-loop-flowchart.svg" width="30%" />
     </figure>
@@ -77,19 +77,19 @@
     <p>
       If you took AP CSP using a block program like Snap!, you may be familiar
       with the Repeat Until block. Unfortunately Repeat Until is the opposite of
-      a <c>while</c> loops: it loops until the condition is <em>true</em> where
-      a <c>while</c> loop loops until its condition is <em>false</em>.
+      a <k>while</k> loops: it loops until the condition is <em>true</em> where
+      a <k>while</k> loop loops until its condition is <em>false</em>.
     </p>
 
     <p>
       For example, the Snap! block below that loops until <c>x</c> is 100 would
-      need to be written in Java with a <c>while</c> loop that runs as long as
+      need to be written in Java with a <k>while</k> loop that runs as long as
       <c>x</c> is not yet 100, which can be written as <c>x &lt; 100</c>.
     </p>
 
     <figure>
       <caption>
-        Comparing Snap! <c>repeat until</c> loop to Java <c>while</c> loop
+        Comparing Snap! <c>repeat until</c> loop to Java <k>while</k> loop
       </caption>
 
       <image source="_static/img/snap-repeat-until-vs-java.png" width="100%" />
@@ -116,13 +116,13 @@
     </p>
 
     <p>
-      There are three steps to writing a counter-controlled <c>while</c> loop.
+      There are three steps to writing a counter-controlled <k>while</k> loop.
       They are labeled in <xref ref="three-steps-of-writing-a-loop"
       text="type-global" />.
     </p>
 
     <ol>
-      <li>Initialize the loop variable (before the <c>while</c> loop)</li>
+      <li>Initialize the loop variable (before the <k>while</k> loop)</li>
 
       <li>Test the loop variable (in the loop header)</li>
 
@@ -449,7 +449,7 @@
     <idx>infinite loop</idx>
     <idx><h>loop</h><h>infinite</h></idx>
     <p>
-      One common error with <c>while</c> is to accidentally create an
+      One common error with <k>while</k> is to accidentally create an
       <term>infinite loop</term>. An infinite loop runs forever because
       condition never becomes false. If we create an infinite loop by accident,
       our program may seem to get stuck. For an example, look at the following
@@ -468,7 +468,7 @@
 
     <p>
       The problem in this loop—and a common way to accidentally create an
-      infinite <c>while</c> loop—is that although it includes steps 1 and 2
+      infinite <k>while</k> loop—is that although it includes steps 1 and 2
       (initializing the loop variable and testing it) it forgot step 3 and never
       changes the loop variable. The loop variable, <c>i</c>, starts at <c>0</c>
       and the loop loops as long as <c>i &lt; 10</c> which will always be true
@@ -536,7 +536,7 @@
     <activity label="whileloopbugs">
       <statement>
         <p>
-          The <c>while</c> loop should print out the numbers from 1 to 8, but it
+          The <k>while</k> loop should print out the numbers from 1 to 8, but it
           has two bugs. One causes an infinite loop. And the other an off-by-one
           error. Can you fix the bugs? Try to fix the infinite loop bug first
           since otherwise you’ll just get an error abut the code taking too long
@@ -567,9 +567,9 @@
     <title>Input-controlled loops</title>
 
     <p>
-      While we can use a <c>while</c> loop as a counting loop to repeat the body
+      While we can use a <k>while</k> loop as a counting loop to repeat the body
       of the loop a certain number of times, we’ll see in the next section that
-      that’s more easily done with a <c>for</c> loop. A <c>while</c> loop is
+      that’s more easily done with a <k>for</k> loop. A <k>while</k> loop is
       more typically used when we don’t know how many times the loop will need
       to execute—when the condition will eventually become false but it might be
       after a few iterations or a lot and the only way to find out is to execute
@@ -580,7 +580,7 @@
       On such loop of this kind is an <term>input-controlled loop</term> where
       code in the body accepts input from the user, and that input indicates
       whether to stop or to keep looping. For example, in the Magpie chatbot lab
-      code below, the <c>while</c> loop stops when the user types “Bye”.
+      code below, the <k>while</k> loop stops when the user types “Bye”.
     </p>
 
     <program>

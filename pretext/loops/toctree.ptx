@@ -9,14 +9,14 @@
       beginning of the previous unit, the basic building blocks of algorithms
       are sequencing, selection, and repetition. The rest of <xref
       ref="booleans-and-conditionals" /> covered Java’s main selection
-      construct, the <c>if</c> statement. In this unit we turn to Java’s
+      construct, the <k>if</k> statement. In this unit we turn to Java’s
       repetition, or looping, constructs.
     </p>
 
     <p>
-      First we will look at the control constructs themselves, <c>while</c> and
-      <c>for</c> loops. Then at how we can use them, in combination with
-      <c>if</c> statements, to implement some simple but important complete
+      First we will look at the control constructs themselves, <k>while</k> and
+      <k>for</k> loops. Then at how we can use them, in combination with
+      <k>if</k> statements, to implement some simple but important complete
       algorithms.
     </p>
   </introduction>

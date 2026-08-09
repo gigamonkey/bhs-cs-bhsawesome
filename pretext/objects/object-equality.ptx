@@ -19,7 +19,7 @@
     <p>
       Watch the following <url
       href="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
-      which shows what happens in memory as both primitive types like <c>int</c>
+      which shows what happens in memory as both primitive types like <k>int</k>
       and reference types like <c>Dog</c> are compared with <c>==</c> in a
       physical model of Java memory.
     </p>
@@ -101,8 +101,8 @@
       equality that looks at the values stored an objects’ instance variables to
       decide if they are the same. This is particularly true of classes like
       <c>String</c> that represent immutable values that just happen to be
-      stored in a more complex way than primitive types like <c>int</c>and
-      <c>double</c>.
+      stored in a more complex way than primitive types like <k>int</k>and
+      <k>double</k>.
     </p>
 
     <p>
@@ -128,7 +128,7 @@
       each other since they all contain the text <c>"bye"</c> but only <c>c</c>
       and <c>d</c> are <c>==</c> since they reference the same actual object.
       The values of <c>b</c> and <c>c</c> are not <c>==</c> because whenever a
-      <c>String</c> (or any other object) is created with <c>new</c>, it is
+      <c>String</c> (or any other object) is created with <k>new</k>, it is
       always a new object that is not <c>==</c> to any other.
     </p>
 
@@ -223,7 +223,7 @@
     <p>
       Watch the <url href="https://www.youtube.com/watch?v=xZroaSGhgxA">video
       below</url> to see how this code works in memory. Since we used the
-      <c>new</c> keyword, two different <c>String</c> objects will be created
+      <k>new</k> keyword, two different <c>String</c> objects will be created
       that each have the characters <c>Hello</c> in them. So <c>s1 == s2</c>
       will be false since they don’t refer to the same object, but
       <c>s1.equals(s2)</c> is true since the two different objects contain the
@@ -439,13 +439,13 @@
           don’t see the exception because of the autograding, you can copy it
           into the pencil icon scratch area to run it without the grader). Since
           <c>s</c> is <c>null</c>, trying to access <c>indexOf</c> on <c>s</c>
-          throws an <c>NullPointerException</c>. Comment out the first <c>if</c>
-          statement and run the program again. The second <c>if</c> statement
+          throws an <c>NullPointerException</c>. Comment out the first <k>if</k>
+          statement and run the program again. The second <k>if</k> statement
           avoids the error with shortcircuit evaluation. Because <c>s !=
           null</c> is <c>false</c>, the rest of the Boolean expression is not
           evaluated. Now, change <c>s</c> to set it to <c>"apple"</c> instead of
           <c>null</c> in the first line and run the code again to see that the
-          <c>if</c> statements can print out that “apple contains an a”.
+          <k>if</k> statements can print out that “apple contains an a”.
         </p>
       </statement>
 

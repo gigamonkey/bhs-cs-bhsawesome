@@ -14,12 +14,12 @@
     </p>
 
     <p>
-      To start with, we’ll finally get to understand what the <c>static</c>
+      To start with, we’ll finally get to understand what the <k>static</k>
       keyword, which we’ve been using without a lot of explanation, is actually
       for. We’ll learn about how the <term>scope</term> of variables controls
-      where we can refer to what variables, about how to use the <c>final</c>
+      where we can refer to what variables, about how to use the <k>final</k>
       modifier to make some variables immutable, and how to use the <term>access
-      modifiers</term> <c>public</c> and <c>private</c> to control what code can
+      modifiers</term> <k>public</k> and <k>private</k> to control what code can
       access the variables and methods in our classes,
     </p>
   </introduction>
@@ -29,16 +29,16 @@
 
     <p>
       In <xref ref="method-signatures" /> when we first learned to write methods
-      we made all our methods <c>static</c>. Then in <xref
+      we made all our methods <k>static</k>. Then in <xref
       ref="instance-methods" /> we learned about instance methods. As you may
-      have already figured out the important difference between <c>static</c>
+      have already figured out the important difference between <k>static</k>
       and instance methods is that instance methods must be invoked on a
       specific object—an instance of the class—in order to be able to access the
       instance variables stored in that object.
     </p>
 
     <p>
-      Methods declared with the <c>static</c> modifier, on the other hand don’t
+      Methods declared with the <k>static</k> modifier, on the other hand don’t
       have access to instance variables because they are not invoked on any
       particular object. They are also called <term>class methods</term> because
       we can think of them as belonging to the class as a whole, rather than to
@@ -46,17 +46,17 @@
     </p>
 
     <p>
-      Within a class we can call <c>static</c> methods defined in that class by
-      their simple name, even from instance methods. But code in <c>static</c>
-      methods will not have access to <c>this</c> so won’t be able to reference
-      instance variables or call non-<c>static</c> methods without being given
+      Within a class we can call <k>static</k> methods defined in that class by
+      their simple name, even from instance methods. But code in <k>static</k>
+      methods will not have access to <k>this</k> so won’t be able to reference
+      instance variables or call non-<k>static</k> methods without being given
       an instance to call them on.
     </p>
 
     <p>
       To call static methods from a different class, we call them on the class
       itself, as we first saw in <xref ref="math-class" /> when we learned how
-      to call the <c>static</c>methods in the <c>Math</c> class. Class methods
+      to call the <k>static</k>methods in the <c>Math</c> class. Class methods
       are called using the class name followed by the dot (.) operator and the
       method name, example, <c>Math.sqrt(25);</c> calls the <c>sqrt</c> method
       in the <c>Math</c> class.
@@ -149,17 +149,17 @@
 
     <p>
       Like class methods, <term>class variables</term> are declared with the
-      <c>static</c> modifier before the variable type. Class variables belong to
+      <k>static</k> modifier before the variable type. Class variables belong to
       the class as a whole rather than to a specific object so each
-      <c>static</c> variable is shared by all instances of the class. Class
-      variables that are declared <c>public</c> can be accessed by code outside
+      <k>static</k> variable is shared by all instances of the class. Class
+      variables that are declared <k>public</k> can be accessed by code outside
       of the class by using the class name and the dot operator. <c>Math.PI</c>
       is an example of such a variable. Within a class all code can access
-      <c>static</c> variables by their simple name.
+      <k>static</k> variables by their simple name.
     </p>
 
     <p>
-      In the following class <c>Person</c>, there is a <c>static</c> variable
+      In the following class <c>Person</c>, there is a <k>static</k> variable
       called <c>personCounter</c> that is incremented each time the
       <c>Person</c> constructor is called to initialize a new <c>Person</c>
       object. The static method <c>printCounter</c> prints out its value. You
@@ -411,10 +411,10 @@
     <p>
       Finally we have <term>block scope</term> which is defined by control
       constructs within methods and constructors that have their own bodies such
-      as <c>for</c> and <c>while</c> loop and <c>if</c> statements. The curly
-      braces that mark the bodies of <c>while</c> loops and <c>if</c> statements
+      as <k>for</k> and <k>while</k> loop and <k>if</k> statements. The curly
+      braces that mark the bodies of <k>while</k> loops and <k>if</k> statements
       create a block scope in which new variables can be declared that can only
-      be referred to within those curly braces. And <c>for</c> loops define a
+      be referred to within those curly braces. And <k>for</k> loops define a
       scope that includes both the body within the curly braces but also the
       initializer, condition, and updater in the loop header. This is why when
       we write a loop like this we can only refer to <c>i</c> within the loop:
@@ -634,34 +634,34 @@
   </subsection>
 
   <subsection xml:id="final-keyword">
-    <title>The <c>final</c> keyword</title>
+    <title>The <k>final</k> keyword</title>
 
     <p>
       The keyword <term>final</term> is used for a few things in Java but the
       only one we need to know about is as a modifier in a variable declaration.
-      When we include <c>final</c> before the type in a variable declaration it
+      When we include <k>final</k> before the type in a variable declaration it
       tells Java that we want the variable to be immutable. Thus if we declare a
-      variable to be <c>final</c> and later write code that tries to assign a
+      variable to be <k>final</k> and later write code that tries to assign a
       new value to the variable, the compiler will give us an error.
     </p>
 
     <p>
-      There are two main ways to use <c>final</c> variables. Perhaps the
+      There are two main ways to use <k>final</k> variables. Perhaps the
       simplest is when we want to define a constant value in which case we
-      usually combine it with <c>static</c> to make a <c>static final</c>
+      usually combine it with <k>static</k> to make a <c>static final</c>
       variable. For instance the variable <c>PI</c> is a <c>public static
       final</c> variable in the <c>Math</c> class which means it can be
       referenced by code anywhere as <c>Math.PI</c> . And since it’s
-      <c>final</c> we don’t have to worry about some code accidentally
+      <k>final</k> we don’t have to worry about some code accidentally
       redefining <m>π</m>. Constants defined this way are typicall given all
       uppercase names.
     </p>
 
     <p>
-      The other main way to use <c>final</c> is when we are defining a class
+      The other main way to use <k>final</k> is when we are defining a class
       whose instances are immutable. If we declare all the class’s instance
-      variables to be <c>final</c> then the instances will be immutable. As a
-      convinence we can declare variables as <c>final</c> without providing an
+      variables to be <k>final</k> then the instances will be immutable. As a
+      convinence we can declare variables as <k>final</k> without providing an
       initial value as long as they are initialized in every constructor. For
       instance, if we wanted our <c>Address</c> class to have immutable
       instances we might write it like this:
@@ -698,10 +698,10 @@
 
     <p>
       In a class like this, with no setters defined, as long as the instance
-      variables are <c>private</c>, the instances would effectively be immutable
-      even without the <c>final</c> modifiers because there’s no code in the
+      variables are <k>private</k>, the instances would effectively be immutable
+      even without the <k>final</k> modifiers because there’s no code in the
       class that ever changes them and code outside the class can’t. But it can
-      still be useful to mark variables as <c>final</c> both to make your intent
+      still be useful to mark variables as <k>final</k> both to make your intent
       clear (even to yourself) and also to get help from the compiler if you
       forget and write some code that tries to change the value of something
       that’s not supposed to change.
@@ -735,11 +735,11 @@
   </subsection>
 
   <subsection xml:id="acessibility">
-    <title>Accessibility: <c>public</c> and <c>private</c></title>
+    <title>Accessibility: <k>public</k> and <k>private</k></title>
 
     <p>
-      In <xref ref="classes" /> we covered the main uses of the <c>public</c>
-      and <c>private</c> <term>accessibility modifiers</term>. These modifiers
+      In <xref ref="classes" /> we covered the main uses of the <k>public</k>
+      and <k>private</k> <term>accessibility modifiers</term>. These modifiers
       are another way to control what code is allowed to use a variable or
       method. In particular, they control whether variables, constructors, and
       methods in one class can be accessed or invoked by code in other classes.
@@ -754,8 +754,8 @@
     </p>
 
     <p>
-      The basics are <c>public</c> members are can accessible to code in any
-      class and <c>private</c> members are only accessibel to code within the
+      The basics are <k>public</k> members are can accessible to code in any
+      class and <k>private</k> members are only accessibel to code within the
       same class.
     </p>
 
@@ -766,18 +766,18 @@
     </p>
 
     <ul>
-      <li>Instance variables should always be marked <c>private</c>.</li>
+      <li>Instance variables should always be marked <k>private</k>.</li>
 
-      <li>Constructors are always <c>public</c>.</li>
+      <li>Constructors are always <k>public</k>.</li>
 
-      <li>Methods are always <c>public</c>.</li>
+      <li>Methods are always <k>public</k>.</li>
     </ul>
 
     <p>In reality things are, of course, a bit more complicated.</p>
 
     <p>
       The first rule is basically always true. It is far better to keep instance
-      variables <c>private</c> and then write getters and setters as appropriate
+      variables <k>private</k> and then write getters and setters as appropriate
       both to keep fine grained control over what code can modify instances of
       your class but also to not tie yourself down to a particular set of
       variables as the way you want to hold the data that makes up instances of
@@ -785,8 +785,8 @@
     </p>
 
     <p>
-      The rule also applies to <c>static</c> variables unless they are also
-      <c>final</c> in which case they can be made <c>public</c> if they are
+      The rule also applies to <k>static</k> variables unless they are also
+      <k>final</k> in which case they can be made <k>public</k> if they are
       meant to defined a value that is useful outside of the class, like
       <c>Math.PI</c>.
     </p>
@@ -795,11 +795,11 @@
       Constructors and methods, however, require more judgement. Often as we
       break up big methods into smaller methods we will write methods that
       shouldn’t be used directly by code outside the class; those methods should
-      be declared <c>private</c> so we know they are only used within the class.
+      be declared <k>private</k> so we know they are only used within the class.
       And sometimes, though less commonly, we will have constructors that are
       only meant to be used internally. Those constructors can also be made
-      <c>private</c>. Though do note if a class doesn’t have <em>any</em>
-      <c>public</c> constructors, there will be no way for any code outside the
+      <k>private</k>. Though do note if a class doesn’t have <em>any</em>
+      <k>public</k> constructors, there will be no way for any code outside the
       class to make instances of it.
     </p>
   </subsection>
@@ -997,7 +997,7 @@
 
       <li>
         <p>
-          (AP 3.7.B.2) Class variables that are designated <c>public</c> are
+          (AP 3.7.B.2) Class variables that are designated <k>public</k> are
           accessed outside of the class by using the class name and the dot
           operator, since they are associated with a class, not objects of a
           class.
@@ -1006,7 +1006,7 @@
 
       <li>
         <p>
-          (AP 3.7.B.3) When a variable is declared <c>final</c>, its value
+          (AP 3.7.B.3) When a variable is declared <k>final</k>, its value
           cannot be modified.
         </p>
       </li>
@@ -1030,8 +1030,8 @@
         <p>
           (AP 3.8.A.1) Parameters to constructors or methods are also considered
           local variables. These variables may only be used within the
-          constructor or method and cannot be declared to be <c>public</c> or
-          <c>private</c>.
+          constructor or method and cannot be declared to be <k>public</k> or
+          <k>private</k>.
         </p>
       </li>
 

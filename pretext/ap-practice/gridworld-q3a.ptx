@@ -23,7 +23,7 @@
       more time than a typical FRQ you would expect on your AP exam. It is still
       good practice nonetheless. In part (a) you will write a method to return
       an <c>Arraylist</c> of all empty <c>Location</c> objects in a given grid.
-      The <c>GridWorldUtilities</c> class contains <c>static</c> methods. A
+      The <c>GridWorldUtilities</c> class contains <k>static</k> methods. A
       partial declaration of the <c>GridWorldUtilities</c> class is shown below.
     </p>
 

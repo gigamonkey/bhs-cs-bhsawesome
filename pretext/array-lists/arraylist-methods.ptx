@@ -85,7 +85,7 @@
             No, arrays can store both primitive and reference types while
             <c>ArrayList</c>s can only store reference types. We’ll see in the
             next section how to use <term>wrapper classes</term> to make
-            <c>ArrayList</c> that hold <c>int</c> and <c>double</c> values.
+            <c>ArrayList</c> that hold <k>int</k> and <k>double</k> values.
           </p>
         </feedback>
       </choice>
@@ -140,14 +140,14 @@
       program we need to either <term>import</term> it or (much more rarely)
       refer to it by its full name which includes the package as a prefix:
       <c>java.util.ArrayList</c>. But rather than type that out all the time
-      we’ll almost always use an <c>import</c> statement.
+      we’ll almost always use an <k>import</k> statement.
     </p>
 
     <p>
       Import statements have to come before the class definition in a Java
       source file and serve to tell Java which class we mean when we use a short
       name like <c>ArrayList</c>. To import just one class we use a single
-      <c>import</c> of the fully-qualified name of the class like this:
+      <k>import</k> of the fully-qualified name of the class like this:
     </p>
 
     <program>
@@ -1075,7 +1075,7 @@
       <li>
         <p>
           (AP 4.8.A.4) The <c>ArrayList</c> class is part of the
-          <c>java.util</c> package. An <c>import</c> statement can be used to
+          <c>java.util</c> package. An <k>import</k> statement can be used to
           make this class available for use in the program.(import
           <c>java.util.ArrayList</c> or <c>java.util.*</c>).
         </p>
@@ -1118,8 +1118,8 @@
 
       <li>
         <p>
-          <c>ArrayList</c>s cannot hold primitive types like <c>int</c> or
-          <c>double</c>, so you must use the wrapper classes <c>Integer</c> or
+          <c>ArrayList</c>s cannot hold primitive types like <k>int</k> or
+          <k>double</k>, so you must use the wrapper classes <c>Integer</c> or
           <c>Double</c> to put numerical values into an <c>ArrayList</c>.
           However autoboxing usually takes care of that for you.
         </p>

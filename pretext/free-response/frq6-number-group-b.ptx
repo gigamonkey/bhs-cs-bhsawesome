@@ -10,7 +10,7 @@
       <term>Part b.</term> A range represents a number group that contains all
       (and only) the integers between a minimum value and a maximum value,
       inclusive. Write the <c>Range</c> class, which is a <c>NumberGroup</c>.
-      The <c>Range</c> class represents the group of <c>int</c> values that
+      The <c>Range</c> class represents the group of <k>int</k> values that
       range from a given minimum value up through a given maximum value,
       inclusive. For example, the declaration <c>NumberGroup range1 = new
       Range(-3, 2);</c> represents the group of integer values -3, -2, -1, 0, 1,
@@ -19,7 +19,7 @@
 
     <p>
       Write the complete <c>Range</c> class. Include all necessary instance
-      variables and methods as well as a constructor that takes two <c>int</c>
+      variables and methods as well as a constructor that takes two <k>int</k>
       parameters. The first parameter represents the minimum value, and the
       second parameter represents the maximum value of the range. You may assume
       that the minimum is less than or equal to the maximum. Write the contains

@@ -53,7 +53,7 @@
       <term>expression</term> which just means some bit of code that produces a
       value. One simple kind of expression is a <term>literal value</term> which
       is a way of representing a value directly—or literally—in our code. For
-      instance <c>42</c> is a literal expression representing the <c>int</c>
+      instance <c>42</c> is a literal expression representing the <k>int</k>
       value 42. When we print a value with <c>print</c> or <c>println</c>, Java
       converts the value to its textual representation and then emits that to
       the screen. So we could write <c>System.out.print(42)</c> to print the
@@ -80,7 +80,7 @@
     <p>
       If we wanted to store any text, from a person’s name to the contents of a
       novel, in a Java program, we would represent it as a <c>String</c>. As
-      another data type, like <c>int</c> and <c>double</c>, we can declare
+      another data type, like <k>int</k> and <k>double</k>, we can declare
       <c>String</c> variables. We’ll learn a lot more about the <c>String</c>
       data type in <xref ref="string-manipulation" /> but for now we just need
       to know we can write <term>string literals</term> by enclosing the text we

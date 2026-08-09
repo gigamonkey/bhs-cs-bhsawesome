@@ -157,7 +157,7 @@
     <title>De Morgan’s Laws</title>
 
     <p>
-      One of the most powerful tools for manipulating <c>boolean</c> expressions
+      One of the most powerful tools for manipulating <k>boolean</k> expressions
       are De Morgan’s Laws. Developed by Augustus De Morgan in the 1800s, they
       show how to simplify the negation of <c>&amp;&amp;</c> and <c>||</c>
       expressions, i.e. anything in either of these two forms: <c>!(a &amp;&amp;
@@ -217,12 +217,12 @@
 
     <p>
       And they’re really great for answering AP exam questions that give you one
-      <c>boolean</c> expression and ask you to pick out which of several others
+      <k>boolean</k> expression and ask you to pick out which of several others
       is equivalent to it.
     </p>
 
     <p>
-      We can also simplify negated <c>boolean</c> expressions involving
+      We can also simplify negated <k>boolean</k> expressions involving
       comparison operators like <c>&lt;</c>, <c>&gt;</c>, and <c>==</c>. And we
       can negate a comparison expression by flipping the comparison operator.
       For instance <c>!(a == b)</c> is flipped to <c>a != b</c>. The relational
@@ -288,7 +288,7 @@
     <title>Truth tables</title>
 
     <p>
-      The other main technique for analyzing <c>boolean</c> expressions is
+      The other main technique for analyzing <k>boolean</k> expressions is
       called a <term>truth table</term>. Truth tables are a systematic way of
       analyzing the boolean expressions for all possible combinations values for
       the subexpressions.

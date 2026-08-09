@@ -58,23 +58,23 @@
 
     <p>
       As we discussed in the previous section, we can’t use an enhanced
-      <c>for</c> loop because it will throw a
+      <k>for</k> loop because it will throw a
       <c>ConcurrentModificationException</c> if the size of the <c>ArrayList</c>
-      changes while the loop is running. Also, in an enhanced <c>for</c> loop we
+      changes while the loop is running. Also, in an enhanced <k>for</k> loop we
       don’t know what index we are on so we can’t remove the current item anyway
       with the <c>remove(int)</c> method.
     </p>
 
     <p>
       So there are a few ways to implement removing elements from an
-      <c>ArrayList</c>. We can use a regular <c>for</c> loop and adjust the
+      <c>ArrayList</c>. We can use a regular <k>for</k> loop and adjust the
       index variable when we remove an item, we can do roughly same thing with a
-      <c>while</c> loop, which gives us a bit more explicit control over the
+      <k>while</k> loop, which gives us a bit more explicit control over the
       index variable. Or we can loop backwards.
     </p>
 
     <p>
-      A normal <c>for</c> does require doing a thing that is generally frowned
+      A normal <k>for</k> does require doing a thing that is generally frowned
       upon, namely modifying the loop variable in the body of the loop. The
       problem is, if we determine that we want to remove the element at index
       <c>i</c> and call <c>list.remove(i)</c>, then all the elements after the
@@ -102,7 +102,7 @@
 
     <p>
       In the case where we remove the item, we decrement <c>i</c> with
-      <c>i--</c> so that when the <c>for</c> loop increments it in the updater,
+      <c>i--</c> so that when the <k>for</k> loop increments it in the updater,
       it gets set back to the same value and the next iteration of the loop will
       consider the element that just shifted down into position we just removed
       the element from.
@@ -110,10 +110,10 @@
 
     <p>
       Since it can be a bit confusing to have the loop variable modified both by
-      the <c>for</c> loop updater clause and in the body of the loop, some
-      programmers would prefer to implement this technique using a <c>while</c>
+      the <k>for</k> loop updater clause and in the body of the loop, some
+      programmers would prefer to implement this technique using a <k>while</k>
       loop as a way to make it clear that we doing something beyond a normal
-      <c>for</c> loop.
+      <k>for</k> loop.
     </p>
 
     <program>

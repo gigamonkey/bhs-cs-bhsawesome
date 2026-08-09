@@ -86,9 +86,9 @@
 
     <p>
       Each class defines a new kind of value similar to how each <term>primitive
-      type</term>—<c>int</c>, <c>double</c>, and <c>boolean</c>—define a
+      type</term>—<k>int</k>, <k>double</k>, and <k>boolean</k>—define a
       particular kind of value, such as a 32-bit integer quantity for an
-      <c>int</c> or a 64-bit floating point value for a <c>double</c>. These new
+      <k>int</k> or a 64-bit floating point value for a <k>double</k>. These new
       kinds of values, defined by classes, are called <term>objects</term> which
       is where <term>object-oriented programming</term> gets its name. The
       values defined by the <c>Turtle</c> class represent turtles that can move
@@ -129,7 +129,7 @@
       While the class <c>Turtle</c> defines what attributes each turtle has,
       every turtle object has its own value for each attribute. So we can have
       one blue turtle at position <c>200,100</c> and one red turtle at position
-      <c>50,75</c>, just like we can have one <c>int</c> whose value is <c>2</c>
+      <c>50,75</c>, just like we can have one <k>int</k> whose value is <c>2</c>
       and another whose value is <c>10</c>. The actual <c>Turtle</c> class
       defines several more attributes than the ones shown in the image but these
       are the main ones we need to know about to understand drawing with
@@ -608,7 +608,7 @@
     </p>
 
     <p>
-      Later on, we will learn to <c>import</c> classes from Java packages to use
+      Later on, we will learn to <k>import</k> classes from Java packages to use
       in our code, but first let’s talk about a package whose classes are always
       available in any Java program: <c>java.lang</c>.
     </p>

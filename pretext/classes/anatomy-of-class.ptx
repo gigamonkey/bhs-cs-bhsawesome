@@ -73,7 +73,7 @@
       The purpose of this class is to model a person as someone who has two
       attributes, a name and an age. A person also has two behaviors: they can
       print out a greeting where they introduce themselves and they can answer
-      the <c>boolean</c> question of whether they can vote, which depends on
+      the <k>boolean</k> question of whether they can vote, which depends on
       whether they are eighteen or older.
     </p>
 
@@ -132,11 +132,11 @@
     </program>
 
     <p>
-      Almost all the classes we write will start with the keyword <c>public</c>.
+      Almost all the classes we write will start with the keyword <k>public</k>.
       It just means the class can be used in other classes. We will occasionally
-      have to write classes without the <c>public</c> in exercises in this book
+      have to write classes without the <k>public</k> in exercises in this book
       but only because of limitations of the platform this book runs on.
-      However, the really important word in this line is <c>class</c> which says
+      However, the really important word in this line is <k>class</k> which says
       we’re defining a class.
     </p>
 
@@ -167,7 +167,7 @@
 
     <p>
       The only new thing here, compared to other variable declarations we’ve
-      seen, is the keyword <c>private</c>. After that, they look like regular
+      seen, is the keyword <k>private</k>. After that, they look like regular
       variable declarations with a type and a name. But because these variables
       are defined at the top level of the class, meaning not inside a method,
       they are called <term>instance variables</term> and they are what define
@@ -235,7 +235,7 @@
     <p>
       This works because of the second new thing that about these methods,
       compared to the ones we’ve written before now: they do not have the
-      keyword <c>static</c> in their signature. That makes them <term>instance
+      keyword <k>static</k> in their signature. That makes them <term>instance
       methods</term> which means they have access to the instance variables
       defined in the class.
     </p>

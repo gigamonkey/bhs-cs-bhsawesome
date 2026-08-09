@@ -107,7 +107,7 @@
       <term>Part a.</term> Write the <c>StudentAnswerSheet</c> method
       <c>getScore</c>. The parameter passed to method <c>getScore</c> is a
       <c>List</c> of strings representing the correct answer key for the test
-      being scored. The method computes and returns a <c>double</c> that
+      being scored. The method computes and returns a <k>double</k> that
       represents the score for the student’s test answers when compared with the
       answer key. One point is awarded for each correct answer and 1/4 of a
       point is deducted for each incorrect answer. Omitted answers (indicated by

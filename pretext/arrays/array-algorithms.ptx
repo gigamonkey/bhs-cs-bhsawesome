@@ -78,7 +78,7 @@
       recognize that the values to loop through in step 2 are just the elements
       of the array. Since we need to process all the elements in the array to
       sum them and don’t care about their positions, this is a great use for an
-      enhanced <c>for</c> loop. And we can compute the average by dividing the
+      enhanced <k>for</k> loop. And we can compute the average by dividing the
       sum by the array’s length. For example:
     </p>
 
@@ -146,12 +146,12 @@
       accumulator pattern like summing but rather than adding each value into a
       running total we instead put each smaller (or larger) value we see into
       our accumulator variable. If we want to find the smallest value in an
-      array we can use a very similar pattern with an enhanced <c>for</c> loop.
+      array we can use a very similar pattern with an enhanced <k>for</k> loop.
     </p>
 
     <p>
       In the code below, assuming <c>numbers</c> is a non-empty array of
-      <c>int</c> values, after the code below runs, <c>min</c> will contain the
+      <k>int</k> values, after the code below runs, <c>min</c> will contain the
       smallest value in the array:
     </p>
 
@@ -170,7 +170,7 @@
       Suppose we had an array of <c>String</c> values containing people’s names
       and wanted to find the longest one. In this case we will compare the
       lengths of the values in the array but save the value. We’ll probably need
-      to use an explicit <c>if</c> since there isn’t a convenient method like
+      to use an explicit <k>if</k> since there isn’t a convenient method like
       <c>Math.max</c> that we can pass two <c>String</c> arguments and get back
       the longer one. Maybe something like this:
     </p>
@@ -288,7 +288,7 @@
     <p>
       Related to minimizing and maximizing algorithms are counting algorithms
       where we want to count the number of values that have some particular
-      property. In counting algorithms we also use an <c>if</c> statement but
+      property. In counting algorithms we also use an <k>if</k> statement but
       rather than storing new values when we see a larger or smaller one, we
       instead increment a count whenever we see a value that meets our criteria.
     </p>
@@ -377,7 +377,7 @@
 
     <p>
       The best way to write a searching algorithm is to put the loop into a
-      method so that we can <c>return</c> from the method as soon as we find a
+      method so that we can <k>return</k> from the method as soon as we find a
       value that meets our criteria. Returning from a method will break us out
       of the loop immediately, even if the loop would otherwise have run for
       more iterations. Here’s a method that returns the first name longer than
@@ -413,12 +413,12 @@
       return <c>null</c> but would have to return some other <term>distinguished
       value</term> that would not be a possible actual value to be found. For
       instance methods that are intended to searching in an array of positive
-      <c>int</c> values, often use -1 as a distinguished value.
+      <k>int</k> values, often use -1 as a distinguished value.
     </p>
 
     <p>
-      Note that when searching for an element, while we <c>return</c> from
-      inside the <c>if</c> when we find what we’re looking for, if we don’t find
+      Note that when searching for an element, while we <k>return</k> from
+      inside the <k>if</k> when we find what we’re looking for, if we don’t find
       it we need to keep looking and only return <c>null</c> or our other
       distinguished value after the loop has completed.
     </p>
@@ -691,14 +691,14 @@
     <p>
       The algorithms to answer these questions are similar to the searching
       algorithm but instead of returning the value we from in the array, we
-      return a <c>boolean</c> value that answers the question. On the AP exam
+      return a <k>boolean</k> value that answers the question. On the AP exam
       they will frequently provide a method to use to test the criteria so all
       you’ll have to do is write the right method structure.
     </p>
 
     <p>
       As with a searching algorithm, these work best in a method so we can use
-      <c>return</c> to break out of the loop as soon as we know the answer. One
+      <k>return</k> to break out of the loop as soon as we know the answer. One
       way to think about these is as doing a search and using the fact of
       whether you found what you were looking for to answer the any or all
       question. Obviously if any item matches the criteria and you search for
@@ -824,10 +824,10 @@
 
     <p>
       There are a couple things to note about this loop. First off, we need to
-      use a regular <c>for</c> loop since we need an index variable to be able
+      use a regular <k>for</k> loop since we need an index variable to be able
       to access the elements at indicies <c>i</c> and <c>i + 1</c> each time
       through the loop. And we had to adjust the loop header from the canonical
-      <c>for</c> loop, changing the limit from the normal <c>values.length</c>
+      <k>for</k> loop, changing the limit from the normal <c>values.length</c>
       to <c>values.length - 1</c>. If we looped with a limit of
       <c>values.length</c> then the last iteration of the loop <c>i</c> would be
       the largest legal index and <c>i + 1</c> would be one greater and out of
@@ -1086,14 +1086,14 @@
       To completely reverse a list we need to repeatedly swap elements, starting
       with the first and last, then the second and second to last, and so on,
       until we get to the middle of the list. As when we rotating arrays, we
-      will need to use a regular <c>for</c> loop to access the elements at
+      will need to use a regular <k>for</k> loop to access the elements at
       specific indices.
     </p>
 
     <p>
       The following two programs show how to reverse an array in place by
-      swapping elements. The first uses a <c>for</c> loop and the second a
-      should use a <c>while</c> loop.
+      swapping elements. The first uses a <k>for</k> loop and the second a
+      should use a <k>while</k> loop.
     </p>
 
     <activity label="parsons_array_reverse" numbered="yes" adaptive="yes" indentation="hide" language="java">

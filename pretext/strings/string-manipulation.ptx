@@ -56,7 +56,7 @@
       <c>String</c> is created, its text cannot be changed. When we add two
       <c>String</c>s (or a <c>String</c> and another value converted to a
       <c>String</c>) we get a new <c>String</c> without making any change to the
-      values being added together just like when we add the <c>int</c> values
+      values being added together just like when we add the <k>int</k> values
       <c>1 + 2</c> the original <c>1</c> and <c>2</c> aren’t changed. When we
       use <c>+=</c> we are making a new <c>String</c> by adding something to the
       current value of a variable and then assigning that new value back into
@@ -325,7 +325,7 @@
 
     <p>
       To get a part of an existing <c>String</c> we use the <c>substring</c>
-      method which takes two <c>int</c> arguments specifying the part of the
+      method which takes two <k>int</k> arguments specifying the part of the
       original string to extract. For instance <c>"abcdef".substring(2, 5)</c>
       returns the <c>"cde"</c> which is made up the characters starting at index
       <c>2</c> of <c>"abcdef"</c> and ending at (but not including) index
@@ -384,7 +384,7 @@
     </program>
 
     <p>
-      Note how we can use any expression that produces an <c>int</c> as either
+      Note how we can use any expression that produces an <k>int</k> as either
       argument to <c>substring</c>, such as <c>s.length() - 3</c> and
       <c>s.length()</c> in the last example. That also means if we had a
       variable, <c>i</c>, that held a valid index into a string <c>s</c> we
@@ -784,7 +784,7 @@
       character by character the way we would if we were putting them into an
       dictionary. So <c>"aardvark"</c> comes before <c>"acme"</c> which comes
       before <c>"zoologist"</c>. The return value of <c>compareTo</c> is an
-      <c>int</c> that indicates the ordering between the <c>String</c> we
+      <k>int</k> that indicates the ordering between the <c>String</c> we
       invoked <c>compareTo</c> on (call that the first string) and the argument
       <c>String</c> (the second string) by the following scheme:
     </p>
@@ -1109,7 +1109,7 @@
       When Java was released in an 1996, Unicode had been around for five years
       and the Unicode people had declared they would only ever need
       <m>2^{16}</m> or 65,536 code points to represent all the characters used
-      in the world. So Java included a <c>char</c> data type that can hold
+      in the world. So Java included a <k>char</k> data type that can hold
       exactly <m>2^{16}</m> values. Then, seven months later, the Unicode folks,
       said, “Ooops, that’s not enough”, and extended their system to its current
       size of 1,112,064 possible codepoints. (As of September 2024, 154,998
@@ -1119,14 +1119,14 @@
     </p>
 
     <p>
-      That made <c>char</c> kind of obsolete. But while not every Unicode
-      codepoint can be represented in a Java <c>char</c>, you can use an
-      <c>int</c> to represent a codepoint and the method
-      <c>Character.toString</c> to translate an <c>int</c> into a <c>String</c>
+      That made <k>char</k> kind of obsolete. But while not every Unicode
+      codepoint can be represented in a Java <k>char</k>, you can use an
+      <k>int</k> to represent a codepoint and the method
+      <c>Character.toString</c> to translate an <k>int</k> into a <c>String</c>
       containing the character for that codepoint. (You might see older Java
-      code that casts numbers to <c>char</c>. For many codepoints that will work
+      code that casts numbers to <k>char</k>. For many codepoints that will work
       but not on more recently added codepoints including, critically, those for
-      Emoji. 😞 So better to use <c>Character.toString</c> and ignore <c>char</c>
+      Emoji. 😞 So better to use <c>Character.toString</c> and ignore <k>char</k>
       altogether.)
     </p>
 

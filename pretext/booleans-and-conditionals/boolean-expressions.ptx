@@ -15,25 +15,25 @@
   <introduction>
     <p>
       In the previous section we discussed the different ways we could combine
-      <c>if</c> statements to make one-way, two-way, and multiway selection
+      <k>if</k> statements to make one-way, two-way, and multiway selection
       constructs. But in most of the examples we just assumed we had some
-      <c>boolean</c> variable already set up to use in the conditions of our
-      <c>if</c> statements.
+      <k>boolean</k> variable already set up to use in the conditions of our
+      <k>if</k> statements.
     </p>
 
     <p>
       But most of the logic that goes into making interesting algorithms comes
-      from how we actually compute the <c>boolean</c> values that we use in
-      <c>if</c> statements.
+      from how we actually compute the <k>boolean</k> values that we use in
+      <k>if</k> statements.
     </p>
 
     <p>
       In this section we’ll look at the operators we can use to produce
-      <c>boolean</c> values that don’t come from the literal <c>boolean</c>
+      <k>boolean</k> values that don’t come from the literal <k>boolean</k>
       values we mentioned in the previous lesson. There are operators that
-      produce <c>boolean</c> values from non-boolean values like <c>int</c> and
-      <c>double</c> values and operators that we can use to combine
-      <c>boolean</c> values to produce new <c>boolean</c> values.
+      produce <k>boolean</k> values from non-boolean values like <k>int</k> and
+      <k>double</k> values and operators that we can use to combine
+      <k>boolean</k> values to produce new <k>boolean</k> values.
     </p>
   </introduction>
 
@@ -45,7 +45,7 @@
       In <xref ref="arithmetic-expressions" /> we learned about arithmetic
       operators like <c>+</c> and <c>*</c> that operate on numeric values to
       produce other numeric values. Now we need to learn about <term>comparison
-      operators</term> that operate on numbers but produce <c>boolean</c>
+      operators</term> that operate on numbers but produce <k>boolean</k>
       values. Comparison operators can be further divided into four
       <term>relational operators</term> that test ordering relationships between
       numbers and two <term>equality operators</term> which simply check whether
@@ -187,25 +187,25 @@
       straightforward. A couple things to note however, one is that they are
       both written with two characters. In particular the equality operator
       <c>==</c> is different than the assignment operator <c>=</c>. So if
-      <c>a</c> and <c>b</c> are <c>int</c> values, <c>a == b</c> is a
-      <c>boolean</c> expression, i.e. it’s value will be either <c>true</c> or
-      <c>false</c>. But <c>a = b</c> is an <c>int</c> expression whose value
+      <c>a</c> and <c>b</c> are <k>int</k> values, <c>a == b</c> is a
+      <k>boolean</k> expression, i.e. it’s value will be either <c>true</c> or
+      <c>false</c>. But <c>a = b</c> is an <k>int</k> expression whose value
       will be the original value of <c>b</c> and will also have the side effect
       of assigning that value to <c>a</c>.
     </p>
 
     <p>
       Unlike the relational operators, the equality operators can be used with
-      any kinds of values, <c>int</c>, <c>double</c>, <c>boolean</c> as well as
+      any kinds of values, <k>int</k>, <k>double</k>, <k>boolean</k> as well as
       reference types like <c>String</c> and other types we’ll learn about
       later. But there are some subtleties to how they work with different kinds
       of values.
     </p>
 
     <p>
-      For <c>int</c> and <c>boolean</c> values, <c>==</c> and <c>!=</c> are
-      quite straightforward. Either two <c>int</c> values are the same or they
-      are not. However, we will rarely use these operators with <c>boolean</c>
+      For <k>int</k> and <k>boolean</k> values, <c>==</c> and <c>!=</c> are
+      quite straightforward. Either two <k>int</k> values are the same or they
+      are not. However, we will rarely use these operators with <k>boolean</k>
       values as doing so is usually unecessary and lead to a common mistake
       which we’ll discuss in <xref ref="if-traps" />.
     </p>
@@ -218,11 +218,11 @@
 
     <p>
       And finally, the equality operators should almost never be used with
-      <c>double</c> values. They do work in the sense that if two <c>double</c>
+      <k>double</k> values. They do work in the sense that if two <k>double</k>
       values are exactly the same, they will be <c>==</c>. The problem is that
-      because computers perform <c>double</c> math with limited precision,
+      because computers perform <k>double</k> math with limited precision,
       sometimes expressions that seem like they should produce mathematically
-      equivalent results don’t produce exactly the same <c>double</c> values so
+      equivalent results don’t produce exactly the same <k>double</k> values so
       even though they should be equal according to math they won’t be according
       to <c>==</c>. One of the simplest examples is:
     </p>
@@ -232,12 +232,12 @@
     </program>
 
     <p>
-      You might wonder why these are different if <c>double</c> values can store
+      You might wonder why these are different if <k>double</k> values can store
       up to 15 decimal places of precision! Understanding exactly why would
-      involve getting into quite a lot of details about how <c>double</c> values
+      involve getting into quite a lot of details about how <k>double</k> values
       are represented in memory that are well beyond the AP curriculum. But
       suffice it to say that this is a fact about how modern computers work, not
-      a bug in Java. As a practical matter when doing <c>double</c> math,
+      a bug in Java. As a practical matter when doing <k>double</k> math,
       instead of comparing values for exact equality we should check whether the
       difference between two values is less than some meaningful threshold. For
       instance, if we were performing some computation on measurements in meters
@@ -347,7 +347,7 @@
       A thing that comes up often enough in both real world coding and on the AP
       exam to be worth calling out is how to use the equality operators in
       combination with the remainder operator (<c>%</c>) to test whether
-      <c>int</c> values are evenly divisible by other <c>int</c> values.
+      <k>int</k> values are evenly divisible by other <k>int</k> values.
     </p>
 
     <p>
@@ -424,7 +424,7 @@
 
       <li>
         <p>
-          Getting the last digit (one’s place) from an <c>int</c>: <c>num %
+          Getting the last digit (one’s place) from an <k>int</k>: <c>num %
           10</c> gives us the rightmost digit of <c>num</c>.
         </p>
       </li>
@@ -482,7 +482,7 @@
     <title>Random probabilities</title>
 
     <p>
-      Another common way to want to produce <c>boolean</c> values is at random
+      Another common way to want to produce <k>boolean</k> values is at random
       with some probability. This is quite easy since <c>Math.random()</c>,
       which we first saw in <xref ref="math-class" />, returns a random number
       between 0.0 and 1.0 which is exactly how probabilities are usually
@@ -755,9 +755,9 @@
     <title>Logical operators</title>
 
     <p>
-      The other set of operators in Java that produce <c>boolean</c> values are
-      the <term>logical operators</term>. These operate on <c>boolean</c> values
-      to produce new <c>boolean</c> values just like the arithmetic operators
+      The other set of operators in Java that produce <k>boolean</k> values are
+      the <term>logical operators</term>. These operate on <k>boolean</k> values
+      to produce new <k>boolean</k> values just like the arithmetic operators
       operate on numeric values and produce numeric values.
     </p>
 
@@ -791,7 +791,7 @@
 
     <p>
       In Java the logical and operator is written <c>&amp;&amp;</c>. Thus if we
-      have two <c>boolean</c> expressions, such as two variables
+      have two <k>boolean</k> expressions, such as two variables
       <c>likesIceCream</c> and <c>likesChocolate</c>, we can write an expression
       that combines them with <c>&amp;&amp;</c>:
     </p>
@@ -826,12 +826,12 @@
           <em>both</em> conditions are true. Logically speaking there’s also an
           <term>exclusive or</term> which is true if either sub-statement is
           true but false if they both are. There isn’t a separate exclusive or
-          operator in Java but <c>!=</c> applied to <c>boolean</c> values serves
+          operator in Java but <c>!=</c> applied to <k>boolean</k> values serves
           as one.
         </p>
 
         <table>
-          <title>Truth table of <c>!=</c> with <c>boolean</c> values</title>
+          <title>Truth table of <c>!=</c> with <k>boolean</k> values</title>
 
           <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor">
             <row header="yes">
@@ -987,8 +987,8 @@
       the range from zero (inclusive) to one hundred (exclusive). Unfortunately
       if we translate that directly to Java as <c>0 &lt;= x &lt; 100</c> we will
       get a compiler error. This is because <c>0 &lt;= x</c> produces a
-      <c>boolean</c> which can’t then be an operand to the <c>&lt;</c> operator.
-      Instead we need to use <c>&amp;&amp;</c> to combine two <c>boolean</c>
+      <k>boolean</k> which can’t then be an operand to the <c>&lt;</c> operator.
+      Instead we need to use <c>&amp;&amp;</c> to combine two <k>boolean</k>
       expressions:
     </p>
 

@@ -253,7 +253,7 @@
     <video youtube="4VqmGXwpLqc" label="video-mergesort" />
     <p>
       And here is an implementation of merge sort. Note that the only
-      <c>public</c> method here is <c>sort</c> but it is written in terms of two
+      <k>public</k> method here is <c>sort</c> but it is written in terms of two
       helper methods: <c>sortRange</c> and <c>merge</c>. The <c>sortRange</c>
       method is actually the recursive method. Since recursive methods often
       need some extra arguments to specify what sub-problem each recursive call

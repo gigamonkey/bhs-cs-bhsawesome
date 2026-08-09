@@ -27,7 +27,7 @@
       like the rooms in a blueprint; they lay out the structure of the objects
       made from that class. In our <c>Person</c> class from the previous
       section, we know that every instance of that class will have one
-      <c>String</c> reference and one <c>int</c> value in its object data in
+      <c>String</c> reference and one <k>int</k> value in its object data in
       memory.
     </p>
 
@@ -47,7 +47,7 @@
     <p>
       Now let’s look at some of the details of using instance variables such as
       how to refer to them, how they interact with other variables, and what
-      <c>private</c> means.
+      <k>private</k> means.
     </p>
   </introduction>
 
@@ -118,7 +118,7 @@
 
     <p>
       However, even when an instance variable is shadowed, we can refer to it
-      using the dot operator and the keyword <c>this</c> as we saw in the code
+      using the dot operator and the keyword <k>this</k> as we saw in the code
       of the <c>Person</c> constructor.
     </p>
 
@@ -130,7 +130,7 @@
     </program>
 
     <p>
-      The keyword <c>this</c> is kind of like a variable that exists without
+      The keyword <k>this</k> is kind of like a variable that exists without
       being declared in the body of all constructors and instance methods and
       whose value is always a reference to the object being constructed or the
       object an instance method was invoked on. Because it’s a keyword we can’t
@@ -144,14 +144,14 @@
       above so that we can use the same name for parameters as the instance
       variables they are going to be assigned to. Some programmers prefer to use
       different, often shorter, names for parameters to avoid having to use
-      <c>this</c> but that just means they have to come up with twice as many
+      <k>this</k> but that just means they have to come up with twice as many
       names. It’s simpler and idiomatic to use the same name and to disambiguate
-      with <c>this</c>.
+      with <k>this</k>.
     </p>
 
     <note>
       <p>
-        It is legal to use <c>this</c> and the dot operator to access an
+        It is legal to use <k>this</k> and the dot operator to access an
         instance variable even if it is not shadowed but usually Java
         programmers don’t. Some other languages such as Javascript and Python
         always require a <c>this.</c> (Javascript) or <c>self.</c> (Python) to
@@ -206,8 +206,8 @@
       allocated and initialized. We’ll see in the next section how we can write
       constructors to initialize instance variables to specific values but if we
       don’t instance variables have to have some value so are initialized to the
-      zero value for their type. For <c>int</c> and <c>double</c> variables that
-      is <c>0</c> and <c>0.0</c>. For <c>boolean</c> variables it’s
+      zero value for their type. For <k>int</k> and <k>double</k> variables that
+      is <c>0</c> and <c>0.0</c>. For <k>boolean</k> variables it’s
       <c>false</c>. And for all reference types it’s the special value
       <c>null</c> which is a special reference value that doesn’t refer to any
       actual object.
@@ -291,7 +291,7 @@
   </subsection>
 
   <subsection>
-    <title>Making instance variables <c>private</c></title>
+    <title>Making instance variables <k>private</k></title>
 
     <p>
       Unlike method parameters and local variables declared inside the body of a
@@ -305,7 +305,7 @@
 
     <p>
       In Java, the answer is that it’s up to the author of the class. The
-      keyword <c>private</c> placed before the type in the variable declarations
+      keyword <k>private</k> placed before the type in the variable declarations
       in <c>Person</c> is called an <term>access modifier</term> and it tells
       Java that those variables cannot be accessed by code outside the
       <c>Person</c> class, even if that code has a reference to a <c>Person</c>
@@ -315,26 +315,26 @@
     <p>
       Instance variables should almost always be declared <term>private</term>.
       The main reason is it makes it much easier to understand our own code: if
-      we marked the variables as <c>public</c> and were trying to understand why
+      we marked the variables as <k>public</k> and were trying to understand why
       a <c>Person</c> object’s age had changed we’d have to check every line of
       code in our whole program to see what code might have a reference to a
       <c>Person</c> object and might have assigned a new value to its <c>age</c>
-      variable. Whereas with a <c>private</c> age variable, we know that the
+      variable. Whereas with a <k>private</k> age variable, we know that the
       only code that could possibly have changed it has to be somewhere in the
       body of the <c>Person</c> class.
     </p>
 
     <p>
-      Making variables <c>private</c> also makes it easier to change our code
+      Making variables <k>private</k> also makes it easier to change our code
       later. If only code in the class can access a variable, then we can rename
       it, change its type, or even delete it, if we decide we want to store the
       information in a different way or don’t need it any more. But if it’s
-      <c>public</c> we again have to look at all the code in any class that
+      <k>public</k> we again have to look at all the code in any class that
       might use <c>Person</c> to see if it references that variable. Making
-      variables <c>private</c> is one of Java’s main mechanisms for <term>data
+      variables <k>private</k> is one of Java’s main mechanisms for <term>data
       encapsulation</term> or <term>data hiding</term>. In <xref
       ref="instance-methods" /> we’ll look at a common pattern for using
-      <c>public</c> methods to give controlled access to <c>private</c> instance
+      <k>public</k> methods to give controlled access to <k>private</k> instance
       variables.
     </p>
 

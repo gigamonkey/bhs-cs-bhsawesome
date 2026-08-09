@@ -64,7 +64,7 @@
       then we’re building a slightly higher level abstraction of checking
       whether our abstract value <c>total</c> is greater than a specific
       concrete value. This expression works for any possible value for total and
-      could be used in an <c>if</c> statement to decide whether to do something
+      could be used in an <k>if</k> statement to decide whether to do something
       or not. Of course if we had another variable, <c>goal</c>, that abstracted
       away the specific value <c>100</c>, we could write an even more abstract
       expression:
@@ -101,8 +101,8 @@
 
     <p>
       Java’s primitives are a form of data abstraction. While the details of
-      exactly how <c>int</c> and <c>double</c> values are represented are
-      actually specified (an <c>int</c> is always 32 bits, etc.) most of the
+      exactly how <k>int</k> and <k>double</k> values are represented are
+      actually specified (an <k>int</k> is always 32 bits, etc.) most of the
       time we can ignore those details and just focus on what we can do with
       those values—add them, multiply them, etc. That is a lot easier to think
       about than if we had to think about exactly what is happening at the level
@@ -111,11 +111,11 @@
 
     <p>
       It’s worth noting that no abstraction is perfect. For example when we do
-      arithmetic with <c>int</c> values, the abstraction breaks down around the
+      arithmetic with <k>int</k> values, the abstraction breaks down around the
       limits <c>Integer.MAX_VALUE</c> or <c>Integer.MIN_VALUE</c>. In the
       abstract, adding one to a positive integer should always yield a larger
       number but if we add one to <c>Integer.MAX_VALUE</c> we get a negative
-      number because of the way <c>int</c> values are represented! But most of
+      number because of the way <k>int</k> values are represented! But most of
       the time we don’t have to think about those details.
     </p>
 
@@ -142,7 +142,7 @@
 
     <p>
       In Java, we create procedural abstractions by writing methods. For
-      instance a method named <c>doubled</c> that takes an <c>int</c> argument
+      instance a method named <c>doubled</c> that takes an <k>int</k> argument
       and returns a value that is twice the argument creates an abstraction of
       the idea of doubling a number.
     </p>
@@ -185,7 +185,7 @@
       using the Pythagorean theorem. But it is built on top of two other
       procedural abstractions: <c>Math.sqrt</c> which comes from Java’s
       <c>Math</c> class and <c>square</c>, a method we wrote to abstract the
-      idea of squaring a <c>double</c> value.
+      idea of squaring a <k>double</k> value.
     </p>
 
     <p>

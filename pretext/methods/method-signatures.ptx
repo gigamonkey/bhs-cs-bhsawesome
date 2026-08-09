@@ -53,15 +53,15 @@
     <p>
       For now don't worry about the <c>public static</c>, just treat that as
       boiler plate that all your methods will start with for now. (We’ll start
-      writing methods without <c>static</c> in <xref ref="classes" />.) The next
-      word, <c>int</c>, is the return type. It is the name of a type or the
-      special keyword <c>void</c> which means the method doesn't return any
+      writing methods without <k>static</k> in <xref ref="classes" />.) The next
+      word, <k>int</k>, is the return type. It is the name of a type or the
+      special keyword <k>void</k> which means the method doesn't return any
       value. Then comes the name of the method, in this case, <c>add</c>. And
       finally, in parentheses, the method’s <term>parameter list</term>, a
       comma-delimited list of variables which are the method's parameters.
       Parameters are declared like other variables with a type and a name. In
       this method there are two, named <c>a</c> and <c>b</c>, both of type
-      <c>int</c>.
+      <k>int</k>.
     </p>
 
     <p>
@@ -108,9 +108,9 @@
 
     <p>
       When a method, such as <c>add</c>, has a return type other than
-      <c>void</c> we can use the method call as an expression whose value will
+      <k>void</k> we can use the method call as an expression whose value will
       be whatever value the method returns. In this case that means we can use a
-      call to <c>add</c> anywhere we need a value of type <c>int</c>. For
+      call to <c>add</c> anywhere we need a value of type <k>int</k>. For
       example, we can use it to provide the initial value in a variable
       declaration:
     </p>
@@ -129,7 +129,7 @@
       performs or how it does it. For that we need to write a method body. The
       body is enclosed in a pair of curly braces (<c>{}</c>) and contains code
       that can use the variables from the parameter list. And at any point in
-      the method body we can use the keyword <c>return</c> followed by an
+      the method body we can use the keyword <k>return</k> followed by an
       expression to cause the method to return the value of that expression as
       the value of the method call.
     </p>
@@ -158,8 +158,8 @@
       When Java hits the call to <c>add</c>, it first creates variables
       corresponding to the parameters <c>a</c> and <c>b</c> and initializes them
       with the argument values <c>10</c> and <c>20</c>. Then it executes the
-      body of the method until it hits a <c>return</c> at which point it
-      evaluates the expression after the <c>return</c> and makes that value the
+      body of the method until it hits a <k>return</k> at which point it
+      evaluates the expression after the <k>return</k> and makes that value the
       value of the method call. In other words, roughly equivalent to this.
     </p>
 
@@ -823,7 +823,7 @@
     </p>
 
     <p>
-      Since these methods all have some actual return type, not <c>void</c> they
+      Since these methods all have some actual return type, not <k>void</k> they
       are called <term>non-void methods</term>. You can imagine a non-void
       method as a calculating machine that takes numbers as arguments and
       returns a calculated result or like a toaster that takes bread as an input

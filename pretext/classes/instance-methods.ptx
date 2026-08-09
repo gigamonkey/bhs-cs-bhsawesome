@@ -58,7 +58,7 @@
 
     <p>
       Similarly, instance methods can take any number of arguments. They often
-      will require fewer arguments than <c>static</c> methods because they have
+      will require fewer arguments than <k>static</k> methods because they have
       access to all the data in the object they are called on.
     </p>
 
@@ -85,7 +85,7 @@
     <note>
       <p>
         It is possible to write an instance method that doesn’t actually depend
-        on any instance variables. But if it is not declared <c>static</c> it
+        on any instance variables. But if it is not declared <k>static</k> it
         still needs to be called on an instance. There are reasons why we might
         write such methods to be instance methods but they are beyond the scope
         of the AP curriculum.
@@ -114,7 +114,7 @@
     </p>
 
     <p>
-      In other classes and in <c>static</c> methods in the same class, there is
+      In other classes and in <k>static</k> methods in the same class, there is
       no current object so trying to call a method without a specific object
       reference and the dot operator is back to trying to ask nobody what their
       name is.
@@ -122,7 +122,7 @@
 
     <p>
       This is why in a class’s <c>main</c> method we must either call only other
-      <c>static</c> methods or construct an instance of the class in order to
+      <k>static</k> methods or construct an instance of the class in order to
       call instance methods on it.
     </p>
 
@@ -207,11 +207,11 @@
     </program>
 
     <p>
-      The pattern is simple: A getter for a variable <c>x</c> is a <c>public</c>
+      The pattern is simple: A getter for a variable <c>x</c> is a <k>public</k>
       method named <c>getX</c>, that takes no arguments, and whose return type
-      is the same as the type of the variable. And a setter is a <c>public</c>
+      is the same as the type of the variable. And a setter is a <k>public</k>
       method named <c>setX</c> that takes one argument of the same type is the
-      variable and has a <c>void</c> return type. All the getter does is return
+      variable and has a <k>void</k> return type. All the getter does is return
       the value of the variable and all the setter does is assign its argument
       to the variable.
     </p>
@@ -219,7 +219,7 @@
     <p>
       It might not be immediately obvious what the point of getters and setters
       are. If we want code outside the class to be able to get and set the value
-      of one of our instance variables, why not just make it <c>public</c>?
+      of one of our instance variables, why not just make it <k>public</k>?
       There are a few advantages:
     </p>
 
@@ -241,7 +241,7 @@
 
         <p>
           Even if we do choose to provide a setter, it can still be better than
-          making the variable <c>public</c> because it gives us a place to
+          making the variable <k>public</k> because it gives us a place to
           control how the variable is set. For instance <c>setAge</c> could
           ensure that the value is positive and generate an error if it is not
           rather than setting the variable to a nonsense value.
@@ -272,7 +272,7 @@
 
     <p>
       It is quite common to write getters and setters and we should definitely
-      write them rather than making instance variables <c>public</c>. But we
+      write them rather than making instance variables <k>public</k>. But we
       shouldn’t write them reflexively. We should think about whether code
       outside our class really needs to directly access the values of our
       variables. And we should think even harder about whether want to let
@@ -291,17 +291,17 @@
           Try the following code. Note that there are two classes! The
           <c>main</c> method is in a separate <term>tester</term> or
           <term>driver</term> class so that it does not have access to the
-          <c>private</c> instance variables in the <c>Student</c> class. (When
+          <k>private</k> instance variables in the <c>Student</c> class. (When
           we write multiple classes in an IDE, we normally put each class in a
           separate file named after the class it contains. But it is legal to
           put two classes in one file, as we are here, as long as only one of
-          them is <c>public</c>. That's why <c>Student</c> is not public in this
+          them is <k>public</k>. That's why <c>Student</c> is not public in this
           code.)
         </p>
 
         <p>
           Try the following code. Note that it has a bug! It tries to access the
-          <c>private</c> instance variable <c>email</c> from outside the class
+          <k>private</k> instance variable <c>email</c> from outside the class
           <c>Student</c>. Change The <c>main</c> method in <c>Tester</c> so that
           it instead uses the appropriate getter to access the value of
           <c>email</c>.
@@ -374,8 +374,8 @@
         <p>
           You will need to fix one error. The <c>main</c> method is in a
           separate class <c>TesterClass</c> and does not have access to the
-          <c>private</c> instance variables in the <c>Student</c> class. Change
-          the <c>main</c> method so that it uses a <c>public</c> setter to
+          <k>private</k> instance variables in the <c>Student</c> class. Change
+          the <c>main</c> method so that it uses a <k>public</k> setter to
           change the value instead.
         </p>
       </statement>
@@ -486,8 +486,8 @@
 
           <feedback id="setSignature_opt_b">
             <p>
-              The set method should have a <c>void</c> return value as the body
-              does not contain a <c>return</c> statement and it needs a
+              The set method should have a <k>void</k> return value as the body
+              does not contain a <k>return</k> statement and it needs a
               parameter.
             </p>
           </feedback>
@@ -500,8 +500,8 @@
 
           <feedback id="setSignature_opt_c">
             <p>
-              The set method should have a <c>void</c> return value as the body
-              does not contain a <c>return</c> statement.
+              The set method should have a <k>void</k> return value as the body
+              does not contain a <k>return</k> statement.
             </p>
           </feedback>
         </choice>
@@ -514,7 +514,7 @@
           <feedback id="setSignature_opt_d">
             <p>
               Yes, the set method should take a parameter called people and have
-              a <c>void</c> return type. The name of the set method is usually
+              a <k>void</k> return type. The name of the set method is usually
               set followed by the full instance variable name, but it does not
               have to be an exact match.
             </p>
@@ -530,8 +530,8 @@
             <p>
               The parameter of this set method should be called people in order
               to match the code in the method body. Also the method body does
-              not contain a <c>return</c> statement so the return type must be
-              <c>void</c>.
+              not contain a <k>return</k> statement so the return type must be
+              <k>void</k>.
             </p>
           </feedback>
         </choice>
@@ -681,14 +681,14 @@
     <p>
       In our earlier discussions of methods, we drew a distinction between
       methods that compute and return values (non-void methods) and methods that
-      are called for their side effects, which usually have a <c>void</c> return
+      are called for their side effects, which usually have a <k>void</k> return
       type to make it clear that they are called for the effect they have on the
       world, such as printing output.
     </p>
 
     <p>
       Instance methods can fall into both categories. For example, in
-      <c>Person</c> the <c>canVote</c> method computes a <c>boolean</c> value
+      <c>Person</c> the <c>canVote</c> method computes a <k>boolean</k> value
       but doesn’t have any side effects. And <c>greet</c> doesn’t return
       anything but does print some output.
     </p>
@@ -1348,7 +1348,7 @@
             variables in the <c>VirtualPet</c> class below. Two of the instance
             variables should be called <c>name</c> and <c>health</c> where
             health is a number from 0 to 10. The rest can be variables from your
-            design above. Don’t forget to add in their <c>private</c> access
+            design above. Don’t forget to add in their <k>private</k> access
             modifiers.
           </p>
         </li>
@@ -1480,9 +1480,9 @@
           <p>
             Create a class that keeps track of the attributes above for pet
             records at the animal clinic. Decide what instance variables are
-            needed and their data types. Make sure you use <c>int</c>,
-            <c>double</c>, and <c>String</c> data types. Make the instance
-            variables <c>private</c>.
+            needed and their data types. Make sure you use <k>int</k>,
+            <k>double</k>, and <c>String</c> data types. Make the instance
+            variables <k>private</k>.
           </p>
         </li>
 
@@ -1660,8 +1660,8 @@
     <ul>
       <li>
         <p>
-          (AP 3.5.A.1) A <c>void</c> method does not return a value. Its header
-          contains the keyword <c>void</c> before the method name.
+          (AP 3.5.A.1) A <k>void</k> method does not return a value. Its header
+          contains the keyword <k>void</k> before the method name.
         </p>
       </li>
 
@@ -1669,7 +1669,7 @@
         <p>
           (AP 3.5.A.2) A <term>non-void method</term> returns a single value.
           Its header includes the return type in place of the keyword
-          <c>void</c>.
+          <k>void</k>.
         </p>
       </li>
 
@@ -1683,7 +1683,7 @@
 
       <li>
         <p>
-          (AP 3.5.A.4) The <c>return</c> keyword is used to return the flow of
+          (AP 3.5.A.4) The <k>return</k> keyword is used to return the flow of
           control to the point where the method or constructor was called. Any
           code that is sequentially after a return statement will never be
           executed. Executing a return statement inside a selection or iteration
@@ -1795,7 +1795,7 @@
           A <term>method</term> call interrupts the sequential execution of
           statements, causing the program to first execute the statements in the
           method or constructor before continuing. Once the last statement in
-          the method or constructor has executed or a <c>return</c> statement is
+          the method or constructor has executed or a <k>return</k> statement is
           executed, the flow of control is returned to the point immediately
           following the method or constructor call.
         </p>

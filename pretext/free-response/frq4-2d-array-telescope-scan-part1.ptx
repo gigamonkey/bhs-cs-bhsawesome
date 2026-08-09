@@ -69,7 +69,7 @@
 
     <p>
       The telescope records the data in telescope order into a 1-dimensional
-      array of <c>double</c> values. This 1-dimensional array of information
+      array of <k>double</k> values. This 1-dimensional array of information
       received from a single scan will be transferred into a 2-dimensional
       array, which reconstructs the original view of the rectangular area of the
       sky. This 2-dimensional array is part of the SkyView class, shown below.

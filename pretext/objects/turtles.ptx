@@ -94,7 +94,7 @@
       The <c>Turtle</c> class gives us an example of overloaded methods, which
       we learned about in <xref ref="overloaded-methods" />. It defines two
       <c>forward</c> methods; the no-args version used above and another that
-      takes an <c>int</c> arguments specifying the number of pixels to move. For
+      takes an <k>int</k> arguments specifying the number of pixels to move. For
       example to have the turtle move forward fifty pixels instead of one
       hundred, we can use <c>yertle.forward(50);</c>. Try making that change in
       the code above and then run it again to see the change.
@@ -196,7 +196,7 @@
 
     <p>
       The <c>World</c> class has two constructors, one that takes no arguments
-      and one that takes two <c>int</c> arguments that specify the size of the
+      and one that takes two <k>int</k> arguments that specify the size of the
       world and thus the size the image that will be created. The no-argument
       constructor creates a world with a default size of 640x480 pixels.
     </p>
@@ -350,9 +350,9 @@
     <p>
       The <c>Turtle</c> class also also has multiple constructors. They all take
       at least a <c>World</c> argument in order to have a place to draw the
-      turtle but one of them takes two <c>int</c> arguments to specify the
+      turtle but one of them takes two <k>int</k> arguments to specify the
       initial <c>x</c> and <c>y</c> position of the <c>Turtle</c> in the
-      <c>World</c>. The constructor that does not take these <c>int</c>
+      <c>World</c>. The constructor that does not take these <k>int</k>
       arguments puts the <c>Turtle</c> in the middle of the <c>World</c>.
     </p>
 
@@ -392,7 +392,7 @@
         <c>Turtle</c> constructor takes the arguments <c>x</c>, <c>y</c>, and
         <c>world</c> in that order. If we put the <c>World</c> argument first
         Java will complain because there is no constructor that takes a
-        <c>World</c>followed by two <c>int</c> values. Worse yet, if we swap the
+        <c>World</c>followed by two <k>int</k> values. Worse yet, if we swap the
         <c>x</c> and <c>y</c> values, the code will compile and probably run
         fine, i.e. it won’t crash, but our <c>Turtle</c> will not be positioned
         where we intended. So we need to be extra careful when a constructor or

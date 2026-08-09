@@ -87,7 +87,7 @@
       class</url>. While you don’t need to know about the details of how to
       format Javadoc comments for the AP Exam, it is useful to get in the habit
       of adding at least brief Javadoc-style comments before each class you
-      write and each <c>public</c> method even if you don’t plan to generate the
+      write and each <k>public</k> method even if you don’t plan to generate the
       web-based documentation.
     </p>
 
@@ -254,7 +254,7 @@
 
     <p>
       Some invariants are enforced for us by Java. When we declare a variable to
-      be an <c>int</c> we can rely on the fact that that the value of that
+      be an <k>int</k> we can rely on the fact that that the value of that
       variable will always be an integer. And when we write a method that takes
       two arguments it will always be true that any code that calls that method
       will have to provide two arguments of the right types because otherwise
@@ -276,7 +276,7 @@
 
     <p>
       For instance the version the <c>String</c> class’s <c>substring</c> method
-      that takes a single <c>int</c> argument has a further precondition that
+      that takes a single <k>int</k> argument has a further precondition that
       the argument be in the bounds of the string index (not negative and not
       larger than the length of the string. If called with an invalid argument
       it throws an <c>IndexOutOfBoundsException</c> and crashes your program

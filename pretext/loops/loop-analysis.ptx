@@ -63,7 +63,7 @@
     <p>
       The simplest way to know how many times the body of a loop is going to run
       is to write the loop simply. Here’s is the <term>canonical</term>
-      <c>for</c> loop:
+      <k>for</k> loop:
     </p>
 
     <program>
@@ -106,7 +106,7 @@
 
     <p>
       Note that it <em>is</em> possible for code in the loop body to cause the
-      loop to complete early. For instance, a <c>return</c> statement causes an
+      loop to complete early. For instance, a <k>return</k> statement causes an
       immediate return from the method, breaking out of the loop early. But for
       purposes of analyzing loops, we typically assume nothing like that happens
       in the body.

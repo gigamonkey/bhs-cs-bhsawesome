@@ -7,14 +7,14 @@
     <idx>for loop</idx>
     <idx><h>loop</h><h>for</h></idx>
     <p>
-      While the <c>while</c> loop is all we need to be able to provide the
+      While the <k>while</k> loop is all we need to be able to provide the
       repetition component required by any algorithm, it’s a little bit
       primitive. It has its uses but the real workhorse loop in Java is the
-      <c>for</c> loop.
+      <k>for</k> loop.
     </p>
 
     <p>
-      The <c>for</c> loop really shines when writing counting loops, those loops
+      The <k>for</k> loop really shines when writing counting loops, those loops
       where we know before the loop starts exactly how many times the body will
       run.
     </p>
@@ -22,12 +22,12 @@
     <p>
       If you took AP CSP with a block programming language like Snap! you almost
       certainly used a for loop block like the one shown below. It is a bit more
-      limited than a Java <c>for</c> loop but in simple cases, such as shown on
+      limited than a Java <k>for</k> loop but in simple cases, such as shown on
       the right below, they are essentially the same.
     </p>
 
     <figure>
-      <caption>Comparing Snap! and Java <c>for</c> loops.</caption>
+      <caption>Comparing Snap! and Java <k>for</k> loops.</caption>
 
       <image source="_static/img/snap-for-vs-java.png" width="100%" />
     </figure>
@@ -38,7 +38,7 @@
 
     <p>
       Remember the three step process we went through in the previous section
-      for building a counting <c>while</c> loop?
+      for building a counting <k>while</k> loop?
     </p>
 
     <ol>
@@ -50,11 +50,11 @@
     </ol>
 
     <p>
-      The purpose of a <c>for</c> loop is to provide a structure that gives us
+      The purpose of a <k>for</k> loop is to provide a structure that gives us
       an easy way to put all three of those parts into the loop header instead
       of having to remember to initialize the loop variable before the loop and
       to remember to update the loop variable before the end of the body the way
-      we have to do in a <c>while</c> loop.
+      we have to do in a <k>while</k> loop.
     </p>
 
     <p>The basic structure looks like this:</p>
@@ -66,16 +66,16 @@
     </program>
 
     <p>
-      So instead of a single <c>boolean</c> condition as we have in a while
+      So instead of a single <k>boolean</k> condition as we have in a while
       loop, the stuff in parentheses is a bit more complicated: three parts
       separated by semicolons (<c>;</c>).
     </p>
 
     <p>
       Here is a control flow diagram for a for loop. If you compare this to the
-      flow chart for of a <c>while</c> loop from in the previous section, you’ll
+      flow chart for of a <k>while</k> loop from in the previous section, you’ll
       see that the main difference is that some parts that weren’t explicitly
-      part of the <c>while</c> loop now get their own nodes in the chart.
+      part of the <k>while</k> loop now get their own nodes in the chart.
     </p>
 
     <figure align="center">
@@ -85,7 +85,7 @@
     </figure>
 
     <p>
-      The first item in the parentheses of the <c>for</c> loop header is, the
+      The first item in the parentheses of the <k>for</k> loop header is, the
       <term>initializer</term> is a single statement that initializes the loop
       variable. Usually it also declares the variable, like <c>int i = 0</c>. As
       you can see from the flow chart, the initializer runs just once at the
@@ -93,8 +93,8 @@
     </p>
 
     <p>
-      After the initializer comes the <term>condition</term>, a <c>boolean</c>
-      expression that acts just like the condition in a <c>while</c> loop; as
+      After the initializer comes the <term>condition</term>, a <k>boolean</k>
+      expression that acts just like the condition in a <k>while</k> loop; as
       long as it is true the loop body executes. When it is true the program
       proceeds to the body. When the condition is false we leave the loop and go
       to whatever comes after it in the program.
@@ -108,7 +108,7 @@
 
     <note>
       <p>
-        Two of the most common ways to use a <c>for</c> loops is to count from 0
+        Two of the most common ways to use a <k>for</k> loops is to count from 0
         up to an number (using &lt;) or count from 1 to the number including the
         number (using &lt;=). Remember that if you start at 0 use &lt;, and if
         you start at 1, use &lt;=. The two loops below using these two patterns
@@ -135,11 +135,11 @@
   </subsection>
 
   <subsection>
-    <title>Equivalence of <c>for</c> and <c>while</c> loops.</title>
+    <title>Equivalence of <k>for</k> and <k>while</k> loops.</title>
 
     <p>
       You may be thinking that there doesn’t seem to be anything you can do with
-      a <c>for</c> loop that you can’t do with a <c>while</c> loop. And you’d be
+      a <k>for</k> loop that you can’t do with a <k>while</k> loop. And you’d be
       right. In fact it is completely straight forward to translate between the
       two.
     </p>
@@ -151,10 +151,10 @@
     </figure>
 
     <p>
-      For a very good walkthrough of how <c>for</c> and <c>while</c> loops are
+      For a very good walkthrough of how <k>for</k> and <k>while</k> loops are
       equivalent, watch the following <url
       href="https://www.youtube.com/watch?v=SEDnzXeb2hU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;index=9&amp;ab_channel=colleenlewis">video</url>
-      which compares a <c>while</c> loop and <c>for</c> loop line by line.
+      which compares a <k>while</k> loop and <k>for</k> loop line by line.
     </p>
 
     <video youtube="SEDnzXeb2hU" label="video-for-loop" />
@@ -165,30 +165,30 @@
     </p>
 
     <p>
-      The advantage of the <c>for</c> loop is that we can see at a glance, by
+      The advantage of the <k>for</k> loop is that we can see at a glance, by
       looking at the loop header the overall structure of the loop: where the
       loop variable starts, what the loop’s condition is, and how the loop
       variable changes on each iteration of the loop. So when a loop is simple
       and fits into the pattern of a basic counting loop it makes sense to use a
-      <c>for</c> loop. It’s easy to read once you get used to it and it’s a
+      <k>for</k> loop. It’s easy to read once you get used to it and it’s a
       signal that this is just a regular loop.
     </p>
 
     <p>
-      The <c>while</c> loop, on the other hand, is infinitely flexible. It’s
+      The <k>while</k> loop, on the other hand, is infinitely flexible. It’s
       great, as we saw in the last chapter, for loops where we don’t know how
       many times the loop is going to execute until we’ve run it. And in even
       more complex loops where maybe there’s some complicated code to decide how
       to update the loop variable, or maybe when there are multiple loop
-      variables, trying to fit all that into a <c>for</c> loop header is going
-      to get to complicated. In that case a <c>while</c> loop is a better
+      variables, trying to fit all that into a <k>for</k> loop header is going
+      to get to complicated. In that case a <k>while</k> loop is a better
       choice.
     </p>
 
     <activity label="forloop">
       <statement>
         <p>
-          Here is a <c>for</c> loop that counts from <c>1</c> to <c>5</c>. Can
+          Here is a <k>for</k> loop that counts from <c>1</c> to <c>5</c>. Can
           you change it to count from <c>2</c> to <c>10</c>?
         </p>
       </statement>
@@ -214,8 +214,8 @@
       <statement>
         <p>
           Here is a while loop that counts from <c>5</c> to <c>10</c>. Run it
-          and see what it does. Can you change it to a <c>for</c> loop? Run your
-          <c>for</c> loop. Does it do the same thing?
+          and see what it does. Can you change it to a <k>for</k> loop? Run your
+          <k>for</k> loop. Does it do the same thing?
         </p>
       </statement>
 
@@ -466,7 +466,7 @@
     <title>Counting backwards</title>
 
     <p>
-      You can also write <c>for</c> loops that count backwards starting at a big
+      You can also write <k>for</k> loops that count backwards starting at a big
       number and decrementing the loop variable until it is some small number,
       usually 0 or 1. If you want to change a forwards loop into a backwards
       loop that runs with the same values of the loop variable, just counting
@@ -576,7 +576,7 @@
     <title>Coding Challenge: Turtles Drawing Shapes</title>
 
     <p>
-      Let’s use a <c>for</c> loop to have a Turtle draw different shapes. We
+      Let’s use a <k>for</k> loop to have a Turtle draw different shapes. We
       encourage you to work in pairs.
     </p>
 
@@ -588,14 +588,14 @@
     <ol>
       <li>
         <p>
-          Complete the <c>drawSquare</c> method to use a <c>for</c> loop to have
+          Complete the <c>drawSquare</c> method to use a <k>for</k> loop to have
           the Turtle t draw a square.
         </p>
       </li>
 
       <li>
         <p>
-          Complete the <c>drawTriangle</c> method to use a <c>for</c> loop to
+          Complete the <c>drawTriangle</c> method to use a <k>for</k> loop to
           draw an equilateral triangle. How many times should the loop run? It
           ran 4 times for a square, so how many for a triangle? What angle
           should you use for the turns? One way to figure this out is to notice
@@ -607,7 +607,7 @@
 
       <li>
         <p>
-          Complete the <c>drawPentagon</c> method to use a <c>for</c> loop to
+          Complete the <c>drawPentagon</c> method to use a <k>for</k> loop to
           draw a pentagon (which has 5 sides and looks like a stop sign). What
           external angle should you use for the turns? Remember they have to add
           up to 360 degrees after 5 turns.
@@ -616,7 +616,7 @@
 
       <li>
         <p>
-          Complete the <c>drawPolygon</c> method to use a <c>for</c> loop to
+          Complete the <c>drawPolygon</c> method to use a <k>for</k> loop to
           draw any polygong with <c>n</c> sides of length <c>pixels</c> given as
           arguments. Use <c>n</c> in your loop for the number of sides (or the
           number of iterations). Use <c>pixels</c> for the amount to move
@@ -720,7 +720,7 @@
     <ul>
       <li>
         <p>
-          (AP 2.8.A.1) A <c>for</c> loop is a type of iterative statement. There
+          (AP 2.8.A.1) A <k>for</k> loop is a type of iterative statement. There
           are three parts in a for loop header: the initialization (of the loop
           control variable or counter), the Boolean expression (testing the loop
           variable), and the update (to change the loop variable).
@@ -729,7 +729,7 @@
 
       <li>
         <p>
-          (AP 2.8.A.2) In a <c>for</c> loop, the initialization statement is
+          (AP 2.8.A.2) In a <k>for</k> loop, the initialization statement is
           only executed once before the first Boolean expression evaluation. The
           variable being initialized is referred to as a <term>loop control
           variable</term>.
@@ -738,7 +738,7 @@
 
       <li>
         <p>
-          (AP 2.8.A.2) The <c>for</c> loop Boolean expression is evaluated
+          (AP 2.8.A.2) The <k>for</k> loop Boolean expression is evaluated
           immediately after the loop control variable is initialized and then
           followed by each execution of the increment (or update) statement
           until it is false.
@@ -747,7 +747,7 @@
 
       <li>
         <p>
-          (AP 2.8.A.2) In each iteration of the <c>for</c> loop, the update is
+          (AP 2.8.A.2) In each iteration of the <k>for</k> loop, the update is
           executed after the entire loop body is executed and before the Boolean
           expression is evaluated again.
         </p>
@@ -755,8 +755,8 @@
 
       <li>
         <p>
-          (AP 2.8.A.3) A <c>for</c> loop can be rewritten into an equivalent
-          <c>while</c> loop (and vice versa).
+          (AP 2.8.A.3) A <k>for</k> loop can be rewritten into an equivalent
+          <k>while</k> loop (and vice versa).
         </p>
       </li>
     </ul>

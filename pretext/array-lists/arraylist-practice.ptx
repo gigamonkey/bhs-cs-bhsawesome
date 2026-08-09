@@ -119,7 +119,7 @@
 
     <solution>
       <p>
-        Change line 8 <c>int</c> to <c>Integer</c> because ArrayLists only store
+        Change line 8 <k>int</k> to <c>Integer</c> because ArrayLists only store
         objects and int is a primitive. Add in line 11 <c>reversed.add(0,
         element);</c> so that each element of the ArrayList <c>list</c>, the
         parameter, is added in front of the previously added element (thereby
@@ -364,7 +364,7 @@
       <p>
         Rewrite the following code so that it fills the ArrayList <c>values</c>
         with the elements of the array <c>nums</c> using a for-each loop instead
-        of a <c>for</c> loop.
+        of a <k>for</k> loop.
       </p>
     </statement>
 

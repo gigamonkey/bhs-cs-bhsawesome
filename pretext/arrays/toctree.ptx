@@ -6,7 +6,7 @@
   <introduction>
     <p>
       So far the data types we’ve focused on have been the three primitive data
-      types <c>int</c>, <c>double</c>, and <c>boolean</c>. We’ve made a little
+      types <k>int</k>, <k>double</k>, and <k>boolean</k>. We’ve made a little
       bit of use of <c>String</c> for generating output and mentioned that it is
       <em>not</em> a primitive type but rather a <term>reference type</term>.
     </p>
@@ -28,12 +28,12 @@
 
     <p>
       For example, modern CPUs know how to do arithmetic with thirty-two-bit
-      integers, i.e. <c>int</c> values, and sixty-four-bit floating point
+      integers, i.e. <k>int</k> values, and sixty-four-bit floating point
       numbers, i.e. <c>doubles</c>. That is, completely independent of Java or
       any other programming language, they have circuitry devoted to
       interpreting sets of thirty-two or sixty-four bits in a certain way so we
       can do math with them. Similarly, the CPU has circuitry for doing Boolean
-      logic that map very directly to what we can do in Java with <c>boolean</c>
+      logic that map very directly to what we can do in Java with <k>boolean</k>
       values. But anything beyond the handful of primitive types the computer
       inherently understands are represented in Java by reference types.
     </p>

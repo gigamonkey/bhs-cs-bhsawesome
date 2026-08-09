@@ -174,7 +174,7 @@
         You will not be penalized on the exam if you forget a needed semicolon,
         but the Java compiler is not so lenient; your program won’t compile
         without it. Note also that not <em>every</em> line ends with a
-        semicolon; if the line starts a construct like an <c>if</c> statement,
+        semicolon; if the line starts a construct like an <k>if</k> statement,
         there is no semicolon before the opening <c>{</c> nor one after the
         closing <c>}</c>.
       </p>
@@ -194,7 +194,7 @@
       Other than punctuation and whitespace, the rest of the text of a program
       is made up of words. Some words are special to Java and are called
       <term>keywords</term>. In the programs above the keywords are
-      <c>public</c>, <c>class</c>, <c>static</c>, and <c>void</c>. Because
+      <k>public</k>, <k>class</k>, <k>static</k>, and <k>void</k>. Because
       keywords have a special meaning to Java we can only use them for the
       particular purpose each one has. All keywords in Java are lower case.
     </p>
@@ -252,11 +252,11 @@
       </statement>
 
       <blocks layout="horizontal">
-        <block><c>public</c></block>
+        <block><k>public</k></block>
 
-        <block><c>static</c></block>
+        <block><k>static</k></block>
 
-        <block><c>void</c></block>
+        <block><k>void</k></block>
 
         <block><c>main(</c></block>
 
@@ -280,11 +280,11 @@
       </statement>
 
       <blocks layout="horizontal">
-        <block><c>public</c></block>
+        <block><k>public</k></block>
 
-        <block><c>static</c></block>
+        <block><k>static</k></block>
 
-        <block><c>void</c></block>
+        <block><k>void</k></block>
 
         <block><c>main</c></block>
 

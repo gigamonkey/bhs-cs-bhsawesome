@@ -18,7 +18,7 @@
 
     <p>
       What we would like is some way to declare, “I’m going to need to store
-      <em>n</em> <c>int</c> values” where <em>n</em> is a number that isn’t
+      <em>n</em> <k>int</k> values” where <em>n</em> is a number that isn’t
       necessarily known until the program runs. And we might also like to be
       able to treat that collection of <em>n</em> values as a single value for
       some purposes—being able to assign it to a variable or pass it as an
@@ -103,12 +103,12 @@
       and name. Declaring an array variable is no different except we need to
       declare it with an array type. Array types are written with the element
       type of the array, followed by square brackets. For example to make an
-      array of <c>int</c> values, we use the type <c>int[]</c> which is
-      pronounced “array of <c>int</c>” or “<c>int</c> array”.
+      array of <k>int</k> values, we use the type <c>int[]</c> which is
+      pronounced “array of <k>int</k>” or “<k>int</k> array”.
     </p>
 
     <p>
-      We already know that if we want to declare an <c>int</c> variable we
+      We already know that if we want to declare an <k>int</k> variable we
       write:
     </p>
 
@@ -116,7 +116,7 @@
       int score; // One int value
     </program>
 
-    <p>To declare an array of <c>int</c>, we just write:</p>
+    <p>To declare an array of <k>int</k>, we just write:</p>
 
     <program>
       int[] scores; // A reference to an array of any number of int values
@@ -128,7 +128,7 @@
       Declaring the variable doesn’t actually create the array object. But what
       is stored in the variable if there’s no object to reference? Java has a
       special value <c>null</c> which is the reference equivalent of <c>0</c>
-      for an <c>int</c> or <c>0.0</c> for a <c>double</c> which means, “no
+      for an <k>int</k> or <c>0.0</c> for a <k>double</k> which means, “no
       object”. Any variable with a reference type that hasn’t been assigned an
       actual reference value will have the value <c>null</c>.
     </p>
@@ -151,9 +151,9 @@
     </p>
 
     <p>
-      To create an array of a specific size we use the keyword <c>new</c>
-      followed by what looks like an array type but with an <c>int</c>
-      expression (often a literal <c>int</c>) inside the square brackets that
+      To create an array of a specific size we use the keyword <k>new</k>
+      followed by what looks like an array type but with an <k>int</k>
+      expression (often a literal <k>int</k>) inside the square brackets that
       says how big the array should be. The whole expression causes a new array
       to be created and space allocated for it’s object data and then evaluates
       to a reference to that new array. We then need to do something with that
@@ -190,11 +190,11 @@
     </p>
 
     <ul>
-      <li><c>0</c> for elements of type <c>int</c></li>
+      <li><c>0</c> for elements of type <k>int</k></li>
 
-      <li><c>0.0</c> for elements of type <c>double</c></li>
+      <li><c>0.0</c> for elements of type <k>double</k></li>
 
-      <li><c>false</c> for elements of type <c>boolean</c></li>
+      <li><c>false</c> for elements of type <k>boolean</k></li>
 
       <li><c>null</c> for all reference types</li>
     </ul>
@@ -211,7 +211,7 @@
     <p>
       The other way to make an array, is with specific values using an
       <term>array initializer</term> sometimes called an <term>initializer
-      list</term>. We still use <c>new</c> but instead of specifying the size of
+      list</term>. We still use <k>new</k> but instead of specifying the size of
       the array inside the square brackets, we place a list of initial values in
       curly braces (<c>{}</c>) after the square brackets:
     </p>
@@ -228,7 +228,7 @@
     </p>
 
     <p>
-      When we create an array of a primitive type such as <c>int</c> with
+      When we create an array of a primitive type such as <k>int</k> with
       initial values specified, space is allocated for the specified number of
       items of that type and the values in the array are stored directly in the
       array’s object data. When we create an array of an reference type such as
@@ -246,7 +246,7 @@
     <p>
       Finally there’s a shortcut for when we’re declaring a variable and
       initializing it with specific values at the same time: we can write just
-      the initial values in curly braces without the <c>new</c> and the array
+      the initial values in curly braces without the <k>new</k> and the array
       type since Java can infer the type from the variable declaration.
     </p>
 
@@ -327,7 +327,7 @@
       <statement>
         <p>
           In the following code, add two more array declarations, one that
-          creates an array of five <c>double</c> values called <c>prices</c> and
+          creates an array of five <k>double</k> values called <c>prices</c> and
           another of five <c>String</c> values called <c>names</c>. Then add
           <c>System.out.println</c> calls to print their lengths.
         </p>
@@ -417,7 +417,7 @@
       To access the items in an array, we use an <term>array access
       expression</term> which is a reference to an array (such as the name of an
       array variable) followed by a pair of square brackets containing an
-      <c>int</c> expression that gives us the index of the element we want to
+      <k>int</k> expression that gives us the index of the element we want to
       access. Remember that an <term>index</term> is a number that indicates the
       position of an item in a list, starting at 0.
     </p>
@@ -670,12 +670,12 @@
 
     <p>
       Note also that the index can be any expression, not just a literal
-      <c>int</c>. In fact, it is somewhat unusual to use a literal index. More
+      <k>int</k>. In fact, it is somewhat unusual to use a literal index. More
       likely we will use at least a variable or even a more complex arithmetic
       expression. For instance given an array like <c>highScores</c>, the
       expression <c>highScores.length - 1</c> gives us the index of the last
       element of the array. Here are some examples, assuming <c>i</c> is an
-      <c>int</c> variable that is a legal index into <c>highScores</c>:
+      <k>int</k> variable that is a legal index into <c>highScores</c>:
     </p>
 
     <program>
@@ -751,7 +751,7 @@
 
     <listing>
       <title>
-        Method that (uselessly) changes the value of its <c>int</c> parameter
+        Method that (uselessly) changes the value of its <k>int</k> parameter
       </title>
 
       <program>
@@ -767,7 +767,7 @@
     </listing>
 
     <p>
-      In this listing the method <c>changeIntParameter</c> accepts an <c>int</c>
+      In this listing the method <c>changeIntParameter</c> accepts an <k>int</k>
       argument which is stored in the parameter <c>n</c>. That parameter is a
       variable that only exists until <c>changeIntParameter</c> returns. In this
       method, <c>n</c> is assigned a new value but the code has no effect
@@ -806,7 +806,7 @@
 
     <p>
       In this code the variable <c>nums</c> is a reference to a newly created
-      <c>int[]</c> rather than just an <c>int</c>. But when
+      <c>int[]</c> rather than just an <k>int</k>. But when
       <c>changeArrayParameter</c> is called, a copy of that reference is passed
       as the argument and stored in the method’s parameter <c>ns</c>. Then, like
       the code in <c>changeIntParameter</c>, <c>changeArrayParameter</c>
@@ -1054,10 +1054,10 @@
 
       <li>
         <p>
-          (AP 4.3.A.3) When an array is created using the keyword <c>new</c>,
+          (AP 4.3.A.3) When an array is created using the keyword <k>new</k>,
           all of its elements are initialized to the default values for the
           element data type. The default value for <c>int `` is ``0</c>, for
-          <c>double</c> is <c>0.0</c>, for <c>boolean</c> is <c>false</c>, and
+          <k>double</k> is <c>0.0</c>, for <k>boolean</k> is <c>false</c>, and
           for a reference type (like <c>String</c> or a class you have created)
           is <c>null</c>.
         </p>

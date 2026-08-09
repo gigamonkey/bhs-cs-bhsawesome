@@ -18,21 +18,21 @@
     <idx>frequency</idx>
     <idx>counter</idx>
     <p>
-      Now that we have the basics of <c>if</c> statements and <c>for</c> and
-      <c>while</c> loops under our belts, we’re ready to implement some actual
+      Now that we have the basics of <k>if</k> statements and <k>for</k> and
+      <k>while</k> loops under our belts, we’re ready to implement some actual
       algorithms. There are quite a few algorithms we can build out of a single
-      loop with an occasional <c>if</c> inside the body of the loop. In later
+      loop with an occasional <k>if</k> inside the body of the loop. In later
       units we will apply these ideas to data types like <c>String</c>, arrays,
       <c>ArrayList</c> which contain multiple elements and are naturally
       processed with loops. But in this section we will stick with loops dealing
-      with the data types we’ve already learned, mostly <c>int</c> and
-      <c>double</c>.
+      with the data types we’ve already learned, mostly <k>int</k> and
+      <k>double</k>.
     </p>
 
     <p>
       We’ll start with algorithms for counting, summing, and averaging sequences
       of numbers. Then we’ll look at finding the minimum and maximum values
-      within a sequence of numbers. And finally we’ll take apart an <c>int</c>
+      within a sequence of numbers. And finally we’ll take apart an <k>int</k>
       value, using a loop to extract the individual digits.
     </p>
   </introduction>
@@ -110,7 +110,7 @@
     <p>
       For the next few examples, let’s assume we are working in a program for
       anayzing rainfall data in which we have a method <c>nextMeasurement()</c>
-      which every time it is called returns a <c>double</c> representing an
+      which every time it is called returns a <k>double</k> representing an
       amount of rainfall per hour from some sequence of data.
     </p>
 
@@ -152,21 +152,21 @@
       If we compare this loop to the summing loop we can see the two key
       difference between summing and counting: when counting we only increase
       the accumulator by one each time, usually with <c>++</c>, and we use an
-      <c>if</c> to decide when to update it at all. For instance, this loop
+      <k>if</k> to decide when to update it at all. For instance, this loop
       looks at all the measurements from a twenty-four hour period but only
       counts the ones that satisfy the criteria. Finally, the accumulator when
-      we’re counting is typically an <c>int</c> since we don’t need any
-      fractional parts while in a summing loop in might be an <c>int</c> or a
-      <c>double</c>, depending on what the values we’re summing are.
+      we’re counting is typically an <k>int</k> since we don’t need any
+      fractional parts while in a summing loop in might be an <k>int</k> or a
+      <k>double</k>, depending on what the values we’re summing are.
     </p>
 
     <p>
       On the AP exam, they often will provide a method to call to get a
-      <c>boolean</c> that determines whether something should be counted or not.
+      <k>boolean</k> that determines whether something should be counted or not.
       For instance, continuing the theme of previous example, they might provide
       a method, <c>extraRainy</c>, that takes a measurement and returns
       <c>true</c> if it qualifies as extra rainy and should be counted. To use
-      such a method, just call it in the condition of the <c>if</c>:
+      such a method, just call it in the condition of the <k>if</k>:
     </p>
 
     <program>
@@ -394,7 +394,7 @@
 
     <p>
       If didn’t remember about the <c>Math.min</c> method, you could always
-      implement the logic yourself with an <c>if</c> statement:
+      implement the logic yourself with an <k>if</k> statement:
     </p>
 
     <program>
@@ -415,7 +415,7 @@
       that the first version always assigns a value to <c>min</c> but sometimes
       it’s the current value and in the second version we only assign to
       <c>min</c> when we’ve actually found a smaller value. Either way is fine
-      though avoiding <c>if</c> statements that we don’t need often leads to
+      though avoiding <k>if</k> statements that we don’t need often leads to
       clearer code.
     </p>
 
@@ -474,7 +474,7 @@
     <p>
       In the previous examples we were using numbers to control our loops and as
       the values to be summed, counted, averaged, minimized, and maximized. In
-      this section we’ll use a <c>while</c> loop to take apart an <c>int</c>
+      this section we’ll use a <k>while</k> loop to take apart an <k>int</k>
       into its individual digits.
     </p>
 
@@ -482,17 +482,17 @@
       Before we got to the loop part of this problem there are two key facts to
       keep in mind about some arithmetic operators we first talked about in
       <xref ref="expressions" />. First off, we need to realize that to get the
-      rightmost digit of any <c>int</c> value is the remainder when divided by
+      rightmost digit of any <k>int</k> value is the remainder when divided by
       ten. For example <c>1234 % 10</c> ⟹ <c>4</c>. Second, dividing an
-      <c>int</c> value by ten effectively throws away the rightmost digit
+      <k>int</k> value by ten effectively throws away the rightmost digit
       because of truncation. <c>1234 / 10</c> ⟹ <c>123</c>. Also note, that if
-      we divide an <c>int</c> value less than ten by ten, we get <c>0</c> after
+      we divide an <k>int</k> value less than ten by ten, we get <c>0</c> after
       the last digit is thrown away: <c>9 / 10</c> ⟹ <c>0</c>.
     </p>
 
     <p>
-      Putting those facts together, we can outline a <c>while</c> loop that we
-      can use to extract the digits from a positive <c>int</c> from right (one’s
+      Putting those facts together, we can outline a <k>while</k> loop that we
+      can use to extract the digits from a positive <k>int</k> from right (one’s
       place) to left:
     </p>
 

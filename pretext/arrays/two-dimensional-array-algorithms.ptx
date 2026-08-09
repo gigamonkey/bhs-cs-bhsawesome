@@ -20,9 +20,9 @@
     <idx>traversal</idx>
     <idx>nested loops</idx>
     <p>
-      Just like <c>for</c> loops and 1D arrays are made for each other, nested
-      <c>for</c> loops and 2D arrays are similarly well-suited. Using a regular
-      <c>for</c> loop to access the elements of a 2D array looks like this:
+      Just like <k>for</k> loops and 1D arrays are made for each other, nested
+      <k>for</k> loops and 2D arrays are similarly well-suited. Using a regular
+      <k>for</k> loop to access the elements of a 2D array looks like this:
     </p>
 
     <program>
@@ -40,7 +40,7 @@
     <ul>
       <li>
         <p>
-          Both the outer and the inner loop are canonical <c>for</c> loops,
+          Both the outer and the inner loop are canonical <k>for</k> loops,
           looping from <c>0</c> to a limit of the array length, stepping by one.
         </p>
       </li>
@@ -245,22 +245,22 @@
   </subsection>
 
   <subsection xml:id="enhanced-for-each-loop-for-2d-arrays">
-    <title>Enhanced <c>for</c> loops with 2D arrays</title>
+    <title>Enhanced <k>for</k> loops with 2D arrays</title>
 
     <idx><h>2D Array</h><h>for-each loop</h></idx>
     <idx>enhanced for loop</idx>
     <p>
       Since 2D arrays are just regular arrays we can also use nested enhanced
-      <c>for</c> loops to loop through all elements in an array. When we use
-      enhanced <c>for</c> loops with a 2D array, the fact that we can only loop
+      <k>for</k> loops to loop through all elements in an array. When we use
+      enhanced <k>for</k> loops with a 2D array, the fact that we can only loop
       forward through the array means that we can only easily loop through a 2D
       array in row-major order. But when that’s what we want, and we don’t need
       access to the indices themselves or to modify the array elements, an
-      enhanced <c>for</c> loop can be nicely concise.
+      enhanced <k>for</k> loop can be nicely concise.
     </p>
 
     <p>
-      The only trick with enhanced <c>for</c> loops and 2D arrays, is that the
+      The only trick with enhanced <k>for</k> loops and 2D arrays, is that the
       type of the loop variable in the outer loop has to be a 1D array:
     </p>
 
@@ -518,7 +518,7 @@
     <p>
       Finally, we can write algorithms that operate on arbitrary slices of a 2D
       array such as a single row, a single column, or some rectangular subset of
-      the array. We will need to use regular <c>for</c> loops because we need
+      the array. We will need to use regular <k>for</k> loops because we need
       control over exactly what indices we use, but beyond that it’s just a
       matter of determining what the 2D indices are of the elements in the slice
       we want.
@@ -659,7 +659,7 @@
           (AP 4.12.A.1) Nested iteration statements (loops) are used to traverse
           and access all or an ordered sequence of elements in a 2D array. Since
           2D arrays are stored as arrays of arrays, the way 2D arrays are
-          traversed using <c>for</c> loops and enhanced <c>for</c> loops is
+          traversed using <k>for</k> loops and enhanced <k>for</k> loops is
           similar to 1D array objects.
         </p>
       </li>
@@ -676,13 +676,13 @@
 
       <li>
         <p>
-          (AP 4.12.A.2) The outer loop of a nested enhanced <c>for</c> loop used
+          (AP 4.12.A.2) The outer loop of a nested enhanced <k>for</k> loop used
           to traverse a 2D array traverses the rows. Therefore, the enhanced
-          <c>for</c> loop variable must be the type of each row, which is a 1D
+          <k>for</k> loop variable must be the type of each row, which is a 1D
           array. The inner loop traverses a single row. Therefore, the inner
-          enhanced <c>for</c> loop variable must be the same type as the
+          enhanced <k>for</k> loop variable must be the same type as the
           elements stored in the 1D array. Assigning a new value to the enhanced
-          <c>for</c> loop variable does not change the value stored in the
+          <k>for</k> loop variable does not change the value stored in the
           array.
         </p>
       </li>

@@ -79,7 +79,7 @@
       Also like when we call a method, when we call a constructor the types of
       the values passed as arguments have to match the types of the parameter
       variables. We cannot give a constructor a <c>String</c> object when it is
-      expecting an <c>int</c>. And the order of the arguments also matters. If
+      expecting an <k>int</k>. And the order of the arguments also matters. If
       we mix up the month and the day in the <c>Date</c> constructor, we’ll get
       a completely different date, for example January ninth (1/9/2025) instead
       of September first (9/1/2025).
@@ -336,7 +336,7 @@
 
     <p>
       The main difference is a constructor has no return type, not even
-      <c>void</c>, and instead of a method name, the name of the constructor is
+      <k>void</k>, and instead of a method name, the name of the constructor is
       always the same as the name of the class. This is because constructors
       don’t return a value; they initialize a brand new object. Here, for
       example, is the constructor from our <c>Person</c> class:
@@ -350,18 +350,18 @@
     </program>
 
     <p>
-      As we can see, there is no return type between <c>public</c> and
+      As we can see, there is no return type between <k>public</k> and
       <c>Person</c>. And <c>Person</c> is the name of the class this constructor
       came from. After the name comes a list of parameters which work just like
       parameters in a method: they are local variables that will hold the values
       of the arguments passed to the constructor. And constructors don’t need a
-      <c>return</c> statement because they don’t return a value.
+      <k>return</k> statement because they don’t return a value.
     </p>
 
     <p>
-      To invoke a constructor we use the keyword <c>new</c>, just like we did
+      To invoke a constructor we use the keyword <k>new</k>, just like we did
       with arrays, but instead of specifying the type and dimensions of an
-      array, we follow <c>new</c> with the class name and an argument list in
+      array, we follow <k>new</k> with the class name and an argument list in
       parentheses that matches a constructor in that class. So to invoke the
       <c>Person</c> constructor above we would write an expression like:
     </p>
@@ -371,12 +371,12 @@
     </program>
 
     <p>
-      When we invoke a constructor with <c>new</c> two things happen: first a
+      When we invoke a constructor with <k>new</k> two things happen: first a
       new object is created and the memory needed to hold all its instance
       variables is allocated somewhere in the computer’s memory. Then, after the
       instance variables are initialized either to their default zero value or
       the value specified in the declaration, the constructor is run with
-      <c>this</c> being the newly created object. The code in the constructor
+      <k>this</k> being the newly created object. The code in the constructor
       can then finish initializing the object however is appropriate.
     </p>
 
@@ -411,23 +411,23 @@
 
     <note>
       <p>
-        Like classes, constructors will usually be made <c>public</c>. As with
-        making a class <c>public</c> it means the constructor can be invoked
+        Like classes, constructors will usually be made <k>public</k>. As with
+        making a class <k>public</k> it means the constructor can be invoked
         from any code anywhere.
       </p>
 
       <p>
-        Constructors can also be <c>private</c> and sometimes that’s useful to
+        Constructors can also be <k>private</k> and sometimes that’s useful to
         control how instances of a class are created. And there is a level of
-        accessibility in between <c>public</c> and <c>private</c> that requires
+        accessibility in between <k>public</k> and <k>private</k> that requires
         a deeper understanding of Java packages than we want to get into. But
         both of those options are well outside the AP curriculum. For the
         purposes of the AP exam classes and their constructors are always
-        <c>public</c>.
+        <k>public</k>.
       </p>
 
       <p>
-        Constructors cannot have the <c>static</c> modifier that we’ve used with
+        Constructors cannot have the <k>static</k> modifier that we’ve used with
         methods until this unit. That’s only an option for methods and variables
         which will discuss more in <xref ref="objects" />.
       </p>
@@ -476,8 +476,8 @@
 
     <p>
       However there’s an even better way to write that constructor using the
-      <c>this</c> keyword, that we’ve previously used to access instance
-      variables. In the context of a constructor, we can use <c>this</c>
+      <k>this</k> keyword, that we’ve previously used to access instance
+      variables. In the context of a constructor, we can use <k>this</k>
       followed by an argument list in parentheses to invoke another
       constructor’s code to let it initialize the object. So we could write that
       one-argument constructor like this:
@@ -602,7 +602,7 @@
       Another reason to overload constructors is to allow callers to construct
       objects with arguments of a type different than what the class really
       needs. As a trivial example, consider class that stores an amount in an
-      <c>int</c> variable. The obvious constructor would look like:
+      <k>int</k> variable. The obvious constructor would look like:
     </p>
 
     <program>
@@ -1142,7 +1142,7 @@
       <li>
         <p>
           (AP 1.13.A.1) A class contains <term>constructors</term> that are
-          called with the keyword <c>new</c> to create objects and initialize
+          called with the keyword <k>new</k> to create objects and initialize
           its attributes.
         </p>
       </li>
@@ -1283,20 +1283,20 @@
         <ul>
           <li>
             <p>
-              The default value for an attribute of type <c>int</c> is <c>0</c>.
+              The default value for an attribute of type <k>int</k> is <c>0</c>.
             </p>
           </li>
 
           <li>
             <p>
-              The default value of an attribute of type <c>double</c> is
+              The default value of an attribute of type <k>double</k> is
               <c>0.0</c>.
             </p>
           </li>
 
           <li>
             <p>
-              The default value of an attribute of type <c>boolean</c> is
+              The default value of an attribute of type <k>boolean</k> is
               <c>false</c>.
             </p>
           </li>

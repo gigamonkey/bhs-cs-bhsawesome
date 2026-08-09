@@ -29,10 +29,10 @@
   </introduction>
 
   <subsection>
-    <title>The canonical <c>for</c> loop over an <c>ArrayList</c></title>
+    <title>The canonical <k>for</k> loop over an <c>ArrayList</c></title>
 
     <p>
-      Recall the structure of the canonical <c>for</c> loop that runs <em>n</em>
+      Recall the structure of the canonical <k>for</k> loop that runs <em>n</em>
       times:
     </p>
 
@@ -122,11 +122,11 @@
   </subsection>
 
   <subsection xml:id="enhanced-for-loop">
-    <title>Enhanced <c>for</c> loop</title>
+    <title>Enhanced <k>for</k> loop</title>
 
     <idx><h>list</h><h>for-each loop</h></idx>
     <p>
-      Also as with arrays, we can use an enhanced <c>for</c> loop to traverse
+      Also as with arrays, we can use an enhanced <k>for</k> loop to traverse
       all of the items in an <c>ArrayList</c> when we only care about the values
       in the list and not their indexes. The type of the loop variable needs to
       be the same as the type parameter of the <c>ArrayList</c> but if the type
@@ -200,10 +200,10 @@
     </activity>
 
     <p>
-      One thing to watch out for with the enhanced <c>for</c> loop is that we
+      One thing to watch out for with the enhanced <k>for</k> loop is that we
       can’t add or remove items from an <c>ArrayList</c> while we loop over it.
       We’ll see in a later section how to write loops that remove items from an
-      <c>ArrayList</c> using a regular <c>for</c> loop, but with an enhanced for
+      <c>ArrayList</c> using a regular <k>for</k> loop, but with an enhanced for
       loop if the size of an <c>ArrayList</c> changes in any way, such as by a
       call to <c>add</c> or <c>remove</c>, while it is being looped over, the
       loop will immediately throw a <c>ConcurrentModificationException</c>.
@@ -214,12 +214,12 @@
         If you’ve been paying very close attention you might wonder how it can
         be that <c>ArrayList</c> can be a regular class that we could have
         written ourselves yet it can be used with the special enhanced
-        <c>for</c> loop syntax. The full resolution to that mystery is well
+        <k>for</k> loop syntax. The full resolution to that mystery is well
         beyond the scope of the AP curriculum but it happens that the way the
-        enhanced <c>for</c> loop is defined in terms of an
+        enhanced <k>for</k> loop is defined in terms of an
         <term>interface</term> that any class can implement and <c>ArrayList</c>
         is one of the classes that does. So if you wanted to write your own
-        class that you could loop over with an enhanced <c>for</c> loop, you
+        class that you could loop over with an enhanced <k>for</k> loop, you
         could.
       </p>
     </note>
@@ -296,15 +296,15 @@
   </subsection>
 
   <subsection xml:id="while-loop">
-    <title><c>while</c> loop</title>
+    <title><k>while</k> loop</title>
 
     <p>
-      And of course we can use a <c>while</c> loop to traverse an
+      And of course we can use a <k>while</k> loop to traverse an
       <c>ArrayList</c>. If we want to go element by element we’ll have to manage
-      an index variable separately at which point a <c>for</c> loop might make
+      an index variable separately at which point a <k>for</k> loop might make
       more sense, but if we want to repeatedly modify an <c>ArrayList</c> until
       some condition is met a while loop can be just the thing. For example this
-      code uses a <c>while</c> loop to remove all the elements from the
+      code uses a <k>while</k> loop to remove all the elements from the
       beginning of an <c>ArrayList</c>, <c>numbers</c>, that are less than 100.
     </p>
 
@@ -330,7 +330,7 @@
     <activity label="listForEachLoopObj">
       <statement>
         <p>
-          The code in this activity demonstrates using <c>while</c> loop and an
+          The code in this activity demonstrates using <k>while</k> loop and an
           object-oriented approach where the list is a field of the current
           object and an instance method rather than a class (static) method
           loops through the list.
@@ -944,8 +944,8 @@
 
       <li>
         <p>
-          <c>ArrayList</c>s can be traversed with an enhanced <c>for</c> loop, a
-          <c>while</c> loop, or a regular <c>for</c> loop using an index.
+          <c>ArrayList</c>s can be traversed with an enhanced <k>for</k> loop, a
+          <k>while</k> loop, or a regular <k>for</k> loop using an index.
         </p>
       </li>
 
@@ -969,9 +969,9 @@
       <li>
         <p>
           (AP 4.9.A.4) Changing the size of an <c>ArrayList</c> while traversing
-          it using an enhanced <c>for</c> loop can result in a
+          it using an enhanced <k>for</k> loop can result in a
           <c>ConcurrentModificationException</c>. Therefore, when using an
-          enhanced <c>for</c> loop to traverse an <c>ArrayList</c>, you should
+          enhanced <k>for</k> loop to traverse an <c>ArrayList</c>, you should
           not add or remove elements.
         </p>
       </li>

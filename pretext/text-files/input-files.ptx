@@ -118,17 +118,17 @@
     <ul>
       <li>
         <c>nextInt</c> - reads the next bit of text and tries to parse it as an
-        <c>int</c> value.
+        <k>int</k> value.
       </li>
 
       <li>
         <c>nextDouble</c> - reads the next bit of text and tries to parse it as
-        a <c>double</c> value.
+        a <k>double</k> value.
       </li>
 
       <li>
         <c>nextBoolean</c> - reads the next bit of text and tries to parse it as
-        a <c>boolean</c> value.
+        a <k>boolean</k> value.
       </li>
 
       <li>
@@ -308,7 +308,7 @@
 
     <p>
       The other way to deal with exceptions, which is outside the AP curriculum,
-      is to use a construct called a <c>try</c>/<c>catch</c> block to handle the
+      is to use a construct called a <k>try</k>/<k>catch</k> block to handle the
       exception somehow. It looks like this
     </p>
 
@@ -323,12 +323,12 @@
     </program>
 
     <p>
-      The code that may cause an exception goes in the <c>try</c> block, marked
-      by the curly braces after the word <c>try</c>. If the code in the
-      <c>try</c> block throws an exception of a type listed in the parentheses
-      after <c>catch</c>, then the code in the block marked by the curly braces
-      after the <c>catch</c> line will be executed to handle the exception. The
-      code then continues after the <c>catch</c> block.
+      The code that may cause an exception goes in the <k>try</k> block, marked
+      by the curly braces after the word <k>try</k>. If the code in the
+      <k>try</k> block throws an exception of a type listed in the parentheses
+      after <k>catch</k>, then the code in the block marked by the curly braces
+      after the <k>catch</k> line will be executed to handle the exception. The
+      code then continues after the <k>catch</k> block.
     </p>
 
     <p>
@@ -344,7 +344,7 @@
     <title>Read all the lines in a file</title>
 
     <p>
-      A <c>while</c> loop is usually used to read in a file with multiple lines
+      A <k>while</k> loop is usually used to read in a file with multiple lines
       since we don’t know when we open the file how many lines it will contain.
     </p>
 
@@ -372,7 +372,7 @@
       <statement>
         <p>
           Complete the code below to count the number of lines in the dictionary
-          file using a <c>while</c> loop and then print how many lines are in
+          file using a <k>while</k> loop and then print how many lines are in
           the file.
         </p>
       </statement>

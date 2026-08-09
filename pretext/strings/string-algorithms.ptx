@@ -50,7 +50,7 @@
       However rather than searching for or testing elements of an array, we will
       search for or test for the presence of substrings of a given string that
       have certain properties. The basic structure of this sort of algorithm is
-      a canonical <c>for</c> loop that loops over the valid indices of the
+      a canonical <k>for</k> loop that loops over the valid indices of the
       <c>String</c> and calls to the <c>substring</c> method inside the loop to
       extract substrings that we can then test to see if they have whatever
       property we care about. As a really simple example of this we can test
@@ -72,9 +72,9 @@
     </program>
 
     <p>
-      Notice that the loop is just a canonical <c>for</c> loop over the valid
+      Notice that the loop is just a canonical <k>for</k> loop over the valid
       indices of <c>s</c>. All the interesting work happens inside the loop. In
-      the <c>if</c> inside the loop we use the expression <c>s.substring(i, i +
+      the <k>if</k> inside the loop we use the expression <c>s.substring(i, i +
       1)</c> to extract the one-character substring starting an index <c>i</c>.
       Then we check if it’s a vowel by testing whether it occurs somewhere in
       the string <c>"aeiou"</c>, using the fact that <c>indexOf</c> returns
@@ -97,7 +97,7 @@
     </p>
 
     <p>
-      That is, with a <c>for</c> loop and a call to <c>substring</c> to extract
+      That is, with a <k>for</k> loop and a call to <c>substring</c> to extract
       the subtring, we can build any of the finding, counting, and property
       testing algorithms we first used with arrays.
     </p>
@@ -235,13 +235,13 @@
     <p>
       Now we are ready to see an algorithm for computing a string with
       <em>all</em> the occurrences of a particular substring removed. We just
-      need to wrap the previous code in a <c>while</c> loop that runs as long as
+      need to wrap the previous code in a <k>while</k> loop that runs as long as
       the <c>String</c> we want to remove is still present in the <c>String</c>
       referenced by the variable.
     </p>
 
     <p>
-      We use a <c>while</c> loop because we don’t need a loop variable and also
+      We use a <k>while</k> loop because we don’t need a loop variable and also
       we don’t know how many times the loop needs to run; we just want to keep
       running as long as there’s still at least once occurrence of the string to
       be removed.
@@ -410,15 +410,15 @@
 
     <p>
       Since we’re going to need to do something with each character of the
-      <c>String</c>, a <c>for</c> loop is an appropriate choice. To keep things
-      simple we can use a canonical <c>for</c> loop, processing each character
+      <c>String</c>, a <k>for</k> loop is an appropriate choice. To keep things
+      simple we can use a canonical <k>for</k> loop, processing each character
       in order and then reverse it by how we build up the new <c>String</c>.
     </p>
 
     <activity label="reverseString">
       <statement>
         <p>
-          Here is a <c>for</c> loop that creates a new <c>String</c> that
+          Here is a <k>for</k> loop that creates a new <c>String</c> that
           contains the contents of <c>s</c> but in reverse. We start with a
           blank string <c>reversed</c> and build up our reversed string in that
           variable by copying each character from the <c>String</c> <c>s</c> in

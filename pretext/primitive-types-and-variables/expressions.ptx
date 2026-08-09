@@ -56,23 +56,23 @@
     <p>
       Just like variables have a type that was determined when we declared it,
       expressions have a type that is determined by the kind of value they
-      produce. Arithmetic expressions can be of type <c>int</c> or <c>double</c>
+      produce. Arithmetic expressions can be of type <k>int</k> or <k>double</k>
       depending on the types of the values in the expression.
     </p>
 
     <p>
-      An arithmetic expression consisting only of <c>int</c> values will always
-      evaluate to an <c>int</c> value, even if the true mathematical result is
+      An arithmetic expression consisting only of <k>int</k> values will always
+      evaluate to an <k>int</k> value, even if the true mathematical result is
       not an integer. But an arithmetic expression that contains at least one
-      <c>double</c> value will always evaluate to a <c>double</c> value.
+      <k>double</k> value will always evaluate to a <k>double</k> value.
     </p>
 
     <p>
-      This means that when if we divide two <c>int</c>s, we will get an
-      <c>int</c> result and the decimal part of the result will be thrown away.
+      This means that when if we divide two <k>int</k>s, we will get an
+      <k>int</k> result and the decimal part of the result will be thrown away.
       So, for instance, <c>5 / 2</c> would give us <c>2</c>, not <c>2.5</c>.
       This is called <term>truncating division</term>. If we want to preserve
-      the part after the decimal point we need a <c>double</c> result, so we
+      the part after the decimal point we need a <k>double</k> result, so we
       should make at least one of the values in the expression a double like
       2.0. The expression <c>5 / 2.0</c> will give us <c>2.5</c>.
     </p>
@@ -291,7 +291,7 @@
       While computers are pretty good at math they will only do what we tell
       them. And sometimes what we tell them isn’t exactly what we wanted. For
       instance, we can get bit by an unexpected truncating division if we divide
-      two <c>int</c>s when we really wanted a <c>double</c> result.
+      two <k>int</k>s when we really wanted a <k>double</k> result.
     </p>
 
     <p>
@@ -338,7 +338,7 @@
       Another kind of math bug is when we ask Java to do something
       mathematically impossible. The main one we need to know about is what
       happens when we divide by zero, something that is not defined in math. In
-      an <c>int</c> expression, dividing by zero will result in an
+      an <k>int</k> expression, dividing by zero will result in an
       <term>ArithmeticException</term> , as we saw in the <xref
       ref="debugging-and-being-stuck" />. Try it in one of the active codes to
       see what happens.
@@ -346,8 +346,8 @@
 
     <note>
       <p>
-        In <c>double</c> expressions, dividing by zero is not an error. Instead
-        we get a special <c>double</c> value <c>Infinity</c> which might makes
+        In <k>double</k> expressions, dividing by zero is not an error. Instead
+        we get a special <k>double</k> value <c>Infinity</c> which might makes
         sense to you if you’ve learned about limits in math class. But if not,
         don’t worry about it; it’s not part of the AP exam.
       </p>
@@ -483,7 +483,7 @@
         <p>
           (AP 1.3.C.1) <term>Arithmetic expressions</term>, which consist of
           numeric values, variables, and operators, include expressions of type
-          <c>int</c> and <c>double</c>.
+          <k>int</k> and <k>double</k>.
         </p>
       </li>
 
@@ -497,8 +497,8 @@
 
       <li>
         <p>
-          (AP 1.3.C.2) An arithmetic operation that uses two <c>int</c> values
-          will evaluate to an <c>int</c> value. With integer division, any
+          (AP 1.3.C.2) An arithmetic operation that uses two <k>int</k> values
+          will evaluate to an <k>int</k> value. With integer division, any
           decimal part in the result will be thrown away.
         </p>
       </li>
@@ -506,7 +506,7 @@
       <li>
         <p>
           (AP 1.3.C.2) An arithmetic operation that uses at least one
-          <c>double</c> value will evaluate to a <c>double</c> value.
+          <k>double</k> value will evaluate to a <k>double</k> value.
         </p>
       </li>
 
