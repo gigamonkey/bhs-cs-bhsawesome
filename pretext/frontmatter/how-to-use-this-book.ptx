@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<preface xml:id="how-to-use-this-book">
-  <title>How to Use This Book</title>
-
+<introduction xml:id="how-to-use-this-book">
   <p>
     Welcome to BHSawesome an interactive AP CSA textbook. As you work your way
     through this book you will encounter a number of interactive activities that
@@ -13,10 +11,10 @@
 
   <p>
     This book is hosted on our class website. As long as you are logged in to
-    the website with your school Google account, your answers and code are
-    saved automatically and follow you between computers. If you are not
-    logged in everything still works, but your work is saved only in the
-    browser you are using.
+    the website with your school Google account, your answers and code are saved
+    automatically and follow you between computers. If you are not logged in
+    everything still works, but your work is saved only in the browser you are
+    using.
   </p>
 
   <p>
@@ -29,4 +27,4 @@
   </p>
 
   <video youtube="Jn9_HaX3m7s" label="video-intro" />
-</preface>
+</introduction>

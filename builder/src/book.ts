@@ -104,14 +104,18 @@ export function loadBook(mainPtx: string): Book {
 
   // Chunk level 2: frontmatter + its children, chapters, and every
   // chapter-level child (introduction, section) start pages. Subsections
-  // and section-level introductions render inline.
+  // and section-level introductions render inline — and so does the
+  // FRONTMATTER's introduction (our schema, restoring the pre-PreTeXt-2.47
+  // shape: its content flows on the frontmatter page itself under the
+  // book title, not on a page of its own).
   const pages: Division[] = [];
   const assignPages = (d: Division): void => {
     const depth = divisionDepth(d);
     const startsPage =
-      d.kind === 'frontmatter' ||
-      (depth <= 2 && d.kind !== 'book') ||
-      (d.parent?.kind === 'chapter' && (d.kind === 'section' || d.kind === 'introduction'));
+      (d.kind === 'frontmatter' ||
+        (depth <= 2 && d.kind !== 'book') ||
+        (d.parent?.kind === 'chapter' && (d.kind === 'section' || d.kind === 'introduction'))) &&
+      !(d.kind === 'introduction' && d.parent?.kind === 'frontmatter');
     if (startsPage) {
       d.page = `${d.id}.html`;
       pages.push(d);

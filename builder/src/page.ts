@@ -24,7 +24,9 @@ export function pageContent(division: Division, ctx: Ctx): string {
   return divisionSection(division, ctx, 1, true);
 }
 
-/** Frontmatter page: book title/subtitle + links to the frontmatter pages. */
+/** Frontmatter page: book title/subtitle, the inline introduction (our
+ * schema — the pre-PreTeXt-2.47 shape), then links to the frontmatter
+ * pages. */
 function frontmatterPage(d: Division, ctx: Ctx): string {
   const subtitle = ctx.book.bookEl.children.find(
     (c) => c instanceof Object && 'name' in c && (c as XmlElement).name === 'subtitle',
@@ -35,10 +37,15 @@ function frontmatterPage(d: Division, ctx: Ctx): string {
     h('span', { class: 'title' }, escapeHtml(ctx.book.title)),
     subtitle ? h('span', { class: 'subtitle' }, escapeHtml(titleText(subtitle as XmlElement))) : '',
   );
+  const intro = d.children.find((c) => c.kind === 'introduction' && !c.page);
+  const introHtml = intro
+    ? h('section', { class: 'introduction', id: intro.id }, blocksOf(intro.el, ctx))
+    : '';
   return h(
     'section',
     { class: 'frontmatter', id: d.id },
     heading,
+    introHtml,
     summaryLinks(d),
     autopermalinkFor(d.id, 'Front Matter'),
   );
