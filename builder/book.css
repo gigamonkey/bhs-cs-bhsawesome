@@ -1638,7 +1638,13 @@ summary.knowl__link {
     margin-top: 1.5em;
 }
 
-:is(section,article,.knowl__content,.introduction,.conclusion)>.para+.para {
+/* p[id] = paragraphs the build emits (each carries its permalink id);
+   runestone-generated <p>s have no id and keep their own spacing — the
+   same distinction pretext-core draws with `.main p:not([id])`. The
+   attribute selector also keeps this rule's specificity above the
+   general sibling rule up top — with bare p+p that rule would win and
+   adjacent paragraphs would open up to 1.5em. */
+:is(section,article,.knowl__content,.introduction,.conclusion)>p[id]+p[id] {
     margin-top: 1em;
 }
 
@@ -1660,11 +1666,6 @@ ul.disc {
 
 .ptx-content li {
     margin-top: .5em;
-}
-
-.para>:is(ol,ul) {
-    margin-top: .5em;
-    margin-bottom: .5em;
 }
 
 ol>li {
@@ -1955,7 +1956,7 @@ a[href^="mailto:"] {
     margin-top: .35714em;
 }
 
-.frontmatter>.para:first-of-type {
+.frontmatter>p:first-of-type {
     margin-top: 4em;
 }
 
@@ -2147,7 +2148,7 @@ figcaption .type:last-of-type:after {
     content: "\2002";
 }
 
-figcaption .para:first-of-type {
+figcaption p:first-of-type {
     display: inline;
 }
 
@@ -2350,7 +2351,7 @@ iframe {
     font-weight: 700;
 }
 
-.para {
+p[id] {
     line-height: var(--ptx-content-line-height, 1.35);
 }
 
@@ -2626,7 +2627,7 @@ body.pretext>a.assistive,
     border-width: 1px;
 }
 
-.multiplechoice_section label>.para {
+.multiplechoice_section label>p {
     display: inline;
 }
 
@@ -2751,7 +2752,7 @@ blockquote,
 figcaption,
 dt,
 .solution-like,
-.para {
+p[id] {
     position: relative;
 }
 
@@ -2783,28 +2784,28 @@ li>.autopermalink {
     top: 1.5ex;
 }
 
-.project-like>.para>.autopermalink,
+.project-like>p>.autopermalink,
 .project-like>.exercise-like>.autopermalink,
-.project-like>.exercise-like>.introduction>.para>.autopermalink,
-.remark-like>.para>.autopermalink {
+.project-like>.exercise-like>.introduction>p>.autopermalink,
+.remark-like>p>.autopermalink {
     left: -2.9em;
 }
 
-.exercise-like>.para:first-of-type>.autopermalink,
-.solution-like>.para:first-of-type>.autopermalink,
-.remark-like>.para:first-of-type>.autopermalink,
-.project-like>.para:first-of-type>.autopermalink,
-li>.para:first-of-type>.autopermalink,
-dd>.para:first-of-type>.autopermalink {
+.exercise-like>p:first-of-type>.autopermalink,
+.solution-like>p:first-of-type>.autopermalink,
+.remark-like>p:first-of-type>.autopermalink,
+.project-like>p:first-of-type>.autopermalink,
+li>p:first-of-type>.autopermalink,
+dd>p:first-of-type>.autopermalink {
     display: none;
 }
 
-.exercise-like>.introduction>.para:first-of-type>.autopermalink,
-.solution-like>.introduction>.para:first-of-type>.autopermalink,
-.remark-like>.introduction>.para:first-of-type>.autopermalink,
-.project-like>.introduction>.para:first-of-type>.autopermalink,
-li>.introduction>.para:first-of-type>.autopermalink,
-dd>.introduction>.para:first-of-type>.autopermalink {
+.exercise-like>.introduction>p:first-of-type>.autopermalink,
+.solution-like>.introduction>p:first-of-type>.autopermalink,
+.remark-like>.introduction>p:first-of-type>.autopermalink,
+.project-like>.introduction>p:first-of-type>.autopermalink,
+li>.introduction>p:first-of-type>.autopermalink,
+dd>.introduction>p:first-of-type>.autopermalink {
     display: none;
 }
 
@@ -3478,14 +3479,6 @@ html:root {
     --codeColor: #ffaaaa;
 }
 
-/* Add some padding and border around clickable areas made up of paragraphs
-   rather than code. */
-div.clickablearea_section > div > div:has(> div.para) {
-    border: 1px dotted grey;
-    padding: 1em;
-    margin: 1em 0;
-}
-
 .ptx-content cite {
   display: block;
   text-align: right;
@@ -3493,7 +3486,7 @@ div.clickablearea_section > div > div:has(> div.para) {
 }
 
 /* Default spacing between paragraphs is too much. */
-.ptx-content section > .para + .para {
+.ptx-content section > p + p {
   margin-top: 0.6em;
 }
 
@@ -3583,9 +3576,9 @@ div.clickablearea_section > div > div:has(> div.para) {
   display: none;
 }
 
-.ptx-content .para a:link,
-.ptx-content .para a:hover,
-.ptx-content .para a:visited
+.ptx-content p[id] a:link,
+.ptx-content p[id] a:hover,
+.ptx-content p[id] a:visited
 {
   text-decoration: underline dotted;
   font-weight: inherit;
@@ -3718,11 +3711,6 @@ td {
   margin-top: 2em;
 }
 
-.ptx-content .book .conclusion .para {
-  text-align: center;
-}
-
-
 .ptx-content .tabular-box {
   width: unset;
   margin-left: unset;
@@ -3733,16 +3721,16 @@ td {
     font-weight: 600;
 }
 
-/* Real <p> paragraphs (phase 4): zero out the UA default margins so
-   spacing comes from the theme's rules exactly as it did when
-   paragraphs were divs (which have no UA margins). This must live IN
+/* Zero the UA default margins on the paragraphs the build emits (p[id] —
+   see the note on the p[id]+p[id] rule) so spacing comes from the theme's
+   rules exactly as it did when paragraphs were divs. This must live IN
    the theme's `spacing` cascade layer: unlayered it would beat every
    layered spacing rule regardless of specificity; inside the layer its
-   low specificity loses to the theme's .para+.para and
+   low specificity loses to the p[id]+p[id] and
    section>*:not(:first-child) rules while still overriding the UA
    default. */
 @layer spacing {
-    p.para {
+    p[id] {
         margin: 0;
     }
 }

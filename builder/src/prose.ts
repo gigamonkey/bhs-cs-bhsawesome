@@ -1,8 +1,9 @@
 /*
- * Prose emitters: ptx elements → semantic HTML5 wearing PreTeXt's
- * content-area class vocabulary (custom.css and the component CSS target
- * .para, .image-box, figure-like, etc., and keeping those names preserves
- * the book's current look under our simplified chrome).
+ * Prose emitters: ptx elements → semantic HTML5 wearing what's left of
+ * PreTeXt's content-area class vocabulary (book.css targets .image-box,
+ * figure-like, etc.; the cleanup plan — bhs-cs
+ * plans/bhsawesome-css-cleanup.md — is renegotiating it class by class;
+ * paragraphs are already plain <p>).
  *
  * Interactive components (activities with programs/choices/blocks/...) are
  * NOT handled here — emitComponent in components.ts owns them; during the
@@ -233,9 +234,11 @@ const EMITTERS: Record<string, Emitter> = {
       (c) => isElement(c) && ['ul', 'ol', 'dl', 'program', 'pre', 'console', 'blockquote', 'image', 'tabular'].includes(c.name),
     );
     if (block && isElement(block)) ctx.warn(`<p> contains block <${block.name}> — move it out to a sibling`);
+    // No class: paragraphs are plain <p>. The CSS keys on p[id] where it
+    // must distinguish our paragraphs from runestone-generated ones.
     return h(
       'p',
-      { class: 'para', id },
+      { id },
       trimText(emitChildren(el, ctx)).trim(),
       ctx.permalinks === false ? '' : autopermalink(id, 'Paragraph'),
     );
@@ -345,7 +348,7 @@ const EMITTERS: Record<string, Emitter> = {
     // lists number their items' permalink descriptions ("Item 1").
     const body = hasBlocks
       ? emitBlocks(el, ctx)
-      : h('p', { class: 'para', id: `p-derived-${id}` }, trimText(emitChildren(el, ctx)).trim());
+      : h('p', { id: `p-derived-${id}` }, trimText(emitChildren(el, ctx)).trim());
     const parent = el.parent as XmlElement | undefined;
     let desc = 'Item';
     if (parent && 'name' in parent && parent.name === 'ol') {
