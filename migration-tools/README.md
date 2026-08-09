@@ -1,0 +1,63 @@
+# migration-tools — CSS-cleanup scaffolding (temporary)
+
+Tooling for the class-vocabulary renegotiation (the bhs-cs monorepo's
+`plans/bhsawesome-css-cleanup.md`). **This whole directory gets deleted
+when that plan is done** — nothing else may depend on it.
+
+## class-audit.md — the ledger
+
+Who consumes every class name in the built book (static HTML, book.css,
+the vendored pretext scripts, the Runestone bundles/stylesheets, the
+bhs-cs client bundle), classified by what we may do with it. Regenerate
+after each cleanup step:
+
+```sh
+node builder/build.ts
+node migration-tools/census.mjs     # rewrites class-audit.md
+```
+
+Hand judgments (verified evidence, reclassifications) live in the
+`OVERRIDES` / `NOTES` maps **in census.mjs**, so a re-run is idempotent —
+edit the script, never the generated doc. Needs the bhs-cs checkout as a
+sibling (`../bhs-cs`) or via `BHS_CS=<path>` for the client-bundle
+evidence.
+
+Known blind spots, called out in the doc where they bite: attribute
+selectors (`[class*=language-]`) aren't seen as consumers, and a class
+name a script constructs at runtime evades the string scan. The shot
+harness is the backstop.
+
+## shoot.mjs / compare.mjs — the screenshot harness
+
+Before/after full-page screenshots over a fixed page set covering every
+vocabulary the cleanup touches — component types, tables, sidebysides,
+chapter/index/knowl pages — plus the JS-injected states (dark mode, open
+knowl, search results, readability dialog, exposed permalinks).
+
+```sh
+node migration-tools/shoot.mjs migration-tools/shots/before
+# ...edit emitters/book.css, node builder/build.ts...
+node migration-tools/shoot.mjs migration-tools/shots/after
+node migration-tools/compare.mjs migration-tools/shots/{before,after} \
+    --diffs migration-tools/shots/diff
+```
+
+Shots land under `migration-tools/shots/` (gitignored). Serving is local
+HTTP over `build/site` with `/js/bhsawesome.js` mapped from the bhs-cs
+checkout (same `BHS_CS` convention; a defer-loader stub fills in without
+it) and all external requests aborted; `Math.random` is seeded per page so
+the components' card/block/choice shuffles deal identically every run.
+
+Measured noise floor (2026-08-09, same build shot twice): **18 of 19
+shots pixel-identical**. The exception is `if-traps-knowl-open`, whose
+fetched knowl content renders with a few px of internal-layout jitter
+(worst observed ~4% of pixels from a ~5px content shift below the
+knowl) — judge that shot's diffs by eye. Re-measure the floor with a
+same-build double-shoot whenever the harness or environment changes.
+
+First-time setup (playwright's Chromium + system deps):
+
+```sh
+npm install
+npx playwright install --with-deps chromium
+```

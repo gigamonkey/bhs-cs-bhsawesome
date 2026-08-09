@@ -7,6 +7,9 @@
     "@rgrove/parse-xml": "^4.2.3",
     "lunr": "^2.3.9",
     "mathjax-full": "^3.2.1",
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.62.1",
+    "pngjs": "^7.0.0",
     "prismjs": "^1.30.0",
     "speech-rule-engine": "^4.1.4"
   },
