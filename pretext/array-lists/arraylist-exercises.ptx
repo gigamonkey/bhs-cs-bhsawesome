@@ -194,26 +194,6 @@
         ]]>
       </code>
 
-      <tests>
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect = "Removing element 0: 0\nRemoving element 2: 3\n[1, 2, 4]";
-                boolean passed = getResults(expect, output, "Expected output from main", true);
-                assertTrue(passed);
-            }
-        }
-      </tests>
-
     </program>
   </activity>
 
@@ -367,49 +347,6 @@
         ]]>
       </code>
 
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-
-        import java.util.ArrayList;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            public RunestoneTests()
-            {
-                super("ListMax");
-            }
-
-            @Test
-            public void test1()
-            {
-                String output = getMethodOutput("main");
-                String expect = "Max: 12";
-
-                boolean passed = getResults(expect, output, "Main outpu");
-                assertTrue(passed);
-            }
-            @Test
-            public void test2()
-            {
-                ArrayList<Integer> list = new ArrayList<Integer>();
-                list.add(2);
-                list.add(4);
-                list.add(0);
-                String expect = "4";
-                String output = "" + ListMax.findMax(list);
-
-                boolean passed = getResults(expect, output, "findMax with list 2,4,0");
-                assertTrue(passed);
-            }
-        }
-        ]]>
-      </tests>
-
     </program>
   </activity>
 
@@ -515,47 +452,6 @@
         }
         ]]>
       </code>
-
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-        import java.util.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-             public RunestoneTests()
-             {
-                  super("TestCountOdd");
-             }
-             @Test
-             public void testMain() throws IOException
-             {
-                  String output = getMethodOutput("main");
-                  String expect = "Expected Result: 5\nYour Result:     5\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-             }
-
-             @Test
-             public void testCall()
-             {
-                    ArrayList<Integer> list = new ArrayList<Integer>();
-                    list.add(2);
-                    list.add(-2);
-                    list.add(1);
-                    list.add(11);
-                    String expect = "2";
-                    String output = "" + TestCountOdd.countOdd(list);
-                    boolean passed = getResults(expect, output, "countOdd with list 2,-2,1,11");
-                    assertTrue(passed);
-             }
-        }
-        ]]>
-      </tests>
 
     </program>
   </activity>
@@ -676,68 +572,6 @@
         ]]>
       </code>
 
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-        import java.util.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            public RunestoneTests()
-            {
-                super("TestDuplicates");
-            }
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect = "Expected Result: false, true\nYour Result: false, true\n";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-                public void testFor()
-                {
-                    String code = getCodeWithoutComments();
-                    int count = countOccurences(code, "for");
-                    boolean passed = count >= 2;
-                    getResults("2 loop(s)", count + " loop(s)", "Counting number of for loops", passed);
-                    assertTrue(passed);
-                }
-            @Test
-                public void test2()
-                {
-                    ArrayList<Integer> list = new ArrayList<Integer>();
-                    list.add(2);
-                    list.add(4);
-                    list.add(0);
-                    String expect = "false";
-                    String output = "" + TestDuplicates.hasDuplicates(list);
-                    boolean passed = getResults(expect, output, "hasDuplicates with list 2,4,0");
-                    assertTrue(passed);
-                }
-                @Test
-                public void test3()
-                {
-                    ArrayList<Integer> list = new ArrayList<Integer>();
-                    list.add(2);
-                    list.add(4);
-                    list.add(0);
-                    list.add(4);
-                    String expect = "true";
-                    String output = "" + TestDuplicates.hasDuplicates(list);
-                    boolean passed = getResults(expect, output, "hasDuplicates with list 2,4,0,4");
-                    assertTrue(passed);
-                }
-        }
-        ]]>
-      </tests>
-
     </program>
   </activity>
 
@@ -849,57 +683,6 @@
         ]]>
       </code>
 
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-        import java.util.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            public RunestoneTests()
-            {
-                super("TestRotate");
-            }
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect = "Expected Result: [5, 7, 1]\nYour Result: [5, 7, 1]\n";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-            @Test
-            public void testSet()
-            {
-                String target = "set";
-                boolean passed =
-                        checkCodeContains(
-                                "set method",
-                                target);
-                assertTrue(passed);
-            }
-            @Test
-                public void test2()
-                {
-                    ArrayList<Integer> list = new ArrayList<Integer>();
-                    list.add(2);
-                    list.add(4);
-                    list.add(0);
-                    list.add(-2);
-                    String expect = "[4, 0, -2, 2]";
-                    TestRotate.rotateLeft(list);
-                    String output = "" + list;
-                    boolean passed = getResults(expect, output, "rotateLeft with list 2,4,0,-2");
-                    assertTrue(passed);
-                }
-            }
-        ]]>
-      </tests>
-
     </program>
   </activity>
 
@@ -995,55 +778,6 @@
         ]]>
       </code>
 
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-        import java.util.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect =
-                        "Expected Result: [3, 2, 1, 0]\n"
-                                + "Your Result:     [3, 2, 1, 0]\n";
-
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testAdd()
-            {
-                String target = "reversed.add(0";
-                boolean passed =
-                        checkCodeContains(
-                                "add method called to add to the beginning of reversed",
-                                target);
-                assertTrue(passed);
-            }
-          @Test
-          public void test2()
-          {
-              ArrayList<Integer> list = new ArrayList<Integer>();
-              list.add(2);
-              list.add(4);
-              list.add(6);
-              String expect = "[6, 4, 2]";
-              String output = "" + TestReverse.reverse(list);
-              boolean passed = getResults(expect, output, "reverse with list 2,4,6");
-              assertTrue(passed);
-          }
-        }
-        ]]>
-      </tests>
-
     </program>
   </activity>
 
@@ -1085,35 +819,6 @@
         }
         ]]>
       </code>
-
-      <tests>
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect = "Average over two tests: 85.0";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-              @Test
-                public void test2()
-                {
-                    String code = getCodeWithoutComments();
-                    int count = countOccurences(code, "for");
-                    boolean passed = count == 1;
-                    passed = getResults("1 loop", count + " loop", "use only 1 for loop");
-                    assertTrue(passed);
-                }
-        }
-      </tests>
 
     </program>
   </activity>

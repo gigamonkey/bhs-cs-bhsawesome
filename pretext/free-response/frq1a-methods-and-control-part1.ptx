@@ -437,47 +437,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("APCalendar");
-              }
-
-              @Test
-              public void test1() {
-                  String output = getMethodOutput("main");
-                  String expect = "Your answer should be 2: 2";
-
-                  boolean passed = getResults(expect, output, "Running main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  int answer = APCalendar.dayOfWeek(7, 2, 2020);
-                  int expect = 4;
-
-                  boolean passed = getResults("" + expect, "" + answer, "dayOfWeek(7, 2, 2020)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  int answer = APCalendar.dayOfWeek(2, 29, 2022);
-                  int expect = 2;
-
-                  boolean passed = getResults("" + expect, "" + answer, "dayOfWeek(2, 29, 2022)");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -763,83 +722,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test00() {
-                  String code = getCode();
-                  code = code.substring(0, code.indexOf("class Level"));
-                  int count = countOccurences(code, ".getPoints()");
-
-                  String desc = "Calls to .getPoints()";
-
-                  boolean passed = getResults("" + 3, "" + count, desc);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test01() {
-                  Level l1 = new Level(100, true);
-                  Level l2 = new Level(100, true);
-                  Level l3 = new Level(200, true);
-
-                  int exp = 100 + 200 + 3 * 200;
-
-                  boolean passed = test(l1, l2, l3, exp);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test02() {
-                  Level l1 = new Level(100, true);
-                  Level l2 = new Level(200, true);
-                  Level l3 = new Level(300, true);
-
-                  int exp = 100 + 2 * 200 + 3 * 300;
-
-                  boolean passed = test(l1, l2, l3, exp);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test03() {
-                  Level l1 = new Level(300, true);
-                  Level l2 = new Level(200, true);
-                  Level l3 = new Level(100, true);
-
-                  int exp = 300 + 2 * 200 + 3 * 100;
-
-                  boolean passed = test(l1, l2, l3, exp);
-                  assertTrue(passed);
-              }
-
-              private boolean test(Level l1, Level l2, Level l3, int exp) {
-                  Game g = new Game(l1, l2, l3);
-
-                  int result = g.getScore();
-
-                  boolean passed = result == exp;
-
-                  String desc =
-                          "Final score for "
-                                  + l1.getPoints()
-                                  + ", "
-                                  + l2.getPoints()
-                                  + ", and "
-                                  + l3.getPoints();
-
-                  getResults("" + exp, "" + result, desc, passed);
-                  return passed;
-              }
-          }
-        </tests>
 
       </program>
     </activity>

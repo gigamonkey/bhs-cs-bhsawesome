@@ -86,24 +86,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "false\ntrue\ntrue\nfalse\n";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -197,24 +179,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "Bye\ntrue\ntrue\n";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -252,42 +216,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "false\ntrue\nEquals\nNot Equals\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testCodeContains1() {
-                  boolean ifStatement = checkCodeContains("if", "if");
-                  assertTrue(ifStatement);
-              }
-
-              @Test
-              public void testCount() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".equals");
-                  boolean passed = num >= 3;
-
-                  getResults("3", "" + num, "Number of equals used", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </activity>
@@ -538,54 +466,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("NullTest");
-              }
-
-              @Test
-              public void testMain() {
-                  String output = getMethodOutput("main");
-                  String expect = "apple contains an a\napple contains an a";
-
-                  boolean passed = getResults(expect, output, "Checking main() gives correct results");
-              }
-
-              @Test
-              public void testChangedCode() {
-                  String origCode =
-                          "public class NullTest { public static void main(String[] args) { String s = null;"
-                              + " if (s.indexOf(\"a\") >= 0) {  System.out.println(s + \" contains an a\"); }"
-                              + " if (s != null && s.indexOf(\"a\") >= 0) { System.out.println(s + \""
-                              + " contains an a\"); } } }";
-
-                  boolean changed = codeChanged(origCode);
-
-                  assertTrue(changed);
-              }
-
-              @Test
-              public void testCodeContains() {
-                  String code = getCode();
-                  String target1 = "String s = ";
-                  String target2 = "System.out.println(s + \" contains an a\");";
-
-                  boolean passed = code.contains(target1) && code.contains(target2);
-                  getResults("true", "" + passed, "Checking that code has not been removed", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </activity>

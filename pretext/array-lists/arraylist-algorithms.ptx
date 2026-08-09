@@ -394,34 +394,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("DivideBy10");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String origCode =
-                          "public class DivideBy10{public static void main(String[] args){int number ="
-                              + " 154;System.out.println(number / 10);System.out.println(number % 10);}}";
-
-                  boolean changed = codeChanged(origCode);
-
-                  assertTrue(changed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -509,43 +481,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("Digits");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "[1, 5, 4]";
-
-                  boolean passed = getResults(expect, output, "Digits(154)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  Digits test = new Digits(123456);
-                  String output = test.toString();
-                  String expect = "[1, 2, 3, 4, 5, 6]";
-
-                  boolean passed = getResults(expect, output, "Digits(123456)");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </project>

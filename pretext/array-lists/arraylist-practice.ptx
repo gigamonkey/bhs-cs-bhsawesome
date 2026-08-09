@@ -34,26 +34,6 @@
         ]]>
       </code>
 
-      <tests>
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect = "Sam\nJessica\nMark\nAlexis";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-        }
-      </tests>
-
     </program>
 
     <solution>
@@ -134,41 +114,6 @@
         }
         ]]>
       </code>
-
-      <tests>
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect =
-                        "Expected Result: [2, 3, -2, 9, 7, 5, 1]\n"
-                                + "Your Result:     [2, 3, -2, 9, 7, 5, 1]\n";
-
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testAdd()
-            {
-                String target = "reversed.add(0,element);";
-                boolean passed =
-                        checkCodeContains(
-                                "add method called to add element to the beginning of ArrayList reversed",
-                                target);
-                assertTrue(passed);
-            }
-        }
-      </tests>
 
     </program>
 
@@ -270,45 +215,6 @@
         ]]>
       </code>
 
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect = "Expected Result:\t1, 7, -2, 2,\n" + "Your Result:\t\t1, 7, -2, 2,\n";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testFor()
-            {
-                String target = "for (int i = 0; i < list.size(); i++)";
-                boolean passed = checkCodeContains("FOR loop: traversing ArrayList list", target);
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testEvenIndx()
-            {
-                String target = "if (i % 2 == 0)";
-                boolean passed =
-                        checkCodeContains("checking EVEN index i: traversing ArrayList list", target);
-                assertTrue(passed);
-            }
-        }
-        ]]>
-      </tests>
-
     </program>
 
     <solution>
@@ -405,38 +311,6 @@
         ]]>
       </code>
 
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect = "Expected Result:\t44, -16, 2,\n" + "Your Result:\t\t44, -16, 2,\n";
-
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testSizeMethod()
-            {
-                String target = "i < list.size()";
-                boolean passed = checkCodeContains("SIZE method used in traversing ArrayList list", target);
-                assertTrue(passed);
-            }
-
-        }
-        ]]>
-      </tests>
-
     </program>
 
     <solution>
@@ -517,36 +391,6 @@
         ]]>
       </code>
 
-      <tests>
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect =
-                        "Expected Result:\t[1, 44, 7, 9, -16, 3]\n"
-                                + "Your Result:\t\t[1, 44, 7, 9, -16, 3]\n ";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testForEachLoop()
-            {
-                String target = "for (int * : nums)";
-                boolean passed = checkCodeContainsRegex("For-Each loop in traversing Array nums", target);
-                assertTrue(passed);
-            }
-        }
-      </tests>
-
     </program>
 
     <solution>
@@ -621,47 +465,6 @@
         }
         ]]>
       </code>
-
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-        import java.util.ArrayList;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect = "Expected Result:\t\t -19\n" + "Your Result:\t -19\n";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testSumNegValues()
-            {
-                ArrayList<Integer> values = new ArrayList<Integer>();
-                values.add(2);
-                values.add(34);
-                values.add(-10);
-                values.add(9);
-                values.add(-5);
-                values.add(3);
-
-                String output = String.valueOf(Test1.sumNegValues(values));
-                String expect = "-15";
-
-                boolean passed = getResults(expect, output, "sumNegValues method test");
-                assertTrue(passed);
-            }
-        }
-        ]]>
-      </tests>
 
     </program>
 
@@ -753,51 +556,6 @@
         }
         ]]>
       </code>
-
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-        import java.util.ArrayList;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect =
-                        "Expected Result:\t [fish, cat, foo]\n" + "Your Result:\t\t [fish, cat, foo]\n";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testRemoveLongStrings()
-            {
-                ArrayList<String> mylist1 = new ArrayList<String>();
-                mylist1.add("longword");
-                mylist1.add("dog");
-                mylist1.add("longword");
-                mylist1.add("wee");
-
-                ArrayList<String> mylist2 = new ArrayList<>();
-                mylist2.add("dog");
-                mylist2.add("wee");
-
-                Test1.removeLongStrings(mylist1);
-
-                boolean result = mylist2.equals(mylist1);
-
-                boolean passed = getResults("true", "" + result, "removeLongStrings method test");
-                assertTrue(passed);
-            }
-        }
-        ]]>
-      </tests>
 
     </program>
 
@@ -893,50 +651,6 @@
         ]]>
       </code>
 
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-        import java.util.ArrayList;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect =
-                        "Expected Result:\t [2, 3, 4, 5, 1]\n" + "Your Result:\t\t [2, 3, 4, 5, 1]\n ";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testShiftLeftOne()
-            {
-                ArrayList<Integer> mylist1 = new ArrayList<Integer>();
-                mylist1.add(2);
-                mylist1.add(4);
-                mylist1.add(1);
-
-                ArrayList<Integer> mylist2 = new ArrayList<Integer>();
-                mylist2.add(4);
-                mylist2.add(1);
-                mylist2.add(2);
-                Test1.shiftLeftOne(mylist1);
-
-                boolean result = mylist2.equals(mylist1);
-
-                boolean passed = getResults("true", "" + result, "shiftLeftOne method test");
-                assertTrue(passed);
-            }
-        }
-        ]]>
-      </tests>
-
     </program>
 
     <solution>
@@ -1030,56 +744,6 @@
         ]]>
       </code>
 
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-        import java.util.ArrayList;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect =
-                        "Expected Result:\t [1, 3, 11, 54, 7, 22]\n"
-                                + "Your Result:\t\t [1, 3, 11, 54, 7, 22]\n ";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testMoveSmallest()
-            {
-                ArrayList<Integer> mylist1 = new ArrayList<Integer>();
-                mylist1.add(11);
-                mylist1.add(54);
-                mylist1.add(7);
-                mylist1.add(3);
-                mylist1.add(22);
-
-                ArrayList<Integer> mylist2 = new ArrayList<Integer>();
-                mylist2.add(3);
-                mylist2.add(11);
-                mylist2.add(54);
-                mylist2.add(7);
-                mylist2.add(22);
-
-                Test1.moveSmallest(mylist1);
-
-                boolean result = mylist2.equals(mylist1);
-
-                boolean passed = getResults("true", "" + result, "moveSmallest method test");
-                assertTrue(passed);
-            }
-        }
-        ]]>
-      </tests>
-
     </program>
 
     <solution>
@@ -1172,44 +836,6 @@
         }
         ]]>
       </code>
-
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-        import java.util.ArrayList;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            @Test
-            public void testMain() throws IOException
-            {
-                String output = getMethodOutput("main");
-                String expect = "Expected Result:\t metropolitan\n" + "Your Result:\t\t metropolitan\n";
-                boolean passed = getResults(expect, output, "Expected output from main");
-                assertTrue(passed);
-            }
-
-            @Test
-            public void testFindLongest()
-            {
-                ArrayList<String> mylist = new ArrayList<String>();
-                mylist.add("longword");
-                mylist.add("longerword");
-                mylist.add("short");
-
-                String output = Test1.findLongest(mylist);
-                String expect = "longerword";
-
-                boolean passed = getResults(output, expect, "findLongest method test");
-                assertTrue(passed);
-            }
-        }
-        ]]>
-      </tests>
 
     </program>
 

@@ -372,26 +372,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "****\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -521,26 +501,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "**********\n**********\n**********\n**********\n**********\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -794,26 +754,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "var1: 3 var2: 2\nvar1: 4 var2: 1\nvar1: 5 var2: 0\n";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>

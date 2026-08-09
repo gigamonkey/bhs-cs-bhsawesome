@@ -413,47 +413,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ClimbingClub");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-
-                  String expect =
-                          "Peak name: Monadnock time: 274\n"
-                              + "Peak name: Whiteface time: 301\n"
-                              + "Peak name: Algonquin time: 225\n"
-                              + "Peak name: Monadnock time: 344\n"
-                              + "The order printed above should be Monadnock, Whiteface, Algonquin,"
-                              + " Monadnock\n"
-                              + "Distinct peaks is 4 and should be 3\n"
-                              + "Peak name: Algonquin time: 225\n"
-                              + "Peak name: Monadnock time: 274\n"
-                              + "Peak name: Monadnock time: 344\n"
-                              + "Peak name: Whiteface time: 301\n"
-                              + "The order printed above should be Algonquin, Monadnock, Monadnock,"
-                              + " Whiteface\n"
-                              + "Distinct peaks is 3 and should be 3\n";
-
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>

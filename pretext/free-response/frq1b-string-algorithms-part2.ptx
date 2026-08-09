@@ -145,70 +145,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              private String[] input = {"Apple", "12345!", "", " ", "Queueing"};
-              private String[] expected = {"2", "0", "0", "0", "5"};
-
-              @Test
-              public void test0() {
-                  boolean passed = test(0);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  boolean passed = test(1);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  boolean passed = test(2);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  boolean passed = test(3);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  boolean passed = test(4);
-                  assertTrue(passed);
-              }
-
-              private boolean test(int i) {
-                  String desc = "swapTwoWords(\"" + input[i] + "\")";
-                  String actual = "";
-
-                  try {
-                      actual = "" + StringProcessor.countVowels(input[i]);
-                  } catch (Exception e) {
-                      actual = "The code caused an exception";
-                  }
-
-                  boolean passed = getResults(expected[i], actual, desc);
-                  return passed;
-              }
-
-              private boolean stringMatch(String str1, String str2) {
-                  str1 = str1.replaceAll(" ", "");
-                  str2 = str2.replaceAll(" ", "");
-
-                  return str1.contains(str2);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -255,72 +191,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              private String[] input = {
-                  "as soon as possible", "Java", "Frequently Asked Questions", "a b c", "object oriented"
-              };
-              private String[] expected = {"ASAP", "J", "FAQ", "ABC", "OO"};
-
-              @Test
-              public void test0() {
-                  boolean passed = test(0);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  boolean passed = test(1);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  boolean passed = test(2);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  boolean passed = test(3);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  boolean passed = test(4);
-                  assertTrue(passed);
-              }
-
-              private boolean test(int i) {
-                  String desc = "makeAbbreviation(\"" + input[i] + "\")";
-                  String actual = "";
-
-                  try {
-                      actual = "" + Abbreviator.makeAbbreviation(input[i]);
-                  } catch (Exception e) {
-                      actual = "The code caused an exception";
-                  }
-
-                  boolean passed = getResults(expected[i], actual, desc);
-                  return passed;
-              }
-
-              private boolean stringMatch(String str1, String str2) {
-                  str1 = str1.replaceAll(" ", "");
-                  str2 = str2.replaceAll(" ", "");
-
-                  return str1.contains(str2);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -371,70 +241,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              private String[] input = {"banana", "sky", "aeiou", "Cat", "Fly"};
-              private String[] expected = {"b*n*n*", "sky", "*****", "C*t", "Fly"};
-
-              @Test
-              public void test0() {
-                  boolean passed = test(0);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  boolean passed = test(1);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  boolean passed = test(2);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  boolean passed = test(3);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  boolean passed = test(4);
-                  assertTrue(passed);
-              }
-
-              private boolean test(int i) {
-                  String desc = "swapTwoWords(\"" + input[i] + "\")";
-                  String actual = "";
-
-                  try {
-                      actual = "" + WordTransformer.maskVowels(input[i]);
-                  } catch (Exception e) {
-                      actual = "The code caused an exception";
-                  }
-
-                  boolean passed = getResults(expected[i], actual, desc);
-                  return passed;
-              }
-
-              private boolean stringMatch(String str1, String str2) {
-                  str1 = str1.replaceAll(" ", "");
-                  str2 = str2.replaceAll(" ", "");
-
-                  return str1.contains(str2);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -492,71 +298,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              private String[] input1 = {"aaaaa", "HELLO hello", "Red Blue Red", "Empty", "abc"};
-              private String[] input2 = {"aa", "hello", "Red", "a", "abcd"};
-              private String[] expected = {"2", "1", "2", "0", "0"};
-
-              @Test
-              public void test0() {
-                  boolean passed = test(0);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  boolean passed = test(1);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  boolean passed = test(2);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  boolean passed = test(3);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  boolean passed = test(4);
-                  assertTrue(passed);
-              }
-
-              private boolean test(int i) {
-                  String desc = "countOccurrences(\"" + input1[i] + "\", \"" + input2[i] + "\")";
-                  String actual = "";
-
-                  try {
-                      actual = "" + PhraseAnalyzer.countOccurrences(input1[i], input2[i]);
-                  } catch (Exception e) {
-                      actual = "The code caused an exception";
-                  }
-
-                  boolean passed = getResults(expected[i], actual, desc);
-                  return passed;
-              }
-
-              private boolean stringMatch(String str1, String str2) {
-                  str1 = str1.replaceAll(" ", "");
-                  str2 = str2.replaceAll(" ", "");
-
-                  return str1.contains(str2);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -573,9 +314,6 @@
 <code>
 
 </code>
-<tests>
-
-</tests>
 </program>
 </activity>
 

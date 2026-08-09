@@ -461,57 +461,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-
-              public RunestoneTests()
-              {
-                  super("ClimbingClub");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-
-                  String expect1 =
-                          "The order printed above should be Algonquin, Monadnock, Monadnock, Whiteface";
-
-                  boolean passed = output.contains(expect1);
-
-                  getResults(expect1, output, "Expected output from main", passed);
-
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1()
-              {
-                  ClimbingClub hikerClub = new ClimbingClub();
-                  hikerClub.addClimb("Mount B", 200);
-                  hikerClub.addClimb("Mount C", 300);
-                  hikerClub.addClimb("Mount A", 225);
-
-                  String output = hikerClub.toString();
-
-                  String expect1 =
-                          "Peak name: Mount A time: 225\n"
-                              + "Peak name: Mount B time: 200\n"
-                              + "Peak name: Mount C time: 300";
-
-                  boolean passed = (getResults(expect1, output, "addClimb on new input with sorting works"));
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>

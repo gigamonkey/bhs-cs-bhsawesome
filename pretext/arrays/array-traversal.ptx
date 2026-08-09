@@ -124,49 +124,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("Test2");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Jamal\nEmily\nDestiny\nMateo\nSofia";
-
-                  boolean passed = output.contains(expect);
-                  passed = getResults(expect, output, "Did you run the code?", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Jamal\nEmily\nDestiny\nMateo\nSofia\nYour name\nFriend's name";
-
-                  int len = output.split("\n").length;
-
-                  boolean passed = len >= 6;
-
-                  passed = getResults(expect, output, "Did you add two more names?", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
 
@@ -283,53 +240,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-           import org.junit.*;
-
-           import java.io.*;
-
-           public class RunestoneTests extends CodeTestHelper
-           {
-               public RunestoneTests()
-               {
-                   super("OffByone");
-               }
-
-               @Test
-               public void test1()
-               {
-                   String output = getMethodOutput("main");
-                   String expect = "9\n8\n7".replaceAll(" ", "\n");
-
-                   boolean passed = output.contains(expect);
-                   getResults(expect, output, "Testing right off-by-one error", passed);
-                   assertTrue(passed);
-               }
-
-               @Test
-               public void test2()
-               {
-                   String output = getMethodOutput("main");
-                   String expect = "10\n9\n8".replaceAll(" ", "\n");
-
-                   boolean passed = output.contains(expect);
-                   getResults(expect, output, "Testing left off-by-one error", passed);
-                   assertTrue(passed);
-               }
-
-               @Test
-               public void checkCodeContains1()
-               {
-                   boolean passed = checkCodeContains("fixes to for loop", "for (int i = 0; i <");
-                   assertTrue(passed);
-               }
-           }
-          ]]>
-        </tests>
 
       </program>
     </activity>
@@ -473,49 +383,6 @@
           }
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ForEachDemo");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect1 = "10\n9\n8\n8";
-                  String expect2 = "Jamal\nEmily\nDestiny\nMateo";
-
-                  boolean passed = output.contains(expect1) && output.contains(expect2);
-
-                  passed = getResults(expect1 + " " + expect2, output, "Original main()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "10 9 8 8 Jamal Emily Destiny Mateo".replaceAll(" ", "\n");
-
-                  boolean passed = !output.equals(expect) && output.length() > expect.length();
-
-                  passed = getResults(expect, output, "Added another high score and name", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
 
@@ -546,39 +413,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("EvenLoop");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "6 is even!\n2 is even!\n12 is even!";
-
-                  boolean passed = getResults(expect, output, "main()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  boolean passed = checkCodeContains("for each loop", "for(int * : values)");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -616,48 +450,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("IncrementLoop");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect =
-                          "New val: 7\n"
-                              + "New val: 3\n"
-                              + "New val: 2\n"
-                              + "New val: 8\n"
-                              + "New val: 13\n"
-                              + "New val: 6\n"
-                              + "Array after the loop:\n"
-                              + "7 3 2 8 13 6";
-
-                  boolean passed = getResults(expect, output, "main()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  String target = "for (int * = #; * ? *.length; *~)";
-                  boolean passed = checkCodeContains("for loop", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -1120,76 +912,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("SpellChecker");
-              }
-
-              @Test
-              public void testMain()
-              {
-                  boolean passed =
-                          checkCodeContains(
-                                  "checker.print10() - Did you uncomment the main method?",
-                                  "checker.print10();");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  String output = getMethodOutput("print10");
-                  String expect =
-                          "a aa aaa aaron ab abandoned abc aberdeen abilities ability".replaceAll(" ", "\n");
-                  boolean passed = getResults(expect, output, "print10()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3()
-              {
-                  Object[] args = {"dogz"};
-                  String output = getMethodOutput("spellcheck", args);
-                  String expect = "false";
-
-                  boolean passed = getResults(expect, output, "spellcheck(\"dogz\")");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4()
-              {
-                  Object[] args = {"dog"};
-                  String output = getMethodOutput("spellcheck", args);
-                  String expect = "true";
-
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "spellcheck(\"dog\") (If false, spellcheck may be returning false too"
-                                      + " soon!)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testEquals()
-              {
-                  boolean passed = checkCodeContains("use of equals method", ".equals(");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </project>

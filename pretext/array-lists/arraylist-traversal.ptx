@@ -117,35 +117,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "100";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void fixedCode()
-              {
-                  boolean passed = checkCodeContains("fixed test in loop", "i < myList.size()");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -224,49 +195,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testExpected() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "100";
-                  boolean passed = output.contains(expect);
-                  getResults(expect, output, "Prints out sum", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testProduct() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "30000";
-                  boolean passed = output.contains(expect);
-                  getResults(expect, output, "Prints out product", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void countForLoops()
-              {
-                  String code = removeSpaces(getCode());
-                  int count = countOccurences(code, "for(int");
-                  boolean passed = count >= 2;
-                  getResults("2", count + "", "Number of for each loops", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </activity>
@@ -464,26 +392,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "[Amun, Ethan, Donnie, Ethan]\nAfter removing Ethan: [Amun, Donnie]";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -755,40 +663,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Roster:\n123456: Skyler: 3.4\n234567: Ayanna: 4.0\n345678: Lin: 3.6\n456789: Sunil: 3.0\nHonor Roll:\nAyanna\nLin\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void loopCode()
-              {
-                  boolean passed = checkCodeContains("for loop", "for");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void chain()
-              {
-                  boolean passed = checkCodeContains("chaining list.get(i).getGPA()", "list.get(i).getGPA()");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -891,40 +765,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("WordPairTest");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "[(hi, there), (hi, bye)]";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void hasArrayList()
-              {
-                  boolean passed = checkCodeContains("ArrayList declaration", "ArrayList<WordPair>");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </activity>
@@ -1071,88 +911,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("WordPairsList");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect =
-                          "[(Hi, there), (Hi, Tyler), (Hi, Sam), (there, Tyler), (there, Sam), (Tyler, Sam)]";
-
-                  boolean passed = output.contains(expect);
-
-                  String[] lines = output.split("\n");
-                  if (lines.length > 1) output = lines[0];
-
-                  getResults(expect, output, "Part 1 - Add all word pairs from main()", passed);
-                  assertTrue(passed);
-              }
-
-              /* //remove test because instructions say to add a matched pair.
-              @Test
-              public void test2()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "The number of matched pairs is: 0";
-
-                  boolean passed = output.contains(expect);
-                  String[] lines = output.split("\n");
-                  if (lines.length > 1) output = lines[1];
-
-                  getResults(expect, output, "Part 2 - call to numMatches from main()", passed);
-                  assertTrue(passed);
-              }
-              */
-
-              @Test
-              public void test3()
-              {
-                  String[] words = {"Hi", "Hi", "Test", "Test"};
-                  WordPairsList list = new WordPairsList(words);
-                  String output = list.toString();
-                  String expect = "[(Hi, Hi), (Hi, Test), (Hi, Test), (Hi, Test), (Hi, Test), (Test, Test)]";
-
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "Part 1 - Add all word pairs with {\"Hi\", \"Hi\", \"Test\", \"Test\"}");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4()
-              {
-                  String[] words = {"Hi", "Hi", "Test", "Test"};
-                  WordPairsList list = new WordPairsList(words);
-                  String output = "The number of matched pairs is: " + list.numMatches();
-                  String expect = "The number of matched pairs is: 2";
-
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "Part 2 - numMatches() with {\"Hi\", \"Hi\", \"Test\", \"Test\"}");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </project>

@@ -105,26 +105,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Tests of sequentialSearch\n0\n2\n4\n-1";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -190,26 +170,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Tests of sequentialSearch\n0\n2\n4\n-1";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -379,26 +339,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "1\n-1";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -469,42 +409,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("Search");
-              }
-
-              @Test
-              public void test2()
-              {
-                  String[][] array = { {"a", "b", "c"}, {"d", "e", "f"}, {"g", "h", "i"}, {"j", "k", "l"}};
-                  String value = "b";
-                  Object[] args = {array, value};
-
-                  String output = getMethodOutput("search", args);
-                  String expect = "true";
-
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "Testing search({"
-                                      + " {\"a\",\"b\",\"c\"},{\"d\",\"e\",\"f\"},{\"g\",\"h\",\"i\"},{\"j\",\"k\",\"l\""
-                                      + " } }, \"b\")");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -675,26 +579,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "2\n0\n4\n-1";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -762,26 +646,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "2\n0\n4\n-1";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -1259,53 +1123,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                 super("SpellChecker");
-              }
-
-
-             @Test
-             public void test1()
-             {
-                 Object[] args = {"medium"};
-                 String output = getMethodOutput("linearSearch", args);
-                 String expect = "5550";
-
-                 boolean passed =
-                         getResults(
-                                 expect,
-                                 output,
-                                 "linearSearch(\"medium\")"
-                                 );
-                 assertTrue(passed);
-             }
-
-             @Test
-             public void test2()
-             {
-                 Object[] args = {"medium"};
-                 String output = getMethodOutput("binarySearch", args);
-                 String expect = "13";
-
-                 boolean passed =
-                         getResults(
-                                 expect,
-                                 output,
-                                 "binarySearch(\"medium\")"
-                                 );
-                 assertTrue(passed);
-             }
-          }
-        </tests>
 
       </program>
     </project>

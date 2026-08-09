@@ -177,23 +177,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test1() {
-                  String code = "new Person(";
-                  boolean passed = checkCodeContains(code);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -378,31 +361,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "Name:Skyler\nEmail:skyler@sky.com\nID: 123456";
-                  boolean passed = getResults(expect, output, "Checking for expected output");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testMethodCall() throws IOException {
-                  String target = "s1.getEmail()";
-                  boolean passed = checkCodeContains("call to accessor method for email", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -480,37 +438,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          // activeCode StudentObjExample2
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TesterClass");
-              }
-
-              @Test
-              public void test1() {
-                  String target = "s1.setEmail(\"skyler2@gmail.com\");";
-                  boolean passed = checkCodeContains("call to setEmail()", target);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testMain() {
-                  String output = getMethodOutput("main");
-                  String expect = "123456: Skyler, skyler@sky.com\n123456: Skyler 2, skyler2@gmail.com";
-
-                  boolean passed = getResults(expect, output, "Checking main()", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -747,23 +674,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test1() throws IOException {
-                  String target = "System.out.println(s2)";
-                  boolean passed = checkCodeContains("System.out.println(s2)", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -907,30 +817,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void letterPresentTest() throws IOException {
-                  setDefaultValues(new Object[] {"Apples and Oranges"});
-                  String output = getMethodOutput("letterPresent", new Object[] {"p"});
-                  assertTrue(getResults("true", output, "letterPresent(\"p\")", output.equals("true")));
-              }
-
-              @Test
-              public void letterCountTest() throws IOException {
-                  setDefaultValues(new Object[] {"Apples and Oranges"});
-                  String output = getMethodOutput("letterCount", new Object[] {"p"});
-                  assertTrue(getResults("2", output, "letterCount(\"p\")", output.equals("2")));
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -1304,45 +1190,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "150";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  String code = "new Rectangle(5,10)";
-                  boolean passed = checkCodeContains(code);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String code = ".resize(10)";
-                  boolean passed = checkCodeContains(code);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String code = ".getArea()";
-                  boolean passed = checkCodeContains(code);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -1466,62 +1313,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleTestDistance");
-              }
-
-              @Test
-              public void test2() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".getXPos()");
-
-                  boolean passed = num > 0;
-                  getResults(">=1", "" + num, "Calls to getXPos()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".getYPos()");
-
-                  boolean passed = num > 0;
-                  getResults(">=1", "" + num, "Calls to getYPos()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".getDistance(");
-
-                  boolean passed = num >= 2;
-                  getResults(">=2", "" + num, "Calls to getDistance(...)", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  String code = getCode();
-                  int num = countOccurences(code, ".getDistance(0,0)");
-
-                  boolean passed = num >= 1;
-                  getResults(">=1", "" + num, "Calls getDistance(0,0)", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </activity>
@@ -1659,108 +1450,6 @@
           }
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("VirtualPet"); // class name / location of main
-
-                  Object[] values = new Object[] {"Fluffy", 5};
-                  setDefaultValues(values);
-              }
-
-              @Test
-              public void countMethods() {
-                  String target = "public void";
-                  String code = getCode();
-
-                  int num = countOccurences(code, target);
-
-                  boolean passed = num >= 3;
-
-                  getResults("3+", "" + num, "public void methods", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrint() {
-                  String output = getMethodOutput("print");
-                  String expect = "Fluffy";
-
-                  boolean passed = getResults(expect, output, "Checking method print()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFeed() {
-                  VirtualPet p = new VirtualPet("Fluffy", 5);
-                  p.feed();
-                  String output = p.getHealth() + "";
-                  String expect = "6";
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "Expected health for pet Fluffy with initial health 5 after feed()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFeed2() {
-                  VirtualPet p1 = new VirtualPet("Pikachu", 1);
-                  p1.feed();
-                  String output = p1.getHealth() + "";
-                  String expect = "2";
-                  boolean passed =
-                          getResults(
-                                  expect,
-                                  output,
-                                  "Expected health for pet Pikachu with initial health 1 after feed()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testCallConstructors() {
-                  String code = getCodeWithoutComments();
-                  String search = "= new VirtualPet(";
-
-                  int num = countOccurences(code, search);
-
-                  String expect = search + "...) x 2";
-                  String actual = search + "...) x " + num;
-
-                  boolean passed =
-                          getResults(expect, actual, "Checking that you created another VirtualPet object");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testVariableTypes() {
-                  String varTypes = "String int";
-                  String output = testInstanceVariableTypes(varTypes.split(" "));
-
-                  boolean passed = getResults(varTypes, output, "Checking Instance Variable Type(s)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrivateVariables() {
-                  String expect = "3 Private";
-                  String output = testPrivateInstanceVariables();
-
-                  boolean passed = getResults(expect, output, "Checking Private Instance Variable(s)");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </project>
   </subsection>
@@ -1894,113 +1583,6 @@
           }
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TesterClass");
-              }
-
-              @Test
-              public void testConstructors() {
-                  changeClass("Pet");
-                  int count = 0;
-
-                  for (int i = 0; i < 6; i++) {
-                      if (checkConstructor(i).equals("pass")) count++;
-                  }
-
-                  boolean passed = count >= 1;
-
-                  getResults("2+", "" + count, "Checking for constructor", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrivateVariables() {
-                  changeClass("Pet");
-                  String expect = "5 Private";
-                  String output = testPrivateInstanceVariables();
-
-                  boolean passed = getResults(expect, output, "Checking Private Instance Variables");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  String code = getCode();
-                  String target = "public * get*()";
-
-                  int num = countOccurencesRegex(code, target);
-
-                  boolean passed = num >= 5;
-
-                  getResults("5", "" + num, "Checking accessor (get) methods for each variable", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String target = "public String toString()";
-                  boolean passed = checkCodeContains("toString() method", target);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testSet() {
-                  String code = getCode();
-                  String target = "public void set*(*)";
-
-                  int num = countOccurencesRegex(code, target);
-
-                  boolean passed = num >= 5;
-
-                  getResults("5", "" + num, "Checking mutator (set) methods for each variable", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  String code = getCode();
-                  String target = "Pet * = new Pet(";
-
-                  int num = countOccurencesRegex(code, target);
-
-                  boolean passed = num >= 2;
-
-                  getResults("2", "" + num, "Checking main method creates 2 Pet objects", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testMain() {
-                  String output = getMethodOutput("main");
-
-                  String expect = "2+ line(s) of text";
-                  String actual = " line(s) of text";
-
-                  int len = output.split("\n").length;
-
-                  if (output.length() > 0) {
-                      actual = len + actual;
-                  } else {
-                      actual = output.length() + actual;
-                  }
-                  boolean passed = len >= 2;
-
-                  getResults(expect, actual, "Checking main method prints info for 2 Pet objects", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </project>
   </subsection>
@@ -2093,122 +1675,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testPrivateVariables() {
-                  String expect = "3 Private";
-                  String output = testPrivateInstanceVariables();
-                  boolean passed = false;
-                  if (Integer.parseInt(expect.substring(0, 1)) <= Integer.parseInt(output.substring(0, 1)))
-                      passed = true;
-                  passed = getResults(expect, output, "Checking private instance variable(s)", passed);
-                  assertTrue(passed);
-              }
-
-              /*
-              @Test
-              public void testDefaultConstructor() {
-                  String output = checkDefaultConstructor();
-                  String expect = "pass";
-
-                  boolean passed = getResults(expect, output, "Checking default constructor");
-                  assertTrue(passed);
-              }
-              */
-
-              @Test
-              public void testConstructor3() {
-                  String output = checkConstructor(3);
-                  String expect = "pass";
-
-                  boolean passed = getResults(expect, output, "Checking constructor with 3 parameters");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrint() {
-                  String output = getMethodOutput("print");
-                  String expect = "More than 15 characters";
-                  String actual = " than 15 characters";
-
-                  if (output.length() < 15) {
-                      actual = "Less" + actual;
-                  } else {
-                      actual = "More" + actual;
-                  }
-                  boolean passed = getResults(expect, actual, "Checking print method");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main"); // .split("\n");
-                  String expect = "3+ line(s) of text";
-                  String actual = " line(s) of text";
-                  int len = output.split("\n").length;
-
-                  if (output.length() > 0) {
-                      actual = len + actual;
-                  } else {
-                      actual = output.length() + actual;
-                  }
-                  boolean passed = len >= 3;
-
-                  getResults(expect, actual, "Checking output", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1() {
-                  String code = getCode();
-                  String target = "public * get*()";
-
-                  int num = countOccurencesRegex(code, target);
-
-                  boolean passed = num >= 3;
-
-                  getResults("3", "" + num, "Checking accessor (get) methods for each variable", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String code = getCode();
-                  String target = "public void set*(*)";
-
-                  int num = countOccurencesRegex(code, target);
-
-                  boolean passed = num >= 3;
-
-                  getResults("3", "" + num, "Checking mutator (set) methods for each variable", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String target = "public String toString()";
-                  boolean passed = checkCodeContains("toString() method", target);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrintFormat() {
-                  String target = "public void print(String";
-                  boolean passed = checkCodeContains("print method with String argument", target);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </project>

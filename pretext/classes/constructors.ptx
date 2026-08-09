@@ -226,43 +226,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("TurtleConstructorDebug");
-              }
-
-              @Test
-              public void test1() {
-                  String orig =
-                          "import java.awt.*;\n"
-                                  + "import java.util.*;\n\n"
-                                  + "public class TurtleConstructorDebug\n"
-                                  + "{\n"
-                                  + "  public static void main(String[] args)\n"
-                                  + "  {\n"
-                                  + "      World w = new World(300,0);\n"
-                                  + "      turtle t0;\n"
-                                  + "      Turtle t1 = new Turtle();\n"
-                                  + "      Turtle t2 = new Turtle(world, 100, 50)\n"
-                                  + "      t0.forward();\n"
-                                  + "      t1.turnRight();\n"
-                                  + "      t2.turnLeft();\n"
-                                  + "      world.show(true);\n"
-                                  + "  }\n"
-                                  + "}\n";
-                  boolean passed = codeChanged(orig);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -947,56 +910,6 @@
           }
         </code>
 
-        <tests>
-          // Test Code for Lesson 5.2.0.1 - Fraction
-          import static org.junit.Assert.*;
-
-          import org.junit.Test;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "1/1\n1/2";
-
-                  boolean passed = getResults(expect, output, "Running main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testCodeContains1() {
-                  boolean check1 = checkCodeContains("numerator = 1 in Fraction()", "numerator = 1");
-                  assertTrue(check1);
-              }
-
-              @Test
-              public void testCodeContains2() {
-                  boolean check1 = checkCodeContains("denominator = 1 in Fraction()", "denominator = 1");
-                  assertTrue(check1);
-              }
-
-              @Test
-              public void testCodeContains3() {
-                  boolean check1 =
-                          checkCodeContains(
-                                  "numerator = initNumerator in 2nd constructor",
-                                  "numerator = initNumerator");
-                  assertTrue(check1);
-              }
-
-              @Test
-              public void testCodeContains4() {
-                  boolean check1 =
-                          checkCodeContains(
-                                  "denominator = initDenominator in 2nd constructor",
-                                  "denominator = initDenominator");
-                  assertTrue(check1);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -1052,26 +965,6 @@
              }
           }
         </code>
-
-        <tests>
-          // Test Code for Lesson 5.2.0 - Car
-          import static org.junit.Assert.*;
-
-          import org.junit.Test;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "Car model: Ford\nCar year: 2023\nCar model: Honda\nCar year: 2010";
-
-                  boolean passed = getResults(expect, output, "Running main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -1155,75 +1048,6 @@
               }
           }
         </code>
-
-        <tests>
-          // Test Code for Lesson 5.2.1 - Challenge - Student
-          import static org.junit.Assert.*;
-
-          import org.junit.Test;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("Student");
-
-                  Object[] values = new Object[] {"Name", 0};
-                  setDefaultValues(values);
-              }
-
-              @Test
-              public void testCallConstructors() {
-                  String code = getCodeWithoutComments();
-                  String search = "= new Student(";
-
-                  int num = countOccurences(code, search);
-
-                  String expect = search + "...) x 2";
-                  String actual = search + "...) x " + num;
-
-                  boolean passed = getResults(expect, actual, "Checking that you made 2 Student objects");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testConstructors() {
-                  String code = getCodeWithoutComments();
-                  String search = "public Student(";
-
-                  int num = countOccurences(code, search);
-
-                  String expect = search + "...) x 1";
-                  String actual = search + "...) x " + num;
-
-                  boolean passed = getResults(expect, actual, "Checking that you made a constructor");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrint() {
-                  String code = getCodeWithoutComments();
-                  String search = ".print()";
-
-                  int num = countOccurences(code, search);
-
-                  String expect = search + " x 2";
-                  String actual = search + " x " + num;
-
-                  boolean passed = getResults(expect, actual, "Checking that you called print 2 times");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrivateVariables() {
-                  String expect = "4 Private";
-                  String output = testPrivateInstanceVariables();
-
-                  boolean passed = getResults(expect, output, "Checking for 4 Private Instance Variable(s)");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </project>
@@ -1310,83 +1134,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testPrivateVariables() {
-                  String expect = "3 Private";
-                  String output = testPrivateInstanceVariables();
-                  boolean passed = false;
-                  if (Integer.parseInt(expect.substring(0, 1)) <= Integer.parseInt(output.substring(0, 1)))
-                      passed = true;
-                  passed = getResults(expect, output, "Checking private instance variable(s)", passed);
-                  assertTrue(passed);
-              }
-
-              /* No longer required
-              @Test
-              public void testDefaultConstructor()
-              {
-                  String output = checkDefaultConstructor();
-                  String expect = "pass";
-
-                  boolean passed = getResults(expect, output, "Checking default constructor");
-                  assertTrue(passed);
-              }
-              */
-
-              @Test
-              public void testConstructor3() {
-                  String output = checkConstructor(3);
-                  String expect = "pass";
-
-                  boolean passed = getResults(expect, output, "Checking constructor with 3 parameters");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testPrint() {
-                  String output = getMethodOutput("print");
-                  String expect = "More than 15 characters";
-                  String actual = " than 15 characters";
-
-                  if (output.length() < 15) {
-                      actual = "Less" + actual;
-                  } else {
-                      actual = "More" + actual;
-                  }
-                  boolean passed = getResults(expect, actual, "Checking print method");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main"); // .split("\n");
-                  String expect = "3+ line(s) of text";
-                  String actual = " line(s) of text";
-                  int len = output.split("\n").length;
-
-                  if (output.length() > 0) {
-                      actual = len + actual;
-                  } else {
-                      actual = output.length() + actual;
-                  }
-                  boolean passed = len >= 3;
-
-                  getResults(expect, actual, "Checking output", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </project>

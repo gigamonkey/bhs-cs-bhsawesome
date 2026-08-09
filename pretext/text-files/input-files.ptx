@@ -301,38 +301,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("FileIO");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "The first word in the dictionary file is: a";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void fixedCode()
-              {
-                  boolean passed = checkCodeContains("throws IOException", "throws IOException");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -437,44 +405,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("FileIOLoop");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "This file has 10002 lines.";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testNextLine()
-              {
-                  boolean passed = checkCodeContains("nextLine()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testHasNext()
-              {
-                  boolean passed = checkCodeContains("hasNextLine() or hasNext()", "hasNext$()");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -554,59 +484,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ReadData");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String[] lines = output.split("\n");
-                  boolean passed = lines.length == 10;
-
-                  passed =
-                          getResults(
-                                  "10 lines of output",
-                                  lines.length + " lines of output",
-                                  "Expected output",
-                                  passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void arrayCode()
-              {
-                  boolean passed = checkCodeContains("adding to lines", "lines.add(");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testHasNext()
-              {
-                  boolean passed = checkCodeContains("hasNextLine() or hasNext()", "hasNext$()");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testHasLess10()
-              {
-                  boolean passed = checkCodeContains("lines.size() < 10");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </activity>
@@ -709,37 +586,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ReadData");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                   String output = getMethodOutput("main");
-                   String[] lines = output.split("\n");
-                   boolean passed = lines.length == 10;
-
-                   passed = getResults("10 lines of output", lines.length + " lines of output", "Expected output", passed);
-                   assertTrue(passed);
-              }
-              @Test
-              public void getMethodTest()
-              {
-                 boolean passed = checkCodeContains("call to get method with lines", "lines.get");
-                 assertTrue(passed);
-              }
-           }
-        </tests>
 
       </program>
     </activity>

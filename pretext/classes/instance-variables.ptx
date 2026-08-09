@@ -421,25 +421,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testPrivateVariables() {
-                  String expect = "4 Private";
-                  String output = testPrivateInstanceVariables();
-
-                  boolean passed = getResults(expect, output, "Checking Private Instance Variable(s)");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -529,29 +510,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testPrivateVariables() {
-                  String expect = "3 Private";
-                  String output = testPrivateInstanceVariables();
-                  boolean passed = false;
-                  if (Integer.parseInt(expect.substring(0, 1)) <= Integer.parseInt(output.substring(0, 1)))
-                      passed = true;
-                  passed = getResults(expect, output, "Checking private instance variable(s)", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </project>

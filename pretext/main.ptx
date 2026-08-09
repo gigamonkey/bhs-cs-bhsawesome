@@ -64,18 +64,6 @@
         If you see errors or bugs, please email <url
         href="mailto:peterseibel@berkeley.net">peterseibel@berkeley.net</url>.
       </p>
-
-      <datafile label="turtleClasses" filename="turtleClasses.jar" editable="no" hide="yes">
-        <pre>
-          <xi:include parse="text" href="assets/_static/code/turtleClasses.java" />
-        </pre>
-      </datafile>
-
-      <datafile label="turtleClasses2" filename="turtleClasses2.jar" editable="no" hide="yes">
-        <pre>
-          <xi:include parse="text" href="assets/_static/code/turtleClasses2.java" />
-        </pre>
-      </datafile>
     </conclusion>
   </book>
 </pretext>

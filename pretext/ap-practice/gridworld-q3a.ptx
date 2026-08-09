@@ -1237,59 +1237,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-          import java.util.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("GridWorldUtilities");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Student output:\n(1, 1)\n";
-
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1()
-              {
-                  BoundedGrid<Location> example = new BoundedGrid<Location>(2, 2);
-                  Location loc1 = new Location(0, 0);
-                  Location loc2 = new Location(1, 0);
-                  Location loc3 = new Location(0, 1);
-                  Location loc4 = new Location(1, 1);
-                  example.put(loc1, loc1);
-                  example.put(loc2, loc2);
-                  example.put(loc3, loc3);
-
-                  ArrayList<Location> locsCorrect = new ArrayList<Location>();
-                  locsCorrect.add(loc4);
-                  ArrayList<Location> studentAnswer = new ArrayList<Location>();
-                  studentAnswer = GridWorldUtilities.getEmptyLocations(example);
-
-                  String output = studentAnswer.get(0).toString();
-                  String expect = "(1, 1)";
-
-                  boolean passed = getResults(expect, output, "Test 1 call to getEmptyLocations()");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
 

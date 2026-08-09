@@ -369,9 +369,9 @@
         <p>
           The code below doesn’t work as the author intended. It was supposed to
           print both <c>Wear a coat</c> and <c>Wear gloves</c> but only when
-          <c>isCold</c> is <c>true</c>. But somehow the author has fallen into all
-          the traps mentioned in this chapter! Fix it so it does what they wanted
-          it to.
+          <c>isCold</c> is <c>true</c>. But somehow the author has fallen into
+          all the traps mentioned in this chapter! Fix it so it does what they
+          wanted it to.
         </p>
       </statement>
 
@@ -387,37 +387,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "";
-                  boolean passed = getResults(expect, output, "Expected output from main if isCold is false");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testCountCurlies()
-              {
-                  String code = getCode();
-                  int num = countOccurences(code, "{");
-                  boolean passed = num >= 3;
-
-                  getResults("3", "" + num, "Number of {", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </activity>

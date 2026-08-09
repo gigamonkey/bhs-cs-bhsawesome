@@ -268,61 +268,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("Accumulator");
-              }
-
-               @Test
-               public void test1() throws IOException
-               {
-                   String code = getCode();
-                   String target = "for (int * = 1; * ? n; *~)";
-
-                   int num = countOccurencesRegex(code, target);
-
-                   boolean passed = num == 2;
-
-                  getResults("2", "" + num, "Each method should have a for loop that counts from 1 to n", passed);
-                  assertTrue(passed);
-               }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String expected = "The sum of 1 to 10 is 55\nThe average of 1 to 10 is 5.5";
-                  String output = getMethodOutput("main");
-                  boolean passed = getResults(expected, output, "Checking main output");
-                  assertTrue(passed);
-              }
-
-             @Test
-             public void testCall() throws IOException
-             {
-                 Object[] args = {5};
-                 String output = getMethodOutput("sum", args);
-                 String expect = "15";
-
-                 boolean passed =
-                         getResults(
-                                 expect,
-                                 output,
-                                 "sum(5)"
-                                 );
-                 assertTrue(passed);
-             }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -413,44 +358,6 @@
         <stdin>
           80 90 100 -1
         </stdin>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("InputLoop");
-              }
-              @Test
-              public void test1()
-              {
-                  String input = "80 90 100 -1";
-                  String output = getMethodOutputWithInput("main", input);
-
-                  boolean passed = getResults("The average is 90.0", output, "Average calculated correctly");
-
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-
-                  String input = "1 4 -1";
-                  String output = getMethodOutputWithInput("main", input);
-
-                  boolean passed = getResults("The average is 2.5", output, "Trying with input 1 4 -1 (did you typecast to double?)");
-
-                  assertTrue(passed);
-              }
-            }
-        </tests>
 
       </program>
     </activity>
@@ -559,40 +466,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-
-               @Test
-               public void test1() throws IOException
-               {
-                   String code = getCode();
-                   String target = "for (int * = #; * ? n; *~)";
-
-                   int num = countOccurencesRegex(code, target);
-
-                   boolean passed = num == 2;
-
-                  getResults("2", "" + num, "Each method should have a for loop that uses n", passed);
-                  assertTrue(passed);
-               }
-               @Test
-              public void containsCall()
-              {
-                  boolean passed = checkCodeContains("num > max", "num > max");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -670,63 +543,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("CheckDigitTest");
-              }
-
-              @Test
-              public void test1() throws IOException
-              {
-                  String target = "while";
-                  boolean passed = checkCodeContains("while loop", target);
-                  assertTrue(passed);
-              }
-
-               @Test
-              public void testMain() throws IOException
-              {
-                  String expected = "true\nfalse";
-                  String output = getMethodOutput("main");
-                  boolean passed = getResults(expected, output, "Checking main output");
-                  assertTrue(passed);
-              }
-
-             @Test
-             public void testCall() throws IOException
-             {
-                 Object[] args = {13579, 7};
-                 String output = getMethodOutput("checkDigit", args);
-                 String expect = "true";
-
-                 boolean passed =
-                         getResults(
-                                 expect,
-                                 output,
-                                 "checkDigit(13579, 7)"
-                                 );
-                 assertTrue(passed);
-             }
-
-              @Test
-             public void testBool() throws IOException
-             {
-                 String target = "number % 10";
-                 boolean passed = checkCodeContains(target, target);
-                 assertTrue(passed);
-             }
-          }
-        </tests>
 
       </program>
     </activity>

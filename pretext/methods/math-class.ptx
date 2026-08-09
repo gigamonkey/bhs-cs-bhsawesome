@@ -150,25 +150,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "4\n3.0\n9.0\n";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main after changing code");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -352,34 +333,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test1() {
-                  Object[] args = {10.5, 20.6};
-                  String output = getMethodOutput("distance", args);
-                  String expect = "10.1";
-                  boolean passed = getResults(expect, output, "distance(10.5, 20.6)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  Object[] args = {-5.0, 2.4};
-                  String output = getMethodOutput("distance", args);
-                  String expect = "7.4";
-                  boolean passed = getResults(expect, output, "distance(-5.0, 2.4)");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -461,24 +414,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = output;
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -543,24 +478,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = output;
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -615,23 +532,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testContainsRange() throws IOException {
-                  String target = "+ 1";
-                  boolean passed = checkCodeContains("Math.random in range 1 to 10", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -1000,77 +900,6 @@
           }
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test1() {
-                  String output = getMethodOutput("main");
-                  String[] lines = output.split("\\s+");
-
-                  boolean passed = lines.length >= 2;
-
-                  passed =
-                          getResults(
-                                  "2+ lines of output",
-                                  lines.length + " lines of output",
-                                  "Expected output",
-                                  passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String output = getMethodOutput("main");
-                  boolean passed = output.contains("64000");
-                  passed = getResults("true", "" + passed, "Prints result of 40^3", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  String[] code = getCode().split("\n");
-                  String expected =
-                          "Possible answers:\n(int) (Math.random() * 40)\n(int) (40 * Math.random())";
-                  String actual = "";
-                  int num = 0;
-
-                  for (int i = 0; i < code.length; i++) {
-                      if (code[i].contains("Math.random()") && code[i].contains("40")) {
-                          actual += code[i].trim() + "\n";
-                          if (code[i].contains("(int)")) num++;
-                      }
-                  }
-
-                  boolean passed = num >= 3;
-                  passed =
-                          getResults(
-                                  expected,
-                                  actual,
-                                  "Creates 3 random numbers from 0 to 40 (not inclusive)",
-                                  passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4() {
-                  String code = getCode();
-                  int num = countOccurences(code, "Math.pow(");
-
-                  boolean passed = num >= 1;
-                  passed = getResults("1 or more", "" + num, "Calls to Math.pow(...)", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </project>
   </subsection>
@@ -1143,40 +972,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("DancingTurtles");
-              }
-
-              @Test
-              public void test1() {
-                  String code = getCode();
-                  int numRandom = countOccurences(code, "Math.random()");
-
-                  boolean passed = numRandom >= 5;
-                  passed = getResults("5+", "" + numRandom, "5+ calls to Math.random()", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  boolean passed =
-                          checkCodeContainsNoRegex(
-                                  "Random numbers for 0-255 colors (256 values)", "Math.random() * 256");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </project>
@@ -1324,42 +1119,6 @@
               }
           }
         </code>
-
-        <tests>
-          import org.junit.Test;
-
-          import java.io.IOException;
-
-          public class RunestoneTests extends CodeTestHelper {
-              private void check(double height, double width) {
-                  double expected = Math.sqrt(Math.pow(height, 2) + Math.pow(width, 2));
-                  double got = LadderHelper.ladderSizeNeeded(height, width);
-                  String label = "ladderSizeNeeded(" + height + ", " + width + ")";
-                  expectExact(expected, got, label);
-              }
-
-              @Test
-              public void testMain() throws IOException {
-                  String expected = "Beloved, I need a 50.0 foot ladder!";
-                  expect(expected, getMethodOutput("main"), "Expected output from main");
-              }
-
-              @Test
-              public void testShort() {
-                  check(3, 4);
-              }
-
-              @Test
-              public void testTall() {
-                  check(30, 40);
-              }
-
-              @Test
-              public void testRandom() {
-                  check(Math.random() * 100, Math.random() * 50);
-              }
-          }
-        </tests>
 
       </program>
     </project>

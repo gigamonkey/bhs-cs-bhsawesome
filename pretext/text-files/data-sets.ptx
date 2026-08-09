@@ -242,58 +242,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-             public RunestoneTests()
-             {
-                 super("PokeImages");
-             }
-
-             @Test
-             public void randomTest()
-             {
-                 boolean passed = checkCodeContains("(int)(Math.random()*lines.size()");
-                 assertTrue(passed);
-             }
-
-             @Test
-             public void splitCode()
-             {
-                 boolean passed = checkCodeContains("call to split method", ".split");
-                 assertTrue(passed);
-             }
-
-             @Test
-             public void imageCode()
-             {
-                 boolean passed =
-                         checkCodeContains("call to printHtmlImage", "printHtmlImage(");
-                 assertTrue(passed);
-             }
-
-             @Test
-             public void nameIndexCode()
-             {
-                 boolean passed = checkCodeContains("the correct index for the name (1)", "[1]");
-                 assertTrue(passed);
-             }
-
-             @Test
-             public void imageIndexCode()
-             {
-                 boolean passed = checkCodeContains("the correct index for the image url (8)", "[8]");
-                 assertTrue(passed);
-             }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -366,27 +314,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                     String output = getMethodOutput("main");
-                     String expect = "Age 16 in 10 years is 26";
-                     boolean passed = getResults(expect, output, "Expected output from main", true);
-                     assertTrue(passed);
-
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -485,62 +412,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-             public RunestoneTests() throws IOException
-             {
-                 super("PokeSpeed");
-             }
-
-             @Test
-             public void parseTest()
-             {
-                 boolean passed = checkCodeContains("Integer.parseInt");
-                 assertTrue(passed);
-             }
-
-             @Test
-             public void callFindMax() throws IOException
-             {
-                  String output = getMethodOutput("findMaxSpeed");
-                  String expect = "140";
-                  boolean passed = getResults(expect, output, "Expected output from findMaxSpeed");
-                  assertTrue(passed);
-              }
-
-              @Test
-               public void callAvgSpeed() throws IOException
-               {
-                      String output = getMethodOutput("findAverageSpeed");
-                      String expect = "68";
-                      boolean passed = output.startsWith(expect);
-                      passed = getResults(expect, output, "Expected output from findAverageSpeed", passed);
-                      assertTrue(passed);
-               }
-
-             @Test
-             public void splitCode()
-             {
-                 boolean passed = checkCodeContains("call to split method", ".split");
-                 assertTrue(passed);
-             }
-
-             @Test
-             public void speedIndexCode()
-             {
-                 boolean passed = checkCodeContains("the correct index for the speed (7)", "[7]");
-                 assertTrue(passed);
-             }
-          }
-        </tests>
 
       </program>
     </project>
@@ -706,67 +577,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests() throws IOException
-              {
-                  super("PokemonArray");
-              }
-
-              @Test
-              public void testPrivateVariables()
-              {
-                  String code = getCode();
-                  int count = countOccurences(code, "private");
-                  boolean passed = count >= 3;
-                  getResults("3", count + "", "Number of private instance variables", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testConstructor()
-              {
-                  boolean passed = checkCodeContains("Pokemon constructor", "public Pokemon(");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void splitCode()
-              {
-                  boolean passed = checkCodeContains("call to split method", ".split");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void callFindType1() throws IOException
-              {
-                   Object[] args = {"Pikachu"};
-                   String output = getMethodOutput("findType", args);
-                   String expect = "Electric";
-                   boolean passed = getResults(expect, output, "Expected output from findType(\"Pikachu\")");
-                   assertTrue(passed);
-               }
-               @Test
-              public void callFindType2() throws IOException
-              {
-                   Object[] args = {"Bulbasaur"};
-                   String output = getMethodOutput("findType", args);
-                   String expect = "Grass";
-                   boolean passed = getResults(expect, output, "Expected output from findType(\"Bulbasaur\")");
-                   assertTrue(passed);
-               }
-          }
-          ]]>
-        </tests>
-
       </program>
     </project>
   </subsection>
@@ -887,48 +697,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testPrivateVariables()
-              {
-                  String code = getCode();
-                  int count = countOccurences(code, "private");
-                  boolean passed = count >= 3;
-                  getResults("3", count + "", "Number of private instance variables", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void splitCode()
-              {
-                  boolean passed = checkCodeContains("call to split method", ".split");
-                  assertTrue(passed);
-              }
-              @Test
-              public void whileCode()
-              {
-                  boolean passed = checkCodeContains("while loop", "while");
-                  assertTrue(passed);
-              }
-              @Test
-              public void forCode()
-              {
-                  boolean passed = checkCodeContains("for loop", "for");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </project>

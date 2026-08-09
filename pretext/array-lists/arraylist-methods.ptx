@@ -425,32 +425,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ArrayListCreateStr");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "The size of nameList is: 0\nThe size of list2 is: 0";
-
-                  boolean passed = getResults(expect, output, "main()", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -584,39 +558,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("Shopping");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect =
-                          "Size: 0\n"
-                              + "[carrots]\n"
-                              + "[carrots, bread]\n"
-                              + "[carrots, bread, chocolate]\n"
-                              + "Size: 3";
-
-                  boolean passed = !output.equals(expect);
-
-                  passed = getResults(expect, output, "Changed code", passed);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -669,32 +610,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("StudentList");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "[123456: Skyler, skyler@sky.com, 789012: Ayanna, ayanna@gmail.com]";
-
-                  boolean passed = getResults(expect, output, "main()", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -744,44 +659,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("listGetSet");
-              }
-
-              @Test
-              public void test1()
-              {
-                  boolean passed =
-                          checkCodeContainsRegex("nameList.set(0, \"Your name\")", "nameList.set(0, ");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  String output = getMethodOutput("main");
-                  String searchString = "Deja";
-
-                  boolean passed =
-                          output.contains("\n" + searchString)
-                                  || output.matches("\\s+" + searchString + "\\s+");
-
-                  passed = getResults("true", "" + passed, "Prints last item in list (Deja)", passed);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -902,32 +779,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("listAddInt2");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "[foo]\n[foo, bar]\n[foo, baz, bar]\n[foo, quux, baz, bar]\n4\n";
-
-                  boolean passed = getResults(expect, output, "main()", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -1174,59 +1025,6 @@
           }
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ToDoList");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect =
-                          "3 things to do!\n"
-                              + "Here's the first thing to do: Do homework\n"
-                              + "Here's the next thing to do: Order pizza";
-
-                  boolean passed = getResults(expect, output, "Output is the same");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                   boolean passed = checkCodeContains("ArrayList<String>");
-                   assertTrue(passed);
-              }
-              @Test
-              public void contains2()
-              {
-                   boolean passed = checkCodeContains(".add");
-                   assertTrue(passed);
-              }
-
-              @Test
-              public void test3()
-              {
-                  String expect = "[*]";
-
-                  boolean passed = checkCodeNotContains(expect);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
 
@@ -1260,32 +1058,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ArrayListFromArray");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "[Dakota, Madison, Brooklyn]";
-
-                  boolean passed = getResults(expect, output, "main()", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>

@@ -510,28 +510,6 @@
           }
         </code>
 
-        <tests>
-          // should pass if/when they run code
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "4";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -781,27 +759,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "gameScore is 0\n";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -913,30 +870,6 @@
              }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect =
-                          "Welcome to the weather report on Channel 101 \n"
-                              + "The temperature today is 70.5\n"
-                              + "Is it sunny today? true";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </project>

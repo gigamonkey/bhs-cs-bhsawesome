@@ -541,47 +541,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          import java.util.ArrayList;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ItemInventory");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Average cost of available items within range: $25.0";
-
-                  boolean passed = getResults(expect, output, "Main output");
-                  assertTrue(passed);
-              }
-              @Test
-              public void test2()
-              {
-                  ItemInventory store2 = new ItemInventory();
-                  store2.addItem(new ItemInfo("Action Figure", 15.0, true));
-                  store2.addItem(new ItemInfo("Frying Pan", 10.0, true));
-                  String expect = "12.5";
-                  String output = "" +
-                      store2.averageWithinRange(10.0, 20.0);
-
-                  boolean passed = getResults(expect, output, "Average cost in new list of 15.0 + 10.0");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>

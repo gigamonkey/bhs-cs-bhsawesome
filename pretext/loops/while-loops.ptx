@@ -168,26 +168,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "2\n3\n4\n5\n6\n7\n8\n9\n10\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -581,32 +561,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("LoopTest2");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "1\n2\n3\n4\n5\n6\n7\n8";
-
-                  boolean passed = getResults(expect, output, "Running main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -743,82 +697,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("TurtleDrawSquare");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String target = "while (* ? 4)";
-                  boolean passed = checkCodeContainsRegex("while loop that counts to 4", target);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  String code = getCode();
-                  String forwards = ".forward()";
-
-                  int count = countOccurences(code, forwards);
-
-                  boolean passed = count == 1;
-
-                  passed =
-                          getResults(
-                                  "1 forward()",
-                                  "" + count + " forward()",
-                                  "Should only need forward() once",
-                                  passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3()
-              {
-                  String code = getCode();
-                  String forwards = ".turn(90)";
-
-                  int count = countOccurences(code, forwards);
-
-                  boolean passed = count == 1;
-
-                  passed =
-                          getResults(
-                                  "1 turn(90)",
-                                  "" + count + " turn(90)",
-                                  "Should only need turn(90) once",
-                                  passed);
-                  assertTrue(passed);
-              }
-              @Test
-              public void test4()
-              {
-                  boolean passed = checkCodeContains("increment the counter with ++", "++");
-                  assertTrue(passed);
-              }
-              @Test
-              public void test5()
-              {
-                  boolean passed = checkCodeContains("test the counter with < or <=", "<");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </project>

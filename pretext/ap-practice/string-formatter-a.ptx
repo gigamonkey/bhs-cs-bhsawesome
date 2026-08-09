@@ -288,50 +288,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-          import java.util.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("StringFormatter");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Should print 7 and prints: 7\n" + "Should print 5 and prints: 5\n";
-
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1()
-              {
-                  List<String> myWords = new ArrayList<String>();
-                  myWords.add("A");
-                  myWords.add("dog");
-                  myWords.add("is");
-
-                  String output = String.valueOf(StringFormatter.totalLetters(myWords));
-                  String expect = "6";
-
-                  boolean passed = getResults(expect, output, "totalLetters method test on A, dog, is");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
   </subsection>

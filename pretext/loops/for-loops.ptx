@@ -209,26 +209,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "2\n3\n4\n5\n6\n7\n8\n9\n10\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -256,48 +236,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.Test;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("ForLoopFromWhile");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "5\n6\n7\n8\n9\n10\n";
-
-                  boolean passed = getResults(expect, output, "Running main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testWhile() throws IOException
-              {
-                  String target = "while (*)";
-                  boolean passed = checkCodeNotContainsRegex("while loop", target);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFor() throws IOException
-              {
-                  String target = "for (int * = #; * ? #; *~)";
-                  boolean passed = checkCodeContainsRegex("for loop", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -598,51 +536,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.Test;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("SongTest");
-              }
-
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "3 bottles of pop on the wall";
-
-                  String expect1 = expect.split("\n")[0];
-                  String output1 = output.split("\n")[0];
-
-                  boolean passed = output.contains(expect);
-                  passed = getResults(expect1, output1, "Print the song from 3", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testMain2() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "5 bottles of pop on the wall";
-
-                  boolean passed = !output.contains(expect);
-
-                  String expect1 = expect.split("\n")[0];
-                  String output1 = output.split("\n")[0];
-
-                  passed = getResults(expect1, output1, "Do not start loop from 5", passed);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -676,26 +569,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "5\n3\n1";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -840,70 +713,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("TurtleDrawShapes");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String code = getCode();
-                  String target = "for (int * = #; * ? *; *~)";
-
-                  int num = countOccurencesRegex(code, target);
-
-                  boolean passed = num == 4;
-
-                  getResults("4", "" + num, "Each method should have a for loop", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  boolean passed = checkCodeContains("for-loop in drawSquare counting up to 4;","4;");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3()
-              {
-                  boolean passed = checkCodeContains("for-loop in drawTriangle counting up to 3;","3;");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4()
-              {
-                  boolean passed = checkCodeContains("for-loop in drawPentagon counting up to 5;","5;");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test5()
-              {
-                  boolean passed = checkCodeContains("formula using 360 and n and a math operation to calculate angle in drawShape","360/n");
-                  assertTrue(passed);
-              }
-              @Test
-              public void test6()
-              {
-                  boolean passed = checkCodeContains("call drawShape to draw a hexagon (6 sides) of length 20", "drawShape(yertle, 6, 20);");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </project>

@@ -240,38 +240,6 @@
           5 3
         </stdin>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-               public RunestoneTests()
-              {
-                  super("CommentMultiply");
-               }
-                   @Test
-                  public void containsOp1()
-                  {
-                      String code = getCodeWithComments();
-                      boolean passed = code.contains("/*");
-                      getResults("true",passed+"","Contains /*");
-                      assertTrue(passed);
-                  }
-                  @Test
-                  public void containsOp2()
-                  {
-                      String code = getCodeWithComments();
-                      boolean passed = code.contains("//");
-                      getResults("true",passed+"","Contains //");
-                      assertTrue(passed);
-                  }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -421,31 +389,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("TurtlePreconditions");
-              }
-
-              @Test
-              public void test1()
-              {
-                  String code = getCode();
-                  boolean passed = !(code.contains("forward(100)"));
-                  passed = getResults("true", "" + passed, "Change forward(100) to try to break preconditions", passed);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>

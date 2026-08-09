@@ -315,27 +315,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Hi there!";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </exercise>
 
@@ -362,28 +341,6 @@
               }
           }
         </code>
-
-        <tests>
-          // should pass if/when they run code
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Hi there!";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </exercise>
@@ -412,29 +369,6 @@
               }
           }
         </code>
-
-        <tests>
-          // should pass if/when they run code
-          // This doesn't really work because it filters out the \n
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Hi there!";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </exercise>
@@ -485,25 +419,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String target = "DivideByZero";
-                  boolean passed = checkCodeContains("DivideByZero", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </exercise>
 
@@ -547,13 +462,14 @@
       <p>
         In this course, you are encouraged to work together in pairs to complete
         the programming challenges. Pair programming is a successful software
-        development technique where two programmers work together at one computer.
-        One, the driver, types in code while the other, the navigator, gives ideas
-        and feedback. The two coders switch roles frequently. Another option is
-        buddy programming, where two or three coders work on their own computers
-        but help each other as needed. If you’re working alone, you may want to
-        explain the code to a rubber duck or another toy using <url
-        href="https://rubberduckdebugging.com/">Rubber duck debugging</url>.
+        development technique where two programmers work together at one
+        computer. One, the driver, types in code while the other, the navigator,
+        gives ideas and feedback. The two coders switch roles frequently.
+        Another option is buddy programming, where two or three coders work on
+        their own computers but help each other as needed. If you’re working
+        alone, you may want to explain the code to a rubber duck or another toy
+        using <url href="https://rubberduckdebugging.com/">Rubber duck
+        debugging</url>.
       </p>
     </sidebyside>
 
@@ -580,28 +496,6 @@
 
           }
         </code>
-
-        <tests>
-          // should pass if/when they run code
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Good morning! Good afternoon! And good evening";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </exercise>

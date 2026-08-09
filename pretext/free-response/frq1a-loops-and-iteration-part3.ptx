@@ -199,47 +199,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("APCalendar");
-              }
-
-              @Test
-              public void test1() {
-                  String output = getMethodOutput("main");
-                  String expect = "Your answer should be 13: 13";
-
-                  boolean passed = getResults(expect, output, "Running main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  int answer = APCalendar.numberOfLeapYears(1990, 2100);
-                  int expect = 27;
-
-                  boolean passed = getResults("" + expect, "" + answer, "numberOfLeapYears(1990, 2100)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3() {
-                  int answer = APCalendar.numberOfLeapYears(2001, 2002);
-                  int expect = 0;
-
-                  boolean passed = getResults("" + expect, "" + answer, "numberOfLeapYears(2001, 2002)");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -393,80 +352,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-          import java.util.Arrays;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test001() {
-                  String code = getCode();
-                  String exp = "play();";
-
-                  boolean passed = code.contains("play();");
-
-                  getResults("true", "" + passed, "Code contains call to play()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test002() {
-                  String code = getCode();
-                  String exp = "getScore();";
-
-                  boolean passed = code.contains("getScore();");
-
-                  getResults("true", "" + passed, "Code contains call to getScore()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test01() {
-                  int[] scores = {10, 70, 65, 35, 45, 50, 85, 50};
-                  int exp = 85;
-
-                  boolean passed = test(scores, exp);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test02() {
-                  int[] scores = {45, 15, 20, 35, 85, 65, 50, 80, 90, 60, 5, 20};
-                  int exp = 90;
-
-                  boolean passed = test(scores, exp);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test03() {
-                  int[] scores = {50, 20, 40, 15, 45, 25, 35, 55, 30, 95, 100, 75};
-
-                  int exp = 100;
-
-                  boolean passed = test(scores, exp);
-                  assertTrue(passed);
-              }
-
-              private boolean test(int[] scores, int exp) {
-                  Game g = new Game(scores);
-
-                  int result = g.playManyTimes(scores.length);
-
-                  boolean passed = result == exp;
-
-                  String desc = "Highest score for " + Arrays.toString(scores);
-
-                  getResults("" + exp, "" + result, desc, passed);
-                  return passed;
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -677,60 +562,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test06() {
-                  boolean passed = testPartB(3, 7, 10, 59);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test07() {
-                  boolean passed = testPartB(4, 3, 5, 38);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test08() {
-                  boolean passed = testPartB(5, 12, 17, 138);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test09() {
-                  boolean passed = testPartB(2, 8, 17, 125);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test10() {
-                  boolean passed = testPartB(1, 0, 23, 192);
-                  assertTrue(passed);
-              }
-
-              private boolean testPartB(int max, int start, int end, int exp) {
-                  DogWalkCompany comp = new DogWalkCompany();
-                  DogWalker walker = new DogWalker(max, comp);
-
-                  int result = walker.dogWalkShift(start, end);
-
-                  boolean passed = result == exp;
-
-                  String desc = "Walker should earn " + exp + ": " + result;
-
-                  getResults("" + exp, "" + result, desc, passed);
-                  return passed;
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -911,90 +742,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "128: true\n26: false\n120: false\n102: false\n";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testIfLoop() {
-                  String code = getCode();
-                  boolean passed = code.contains("if") && (code.contains("for") || code.contains("while"));
-                  getResults(
-                          "Expected loop, if, %", "" + passed, "Checking for loop and if statement", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testModDiv() {
-                  String code = getCode();
-                  boolean passed = code.contains("%") && code.contains("/");
-                  getResults("Expected % and /", "" + passed, "Checking for use of % and /", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFunction1() {
-                  Object[] args = {128};
-                  String output = getMethodOutput("isSelfDivisor", args);
-                  String expect = "true";
-                  boolean passed = getResults(expect, output, "isSelfDivisor(128)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFunction2() {
-                  Object[] args = {26};
-                  String output = getMethodOutput("isSelfDivisor", args);
-                  String expect = "false";
-                  boolean passed = getResults(expect, output, "isSelfDivisor(26)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFunction3() {
-                  Object[] args = {120};
-                  String output = getMethodOutput("isSelfDivisor", args);
-                  String expect = "false";
-                  boolean passed = getResults(expect, output, "isSelfDivisor(120)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFunction4() {
-                  Object[] args = {102};
-                  String output = getMethodOutput("isSelfDivisor", args);
-                  String expect = "false";
-
-                  boolean passed = getResults(expect, output, "isSelfDivisor(102)");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testFunction5() {
-                  Object[] args = {124};
-                  String output = getMethodOutput("isSelfDivisor", args);
-                  String expect = "true";
-
-                  boolean passed = getResults(expect, output, "isSelfDivisor(124)");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -1068,43 +815,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() {
-                  String output = getMethodOutput("main");
-                  String expect = "Message: the book on the table\nNumber of words: 5\n";
-
-                  boolean passed = getResults(expect, output, "Running main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testWhile() {
-                  boolean passed = checkCodeContains("while loop", "while");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testNumWordsInc() {
-                  boolean passed = checkCodeContains("numWords++");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testNextWordCall() {
-                  boolean passed = checkCodeContains("getNextWord(nextWord)");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>

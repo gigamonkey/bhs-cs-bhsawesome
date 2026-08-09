@@ -367,39 +367,6 @@
           }
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void test1()
-              {
-                  String code = getCode();
-                  int num = countOccurences(code, "chorus();");
-
-                  boolean passed = num >= 3;
-
-                  passed = getResults("3 or more", "" + num, "Calls to chorus()", passed);
-                  assertTrue(passed);
-              }
-              @Test
-              public void test2()
-              {
-                  String code = getCode();
-                  int num = countOccurences(code, "eieio();");
-
-                  boolean passed = num >= 3;
-
-                  passed = getResults("3 or more", "" + num, "Calls to eieio()", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
 
@@ -748,37 +715,6 @@
           }
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testThree()
-              {
-                  boolean passed = checkCodeContains("verse with goose and honk", "verse(\"goose\", \"honk\");");
-                  assertTrue(passed);
-              }
-              @Test
-              public void test1()
-              {
-                  String code = getCode();
-                  int num = countOccurences(code, "chorus();");
-
-                  boolean passed = num >= 5;
-
-                  passed = getResults("5 or more", "" + num, "Calls to chorus", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -868,80 +804,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void checkCodeContains1()
-              {
-                  String code = getCode();
-                  int actual = countOccurences(code, "chorus(");
-                  String expected = "3";
-
-                  boolean passed = actual >= 3;
-                  getResults(
-                          expected,
-                          "" + actual,
-                          "Checking that code contains 3 calls to  chorus",
-                          passed);
-                  assertTrue(passed);
-              }
-              @Test
-              public void checkCodeContains2()
-              {
-                  String code = getCode();
-                  int actual = countOccurences(code, "verse(");
-                  String expected = "3";
-
-                  boolean passed = actual >= 3;
-                  getResults(
-                          expected,
-                          "" + actual,
-                          "Checking that code contains three calls to verse method",
-                          passed);
-                  assertTrue(passed);
-              }
-              @Test
-               public void testMain() throws IOException
-               {
-                   String output = getMethodOutput("main");
-
-                   String expect =
-                      "The ants go marching one by one, hurrah, hurrah\n"
-                              + "The ants go marching one by one, hurrah, hurrah\n"
-                              + "The ants go marching one by one\n"
-                              + "The little one stops to suck a thumb\n"
-                              + "And they all go marching down to the ground\n"
-                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
-                              + "\n"
-                              + "The ants go marching two by two, hurrah, hurrah\n"
-                              + "The ants go marching two by two, hurrah, hurrah\n"
-                              + "The ants go marching two by two\n"
-                              + "The little one stops to tie a shoe\n"
-                              + "And they all go marching down to the ground\n"
-                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!\n"
-                              + "\n"
-                              + "The ants go marching three by three, hurrah, hurrah\n"
-                              + "The ants go marching three by three, hurrah, hurrah\n"
-                              + "The ants go marching three by three\n"
-                              + "The little one stops to climb a tree\n"
-                              + "And they all go marching down to the ground\n"
-                              + "To get out of the rain, BOOM! BOOM! BOOM! BOOM!";
-
-                         boolean passed =
-                         getResults(expect, output, "Expected output from main");
-                         assertTrue(passed);
-                   }
-
-          }
-          ]]>
-        </tests>
 
       </program>
     </project>
@@ -1084,31 +946,6 @@
                }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void containsCall()
-              {
-                  boolean passed = checkCodeContains("square(6)", "square(6)");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "36";
-                  boolean passed =
-                       getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -1259,43 +1096,6 @@
                }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-          import org.junit.*;
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void containsType()
-              {
-                  boolean passed = checkCodeContains("correct double type for result2", "double result2");
-                  assertTrue(passed);
-              }
-              @Test
-              public void containsCall()
-              {
-                  boolean passed = checkCodeContains("call to square with int 4", "square(4)");
-                  assertTrue(passed);
-              }
-              @Test
-              public void containsCall2()
-              {
-                  boolean passed = checkCodeContains("call to divide with the correct argument order", "divide(5,2)");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "4 squared is 16\n5 divided by 2 is 2.5";
-                  boolean passed =
-                       getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>

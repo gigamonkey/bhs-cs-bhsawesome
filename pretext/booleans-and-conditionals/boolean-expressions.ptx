@@ -179,35 +179,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "false\ntrue\ntrue\n";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-               @Test
-               public void test1()
-               {
-                   String code ="<=";
-                   boolean passed = checkCodeContains(code);
-                   assertTrue(passed);
-               }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
 
@@ -365,27 +336,6 @@
           }
         </code>
 
-        <tests>
-          // should pass if/when they run code
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "false\ntrue\ntrue\nfalse\n";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -526,38 +476,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect =
-                          "Remainder of 15/2 is 1\n"
-                              + "Remainder of 16/2 is 0\n"
-                              + "Is 15 even? false \n"
-                              + "Is 16 even? true\ntrue\n";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-              @Test
-              public void testBool() throws IOException
-              {
-                  String target = "age1 % 3 == 0";
-                  boolean passed = checkCodeContains("boolean check for divisibility by 3", target);
-                  assertTrue(passed);
-              }
-
-          }
-        </tests>
 
       </program>
     </activity>
@@ -832,47 +750,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("RandomTurns");
-              }
-
-             @Test
-             public void testCodeContainsIf()
-             {
-                 boolean ifCheck = checkCodeContains("if", "if");
-                 assertTrue(ifCheck);
-             }
-             @Test
-             public void testCodeContainsElse()
-             {
-                 boolean ifCheck2 = checkCodeContains("else", "else");
-                 assertTrue(ifCheck2);
-             }
-             @Test
-             public void testCodeContainsRandom()
-             {
-                 boolean ifCheck2 = checkCodeContains("Math.Random()", "Math.random()");
-                 assertTrue(ifCheck2);
-             }
-             @Test
-             public void testCodeContains5()
-             {
-                 boolean ifCheck2 = checkCodeContains(".5", ".5");
-                 assertTrue(ifCheck2);
-             }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -1042,42 +919,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testChangedCode()
-              {
-                  String origCode =
-                          "public class Test1 { public static void main(String[] args){ boolean cleanedRoom ="
-                              + " true; boolean didHomework = false; if (cleanedRoom && didHomework){"
-                              + " System.out.println(\"You can go out\");} else { System.out.println(\"No,"
-                              + " you can't go out\");}}}";
-
-                  boolean changed = codeChanged(origCode);
-                  assertTrue(changed);
-              }
-
-              @Test
-              public void testMain()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "You can go out";
-
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
 
@@ -1107,40 +948,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testChangedCode()
-              {
-                  String origCode =
-                          "public class Test2 { public static void main(String[] args){ boolean walking ="
-                              + " false; boolean carIsAvailable = false; if (walking || carIsAvailable) {"
-                              + " System.out.println(\"You can go out\"); } else{System.out.println(\"No, you"
-                              + " can't go out\"); }}}";
-
-                  boolean changed = codeChanged(origCode);
-                  assertTrue(changed);
-              }
-
-              @Test
-              public void testMain()
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "You can go out";
-
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -1164,29 +971,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testChangedCode()
-              {
-                  String origCode =
-                          "public class TestNot{public static void main(String[] args){ boolean homeworkDone"
-                              + " = false; if (!homeworkDone) { System.out.println(\"Sorry, you can't go"
-                              + " out!\"); } } }";
-
-                  boolean changed = codeChanged(origCode);
-                  assertTrue(changed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -1263,32 +1047,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testChangedCode()
-              {
-                  String origCode =
-                          "public class TestNum{public static void main(String[] args){int score = 10;  if"
-                              + " (score < 0 || score > 100){ System.out.println(\"Score has an illegal"
-                              + " value.\");}if (score >= 0 && score <= 100){ System.out.println(\"Score is"
-                              + " in the range 0-100\");}}}";
-
-                  boolean changed = codeChanged(origCode);
-                  assertTrue(changed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </activity>

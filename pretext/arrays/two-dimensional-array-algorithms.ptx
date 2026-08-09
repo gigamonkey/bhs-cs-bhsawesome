@@ -124,39 +124,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-
-              @Test
-              public void test1() {
-                  String output = getMethodOutput("main");
-                  String expected = "3.5";
-
-                  boolean passed = !output.contains(expected);
-
-                  passed = getResults("true", "" + passed, "Average has changed");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  String code = getCode();
-                  String expected = "int[][] matrix = { {1,2,3},{4,5,6}};";
-
-                  boolean passed = !code.replaceAll(" ", "").contains(expected.replaceAll(" ", ""));
-
-                  passed = getResults("true", "" + passed, "Matrix has been changed");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -184,25 +151,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void test1() {
-                  String output = getMethodOutput("main");
-                  String expected = "1\n4\n2\n5\n3\n6";
-
-                  boolean passed = getResults(expected, output, "main()", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -364,24 +312,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "69.16666666666667";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -507,42 +437,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("Total");
-              }
-
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "6\n5";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2() {
-                  int[][] array = {{1, 4, 8}, {6, 7, 9}};
-                  int value = 0;
-                  Object[] args = {value, array};
-
-                  String output = getMethodOutput("getTotalForCol", args);
-                  String expect = "7";
-
-                  boolean passed =
-                          getResults(expect, output, "Testing getTotalForCol(0, { {1, 4,8},{6, 7, 9} })");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -754,24 +648,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "4";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>

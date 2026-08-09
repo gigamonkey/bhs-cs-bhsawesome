@@ -64,33 +64,6 @@
         ]]>
       </code>
 
-      <tests>
-        <![CDATA[
-        import static org.junit.Assert.*;
-
-        import org.junit.*;
-
-        import java.io.*;
-
-        public class RunestoneTests extends CodeTestHelper
-        {
-            public RunestoneTests()
-            {
-                super("NestedLoops");
-            }
-
-            @Test
-            public void test2()
-            {
-                boolean passed =
-                        checkCodeContains("10 rows", "row <= 10")
-                                && checkCodeContains("8 columns", "col <= 8");
-                assertTrue(passed);
-            }
-        }
-        ]]>
-      </tests>
-
     </program>
   </activity>
 
@@ -347,54 +320,6 @@
           ]]>
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("TurtleDrawSnowflake");
-              }
-
-              @Test
-              public void test2()
-              {
-                  boolean passed = false;
-                  String code = getCode();
-                  int find = code.indexOf("i <=");
-                  if (find != -1)
-                  {
-                      int end = code.indexOf(";", find);
-                      String s = code.substring(find + 5, end);
-                      int max = 0;
-                      try
-                      {
-                          max = Integer.parseInt(s);
-                      }
-                      catch (NumberFormatException e)
-                      {
-                          System.out.println("Couldn't parse int");
-                      }
-                      passed = max >= 12;
-                      getResults("i <= ?;", "i <= " + max + ";", "Iterations complete drawing", passed);
-                  } else
-                      getResults(
-                              "i <= ?;",
-                              "i <= ",
-                              "Could not find number of iterations - check spacing",
-                              passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -516,90 +441,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("TurtleSnowflakes");
-              }
-
-              @Test
-              public void test2()
-              {
-                  String code = getCode();
-                  String target = "for (int * = #; * ? *; *~)";
-
-                  int num = countOccurencesRegex(code, target);
-
-                  boolean passed = num == 2;
-
-                  getResults("2", "" + num, "2 For loops (nested)", passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test3()
-              {
-                  boolean passed = checkCodeContains("if statement to change colors", "if");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test4()
-              {
-                  String code = getCode();
-                  String forwards = ".forward(";
-
-                  int count = countOccurences(code, forwards);
-
-                  boolean passed = count == 1;
-
-                  passed =
-                          getResults(
-                                  "1 forward(...)",
-                                  "" + count + " forward(...)",
-                                  "Should only need forward() once",
-                                  passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test5()
-              {
-                  String code = getCode();
-                  String forwards = ".turn(";
-
-                  int count = countOccurences(code, forwards);
-
-                  boolean passed = count == 2;
-
-                  passed =
-                          getResults(
-                                  "2 turn(...)",
-                                  "" + count + " turn(...)",
-                                  "Should only need turn(...) twice",
-                                  passed);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test6()
-              {
-                  boolean passed =
-                          checkCodeContains(
-                                  "Calculates number of iterations using turnAmount", "360/turnAmount");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </project>

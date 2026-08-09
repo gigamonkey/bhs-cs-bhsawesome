@@ -425,56 +425,6 @@
           ]]>
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              public RunestoneTests()
-              {
-                  super("MasterOrder");
-              }
-
-              @Test
-              public void test0()
-              {
-                  String output = getMethodOutput("main");
-                  String expected = "Looks like your code works well!";
-
-                  boolean passed = getResults(expected, output, "main()");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test1()
-              {
-                  MasterOrder order = new MasterOrder();
-                  int total = order.getTotalBoxes();
-
-                  boolean passed = getResults("0", "" + total, "Empty order");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void test2()
-              {
-                  MasterOrder order = new MasterOrder();
-                  order.addOrder(new CookieOrder("Raisin", 4));
-                  order.addOrder(new CookieOrder("Oatmeal", 5));
-
-                  int total = order.getTotalBoxes();
-
-                  boolean passed =
-                          getResults("9", "" + total, "Test order of 4 boxes of Raisin and 5 Oatmeal");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>

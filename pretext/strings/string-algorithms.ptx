@@ -392,41 +392,6 @@
           ]]>
         </code>
 
-        <tests>
-          // Test for Lesson 4.3.1 - While Loop FindAndReplace lclw1
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("FindAndReplace");
-              }
-
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main").trim();
-                  String expect =
-                          "Found a 1 at index: 7\n"
-                                  + "Replaced 1 with l at index 7\n"
-                                  + "The message is currently Have a long and happy 1ife but we aren't done"
-                                  + " looping yet!\n"
-                                  + "Found a 1 at index: 22\n"
-                                  + "Replaced 1 with l at index 22\n"
-                                  + "The message is currently Have a long and happy life but we aren't done"
-                                  + " looping yet!\n"
-                                  + "Cleaned text: Have a long and happy life\n";
-
-                  boolean pass = !output.equals(expect.trim());
-
-                  boolean passed = getResults(expect, output, "Output should be different", pass);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -494,26 +459,6 @@
           }
           ]]>
         </code>
-
-        <tests>
-          // Test for Lesson 4.3 - ReverseString
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("ReverseString");
-              }
-
-              @Test
-              public void testMain() throws IOException {
-                  assertTrue(codeDigestChanged("0bb878194e30f49f6fbd5ad1b7893730409dfa99"));
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -610,54 +555,6 @@
               }
           }
         </code>
-
-        <tests>
-          // Test Code for Lesson 4.3.3 - String Replacement - ChallengeReplace
-
-          import static org.junit.Assert.*;
-
-          import org.junit.Test;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("ChallengeReplace");
-              }
-
-              @Test
-              public void test1() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect =
-                          "I love cats! I have a cat named Coco. My cat's very smart!"
-                                  .replaceAll("cat", "dog");
-
-                  boolean passed = getResults(expect, output, "Running main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testWhile() throws IOException {
-                  String target = "while(";
-                  boolean passed = checkCodeContains("while loop", target);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testSubString() {
-                  String target = "substring(";
-                  boolean passed = checkCodeContains("substring", target);
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testReplace() throws IOException {
-                  String target = ".replace";
-                  boolean passed = checkCodeNotContains("shortcut replace", target);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </project>

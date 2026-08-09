@@ -121,50 +121,6 @@
           }
         </code>
 
-        <tests>
-          <![CDATA[
-          // should pass if/when they run code
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Hi there!";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testLineCount() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "1 output line";
-                  String actual = "  output line";
-
-                  if (output.length() > 0)
-                  {
-                      actual = output.split("\n").length + actual;
-                  }
-                  else
-                  {
-                      actual = output.length() + actual;
-                  }
-                  boolean passed =
-                          getResults(expect, actual, "Checking lines of output");
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -246,29 +202,6 @@
           }
         </code>
 
-        <tests>
-          // should pass if/when they run code
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect =
-                          "The score is 0\nThe price is 23.25\nfalse\ntrue\nHi Jose";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
   </subsection>
@@ -330,26 +263,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = output;
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -416,26 +329,6 @@
         <stdin>
           your name
         </stdin>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.Test;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void test1()
-              {
-                  //String output = getMethodOutput("main");
-                  boolean passed =
-                          getResults("", "", "Scanner example", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -519,39 +412,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Roses are *\n* are *\nI like *\nDo * like them too?";
-
-                  boolean passed = getResultsRegEx(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testNull() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Replace";
-
-                  String actual = countOccurences(output, expect) + " Replace values";
-
-                  boolean passed = getResults("0 Replace values", actual, "Change all \"Replace\" values");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </project>

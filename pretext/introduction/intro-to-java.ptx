@@ -131,28 +131,6 @@
           }
         </code>
 
-        <tests>
-          // should pass if/when they run code
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testMain() throws IOException
-              {
-                  String output = getMethodOutput("main");
-                  String expect = "Hi there!";
-                  boolean passed =
-                          getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </exercise>
   </subsection>

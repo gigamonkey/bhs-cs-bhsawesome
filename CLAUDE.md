@@ -54,38 +54,32 @@ case in `builder/src/prose.ts` and possibly `.xml-formats/ptx.json`).
   named `<its-xml:id>.ptx`, and a chapter's directory name must equal the
   chapter's `xml:id`. Run `./check-ids.py pretext/main.ptx` to find violations;
   `./all-ids.py pretext/main.ptx` dumps every `xml:id` in the book.
-- `main.ptx` keeps not-yet-ready chapters as commented-out `<!-- ... -->`
-  includes. The Makefile's `pretext/full-main.ptx` is `main.ptx` with those
-  comments stripped (everything uncommented) — used by the file-listing tooling
-  so it can see the whole book.
+- `main.ptx` MAY keep not-yet-ready chapters as commented-out `<!-- ... -->`
+  includes (none currently). The Makefile's `pretext/full-main.ptx` is
+  `main.ptx` with those comments stripped — used by the file-listing tooling
+  so it can see the whole book. The source tree contains ONLY files
+  reachable this way: the dead legacy trees were pruned
+  (`bhsawesome-next-steps.md` phase 2), so a file that isn't included
+  anywhere shouldn't exist.
 
-## Code exercises (the Runestone/JUnit harness)
+## Code exercises
 
-Interactive Java exercises are `<activity>` → `<program>` elements. Auto-graded
-ones carry a `<tests>` block containing a JUnit class that extends
-**`CodeTestHelper`**:
+Interactive Java exercises are `<program interactive="activecode">` elements
+(often inside a labeled `<activity>`); the `.ptx` carries the
+student-visible starter code only. **The tests live in the bhs-cs
+monorepo**, not here: `java/src/main/resources/book-tests/<label>.java`
+(JUnit classes extending `CodeTestHelper`, run by the runner's
+BookTestRunner under the native protocol; the exercise's `label` is the
+join key). Editing an exercise's grading means editing the monorepo and
+rebuilding/deploying the runner jar — the source `<tests>` blocks were
+deleted when canonical ownership flipped (`bhsawesome-next-steps.md`
+phase 2).
 
-```xml
-<program interactive="activecode" language="java">
-  ...student-visible code...
-  <tests>
-    public class RunestoneTests extends CodeTestHelper {
-        @Test public void testMain() throws IOException {
-            String output = getMethodOutput("main");
-            boolean passed = getResults(expect, output, "...");
-            assertTrue(passed);
-        }
-    }
-  </tests>
-</program>
-```
-
-`CodeTestHelper.java` (~60KB, from the CSAwesome project) is the grading library
-those tests build on — `getMethodOutput`, `getResults`, etc. `CodeDigest.java`
-is a tiny CLI wrapper around `CodeTestHelper.codeDigest()`. **Java code lives
-inside the `.ptx` XML — the `.ptx` is the source of truth.** Any `*.java` files
-extracted under `pretext/**` are gitignored scratch artifacts; do not treat them
-as canonical.
+A program is **graded by default**; the few ungraded demos carry
+`run-only="yes"` (our schema attribute — the emitter renders them as
+run-only widgets with no results table). Every activity/program keeps its
+`label` attribute — it is the exercise identity everywhere (the
+`rs-<label>` component id, answer tracking, the book-tests join).
 
 ## Formatting `.ptx` files — `xml-format`
 
@@ -132,8 +126,9 @@ order), `make-text.py` (generate the string/array-index SVG diagrams).
 - **Prose style:** see `style-guide.txt` (e.g. "2D" not "2d", "subexpression"
   not "sub-expression", "Chapter"/"Section" not "unit"/"lesson", small numbers
   spelled out). `bad-titles.pl` flags titles with nonstandard capitalization.
-- Every Runestone `<activity>` needs a `label` attribute — Runestone depends on
-  it.
+- Every interactive `<activity>`/`<program>` needs a `label` attribute — it
+  is the exercise identity everywhere (component ids, answer tracking, the
+  monorepo's book-tests join).
 - `TODO.md` tracks outstanding text/formatting cleanup work.
 - After editing any `.ptx` by hand, run it through `xml-format -i` before
   committing so diffs stay canonical.
@@ -153,11 +148,12 @@ This repo is one of the bhs-cs content overlay's prefix-scoped publishers
   exact name. `push-content` is a bin of the pinned
   `@peterseibel/bhs-content` devDependency; bumping it is
   `npm update @peterseibel/bhs-content`.
-- The two extract scripts feed the **monorepo's** runner jar and read the
-  ptx source, not any build output: `uv run python extract-tests.py
-  --outdir <monorepo>/java/src/main/resources/book-tests --all` (the
-  `<tests>` JUnit classes → `book-tests/` resources; lxml) and
-  `python3 extract-datafiles.py --monorepo <monorepo>` (datafiles →
-  `book-src/` + `book-datafiles/`; stdlib, but shells out to
-  `node builder/datafile-uses.ts` for the label→datafiles map). Re-run
-  them after editing tests or datafiles in the source.
+- `python3 extract-datafiles.py --monorepo <monorepo>` feeds the
+  monorepo's runner jar: it copies each needed dataset from
+  `pretext/assets/_static/datasets/` to `book-datafiles/` and writes the
+  `book-tests/<label>.datafiles` manifests, with the label→files map from
+  `node builder/datafile-uses.ts` (the `datafile` attributes in the live
+  source). Re-run after editing a dataset or a `datafile` attribute.
+  (There is no extract-tests anymore — tests are edited directly in the
+  monorepo's `book-tests/`; and the jar "datafiles"' split classes in
+  `java/book-src/` are canonical, hand-editable sources.)

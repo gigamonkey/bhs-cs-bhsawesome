@@ -303,60 +303,6 @@
           }
         </code>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper
-          {
-              @Test
-              public void testVar1()
-              {
-                  boolean passed = checkCodeContains("use of animal variable in verse", "+ animal");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testVar2()
-              {
-                  boolean passed = checkCodeContains("use of sound variable in verse", "+ sound");
-                  assertTrue(passed);
-              }
-              @Test
-              public void testCall()
-              {
-                  boolean passed = checkCodeContains("call to verse with duck and quack", "verse(\"duck\", \"quack\");");
-                  assertTrue(passed);
-              }
-              @Test
-              public void test1()
-              {
-                  String code = getCode();
-                  int num = countOccurences(code, "intro();");
-
-                  boolean passed = num >= 4;
-
-                  passed = getResults("4 or more", "" + num, "Calls to intro", passed);
-                  assertTrue(passed);
-              }
-               @Test
-              public void test2()
-              {
-                  String code = getCode();
-                  int num = countOccurences(code, "chorus();");
-
-                  boolean passed = num >= 2;
-
-                  passed = getResults("2 or more", "" + num, "Call chorus() in intro and verse", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </activity>
   </subsection>

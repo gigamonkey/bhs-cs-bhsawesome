@@ -92,24 +92,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "Happy Birthday Jose Hernandez!!!";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -206,34 +188,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "127";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testParen() throws IOException {
-                  String code = removeSpaces(getCodeWithoutComments());
-                  String expect = "(4+3)";
-                  boolean passed = code.contains(expect);
-
-                  passed = getResults("" + true, "" + passed, "Checking code for added parentheses");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -462,28 +416,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              public RunestoneTests() {
-                  super("SubstringPreconditions");
-              }
-
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "o";
-                  boolean passed = getResults(expect, output, "Expected output from main");
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -565,23 +497,6 @@
               }
           }
         </code>
-
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main").trim();
-                  boolean passed = getResults(output, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
 
       </program>
     </activity>
@@ -962,24 +877,6 @@
           }
         </code>
 
-        <tests>
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMain() throws IOException {
-                  String output = getMethodOutput("main");
-                  String expect = "0\n7\n-18\ntrue\nfalse";
-                  boolean passed = getResults(expect, output, "Expected output from main", true);
-                  assertTrue(passed);
-              }
-          }
-        </tests>
-
       </program>
     </activity>
 
@@ -1192,50 +1089,6 @@
           pig
         </stdin>
 
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testMethod() throws IOException {
-                  Object[] args = {"java"};
-                  String output = getMethodOutput("pigLatin", args);
-                  String expect = "avajay";
-                  boolean passed = getResults(expect, output, "pigLatin(\"java\") should return \"avajay\"");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testMethod2() throws IOException {
-                  Object[] args = {"pig"};
-                  String output = getMethodOutput("pigLatin", args);
-                  String expect = "igpay";
-                  boolean passed = getResults(expect, output, "pigLatin(\"pig\") should return \"igpay\"");
-                  assertTrue(passed);
-              }
-
-              @Test
-              public void testContainsSubstring() {
-                  String target = "word.substring(";
-                  int count = countOccurences(getCode(), target);
-                  boolean passed = count >= 2;
-                  passed =
-                          getResults(
-                                  "2 substring calls",
-                                  count + " substring call(s)",
-                                  "Code contains calls to substring method",
-                                  passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
-
       </program>
     </project>
   </subsection>
@@ -1318,27 +1171,6 @@
               }
           }
         </code>
-
-        <tests>
-          <![CDATA[
-          import static org.junit.Assert.*;
-
-          import org.junit.*;
-
-          import java.io.*;
-
-          public class RunestoneTests extends CodeTestHelper {
-              @Test
-              public void testCount() {
-                  String code = getCodeWithoutComments();
-                  int count = countOccurences(code, "Character.toString");
-                  boolean passed = count >= 4;
-                  passed = getResults("4+", "" + count, "Counting number of Character.toString", passed);
-                  assertTrue(passed);
-              }
-          }
-          ]]>
-        </tests>
 
       </program>
     </project>
