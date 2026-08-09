@@ -47,7 +47,7 @@ const OVERRIDES = new Map([
   ['bhs-book-exercise', ['ours-js-hook', 'book-exercise.ts builds the editor UI on this']],
   ['bhs-book-starter', ['ours-js-hook', 'starter-code textarea read by book-exercise.ts']],
   // Evidence hand-checked 2026-08-09:
-  ['para', ['live-ours', 'renegotiable despite the hits: rs-css is ONE rule (`.multiplechoice_section label>.para{display:inline}` in prefix-919 — compensate with a `label>p` rule); pretext-core only *generates* `.para` divs in knowl-error markup; read-aloud queries `div.para`, already dead against real `<p>`; the 56-bundle hit is Portuguese prose ("para resolver")']],
+  ['para', ['live-ours', 'renegotiable despite the hits: rs-css is ONE rule (`.multiplechoice_section label>.para{display:inline}` in prefix-919 — compensate with a `label>p` rule); pretext-core only *generates* `.para` divs in knowl-error markup; read-aloud has bare `p` in its CONTAINER_SELECTOR (its `div.para` entry is dead legacy) — segmentation + math speech verified live 2026-08-09 via PTXReadAloud.collect(); the 56-bundle hit is Portuguese prose ("para resolver")']],
   ['code-inline', ['live-ours', 'renegotiable: the rs-css hit is one prefix-580 rule (`.datafile_caption code.code-inline{...}`) over markup WE emit — recreate as `.datafile_caption code` in book.css at step 4']],
 ]);
 

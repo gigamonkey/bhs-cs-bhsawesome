@@ -58,7 +58,7 @@ In our HTML and our CSS, no JS consumer found: **ours to renegotiate.**
 | `ol-marker-1` | 4 | 1 |  | step 7 target: per-page marker registry |
 | `ol-marker-2` | 1 | 1 |  | step 7 target: per-page marker registry |
 | `operator` ⚠ | 1715 | 4 | runestone-js(357,420,583) client-js(bhsawesome.js) |  |
-| `para` | 5629 | 36 | rs-css pretext-js(pretext-core.js,pretext-read-aloud.js) runestone-js(154,56) | renegotiable despite the hits: rs-css is ONE rule (`.multiplechoice_section label>.para{display:inline}` in prefix-919 — compensate with a `label>p` rule); pretext-core only *generates* `.para` divs in knowl-error markup; read-aloud queries `div.para`, already dead against real `<p>`; the 56-bundle hit is Portuguese prose ("para resolver") |
+| `para` | 5629 | 36 | rs-css pretext-js(pretext-core.js,pretext-read-aloud.js) runestone-js(154,56) | renegotiable despite the hits: rs-css is ONE rule (`.multiplechoice_section label>.para{display:inline}` in prefix-919 — compensate with a `label>p` rule); pretext-core only *generates* `.para` divs in knowl-error markup; read-aloud has bare `p` in its CONTAINER_SELECTOR (its `div.para` entry is dead legacy) — segmentation + math speech verified live 2026-08-09 via PTXReadAloud.collect(); the 56-bundle hit is Portuguese prose ("para resolver") |
 | `previous-button` | 204 | 1 |  |  |
 | `ptx-backmatter-heading` | 1 | 1 |  |  |
 | `ptx-banner` | 102 | 4 |  |  |
