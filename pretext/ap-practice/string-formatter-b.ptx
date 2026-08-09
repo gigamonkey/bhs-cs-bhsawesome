@@ -39,16 +39,14 @@
   <subsection xml:id="part-b-1">
     <title>Part B</title>
 
-    <p>
-      <ol marker="a">
-        <li>
-          <p>
-            Write the <c>StringFormatter</c> method <c>basicGapWidth</c>, which
-            returns the basic gap width as defined above.
-          </p>
-        </li>
-      </ol>
-    </p>
+    <ol marker="a">
+      <li>
+        <p>
+          Write the <c>StringFormatter</c> method <c>basicGapWidth</c>, which
+          returns the basic gap width as defined above.
+        </p>
+      </li>
+    </ol>
 
     <figure align="center">
       <image source="Unit4-Data-Collections/Figures/2016FRQ4B1.png" width="100%" />

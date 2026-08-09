@@ -629,32 +629,29 @@
 
     <activity label="TurtleTestMethods1">
       <statement>
-        <p>
-          <ol>
-            <li>
-              <p>
-                Can you make yertle draw a square and change the pen color for
-                each side of the square? Try something like:
-                yertle.setColor(Color.red); This uses the <url
-                href="https://docs.oracle.com/en/java/javase/26/docs/api/java.desktop/java/awt/Color.html">Color</url>
-                class in Java which has some colors predefined like red, yellow,
-                blue, magenta, cyan. You can also use more specific methods like
-                setPenColor, setBodyColor, and setShellColor.
-              </p>
-            </li>
+        <ol>
+          <li>
+            <p>
+              Can you make yertle draw a square and change the pen color for
+              each side of the square? Try something like:
+              yertle.setColor(Color.red); This uses the <url
+              href="https://docs.oracle.com/en/java/javase/26/docs/api/java.desktop/java/awt/Color.html">Color</url>
+              class in Java which has some colors predefined like red, yellow,
+              blue, magenta, cyan. You can also use more specific methods like
+              setPenColor, setBodyColor, and setShellColor.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                Can you draw a triangle? The turnRight() method always does 90
-                degree turns, but you’ll need external angles of 120 degree for
-                an equilateral triangle. Use the turn method which has a
-                parameter for the angle of the turn in degrees. For example,
-                turn(90) is the same as turnRight(). Try drawing a triangle with
-                different colors.
-              </p>
-            </li>
-          </ol>
-        </p>
+          <li>
+            <p>
+              Can you draw a triangle? The turnRight() method always does 90
+              degree turns, but you’ll need external angles of 120 degree for an
+              equilateral triangle. Use the turn method which has a parameter
+              for the angle of the turn in degrees. For example, turn(90) is the
+              same as turnRight(). Try drawing a triangle with different colors.
+            </p>
+          </li>
+        </ol>
       </statement>
 
       <program interactive="activecode" datafile="turtleClasses.jar,turtleClasses2.jar">
@@ -938,70 +935,67 @@
   <subsection xml:id="summary-3">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.12.A.1) A <term>class</term> defines a new data type (a
-            classification). It is the formal implementation, or blueprint, of
-            the <em>attributes</em> and <em>behaviors</em> of the objects of
-            that class.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.12.A.1) A <term>class</term> defines a new data type (a
+          classification). It is the formal implementation, or blueprint, of the
+          <em>attributes</em> and <em>behaviors</em> of the objects of that
+          class.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.12.A.1) An <term>object</term> is a specific
-            <term>instance</term> of a class with defined attributes. Objects
-            are declared as variables of a class type.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.12.A.1) An <term>object</term> is a specific
+          <term>instance</term> of a class with defined attributes. Objects are
+          declared as variables of a class type.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.12.B.1) A variable of a reference type holds an object
-            reference, which can be thought of as the memory address of that
-            object.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.12.B.1) A variable of a reference type holds an object
+          reference, which can be thought of as the memory address of that
+          object.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            An <term>attribute</term> or <term>instance variable</term> is data
-            the object knows about itself. For example a turtle object knows the
-            direction it is facing or its color.
-          </p>
-        </li>
+      <li>
+        <p>
+          An <term>attribute</term> or <term>instance variable</term> is data
+          the object knows about itself. For example a turtle object knows the
+          direction it is facing or its color.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            A <term>behavior</term> or <term>method</term> is something that an
-            object can do. For example a turtle object can go forward 100
-            pixels.
-          </p>
-        </li>
+      <li>
+        <p>
+          A <term>behavior</term> or <term>method</term> is something that an
+          object can do. For example a turtle object can go forward 100 pixels.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.12.A.2) A <term>class hierarchy</term> can be developed by
-            putting common attributes and behaviors of related classes into a
-            single class called a <term>superclass</term>. Classes that
-            <term>extend</term> a superclass, called <term>subclasses</term>,
-            can draw upon the existing attributes and behaviors of the
-            superclass without replacing these in the code. This creates an
-            <term>inheritance</term> relationship from the subclasses to the
-            superclass. Designing and implementing inheritance relationships are
-            outside the scope of the AP Computer Science A course and exam.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.12.A.2) A <term>class hierarchy</term> can be developed by
+          putting common attributes and behaviors of related classes into a
+          single class called a <term>superclass</term>. Classes that
+          <term>extend</term> a superclass, called <term>subclasses</term>, can
+          draw upon the existing attributes and behaviors of the superclass
+          without replacing these in the code. This creates an
+          <term>inheritance</term> relationship from the subclasses to the
+          superclass. Designing and implementing inheritance relationships are
+          outside the scope of the AP Computer Science A course and exam.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.12.A.2) All classes in Java are subclasses of the
-            <term>Object</term> class.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 1.12.A.2) All classes in Java are subclasses of the
+          <term>Object</term> class.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

@@ -437,50 +437,47 @@
       href="community-challenge.html">lesson</url> at the end of the unit.
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>
-            Make your own copy of this <url
-            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
-            from the File menu. For question 1, brainstorm and ask people in
-            your community what would be important or useful for them to track
-            in a community organization or activity or to help your community.
-            For example, you could create a Java class to keep track of
-            community events, club activities, athletic games or statistics,
-            community leaders, performers or performances, health tracking, or
-            another subject of your choice.
-          </p>
-        </li>
+    <ol>
+      <li>
+        <p>
+          Make your own copy of this <url
+          href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
+          from the File menu. For question 1, brainstorm and ask people in your
+          community what would be important or useful for them to track in a
+          community organization or activity or to help your community. For
+          example, you could create a Java class to keep track of community
+          events, club activities, athletic games or statistics, community
+          leaders, performers or performances, health tracking, or another
+          subject of your choice.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Come up with the class name for your community data-tracking class
-            (it should be a category of people or things, not a specific person
-            or thing). Come up with at least 3 instance variables that are
-            attributes of things in that class. Think about what data type each
-            variable should be.You can use the <url
-            href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
-            to design your class. Optionally, you may want to draw a UML class
-            diagram for your class on paper or using <url
-            href="https://app.diagrams.net/">app.diagrams.net</url> or <url
-            href="https://creately.com">Creately.com</url> (see <url
-            href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
-            on class diagrams</url>).
-          </p>
-        </li>
+      <li>
+        <p>
+          Come up with the class name for your community data-tracking class (it
+          should be a category of people or things, not a specific person or
+          thing). Come up with at least 3 instance variables that are attributes
+          of things in that class. Think about what data type each variable
+          should be.You can use the <url
+          href="https://docs.google.com/document/d/11QMyHAZYhPwNLInhURqkTffeY9re05yH97xAsiSJhLg/edit?usp=sharing">worksheet</url>
+          to design your class. Optionally, you may want to draw a UML class
+          diagram for your class on paper or using <url
+          href="https://app.diagrams.net/">app.diagrams.net</url> or <url
+          href="https://creately.com">Creately.com</url> (see <url
+          href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
+          on class diagrams</url>).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Type in your class name and declare the instance variables for your
-            class in the active code exercise below. Click on run. Your class
-            will not print out anything yet, but it should run without errors.
-            You will add constructors and other methods to this class in the
-            next lessons.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          Type in your class name and declare the instance variables for your
+          class in the active code exercise below. Click on run. Your class will
+          not print out anything yet, but it should run without errors. You will
+          add constructors and other methods to this class in the next lessons.
+        </p>
+      </li>
+    </ol>
 
     <project label="community-challenge1">
       <statement>

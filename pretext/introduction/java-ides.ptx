@@ -55,40 +55,37 @@
 
     <p>Here are some popular online IDEs:</p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Replit (<url href="https://replit.com/">https://replit.com/</url>)
-            an online IDE which recently switched to only allowing 3 projects at
-            a time for free. Be aware that Replit has turned on its AI feature
-            for code completion for all accounts (<url
-            href="https://replit.com/ai">https://replit.com/ai</url>). Each user
-            can turn the AI on and off at the bottom of the code window, and use
-            an AI chat window to ask questions of the AI.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Replit (<url href="https://replit.com/">https://replit.com/</url>) an
+          online IDE which recently switched to only allowing 3 projects at a
+          time for free. Be aware that Replit has turned on its AI feature for
+          code completion for all accounts (<url
+          href="https://replit.com/ai">https://replit.com/ai</url>). Each user
+          can turn the AI on and off at the bottom of the code window, and use
+          an AI chat window to ask questions of the AI.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            JuiceMind (<url
-            href="https://juicemind.com/">https://juicemind.com/</url>) is an
-            online IDE that offers many free and paid features for teachers to
-            set up classrooms like Coding Rooms. It has a built-in version of
-            CSAwesome.
-          </p>
-        </li>
+      <li>
+        <p>
+          JuiceMind (<url
+          href="https://juicemind.com/">https://juicemind.com/</url>) is an
+          online IDE that offers many free and paid features for teachers to set
+          up classrooms like Coding Rooms. It has a built-in version of
+          CSAwesome.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            PickCode (<url
-            href="https://pickcode.io/">https://pickcode.io/</url>) is another
-            online IDE that offers many free and paid features for setting up
-            classrooms.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          PickCode (<url href="https://pickcode.io/">https://pickcode.io/</url>)
+          is another online IDE that offers many free and paid features for
+          setting up classrooms.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection>

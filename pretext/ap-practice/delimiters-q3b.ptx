@@ -14,24 +14,22 @@
       otherwise they are not balanced.
     </p>
 
-    <p>
-      <ol marker="1">
-        <li>
-          <p>
-            When traversing the <c>ArrayList</c> from the first element to the
-            last element, there is no point at which there are more close
-            delimiters than open delimiters at or before that point.
-          </p>
-        </li>
+    <ol marker="1">
+      <li>
+        <p>
+          When traversing the <c>ArrayList</c> from the first element to the
+          last element, there is no point at which there are more close
+          delimiters than open delimiters at or before that point.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            the total number of open delimiters is equal to the total number of
-            close delimiters.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          the total number of open delimiters is equal to the total number of
+          close delimiters.
+        </p>
+      </li>
+    </ol>
 
     <p>
       Consider a <c>Delimiters</c> object for which
@@ -173,25 +171,23 @@
       otherwise they are not balanced.
     </p>
 
-    <p>
-      <ol marker="1">
-        <li>
-          <p>
-            When traversing the <c>ArrayList&lt;String&gt; delimiters</c> from
-            the first element to the last element, there is no point at which
-            there are more close delimiters than open delimiters at or before
-            that point.
-          </p>
-        </li>
+    <ol marker="1">
+      <li>
+        <p>
+          When traversing the <c>ArrayList&lt;String&gt; delimiters</c> from the
+          first element to the last element, there is no point at which there
+          are more close delimiters than open delimiters at or before that
+          point.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            the total number of open delimiters is equal to the total number of
-            close delimiters.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          the total number of open delimiters is equal to the total number of
+          close delimiters.
+        </p>
+      </li>
+    </ol>
 
     <activity label="delim_algorithm_partb">
       <statement>
@@ -348,24 +344,22 @@
       otherwise they are not balanced.
     </p>
 
-    <p>
-      <ol marker="1">
-        <li>
-          <p>
-            When traversing the <c>ArrayList</c> from the first element to the
-            last element, there is no point at which there are more close
-            delimiters than open delimiters at or before that point.
-          </p>
-        </li>
+    <ol marker="1">
+      <li>
+        <p>
+          When traversing the <c>ArrayList</c> from the first element to the
+          last element, there is no point at which there are more close
+          delimiters than open delimiters at or before that point.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            the total number of open delimiters is equal to the total number of
-            close delimiters.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          the total number of open delimiters is equal to the total number of
+          close delimiters.
+        </p>
+      </li>
+    </ol>
 
     <activity label="frq2019Q3B-delim">
       <statement>

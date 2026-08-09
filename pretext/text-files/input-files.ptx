@@ -115,36 +115,34 @@
       Quick Reference</url>.
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <c>nextInt</c> - reads the next bit of text and tries to parse it as
-          an <c>int</c> value.
-        </li>
+    <ul>
+      <li>
+        <c>nextInt</c> - reads the next bit of text and tries to parse it as an
+        <c>int</c> value.
+      </li>
 
-        <li>
-          <c>nextDouble</c> - reads the next bit of text and tries to parse it
-          as a <c>double</c> value.
-        </li>
+      <li>
+        <c>nextDouble</c> - reads the next bit of text and tries to parse it as
+        a <c>double</c> value.
+      </li>
 
-        <li>
-          <c>nextBoolean</c> - reads the next bit of text and tries to parse it
-          as a <c>boolean</c> value.
-        </li>
+      <li>
+        <c>nextBoolean</c> - reads the next bit of text and tries to parse it as
+        a <c>boolean</c> value.
+      </li>
 
-        <li>
-          <c>next</c> - reads and return the next <term>token</term> as a
-          <c>String</c>
-        </li>
+      <li>
+        <c>next</c> - reads and return the next <term>token</term> as a
+        <c>String</c>
+      </li>
 
-        <li><c>hasNext</c> - returns true if there is another token to read</li>
+      <li><c>hasNext</c> - returns true if there is another token to read</li>
 
-        <li>
-          <c>close</c> - closes the <c>Scanner</c> and the underlying file so no
-          more data can be read from it
-        </li>
-      </ul>
-    </p>
+      <li>
+        <c>close</c> - closes the <c>Scanner</c> and the underlying file so no
+        more data can be read from it
+      </li>
+    </ul>
 
     <p>
       In practice the methods other than <c>nextLine</c> are tricky to use

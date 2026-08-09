@@ -31,24 +31,22 @@
       in passing in the Introduction.
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>System.out.println(value)</c> prints the textual representation
-            of value followed by a new line (<c>println</c> is an abbreviation
-            for “print line”.)
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          <c>System.out.println(value)</c> prints the textual representation of
+          value followed by a new line (<c>println</c> is an abbreviation for
+          “print line”.)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>System.out.print(value)</c> prints the textual representation of
-            value without advancing to the next line
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          <c>System.out.print(value)</c> prints the textual representation of
+          value without advancing to the next line
+        </p>
+      </li>
+    </ul>
 
     <p>
       The <em>value</em> between the parentheses can be any Java
@@ -420,52 +418,50 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.3.A.1) <c>System.out.print</c> and <c>System.out.println</c>
-            are Java output statements that display information on the computer
-            screen. <c>System.out.println</c> moves the cursor to a new line
-            after the information has been displayed, while
-            <c>System.out.print</c> does not.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.3.A.1) <c>System.out.print</c> and <c>System.out.println</c> are
+          Java output statements that display information on the computer
+          screen. <c>System.out.println</c> moves the cursor to a new line after
+          the information has been displayed, while <c>System.out.print</c> does
+          not.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.B.1) A <term>literal</term> is the code representation of a
-            fixed value, which can be a string or a numerical value.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.B.1) A <term>literal</term> is the code representation of a
+          fixed value, which can be a string or a numerical value.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.B.2) A <term>string literal</term> is a sequence of zero to
-            many characters enclosed in starting and ending double quotes.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.B.2) A <term>string literal</term> is a sequence of zero to
+          many characters enclosed in starting and ending double quotes.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.B.3) <term>Escape sequences</term> are special sequences of
-            characters that can be included in a string. They start with a
-            <c>\</c> and have a special meaning in Java. Escape sequences used
-            in this course include double quote <c>"</c> , backslash <c>\</c> ,
-            and newline <c>n</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.B.3) <term>Escape sequences</term> are special sequences of
+          characters that can be included in a string. They start with a
+          <c>\</c> and have a special meaning in Java. Escape sequences used in
+          this course include double quote <c>"</c> , backslash <c>\</c> , and
+          newline <c>n</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.4.B.1) Input can come in a variety of forms, such as tactile,
-            audio, visual, or text. The <c>Scanner</c> class is one way to
-            obtain text input from the keyboard, although input from the
-            keyboard will not be on the AP exam.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 1.4.B.1) Input can come in a variety of forms, such as tactile,
+          audio, visual, or text. The <c>Scanner</c> class is one way to obtain
+          text input from the keyboard, although input from the keyboard will
+          not be on the AP exam.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-7">
@@ -487,10 +483,8 @@
       <choices>
         <choice>
           <statement id="AP1-3-1_opt_a">
-            <p>
-              <pre>Java is fun and cool!
-              </pre>
-            </p>
+            <pre>Java is fun and cool!
+            </pre>
           </statement>
 
           <feedback id="AP1-3-1_opt_a">
@@ -500,11 +494,9 @@
 
         <choice>
           <statement id="AP1-3-1_opt_b">
-            <p>
-              <pre>Java isfun
+            <pre>Java isfun
 and cool!
-              </pre>
-            </p>
+            </pre>
           </statement>
 
           <feedback id="AP1-3-1_opt_b">
@@ -514,12 +506,10 @@ and cool!
 
         <choice>
           <statement id="AP1-3-1_opt_c">
-            <p>
-              <pre>Java is
+            <pre>Java is
 fun
 and cool!
-              </pre>
-            </p>
+            </pre>
           </statement>
 
           <feedback id="AP1-3-1_opt_c">
@@ -529,11 +519,9 @@ and cool!
 
         <choice correct="yes">
           <statement id="AP1-3-1_opt_d">
-            <p>
-              <pre>Java is fun
+            <pre>Java is fun
 and cool!
-              </pre>
-            </p>
+            </pre>
           </statement>
 
           <feedback id="AP1-3-1_opt_d">

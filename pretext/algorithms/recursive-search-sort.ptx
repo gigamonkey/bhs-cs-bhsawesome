@@ -338,25 +338,23 @@
       array <c>{86, 3, 43, 5}</c> from the code above.
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>Split 1: { { 86, 3 } , { 43, 5 } }</p>
-        </li>
+    <ol>
+      <li>
+        <p>Split 1: { { 86, 3 } , { 43, 5 } }</p>
+      </li>
 
-        <li>
-          <p>Split 2: { { { 86 }, { 3 } } , { { 43 }, { 5 }} }</p>
-        </li>
+      <li>
+        <p>Split 2: { { { 86 }, { 3 } } , { { 43 }, { 5 }} }</p>
+      </li>
 
-        <li>
-          <p>Merge 1: { { 3, 86 }, { 5, 43 } }</p>
-        </li>
+      <li>
+        <p>Merge 1: { { 3, 86 }, { 5, 43 } }</p>
+      </li>
 
-        <li>
-          <p>Merge 2: { 3, 5, 43, 86 }</p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>Merge 2: { 3, 5, 43, 86 }</p>
+      </li>
+    </ol>
 
     <activity label="qms_1">
       <statement>
@@ -481,57 +479,54 @@
   <subsection xml:id="summary-43">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.17.A.1) Recursion can be used to traverse <c>String</c>
-            objects, arrays, and <c>ArrayList</c> objects.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 4.17.A.1) Recursion can be used to traverse <c>String</c> objects,
+          arrays, and <c>ArrayList</c> objects.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.17.B.1) Data must be in sorted order to use the binary search
-            algorithm. <term>Binary search</term> starts at the middle of a
-            sorted array or <c>ArrayList</c> and eliminates half of the array or
-            <c>ArrayList</c> in each recursive call until the desired value is
-            found or all elements have been eliminated.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.17.B.1) Data must be in sorted order to use the binary search
+          algorithm. <term>Binary search</term> starts at the middle of a sorted
+          array or <c>ArrayList</c> and eliminates half of the array or
+          <c>ArrayList</c> in each recursive call until the desired value is
+          found or all elements have been eliminated.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.17.B.2) Binary search is typically more efficient than linear
-            search.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.17.B.2) Binary search is typically more efficient than linear
+          search.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.17.B.3) The binary search algorithm can be written either
-            iteratively or recursively.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.17.B.3) The binary search algorithm can be written either
+          iteratively or recursively.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.17.C.1) <term>Merge sort</term> is a recursive sorting
-            algorithm that can be used to sort elements in an array or
-            <c>ArrayList</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.17.C.1) <term>Merge sort</term> is a recursive sorting algorithm
+          that can be used to sort elements in an array or <c>ArrayList</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.17.C.2) Merge sort repeatedly divides an array into smaller
-            sub-arrays until each sub-array is one element and then recursively
-            merges the sorted sub-arrays back together in sorted order to form
-            the final sorted array.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 4.17.C.2) Merge sort repeatedly divides an array into smaller
+          sub-arrays until each sub-array is one element and then recursively
+          merges the sorted sub-arrays back together in sorted order to form the
+          final sorted array.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="summary-and-review-exercises">
@@ -549,24 +544,22 @@
       of the unit.
     </p>
 
-    <p>
-      <ul>
-        <li><url href="recursion-summary.html">Recursion Summary</url></li>
+    <ul>
+      <li><url href="recursion-summary.html">Recursion Summary</url></li>
 
-        <li>
-          <url href="rParsonsPractice.html">Recursion Parsons Practice</url>
-        </li>
+      <li>
+        <url href="rParsonsPractice.html">Recursion Parsons Practice</url>
+      </li>
 
-        <li>
-          <url href="rMixedUpCodePractice.html">Recursion Mixed Up Code Practice</url>
-        </li>
+      <li>
+        <url href="rMixedUpCodePractice.html">Recursion Mixed Up Code Practice</url>
+      </li>
 
-        <li>
-          <url href="recursionCodePractice.html">Recursion Code Practice</url>
-        </li>
+      <li>
+        <url href="recursionCodePractice.html">Recursion Code Practice</url>
+      </li>
 
-        <li><url href="recursion-Exercises.html">Recursion Exercises</url></li>
-      </ul>
-    </p>
+      <li><url href="recursion-Exercises.html">Recursion Exercises</url></li>
+    </ul>
   </subsection>
 </section>

@@ -71,39 +71,36 @@
     Special thanks also to the following people that we have collaborated with:
   </p>
 
-  <p>
-    <ul>
-      <li>
-        <p>
-          Jeff (Jochen) Rick made great contributions to the Parsons problems
-          (mixed up code problems).
-        </p>
-      </li>
+  <ul>
+    <li>
+      <p>
+        Jeff (Jochen) Rick made great contributions to the Parsons problems
+        (mixed up code problems).
+      </p>
+    </li>
 
-      <li>
-        <p>
-          Philip Guo who created the Java Visualizer, which we use in the
-          e-book.
-        </p>
-      </li>
+    <li>
+      <p>
+        Philip Guo who created the Java Visualizer, which we use in the e-book.
+      </p>
+    </li>
 
-      <li>
-        <p>
-          Paul Resnick at the University of Michigan for hosting us all at the
-          summer 2016 hackathon for Runestone Interactive and for his input into
-          the design of the instructor dashboard.
-        </p>
-      </li>
+    <li>
+      <p>
+        Paul Resnick at the University of Michigan for hosting us all at the
+        summer 2016 hackathon for Runestone Interactive and for his input into
+        the design of the instructor dashboard.
+      </p>
+    </li>
 
-      <li>
-        <p>
-          Brad Miller and David Ranum and the students at Luther College, who
-          created the Runestone Interactive platform. Brad Miller has been
-          keeping it going for years.
-        </p>
-      </li>
-    </ul>
-  </p>
+    <li>
+      <p>
+        Brad Miller and David Ranum and the students at Luther College, who
+        created the Runestone Interactive platform. Brad Miller has been keeping
+        it going for years.
+      </p>
+    </li>
+  </ul>
 
   <p>
     Thank you also to the National Science Foundation for supporting our ebook
@@ -135,239 +132,231 @@
 
   <p>Several students at Georgia Tech have helped review the eBook:</p>
 
-  <p>
-    <ul>
-      <li>
-        <p>Emily Cahil</p>
-      </li>
+  <ul>
+    <li>
+      <p>Emily Cahil</p>
+    </li>
 
-      <li>
-        <p>Bre’Ana Deen</p>
-      </li>
+    <li>
+      <p>Bre’Ana Deen</p>
+    </li>
 
-      <li>
-        <p>Kantwon Rogers</p>
-      </li>
+    <li>
+      <p>Kantwon Rogers</p>
+    </li>
 
-      <li>
-        <p>Hemanth Koralla</p>
-      </li>
+    <li>
+      <p>Hemanth Koralla</p>
+    </li>
 
-      <li>
-        <p>Ikenna Omekam</p>
-      </li>
+    <li>
+      <p>Ikenna Omekam</p>
+    </li>
 
-      <li>
-        <p>Gabriel Galarza</p>
-      </li>
+    <li>
+      <p>Gabriel Galarza</p>
+    </li>
 
-      <li>
-        <p>Ja’Quan Taylor</p>
-      </li>
+    <li>
+      <p>Ja’Quan Taylor</p>
+    </li>
 
-      <li>
-        <p>Nimish Todi</p>
-      </li>
+    <li>
+      <p>Nimish Todi</p>
+    </li>
 
-      <li>
-        <p>Ashraf Younis</p>
-      </li>
+    <li>
+      <p>Ashraf Younis</p>
+    </li>
 
-      <li>
-        <p>Sana Ajani</p>
-      </li>
+    <li>
+      <p>Sana Ajani</p>
+    </li>
 
-      <li>
-        <p>Yamini Nambiar</p>
-      </li>
+    <li>
+      <p>Yamini Nambiar</p>
+    </li>
 
-      <li>
-        <p>Andrew Teachout</p>
-      </li>
+    <li>
+      <p>Andrew Teachout</p>
+    </li>
 
-      <li>
-        <p>Sydni Peterson</p>
-      </li>
+    <li>
+      <p>Sydni Peterson</p>
+    </li>
 
-      <li>
-        <p>Bhavika Devnani</p>
-      </li>
+    <li>
+      <p>Bhavika Devnani</p>
+    </li>
 
-      <li>
-        <p>Stephanie Remy</p>
-      </li>
-    </ul>
-  </p>
+    <li>
+      <p>Stephanie Remy</p>
+    </li>
+  </ul>
 
   <p>
     Several students from the University of Michigan have contributed to the
     eBook
   </p>
 
-  <p>
-    <ul>
-      <li>
-        <p>Emma Brown - unit tests</p>
-      </li>
+  <ul>
+    <li>
+      <p>Emma Brown - unit tests</p>
+    </li>
 
-      <li>
-        <p>Emma Pinnell - unit tests</p>
-      </li>
+    <li>
+      <p>Emma Pinnell - unit tests</p>
+    </li>
 
-      <li>
-        <p>Kira Woodhouse - Added Peer Instruction questions</p>
-      </li>
-    </ul>
-  </p>
+    <li>
+      <p>Kira Woodhouse - Added Peer Instruction questions</p>
+    </li>
+  </ul>
 
   <p>
     Several students at the University of California, San Diego have been
     involved in creating multiple choice questions for the EBook.
   </p>
 
-  <p>
-    <ul>
-      <li>
-        <p>Matthew Crooks</p>
-      </li>
+  <ul>
+    <li>
+      <p>Matthew Crooks</p>
+    </li>
 
-      <li>
-        <p>Miranda Go</p>
-      </li>
+    <li>
+      <p>Miranda Go</p>
+    </li>
 
-      <li>
-        <p>Valerie Hon</p>
-      </li>
+    <li>
+      <p>Valerie Hon</p>
+    </li>
 
-      <li>
-        <p>Sophia Krause-Levy</p>
-      </li>
+    <li>
+      <p>Sophia Krause-Levy</p>
+    </li>
 
-      <li>
-        <p>Shauna Sapper</p>
-      </li>
-    </ul>
-  </p>
+    <li>
+      <p>Shauna Sapper</p>
+    </li>
+  </ul>
 
   <p>
     Many others have been involved in the creation of content for the eBook
     (including high school students).
   </p>
 
-  <p>
-    <ul>
-      <li>
-        <p>Atiba Nkosi Kee</p>
-      </li>
+  <ul>
+    <li>
+      <p>Atiba Nkosi Kee</p>
+    </li>
 
-      <li>
-        <p>
-          Robert McKenzie - created videos explaining concepts (arrays,
-          interfaces, searching)
-        </p>
-      </li>
-
-      <li>
-        <p>Nicole Guobadia - created videos explaining concepts (recursion)</p>
-      </li>
-
-      <li>
-        <p>
-          Daniel Boaitey - created free response videos from 2014 questions.
-        </p>
-      </li>
-
-      <li>
-        <p>
-          Christy Zachary - created free response videos and Java executable
-          examples
-        </p>
-      </li>
-
-      <li>
-        <p>Javier Rodriguez - added a new exam (non-timed #1)</p>
-      </li>
-
-      <li>
-        <p>Gabby Jackson - added new exams (non-timed #2, #3, and #4)</p>
-      </li>
-
-      <li>
-        <p>Sofia Moin - added a video on variables</p>
-      </li>
-
-      <li>
-        <p>
-          Gerald Nash - added many free response questions for arrays, 2D
-          arrays, and lists
-        </p>
-      </li>
-
-      <li>
-        <p>
-          Sabrina Seibel - added free response question 4 from 2016 -
-          StringFormatter and added questions to the code practice problems at
-          the end of the 2d array chapter and the OO chapter.
-        </p>
-      </li>
-
-      <li>
-        <p>
-          Julian Hamelberg - worked on free response questions - seating chart A
-          and B
-        </p>
-      </li>
-
-      <li>
-        <p>
-          Christine Hsieh - added mixed up code problems at the end of the array
-          chapter and code practice problems
-        </p>
-      </li>
-
-      <li>
-        <p>Carlos Diaz - fixed problems and added code highlights</p>
-      </li>
-
-      <li>
-        <p>Avery Rosh - found an error in one of the 2D array questions</p>
-      </li>
-
-      <li>
-        <p>JP Fasano - found an error in one of the non-timed exams</p>
-      </li>
-
-      <li>
-        <p>Srikar Yendapally - added code problems to the 2D array chapter</p>
-      </li>
-
-      <li>
-        <p>
-          Kiran Ruston - added new questions to the free response problems at
-          the end of the ebook.
-        </p>
-      </li>
-
-      <li>
-        <p>
-          Arvindh Manian — formatted video interviews into the Stories unit of
-          the ebook
-        </p>
-      </li>
-
-      <li>
-        <p>
-          Sanjana Duttagupta - added Peer Instruction questions from <url
-          href="http://peerinstruction4cs.com/">http://peerinstruction4cs.com/</url>
-        </p>
-      </li>
-      <li>
+    <li>
       <p>
-        Elias Marte Cortes - added toggle code problems from csawesome1 to csawesome2.
+        Robert McKenzie - created videos explaining concepts (arrays,
+        interfaces, searching)
       </p>
-      </li>
-    </ul>
-  </p>
+    </li>
+
+    <li>
+      <p>Nicole Guobadia - created videos explaining concepts (recursion)</p>
+    </li>
+
+    <li>
+      <p>Daniel Boaitey - created free response videos from 2014 questions.</p>
+    </li>
+
+    <li>
+      <p>
+        Christy Zachary - created free response videos and Java executable
+        examples
+      </p>
+    </li>
+
+    <li>
+      <p>Javier Rodriguez - added a new exam (non-timed #1)</p>
+    </li>
+
+    <li>
+      <p>Gabby Jackson - added new exams (non-timed #2, #3, and #4)</p>
+    </li>
+
+    <li>
+      <p>Sofia Moin - added a video on variables</p>
+    </li>
+
+    <li>
+      <p>
+        Gerald Nash - added many free response questions for arrays, 2D arrays,
+        and lists
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Sabrina Seibel - added free response question 4 from 2016 -
+        StringFormatter and added questions to the code practice problems at the
+        end of the 2d array chapter and the OO chapter.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Julian Hamelberg - worked on free response questions - seating chart A
+        and B
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Christine Hsieh - added mixed up code problems at the end of the array
+        chapter and code practice problems
+      </p>
+    </li>
+
+    <li>
+      <p>Carlos Diaz - fixed problems and added code highlights</p>
+    </li>
+
+    <li>
+      <p>Avery Rosh - found an error in one of the 2D array questions</p>
+    </li>
+
+    <li>
+      <p>JP Fasano - found an error in one of the non-timed exams</p>
+    </li>
+
+    <li>
+      <p>Srikar Yendapally - added code problems to the 2D array chapter</p>
+    </li>
+
+    <li>
+      <p>
+        Kiran Ruston - added new questions to the free response problems at the
+        end of the ebook.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Arvindh Manian — formatted video interviews into the Stories unit of the
+        ebook
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Sanjana Duttagupta - added Peer Instruction questions from <url
+        href="http://peerinstruction4cs.com/">http://peerinstruction4cs.com/</url>
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Elias Marte Cortes - added toggle code problems from csawesome1 to
+        csawesome2.
+      </p>
+    </li>
+  </ul>
 
   <p><term>License</term></p>
 
@@ -401,32 +390,30 @@
   </p>
 
   <blockquote>
-    <p>
-      <ul>
-        <li>
-          <p>
-            Redistributions of source code must retain the above copyright
-            notice, this list of conditions and the following disclaimer.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Redistributions of source code must retain the above copyright notice,
+          this list of conditions and the following disclaimer.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Redistributions in binary form must reproduce the above copyright
-            notice, this list of conditions and the following disclaimer in the
-            documentation and/or other materials provided with the distribution.
-          </p>
-        </li>
+      <li>
+        <p>
+          Redistributions in binary form must reproduce the above copyright
+          notice, this list of conditions and the following disclaimer in the
+          documentation and/or other materials provided with the distribution.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Neither the name of the &lt;organization&gt; nor the names of its
-            contributors may be used to endorse or promote products derived from
-            this software without specific prior written permission.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          Neither the name of the &lt;organization&gt; nor the names of its
+          contributors may be used to endorse or promote products derived from
+          this software without specific prior written permission.
+        </p>
+      </li>
+    </ul>
   </blockquote>
 
   <p>

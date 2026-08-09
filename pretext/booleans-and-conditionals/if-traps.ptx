@@ -324,39 +324,37 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Always use braces (<c>{</c> and <c>}</c>) to enclose the body of an
-            <c>if</c> or <c>else</c>, even if it’s just one statement to avoid
-            misleading indentation and errors when you add lines to an existing
-            body.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Always use braces (<c>{</c> and <c>}</c>) to enclose the body of an
+          <c>if</c> or <c>else</c>, even if it’s just one statement to avoid
+          misleading indentation and errors when you add lines to an existing
+          body.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Consistently using braces also prevents dangling elses that don’t
-            pair up with the right <c>if</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          Consistently using braces also prevents dangling elses that don’t pair
+          up with the right <c>if</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Be careful not to put in a semicolon <c>;</c> immediately after the
-            condition in the <c>if</c> even if it is on a line by itself.
-          </p>
-        </li>
+      <li>
+        <p>
+          Be careful not to put in a semicolon <c>;</c> immediately after the
+          condition in the <c>if</c> even if it is on a line by itself.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Avoid using <c>==</c> in the condition of an <c>if</c> statement
-            since it’s easy to mistakenly use an <c>=</c> instead.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          Avoid using <c>==</c> in the condition of an <c>if</c> statement since
+          it’s easy to mistakenly use an <c>=</c> instead.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection>

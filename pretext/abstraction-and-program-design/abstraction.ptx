@@ -208,40 +208,37 @@
       with several benefits:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Avoiding repetition: Putting even small bits of code that are
-            duplicated throughout a program into a method and then replacing the
-            code with calls to the method can make the overall program shorter
-            and easier to understand.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Avoiding repetition: Putting even small bits of code that are
+          duplicated throughout a program into a method and then replacing the
+          code with calls to the method can make the overall program shorter and
+          easier to understand.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Reducing complexity: even methods that are only used once, help
-            divide a program into smaller pieces that are each easier to
-            understand and get correct than one big method that does a lot of
-            things. Smaller methods are easier to debug and understand because
-            they do less.
-          </p>
-        </li>
+      <li>
+        <p>
+          Reducing complexity: even methods that are only used once, help divide
+          a program into smaller pieces that are each easier to understand and
+          get correct than one big method that does a lot of things. Smaller
+          methods are easier to debug and understand because they do less.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Maintainability: very little code is written and never changed. When
-            methods are decomposed and duplicate code removed by putting it into
-            methods it is easier to make changes. If you ever find yourself
-            fixing a bug and having to make the same changes in a bunch of
-            different places in your program that’s a sign that that code should
-            probably have been put into its own method so you could make the fix
-            in one place.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          Maintainability: very little code is written and never changed. When
+          methods are decomposed and duplicate code removed by putting it into
+          methods it is easier to make changes. If you ever find yourself fixing
+          a bug and having to make the same changes in a bunch of different
+          places in your program that’s a sign that that code should probably
+          have been put into its own method so you could make the fix in one
+          place.
+        </p>
+      </li>
+    </ul>
 
     <activity label="OldMacDonaldSongRepeated">
       <statement>
@@ -417,18 +414,16 @@
       Hasbro games):
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            “Buy, sell, dream and scheme your way to riches. Players buy, sell
-            and trade to win. Build houses and hotels on your properties and
-            bankrupt your opponents to win it all. Chance and Community Chest
-            cards can change everything.”
-          </p>
-        </li>
-      </ul>
-    </p>
+    <ul>
+      <li>
+        <p>
+          “Buy, sell, dream and scheme your way to riches. Players buy, sell and
+          trade to win. Build houses and hotels on your properties and bankrupt
+          your opponents to win it all. Chance and Community Chest cards can
+          change everything.”
+        </p>
+      </li>
+    </ul>
 
     <p>
       What classes would you need to create a computer version of this game?
@@ -473,78 +468,76 @@
   <subsection xml:id="summary-27">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 3.1.A.1) <term>Abstraction</term> is the process of reducing
-            complexity by focusing on the main idea. By hiding details
-            irrelevant to the question at hand and bringing together related and
-            useful details, abstraction reduces complexity and allows one to
-            focus on the idea.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 3.1.A.1) <term>Abstraction</term> is the process of reducing
+          complexity by focusing on the main idea. By hiding details irrelevant
+          to the question at hand and bringing together related and useful
+          details, abstraction reduces complexity and allows one to focus on the
+          idea.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.1.A.2) <term>Data abstraction</term> provides a separation
-            between the abstract properties of a data type and the concrete
-            details of its representation. Data abstraction manages complexity
-            by giving data a name without referencing the specific details of
-            the representation. Data can take the form of a single variable or a
-            collection of data, such as in a class or a set of data.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.1.A.2) <term>Data abstraction</term> provides a separation
+          between the abstract properties of a data type and the concrete
+          details of its representation. Data abstraction manages complexity by
+          giving data a name without referencing the specific details of the
+          representation. Data can take the form of a single variable or a
+          collection of data, such as in a class or a set of data.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.1.A.3) An <term>attribute</term> is a type of data abstraction
-            that is defined in a class outside any method or constructor. An
-            <term>instance variable</term> is an attribute whose value is unique
-            to each instance of the class. A <term>class variable</term> is an
-            attribute shared by all instances of the class.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.1.A.3) An <term>attribute</term> is a type of data abstraction
+          that is defined in a class outside any method or constructor. An
+          <term>instance variable</term> is an attribute whose value is unique
+          to each instance of the class. A <term>class variable</term> is an
+          attribute shared by all instances of the class.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.1.A.4) <term>Procedural abstraction</term> provides a name for
-            a process and allows a method to be used only knowing what it does,
-            not how it does it. Through <term>method decomposition</term>, a
-            programmer breaks down larger behaviors of the class into smaller
-            behaviors by creating methods to represent each individual smaller
-            behavior. A procedural abstraction may extract shared features to
-            generalize functionality instead of duplicating code. This allows
-            for code reuse, which helps manage complexity.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.1.A.4) <term>Procedural abstraction</term> provides a name for a
+          process and allows a method to be used only knowing what it does, not
+          how it does it. Through <term>method decomposition</term>, a
+          programmer breaks down larger behaviors of the class into smaller
+          behaviors by creating methods to represent each individual smaller
+          behavior. A procedural abstraction may extract shared features to
+          generalize functionality instead of duplicating code. This allows for
+          code reuse, which helps manage complexity.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.1.A.5) Using parameters allows procedures to be generalized,
-            enabling the procedures to be reused with a range of input values or
-            arguments.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.1.A.5) Using parameters allows procedures to be generalized,
+          enabling the procedures to be reused with a range of input values or
+          arguments.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.1.A.6) Using procedural abstraction in a program allows
-            programmers to change the internals of a method (to make it faster,
-            more efficient, use less storage, etc.) without needing to notify
-            method users of the change as long as the method signature and what
-            the method does is preserved.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.1.A.6) Using procedural abstraction in a program allows
+          programmers to change the internals of a method (to make it faster,
+          more efficient, use less storage, etc.) without needing to notify
+          method users of the change as long as the method signature and what
+          the method does is preserved.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.1.A.7) Prior to implementing a class, it is helpful to take
-            time to design each class including its attributes and behaviors.
-            This design can be represented using natural language or diagrams.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 3.1.A.7) Prior to implementing a class, it is helpful to take time
+          to design each class including its attributes and behaviors. This
+          design can be represented using natural language or diagrams.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

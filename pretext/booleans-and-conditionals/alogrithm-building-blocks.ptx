@@ -420,43 +420,41 @@
   <subsection xml:id="summary-15">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 2.1.A.1) The building blocks of algorithms include sequencing,
-            selection, and repetition.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 2.1.A.1) The building blocks of algorithms include sequencing,
+          selection, and repetition.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.1.A.2) Algorithms can contain selection, through decision
-            making, and repetition, via looping.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.1.A.2) Algorithms can contain selection, through decision
+          making, and repetition, via looping.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.1.A.3) Selection occurs when a choice of how the execution of
-            an algorithm will proceed is based on a true or false decision.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.1.A.3) Selection occurs when a choice of how the execution of an
+          algorithm will proceed is based on a true or false decision.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.1.A.4) Repetition is when a process repeats itself until a
-            desired outcome is reached.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.1.A.4) Repetition is when a process repeats itself until a
+          desired outcome is reached.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.1.A.5) The order in which sequencing, selection, and
-            repetition are used contributes to the outcome of the algorithm.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 2.1.A.5) The order in which sequencing, selection, and repetition
+          are used contributes to the outcome of the algorithm.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

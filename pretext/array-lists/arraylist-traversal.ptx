@@ -790,47 +790,41 @@
 
     <p>Here is the pseudocode for the constructor method.</p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Initialize the <c>allPairs</c> list to an empty <c>ArrayList</c> of
-            <c>WordPair</c> objects.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Initialize the <c>allPairs</c> list to an empty <c>ArrayList</c> of
+          <c>WordPair</c> objects.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Loop through the <c>words</c> array for the first word in the word
-            pair (for loop from index <c>i = 0</c> to <c>length-1</c>)
-          </p>
+      <li>
+        <p>
+          Loop through the <c>words</c> array for the first word in the word
+          pair (for loop from index <c>i = 0</c> to <c>length-1</c>)
+        </p>
 
-          <p>
+        <ul>
+          <li>
+            <p>
+              Loop through the rest of the word array starting from index <c>i +
+              1</c> for the second word in the word pair (for loop from index
+              <c>j = i + 1</c> to <c>length</c>)
+            </p>
+
             <ul>
               <li>
                 <p>
-                  Loop through the rest of the word array starting from index
-                  <c>i + 1</c> for the second word in the word pair (for loop
-                  from index <c>j = i + 1</c> to <c>length</c>)
-                </p>
-
-                <p>
-                  <ul>
-                    <li>
-                      <p>
-                        Add the new <c>WordPair</c> formed from the <c>i</c>th
-                        word and the <c>j</c>th word to the <c>allPairs</c>
-                        <c>ArrayList</c>.
-                      </p>
-                    </li>
-                  </ul>
+                  Add the new <c>WordPair</c> formed from the <c>i</c>th word
+                  and the <c>j</c>th word to the <c>allPairs</c>
+                  <c>ArrayList</c>.
                 </p>
               </li>
             </ul>
-          </p>
-        </li>
-      </ul>
-    </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
     <project label="challenge-WordPairs">
       <statement>
@@ -939,51 +933,48 @@
   <subsection xml:id="summary-50">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.9.A.1) Traversing an <c>ArrayList</c> is when iteration or
-            recursive statements are used to access all or an ordered sequence
-            of the elements in an <c>ArrayList</c>.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 4.9.A.1) Traversing an <c>ArrayList</c> is when iteration or
+          recursive statements are used to access all or an ordered sequence of
+          the elements in an <c>ArrayList</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>ArrayList</c>s can be traversed with an enhanced <c>for</c> loop,
-            a <c>while</c> loop, or a regular <c>for</c> loop using an index.
-          </p>
-        </li>
+      <li>
+        <p>
+          <c>ArrayList</c>s can be traversed with an enhanced <c>for</c> loop, a
+          <c>while</c> loop, or a regular <c>for</c> loop using an index.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.9.A.2) Deleting elements during a traversal of an
-            <c>ArrayList</c> requires the use of special techniques to avoid
-            skipping elements (since <c>remove</c> moves all the elements above
-            the removed index down.)
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.9.A.2) Deleting elements during a traversal of an
+          <c>ArrayList</c> requires the use of special techniques to avoid
+          skipping elements (since <c>remove</c> moves all the elements above
+          the removed index down.)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.9.A.3) Attempting to access an index value outside of its
-            range will result in an <c>IndexOutOfBoundsException</c>. (The
-            indices for an <c>ArrayList</c> start at 0 and end at the number of
-            elements − 1).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.9.A.3) Attempting to access an index value outside of its range
+          will result in an <c>IndexOutOfBoundsException</c>. (The indices for
+          an <c>ArrayList</c> start at 0 and end at the number of elements − 1).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.9.A.4) Changing the size of an <c>ArrayList</c> while
-            traversing it using an enhanced <c>for</c> loop can result in a
-            <c>ConcurrentModificationException</c>. Therefore, when using an
-            enhanced <c>for</c> loop to traverse an <c>ArrayList</c>, you should
-            not add or remove elements.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 4.9.A.4) Changing the size of an <c>ArrayList</c> while traversing
+          it using an enhanced <c>for</c> loop can result in a
+          <c>ConcurrentModificationException</c>. Therefore, when using an
+          enhanced <c>for</c> loop to traverse an <c>ArrayList</c>, you should
+          not add or remove elements.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

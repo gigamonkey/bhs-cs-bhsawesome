@@ -297,95 +297,32 @@
           You are iterating through the <c>inventory</c> <c>ArrayList</c>, and
           <c>currentItem</c> is the <c>ItemInfo</c> object in the current
           iteration. Which of the following condition correctly checks if
-          <c>currentItem</c> is
-          <strong>available</strong>
-          AND its cost is
-          <strong>between <c>lower</c> and <c>upper</c>, inclusive</strong>
-          ?
+          <c>currentItem</c> is <strong>available</strong> AND its cost is
+          <strong>between <c>lower</c> and <c>upper</c>, inclusive</strong> ?
         </p>
       </statement>
 
       <choices>
         <choice>
           <statement>
-            <p>
-              <program language="java">
+            <program language="java">
 
-                <code>
-                  <![CDATA[
-                  currentItem.isAvailable() &&
-                     currentItem.getCost() > lower && currentItem.getCost() < upper
-                  ]]>
-                </code>
+              <code>
+                <![CDATA[
+                currentItem.isAvailable() &&
+                   currentItem.getCost() > lower && currentItem.getCost() < upper
+                ]]>
+              </code>
 
-              </program>
-            </p>
+            </program>
           </statement>
 
           <feedback>
             <p>
               This condition correctly checks if the item is available, but the
               cost range (<c>&gt; lower</c> and <c>&lt; upper</c>) is
-              <strong>exclusive</strong>
-              . The problem requires the range to be
-              <strong>inclusive</strong>
-              , meaning it should include <c>lower</c>
-              and <c>upper</c>.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice>
-          <statement>
-            <p>
-              <program language="java">
-
-                <code>
-                  <![CDATA[
-                  currentItem.isAvailable() ||
-                     (currentItem.getCost() >= lower && currentItem.getCost() <= upper)
-                  ]]>
-                </code>
-
-              </program>
-            </p>
-          </statement>
-
-          <feedback>
-            <p>
-              This condition uses the logical OR operator (<c>||</c>), which
-              means the code block would execute if the item is available OR if
-              its cost is within range, but the problem requires
-              <strong>both</strong>
-              conditions to be true.
-            </p>
-          </feedback>
-        </choice>
-
-        <choice correct="yes">
-          <statement>
-            <p>
-              <program language="java">
-
-                <code>
-                  <![CDATA[
-                  currentItem.isAvailable() &&
-                     currentItem.getCost() >= lower && currentItem.getCost() <= upper
-                  ]]>
-                </code>
-
-              </program>
-            </p>
-          </statement>
-
-          <feedback>
-            <p>
-              Yes, this statement correctly uses the logical AND operator
-              (<c>&amp;&amp;</c>) to combine the availability check with the
-              cost range check. It also correctly uses <c>&gt;=</c> and
-              <c>&lt;=</c> to ensure the range is
-              <strong>inclusive</strong>
-              of
+              <strong>exclusive</strong> . The problem requires the range to be
+              <strong>inclusive</strong> , meaning it should include
               <c>lower</c> and <c>upper</c>.
             </p>
           </feedback>
@@ -393,18 +330,65 @@
 
         <choice>
           <statement>
+            <program language="java">
+
+              <code>
+                <![CDATA[
+                currentItem.isAvailable() ||
+                   (currentItem.getCost() >= lower && currentItem.getCost() <= upper)
+                ]]>
+              </code>
+
+            </program>
+          </statement>
+
+          <feedback>
             <p>
-              <program language="java">
-
-                <code>
-                  <![CDATA[
-                  currentItem.isAvailable() &&
-                    (currentItem.getCost() > lower || currentItem.getCost() < upper)
-                  ]]>
-                </code>
-
-              </program>
+              This condition uses the logical OR operator (<c>||</c>), which
+              means the code block would execute if the item is available OR if
+              its cost is within range, but the problem requires
+              <strong>both</strong> conditions to be true.
             </p>
+          </feedback>
+        </choice>
+
+        <choice correct="yes">
+          <statement>
+            <program language="java">
+
+              <code>
+                <![CDATA[
+                currentItem.isAvailable() &&
+                   currentItem.getCost() >= lower && currentItem.getCost() <= upper
+                ]]>
+              </code>
+
+            </program>
+          </statement>
+
+          <feedback>
+            <p>
+              Yes, this statement correctly uses the logical AND operator
+              (<c>&amp;&amp;</c>) to combine the availability check with the
+              cost range check. It also correctly uses <c>&gt;=</c> and
+              <c>&lt;=</c> to ensure the range is <strong>inclusive</strong> of
+              <c>lower</c> and <c>upper</c>.
+            </p>
+          </feedback>
+        </choice>
+
+        <choice>
+          <statement>
+            <program language="java">
+
+              <code>
+                <![CDATA[
+                currentItem.isAvailable() &&
+                  (currentItem.getCost() > lower || currentItem.getCost() < upper)
+                ]]>
+              </code>
+
+            </program>
           </statement>
 
           <feedback>

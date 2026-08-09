@@ -789,24 +789,22 @@
       <c>String</c> (the second string) by the following scheme:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          If the text of the two strings is the same, <c>compareTo</c> returns
-          zero.
-        </li>
+    <ul>
+      <li>
+        If the text of the two strings is the same, <c>compareTo</c> returns
+        zero.
+      </li>
 
-        <li>
-          If the first string should be ordered before the second string,
-          <c>compareTo</c> returns a negative number.
-        </li>
+      <li>
+        If the first string should be ordered before the second string,
+        <c>compareTo</c> returns a negative number.
+      </li>
 
-        <li>
-          If the first string should be ordered after the second string,
-          <c>compareTo</c> returns a positive number.
-        </li>
-      </ul>
-    </p>
+      <li>
+        If the first string should be ordered after the second string,
+        <c>compareTo</c> returns a positive number.
+      </li>
+    </ul>
 
     <p>
       That may be a bit hard to wrap your head around but this table shows that
@@ -1172,177 +1170,169 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.15.A.1) A <c>String</c> object represents a sequence of
-            characters and can be created by using a string literal.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.15.A.1) A <c>String</c> object represents a sequence of
+          characters and can be created by using a string literal.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.15.A.2) The <c>String</c> class is part of the
-            <c>java.lang</c> package. Classes in the <c>java.lang</c> package
-            are available by default.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.15.A.2) The <c>String</c> class is part of the <c>java.lang</c>
+          package. Classes in the <c>java.lang</c> package are available by
+          default.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            String objects can be created by using string literals (String s =
-            “hi”;) or by calling the String class constructor (String t = new
-            String(“bye”);).
-          </p>
-        </li>
+      <li>
+        <p>
+          String objects can be created by using string literals (String s =
+          “hi”;) or by calling the String class constructor (String t = new
+          String(“bye”);).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.15.A.3) A String object is <term>immutable</term>, meaning
-            once a String object is created, its attributes cannot be changed.
-            Methods called on a String object do not change the content of the
-            String object.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.15.A.3) A String object is <term>immutable</term>, meaning once
+          a String object is created, its attributes cannot be changed. Methods
+          called on a String object do not change the content of the String
+          object.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.15.A.4) Two String objects can be concatenated together or
-            combined using the + or += operator, resulting in a new String
-            object.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.15.A.4) Two String objects can be concatenated together or
+          combined using the + or += operator, resulting in a new String object.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.15.A.4) A primitive value can be concatenated with a String
-            object. This causes the implicit conversion of the primitive value
-            to a String object.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.15.A.4) A primitive value can be concatenated with a String
+          object. This causes the implicit conversion of the primitive value to
+          a String object.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.15.A.5) A String object can be concatenated with any object,
-            which implicitly calls the object’s <c>toString</c> method (a
-            behavior which is guaranteed to exist by the inheritance
-            relationship every class has with the Object class). An object’s
-            <c>toString</c> method returns a string value representing the
-            object. Subclasses of Object often <term>override</term> the
-            toString method with class-specific implementation. Method
-            overriding occurs when a public method in a subclass has the same
-            method signature as a public method in the superclass, but the
-            behavior of the method is specific to the subclass. Overriding the
-            <c>toString</c> method of a class is outside the scope of the AP CSA
-            exam.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.15.A.5) A String object can be concatenated with any object,
+          which implicitly calls the object’s <c>toString</c> method (a behavior
+          which is guaranteed to exist by the inheritance relationship every
+          class has with the Object class). An object’s <c>toString</c> method
+          returns a string value representing the object. Subclasses of Object
+          often <term>override</term> the toString method with class-specific
+          implementation. Method overriding occurs when a public method in a
+          subclass has the same method signature as a public method in the
+          superclass, but the behavior of the method is specific to the
+          subclass. Overriding the <c>toString</c> method of a class is outside
+          the scope of the AP CSA exam.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>index</term> - A number that represents the position of a
-            character in a string. The first character in a string is at index
-            0.
-          </p>
-        </li>
+      <li>
+        <p>
+          <term>index</term> - A number that represents the position of a
+          character in a string. The first character in a string is at index 0.
+        </p>
+      </li>
 
-        <li>
-          <p><term>length</term> - The number of characters in a string.</p>
-        </li>
+      <li>
+        <p><term>length</term> - The number of characters in a string.</p>
+      </li>
 
-        <li>
-          <p>
-            <term>substring</term> - A new string that contains a copy of part
-            of the original string.
-          </p>
-        </li>
+      <li>
+        <p>
+          <term>substring</term> - A new string that contains a copy of part of
+          the original string.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.15.B.1) A String object has index values from 0 to one less
-            than the length of the string. Attempting to access indices outside
-            this range will result in an <c>IndexOutOfBoundsException</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.15.B.1) A String object has index values from 0 to one less than
+          the length of the string. Attempting to access indices outside this
+          range will result in an <c>IndexOutOfBoundsException</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.15.B.2) The following String methods and constructors,
-            including what they do and when they are used, are part of the <url
-            href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
-            CSA Java Quick Reference Sheet</url> that you can use during the
-            exam:
-          </p>
+      <li>
+        <p>
+          (AP 1.15.B.2) The following String methods and constructors, including
+          what they do and when they are used, are part of the <url
+          href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
+          CSA Java Quick Reference Sheet</url> that you can use during the exam:
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>
-                  <term>String(String str)</term> : Constructs a new String
-                  object that represents the same sequence of characters as str.
-                </p>
-              </li>
+        <ul>
+          <li>
+            <p>
+              <term>String(String str)</term> : Constructs a new String object
+              that represents the same sequence of characters as str.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>int length()</term> : returns the number of characters
-                  in a String object.
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>int length()</term> : returns the number of characters in a
+              String object.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>String substring(int from, int to)</term> : returns the
-                  substring beginning at index from and ending at index (to -1).
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>String substring(int from, int to)</term> : returns the
+              substring beginning at index from and ending at index (to -1).
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>String substring(int from)</term> : returns
-                  substring(from, length()).
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>String substring(int from)</term> : returns substring(from,
+              length()).
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>int indexOf(String str)</term> : searches for str in the
-                  current string and returns the index of the first occurrence
-                  of str; returns -1 if not found.
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>int indexOf(String str)</term> : searches for str in the
+              current string and returns the index of the first occurrence of
+              str; returns -1 if not found.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>boolean equals(Object other)</term> : returns true if
-                  this (the calling object) is equal to other; returns false
-                  otherwise. Using the equals method to compare one String
-                  object with an object of a type other than String is outside
-                  the scope of the AP CSA exam.
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>boolean equals(Object other)</term> : returns true if this
+              (the calling object) is equal to other; returns false otherwise.
+              Using the equals method to compare one String object with an
+              object of a type other than String is outside the scope of the AP
+              CSA exam.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>int compareTo(String other)</term> : returns a value
-                  &lt; 0 if this is less than other; returns zero if this is
-                  equal to other; returns a value &gt; 0 if this is greater than
-                  other. Strings are ordered based upon the alphabet.
-                </p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p>
+              <term>int compareTo(String other)</term> : returns a value &lt; 0
+              if this is less than other; returns zero if this is equal to
+              other; returns a value &gt; 0 if this is greater than other.
+              Strings are ordered based upon the alphabet.
+            </p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            <c>str.substring(index, index + 1)</c> returns a single character at
-            index in string <c>str</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          <c>str.substring(index, index + 1)</c> returns a single character at
+          index in string <c>str</c>.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection>

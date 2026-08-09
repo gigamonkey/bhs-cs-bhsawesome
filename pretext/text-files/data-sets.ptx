@@ -264,23 +264,21 @@
       values. They are <c>Integer.parseInt</c> and <c>Double.parseDouble</c>.
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>static int parseInt(String s)</c> returns the <c>String</c>
-            argument as a signed <c>int</c>.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          <c>static int parseInt(String s)</c> returns the <c>String</c>
+          argument as a signed <c>int</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>static double parseDouble(String s)</c> returns the <c>String</c>
-            argument as a signed <c>double</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          <c>static double parseDouble(String s)</c> returns the <c>String</c>
+          argument as a signed <c>double</c>.
+        </p>
+      </li>
+    </ul>
 
     <p>
       These methods are also listed on the Java Quick Reference Sheet provided
@@ -607,43 +605,41 @@
       section above as a guide to:
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>
-            Design a class for the input file that you have chosen. Choose at
-            least 3 attributes that can be found in the file for your class.
-            Write a constructor that takes in these attributes as parameters and
-            saves them into instance variables. You may need to add some getters
-            and a <c>toString</c> method as well.
-          </p>
-        </li>
+    <ol>
+      <li>
+        <p>
+          Design a class for the input file that you have chosen. Choose at
+          least 3 attributes that can be found in the file for your class. Write
+          a constructor that takes in these attributes as parameters and saves
+          them into instance variables. You may need to add some getters and a
+          <c>toString</c> method as well.
+        </p>
+      </li>
 
-        <li>
-          <p>Declare an array of your class type.</p>
-        </li>
+      <li>
+        <p>Declare an array of your class type.</p>
+      </li>
 
-        <li>
-          <p>Read in the data from the file.</p>
-        </li>
+      <li>
+        <p>Read in the data from the file.</p>
+      </li>
 
-        <li>
-          <p>
-            Inside a loop, split each line into its attributes and create an
-            object for your class using its constructor. Add the object to the
-            array.
-          </p>
-        </li>
+      <li>
+        <p>
+          Inside a loop, split each line into its attributes and create an
+          object for your class using its constructor. Add the object to the
+          array.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Do something interesting with the data using a loop, for example you
-            could find the maximum or minimum value of an attribute or print out
-            all the objects that have the same attribute value.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          Do something interesting with the data using a loop, for example you
+          could find the maximum or minimum value of an attribute or print out
+          all the objects that have the same attribute value.
+        </p>
+      </li>
+    </ol>
 
     <project label="challenge-file">
       <statement>
@@ -705,206 +701,199 @@
   <subsection xml:id="summary-44">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.2.A.1) A <term>data set</term> is a collection of specific
-            pieces of information or data.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 4.2.A.1) A <term>data set</term> is a collection of specific
+          pieces of information or data.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.2.A.2) Data sets can be manipulated and analyzed to solve a
-            problem or answer a question. When analyzing data sets, values
-            within the set are accessed and utilized one at a time and then
-            processed according to the desired outcome.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.2.A.2) Data sets can be manipulated and analyzed to solve a
+          problem or answer a question. When analyzing data sets, values within
+          the set are accessed and utilized one at a time and then processed
+          according to the desired outcome.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.2.A.3) Data can be represented in a diagram by using a chart
-            or table. This visual can be used to plan the algorithm that will be
-            used to manipulate the data.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.2.A.3) Data can be represented in a diagram by using a chart or
+          table. This visual can be used to plan the algorithm that will be used
+          to manipulate the data.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.1) A <term>file</term> is storage for data that persists
-            when the program is not running. The data in a file can be retrieved
-            during program execution.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.6.A.1) A <term>file</term> is storage for data that persists
+          when the program is not running. The data in a file can be retrieved
+          during program execution.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.2) A file can be connected to the program using the
-            <c>File</c> and <c>Scanner</c> classes.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.6.A.2) A file can be connected to the program using the
+          <c>File</c> and <c>Scanner</c> classes.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.3) A file can be opened by creating a <c>File</c> object,
-            using the name of the file as the argument of the constructor.
-            <c>File(String str)</c> is the <c>File</c> constructor that accepts
-            a <c>String</c> file name to open for reading, where <c>str</c> is
-            the pathname for the file.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.6.A.3) A file can be opened by creating a <c>File</c> object,
+          using the name of the file as the argument of the constructor.
+          <c>File(String str)</c> is the <c>File</c> constructor that accepts a
+          <c>String</c> file name to open for reading, where <c>str</c> is the
+          pathname for the file.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.4) When using the <c>File</c> class, it is required to
-            indicate what to do if the file with the provided name cannot be
-            opened. One way to accomplish this is to add <c>throws
-            IOException</c> to the header of the method that uses the file. If
-            the file name is invalid, the program will terminate.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.6.A.4) When using the <c>File</c> class, it is required to
+          indicate what to do if the file with the provided name cannot be
+          opened. One way to accomplish this is to add <c>throws IOException</c>
+          to the header of the method that uses the file. If the file name is
+          invalid, the program will terminate.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.5) The <c>File</c> and <c>IOException</c> classes are part
-            of the <c>java.io</c> package. An <c>import</c> statement must be
-            used to make these classes available for use in the program.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.6.A.5) The <c>File</c> and <c>IOException</c> classes are part
+          of the <c>java.io</c> package. An <c>import</c> statement must be used
+          to make these classes available for use in the program.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.6) The following <c>Scanner</c> methods and
-            constructor—including what they do and when they are used—are part
-            of the <url
-            href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">Java
-            Quick Reference</url> (p. 2) provided during the AP CSA exam:
-          </p>
+      <li>
+        <p>
+          (AP 4.6.A.6) The following <c>Scanner</c> methods and
+          constructor—including what they do and when they are used—are part of
+          the <url
+          href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">Java
+          Quick Reference</url> (p. 2) provided during the AP CSA exam:
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>
-                  <c>Scanner(File f)</c> the Scanner constructor that accepts a
-                  File for reading.
-                </p>
-              </li>
+        <ul>
+          <li>
+            <p>
+              <c>Scanner(File f)</c> the Scanner constructor that accepts a File
+              for reading.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <c>int nextInt()</c> returns the next int read from the file
-                  or input source. If the next <c>int</c> does not exist, it
-                  will result in an <c>InputMismatchException</c>. Note that
-                  this method does not read the end of the line, so the next
-                  call to <c>nextLine()</c> will return the rest of the line
-                  which will be empty.
-                </p>
-              </li>
+          <li>
+            <p>
+              <c>int nextInt()</c> returns the next int read from the file or
+              input source. If the next <c>int</c> does not exist, it will
+              result in an <c>InputMismatchException</c>. Note that this method
+              does not read the end of the line, so the next call to
+              <c>nextLine()</c> will return the rest of the line which will be
+              empty.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <c>double nextDouble()</c> returns the next double read from
-                  the file or input source. If the next <c>double</c> does not
-                  exist, it will result in an <c>InputMismatchException</c>.
-                </p>
-              </li>
+          <li>
+            <p>
+              <c>double nextDouble()</c> returns the next double read from the
+              file or input source. If the next <c>double</c> does not exist, it
+              will result in an <c>InputMismatchException</c>.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <c>boolean nextBoolean()</c> returns the next Boolean read
-                  from the file or input source. If the next <c>boolean</c> does
-                  not exist, it will result in an <c>InputMismatchException</c>.
-                </p>
-              </li>
+          <li>
+            <p>
+              <c>boolean nextBoolean()</c> returns the next Boolean read from
+              the file or input source. If the next <c>boolean</c> does not
+              exist, it will result in an <c>InputMismatchException</c>.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <c>String nextLine()</c> returns the next line of text up
-                  until the end of the line as a <c>String</c> read from the
-                  file or input source; returns the empty string if called
-                  immediately after another <c>Scanner</c> method like
-                  <c>nextInt</c> that is reading from the file or input
-                  source;returns null if there is no next line.
-                </p>
-              </li>
+          <li>
+            <p>
+              <c>String nextLine()</c> returns the next line of text up until
+              the end of the line as a <c>String</c> read from the file or input
+              source; returns the empty string if called immediately after
+              another <c>Scanner</c> method like <c>nextInt</c> that is reading
+              from the file or input source;returns null if there is no next
+              line.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <c>String next()</c> returns the next String up until a white
-                  space read from the file or input source.
-                </p>
-              </li>
+          <li>
+            <p>
+              <c>String next()</c> returns the next String up until a white
+              space read from the file or input source.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <c>boolean hasNext()</c> returns true if there is a next item
-                  to read in the file or input source; false otherwise.
-                </p>
-              </li>
+          <li>
+            <p>
+              <c>boolean hasNext()</c> returns true if there is a next item to
+              read in the file or input source; false otherwise.
+            </p>
+          </li>
 
-              <li>
-                <p><c>void close()</c> closes the input stream.</p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p><c>void close()</c> closes the input stream.</p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.7) Using <c>nextLine</c> and the other <c>Scanner</c>
-            methods together on the same input source sometimes requires code to
-            adjust for the methods’ different ways of handling whitespace.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.6.A.7) Using <c>nextLine</c> and the other <c>Scanner</c>
+          methods together on the same input source sometimes requires code to
+          adjust for the methods’ different ways of handling whitespace.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.8) The following additional <c>String</c> method—including
-            what it does and when it is used—is part of the <url
-            href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">Java
-            Quick Reference</url> provided during the AP CSA Exam:
-          </p>
+      <li>
+        <p>
+          (AP 4.6.A.8) The following additional <c>String</c> method—including
+          what it does and when it is used—is part of the <url
+          href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">Java
+          Quick Reference</url> provided during the AP CSA Exam:
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>
-                  <c>String[] split(String del)</c> returns a <c>String</c>
-                  array where each element is a substring of <c>this String</c>,
-                  which has been split around matches of the given expression
-                  <c>del</c>.
-                </p>
-              </li>
+        <ul>
+          <li>
+            <p>
+              <c>String[] split(String del)</c> returns a <c>String</c> array
+              where each element is a substring of <c>this String</c>, which has
+              been split around matches of the given expression <c>del</c>.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  For example, <c>String[] data = line.split(",");</c> splits a
-                  line from a csv file along the commas and saves the substrings
-                  into the array <c>data</c>.
-                </p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p>
+              For example, <c>String[] data = line.split(",");</c> splits a line
+              from a csv file along the commas and saves the substrings into the
+              array <c>data</c>.
+            </p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.9) A <c>while</c> loop can be used to detect if the file
-            still contains elements to read by using the <c>hasNext</c> method
-            as the condition of the loop.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.6.A.9) A <c>while</c> loop can be used to detect if the file
+          still contains elements to read by using the <c>hasNext</c> method as
+          the condition of the loop.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.6.A.10) A file should be closed when the program is finished
-            using it. The <c>close</c> method from <c>Scanner</c> is called to
-            close the file.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 4.6.A.10) A file should be closed when the program is finished
+          using it. The <c>close</c> method from <c>Scanner</c> is called to
+          close the file.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

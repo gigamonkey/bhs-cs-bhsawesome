@@ -597,102 +597,94 @@
   <subsection xml:id="summary-48">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            The <c>Integer</c> class and <c>Double</c> class are <term>wrapper
-            classes</term> that create objects from primitive types.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          The <c>Integer</c> class and <c>Double</c> class are <term>wrapper
+          classes</term> that create objects from primitive types.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.7.A.1) The <c>Integer</c> class and <c>Double</c> class are
-            part of the <c>java.lang</c> package.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.7.A.1) The <c>Integer</c> class and <c>Double</c> class are part
+          of the <c>java.lang</c> package.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.7.A.1) An <c>Integer</c> object is immutable, meaning once an
-            <c>Integer</c> object is created, its attributes cannot be changed.
-            A <c>Double</c> object is immutable, meaning once a <c>Double</c>
-            object is created, its attributes cannot be changed.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.7.A.1) An <c>Integer</c> object is immutable, meaning once an
+          <c>Integer</c> object is created, its attributes cannot be changed. A
+          <c>Double</c> object is immutable, meaning once a <c>Double</c> object
+          is created, its attributes cannot be changed.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.7.A.2) <term>Autoboxing</term> is the automatic conversion
-            that the Java compiler makes between primitive types and their
-            corresponding object wrapper classes. This includes converting an
-            <c>int</c> to an <c>Integer</c> and a <c>double</c> to a
-            <c>Double</c>. The Java compiler applies autoboxing when a primitive
-            value is:
-          </p>
+      <li>
+        <p>
+          (AP 4.7.A.2) <term>Autoboxing</term> is the automatic conversion that
+          the Java compiler makes between primitive types and their
+          corresponding object wrapper classes. This includes converting an
+          <c>int</c> to an <c>Integer</c> and a <c>double</c> to a
+          <c>Double</c>. The Java compiler applies autoboxing when a primitive
+          value is:
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>
-                  passed as a parameter to a method that expects an object of
-                  the corresponding wrapper class
-                </p>
-              </li>
+        <ul>
+          <li>
+            <p>
+              passed as a parameter to a method that expects an object of the
+              corresponding wrapper class
+            </p>
+          </li>
 
-              <li>
-                <p>assigned to a variable of the corresponding wrapper class</p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p>assigned to a variable of the corresponding wrapper class</p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.7.A.3) <term>Unboxing</term> is the automatic conversion that
-            the Java compiler makes from the wrapper class to the primitive
-            type. This includes converting an <c>Integer</c> to an <c>int</c>
-            and a <c>Double</c> to a <c>double</c>. The Java compiler applies
-            unboxing when a wrapper class object is:
-          </p>
+      <li>
+        <p>
+          (AP 4.7.A.3) <term>Unboxing</term> is the automatic conversion that
+          the Java compiler makes from the wrapper class to the primitive type.
+          This includes converting an <c>Integer</c> to an <c>int</c> and a
+          <c>Double</c> to a <c>double</c>. The Java compiler applies unboxing
+          when a wrapper class object is:
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>
-                  passed as a parameter to a method that expects a value of the
-                  corresponding primitive type
-                </p>
-              </li>
+        <ul>
+          <li>
+            <p>
+              passed as a parameter to a method that expects a value of the
+              corresponding primitive type
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  assigned to a variable of the corresponding primitive type
-                </p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p>assigned to a variable of the corresponding primitive type</p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.7.A.4) The following class <c>Integer</c> method—including
-            what it does and when it is used—is part of the Java Quick
-            Reference: <c>static int parseInt(String s)</c> returns the
-            <c>String</c> argument as a signed <c>int</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.7.A.4) The following class <c>Integer</c> method—including what
+          it does and when it is used—is part of the Java Quick Reference:
+          <c>static int parseInt(String s)</c> returns the <c>String</c>
+          argument as a signed <c>int</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.7.A.5) The following class <c>Double</c> method—including what
-            it does and when it is used—is part of the Java Quick Reference:
-            <c>static double parseDouble(String s)</c> returns the <c>String</c>
-            argument as a signed <c>double</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 4.7.A.5) The following class <c>Double</c> method—including what
+          it does and when it is used—is part of the Java Quick Reference:
+          <c>static double parseDouble(String s)</c> returns the <c>String</c>
+          argument as a signed <c>double</c>.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

@@ -450,61 +450,59 @@
       declare an specific <c>ArrayList</c>.
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>int size()</c> returns the number of elements in the list. An
-            empty list has size 0.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          <c>int size()</c> returns the number of elements in the list. An empty
+          list has size 0.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>boolean add(E obj)</c> appends <c>obj</c> to the end of the list
-            and returns <c>true</c>
-          </p>
-        </li>
+      <li>
+        <p>
+          <c>boolean add(E obj)</c> appends <c>obj</c> to the end of the list
+          and returns <c>true</c>
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>E get(int index)</c> returns the item in the list at the position
-            <c>index</c>. The <c>index</c> must be a valid index into the list.
-            As with array and <c>String</c> indexes, index of the first item in
-            an <c>ArrayList</c> is <c>0</c> and the last valid index is one less
-            than the <c>size()</c> of the list.
-          </p>
-        </li>
+      <li>
+        <p>
+          <c>E get(int index)</c> returns the item in the list at the position
+          <c>index</c>. The <c>index</c> must be a valid index into the list. As
+          with array and <c>String</c> indexes, index of the first item in an
+          <c>ArrayList</c> is <c>0</c> and the last valid index is one less than
+          the <c>size()</c> of the list.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>E set(int index, E obj)</c> replaces the item at position
-            <c>index</c> with <c>obj</c> which must be a valid index into the
-            list.
-          </p>
-        </li>
+      <li>
+        <p>
+          <c>E set(int index, E obj)</c> replaces the item at position
+          <c>index</c> with <c>obj</c> which must be a valid index into the
+          list.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>E remove(int index)</c> removes the item at the index
-            <c>index</c> and shifts remaining items to the left (to a lower
-            index), returning the removed item. The <c>index</c> argument must
-            be a valid index into the list.
-          </p>
-        </li>
+      <li>
+        <p>
+          <c>E remove(int index)</c> removes the item at the index <c>index</c>
+          and shifts remaining items to the left (to a lower index), returning
+          the removed item. The <c>index</c> argument must be a valid index into
+          the list.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>void add(int index, E obj)</c> moves any objects at positions
-            greater than or equal to <c>index</c> to the right (to a higher
-            indexes) and inserts <c>obj</c> at the position <c>index</c>. The
-            <c>index</c> argument must be a valid index or exactly the
-            <c>size()</c> of the list in which case the item is added at the end
-            of the list.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          <c>void add(int index, E obj)</c> moves any objects at positions
+          greater than or equal to <c>index</c> to the right (to a higher
+          indexes) and inserts <c>obj</c> at the position <c>index</c>. The
+          <c>index</c> argument must be a valid index or exactly the
+          <c>size()</c> of the list in which case the item is added at the end
+          of the list.
+        </p>
+      </li>
+    </ul>
 
     <note>
       <p>
@@ -1066,133 +1064,129 @@
   <subsection xml:id="summary-49">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <term>ArrayLists</term> are re-sizable lists that allow adding and
-            removing items to change their size during run time.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          <term>ArrayLists</term> are re-sizable lists that allow adding and
+          removing items to change their size during run time.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.8.A.4) The <c>ArrayList</c> class is part of the
-            <c>java.util</c> package. An <c>import</c> statement can be used to
-            make this class available for use in the program.(import
-            <c>java.util.ArrayList</c> or <c>java.util.*</c>).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.8.A.4) The <c>ArrayList</c> class is part of the
+          <c>java.util</c> package. An <c>import</c> statement can be used to
+          make this class available for use in the program.(import
+          <c>java.util.ArrayList</c> or <c>java.util.*</c>).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.8.A.1) An <c>ArrayList</c> object is <term>mutable</term> in
-            size and contains object references. (Mutable means that it can
-            change by adding and removing items from it.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.8.A.1) An <c>ArrayList</c> object is <term>mutable</term> in
+          size and contains object references. (Mutable means that it can change
+          by adding and removing items from it.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.8.A.2) The <c>ArrayList</c> constructor <c>ArrayList()</c>
-            constructs an empty list (of size 0).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.8.A.2) The <c>ArrayList</c> constructor <c>ArrayList()</c>
+          constructs an empty list (of size 0).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.8.A.3) Java allows the generic type <c>ArrayList&lt;E&gt;</c>,
-            where the generic type <c>E</c> specifies the type of the elements.
-            (Without it, the type will be <c>Object</c>). When
-            <c>ArrayList&lt;E&gt;</c> is specified, the types of the reference
-            parameters and return type when using its methods are type <c>E</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.8.A.3) Java allows the generic type <c>ArrayList&lt;E&gt;</c>,
+          where the generic type <c>E</c> specifies the type of the elements.
+          (Without it, the type will be <c>Object</c>). When
+          <c>ArrayList&lt;E&gt;</c> is specified, the types of the reference
+          parameters and return type when using its methods are type <c>E</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.8.A.3) <c>ArrayList&lt;E&gt;</c> is preferred over
-            <c>ArrayList</c> (which creates an list of type <c>Object</c>). For
-            example, <c>ArrayList&lt;String&gt; names = new
-            ArrayList&lt;String&gt;();</c> allows the compiler to find errors
-            that would otherwise be found at run time.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.8.A.3) <c>ArrayList&lt;E&gt;</c> is preferred over
+          <c>ArrayList</c> (which creates an list of type <c>Object</c>). For
+          example, <c>ArrayList&lt;String&gt; names = new
+          ArrayList&lt;String&gt;();</c> allows the compiler to find errors that
+          would otherwise be found at run time.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>ArrayList</c>s cannot hold primitive types like <c>int</c> or
-            <c>double</c>, so you must use the wrapper classes <c>Integer</c> or
-            <c>Double</c> to put numerical values into an <c>ArrayList</c>.
-            However autoboxing usually takes care of that for you.
-          </p>
-        </li>
+      <li>
+        <p>
+          <c>ArrayList</c>s cannot hold primitive types like <c>int</c> or
+          <c>double</c>, so you must use the wrapper classes <c>Integer</c> or
+          <c>Double</c> to put numerical values into an <c>ArrayList</c>.
+          However autoboxing usually takes care of that for you.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.8.A.6) The indices for an <c>ArrayList</c> start at <c>0</c>
-            and end at the number of elements <c>- 1</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.8.A.6) The indices for an <c>ArrayList</c> start at <c>0</c> and
+          end at the number of elements <c>- 1</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.8.A.5) The following ArrayList methods, including what they do
-            and when they are used, are part of the Java Quick Reference:
-          </p>
+      <li>
+        <p>
+          (AP 4.8.A.5) The following ArrayList methods, including what they do
+          and when they are used, are part of the Java Quick Reference:
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>
-                  <term>int size()</term> : Returns the number of elements in
-                  the list
-                </p>
-              </li>
+        <ul>
+          <li>
+            <p>
+              <term>int size()</term> : Returns the number of elements in the
+              list
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>boolean add(E obj)</term> : Appends obj to end of list;
-                  returns true
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>boolean add(E obj)</term> : Appends obj to end of list;
+              returns true
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>void add(int index, E obj)</term> : Inserts obj at
-                  position index (0 &lt;= index &lt;= size), moving elements at
-                  position index and higher to the right (adds 1 to their
-                  indices) and adds 1 to size
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>void add(int index, E obj)</term> : Inserts obj at position
+              index (0 &lt;= index &lt;= size), moving elements at position
+              index and higher to the right (adds 1 to their indices) and adds 1
+              to size
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>remove(int index)</term> — Removes element from position
-                  index, moving elements at position index + 1 and higher to the
-                  left (subtracts 1 from their indices) and subtracts 1 from
-                  size; returns the element formerly at position index
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>remove(int index)</term> — Removes element from position
+              index, moving elements at position index + 1 and higher to the
+              left (subtracts 1 from their indices) and subtracts 1 from size;
+              returns the element formerly at position index
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>E get(int index)</term> : Returns the element at
-                  position index in the list
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>E get(int index)</term> : Returns the element at position
+              index in the list
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>E set(int index, E obj)</term> : Replaces the element at
-                  position index with obj; returns the element formerly at
-                  position index
-                </p>
-              </li>
-            </ul>
-          </p>
-        </li>
-      </ul>
-    </p>
+          <li>
+            <p>
+              <term>E set(int index, E obj)</term> : Replaces the element at
+              position index with obj; returns the element formerly at position
+              index
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </subsection>
 </section>

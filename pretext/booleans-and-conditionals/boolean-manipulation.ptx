@@ -178,17 +178,15 @@
 
     <p>In Java, De Morgan’s Laws are written with the following operators:</p>
 
-    <p>
-      <ul>
-        <li>
-          <p><c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c></p>
-        </li>
+    <ul>
+      <li>
+        <p><c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c></p>
+      </li>
 
-        <li>
-          <p><c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c></p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p><c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c></p>
+      </li>
+    </ul>
 
     <p>
       You can probably convince yourself that these are valid with an actual
@@ -592,97 +590,91 @@
   <subsection xml:id="summary-23">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 2.6.A.1) Two Boolean expressions are equivalent if they evaluate
-            to the same value in all cases. Truth tables can be used to prove
-            Boolean expressions are equivalent.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 2.6.A.1) Two Boolean expressions are equivalent if they evaluate
+          to the same value in all cases. Truth tables can be used to prove
+          Boolean expressions are equivalent.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.6.A.2) De Morgan’s Laws can be applied to Boolean expressions
-            to create equivalent ones:
-          </p>
+      <li>
+        <p>
+          (AP 2.6.A.2) De Morgan’s Laws can be applied to Boolean expressions to
+          create equivalent ones:
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p><c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c></p>
-              </li>
+        <ul>
+          <li>
+            <p><c>!(a &amp;&amp; b)</c> is equivalent to <c>!a || !b</c></p>
+          </li>
 
-              <li>
-                <p><c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c></p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p><c>!(a || b)</c> is equivalent to <c>!a &amp;&amp; !b</c></p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            A negated expression with a relational operator can be simplified by
-            flipping the relational operator to its opposite sign.
-          </p>
+      <li>
+        <p>
+          A negated expression with a relational operator can be simplified by
+          flipping the relational operator to its opposite sign.
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p><c>!(c == d)</c> is equivalent to <c>c != d</c></p>
-              </li>
+        <ul>
+          <li>
+            <p><c>!(c == d)</c> is equivalent to <c>c != d</c></p>
+          </li>
 
-              <li>
-                <p><c>!(c != d)</c> is equivalent to <c>c == d</c></p>
-              </li>
+          <li>
+            <p><c>!(c != d)</c> is equivalent to <c>c == d</c></p>
+          </li>
 
-              <li>
-                <p><c>!(c &lt; d)</c> is equivalent to <c>c &gt;= d</c></p>
-              </li>
+          <li>
+            <p><c>!(c &lt; d)</c> is equivalent to <c>c &gt;= d</c></p>
+          </li>
 
-              <li>
-                <p><c>!(c &gt; d)</c> is equivalent to <c>c &lt;= d</c></p>
-              </li>
+          <li>
+            <p><c>!(c &gt; d)</c> is equivalent to <c>c &lt;= d</c></p>
+          </li>
 
-              <li>
-                <p><c>!(c &lt;= d)</c> is equivalent to <c>c &gt; d</c></p>
-              </li>
+          <li>
+            <p><c>!(c &lt;= d)</c> is equivalent to <c>c &gt; d</c></p>
+          </li>
 
-              <li>
-                <p><c>!(c &gt;= d)</c> is equivalent to <c>c &lt; d</c></p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p><c>!(c &gt;= d)</c> is equivalent to <c>c &lt; d</c></p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.6.B.1) Two different variables can hold references to the same
-            object. Object references can be compared using <c>==</c> and
-            <c>!=</c>. (Two object references are considered
-            <term>aliases</term> when they both reference the same object.)
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.6.B.1) Two different variables can hold references to the same
+          object. Object references can be compared using <c>==</c> and
+          <c>!=</c>. (Two object references are considered <term>aliases</term>
+          when they both reference the same object.)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.6.B.2) An object reference can be compared with <c>null</c>,
-            using <c>==</c> or <c>!=</c>, to determine if the reference actually
-            references an object.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.6.B.2) An object reference can be compared with <c>null</c>,
+          using <c>==</c> or <c>!=</c>, to determine if the reference actually
+          references an object.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.6.B.3) Classes often define their own equals method, which can
-            be used to specify the criteria for equivalency for two objects of
-            the class. The equivalency of two objects is most often determined
-            using attributes from the two objects.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 2.6.B.3) Classes often define their own equals method, which can
+          be used to specify the criteria for equivalency for two objects of the
+          class. The equivalency of two objects is most often determined using
+          attributes from the two objects.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-16">

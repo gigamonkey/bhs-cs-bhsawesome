@@ -55,25 +55,23 @@
       pattern has four steps:
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>Initialize the accumulator variable before the loop.</p>
-        </li>
+    <ol>
+      <li>
+        <p>Initialize the accumulator variable before the loop.</p>
+      </li>
 
-        <li>
-          <p>Loop through the values.</p>
-        </li>
+      <li>
+        <p>Loop through the values.</p>
+      </li>
 
-        <li>
-          <p>Update the accumulator variable inside the loop.</p>
-        </li>
+      <li>
+        <p>Update the accumulator variable inside the loop.</p>
+      </li>
 
-        <li>
-          <p>Do something with the accumulated value when the loop is done.</p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>Do something with the accumulated value when the loop is done.</p>
+      </li>
+    </ol>
 
     <p>
       To apply this pattern to summing the elements of an array we just need to
@@ -1323,41 +1321,33 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.5.A.1) There are standard algorithms that utilize array
-            traversals to:
-          </p>
+    <ul>
+      <li>
+        <p>
+          (AP 4.5.A.1) There are standard algorithms that utilize array
+          traversals to:
+        </p>
 
-          <p>
-            <ul>
-              <li>Determine a minimum or maximum value</li>
+        <ul>
+          <li>Determine a minimum or maximum value</li>
 
-              <li>Compute a sum or average</li>
+          <li>Compute a sum or average</li>
 
-              <li>
-                Determine if at least one element has a particular property
-              </li>
+          <li>Determine if at least one element has a particular property</li>
 
-              <li>Determine if all elements have a particular property</li>
+          <li>Determine if all elements have a particular property</li>
 
-              <li>
-                Determine the number of elements having a particular property
-              </li>
+          <li>Determine the number of elements having a particular property</li>
 
-              <li>Access all consecutive pairs of elements</li>
+          <li>Access all consecutive pairs of elements</li>
 
-              <li>Determine the presence or absence of duplicate elements</li>
+          <li>Determine the presence or absence of duplicate elements</li>
 
-              <li>Shift or rotate elements left or right</li>
+          <li>Shift or rotate elements left or right</li>
 
-              <li>Reverse the order of the elements</li>
-            </ul>
-          </p>
-        </li>
-      </ul>
-    </p>
+          <li>Reverse the order of the elements</li>
+        </ul>
+      </li>
+    </ul>
   </subsection>
 </section>

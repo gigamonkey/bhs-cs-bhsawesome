@@ -765,15 +765,13 @@
       the AP exam is:
     </p>
 
-    <p>
-      <ul>
-        <li>Instance variables should always be marked <c>private</c>.</li>
+    <ul>
+      <li>Instance variables should always be marked <c>private</c>.</li>
 
-        <li>Constructors are always <c>public</c>.</li>
+      <li>Constructors are always <c>public</c>.</li>
 
-        <li>Methods are always <c>public</c>.</li>
-      </ul>
-    </p>
+      <li>Methods are always <c>public</c>.</li>
+    </ul>
 
     <p>In reality things are, of course, a bit more complicated.</p>
 
@@ -911,28 +909,26 @@
       just one copy of them.
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>
-            Create a class called <c>Song</c> with two static methods:
-            <c>chorus()</c> and <c>verse()</c>. The chorus method prints out the
-            last two lines of each verse. The verse method takes two parameters,
-            a number and an action, and prints out the verse with the number and
-            action.
-          </p>
-        </li>
+    <ol>
+      <li>
+        <p>
+          Create a class called <c>Song</c> with two static methods:
+          <c>chorus()</c> and <c>verse()</c>. The chorus method prints out the
+          last two lines of each verse. The verse method takes two parameters, a
+          number and an action, and prints out the verse with the number and
+          action.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Add a public static variable called <term>numVerses</term> to the
-            class that keeps track of the number of verses. Increment this
-            variable in the method verse and print it out at the beginning of
-            the verse.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          Add a public static variable called <term>numVerses</term> to the
+          class that keeps track of the number of verses. Increment this
+          variable in the method verse and print it out at the beginning of the
+          verse.
+        </p>
+      </li>
+    </ol>
 
     <project label="antsong-static-challenge">
       <statement>
@@ -974,82 +970,80 @@
   <subsection xml:id="summary-34">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 3.7.A.1) Class methods cannot access or change the values of
-            instance variables or call instance methods without being passed an
-            instance of the class via a parameter.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 3.7.A.1) Class methods cannot access or change the values of
+          instance variables or call instance methods without being passed an
+          instance of the class via a parameter.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.7.A.2) Class methods can access or change the values of class
-            variables and can call other class methods.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.7.A.2) Class methods can access or change the values of class
+          variables and can call other class methods.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.7.B.1) Class variables belong to the class, with all objects
-            of a class sharing a single copy of the class variable. Class
-            variables are designated with the <term>static</term> keyword before
-            the variable type.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.7.B.1) Class variables belong to the class, with all objects of
+          a class sharing a single copy of the class variable. Class variables
+          are designated with the <term>static</term> keyword before the
+          variable type.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.7.B.2) Class variables that are designated <c>public</c> are
-            accessed outside of the class by using the class name and the dot
-            operator, since they are associated with a class, not objects of a
-            class.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.7.B.2) Class variables that are designated <c>public</c> are
+          accessed outside of the class by using the class name and the dot
+          operator, since they are associated with a class, not objects of a
+          class.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.7.B.3) When a variable is declared <c>final</c>, its value
-            cannot be modified.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.7.B.3) When a variable is declared <c>final</c>, its value
+          cannot be modified.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>Scope</term> is defined as where a variable is accessible or
-            can be used.
-          </p>
-        </li>
+      <li>
+        <p>
+          <term>Scope</term> is defined as where a variable is accessible or can
+          be used.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.8.A.1) <term>Local variables</term> are variables declared in
-            the headers or bodies of blocks of code. Local variables can only be
-            accessed in the block in which they are declared.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.8.A.1) <term>Local variables</term> are variables declared in
+          the headers or bodies of blocks of code. Local variables can only be
+          accessed in the block in which they are declared.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.8.A.1) Parameters to constructors or methods are also
-            considered local variables. These variables may only be used within
-            the constructor or method and cannot be declared to be <c>public</c>
-            or <c>private</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.8.A.1) Parameters to constructors or methods are also considered
+          local variables. These variables may only be used within the
+          constructor or method and cannot be declared to be <c>public</c> or
+          <c>private</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.8.A.2) When there is a local variable or parameter with the
-            same name as an instance variable, the variable name will refer to
-            the local variable instead of the instance variable within the body
-            of the constructor or method.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 3.8.A.2) When there is a local variable or parameter with the same
+          name as an instance variable, the variable name will refer to the
+          local variable instead of the instance variable within the body of the
+          constructor or method.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-22">

@@ -500,42 +500,40 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            A <term>syntax error</term> is a mistake in the program where the
-            rules of the programming language are not followed. These errors are
-            detected by the compiler.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          A <term>syntax error</term> is a mistake in the program where the
+          rules of the programming language are not followed. These errors are
+          detected by the compiler.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            A <term>logic error</term> is a mistake in the algorithm or program
-            that causes it to behave incorrectly or unexpectedly. These errors
-            are detected by testing the program with specific data to see if it
-            produces the expected outcome.
-          </p>
-        </li>
+      <li>
+        <p>
+          A <term>logic error</term> is a mistake in the algorithm or program
+          that causes it to behave incorrectly or unexpectedly. These errors are
+          detected by testing the program with specific data to see if it
+          produces the expected outcome.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            A <term>run-time error</term> is a mistake in the program that
-            occurs during the execution of a program. Run-time errors typically
-            cause the program to terminate abnormally.
-          </p>
-        </li>
+      <li>
+        <p>
+          A <term>run-time error</term> is a mistake in the program that occurs
+          during the execution of a program. Run-time errors typically cause the
+          program to terminate abnormally.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            An <term>exception</term> is a type of run-time error that occurs as
-            a result of an unexpected error that was not detected by the
-            compiler. It interrupts the normal flow of the program’s execution.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          An <term>exception</term> is a type of run-time error that occurs as a
+          result of an unexpected error that was not detected by the compiler.
+          It interrupts the normal flow of the program’s execution.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection>

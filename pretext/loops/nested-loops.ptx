@@ -334,64 +334,61 @@
       to work in pairs on this.
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>
-            Complete the code in the active code window below to draw a
-            snowflake of triangles. Remember that triangles have 3 sides and you
-            will need to turn 120 degrees (external angle) 3 times to draw the
-            triangle. Use the <c>turnAmount</c> variable for the single turn
-            after drawing a triangle. How many times did you need to run the
-            outer loop to go all the way around? Try changing the
-            <c>turnAmount</c> variable to 40 to see how many times you need to
-            loop with a wider distance between the triangles.
-          </p>
-        </li>
+    <ol>
+      <li>
+        <p>
+          Complete the code in the active code window below to draw a snowflake
+          of triangles. Remember that triangles have 3 sides and you will need
+          to turn 120 degrees (external angle) 3 times to draw the triangle. Use
+          the <c>turnAmount</c> variable for the single turn after drawing a
+          triangle. How many times did you need to run the outer loop to go all
+          the way around? Try changing the <c>turnAmount</c> variable to 40 to
+          see how many times you need to loop with a wider distance between the
+          triangles.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            In the exercise above, you figured out how many times to run the
-            outer loop to finish the snowflake. You may have noticed that the
-            number of times the loop needs to run is related to the angle you
-            turn before drawing the next triangle. These turns have to add up to
-            360 degrees to go all the way around. Change the outer loop so that
-            it runs the number of times needed by using a formula with the
-            <c>turnAmount</c> variable and 360. Can you draw a snowflake using
-            more or less triangles than before by just changing the
-            <c>turnAmount</c> value?
-          </p>
-        </li>
+      <li>
+        <p>
+          In the exercise above, you figured out how many times to run the outer
+          loop to finish the snowflake. You may have noticed that the number of
+          times the loop needs to run is related to the angle you turn before
+          drawing the next triangle. These turns have to add up to 360 degrees
+          to go all the way around. Change the outer loop so that it runs the
+          number of times needed by using a formula with the <c>turnAmount</c>
+          variable and 360. Can you draw a snowflake using more or less
+          triangles than before by just changing the <c>turnAmount</c> value?
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Create another variable called <c>n</c> for the number of sides in
-            the polygon the inner loop draws. Change the angle in the inner loop
-            to also use a formula with 360 and this new variable. Can you change
-            your snowflake to draw squares or pentagons instead? (Note if this
-            overwhelms the Active Code server and times out, try a larger
-            <c>turnAmount</c>. (Or you can switch to using this <url
-            href="https://replit.com/@BerylHoffman/Java-Swing-Turtle">replit
-            link</url> or your own IDE).
-          </p>
-        </li>
+      <li>
+        <p>
+          Create another variable called <c>n</c> for the number of sides in the
+          polygon the inner loop draws. Change the angle in the inner loop to
+          also use a formula with 360 and this new variable. Can you change your
+          snowflake to draw squares or pentagons instead? (Note if this
+          overwhelms the Active Code server and times out, try a larger
+          <c>turnAmount</c>. (Or you can switch to using this <url
+          href="https://replit.com/@BerylHoffman/Java-Swing-Turtle">replit
+          link</url> or your own IDE).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Let’s add some more color! Add an <c>if</c>/<c>else</c> statement
-            that changes the <url
-            href="https://docs.oracle.com/en/java/javase/26/docs/api/java.desktop/java/awt/Color.html">Color</url>
-            of the pen before the inner loop depending on whether the outer loop
-            variable is odd or even. Remember that even numbers have no
-            remainder when divided by 2.
-          </p>
-        </li>
+      <li>
+        <p>
+          Let’s add some more color! Add an <c>if</c>/<c>else</c> statement that
+          changes the <url
+          href="https://docs.oracle.com/en/java/javase/26/docs/api/java.desktop/java/awt/Color.html">Color</url>
+          of the pen before the inner loop depending on whether the outer loop
+          variable is odd or even. Remember that even numbers have no remainder
+          when divided by 2.
+        </p>
+      </li>
 
-        <li>
-          <p>Be creative and design a unique snowflake!</p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>Be creative and design a unique snowflake!</p>
+      </li>
+    </ol>
 
     <project label="challenge-Turtle-Nested-Loop-Snowflakes">
       <statement>
@@ -449,21 +446,19 @@
   <subsection xml:id="summary-17">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Nested loops are just loops that appear in the body of another loop.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Nested loops are just loops that appear in the body of another loop.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            When a loop is nested inside another loop, the inner loop must
-            complete all its iterations before the outer loop can continue.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          When a loop is nested inside another loop, the inner loop must
+          complete all its iterations before the outer loop can continue.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

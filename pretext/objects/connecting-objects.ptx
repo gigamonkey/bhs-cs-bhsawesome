@@ -1169,48 +1169,46 @@
         <c>Date</c>.
       </p>
 
-      <p>
-        <ol>
-          <li>
-            <p>
-              Create a class called <c>Date</c> with the following instance
-              variables as ints: month, day, and year. Add a constructor,
-              getters, and setters for the instance variables.
-            </p>
-          </li>
+      <ol>
+        <li>
+          <p>
+            Create a class called <c>Date</c> with the following instance
+            variables as ints: month, day, and year. Add a constructor, getters,
+            and setters for the instance variables.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Create a class called <c>Friend</c> with the following instance
-              variables: name and birthdate which is of type <c>Date</c>.
-            </p>
-          </li>
+        <li>
+          <p>
+            Create a class called <c>Friend</c> with the following instance
+            variables: name and birthdate which is of type <c>Date</c>.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Add a constructor that takes 2 parameters and initializes the
-              instance variables, making sure to copy the birthdate parameter
-              object.
-            </p>
-          </li>
+        <li>
+          <p>
+            Add a constructor that takes 2 parameters and initializes the
+            instance variables, making sure to copy the birthdate parameter
+            object.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Add a method called <c>isBirthday</c> that returns true if the
-              birthdate matches the given date parameter.
-            </p>
-          </li>
+        <li>
+          <p>
+            Add a method called <c>isBirthday</c> that returns true if the
+            birthdate matches the given date parameter.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Test your methods in the main method by creating a Friend object
-              with a friend’s name and birthday. Then, create a Date object with
-              today’s date and call the <c>isBirthday</c> method to see if it is
-              the friend’s birthday.
-            </p>
-          </li>
-        </ol>
-      </p>
+        <li>
+          <p>
+            Test your methods in the main method by creating a Friend object
+            with a friend’s name and birthday. Then, create a Date object with
+            today’s date and call the <c>isBirthday</c> method to see if it is
+            the friend’s birthday.
+          </p>
+        </li>
+      </ol>
     </gutterimage>
 
     <project label="challenge-friend-birthday">
@@ -1288,55 +1286,53 @@
 
     <p>For this challenge, you can work in pairs to:</p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Create a class called BankAccount below that keeps track of the
-            account holder’s name, the account number, and the balance in the
-            account. Make sure you use the appropriate data types for these.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Create a class called BankAccount below that keeps track of the
+          account holder’s name, the account number, and the balance in the
+          account. Make sure you use the appropriate data types for these.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Write 2 constructors for the class: one that initializes all the
-            instance variables and one that only has 2 parameters for the name
-            and account number and initializes the balance to 0. For the
-            parameters, use the same variable names as your instance variables.
-            Use the <c>this</c> keyword to distinguish between the instance
-            variables and the parameter variables.
-          </p>
-        </li>
+      <li>
+        <p>
+          Write 2 constructors for the class: one that initializes all the
+          instance variables and one that only has 2 parameters for the name and
+          account number and initializes the balance to 0. For the parameters,
+          use the same variable names as your instance variables. Use the
+          <c>this</c> keyword to distinguish between the instance variables and
+          the parameter variables.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Write a <c>toString</c> method for the class. Use the <c>this</c>
-            keyword to return the instance variables.
-          </p>
-        </li>
+      <li>
+        <p>
+          Write a <c>toString</c> method for the class. Use the <c>this</c>
+          keyword to return the instance variables.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Write <c>withdraw(amount)</c> and <c>deposit(amount)</c> methods for
-            the class. The <c>withdraw</c> method should subtract the amount
-            from the balance as long as there is enough money in the account
-            (the balance is larger than the amount). And <c>deposit</c> should
-            add the amount to the balance. Use the <c>this</c> keyword to refer
-            to the balance.
-          </p>
-        </li>
+      <li>
+        <p>
+          Write <c>withdraw(amount)</c> and <c>deposit(amount)</c> methods for
+          the class. The <c>withdraw</c> method should subtract the amount from
+          the balance as long as there is enough money in the account (the
+          balance is larger than the amount). And <c>deposit</c> should add the
+          amount to the balance. Use the <c>this</c> keyword to refer to the
+          balance.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Test your class below with a <c>main</c> method that creates a
-            <c>BankAccount</c> object and calls its <c>deposit</c> and
-            <c>withdraw</c> methods and prints out the object to test its
-            <c>toString</c> method.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          Test your class below with a <c>main</c> method that creates a
+          <c>BankAccount</c> object and calls its <c>deposit</c> and
+          <c>withdraw</c> methods and prints out the object to test its
+          <c>toString</c> method.
+        </p>
+      </li>
+    </ul>
 
     <project label="challenge-BankAccount">
       <statement>
@@ -1374,75 +1370,72 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 3.4.A.3) When a mutable object is a constructor parameter, the
-            instance variable should be initialized with a copy of the
-            referenced object. In this way, the instance variable does not hold
-            a reference to the original object, and methods are prevented from
-            modifying the state of the original object.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 3.4.A.3) When a mutable object is a constructor parameter, the
+          instance variable should be initialized with a copy of the referenced
+          object. In this way, the instance variable does not hold a reference
+          to the original object, and methods are prevented from modifying the
+          state of the original object.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.6.A.1) When an argument is an object reference, the parameter
-            is initialized with a copy of that reference; it does not create a
-            new independent copy of the object. If the parameter refers to a
-            mutable object, the method or constructor can use this reference to
-            alter the state of the object. It is good programming practice to
-            not modify mutable objects that are passed as parameters unless
-            required in the specification.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.6.A.1) When an argument is an object reference, the parameter is
+          initialized with a copy of that reference; it does not create a new
+          independent copy of the object. If the parameter refers to a mutable
+          object, the method or constructor can use this reference to alter the
+          state of the object. It is good programming practice to not modify
+          mutable objects that are passed as parameters unless required in the
+          specification.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.6.A.2) When the return expression evaluates to an object
-            reference, the reference is returned, not a reference to a new copy
-            of the object.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.6.A.2) When the return expression evaluates to an object
+          reference, the reference is returned, not a reference to a new copy of
+          the object.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.6.A.3) Methods cannot access the private data and methods of a
-            parameter that holds a reference to an object unless the parameter
-            is the same type as the method’s enclosing class.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.6.A.3) Methods cannot access the private data and methods of a
+          parameter that holds a reference to an object unless the parameter is
+          the same type as the method’s enclosing class.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.9.A.1) Within an instance method or a constructor, the keyword
-            <c>this</c> acts as a special variable that holds a reference to the
-            current object—the object whose method or constructor is being
-            called.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.9.A.1) Within an instance method or a constructor, the keyword
+          <c>this</c> acts as a special variable that holds a reference to the
+          current object—the object whose method or constructor is being called.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>this.instanceVariable</c> can be used to distinguish between this
-            object’s instance variables and local parameter variables that may
-            have the same variable names.
-          </p>
-        </li>
+      <li>
+        <p>
+          <c>this.instanceVariable</c> can be used to distinguish between this
+          object’s instance variables and local parameter variables that may
+          have the same variable names.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.9.A.2) The keyword <c>this</c> can be used to pass the current
-            object as an argument in a method call.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.9.A.2) The keyword <c>this</c> can be used to pass the current
+          object as an argument in a method call.
+        </p>
+      </li>
 
-        <li>
-          <p>(AP 3.9.A.3) Class methods do not have a <c>this</c> reference.</p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>(AP 3.9.A.3) Class methods do not have a <c>this</c> reference.</p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection>

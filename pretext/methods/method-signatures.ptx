@@ -1104,124 +1104,121 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.9.A.1) A <term>method</term> is a named block of code that
-            only runs when it is called. A block of code is any section of code
-            that is enclosed in braces.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.9.A.1) A <term>method</term> is a named block of code that only
+          runs when it is called. A block of code is any section of code that is
+          enclosed in braces.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.A.1) <term>Procedural abstraction</term> allows a programmer
-            to use a method by knowing what the method does even if they do not
-            know how the method was written.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.A.1) <term>Procedural abstraction</term> allows a programmer
+          to use a method by knowing what the method does even if they do not
+          know how the method was written.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.B.5) A method call interrupts the sequential execution of
-            statements, causing the program to first execute the statements in
-            the method before continuing. Once the last statement in the method
-            has been executed or a return statement is executed, the flow of
-            control is returned to the point immediately following where the
-            method was called.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.B.5) A method call interrupts the sequential execution of
+          statements, causing the program to first execute the statements in the
+          method before continuing. Once the last statement in the method has
+          been executed or a return statement is executed, the flow of control
+          is returned to the point immediately following where the method was
+          called.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.A.2) A <term>parameter</term> is a variable declared in the
-            header of a method or constructor and can be used inside the body of
-            the method. This allows values or arguments to be passed and used by
-            a method or constructor.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.A.2) A <term>parameter</term> is a variable declared in the
+          header of a method or constructor and can be used inside the body of
+          the method. This allows values or arguments to be passed and used by a
+          method or constructor.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.A.2) A <term>method signature</term> for a method with
-            parameters consists of the method name and the ordered list of
-            parameter types. A method signature for a method without parameters
-            consists of the method name and an empty parameter list.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.A.2) A <term>method signature</term> for a method with
+          parameters consists of the method name and the ordered list of
+          parameter types. A method signature for a method without parameters
+          consists of the method name and an empty parameter list.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.B.3) An <term>argument</term> is a value that is passed into
-            a method when the method is called. The arguments passed to a method
-            must be compatible in number and order with the types identified in
-            the parameter list of the method signature. When calling methods,
-            arguments are passed using call by value.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.B.3) An <term>argument</term> is a value that is passed into a
+          method when the method is called. The arguments passed to a method
+          must be compatible in number and order with the types identified in
+          the parameter list of the method signature. When calling methods,
+          arguments are passed using call by value.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.B.3) <term>Call by value</term> initializes the parameters
-            with copies of the arguments.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.B.3) <term>Call by value</term> initializes the parameters
+          with copies of the arguments.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.B.4) Methods are said to be <term>overloaded</term> when
-            there are multiple methods with the same name but different
-            signatures.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.B.4) Methods are said to be <term>overloaded</term> when there
+          are multiple methods with the same name but different signatures.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.10.A.1) Class methods are associated with the class (not
-            instances of the class which we will see in later lessons).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.10.A.1) Class methods are associated with the class (not
+          instances of the class which we will see in later lessons).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.10.A.2) Class methods include the keyword <term>static</term>
-            in the header before the method name.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.10.A.2) Class methods include the keyword <term>static</term> in
+          the header before the method name.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.B.1) A void method does not have a return value and is
-            therefore not called as part of an expression.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.B.1) A void method does not have a return value and is
+          therefore not called as part of an expression.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.B.2) A <term>non-void method</term> returns a value that is
-            the same type as the <term>return type</term> in the header.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.B.2) A <term>non-void method</term> returns a value that is
+          the same type as the <term>return type</term> in the header.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.9.B.2) To use the return value when calling a non-void method,
-            it must be stored in a variable or used as part of an expression.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.9.B.2) To use the return value when calling a non-void method,
+          it must be stored in a variable or used as part of an expression.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Common errors with methods are mismatches in the order or type of
-            arguments, return values, and forgetting to do something with the
-            value returned from a method. When you call a method that returns a
-            value, you should do something with that value like assigning it to
-            a variable or printing it out.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          Common errors with methods are mismatches in the order or type of
+          arguments, return values, and forgetting to do something with the
+          value returned from a method. When you call a method that returns a
+          value, you should do something with that value like assigning it to a
+          variable or printing it out.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection>

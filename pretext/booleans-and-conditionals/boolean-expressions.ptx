@@ -406,45 +406,42 @@
       it in mind for the following uses:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Checking whether a number is odd or even. If <c>num % 2 != 0</c>
-            then <c>num</c> is odd and if <c>num % 2 == 0</c> then <c>num</c> is
-            even.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Checking whether a number is odd or even. If <c>num % 2 != 0</c> then
+          <c>num</c> is odd and if <c>num % 2 == 0</c> then <c>num</c> is even.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Checking if a number is evenly divisible by any other number: If
-            <c>num1 % num2 == 0</c> is true then <c>num1</c> is evenly divisible
-            by <c>num2</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          Checking if a number is evenly divisible by any other number: If
+          <c>num1 % num2 == 0</c> is true then <c>num1</c> is evenly divisible
+          by <c>num2</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Getting the last digit (one’s place) from an <c>int</c>: <c>num %
-            10</c> gives us the rightmost digit of <c>num</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          Getting the last digit (one’s place) from an <c>int</c>: <c>num %
+          10</c> gives us the rightmost digit of <c>num</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Getting the number of minutes left when you convert a total number
-            of minutes to hours and minutes:
-          </p>
+      <li>
+        <p>
+          Getting the number of minutes left when you convert a total number of
+          minutes to hours and minutes:
+        </p>
 
-          <program>
-            int totalMinutes = 345;
-            int hours = totalMinutes / 60;   // Number of whole hours, i.e. 5
-            int minutes = totalMinutes % 60; // Number of minutes left over, i.e. 45
-          </program>
-        </li>
-      </ul>
-    </p>
+        <program>
+          int totalMinutes = 345;
+          int hours = totalMinutes / 60;   // Number of whole hours, i.e. 5
+          int minutes = totalMinutes % 60; // Number of minutes left over, i.e. 45
+        </program>
+      </li>
+    </ul>
 
     <activity label="boolRem">
       <statement>
@@ -1065,29 +1062,27 @@
       false:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            If two boolean values/expressions are combined with a logical
-            <term>or</term> (<c>||</c>) and the first expression is <c>true</c>,
-            then the second expression won’t be executed, since only one needs
-            to be <c>true</c> for the result to be <c>true</c>.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          If two boolean values/expressions are combined with a logical
+          <term>or</term> (<c>||</c>) and the first expression is <c>true</c>,
+          then the second expression won’t be executed, since only one needs to
+          be <c>true</c> for the result to be <c>true</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            If two boolean values/expressions are combined with a logical
-            <term>and</term> (<c>&amp;&amp;</c>) and the first expression is
-            <c>false</c>, then the second expression won’t be executed. If the
-            first expression is <c>false</c>, the result will be <c>false</c>,
-            since both sides of the <c>&amp;&amp;</c> need to be <c>true</c> for
-            the result to be <c>true</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          If two boolean values/expressions are combined with a logical
+          <term>and</term> (<c>&amp;&amp;</c>) and the first expression is
+          <c>false</c>, then the second expression won’t be executed. If the
+          first expression is <c>false</c>, the result will be <c>false</c>,
+          since both sides of the <c>&amp;&amp;</c> need to be <c>true</c> for
+          the result to be <c>true</c>.
+        </p>
+      </li>
+    </ul>
 
     <activity label="shortCircuit1">
       <statement>
@@ -1219,99 +1214,95 @@
   <subsection xml:id="summary-19">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 2.2.A.1) Values or expressions can be compared using the
-            relational operators <c>==</c> and <c>!=</c> to determine whether
-            the values are the same. With primitive types, this compares the
-            actual primitive values. With reference types, this compares the
-            object references.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 2.2.A.1) Values or expressions can be compared using the
+          relational operators <c>==</c> and <c>!=</c> to determine whether the
+          values are the same. With primitive types, this compares the actual
+          primitive values. With reference types, this compares the object
+          references.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.2.A.2) Numeric values or expressions can be compared using the
-            relational operators (<c>&lt;</c>, <c>&gt;</c>, <c>&lt;=</c>,
-            <c>&gt;=</c>) to determine the relationship between the values.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.2.A.2) Numeric values or expressions can be compared using the
+          relational operators (<c>&lt;</c>, <c>&gt;</c>, <c>&lt;=</c>,
+          <c>&gt;=</c>) to determine the relationship between the values.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.2.A.3) An expression involving relational operators evaluates
-            to a <c>Boolean</c> value of <c>true</c> or <c>false</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.2.A.3) An expression involving relational operators evaluates to
+          a <c>Boolean</c> value of <c>true</c> or <c>false</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            The remainder operator <c>%</c> can be used to test for divisibility
-            by a number. For example, <c>num % 2 == 0</c> can be used to test if
-            a number is even.
-          </p>
-        </li>
+      <li>
+        <p>
+          The remainder operator <c>%</c> can be used to test for divisibility
+          by a number. For example, <c>num % 2 == 0</c> can be used to test if a
+          number is even.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.5.A.1) Logical operators <c>!</c> (not), <c>&amp;&amp;</c>
-            (and), and <c>||</c> (or) are used with Boolean values.
-          </p>
+      <li>
+        <p>
+          (AP 2.5.A.1) Logical operators <c>!</c> (not), <c>&amp;&amp;</c>
+          (and), and <c>||</c> (or) are used with Boolean values.
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>
-                  <c>A &amp;&amp; B</c> is <c>true</c> if both <c>A</c> and
-                  <c>B</c> are <c>true</c>.
-                </p>
-              </li>
+        <ul>
+          <li>
+            <p>
+              <c>A &amp;&amp; B</c> is <c>true</c> if both <c>A</c> and <c>B</c>
+              are <c>true</c>.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <c>A || B</c> is <c>true</c> if either <c>A</c> or <c>B</c>
-                  (or both) are <c>true</c>.
-                </p>
-              </li>
+          <li>
+            <p>
+              <c>A || B</c> is <c>true</c> if either <c>A</c> or <c>B</c> (or
+              both) are <c>true</c>.
+            </p>
+          </li>
 
-              <li>
-                <p><c>!A</c> is <c>true</c> if <c>A</c> is <c>false</c>.</p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p><c>!A</c> is <c>true</c> if <c>A</c> is <c>false</c>.</p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.5.A.1) <c>!</c> has precedence (is executed before)
-            <c>&amp;&amp;</c> which has precedence over <c>||</c>. (Parentheses
-            can be used to force the order of execution in a different way.)
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.5.A.1) <c>!</c> has precedence (is executed before)
+          <c>&amp;&amp;</c> which has precedence over <c>||</c>. (Parentheses
+          can be used to force the order of execution in a different way.)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.5.A.1) An expression involving logical operators evaluates to
-            a Boolean value.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.5.A.1) An expression involving logical operators evaluates to a
+          Boolean value.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.5.A.2) <term>Short-circuit evaluation</term> occurs when the
-            result of a logical operation using <c>&amp;&amp;</c> or <c>||</c>
-            can be determined by evaluating only the first Boolean expression.
-            In this case, the second Boolean expression is not evaluated. (If
-            the first expression is <c>true</c> in an <c>||</c> operation, the
-            second expression is not evaluated since the result is true. If the
-            first expression is <c>false</c> in an <c>&amp;&amp;</c> operation,
-            the second expression is not evaluated since the result is false.)
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 2.5.A.2) <term>Short-circuit evaluation</term> occurs when the
+          result of a logical operation using <c>&amp;&amp;</c> or <c>||</c> can
+          be determined by evaluating only the first Boolean expression. In this
+          case, the second Boolean expression is not evaluated. (If the first
+          expression is <c>true</c> in an <c>||</c> operation, the second
+          expression is not evaluated since the result is true. If the first
+          expression is <c>false</c> in an <c>&amp;&amp;</c> operation, the
+          second expression is not evaluated since the result is false.)
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-12">

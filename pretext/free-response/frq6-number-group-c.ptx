@@ -14,13 +14,11 @@
       constructor.
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>private ArrayList&lt;NumberGroup&gt; groupList;</p>
-        </li>
-      </ul>
-    </p>
+    <ul>
+      <li>
+        <p>private ArrayList&lt;NumberGroup&gt; groupList;</p>
+      </li>
+    </ul>
 
     <p>
       Write the <c>MultipleGroups</c> method <c>contains</c>. The method takes
@@ -34,21 +32,19 @@
       calls:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>new Range(5, 8)</p>
-        </li>
+    <ul>
+      <li>
+        <p>new Range(5, 8)</p>
+      </li>
 
-        <li>
-          <p>new Range(10, 12)</p>
-        </li>
+      <li>
+        <p>new Range(10, 12)</p>
+      </li>
 
-        <li>
-          <p>new Range(1, 6)</p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>new Range(1, 6)</p>
+      </li>
+    </ul>
 
     <p>
       The following table shows the results of several calls to <c>contains</c>.

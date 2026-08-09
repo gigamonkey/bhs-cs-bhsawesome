@@ -41,15 +41,13 @@
       for building a counting <c>while</c> loop?
     </p>
 
-    <p>
-      <ol>
-        <li>Initialize the loop variable</li>
+    <ol>
+      <li>Initialize the loop variable</li>
 
-        <li>Test the loop variable</li>
+      <li>Test the loop variable</li>
 
-        <li>Update the loop variable</li>
-      </ol>
-    </p>
+      <li>Update the loop variable</li>
+    </ol>
 
     <p>
       The purpose of a <c>for</c> loop is to provide a structure that gives us
@@ -587,59 +585,57 @@
       in as an argument.
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>
-            Complete the <c>drawSquare</c> method to use a <c>for</c> loop to
-            have the Turtle t draw a square.
-          </p>
-        </li>
+    <ol>
+      <li>
+        <p>
+          Complete the <c>drawSquare</c> method to use a <c>for</c> loop to have
+          the Turtle t draw a square.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Complete the <c>drawTriangle</c> method to use a <c>for</c> loop to
-            draw an equilateral triangle. How many times should the loop run? It
-            ran 4 times for a square, so how many for a triangle? What angle
-            should you use for the turns? One way to figure this out is to
-            notice that to complete a shape, all the exterior angles should add
-            up to 360 degrees. So, for a square 4x90 = 360. What angle times 3
-            will give you 360?
-          </p>
-        </li>
+      <li>
+        <p>
+          Complete the <c>drawTriangle</c> method to use a <c>for</c> loop to
+          draw an equilateral triangle. How many times should the loop run? It
+          ran 4 times for a square, so how many for a triangle? What angle
+          should you use for the turns? One way to figure this out is to notice
+          that to complete a shape, all the exterior angles should add up to 360
+          degrees. So, for a square 4x90 = 360. What angle times 3 will give you
+          360?
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Complete the <c>drawPentagon</c> method to use a <c>for</c> loop to
-            draw a pentagon (which has 5 sides and looks like a stop sign). What
-            external angle should you use for the turns? Remember they have to
-            add up to 360 degrees after 5 turns.
-          </p>
-        </li>
+      <li>
+        <p>
+          Complete the <c>drawPentagon</c> method to use a <c>for</c> loop to
+          draw a pentagon (which has 5 sides and looks like a stop sign). What
+          external angle should you use for the turns? Remember they have to add
+          up to 360 degrees after 5 turns.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Complete the <c>drawPolygon</c> method to use a <c>for</c> loop to
-            draw any polygong with <c>n</c> sides of length <c>pixels</c> given
-            as arguments. Use <c>n</c> in your loop for the number of sides (or
-            the number of iterations). Use <c>pixels</c> for the amount to move
-            forward. Calculate the angle to turn by using a formula that uses n
-            and 360, so that n turns add up to 360 degrees.
-          </p>
-        </li>
+      <li>
+        <p>
+          Complete the <c>drawPolygon</c> method to use a <c>for</c> loop to
+          draw any polygong with <c>n</c> sides of length <c>pixels</c> given as
+          arguments. Use <c>n</c> in your loop for the number of sides (or the
+          number of iterations). Use <c>pixels</c> for the amount to move
+          forward. Calculate the angle to turn by using a formula that uses n
+          and 360, so that n turns add up to 360 degrees.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            In the main method, call the <c>drawPolygon</c> method to draw a
-            hexagon (6 sides). This method can draw a variety of shapes by just
-            changing the value of the argument n. The power of abstraction! Try
-            drawing other shapes with it. Note that if the turtle runs into
-            walls, it stays there and will mess up the shape, so you may have to
-            move the turtle or go forward smaller amounts.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          In the main method, call the <c>drawPolygon</c> method to draw a
+          hexagon (6 sides). This method can draw a variety of shapes by just
+          changing the value of the argument n. The power of abstraction! Try
+          drawing other shapes with it. Note that if the turtle runs into walls,
+          it stays there and will mess up the shape, so you may have to move the
+          turtle or go forward smaller amounts.
+        </p>
+      </li>
+    </ol>
 
     <project label="challenge-TurtleLoopShapes">
       <statement>
@@ -721,52 +717,49 @@
   <subsection xml:id="summary-25">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 2.8.A.1) A <c>for</c> loop is a type of iterative statement.
-            There are three parts in a for loop header: the initialization (of
-            the loop control variable or counter), the Boolean expression
-            (testing the loop variable), and the update (to change the loop
-            variable).
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 2.8.A.1) A <c>for</c> loop is a type of iterative statement. There
+          are three parts in a for loop header: the initialization (of the loop
+          control variable or counter), the Boolean expression (testing the loop
+          variable), and the update (to change the loop variable).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.8.A.2) In a <c>for</c> loop, the initialization statement is
-            only executed once before the first Boolean expression evaluation.
-            The variable being initialized is referred to as a <term>loop
-            control variable</term>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.8.A.2) In a <c>for</c> loop, the initialization statement is
+          only executed once before the first Boolean expression evaluation. The
+          variable being initialized is referred to as a <term>loop control
+          variable</term>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.8.A.2) The <c>for</c> loop Boolean expression is evaluated
-            immediately after the loop control variable is initialized and then
-            followed by each execution of the increment (or update) statement
-            until it is false.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.8.A.2) The <c>for</c> loop Boolean expression is evaluated
+          immediately after the loop control variable is initialized and then
+          followed by each execution of the increment (or update) statement
+          until it is false.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.8.A.2) In each iteration of the <c>for</c> loop, the update is
-            executed after the entire loop body is executed and before the
-            Boolean expression is evaluated again.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.8.A.2) In each iteration of the <c>for</c> loop, the update is
+          executed after the entire loop body is executed and before the Boolean
+          expression is evaluated again.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.8.A.3) A <c>for</c> loop can be rewritten into an equivalent
-            <c>while</c> loop (and vice versa).
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 2.8.A.3) A <c>for</c> loop can be rewritten into an equivalent
+          <c>while</c> loop (and vice versa).
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-18">

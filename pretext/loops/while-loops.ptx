@@ -121,18 +121,16 @@
       text="type-global" />.
     </p>
 
-    <p>
-      <ol>
-        <li>Initialize the loop variable (before the <c>while</c> loop)</li>
+    <ol>
+      <li>Initialize the loop variable (before the <c>while</c> loop)</li>
 
-        <li>Test the loop variable (in the loop header)</li>
+      <li>Test the loop variable (in the loop header)</li>
 
-        <li>
-          Update the loop variable (somewhere in the loop body, usually at the
-          end)
-        </li>
-      </ol>
-    </p>
+      <li>
+        Update the loop variable (somewhere in the loop body, usually at the
+        end)
+      </li>
+    </ol>
 
     <figure xml:id="three-steps-of-writing-a-loop">
       <caption>Three Steps of Writing a Loop</caption>
@@ -705,91 +703,87 @@
   <subsection xml:id="summary-24">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 2.7.A.1) Iteration statements (loops) change the flow of control
-            by repeating a segment of code zero or more times as long as the
-            Boolean expression controlling the loop evaluates to true. Iteration
-            is a form of repetition.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 2.7.A.1) Iteration statements (loops) change the flow of control
+          by repeating a segment of code zero or more times as long as the
+          Boolean expression controlling the loop evaluates to true. Iteration
+          is a form of repetition.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.7.B.1) A <term>while loop</term> is a type of iterative
-            statement. In while loops, the Boolean expression is evaluated
-            before each iteration of the loop body, including the first. When
-            the expression evaluates to true, the loop body is executed. This
-            continues until the Boolean expression evaluates to false, whereupon
-            the iteration terminates. Here is the general form of a while loop:
-          </p>
+      <li>
+        <p>
+          (AP 2.7.B.1) A <term>while loop</term> is a type of iterative
+          statement. In while loops, the Boolean expression is evaluated before
+          each iteration of the loop body, including the first. When the
+          expression evaluates to true, the loop body is executed. This
+          continues until the Boolean expression evaluates to false, whereupon
+          the iteration terminates. Here is the general form of a while loop:
+        </p>
 
-          <program>
-            <![CDATA[
-            // The statements in a while loop run zero or more times,
-            // determined by how many times the condition is true
-            int count = 0; // initialize the loop variable
-            while (count < 10)  // test the loop variable
-            {
-                // repeat this code
-                // update the loop variable
-                count++;
-            }
-            ]]>
-          </program>
-        </li>
+        <program>
+          <![CDATA[
+          // The statements in a while loop run zero or more times,
+          // determined by how many times the condition is true
+          int count = 0; // initialize the loop variable
+          while (count < 10)  // test the loop variable
+          {
+              // repeat this code
+              // update the loop variable
+              count++;
+          }
+          ]]>
+        </program>
+      </li>
 
-        <li>
-          <p>
-            Loops often have a <term>loop variable</term> that is used in the
-            boolean condition of the loop. Remember the three steps of writing a
-            loop:
-          </p>
+      <li>
+        <p>
+          Loops often have a <term>loop variable</term> that is used in the
+          boolean condition of the loop. Remember the three steps of writing a
+          loop:
+        </p>
 
-          <p>
-            <ol>
-              <li>Initialize the loop variable</li>
+        <ol>
+          <li>Initialize the loop variable</li>
 
-              <li>Test the loop variable</li>
+          <li>Test the loop variable</li>
 
-              <li>Update the loop variable</li>
-            </ol>
-          </p>
-        </li>
+          <li>Update the loop variable</li>
+        </ol>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.7.A.2) An <term>infinite loop</term> occurs when the Boolean
-            expression in an iterative statement always evaluates to true.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.7.A.2) An <term>infinite loop</term> occurs when the Boolean
+          expression in an iterative statement always evaluates to true.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.7.A.3) The loop body of an iterative statement will not
-            execute if the Boolean expression initially evaluates to false.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.7.A.3) The loop body of an iterative statement will not execute
+          if the Boolean expression initially evaluates to false.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.7.A.4) <term>Off by one errors</term> occur when the iteration
-            statement loops one time too many or one time too few.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.7.A.4) <term>Off by one errors</term> occur when the iteration
+          statement loops one time too many or one time too few.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>Input-controlled loops</term> often use a <term>sentinel
-            value</term> that is input by the user like “bye” or -1 as the
-            condition for the loop to stop. Input-controlled loops are not on
-            the AP CSA exam, but are very useful to accept data from the user.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          <term>Input-controlled loops</term> often use a <term>sentinel
+          value</term> that is input by the user like “bye” or -1 as the
+          condition for the loop to stop. Input-controlled loops are not on the
+          AP CSA exam, but are very useful to accept data from the user.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-17">

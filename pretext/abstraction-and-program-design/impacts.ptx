@@ -76,23 +76,21 @@
       different domains:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            AI in Healthcare and Radiology: <url
-            href="https://www.youtube.com/watch?v=dCDuMyzWS8Q">https://www.youtube.com/watch?v=dCDuMyzWS8Q</url>
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          AI in Healthcare and Radiology: <url
+          href="https://www.youtube.com/watch?v=dCDuMyzWS8Q">https://www.youtube.com/watch?v=dCDuMyzWS8Q</url>
+        </p>
+      </li>
 
-        <li>
-          <p>
-            AI in Agriculture: <url
-            href="https://www.youtube.com/watch?v=DjHGG7eQevY">https://www.youtube.com/watch?v=DjHGG7eQevY</url>
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          AI in Agriculture: <url
+          href="https://www.youtube.com/watch?v=DjHGG7eQevY">https://www.youtube.com/watch?v=DjHGG7eQevY</url>
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="data-and-bias">
@@ -159,24 +157,22 @@
       Here are some other interesting videos to watch about bias in algorithms:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <url href="https://www.youtube.com/watch?v=QxuyfWoVV98">AI, Ain't I a
-          Woman?</url>, a poem by Joy Buolamwini
-        </li>
+    <ul>
+      <li>
+        <url href="https://www.youtube.com/watch?v=QxuyfWoVV98">AI, Ain't I a
+        Woman?</url>, a poem by Joy Buolamwini
+      </li>
 
-        <li>
-          Ted Talk video on <url
-          href="https://www.youtube.com/watch?v=UG_X_7g63rY">Bias in Facial
-          Recognition</url> by Joy Buolamwini,
-        </li>
+      <li>
+        Ted Talk video on <url
+        href="https://www.youtube.com/watch?v=UG_X_7g63rY">Bias in Facial
+        Recognition</url> by Joy Buolamwini,
+      </li>
 
-        <li>
-          <url href="https://www.youtube.com/watch?v=7lpCWxlRFAw">A report on police crime prediction software and bias</url>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <url href="https://www.youtube.com/watch?v=7lpCWxlRFAw">A report on police crime prediction software and bias</url>
+      </li>
+    </ul>
 
     <p>
       Programmers should be aware of the data set collection method and the
@@ -197,37 +193,35 @@
       steps that can be taken to address bias in machine learning:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>Use diverse and representative data sets to train algorithms.</p>
-        </li>
+    <ul>
+      <li>
+        <p>Use diverse and representative data sets to train algorithms.</p>
+      </li>
 
-        <li>
-          <p>Regularly test algorithms for bias and accuracy.</p>
-        </li>
+      <li>
+        <p>Regularly test algorithms for bias and accuracy.</p>
+      </li>
 
-        <li>
-          <p>
-            Be transparent about the limitations and potential biases of the
-            software.
-          </p>
-        </li>
+      <li>
+        <p>
+          Be transparent about the limitations and potential biases of the
+          software.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Involve diverse teams in the development and testing of algorithms.
-          </p>
-        </li>
+      <li>
+        <p>
+          Involve diverse teams in the development and testing of algorithms.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Implement ethical guidelines and standards for the use of AI and
-            machine learning.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          Implement ethical guidelines and standards for the use of AI and
+          machine learning.
+        </p>
+      </li>
+    </ul>
 
     <project label="datasets">
       <statement>
@@ -312,27 +306,24 @@
       privacy:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          A short <url
-          href="https://www.cnbc.com/video/2018/03/23/everything-you-need-to-know-about-the-cambridge-analytica-scandal.html"
-          style="text-decoration:underline">1 minute video</url> about the
-          Facebook Cambridge Analytica incident and a longer <url
-          href="https://www.pbs.org/wgbh/frontline/film/facebook-dilemma/#video-2"
-          style="text-decoration:underline">1 hour PBS special</url> on
-          Facebook.
-        </li>
+    <ul>
+      <li>
+        A short <url
+        href="https://www.cnbc.com/video/2018/03/23/everything-you-need-to-know-about-the-cambridge-analytica-scandal.html"
+        style="text-decoration:underline">1 minute video</url> about the
+        Facebook Cambridge Analytica incident and a longer <url
+        href="https://www.pbs.org/wgbh/frontline/film/facebook-dilemma/#video-2"
+        style="text-decoration:underline">1 hour PBS special</url> on Facebook.
+      </li>
 
-        <li>
-          <url href="https://www.youtube.com/watch?v=gXiEBcb0Vs8" style="text-decoration:underline">What is Geo-fencing (2 mins)</url>
-        </li>
+      <li>
+        <url href="https://www.youtube.com/watch?v=gXiEBcb0Vs8" style="text-decoration:underline">What is Geo-fencing (2 mins)</url>
+      </li>
 
-        <li>
-          <url href="https://www.youtube.com/watch?v=j6wwBqfSk-o" style="text-decoration:underline">The European General Data Protection Regulation (GDPR) (3 mins)</url>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <url href="https://www.youtube.com/watch?v=j6wwBqfSk-o" style="text-decoration:underline">The European General Data Protection Regulation (GDPR) (3 mins)</url>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="groupwork-impacts-of-cs">
@@ -362,88 +353,83 @@
   <subsection xml:id="summary-28">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 3.2.A.1) <term>System reliability</term> refers to the program
-            being able to perform its tasks as expected under stated conditions
-            without failure. Programmers should make an effort to maximize
-            system reliability by testing the program with a variety of
-            conditions.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 3.2.A.1) <term>System reliability</term> refers to the program
+          being able to perform its tasks as expected under stated conditions
+          without failure. Programmers should make an effort to maximize system
+          reliability by testing the program with a variety of conditions.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.2.A.2) The creation of programs has impacts on society, the
-            economy, and culture. These impacts can be both beneficial and
-            harmful. Programs meant to fill a need or solve a problem can have
-            unintended harmful effects beyond their intended use.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.2.A.2) The creation of programs has impacts on society, the
+          economy, and culture. These impacts can be both beneficial and
+          harmful. Programs meant to fill a need or solve a problem can have
+          unintended harmful effects beyond their intended use.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.1.A.3) Legal issues and intellectual property concerns arise
-            when creating programs. Programmers often reuse code written by
-            others and published as <term>open source</term> and free to use.
-            Incorporation of code that is not published as open source requires
-            the programmer to obtain permission and often purchase the code
-            before integrating it into their program.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.1.A.3) Legal issues and intellectual property concerns arise
+          when creating programs. Programmers often reuse code written by others
+          and published as <term>open source</term> and free to use.
+          Incorporation of code that is not published as open source requires
+          the programmer to obtain permission and often purchase the code before
+          integrating it into their program.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.1.A.1) When using a computer, personal privacy is at risk.
-            When developing new programs, programmers should attempt to
-            safeguard the personal privacy of the user.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.1.A.1) When using a computer, personal privacy is at risk. When
+          developing new programs, programmers should attempt to safeguard the
+          personal privacy of the user.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Computer use and the creation of programs have an impact on personal
-            security and data privacy. These impacts can be beneficial and/or
-            harmful.
-          </p>
-        </li>
+      <li>
+        <p>
+          Computer use and the creation of programs have an impact on personal
+          security and data privacy. These impacts can be beneficial and/or
+          harmful.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.1.B.1) <term>Algorithmic bias</term> describes systemic and
-            repeated errors in a program that create unfair outcomes for a
-            specific group of users.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.1.B.1) <term>Algorithmic bias</term> describes systemic and
+          repeated errors in a program that create unfair outcomes for a
+          specific group of users.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.1.B.2) Programmers should be aware of the data set collection
-            method and the potential for bias when using this method before
-            using the data to extrapolate new information or drawing
-            conclusions.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.1.B.2) Programmers should be aware of the data set collection
+          method and the potential for bias when using this method before using
+          the data to extrapolate new information or drawing conclusions.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.1.B.3) Some data sets are incomplete or contain inaccurate
-            data. Using such data in the development or use of a program can
-            cause the program to work incorrectly or inefficiently.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.1.B.3) Some data sets are incomplete or contain inaccurate data.
+          Using such data in the development or use of a program can cause the
+          program to work incorrectly or inefficiently.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.1.C.1) Contents of a data set might be related to a specific
-            question or topic and might not be appropriate to give correct
-            answers or extrapolate information for a different question or
-            topic.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 4.1.C.1) Contents of a data set might be related to a specific
+          question or topic and might not be appropriate to give correct answers
+          or extrapolate information for a different question or topic.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

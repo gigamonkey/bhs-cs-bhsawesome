@@ -17,36 +17,34 @@
     <idx>insertion sort</idx>
     <idx><h>sort</h><h>selection</h></idx>
     <idx><h>sort</h><h>insertion</h></idx>
-    <p>
-      <ul>
-        <li>
-          <p>
-            <term>Selection sort</term> repeatedly selects the smallest (or
-            largest) element from the unsorted portion of the list and swaps it
-            into its correct (and final) position in the sorted portion of the
-            list.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          <term>Selection sort</term> repeatedly selects the smallest (or
+          largest) element from the unsorted portion of the list and swaps it
+          into its correct (and final) position in the sorted portion of the
+          list.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>Insertion sort</term> inserts an element from the unsorted
-            portion of a list into its correct (but not necessarily final)
-            position in the sorted portion of the list by shifting elements of
-            the sorted portion to make room for the new element.
-          </p>
-        </li>
+      <li>
+        <p>
+          <term>Insertion sort</term> inserts an element from the unsorted
+          portion of a list into its correct (but not necessarily final)
+          position in the sorted portion of the list by shifting elements of the
+          sorted portion to make room for the new element.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>Merge sort</term> breaks the elements into two parts and
-            recursively sort each part. An array of one item is sorted (base
-            case). Then merge the two sorted arrays into one. MergeSort will be
-            covered in lesson 4.17.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          <term>Merge sort</term> breaks the elements into two parts and
+          recursively sort each part. An array of one item is sorted (base
+          case). Then merge the two sorted arrays into one. MergeSort will be
+          covered in lesson 4.17.
+        </p>
+      </li>
+    </ul>
   </introduction>
 
   <subsection xml:id="selection-sort">
@@ -77,45 +75,43 @@
     <video youtube="g-PGLbMth_g" label="video-sort1" />
     <p>To identify a selection sort look for the following:</p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            a nested for loop with the outer loop starting at 0 and ending when
-            the index reaches length - 1 (see line 7 below)
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          a nested for loop with the outer loop starting at 0 and ending when
+          the index reaches length - 1 (see line 7 below)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            the index of the smallest value should start at the outer loop index
-            (see line 9 below)
-          </p>
-        </li>
+      <li>
+        <p>
+          the index of the smallest value should start at the outer loop index
+          (see line 9 below)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            the inner loop should start at the outer loop index + 1 and loop
-            through the whole array (see line 10 below)
-          </p>
-        </li>
+      <li>
+        <p>
+          the inner loop should start at the outer loop index + 1 and loop
+          through the whole array (see line 10 below)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            if the value in the array at the index of the inner loop is less
-            than the value at the smallest index then set the smallest index to
-            the index of the inner loop (see lines 12 - 15)
-          </p>
-        </li>
+      <li>
+        <p>
+          if the value in the array at the index of the inner loop is less than
+          the value at the smallest index then set the smallest index to the
+          index of the inner loop (see lines 12 - 15)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            swap the value at the outer loop index and the smallest value (the
-            one at the smallest value index) (see lines 17-19)
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          swap the value at the outer loop index and the smallest value (the one
+          at the smallest value index) (see lines 17-19)
+        </p>
+      </li>
+    </ul>
 
     <p>
       The code for <c>selectionSort</c> below is from the AP CSA course
@@ -343,57 +339,50 @@
     <video youtube="JU767SDMDvA" label="video-sort2" />
     <p>To identify an insertion sort look for the following:</p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            an outer for loop that starts at 1 and loops through the entire
-            array (see line 7)
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          an outer for loop that starts at 1 and loops through the entire array
+          (see line 7)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            storing the element value at the outer loop index in temp (see line
-            9)
-          </p>
-        </li>
+      <li>
+        <p>
+          storing the element value at the outer loop index in temp (see line 9)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            setting the possible index to the outer loop index (see line 10)
-          </p>
-        </li>
+      <li>
+        <p>setting the possible index to the outer loop index (see line 10)</p>
+      </li>
 
-        <li>
-          <p>
-            an inner while loop that loops while the possible index is greater
-            than 0 and the value in temp is less than the value at the possible
-            index minus one (see line 11)
-          </p>
-        </li>
+      <li>
+        <p>
+          an inner while loop that loops while the possible index is greater
+          than 0 and the value in temp is less than the value at the possible
+          index minus one (see line 11)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            set the value at the possible index to the one to the left of it
-            (the one at possible index minus one) (see line 13)
-          </p>
-        </li>
+      <li>
+        <p>
+          set the value at the possible index to the one to the left of it (the
+          one at possible index minus one) (see line 13)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            decrement the possible index (subtract one from it) (see line 14)
-          </p>
-        </li>
+      <li>
+        <p>decrement the possible index (subtract one from it) (see line 14)</p>
+      </li>
 
-        <li>
-          <p>
-            when the while loop ends set the value at the possible index to temp
-            (see line 16)
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          when the while loop ends set the value at the possible index to temp
+          (see line 16)
+        </p>
+      </li>
+    </ul>
 
     <p>
       The code for <c>insertionSort</c> below is from the AP CSA course
@@ -625,42 +614,40 @@
   <subsection xml:id="summary-41">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.15.A.1) Selection sort and insertion sort are iterative
-            sorting algorithms that can be used to sort elements in an array or
-            <c>ArrayList</c>.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 4.15.A.1) Selection sort and insertion sort are iterative sorting
+          algorithms that can be used to sort elements in an array or
+          <c>ArrayList</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.15.A.2) <term>Selection sort</term> repeatedly selects the
-            smallest (or largest) element from the unsorted portion of the list
-            and swaps it into its correct (and final) position in the sorted
-            portion of the list.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.15.A.2) <term>Selection sort</term> repeatedly selects the
+          smallest (or largest) element from the unsorted portion of the list
+          and swaps it into its correct (and final) position in the sorted
+          portion of the list.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.15.A.3) <term>Insertion sort</term> inserts an element from
-            the unsorted portion of a list into its correct (but not necessarily
-            final) position in the sorted portion of the list by shifting
-            elements of the sorted portion to make room for the new element.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.15.A.3) <term>Insertion sort</term> inserts an element from the
+          unsorted portion of a list into its correct (but not necessarily
+          final) position in the sorted portion of the list by shifting elements
+          of the sorted portion to make room for the new element.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Informal run-time comparisons of program code segments can be made
-            using statement execution counts.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          Informal run-time comparisons of program code segments can be made
+          using statement execution counts.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="search-sort-multiple-choice-exercises-1">

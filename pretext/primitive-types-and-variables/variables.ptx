@@ -66,39 +66,37 @@
 
     <p>The primitive types you need to know about for the AP exam are:</p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <c>int</c> which can represent integers, i.e. numbers with no
-            fractional part such as 3, 0, -76, and 20393.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          <c>int</c> which can represent integers, i.e. numbers with no
+          fractional part such as 3, 0, -76, and 20393.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>double</c> which can represent non-integer numbers like 6.3 -0.9,
-            and 60293.93032. Computer people call these “floating point” numbers
-            because the decimal point “floats” relative to the magnitude of the
-            number, similar to the way it does in scientific notation like
-            <m>6.5 ✕ 10^8</m>. The name <c>double</c> comes from the fact that
-            <c>double</c> values are represented using sixty-four bits, double
-            the thirty-two bits used for the type <c>float</c> which used to be
-            the normal size floating point number when most computers did math
-            in units of 32-bits. (<c>float</c> is rarely used these days and is
-            not part of the AP curriculum.)
-          </p>
-        </li>
+      <li>
+        <p>
+          <c>double</c> which can represent non-integer numbers like 6.3 -0.9,
+          and 60293.93032. Computer people call these “floating point” numbers
+          because the decimal point “floats” relative to the magnitude of the
+          number, similar to the way it does in scientific notation like <m>6.5
+          ✕ 10^8</m>. The name <c>double</c> comes from the fact that
+          <c>double</c> values are represented using sixty-four bits, double the
+          thirty-two bits used for the type <c>float</c> which used to be the
+          normal size floating point number when most computers did math in
+          units of 32-bits. (<c>float</c> is rarely used these days and is not
+          part of the AP curriculum.)
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <c>boolean</c> which can represent only two values: <c>true</c> and
-            <c>false</c>. We’ll discuss the <c>boolean</c> type in <xref
-            ref="booleans-and-conditionals" />
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          <c>boolean</c> which can represent only two values: <c>true</c> and
+          <c>false</c>. We’ll discuss the <c>boolean</c> type in <xref
+          ref="booleans-and-conditionals" />
+        </p>
+      </li>
+    </ul>
 
     <p>
       Another way to think of a data type is as a set of values and a set of
@@ -696,31 +694,29 @@
     </p>
 
     <note>
-      <p>
-        <ul>
-          <li>
-            <p>Use meaningful variable names!</p>
-          </li>
+      <ul>
+        <li>
+          <p>Use meaningful variable names!</p>
+        </li>
 
-          <li>
-            <p>
-              Start variable names with a lower case letter and use camelCase.
-            </p>
-          </li>
+        <li>
+          <p>
+            Start variable names with a lower case letter and use camelCase.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Variable names are case-sensitive and spelling sensitive! Each use
-              of the variable in the code must match the variable name in the
-              declaration exactly.
-            </p>
-          </li>
+        <li>
+          <p>
+            Variable names are case-sensitive and spelling sensitive! Each use
+            of the variable in the code must match the variable name in the
+            declaration exactly.
+          </p>
+        </li>
 
-          <li>
-            <p>Never put variables inside quotes (<c>""</c>).</p>
-          </li>
-        </ul>
-      </p>
+        <li>
+          <p>Never put variables inside quotes (<c>""</c>).</p>
+        </li>
+      </ul>
     </note>
 
     <idx>camel case</idx>
@@ -878,66 +874,64 @@
   <subsection xml:id="summary-7">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.2.B.2) A <term>variable</term> is a memory storage location
-            that holds a value, which can change while the program is running.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.2.B.2) A <term>variable</term> is a memory storage location that
+          holds a value, which can change while the program is running.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.2.B.2) Every variable has a name and an associated data type
-            that determines the kind of data it can hold. A variable of a
-            primitive type holds a primitive value from that type.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.2.B.2) Every variable has a name and an associated data type
+          that determines the kind of data it can hold. A variable of a
+          primitive type holds a primitive value from that type.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            A variable can be declared and initialized with the following code:
-          </p>
+      <li>
+        <p>
+          A variable can be declared and initialized with the following code:
+        </p>
 
-          <program>
-            int score;
-            double gpa = 3.5;
-          </program>
-        </li>
+        <program>
+          int score;
+          double gpa = 3.5;
+        </program>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.2.A.1) A <term>data type</term> is a set of values and a
-            corresponding set of operations on those values. Data types can be
-            primitive types (like int) or reference types (like String).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.2.A.1) A <term>data type</term> is a set of values and a
+          corresponding set of operations on those values. Data types can be
+          primitive types (like int) or reference types (like String).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.2.A.2) The <term>primitive</term> data types used in this
-            course define the set of values and corresponding operations on
-            those values for numbers and Boolean values.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.2.A.2) The <term>primitive</term> data types used in this course
+          define the set of values and corresponding operations on those values
+          for numbers and Boolean values.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.2.A.3) A <term>reference</term> type, like String, is used to
-            define objects that are not primitive types.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.2.A.3) A <term>reference</term> type, like String, is used to
+          define objects that are not primitive types.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.2.B.1) The three primitive data types used in this course are
-            <term>int</term> (integer numbers), <term>double</term> (decimal
-            numbers), and <term>boolean</term> (true or false).
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 1.2.B.1) The three primitive data types used in this course are
+          <term>int</term> (integer numbers), <term>double</term> (decimal
+          numbers), and <term>boolean</term> (true or false).
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-6">

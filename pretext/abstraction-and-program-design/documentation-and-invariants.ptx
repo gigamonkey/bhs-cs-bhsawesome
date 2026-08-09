@@ -40,26 +40,22 @@
 
     <p>There are three types of comments in Java:</p>
 
-    <p>
-      <ol>
-        <li>
-          <p>Single line comments, marked with <c>//</c></p>
-        </li>
+    <ol>
+      <li>
+        <p>Single line comments, marked with <c>//</c></p>
+      </li>
 
-        <li>
-          <p>
-            Multiline comments, enclosed in <c>/*</c> and <c>*/</c> markers.
-          </p>
-        </li>
+      <li>
+        <p>Multiline comments, enclosed in <c>/*</c> and <c>*/</c> markers.</p>
+      </li>
 
-        <li>
-          <p>
-            Java documentation, or Javadoc, comments which are multiline
-            comments where the first marker is <c>/**</c>
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          Java documentation, or Javadoc, comments which are multiline comments
+          where the first marker is <c>/**</c>
+        </p>
+      </li>
+    </ol>
 
     <p>
       Single line comments are typically used within the body of methods to
@@ -150,29 +146,27 @@
       Some of the main Javadoc tags are:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>@author Author of the program</p>
-        </li>
+    <ul>
+      <li>
+        <p>@author Author of the program</p>
+      </li>
 
-        <li>
-          <p>@since Date released</p>
-        </li>
+      <li>
+        <p>@since Date released</p>
+      </li>
 
-        <li>
-          <p>@version Version of program</p>
-        </li>
+      <li>
+        <p>@version Version of program</p>
+      </li>
 
-        <li>
-          <p>@param Parameter of a method</p>
-        </li>
+      <li>
+        <p>@param Parameter of a method</p>
+      </li>
 
-        <li>
-          <p>@return Return value for a method</p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>@return Return value for a method</p>
+      </li>
+    </ul>
 
     <activity label="comments">
       <statement>
@@ -450,34 +444,32 @@
       case. For example, for the “Order Food” and “Eat Food” Use Cases:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Preconditions for “Order Food”: Customer enters restaurant. Staff is
-            ready to take the order.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Preconditions for “Order Food”: Customer enters restaurant. Staff is
+          ready to take the order.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Postconditions for “Order Food”: Customer orders the food. Staff
-            takes the order.
-          </p>
-        </li>
+      <li>
+        <p>
+          Postconditions for “Order Food”: Customer orders the food. Staff takes
+          the order.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Preconditions for “Eat Food”: Customer has already ordered food.
-            Staff has delivered food.
-          </p>
-        </li>
+      <li>
+        <p>
+          Preconditions for “Eat Food”: Customer has already ordered food. Staff
+          has delivered food.
+        </p>
+      </li>
 
-        <li>
-          <p>Postcondition for “Eat Food”: Customer eats the food.</p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>Postcondition for “Eat Food”: Customer eats the food.</p>
+      </li>
+    </ul>
 
     <activity label="payconditions">
       <statement>
@@ -563,46 +555,43 @@
   <subsection xml:id="summary-13">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.8.A.1) <term>Comments</term> are written for both the original
-            programmer and other programmers to understand the code and its
-            functionality, but are ignored by the compiler and are not executed
-            when the program is run.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.8.A.1) <term>Comments</term> are written for both the original
+          programmer and other programmers to understand the code and its
+          functionality, but are ignored by the compiler and are not executed
+          when the program is run.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.8.A.1) Three types of comments in Java include <c>/* */</c>,
-            which generates a block of comments, <c>//</c>, which generates a
-            comment on one line, and <c>/** */</c>, which are Javadoc comments
-            and are used to create API documentation.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.8.A.1) Three types of comments in Java include <c>/* */</c>,
+          which generates a block of comments, <c>//</c>, which generates a
+          comment on one line, and <c>/** */</c>, which are Javadoc comments and
+          are used to create API documentation.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.8.A.2) A <term>precondition</term> is a condition that must be
-            true just prior to the execution of a section of program code in
-            order for the method to behave as expected. There is no expectation
-            that the method will check to ensure preconditions are satisfied.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.8.A.2) A <term>precondition</term> is a condition that must be
+          true just prior to the execution of a section of program code in order
+          for the method to behave as expected. There is no expectation that the
+          method will check to ensure preconditions are satisfied.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.8.A.3) A <term>postcondition</term> is a condition that must
-            always be true after the execution of a section of program code.
-            Postconditions describe the outcome of the execution in terms of
-            what is being returned or the current value of the attributes of an
-            object.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 1.8.A.3) A <term>postcondition</term> is a condition that must
+          always be true after the execution of a section of program code.
+          Postconditions describe the outcome of the execution in terms of what
+          is being returned or the current value of the attributes of an object.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-10">

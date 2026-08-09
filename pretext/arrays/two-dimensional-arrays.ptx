@@ -1040,30 +1040,28 @@
       Then, do the following:
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>
-            Change the code to use 2 assignment statements with the 2D array
-            <c>asciiArt</c> to change the “o” characters to “@” characters. You
-            should figure out what the row and column indices should be for the
-            “o” characters and use them with the array name to set that
-            character to “@”. After testing this code, comment it out so that
-            your teacher can still see it.
-          </p>
-        </li>
+    <ol>
+      <li>
+        <p>
+          Change the code to use 2 assignment statements with the 2D array
+          <c>asciiArt</c> to change the “o” characters to “@” characters. You
+          should figure out what the row and column indices should be for the
+          “o” characters and use them with the array name to set that character
+          to “@”. After testing this code, comment it out so that your teacher
+          can still see it.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Add a new <c>asciiArt</c> array with a different <url
-            href="https://www.asciiart.eu/">ASCII art</url> from the collection
-            or of your own design. Be careful with the special characters like
-            <c>"</c> and <c>\</c>. You will need to put another backslash in
-            front of these to print them out like <c>\"</c> and <c>\\</c>.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          Add a new <c>asciiArt</c> array with a different <url
+          href="https://www.asciiart.eu/">ASCII art</url> from the collection or
+          of your own design. Be careful with the special characters like
+          <c>"</c> and <c>\</c>. You will need to put another backslash in front
+          of these to print them out like <c>\"</c> and <c>\\</c>.
+        </p>
+      </li>
+    </ol>
 
     <project label="challenge-8-1-ascii-art">
       <statement>
@@ -1109,89 +1107,87 @@
   <subsection xml:id="summary-38">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.11.A.1) A <term>2D array</term> is stored as an array of
-            arrays. Therefore, the way 2D arrays are created and indexed is
-            similar to 1D array objects. The size of a 2D array is established
-            at the time of creation and cannot be changed. 2D arrays can store
-            either primitive data or object reference data. Nonrectangular 2D
-            array objects (with varying column length for each row) are outside
-            the scope of the AP Computer Science A course and exam.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 4.11.A.1) A <term>2D array</term> is stored as an array of arrays.
+          Therefore, the way 2D arrays are created and indexed is similar to 1D
+          array objects. The size of a 2D array is established at the time of
+          creation and cannot be changed. 2D arrays can store either primitive
+          data or object reference data. Nonrectangular 2D array objects (with
+          varying column length for each row) are outside the scope of the AP
+          Computer Science A course and exam.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            2D arrays are declared and created with the following syntax:
-            <c>datatype[][] variableName = new
-            datatype[numberRows][numberCols]</c>;
-          </p>
-        </li>
+      <li>
+        <p>
+          2D arrays are declared and created with the following syntax:
+          <c>datatype[][] variableName = new
+          datatype[numberRows][numberCols]</c>;
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.11.A.2) When a 2D array is created using the keyword
-            <c>new</c>, all of its elements are initialized to the default
-            values for the element data type. The default value for <c>int</c>
-            is <c>0</c>, for <c>double</c> is <c>0.0</c>, for <c>boolean</c> is
-            <c>false</c>, and for a reference type is <c>null</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.11.A.2) When a 2D array is created using the keyword <c>new</c>,
+          all of its elements are initialized to the default values for the
+          element data type. The default value for <c>int</c> is <c>0</c>, for
+          <c>double</c> is <c>0.0</c>, for <c>boolean</c> is <c>false</c>, and
+          for a reference type is <c>null</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.11.A.3) The initializer list used to create and initialize a
-            2D array consists of initializer lists that represent 1D arrays; for
-            example, <c>int[][] arr2D = { {1, 2, 3}, {4, 5, 6} };</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.11.A.3) The initializer list used to create and initialize a 2D
+          array consists of initializer lists that represent 1D arrays; for
+          example, <c>int[][] arr2D = { {1, 2, 3}, {4, 5, 6} };</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.11.A.4) The square brackets <c>[row][col]</c> are used to
-            access and modify an element in a 2D array. For the purposes of the
-            AP exam, when accessing the element at <c>arr[first][second]</c>,
-            the <c>first</c> index is used for rows, the <c>second</c> index is
-            used for columns.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.11.A.4) The square brackets <c>[row][col]</c> are used to access
+          and modify an element in a 2D array. For the purposes of the AP exam,
+          when accessing the element at <c>arr[first][second]</c>, the
+          <c>first</c> index is used for rows, the <c>second</c> index is used
+          for columns.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>Row-major order</term> refers to an ordering of 2D array
-            elements where traversal occurs across each row, while
-            <term>column-major order</term> traversal occurs down each column.
-          </p>
-        </li>
+      <li>
+        <p>
+          <term>Row-major order</term> refers to an ordering of 2D array
+          elements where traversal occurs across each row, while
+          <term>column-major order</term> traversal occurs down each column.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.11.A.5) A single array that is a row of a 2D array can be
-            accessed using the 2D array name and a single set of square brackets
-            containing the row index.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.11.A.5) A single array that is a row of a 2D array can be
+          accessed using the 2D array name and a single set of square brackets
+          containing the row index.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.11.A.6) The number of rows contained in a 2D array can be
-            accessed through the <c>length</c> attribute. The valid row index
-            values for a 2D array are <c>0</c> through one less than the number
-            of rows or the length of the array, inclusive. The number of columns
-            contained in a 2D array can be accessed through the <c>length</c>
-            attribute of one of the rows. The valid column index values for a 2D
-            array are <c>0</c> through one less than the number of columns or
-            the length of any given row of the array, inclusive. For example,
-            given a 2D array named <c>values</c>, the number of rows is
-            <c>values.length</c> and the number of columns is
-            <c>values[0].length`</c>. Using an index value outside of these
-            ranges will result in an <c>ArrayIndexOutOfBoundsException</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 4.11.A.6) The number of rows contained in a 2D array can be
+          accessed through the <c>length</c> attribute. The valid row index
+          values for a 2D array are <c>0</c> through one less than the number of
+          rows or the length of the array, inclusive. The number of columns
+          contained in a 2D array can be accessed through the <c>length</c>
+          attribute of one of the rows. The valid column index values for a 2D
+          array are <c>0</c> through one less than the number of columns or the
+          length of any given row of the array, inclusive. For example, given a
+          2D array named <c>values</c>, the number of rows is
+          <c>values.length</c> and the number of columns is
+          <c>values[0].length`</c>. Using an index value outside of these ranges
+          will result in an <c>ArrayIndexOutOfBoundsException</c>.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

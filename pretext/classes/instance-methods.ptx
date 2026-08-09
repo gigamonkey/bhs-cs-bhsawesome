@@ -223,55 +223,52 @@
       There are a few advantages:
     </p>
 
-    <p>
-      <dl>
-        <li>
-          <title>We don’t have to provide both a getter and a setter.</title>
+    <dl>
+      <li>
+        <title>We don’t have to provide both a getter and a setter.</title>
 
-          <p>
-            If we just wrote <c>getAge</c> but didn’t write a <c>setAge</c> then
-            any code could access the age of a <c>Person</c> but only code
-            within the class could change it. Since getters don’t change
-            anything it’s almost impossible for a bug to be caused by someone
-            calling a getter. Setters are much more dangerous.
-          </p>
-        </li>
+        <p>
+          If we just wrote <c>getAge</c> but didn’t write a <c>setAge</c> then
+          any code could access the age of a <c>Person</c> but only code within
+          the class could change it. Since getters don’t change anything it’s
+          almost impossible for a bug to be caused by someone calling a getter.
+          Setters are much more dangerous.
+        </p>
+      </li>
 
-        <li>
-          <title>Setters can validate values or do other work.</title>
+      <li>
+        <title>Setters can validate values or do other work.</title>
 
-          <p>
-            Even if we do choose to provide a setter, it can still be better
-            than making the variable <c>public</c> because it gives us a place
-            to control how the variable is set. For instance <c>setAge</c> could
-            ensure that the value is positive and generate an error if it is not
-            rather than setting the variable to a nonsense value.
-          </p>
-        </li>
+        <p>
+          Even if we do choose to provide a setter, it can still be better than
+          making the variable <c>public</c> because it gives us a place to
+          control how the variable is set. For instance <c>setAge</c> could
+          ensure that the value is positive and generate an error if it is not
+          rather than setting the variable to a nonsense value.
+        </p>
+      </li>
 
-        <li>
-          <title>
-            We can change things without breaking code in other classes.
-          </title>
+      <li>
+        <title>
+          We can change things without breaking code in other classes.
+        </title>
 
-          <p>
-            While usually we write getters and setters to provide access to a
-            variable, from outside the class there’s no way of knowing for sure
-            that there <em>is</em> a variable. This provides a layer of
-            <term>indirection</term> that allows us to change how we represent
-            things inside the class without breaking code in other classes.
-          </p>
+        <p>
+          While usually we write getters and setters to provide access to a
+          variable, from outside the class there’s no way of knowing for sure
+          that there <em>is</em> a variable. This provides a layer of
+          <term>indirection</term> that allows us to change how we represent
+          things inside the class without breaking code in other classes.
+        </p>
 
-          <p>
-            For instance, in <c>Person</c> we might realize that we want to
-            store the persons birth date and to compute their age based on that.
-            We can change the implementation of <c>getAge</c> and then get rid
-            of the <c>age</c> variable and code that uses <c>getAge</c> will
-            still work.
-          </p>
-        </li>
-      </dl>
-    </p>
+        <p>
+          For instance, in <c>Person</c> we might realize that we want to store
+          the persons birth date and to compute their age based on that. We can
+          change the implementation of <c>getAge</c> and then get rid of the
+          <c>age</c> variable and code that uses <c>getAge</c> will still work.
+        </p>
+      </li>
+    </dl>
 
     <p>
       It is quite common to write getters and setters and we should definitely
@@ -1329,58 +1326,56 @@
         programmed.
       </p>
 
-      <p>
-        <ol>
-          <li>
-            <p>
-              <term>Design:</term> In pairs, brainstorm about the
-              <term>object-oriented design</term> for the virtual pet. What data
-              or instance variables would you need to keep track of for a
-              virtual pet? What behaviors or methods would the virtual pet have?
-              (You could draw a Class Diagram for this class using <url
-              href="https://app.diagrams.net/">app.diagrams.net</url> or <url
-              href="https://creately.com">Creately.com</url>, although it is not
-              required). Then, using the <c>Person</c> class above as a guide,
-              write a <c>VirtualPet</c> class in the Active Code template below
-              with the following parts.
-            </p>
-          </li>
+      <ol>
+        <li>
+          <p>
+            <term>Design:</term> In pairs, brainstorm about the
+            <term>object-oriented design</term> for the virtual pet. What data
+            or instance variables would you need to keep track of for a virtual
+            pet? What behaviors or methods would the virtual pet have? (You
+            could draw a Class Diagram for this class using <url
+            href="https://app.diagrams.net/">app.diagrams.net</url> or <url
+            href="https://creately.com">Creately.com</url>, although it is not
+            required). Then, using the <c>Person</c> class above as a guide,
+            write a <c>VirtualPet</c> class in the Active Code template below
+            with the following parts.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              <term>Instance Variables</term>: Declare at least 3 instance
-              variables in the <c>VirtualPet</c> class below. Two of the
-              instance variables should be called <c>name</c> and <c>health</c>
-              where health is a number from 0 to 10. The rest can be variables
-              from your design above. Don’t forget to add in their
-              <c>private</c> access modifiers.
-            </p>
-          </li>
+        <li>
+          <p>
+            <term>Instance Variables</term>: Declare at least 3 instance
+            variables in the <c>VirtualPet</c> class below. Two of the instance
+            variables should be called <c>name</c> and <c>health</c> where
+            health is a number from 0 to 10. The rest can be variables from your
+            design above. Don’t forget to add in their <c>private</c> access
+            modifiers.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              <term>Methods</term>: Complete the <c>print</c> method to print
-              out the instance variables of the <c>VirtualPet</c> object, and
-              complete the <c>feed</c> method to add 1 to the health instance
-              variable. Remember that the methods have direct access to the
-              instance variables. Create at least one more method that changes
-              one of the instance variables from your design. (The constructor
-              method and a get method is written for you below. You will learn
-              how to write constructors in detail in the next lesson.)
-            </p>
-          </li>
+        <li>
+          <p>
+            <term>Methods</term>: Complete the <c>print</c> method to print out
+            the instance variables of the <c>VirtualPet</c> object, and complete
+            the <c>feed</c> method to add 1 to the health instance variable.
+            Remember that the methods have direct access to the instance
+            variables. Create at least one more method that changes one of the
+            instance variables from your design. (The constructor method and a
+            get method is written for you below. You will learn how to write
+            constructors in detail in the next lesson.)
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Complete the <c>main</c> method to construct at least 2
-              <c>VirtualPet</c> objects that call the <c>VirtualPet</c>
-              constructor given to you with arguments for name and health. Then,
-              use at least one of the objects to call its <c>feed</c> and
-              <c>print</c> methods.
-            </p>
-          </li>
-        </ol>
-      </p>
+        <li>
+          <p>
+            Complete the <c>main</c> method to construct at least 2
+            <c>VirtualPet</c> objects that call the <c>VirtualPet</c>
+            constructor given to you with arguments for name and health. Then,
+            use at least one of the objects to call its <c>feed</c> and
+            <c>print</c> methods.
+          </p>
+        </li>
+      </ol>
     </gutterimage>
 
     <project label="challenge-VirtualPet-Class">
@@ -1458,78 +1453,73 @@
         some attributes of the pets that they would like to track:
       </p>
 
-      <p>
-        <ul>
-          <li>
-            <p>Name</p>
-          </li>
+      <ul>
+        <li>
+          <p>Name</p>
+        </li>
 
-          <li>
-            <p>Age</p>
-          </li>
+        <li>
+          <p>Age</p>
+        </li>
 
-          <li>
-            <p>Weight</p>
-          </li>
+        <li>
+          <p>Weight</p>
+        </li>
 
-          <li>
-            <p>Type (dog, cat, lizard, etc.)</p>
-          </li>
+        <li>
+          <p>Type (dog, cat, lizard, etc.)</p>
+        </li>
 
-          <li>
-            <p>Breed</p>
-          </li>
-        </ul>
-      </p>
+        <li>
+          <p>Breed</p>
+        </li>
+      </ul>
 
-      <p>
-        <ol>
-          <li>
-            <p>
-              Create a class that keeps track of the attributes above for pet
-              records at the animal clinic. Decide what instance variables are
-              needed and their data types. Make sure you use <c>int</c>,
-              <c>double</c>, and <c>String</c> data types. Make the instance
-              variables <c>private</c>.
-            </p>
-          </li>
+      <ol>
+        <li>
+          <p>
+            Create a class that keeps track of the attributes above for pet
+            records at the animal clinic. Decide what instance variables are
+            needed and their data types. Make sure you use <c>int</c>,
+            <c>double</c>, and <c>String</c> data types. Make the instance
+            variables <c>private</c>.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Create a constructor with many parameters to initialize all the
-              instance variables.
-            </p>
-          </li>
+        <li>
+          <p>
+            Create a constructor with many parameters to initialize all the
+            instance variables.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Create accessor/getter methods for each of the instance variables.
-            </p>
-          </li>
+        <li>
+          <p>
+            Create accessor/getter methods for each of the instance variables.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Create a <c>toString</c> method that returns all the information
-              in a <c>Pet</c>.
-            </p>
-          </li>
+        <li>
+          <p>
+            Create a <c>toString</c> method that returns all the information in
+            a <c>Pet</c>.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              Create mutator/setter methods for each of the instance variables.
-            </p>
-          </li>
+        <li>
+          <p>
+            Create mutator/setter methods for each of the instance variables.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              In the <c>main</c> method below, create 2 <c>Pet</c> objects with
-              different values and call the constructor, accessor methods,
-              mutator methods, and <c>toString</c> methods to test all your
-              code.
-            </p>
-          </li>
-        </ol>
-      </p>
+        <li>
+          <p>
+            In the <c>main</c> method below, create 2 <c>Pet</c> objects with
+            different values and call the constructor, accessor methods, mutator
+            methods, and <c>toString</c> methods to test all your code.
+          </p>
+        </li>
+      </ol>
     </gutterimage>
 
     <project label="challenge-Pet-Class">
@@ -1581,51 +1571,49 @@
       your community.
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>
-            Copy your class with its three instance variables, constructor, and
-            its print() and main methods from <xref
-            ref="design-a-class-for-your-community-part2" /> into the active
-            code exercise below.
-          </p>
-        </li>
+    <ol>
+      <li>
+        <p>
+          Copy your class with its three instance variables, constructor, and
+          its print() and main methods from <xref
+          ref="design-a-class-for-your-community-part2" /> into the active code
+          exercise below.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Create accessor (get) methods and mutator (set) methods for each of
-            the instance variables.
-          </p>
-        </li>
+      <li>
+        <p>
+          Create accessor (get) methods and mutator (set) methods for each of
+          the instance variables.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Create a <c>toString</c> method that returns all the information in
-            the instance variables.
-          </p>
-        </li>
+      <li>
+        <p>
+          Create a <c>toString</c> method that returns all the information in
+          the instance variables.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Write an additional method for your class that takes a parameter.
-            For example, there could be a print method with arguments that
-            indicate how you want to print out the information, e.g.
-            <c>print(format)</c> could print the data according to an argument
-            that is “plain” or “table” where the data is printed in a table
-            drawn with dashes and lines (<c>|</c>). Or come up with another
-            creative method for your class.
-          </p>
-        </li>
+      <li>
+        <p>
+          Write an additional method for your class that takes a parameter. For
+          example, there could be a print method with arguments that indicate
+          how you want to print out the information, e.g. <c>print(format)</c>
+          could print the data according to an argument that is “plain” or
+          “table” where the data is printed in a table drawn with dashes and
+          lines (<c>|</c>). Or come up with another creative method for your
+          class.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Use these methods in the main method to test them. Make sure you use
-            good commenting.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          Use these methods in the main method to test them. Make sure you use
+          good commenting.
+        </p>
+      </li>
+    </ol>
 
     <project label="community-challenge3">
       <statement>
@@ -1669,163 +1657,158 @@
   <subsection xml:id="summary-31">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 3.5.A.1) A <c>void</c> method does not return a value. Its
-            header contains the keyword <c>void</c> before the method name.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 3.5.A.1) A <c>void</c> method does not return a value. Its header
+          contains the keyword <c>void</c> before the method name.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.5.A.2) A <term>non-void method</term> returns a single value.
-            Its header includes the return type in place of the keyword
-            <c>void</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.5.A.2) A <term>non-void method</term> returns a single value.
+          Its header includes the return type in place of the keyword
+          <c>void</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.5.A.3) In non-void methods, a return expression compatible
-            with the return type is evaluated, and the value is returned. This
-            is referred to as <term>return by value</term>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.5.A.3) In non-void methods, a return expression compatible with
+          the return type is evaluated, and the value is returned. This is
+          referred to as <term>return by value</term>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.5.A.4) The <c>return</c> keyword is used to return the flow of
-            control to the point where the method or constructor was called. Any
-            code that is sequentially after a return statement will never be
-            executed. Executing a return statement inside a selection or
-            iteration statement will halt the statement and exit the method or
-            constructor.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.5.A.4) The <c>return</c> keyword is used to return the flow of
+          control to the point where the method or constructor was called. Any
+          code that is sequentially after a return statement will never be
+          executed. Executing a return statement inside a selection or iteration
+          statement will halt the statement and exit the method or constructor.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.5.A.5) An <term>accessor method</term> (getter) allows objects
-            of other classes to obtain a copy of the value of instance variables
-            or class variables. An accessor method is a non-void method.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.5.A.5) An <term>accessor method</term> (getter) allows objects
+          of other classes to obtain a copy of the value of instance variables
+          or class variables. An accessor method is a non-void method.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.5.A.6) A <term>mutator (modifier) method</term> (setter) is a
-            method that changes the values of the instance variables or class
-            variables. A mutator method is often a void method.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.5.A.6) A <term>mutator (modifier) method</term> (setter) is a
+          method that changes the values of the instance variables or class
+          variables. A mutator method is often a void method.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.5.A.7) Methods with parameters receive values through those
-            parameters and use those values in accomplishing the method’s task.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.5.A.7) Methods with parameters receive values through those
+          parameters and use those values in accomplishing the method’s task.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 3.5.A.8) When an argument is a primitive value, the parameter is
-            initialized with a copy of that value. Changes to the parameter have
-            no effect on the corresponding argument.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 3.5.A.8) When an argument is a primitive value, the parameter is
+          initialized with a copy of that value. Changes to the parameter have
+          no effect on the corresponding argument.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            The <c>toString</c> method is an overridden method that is included
-            in classes to provide a description of a specific object. It
-            generally includes what values are stored in the instance data of
-            the object. If <c>System.out.print</c> or <c>System.out.println</c>
-            is passed an object, that object’s <c>toString</c> method is called,
-            and the returned <c>String</c> is printed. An object’s
-            <c>toString</c> method is also used to get the <c>String</c>
-            representation when concatenating the object to a <c>String</c> with
-            the <c>+</c> operator.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          The <c>toString</c> method is an overridden method that is included in
+          classes to provide a description of a specific object. It generally
+          includes what values are stored in the instance data of the object. If
+          <c>System.out.print</c> or <c>System.out.println</c> is passed an
+          object, that object’s <c>toString</c> method is called, and the
+          returned <c>String</c> is printed. An object’s <c>toString</c> method
+          is also used to get the <c>String</c> representation when
+          concatenating the object to a <c>String</c> with the <c>+</c>
+          operator.
+        </p>
+      </li>
+    </ul>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <term>Instance methods</term> define the behavior and actions that
-            an object can perform.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          <term>Instance methods</term> define the behavior and actions that an
+          object can perform.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.14.A.1) <term>Instance methods</term> are called on objects of
-            the class.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.14.A.1) <term>Instance methods</term> are called on objects of
+          the class.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.14.A.1) The dot operator is used along with the object name to
-            <term>call</term> instance methods, for example
-            <term>object.method();</term>
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.14.A.1) The dot operator is used along with the object name to
+          <term>call</term> instance methods, for example
+          <term>object.method();</term>
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.14.A.2) A method call on a <c>null</c> reference will result
-            in a <c>NullPointerException</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.14.A.2) A method call on a <c>null</c> reference will result in
+          a <c>NullPointerException</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Some methods take <term>arguments</term> that are placed inside the
-            parentheses <term>object.method(arguments)</term>.
-          </p>
-        </li>
+      <li>
+        <p>
+          Some methods take <term>arguments</term> that are placed inside the
+          parentheses <term>object.method(arguments)</term>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            A <term>method signature</term> is the method name followed by the
-            parameter list which gives the type and name for each parameter.
-            Note that methods do not have to take any parameters, but you still
-            need the parentheses after the method name.
-          </p>
-        </li>
+      <li>
+        <p>
+          A <term>method signature</term> is the method name followed by the
+          parameter list which gives the type and name for each parameter. Note
+          that methods do not have to take any parameters, but you still need
+          the parentheses after the method name.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            The method call arguments must match the method signature in number,
-            order, and type.
-          </p>
-        </li>
+      <li>
+        <p>
+          The method call arguments must match the method signature in number,
+          order, and type.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            A <term>method</term> call interrupts the sequential execution of
-            statements, causing the program to first execute the statements in
-            the method or constructor before continuing. Once the last statement
-            in the method or constructor has executed or a <c>return</c>
-            statement is executed, the flow of control is returned to the point
-            immediately following the method or constructor call.
-          </p>
-        </li>
+      <li>
+        <p>
+          A <term>method</term> call interrupts the sequential execution of
+          statements, causing the program to first execute the statements in the
+          method or constructor before continuing. Once the last statement in
+          the method or constructor has executed or a <c>return</c> statement is
+          executed, the flow of control is returned to the point immediately
+          following the method or constructor call.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>Non-void methods</term> are methods that return values. You
-            should do something with the return value, such as assigning it to a
-            variable, using it in an expression, or printing it.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          <term>Non-void methods</term> are methods that return values. You
+          should do something with the return value, such as assigning it to a
+          variable, using it in an expression, or printing it.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-2">
@@ -1843,30 +1826,27 @@
           to represent the following.
         </p>
 
-        <p>
-          <ul>
-            <li>
-              <p>
-                A String variable called <c>breed</c> to represent the breed of
-                the dog
-              </p>
-            </li>
+        <ul>
+          <li>
+            <p>
+              A String variable called <c>breed</c> to represent the breed of
+              the dog
+            </p>
+          </li>
 
-            <li>
-              <p>
-                An int variable called <c>age</c> to represent the age of the
-                dog
-              </p>
-            </li>
+          <li>
+            <p>
+              An int variable called <c>age</c> to represent the age of the dog
+            </p>
+          </li>
 
-            <li>
-              <p>
-                A String variable called <c>name</c> to represent the name of
-                the dog
-              </p>
-            </li>
-          </ul>
-        </p>
+          <li>
+            <p>
+              A String variable called <c>name</c> to represent the name of the
+              dog
+            </p>
+          </li>
+        </ul>
 
         <p>
           The object <c>pet</c> is declared as type Dog. Which of the following
@@ -1934,30 +1914,28 @@
           variables to represent the following.
         </p>
 
-        <p>
-          <ul>
-            <li>
-              <p>
-                An int variable called <c>numOfPeople</c> to represent the
-                number of people at the party.
-              </p>
-            </li>
+        <ul>
+          <li>
+            <p>
+              An int variable called <c>numOfPeople</c> to represent the number
+              of people at the party.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                A boolean variable called <c>discoLightsOn</c> to represent
-                whether the disco ball is on.
-              </p>
-            </li>
+          <li>
+            <p>
+              A boolean variable called <c>discoLightsOn</c> to represent
+              whether the disco ball is on.
+            </p>
+          </li>
 
-            <li>
-              <p>
-                A boolean variable called <c>partyStarted</c> to represent
-                whether the party has started.
-              </p>
-            </li>
-          </ul>
-        </p>
+          <li>
+            <p>
+              A boolean variable called <c>partyStarted</c> to represent whether
+              the party has started.
+            </p>
+          </li>
+        </ul>
 
         <p>
           The object <c>myParty</c> is declared as type Party. Which of the

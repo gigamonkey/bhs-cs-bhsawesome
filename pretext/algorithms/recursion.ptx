@@ -1399,60 +1399,58 @@
   <subsection xml:id="summary-42">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.16.A.1) A <term>recursive method</term> is a method that calls
-            itself.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 4.16.A.1) A <term>recursive method</term> is a method that calls
+          itself.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.16.A.1) Recursive methods contain at least one <term>base
-            case</term>, which halts the recursion, and at least one
-            <term>recursive call</term>. (unless it is a case of <term>infinite
-            recursion</term>).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.16.A.1) Recursive methods contain at least one <term>base
+          case</term>, which halts the recursion, and at least one
+          <term>recursive call</term>. (unless it is a case of <term>infinite
+          recursion</term>).
+        </p>
+      </li>
 
-        <li>
-          <p>(AP 4.16.A.1) Recursion is another form of repetition.</p>
-        </li>
+      <li>
+        <p>(AP 4.16.A.1) Recursion is another form of repetition.</p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.16.A.2) Each recursive call has its own set of local
-            variables, including the parameters. Parameter values capture the
-            progress of a recursive process, much like loop control variable
-            values capture the progress of a loop.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.16.A.2) Each recursive call has its own set of local variables,
+          including the parameters. Parameter values capture the progress of a
+          recursive process, much like loop control variable values capture the
+          progress of a loop.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.16.A.3) Any recursive solution can be replicated through the
-            use of an iterative approach and vice versa. (although the recursive
-            solution may have memory limitations for the recursive call stack,
-            and the iterative approach may require additional data structures).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.16.A.3) Any recursive solution can be replicated through the use
+          of an iterative approach and vice versa. (although the recursive
+          solution may have memory limitations for the recursive call stack, and
+          the iterative approach may require additional data structures).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Note that writing recursive code is outside the scope of the AP
-            Computer Science A course and exam.
-          </p>
-        </li>
+      <li>
+        <p>
+          Note that writing recursive code is outside the scope of the AP
+          Computer Science A course and exam.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Recursion can be used to traverse <c>String</c>s, arrays, and
-            <c>ArrayList</c>s.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          Recursion can be used to traverse <c>String</c>s, arrays, and
+          <c>ArrayList</c>s.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

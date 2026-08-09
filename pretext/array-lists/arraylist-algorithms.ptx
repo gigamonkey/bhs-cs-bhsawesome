@@ -403,25 +403,21 @@
       can try it in the active code above. Here is the pseudocode:
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p>while number is greater than 0</p>
+    <ul>
+      <li>
+        <p>while number is greater than 0</p>
 
-          <p>
-            <ul>
-              <li>
-                <p>print out the last digit using %</p>
-              </li>
+        <ul>
+          <li>
+            <p>print out the last digit using %</p>
+          </li>
 
-              <li>
-                <p>change the number to cut off the last digit using /</p>
-              </li>
-            </ul>
-          </p>
-        </li>
-      </ul>
-    </p>
+          <li>
+            <p>change the number to cut off the last digit using /</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
     <p>
       Now, let’s write a constructor for the <c>Digits</c> class that uses this
@@ -523,74 +519,66 @@
   <subsection xml:id="summary-37">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.10.A.1) There are standard <c>ArrayList</c> algorithms that
-            utilize traversals to:
-          </p>
+    <ul>
+      <li>
+        <p>
+          (AP 4.10.A.1) There are standard <c>ArrayList</c> algorithms that
+          utilize traversals to:
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>determine a minimum or maximum value</p>
-              </li>
+        <ul>
+          <li>
+            <p>determine a minimum or maximum value</p>
+          </li>
 
-              <li>
-                <p>compute a sum or average</p>
-              </li>
+          <li>
+            <p>compute a sum or average</p>
+          </li>
 
-              <li>
-                <p>
-                  determine if at least one element has a particular property
-                </p>
-              </li>
+          <li>
+            <p>determine if at least one element has a particular property</p>
+          </li>
 
-              <li>
-                <p>determine if all elements have a particular property</p>
-              </li>
+          <li>
+            <p>determine if all elements have a particular property</p>
+          </li>
 
-              <li>
-                <p>
-                  determine the number of elements having a particular property
-                </p>
-              </li>
+          <li>
+            <p>determine the number of elements having a particular property</p>
+          </li>
 
-              <li>
-                <p>access all consecutive pairs of elements</p>
-              </li>
+          <li>
+            <p>access all consecutive pairs of elements</p>
+          </li>
 
-              <li>
-                <p>determine the presence or absence of duplicate elements</p>
-              </li>
+          <li>
+            <p>determine the presence or absence of duplicate elements</p>
+          </li>
 
-              <li>
-                <p>shift or rotate elements left or right</p>
-              </li>
+          <li>
+            <p>shift or rotate elements left or right</p>
+          </li>
 
-              <li>
-                <p>reverse the order of the elements</p>
-              </li>
+          <li>
+            <p>reverse the order of the elements</p>
+          </li>
 
-              <li>
-                <p>insert elements</p>
-              </li>
+          <li>
+            <p>insert elements</p>
+          </li>
 
-              <li>
-                <p>delete elements</p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p>delete elements</p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.10.A.2) Some algorithms require multiple String, array, or
-            ArrayList objects to be traversed simultaneously.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 4.10.A.2) Some algorithms require multiple String, array, or
+          ArrayList objects to be traversed simultaneously.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

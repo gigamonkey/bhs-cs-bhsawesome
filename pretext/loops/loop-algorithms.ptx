@@ -52,26 +52,24 @@
 
     <p>The accumulator pattern has three parts:</p>
 
-    <p>
-      <ol>
-        <li>
-          <p>An accumulator variable that is initialized before the loop.</p>
-        </li>
+    <ol>
+      <li>
+        <p>An accumulator variable that is initialized before the loop.</p>
+      </li>
 
-        <li>
-          <p>
-            A loop that loops sum number of times to produce the values we want
-            to distill into our accumulator variable.
-          </p>
-        </li>
+      <li>
+        <p>
+          A loop that loops sum number of times to produce the values we want to
+          distill into our accumulator variable.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Code in the body that updates the accumulator variable in some way.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          Code in the body that updates the accumulator variable in some way.
+        </p>
+      </li>
+    </ol>
 
     <p>
       Note, the accumulator variable is different than the loop variable that
@@ -551,46 +549,43 @@
   <subsection xml:id="summary-26">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 2.9.1) There are standard algorithms to:
-            <ol>
-              <li>
-                Identify if an integer is or is not evenly divisible by another
-                integer
-              </li>
+    <ul>
+      <li>
+        <p>(AP 2.9.1) There are standard algorithms to:</p>
 
-              <li>Identify the individual digits in an integer</li>
+        <ol>
+          <li>
+            Identify if an integer is or is not evenly divisible by another
+            integer
+          </li>
 
-              <li>
-                Determine the frequency with which a specific criterion is met
-              </li>
+          <li>Identify the individual digits in an integer</li>
 
-              <li>Determine a minimum or maximum value</li>
+          <li>
+            Determine the frequency with which a specific criterion is met
+          </li>
 
-              <li>Compute a sum or average</li>
-            </ol>
-          </p>
-        </li>
+          <li>Determine a minimum or maximum value</li>
 
-        <li>
-          <p>
-            The <term>accumulator</term> pattern is an algorithm that involves
-            storing and updating an accumulator value within a loop, for example
-            to compute a sum or average of a set of values.
-          </p>
-        </li>
+          <li>Compute a sum or average</li>
+        </ol>
+      </li>
 
-        <li>
-          <p>
-            A common algorithm pattern is an if statement within a loop to test
-            each value against a criterion, such as finding the minimum or
-            maximum value in a sequence of numbers.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          The <term>accumulator</term> pattern is an algorithm that involves
+          storing and updating an accumulator value within a loop, for example
+          to compute a sum or average of a set of values.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          A common algorithm pattern is an if statement within a loop to test
+          each value against a criterion, such as finding the minimum or maximum
+          value in a sequence of numbers.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

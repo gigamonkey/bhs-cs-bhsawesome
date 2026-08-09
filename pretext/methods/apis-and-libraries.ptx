@@ -821,33 +821,31 @@
       Turtle Javadocs</url> for the complete list.
     </p>
 
-    <p>
-      <ul>
-        <li>
-          <p><c>yertle.forward();</c></p>
-        </li>
+    <ul>
+      <li>
+        <p><c>yertle.forward();</c></p>
+      </li>
 
-        <li>
-          <p><c>yertle.turnLeft();</c></p>
-        </li>
+      <li>
+        <p><c>yertle.turnLeft();</c></p>
+      </li>
 
-        <li>
-          <p><c>yertle.turnRight();</c></p>
-        </li>
+      <li>
+        <p><c>yertle.turnRight();</c></p>
+      </li>
 
-        <li>
-          <p><c>yertle.backward();</c></p>
-        </li>
+      <li>
+        <p><c>yertle.backward();</c></p>
+      </li>
 
-        <li>
-          <p><c>yertle.penUp();</c></p>
-        </li>
+      <li>
+        <p><c>yertle.penUp();</c></p>
+      </li>
 
-        <li>
-          <p><c>yertle.penDown();</c></p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p><c>yertle.penDown();</c></p>
+      </li>
+    </ul>
 
     <project label="challenge1-7-TurtleShape">
       <statement>
@@ -885,62 +883,59 @@
   <subsection xml:id="summary-12">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.7.A.1) <term>Libraries</term> are collections of classes
-            written by other programmers.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.7.A.1) <term>Libraries</term> are collections of classes written
+          by other programmers.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.7.A.1) An <term>Application Programming Interface (API)</term>
-            specification informs the programmer how to use classes in a
-            library.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.7.A.1) An <term>Application Programming Interface (API)</term>
+          specification informs the programmer how to use classes in a library.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.7.A.1) <term>Documentation</term> found in API specifications
-            and libraries is essential to understanding the attributes and
-            behaviors of a class defined by the API.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.7.A.1) <term>Documentation</term> found in API specifications
+          and libraries is essential to understanding the attributes and
+          behaviors of a class defined by the API.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.7.A.1) <term>Classes</term> in the APIs and libraries are
-            grouped into <term>packages</term> that can be imported into a
-            program.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.7.A.1) <term>Classes</term> in the APIs and libraries are
+          grouped into <term>packages</term> that can be imported into a
+          program.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.7.A.1) A <term>class</term> defines a specific reference type
-            and is the building block of object-oriented programming. Existing
-            classes and class libraries can be utilized to create objects.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.7.A.1) A <term>class</term> defines a specific reference type
+          and is the building block of object-oriented programming. Existing
+          classes and class libraries can be utilized to create objects.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.7.A.2) <term>Attributes</term> refer to the data related to
-            the class and are stored in variables.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.7.A.2) <term>Attributes</term> refer to the data related to the
+          class and are stored in variables.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.7.A.2) <term>Behaviors</term> refer to what instances of the
-            class can do (or what can be done with them) and are defined by
-            methods.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 1.7.A.2) <term>Behaviors</term> refer to what instances of the
+          class can do (or what can be done with them) and are defined by
+          methods.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

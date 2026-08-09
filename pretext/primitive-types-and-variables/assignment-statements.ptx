@@ -823,70 +823,66 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.4.A.2) The <term>assignment operator</term> (<c>=</c>) allows
-            a program to initialize or change the value stored in a variable.
-            The value of the expression on the right is stored in the variable
-            on the left.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.4.A.2) The <term>assignment operator</term> (<c>=</c>) allows a
+          program to initialize or change the value stored in a variable. The
+          value of the expression on the right is stored in the variable on the
+          left.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.4.A.1) Every variable must be assigned a value before it can
-            be used in an expression. That value must be from a compatible data
-            type.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.4.A.1) Every variable must be assigned a value before it can be
+          used in an expression. That value must be from a compatible data type.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.4.A.1) A variable is <term>initialized</term> the first time
-            it is assigned a value.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.4.A.1) A variable is <term>initialized</term> the first time it
+          is assigned a value.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.4.A.1) Reference types can be assigned a new object or
-            <c>null</c> if there is no object. The literal <c>null</c> is a
-            special value used to indicate that a reference is not associated
-            with any object.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.4.A.1) Reference types can be assigned a new object or
+          <c>null</c> if there is no object. The literal <c>null</c> is a
+          special value used to indicate that a reference is not associated with
+          any object.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.4.A.3) During execution, an expression is evaluated to produce
-            a single value. The value of an expression has a type based on the
-            types of the values and operators used in the expression.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.4.A.3) During execution, an expression is evaluated to produce a
+          single value. The value of an expression has a type based on the types
+          of the values and operators used in the expression.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.6.A.1) Compound assignment operators (<c>+=</c>, <c>-=</c>,
-            <c>*=</c>, <c>/=</c>, <c>%=</c>) can be used in place of the
-            assignment operator in numeric expressions. A compound assignment
-            operator performs the indicated arithmetic operation between the
-            current value of the variable on the left and the value on the right
-            and then assigns the resulting value to the variable on the left.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.6.A.1) Compound assignment operators (<c>+=</c>, <c>-=</c>,
+          <c>*=</c>, <c>/=</c>, <c>%=</c>) can be used in place of the
+          assignment operator in numeric expressions. A compound assignment
+          operator performs the indicated arithmetic operation between the
+          current value of the variable on the left and the value on the right
+          and then assigns the resulting value to the variable on the left.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.6.A.2) The increment operator (<c>++</c>) and decrement
-            operator (<c>--</c>) are used to add 1 or subtract 1 from the stored
-            value of a numeric variable. The new value is assigned to the
-            variable.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 1.6.A.2) The increment operator (<c>++</c>) and decrement operator
+          (<c>--</c>) are used to add 1 or subtract 1 from the stored value of a
+          numeric variable. The new value is assigned to the variable.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection>

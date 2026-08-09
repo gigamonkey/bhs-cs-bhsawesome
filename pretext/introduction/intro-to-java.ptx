@@ -475,86 +475,83 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <term>Algorithms</term> define step-by-step processes to follow when
-            completing a task or solving a problem. These algorithms can be
-            represented using written language or diagrams.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          <term>Algorithms</term> define step-by-step processes to follow when
+          completing a task or solving a problem. These algorithms can be
+          represented using written language or diagrams.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>Sequencing</term> defines an order for when steps in a process
-            are completed. Steps in a process are completed one at a time.
-          </p>
-        </li>
+      <li>
+        <p>
+          <term>Sequencing</term> defines an order for when steps in a process
+          are completed. Steps in a process are completed one at a time.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            An <term>Integrated Development Environment (IDE)</term> is often
-            used to write programs because it provides tools for a programmer to
-            write, compile, and run code.
-          </p>
-        </li>
+      <li>
+        <p>
+          An <term>Integrated Development Environment (IDE)</term> is often used
+          to write programs because it provides tools for a programmer to write,
+          compile, and run code.
+        </p>
+      </li>
 
-        <li>
-          <p>A basic Java program looks like the following:</p>
+      <li>
+        <p>A basic Java program looks like the following:</p>
 
-          <program>
-            public class MyClass {
-              public static void main(String[] args) {
-                System.out.println("Hi there!");
-              }
+        <program>
+          public class MyClass {
+            public static void main(String[] args) {
+              System.out.println("Hi there!");
             }
-          </program>
-        </li>
+          }
+        </program>
+      </li>
 
-        <li>
-          <p>
-            A Java program starts with <term>public class NameOfClass {</term>.
-            If you are using your own files for your code, each class should be
-            in a separate file that matches the class name inside it, for
-            example NameOfClass.java.
-          </p>
-        </li>
+      <li>
+        <p>
+          A Java program starts with <term>public class NameOfClass {</term>. If
+          you are using your own files for your code, each class should be in a
+          separate file that matches the class name inside it, for example
+          NameOfClass.java.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Most Java classes have a main method that will be run automatically.
-            It looks like this: <term>public static void main(String[] args) {
-            }</term>.
-          </p>
-        </li>
+      <li>
+        <p>
+          Most Java classes have a main method that will be run automatically.
+          It looks like this: <term>public static void main(String[] args) {
+          }</term>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            The <term>System.out.println()</term> method displays information
-            given inside the parentheses on the computer monitor.
-          </p>
-        </li>
+      <li>
+        <p>
+          The <term>System.out.println()</term> method displays information
+          given inside the parentheses on the computer monitor.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Java statements end in <c>;</c> (semicolon). <c>{ }</c> are used to
-            enclose blocks of code. <c>//</c> and <c>/* */</c> are used for
-            comments.
-          </p>
-        </li>
+      <li>
+        <p>
+          Java statements end in <c>;</c> (semicolon). <c>{ }</c> are used to
+          enclose blocks of code. <c>//</c> and <c>/* */</c> are used for
+          comments.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            A <term>compiler</term> translates Java code into a class file that
-            can be run on your computer. <term>Syntax errors</term> are reported
-            to you by the compiler if the Java code is not correctly written.
-            Some things to check for are <c>;</c> at end of lines containing
-            complete statements and matching <c>{ }</c>, <c>()</c>, and
-            <c>""</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          A <term>compiler</term> translates Java code into a class file that
+          can be run on your computer. <term>Syntax errors</term> are reported
+          to you by the compiler if the Java code is not correctly written. Some
+          things to check for are <c>;</c> at end of lines containing complete
+          statements and matching <c>{ }</c>, <c>()</c>, and <c>""</c>.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

@@ -478,83 +478,80 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.3.C.1) <term>Arithmetic expressions</term>, which consist of
-            numeric values, variables, and operators, include expressions of
-            type <c>int</c> and <c>double</c>.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.3.C.1) <term>Arithmetic expressions</term>, which consist of
+          numeric values, variables, and operators, include expressions of type
+          <c>int</c> and <c>double</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.C.2) The arithmetic <term>operators</term> consist of
-            <c>+</c>, <c>-</c>, <c>*</c> , <c>/</c>, and <c>%</c> also known as
-            addition, subtraction, multiplication, division, and remainder.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.C.2) The arithmetic <term>operators</term> consist of
+          <c>+</c>, <c>-</c>, <c>*</c> , <c>/</c>, and <c>%</c> also known as
+          addition, subtraction, multiplication, division, and remainder.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.C.2) An arithmetic operation that uses two <c>int</c> values
-            will evaluate to an <c>int</c> value. With integer division, any
-            decimal part in the result will be thrown away.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.C.2) An arithmetic operation that uses two <c>int</c> values
+          will evaluate to an <c>int</c> value. With integer division, any
+          decimal part in the result will be thrown away.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.C.2) An arithmetic operation that uses at least one
-            <c>double</c> value will evaluate to a <c>double</c> value.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.C.2) An arithmetic operation that uses at least one
+          <c>double</c> value will evaluate to a <c>double</c> value.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.C.3) When dividing numeric values that are both int values,
-            the result is only the integer portion of the quotient. Anything
-            after the decimal point is thrown away. When dividing numeric values
-            that use at least one double value, the result is the double
-            quotient as expected.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.C.3) When dividing numeric values that are both int values,
+          the result is only the integer portion of the quotient. Anything after
+          the decimal point is thrown away. When dividing numeric values that
+          use at least one double value, the result is the double quotient as
+          expected.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.C.4) The <term>remainder (modulo) operator %</term> is used
-            to compute the remainder when one number is divided by another
-            number.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.C.4) The <term>remainder (modulo) operator %</term> is used to
+          compute the remainder when one number is divided by another number.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.C.5) Multiple operators can be used to combine expressions
-            into <term>compound expressions</term>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.C.5) Multiple operators can be used to combine expressions
+          into <term>compound expressions</term>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.C.5) During evaluation, numeric values are associated with
-            operators according to <term>operator precedence</term> to determine
-            how they are grouped. <c>*</c>, <c>/</c>, <c>%</c> have precedence
-            over <c>+</c> and <c>-</c>, unless parentheses are used to group
-            those to be evaluated first. Operators with the same precedence are
-            evaluated from left to right.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.3.C.5) During evaluation, numeric values are associated with
+          operators according to <term>operator precedence</term> to determine
+          how they are grouped. <c>*</c>, <c>/</c>, <c>%</c> have precedence
+          over <c>+</c> and <c>-</c>, unless parentheses are used to group those
+          to be evaluated first. Operators with the same precedence are
+          evaluated from left to right.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.3.C.6) An attempt to divide an integer by zero will result in
-            an <c>ArithmeticException</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 1.3.C.6) An attempt to divide an integer by zero will result in an
+          <c>ArithmeticException</c>.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection>

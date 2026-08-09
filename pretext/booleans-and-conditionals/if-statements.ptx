@@ -798,67 +798,64 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 2.3.A.1) Selection statements change the sequential execution of
-            statements.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 2.3.A.1) Selection statements change the sequential execution of
+          statements.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.3.A.2) An <term>if statement</term> is a type of selection
-            statement that affects the flow of control by executing different
-            segments of code based on the value of a Boolean expression.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.3.A.2) An <term>if statement</term> is a type of selection
+          statement that affects the flow of control by executing different
+          segments of code based on the value of a Boolean expression.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.3.A.3) A one-way selection (if statement) is used when there
-            is a segment of code to execute under a certain condition. In this
-            case, the body is executed only when the Boolean expression is true.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.3.A.3) A one-way selection (if statement) is used when there is
+          a segment of code to execute under a certain condition. In this case,
+          the body is executed only when the Boolean expression is true.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>if statements</term> test a boolean expression and if it is
-            true, go on to execute the body which is the following statement or
-            block of statements surrounded by curly braces (<c>{}</c>) like
-            below.
-          </p>
-        </li>
+      <li>
+        <p>
+          <term>if statements</term> test a boolean expression and if it is
+          true, go on to execute the body which is the following statement or
+          block of statements surrounded by curly braces (<c>{}</c>) like below.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.4.A.1) Nested if statements consist of if, if-else, or
-            if-else-if statements within if, if-else, or if-else-if statements.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.4.A.1) Nested if statements consist of if, if-else, or
+          if-else-if statements within if, if-else, or if-else-if statements.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.4.A.2) The Boolean expression of the inner nested if statement
-            is evaluated only if the Boolean expression of the outer if
-            statement evaluates to true.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 2.4.A.2) The Boolean expression of the inner nested if statement
+          is evaluated only if the Boolean expression of the outer if statement
+          evaluates to true.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 2.4.A.3) A multi-way selection (if-else-if) is used when there
-            are a series of expressions with different segments of code for each
-            condition. Multi-way selection is performed such that no more than
-            one segment of code is executed based on the first expression that
-            evaluates to true. If no expression evaluates to true and there is a
-            trailing else statement, then the body of the else is executed.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 2.4.A.3) A multi-way selection (if-else-if) is used when there are
+          a series of expressions with different segments of code for each
+          condition. Multi-way selection is performed such that no more than one
+          segment of code is executed based on the first expression that
+          evaluates to true. If no expression evaluates to true and there is a
+          trailing else statement, then the body of the else is executed.
+        </p>
+      </li>
+    </ul>
 
     <program>
       // A single if statement
@@ -874,23 +871,21 @@
       }
     </program>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Relational operators (==, !=, &lt;, &gt;, &lt;=, &gt;=) are used in
-            boolean expressions to compare values and arithmetic expressions.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Relational operators (==, !=, &lt;, &gt;, &lt;=, &gt;=) are used in
+          boolean expressions to compare values and arithmetic expressions.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            If statements can be followed by an associated <term>else</term>
-            part to form a 2-way branch:
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          If statements can be followed by an associated <term>else</term> part
+          to form a 2-way branch:
+        </p>
+      </li>
+    </ul>
 
     <program>
       if (boolean expression)
@@ -903,20 +898,18 @@
       }
     </program>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 2.3.A.4) A two-way selection (if-else statement) is used when
-            there are two segments of code—one to be executed when the Boolean
-            expression is true and another segment for when the Boolean
-            expression is false. In this case, the body of the if is executed
-            when the Boolean expression is true, and the body of the else is
-            executed when the Boolean expression is false.
-          </p>
-        </li>
-      </ul>
-    </p>
+    <ul>
+      <li>
+        <p>
+          (AP 2.3.A.4) A two-way selection (if-else statement) is used when
+          there are two segments of code—one to be executed when the Boolean
+          expression is true and another segment for when the Boolean expression
+          is false. In this case, the body of the if is executed when the
+          Boolean expression is true, and the body of the else is executed when
+          the Boolean expression is false.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-13">

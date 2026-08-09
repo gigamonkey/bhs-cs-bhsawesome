@@ -37,32 +37,29 @@
 
     <p>Note a few things about this code:</p>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            Both the outer and the inner loop are canonical <c>for</c> loops,
-            looping from <c>0</c> to a limit of the array length, stepping by
-            one.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          Both the outer and the inner loop are canonical <c>for</c> loops,
+          looping from <c>0</c> to a limit of the array length, stepping by one.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            The loop limits are <c>array.length</c> for the number of rows and
-            <c>array[0].length</c> for the number of columns.
-          </p>
-        </li>
+      <li>
+        <p>
+          The loop limits are <c>array.length</c> for the number of rows and
+          <c>array[0].length</c> for the number of columns.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            We use <c>r</c> and <c>c</c> as our loop variables as a useful
-            reminder to the human reader of which is the row index and which is
-            the column.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          We use <c>r</c> and <c>c</c> as our loop variables as a useful
+          reminder to the human reader of which is the row index and which is
+          the column.
+        </p>
+      </li>
+    </ul>
 
     <p>
       That loop traverses the array in what’s called <term>row-major
@@ -656,49 +653,47 @@
   <subsection xml:id="summary-39">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.12.A.1) Nested iteration statements (loops) are used to
-            traverse and access all or an ordered sequence of elements in a 2D
-            array. Since 2D arrays are stored as arrays of arrays, the way 2D
-            arrays are traversed using <c>for</c> loops and enhanced <c>for</c>
-            loops is similar to 1D array objects.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 4.12.A.1) Nested iteration statements (loops) are used to traverse
+          and access all or an ordered sequence of elements in a 2D array. Since
+          2D arrays are stored as arrays of arrays, the way 2D arrays are
+          traversed using <c>for</c> loops and enhanced <c>for</c> loops is
+          similar to 1D array objects.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.12.A.1) Nested iteration statements can be written to traverse
-            the 2D array in row-major order, column-major order, or a uniquely
-            defined order. <term>Row-major order</term> refers to an ordering of
-            2D array elements where traversal occurs across each row, whereas
-            <term>column-major order</term> traversal occurs down each column.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.12.A.1) Nested iteration statements can be written to traverse
+          the 2D array in row-major order, column-major order, or a uniquely
+          defined order. <term>Row-major order</term> refers to an ordering of
+          2D array elements where traversal occurs across each row, whereas
+          <term>column-major order</term> traversal occurs down each column.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.12.A.2) The outer loop of a nested enhanced <c>for</c> loop
-            used to traverse a 2D array traverses the rows. Therefore, the
-            enhanced <c>for</c> loop variable must be the type of each row,
-            which is a 1D array. The inner loop traverses a single row.
-            Therefore, the inner enhanced <c>for</c> loop variable must be the
-            same type as the elements stored in the 1D array. Assigning a new
-            value to the enhanced <c>for</c> loop variable does not change the
-            value stored in the array.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.12.A.2) The outer loop of a nested enhanced <c>for</c> loop used
+          to traverse a 2D array traverses the rows. Therefore, the enhanced
+          <c>for</c> loop variable must be the type of each row, which is a 1D
+          array. The inner loop traverses a single row. Therefore, the inner
+          enhanced <c>for</c> loop variable must be the same type as the
+          elements stored in the 1D array. Assigning a new value to the enhanced
+          <c>for</c> loop variable does not change the value stored in the
+          array.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            The 2D array’s length gives the number of rows. A row’s length
-            array[0].length gives the number of columns.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          The 2D array’s length gives the number of rows. A row’s length
+          array[0].length gives the number of columns.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-24">

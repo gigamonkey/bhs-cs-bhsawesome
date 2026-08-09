@@ -570,90 +570,87 @@
   <subsection xml:id="summary-10">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            <term>Type casting</term> is used to convert a value from one type
-            to another.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          <term>Type casting</term> is used to convert a value from one type to
+          another.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.5.A.1) The casting operators <c>(int)</c> and <c>(double)</c>
-            can be used to convert from a double value to an int value (or vice
-            versa).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.5.A.1) The casting operators <c>(int)</c> and <c>(double)</c>
+          can be used to convert from a double value to an int value (or vice
+          versa).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.5.A.2) Casting a <c>double</c> value to an <c>int</c> causes
-            the digits to the right of the decimal point to be truncated (cut
-            off and thrown away).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.5.A.2) Casting a <c>double</c> value to an <c>int</c> causes the
+          digits to the right of the decimal point to be truncated (cut off and
+          thrown away).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.5.A.3) Some code causes int values to be automatically cast
-            (widened) to double values. In expressions involving <c>double</c>s,
-            the <c>double</c> values are contagious, causing <c>int</c>s in the
-            expression to be automatically converted (“widened”) to the
-            equivalent <c>double</c> value so the result of the expression can
-            be computed as a <c>double</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.5.A.3) Some code causes int values to be automatically cast
+          (widened) to double values. In expressions involving <c>double</c>s,
+          the <c>double</c> values are contagious, causing <c>int</c>s in the
+          expression to be automatically converted (“widened”) to the equivalent
+          <c>double</c> value so the result of the expression can be computed as
+          a <c>double</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.5.A.4) Values of type <c>double</c> can be rounded to the
-            nearest integer by (int)(x + 0.5) or (int)(x – 0.5) for negative
-            numbers.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.5.A.4) Values of type <c>double</c> can be rounded to the
+          nearest integer by (int)(x + 0.5) or (int)(x – 0.5) for negative
+          numbers.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.5.B.1) The constant <c>Integer.MAX_VALUE</c> holds the value
-            of the largest possible int value. The constant
-            <c>Integer.MIN_VALUE</c> holds the value of the smallest possible
-            int value.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.5.B.1) The constant <c>Integer.MAX_VALUE</c> holds the value of
+          the largest possible int value. The constant <c>Integer.MIN_VALUE</c>
+          holds the value of the smallest possible int value.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.5.B.2) Integer values in Java are represented by values of
-            type <c>int</c>, which are stored using a finite amount (4 bytes) of
-            memory. Therefore, an int value must be in the range from
-            <c>Integer.MIN_VALUE</c> to <c>Integer.MAX_VALUE</c>, inclusive.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.5.B.2) Integer values in Java are represented by values of type
+          <c>int</c>, which are stored using a finite amount (4 bytes) of
+          memory. Therefore, an int value must be in the range from
+          <c>Integer.MIN_VALUE</c> to <c>Integer.MAX_VALUE</c>, inclusive.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.5.B.3) If an expression would evaluate to an int value outside
-            of the allowed range, an <term>integer overflow</term> occurs. The
-            result is an int value in the allowed range but not necessarily the
-            value expected.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.5.B.3) If an expression would evaluate to an int value outside
+          of the allowed range, an <term>integer overflow</term> occurs. The
+          result is an int value in the allowed range but not necessarily the
+          value expected.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.5.C.1) Computers allot a specified amount of memory to store
-            data based on the data type. If an expression would evaluate to a
-            double that is more precise than can be stored in the allotted
-            amount of memory, a <term>round-off error</term> occurs. The result
-            will be rounded to the representable value. To avoid rounding errors
-            that naturally occur, use int values or round doubles to the
-            precision needed.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 1.5.C.1) Computers allot a specified amount of memory to store
+          data based on the data type. If an expression would evaluate to a
+          double that is more precise than can be stored in the allotted amount
+          of memory, a <term>round-off error</term> occurs. The result will be
+          rounded to the representable value. To avoid rounding errors that
+          naturally occur, use int values or round doubles to the precision
+          needed.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-9">

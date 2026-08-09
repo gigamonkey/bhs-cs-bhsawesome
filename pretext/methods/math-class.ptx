@@ -814,43 +814,38 @@
         What if you forgot your combination? Would you be able to guess it?
       </p>
 
-      <p>
-        <ol>
-          <li>
-            <p>
-              Write code that will generate 3 random integers from 0 up to 40
-              (but not including 40) using <term>Math.random()</term> in the
-              Active Code window below. Run it a couple times to see it generate
-              different numbers.
-            </p>
-          </li>
+      <ol>
+        <li>
+          <p>
+            Write code that will generate 3 random integers from 0 up to 40 (but
+            not including 40) using <term>Math.random()</term> in the Active
+            Code window below. Run it a couple times to see it generate
+            different numbers.
+          </p>
+        </li>
 
-          <li>
-            <p>
-              How many times would you need to run it to guess your combination
-              correctly? Let’s have the code compute the number of permutations
-              possible in your combination lock using <term>Math.pow(number,
-              exponent)</term>. For example, if you had to spin the dial twice
-              on your combination lock where each spin can choose a digit from
-              0-9 (10 digits), there are <m>10^{2}</m> possible permutations. In
-              Java, this would be written as <term>Math.pow(10, 2)</term> which
-              means 10 to the power of 2. If you start listing all the
-              permutations possible, you can tell that there are <m>10^{2}</m>
-              or 100 possible permutations for a 2 spins on a dial lock from
-              0-9.
-            </p>
+        <li>
+          <p>
+            How many times would you need to run it to guess your combination
+            correctly? Let’s have the code compute the number of permutations
+            possible in your combination lock using <term>Math.pow(number,
+            exponent)</term>. For example, if you had to spin the dial twice on
+            your combination lock where each spin can choose a digit from 0-9
+            (10 digits), there are <m>10^{2}</m> possible permutations. In Java,
+            this would be written as <term>Math.pow(10, 2)</term> which means 10
+            to the power of 2. If you start listing all the permutations
+            possible, you can tell that there are <m>10^{2}</m> or 100 possible
+            permutations for a 2 spins on a dial lock from 0-9.
+          </p>
 
-            <p>
-              <pre>
-              00, 01, 02, 03, 04, 05, 06, 07, 08, 09
-              10, 11, 12, 13, 14, 15, 16, 17, 18, 19
-              ...
-              90, 91, 92, 93, 94, 95, 96, 97, 98, 99
-              </pre>
-            </p>
-          </li>
-        </ol>
-      </p>
+          <pre>
+          00, 01, 02, 03, 04, 05, 06, 07, 08, 09
+          10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+          ...
+          90, 91, 92, 93, 94, 95, 96, 97, 98, 99
+          </pre>
+        </li>
+      </ol>
     </gutterimage>
 
     <p>
@@ -1150,96 +1145,90 @@
   <subsection xml:id="summary-2">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 1.10.A.2) Class methods are typically called using the class
-            name along with the dot operator. When the method call occurs in the
-            defining class, the use of the class name is optional in the call.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 1.10.A.2) Class methods are typically called using the class name
+          along with the dot operator. When the method call occurs in the
+          defining class, the use of the class name is optional in the call.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.11.A.1) The <c>Math</c> class is part of the <c>java.lang</c>
-            package. Classes in the <c>java.lang</c> package are available by
-            default.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.11.A.1) The <c>Math</c> class is part of the <c>java.lang</c>
+          package. Classes in the <c>java.lang</c> package are available by
+          default.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.11.A.2) The Math class contains only class (static) methods.
-            They can be called using <term>Math</term>.method(); for each
-            method.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.11.A.2) The Math class contains only class (static) methods.
+          They can be called using <term>Math</term>.method(); for each method.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.11.A.2) The following static Math methods are part of the Java
-            Quick Reference:
-          </p>
+      <li>
+        <p>
+          (AP 1.11.A.2) The following static Math methods are part of the Java
+          Quick Reference:
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>
-                  <term>int abs(int)</term> : Returns the absolute value of an
-                  int value (which means no negatives).
-                </p>
-              </li>
+        <ul>
+          <li>
+            <p>
+              <term>int abs(int)</term> : Returns the absolute value of an int
+              value (which means no negatives).
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>double abs(double)</term> : Returns the absolute value
-                  of a double value.
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>double abs(double)</term> : Returns the absolute value of a
+              double value.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>double pow(double, double)</term> : Returns the value of
-                  the first parameter raised to the power of the second
-                  parameter.
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>double pow(double, double)</term> : Returns the value of the
+              first parameter raised to the power of the second parameter.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>double sqrt(double)</term> : Returns the positive square
-                  root of a double value.
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>double sqrt(double)</term> : Returns the positive square
+              root of a double value.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>double random()</term> : Returns a double value greater
-                  than or equal to 0.0 and less than 1.0 (not including 1.0)!
-                </p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p>
+              <term>double random()</term> : Returns a double value greater than
+              or equal to 0.0 and less than 1.0 (not including 1.0)!
+            </p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            (AP 1.11.A.3) The values returned from <c>Math.random()</c> can be
-            manipulated to produce a random int or double in a defined range.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 1.11.A.3) The values returned from <c>Math.random()</c> can be
+          manipulated to produce a random int or double in a defined range.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            <term>(int)(Math.random() * range) + min</term> moves the random
-            number into a range starting from a minimum number. The range is the
-            <term>(max - min + 1)</term>. For example, to get a number in the
-            range of 5 to 10, use the range 10-5+1 = 6 and the min number 5:
-            <c>(int)(Math.random()*6) + 5</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          <term>(int)(Math.random() * range) + min</term> moves the random
+          number into a range starting from a minimum number. The range is the
+          <term>(max - min + 1)</term>. For example, to get a number in the
+          range of 5 to 10, use the range 10-5+1 = 6 and the min number 5:
+          <c>(int)(Math.random()*6) + 5</c>.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

@@ -79,18 +79,16 @@
       features that make it the canonical loop:
     </p>
 
-    <p>
-      <ol>
-        <li>The loop variable, <c>i</c> starts at <c>0</c>.</li>
+    <ol>
+      <li>The loop variable, <c>i</c> starts at <c>0</c>.</li>
 
-        <li>The loop variable is incremented by one in the updater.</li>
+      <li>The loop variable is incremented by one in the updater.</li>
 
-        <li>
-          The comparison uses <c>&lt;</c> so the maximum value of <c>i</c> is
-          one less than <c>n</c>.
-        </li>
-      </ol>
-    </p>
+      <li>
+        The comparison uses <c>&lt;</c> so the maximum value of <c>i</c> is one
+        less than <c>n</c>.
+      </li>
+    </ol>
 
     <p>
       After ensuring those features are present, any Java programmer should be
@@ -1353,50 +1351,48 @@
   <subsection>
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 2.12.A.1) A <term>statement execution count</term> indicates the
-            number of times a statement is executed by the program. Statement
-            execution counts are often calculated informally through tracing and
-            analysis of the iterative statements.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 2.12.A.1) A <term>statement execution count</term> indicates the
+          number of times a statement is executed by the program. Statement
+          execution counts are often calculated informally through tracing and
+          analysis of the iterative statements.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            A trace table can be used to keep track of the variables and their
-            values throughout each iteration of the loop.
-          </p>
-        </li>
+      <li>
+        <p>
+          A trace table can be used to keep track of the variables and their
+          values throughout each iteration of the loop.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            The number of times a loop executes can be calculated by
-            <c>largestValue - smallestValue + 1</c> where these are the largest
-            and smallest values of the loop counter variable possible in the
-            body of the loop.
-          </p>
-        </li>
+      <li>
+        <p>
+          The number of times a loop executes can be calculated by
+          <c>largestValue - smallestValue + 1</c> where these are the largest
+          and smallest values of the loop counter variable possible in the body
+          of the loop.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            The number of times a nested for-loop runs is the number of times
-            the outer loop runs <term>times</term> the number of times the inner
-            loop runs.
-          </p>
-        </li>
+      <li>
+        <p>
+          The number of times a nested for-loop runs is the number of times the
+          outer loop runs <term>times</term> the number of times the inner loop
+          runs.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            In non-rectangular loops, the number of times the inner loop runs
-            can be calculated with the sum of natural numbers formula
-            <c>n(n+1)/2</c> where n is the number of times the outer loop runs
-            or the maximum number of times the inner loop runs.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          In non-rectangular loops, the number of times the inner loop runs can
+          be calculated with the sum of natural numbers formula <c>n(n+1)/2</c>
+          where n is the number of times the outer loop runs or the maximum
+          number of times the inner loop runs.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

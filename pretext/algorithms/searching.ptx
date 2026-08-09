@@ -1158,64 +1158,62 @@
   <subsection xml:id="summary-40">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.14.A.1) <term>Linear search algorithms</term> are standard
-            algorithms that check each element in order until the desired value
-            is found or all elements in the array or <c>ArrayList</c> have been
-            checked. Linear search algorithms can begin the search process from
-            either end of the array or <c>ArrayList</c>.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 4.14.A.1) <term>Linear search algorithms</term> are standard
+          algorithms that check each element in order until the desired value is
+          found or all elements in the array or <c>ArrayList</c> have been
+          checked. Linear search algorithms can begin the search process from
+          either end of the array or <c>ArrayList</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.14.A.2) When applying linear search algorithms to 2D arrays,
-            each row must be accessed then linear search applied to each row of
-            the 2D array.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.14.A.2) When applying linear search algorithms to 2D arrays,
+          each row must be accessed then linear search applied to each row of
+          the 2D array.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            The <term>binary search</term> algorithm starts at the middle of a
-            sorted array or <c>ArrayList</c> and eliminates half of the array or
-            <c>ArrayList</c> in each iteration until the desired value is found
-            or all elements have been eliminated.
-          </p>
-        </li>
+      <li>
+        <p>
+          The <term>binary search</term> algorithm starts at the middle of a
+          sorted array or <c>ArrayList</c> and eliminates half of the array or
+          <c>ArrayList</c> in each iteration until the desired value is found or
+          all elements have been eliminated.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.17.B.1 preview) Data must be in sorted order to use the binary
-            search algorithm.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.17.B.1 preview) Data must be in sorted order to use the binary
+          search algorithm.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.17.B.2 preview) Binary search is typically more efficient than
-            linear search.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.17.B.2 preview) Binary search is typically more efficient than
+          linear search.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.17.B.3 preview) The binary search algorithm can be written
-            either iteratively or recursively. (The recursive solution will be
-            presented in lesson 4.17).
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.17.B.3 preview) The binary search algorithm can be written
+          either iteratively or recursively. (The recursive solution will be
+          presented in lesson 4.17).
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Informal run-time comparisons of program code segments can be made
-            using statement execution counts.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          Informal run-time comparisons of program code segments can be made
+          using statement execution counts.
+        </p>
+      </li>
+    </ul>
   </subsection>
 </section>

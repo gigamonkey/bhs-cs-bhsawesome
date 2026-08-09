@@ -189,17 +189,15 @@
       initialized to the “zero” value for the element type.
     </p>
 
-    <p>
-      <ul>
-        <li><c>0</c> for elements of type <c>int</c></li>
+    <ul>
+      <li><c>0</c> for elements of type <c>int</c></li>
 
-        <li><c>0.0</c> for elements of type <c>double</c></li>
+      <li><c>0.0</c> for elements of type <c>double</c></li>
 
-        <li><c>false</c> for elements of type <c>boolean</c></li>
+      <li><c>false</c> for elements of type <c>boolean</c></li>
 
-        <li><c>null</c> for all reference types</li>
-      </ul>
-    </p>
+      <li><c>null</c> for all reference types</li>
+    </ul>
 
     <figure align="center">
       <caption>
@@ -910,85 +908,80 @@
       arrays.
     </p>
 
-    <p>
-      <ol>
-        <li>
-          <p>
-            Use the Active Code window below to create four parallel arrays and
-            initialize them using initialization lists that represent the data
-            below. Remember that the order of these arrays has to match so that
-            you can use the same index and get corresponding values out.
-          </p>
+    <ol>
+      <li>
+        <p>
+          Use the Active Code window below to create four parallel arrays and
+          initialize them using initialization lists that represent the data
+          below. Remember that the order of these arrays has to match so that
+          you can use the same index and get corresponding values out.
+        </p>
 
-          <p>
-            <ul>
-              <li>
-                <p>
-                  <term>Countries:</term> China, Egypt, France, Germany, India,
-                  Japan, Kenya, Mexico, United Kingdom, United States
-                </p>
-              </li>
+        <ul>
+          <li>
+            <p>
+              <term>Countries:</term> China, Egypt, France, Germany, India,
+              Japan, Kenya, Mexico, United Kingdom, United States
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>Capitals:</term> Beijing, Cairo, Paris, Berlin, New
-                  Delhi, Tokyo, Nairobi, Mexico City, London, Washington D.C.
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>Capitals:</term> Beijing, Cairo, Paris, Berlin, New Delhi,
+              Tokyo, Nairobi, Mexico City, London, Washington D.C.
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>Languages:</term> Chinese, Arabic, French, German,
-                  Hindi, Japanese, Swahili, Spanish, English, English
-                </p>
-              </li>
+          <li>
+            <p>
+              <term>Languages:</term> Chinese, Arabic, French, German, Hindi,
+              Japanese, Swahili, Spanish, English, English
+            </p>
+          </li>
 
-              <li>
-                <p>
-                  <term>Filenames for map images:</term> China.jpg, Egypt.jpg,
-                  France.jpg, Germany.jpg, India.jpg, Japan.jpg, Kenya.jpg,
-                  Mexico.jpg, UK.jpg, US.jpg
-                </p>
-              </li>
-            </ul>
-          </p>
-        </li>
+          <li>
+            <p>
+              <term>Filenames for map images:</term> China.jpg, Egypt.jpg,
+              France.jpg, Germany.jpg, India.jpg, Japan.jpg, Kenya.jpg,
+              Mexico.jpg, UK.jpg, US.jpg
+            </p>
+          </li>
+        </ul>
+      </li>
 
-        <li>
-          <p>
-            You are encouraged to add additional country, capital, and language
-            names that match in position in the parallel arrays to represent
-            your family origins or places you would like to visit. Although we
-            do not have image files for each country in the CSAwesome map
-            images, we do have regional map images called south-america.png,
-            central-america.png, north-america.png, asia-pacific.png,
-            europe.png, africa.png, and middle-east.png which you can use. Note
-            that these are png files and not jpg. If you create more maps for
-            your project, you can have your teacher share it in the
-            teaching-csawesome google group to contribute to this map image
-            collection.
-          </p>
-        </li>
+      <li>
+        <p>
+          You are encouraged to add additional country, capital, and language
+          names that match in position in the parallel arrays to represent your
+          family origins or places you would like to visit. Although we do not
+          have image files for each country in the CSAwesome map images, we do
+          have regional map images called south-america.png,
+          central-america.png, north-america.png, asia-pacific.png, europe.png,
+          africa.png, and middle-east.png which you can use. Note that these are
+          png files and not jpg. If you create more maps for your project, you
+          can have your teacher share it in the teaching-csawesome google group
+          to contribute to this map image collection.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Choose a random number using <c>Math.random()</c> and the
-            <c>length</c> of one of the arrays and save it in a variable called
-            <c>index</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          Choose a random number using <c>Math.random()</c> and the
+          <c>length</c> of one of the arrays and save it in a variable called
+          <c>index</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            Print out the country name, its capital, and its language, and the
-            map image for that country using the random index to access the
-            corresponding item in each parallel array. For the images, the
-            <c>printHtmlImage</c> method has been given to get the image URL
-            online and print it out as an HTML image.
-          </p>
-        </li>
-      </ol>
-    </p>
+      <li>
+        <p>
+          Print out the country name, its capital, and its language, and the map
+          image for that country using the random index to access the
+          corresponding item in each parallel array. For the images, the
+          <c>printHtmlImage</c> method has been given to get the image URL
+          online and print it out as an HTML image.
+        </p>
+      </li>
+    </ol>
 
     <project label="challenge-countries">
       <statement>
@@ -1043,59 +1036,56 @@
   <subsection xml:id="summary-45">
     <title>Summary</title>
 
-    <p>
-      <ul>
-        <li>
-          <p>
-            (AP 4.3.A.1) An <term>array</term> stores multiple values of the
-            same type. The values can be either primitive values or object
-            references.
-          </p>
-        </li>
+    <ul>
+      <li>
+        <p>
+          (AP 4.3.A.1) An <term>array</term> stores multiple values of the same
+          type. The values can be either primitive values or object references.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.3.A.2) The length (size) of an array is established at the
-            time of creation and cannot be changed. The length of an array can
-            be accessed through the <c>length</c> attribute.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.3.A.2) The length (size) of an array is established at the time
+          of creation and cannot be changed. The length of an array can be
+          accessed through the <c>length</c> attribute.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.3.A.3) When an array is created using the keyword <c>new</c>,
-            all of its elements are initialized to the default values for the
-            element data type. The default value for <c>int `` is ``0</c>, for
-            <c>double</c> is <c>0.0</c>, for <c>boolean</c> is <c>false</c>, and
-            for a reference type (like <c>String</c> or a class you have
-            created) is <c>null</c>.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.3.A.3) When an array is created using the keyword <c>new</c>,
+          all of its elements are initialized to the default values for the
+          element data type. The default value for <c>int `` is ``0</c>, for
+          <c>double</c> is <c>0.0</c>, for <c>boolean</c> is <c>false</c>, and
+          for a reference type (like <c>String</c> or a class you have created)
+          is <c>null</c>.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.3.A.4) Initializer lists can be used to create and initialize
-            arrays.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.3.A.4) Initializer lists can be used to create and initialize
+          arrays.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.3.A.5) Square brackets <c>[]</c> are used to access and modify
-            an element in a 1D (one dimensional) array using an index.
-          </p>
-        </li>
+      <li>
+        <p>
+          (AP 4.3.A.5) Square brackets <c>[]</c> are used to access and modify
+          an element in a 1D (one dimensional) array using an index.
+        </p>
+      </li>
 
-        <li>
-          <p>
-            (AP 4.3.A.6) The valid index values for an array are <c>0</c>
-            through one less than the length of the array, inclusive. Using an
-            index value outside of this range will result in an
-            <c>ArrayIndexOutOfBoundsException</c>.
-          </p>
-        </li>
-      </ul>
-    </p>
+      <li>
+        <p>
+          (AP 4.3.A.6) The valid index values for an array are <c>0</c> through
+          one less than the length of the array, inclusive. Using an index value
+          outside of this range will result in an
+          <c>ArrayIndexOutOfBoundsException</c>.
+        </p>
+      </li>
+    </ul>
   </subsection>
 
   <subsection xml:id="ap-practice-25">
