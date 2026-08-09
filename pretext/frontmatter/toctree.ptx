@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <frontmatter xml:id="frontmatter" xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <introduction xml:id="how-to-use-this-book">
+  <introduction>
     <p>
       Welcome to BHSawesome an interactive AP CSA textbook. As you work your way
       through this book you will encounter a number of interactive activities
