@@ -69,8 +69,9 @@ const OVERRIDES = new Map([
 const NOTES = new Map([
   ['tex2jax_ignore', 'step 3 target: MathJax runtime is gone; zero CSS, zero JS'],
   ['keyword', 'stays: real distinction (<k> keywords vs plain <c>) — but also a Prism token name'],
-  ['figure-like', 'read-aloud checks this name when deciding how to read a block — smoke read-aloud at step 6'],
-  ['project-like', 'read-aloud checks this name — smoke read-aloud at step 6'],
+  // The -like family left at step 6: blocks wear one semantic class
+  // (activity, note, figure, table, ...) and read-aloud's vendored
+  // BARE_BLOCKS list carries them (its FAMILIES list is legacy-only).
   ['image-box', 'pretext-core magnifier attach list (".image-box, .sbsrow, figure, li, ...") — step 8 must keep the magnifier working'],
   ['sbspanel', 'pretext-core references ".sbspanel" — check the code path before touching sidebyside markup'],
   ['heading-divison-mark', 'step 5 target: zero CSS rules (note inherited typo)'],
@@ -90,9 +91,7 @@ const NOTES = new Map([
   ['function', 'styled #30a/#e3e1c2 — restored 2026-08-09 (the phase-5 extraction had dropped it; the CDN-blocked shot harness of that era hid the loss)'],
   ['class-name', 'styled #30a/#e3e1c2 — restored 2026-08-09 with .function'],
   ['namespace', 'opacity .9 (package paths in imports) — restored 2026-08-09'],
-  ['activity', 'step 6: the surviving name of the `activity project-like` pair'],
-  ['project', 'step 6: the surviving name of the `project project-like` pair'],
-  ['listing', 'step 6: the surviving name of the `listing figure-like` pair'],
+  ['activity', 'block class (one per block since step 6); also in read-aloud BARE_BLOCKS'],
 ]);
 
 // Runestone component vocabulary by shape: frozen (plan ground-rule 1)

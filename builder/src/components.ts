@@ -28,9 +28,9 @@ const TYPE_NAMES: Record<string, string> = {
 };
 
 const WRAPPER_CLASSES: Record<string, string> = {
-  activity: 'activity project-like',
-  project: 'project project-like',
-  exercise: 'exercise exercise-like',
+  activity: 'activity',
+  project: 'project',
+  exercise: 'exercise',
 };
 
 // Elements that ARE the payload; everything else in an activity renders as

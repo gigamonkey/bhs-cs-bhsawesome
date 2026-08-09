@@ -1,5 +1,8 @@
 (() => {
   // ../../js/src/read-aloud/nodes.js
+  // PreTeXt's block-family classes. This book stopped emitting them at
+  // the css-cleanup's -like dedup (blocks wear one semantic class and ride
+  // BARE_BLOCKS below); kept for fetched/legacy content only.
   var FAMILIES = /* @__PURE__ */ new Set([
     "theorem-like",
     "definition-like",
@@ -36,7 +39,21 @@
     "backmatter",
     "frontmatter"
   ]);
-  var BARE_BLOCKS = /* @__PURE__ */ new Set(["proof", "hiddenproof"]);
+  var BARE_BLOCKS = /* @__PURE__ */ new Set([
+    "proof",
+    "hiddenproof",
+    // this book's single-class blocks (post -like dedup)
+    "activity",
+    "project",
+    "exercise",
+    "note",
+    "solution",
+    "answer",
+    "hint",
+    "figure",
+    "table",
+    "listing"
+  ]);
   var ASIDE_CLASSES = {
     "born-hidden-knowl": null,
     // type comes from its own block classes
@@ -72,7 +89,7 @@
 
   // ../../js/src/read-aloud/collector.js
   var ANNOUNCE_SELECTORS = [
-    { selector: ".table-like, table", stringId: "read-aloud-skip-table" },
+    { selector: ".table, table", stringId: "read-aloud-skip-table" },
     {
       selector: "pre, .code-box, .program, .console, .sage, .sagecell-practice, .ac_code_div, .sortable-code-container",
       stringId: "read-aloud-skip-code"

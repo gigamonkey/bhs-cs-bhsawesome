@@ -1,9 +1,8 @@
 /*
  * Prose emitters: ptx elements → semantic HTML5 wearing what's left of
- * PreTeXt's content-area class vocabulary (book.css targets .image-box,
- * figure-like, etc.; the cleanup plan — bhs-cs
+ * PreTeXt's content-area class vocabulary (the cleanup plan — bhs-cs
  * plans/bhsawesome-css-cleanup.md — is renegotiating it class by class;
- * paragraphs are already plain <p>).
+ * paragraphs are plain <p>, blocks wear one semantic class each).
  *
  * Interactive components (activities with programs/choices/blocks/...) are
  * NOT handled here — emitComponent in components.ts owns them; during the
@@ -394,7 +393,7 @@ const EMITTERS: Record<string, Emitter> = {
       caption ? trimText(emitChildren(caption, ctx)).trim() : '',
       ctx.permalinks === false ? '' : autopermalink(id, desc),
     );
-    return h('figure', { class: 'figure figure-like', id }, body, figcaption);
+    return h('figure', { class: 'figure', id }, body, figcaption);
   },
   image: (el, ctx) => {
     const source = el.attributes.source ?? '';
@@ -460,8 +459,8 @@ const EMITTERS: Record<string, Emitter> = {
         ? figcaption
         : figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
     return inSidebyside(el)
-      ? h('figure', { class: 'table table-like', id }, body, figcaptionWithLink)
-      : h('figure', { class: 'table table-like', id }, figcaptionWithLink, body);
+      ? h('figure', { class: 'table', id }, body, figcaptionWithLink)
+      : h('figure', { class: 'table', id }, figcaptionWithLink, body);
   },
   // PreTeXt's tabular model: per-cell classes `<halign> <valign> bN rN lN
   // tN lines` where borders resolve cell > row/col > tabular; left borders
@@ -521,24 +520,24 @@ const EMITTERS: Record<string, Emitter> = {
       .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
       .map((c) => emitElement(c, ctx))
       .join('');
-    return h('article', { class: 'note remark-like', id }, heading, body, autopermalink(id, number ? `Note ${number}` : 'Note'));
+    return h('article', { class: 'note', id }, heading, body, autopermalink(id, number ? `Note ${number}` : 'Note'));
   },
   blockquote: (el, ctx) => h('blockquote', { class: 'blockquote', id: elementId(el) }, emitBlocks(el, ctx)),
   attribution: (el, ctx) =>
     h('cite', { class: 'attribution' }, `―${trimText(emitChildren(el, ctx)).trim()}`),
 
   // Solution/answer/hint render as inline <details> knowls.
-  solution: (el, ctx) => knowlDetails('Solution', 'solution solution-like', el, ctx),
-  answer: (el, ctx) => knowlDetails('Answer', 'answer answer-like', el, ctx),
-  hint: (el, ctx) => knowlDetails('Hint', 'hint hint-like', el, ctx),
+  solution: (el, ctx) => knowlDetails('Solution', 'solution', el, ctx),
+  answer: (el, ctx) => knowlDetails('Answer', 'answer', el, ctx),
+  hint: (el, ctx) => knowlDetails('Hint', 'hint', el, ctx),
 
   // NON-interactive activities/projects/exercises (a prose statement,
   // maybe a display program, answer/solution knowls). Interactive ones
   // never reach the dispatch table (emitElement routes them to
   // emitComponent first).
-  activity: (el, ctx) => proseActivity(el, ctx, 'Activity', 'activity project-like'),
-  project: (el, ctx) => proseActivity(el, ctx, 'Project', 'project project-like'),
-  exercise: (el, ctx) => proseActivity(el, ctx, 'Activity', 'exercise exercise-like'),
+  activity: (el, ctx) => proseActivity(el, ctx, 'Activity', 'activity'),
+  project: (el, ctx) => proseActivity(el, ctx, 'Project', 'project'),
+  exercise: (el, ctx) => proseActivity(el, ctx, 'Activity', 'exercise'),
   pre: (el) => preBlock(textContent(el)),
   listing: (el, ctx) => {
     const id = elementId(el);
@@ -564,8 +563,8 @@ const EMITTERS: Record<string, Emitter> = {
         ? figcaption
         : figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
     return inSidebyside(el)
-      ? h('figure', { class: 'listing figure-like', id }, body, figcaptionWithLink)
-      : h('figure', { class: 'listing figure-like', id }, figcaptionWithLink, body);
+      ? h('figure', { class: 'listing', id }, body, figcaptionWithLink)
+      : h('figure', { class: 'listing', id }, figcaptionWithLink, body);
   },
 
   // Non-interactive <program> in prose (interactive ones route to
