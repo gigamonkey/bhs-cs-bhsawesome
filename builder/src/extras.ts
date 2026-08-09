@@ -6,6 +6,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import lunr from 'lunr';
 import type { Book, Division } from './book.ts';
 import { escapeHtml, h } from './html.ts';
 import { NUMBERED_BLOCKS, blockNumber, elementId } from './ids.ts';
@@ -338,21 +339,25 @@ export function lunrIndexJs(book: Book): string {
     title: 'Index',
     body: ' Index ',
   });
+  // Prebuild the index HERE (phase 5): the browser was re-indexing the
+  // whole corpus (var ptx_lunr_idx = lunr(...) over ptx_lunr_docs) on
+  // EVERY page load. Now the serialized index ships and the page only
+  // does lunr.Index.load() — parse, not re-index. ptx_lunr_docs still
+  // ships (pretext_search.js reads it for result titles + clip text).
+  // The field/ref/whitelist config must match what the search JS expects.
+  const idx = lunr(function () {
+    this.ref('id');
+    this.field('title');
+    this.field('body');
+    this.metadataWhitelist = ['position'];
+    for (const doc of docs) this.add(doc);
+  });
   const json = docs.map((d) => JSON.stringify(d)).join(',\n');
   return `var ptx_lunr_search_style = "textbook";
 var ptx_lunr_docs = [
 ${json}
 ]
 
-var ptx_lunr_idx = lunr(function () {
-  this.ref('id')
-  this.field('title')
-  this.field('body')
-  this.metadataWhitelist = ['position']
-
-  ptx_lunr_docs.forEach(function (doc) {
-    this.add(doc)
-  }, this)
-})
+var ptx_lunr_idx = lunr.Index.load(${JSON.stringify(idx)})
 `;
 }

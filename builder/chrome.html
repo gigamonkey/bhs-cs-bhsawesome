@@ -37,7 +37,42 @@ eBookConfig.runestone_version = '8.2.2';
 <!--*** Runestone Services ***-->
 <script data-bhs-defer-src="_static/prefix-runtime.d6cecb5ab13310d5.bundle.js"></script><script data-bhs-defer-src="_static/prefix-926.5c8ed1d3d2a33b88.bundle.js"></script><script data-bhs-defer-src="_static/prefix-runestone.a82765517af58708.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
 <link rel="stylesheet" type="text/css" href="_static/prefix-runestone.7ea10ac3a7ad35e8.css">
-<script src="_static/lunr.min.js"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/dist/pretext_search.js"></script>
+<script src="_static/pretext/js/dist/pretext_search.js"></script>
+<!-- Lazy search index (phase 5): the prebuilt index (lunr.Index.load, not
+     a browser re-index) is large, so it and lunr.min.js load only when the
+     reader first reaches for search — most never do, and pay nothing. The
+     stub globals keep pretext_search.js's doSearch a harmless no-op until
+     the real index script overwrites them; then a queued query re-runs. -->
+<script>
+(function () {
+  window.ptx_lunr_docs = [];
+  window.ptx_lunr_idx = { query: function () { return []; }, search: function () { return []; } };
+  var loading = false;
+  function loadSearch() {
+    if (loading) return;
+    loading = true;
+    var lunrScript = document.createElement("script");
+    lunrScript.src = "_static/lunr.min.js";
+    lunrScript.onload = function () {
+      var idx = document.createElement("script");
+      idx.src = "lunr-pretext-search-index.js";
+      idx.onload = function () {
+        var terms = document.getElementById("ptx-search-terms");
+        if (terms && terms.value) terms.dispatchEvent(new Event("input"));
+      };
+      document.head.appendChild(idx);
+    };
+    document.head.appendChild(lunrScript);
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("ptx-search-button");
+    if (!btn) return;
+    ["pointerenter", "focusin", "click"].forEach(function (ev) {
+      btn.addEventListener(ev, loadSearch);
+    });
+  });
+})();
+</script>
 <script src="/js/bhsawesome.js"></script>
 </head>
 <body id="BHSawesome2" class="pretext book ignore-math">
