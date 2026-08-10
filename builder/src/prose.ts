@@ -285,7 +285,6 @@ const EMITTERS: Record<string, Emitter> = {
       'a',
       {
         href: `${label.pageOf.page}#${ref}`,
-        class: 'xref',
         'data-knowl': `./knowl/xref/${ref}.html`,
         'data-reveal-label': 'Reveal',
         'data-close-label': 'Close',
@@ -453,7 +452,7 @@ const EMITTERS: Record<string, Emitter> = {
             return h(tag, { ...(scope ? { scope } : {}), class: cls }, trimText(emitChildren(cell, ctx)).trim());
           })
           .join('\n');
-        return h('tr', headerRow ? { class: 'header-horizontal' } : {}, tds);
+        return h('tr', {}, tds);
       })
       .join('\n');
     return h(
@@ -483,7 +482,7 @@ const EMITTERS: Record<string, Emitter> = {
   },
   blockquote: (el, ctx) => h('blockquote', { class: 'blockquote', id: elementId(el) }, emitBlocks(el, ctx)),
   attribution: (el, ctx) =>
-    h('cite', { class: 'attribution' }, `―${trimText(emitChildren(el, ctx)).trim()}`),
+    h('cite', {}, `―${trimText(emitChildren(el, ctx)).trim()}`),
 
   // Solution/answer/hint render as inline <details> knowls.
   solution: (el, ctx) => knowlDetails('Solution', 'solution', el, ctx),
@@ -570,8 +569,8 @@ const EMITTERS: Record<string, Emitter> = {
             'margin-left:-20%;margin-right:0%;grid-template-columns:12.5% 83.3333333333333%;column-gap:5%;',
         },
         [
-          h('div', { class: 'sbspanel sbspanel--top top', style: '' }, h('div', { class: 'image-box' }, img)),
-          h('div', { class: 'sbspanel sbspanel--top top', style: '' }, emitBlocks(el, ctx)),
+          h('div', { class: 'sbspanel sbspanel--top', style: '' }, h('div', { class: 'image-box' }, img)),
+          h('div', { class: 'sbspanel sbspanel--top', style: '' }, emitBlocks(el, ctx)),
         ].join('\n'),
       ),
     );
@@ -594,7 +593,7 @@ const EMITTERS: Record<string, Emitter> = {
       .map((p) =>
         h(
           'div',
-          { class: `sbspanel sbspanel--${valign} ${valign}`, style: '' },
+          { class: `sbspanel sbspanel--${valign}`, style: '' },
           p.name === 'stack' || p.name === 'container' ? emitBlocks(p, ctx) : emitElement(p, ctx),
         ),
       )
