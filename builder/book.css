@@ -1670,9 +1670,6 @@ section section section>.heading {
     line-height: 1em;
 }}
 
-.heading.hide-type>.type {
-    display: none;
-}
 
 a {
     color: var(--link-text-color);
@@ -2755,7 +2752,10 @@ section>h2.heading {
     border-bottom-color: var(--primary-color-black-30);
 }
 
-.hide-type .codenumber:not(:empty):after {
+/* The "2.1 - Title" dash on DIVISION headings (block headings — inside
+   articles — punctuate with a period instead). Generated content on
+   purpose: it stays out of copied text and read-aloud. */
+section > .heading .codenumber:after {
     content: " -";
 }
 

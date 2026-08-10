@@ -21,6 +21,13 @@
   const collapse = (s) => (s ?? "").replace(/\s+/g, " ").trim();
   const noDot = (s) => collapse(s).replace(/\.$/, "");
 
+  const SECTION_TYPES = {
+    section: "Section",
+    subsection: "Subsection",
+    introduction: "Introduction",
+    preface: "Preface",
+  };
+
   // Owner element -> description, or null for "no permalink here".
   function describe(el) {
     const tag = el.tagName;
@@ -42,11 +49,17 @@
     }
     const heading = el.querySelector(":scope > .heading");
     if (!heading) return null;
-    const type = collapse(heading.querySelector(".type")?.textContent);
     const num = collapse(heading.querySelector(".codenumber")?.textContent);
-    if (tag === "ARTICLE") return num ? `${type} ${num}` : type;
-    // section divisions
+    if (tag === "ARTICLE") {
+      const type = collapse(heading.querySelector(".type")?.textContent);
+      return num ? `${type} ${num}` : type;
+    }
+    // Section divisions: titled headings carry no type span (hide-type
+    // dissolved), so the type comes from the division's class.
     if (el.classList.contains("frontmatter")) return "Front Matter";
+    const type =
+      SECTION_TYPES[[...el.classList].find((c) => SECTION_TYPES[c])] ??
+      collapse(heading.querySelector(".type")?.textContent);
     const title = collapse(heading.querySelector(".title")?.textContent);
     return num ? `${type} ${num}${title ? `: ${title}` : ""}` : title || type;
   }

@@ -64,14 +64,17 @@ function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boole
   const headingless = (d.kind === 'introduction' || d.kind === 'conclusion') && !isPageRoot;
   const titleEl = d.el.children.find((c) => c instanceof Object && 'name' in c && c.name === 'title');
   const titleHtml = titleEl ? emitChildren(titleEl as XmlElement, ctx).replace(/\s+/g, ' ').trim() : escapeHtml(d.title);
+  // Titled divisions show no type label ("2.1 - Title", the dash coming
+  // from the section>.heading .codenumber:after rule); the type is simply
+  // not emitted rather than emitted-and-hidden.
   const heading = headingless
     ? ''
     : h(
         `h${Math.min(6, level)}`,
-        { class: `heading${d.title ? ' hide-type' : ''}` },
+        { class: 'heading' },
         d.kind === 'introduction' && !d.title
           ? h('span', { class: 'type' }, 'Introduction')
-          : headingSpans(KIND_LABELS[d.kind] ?? d.kind, d.number, titleHtml, ctx),
+          : headingSpans(d.title ? null : (KIND_LABELS[d.kind] ?? d.kind), d.number, titleHtml, ctx),
       );
   const inner: string[] = [heading];
   const subCtx: Ctx = { ...ctx, headingLevel: level };
@@ -138,8 +141,8 @@ function titleText(el: XmlElement): string {
 function chapterSummaryPage(d: Division, ctx: Ctx): string {
   const heading = h(
     'h1',
-    { class: 'heading hide-type' },
-    headingSpans('Chapter', d.number, escapeHtml(d.title), ctx),
+    { class: 'heading' },
+    headingSpans(null, d.number, escapeHtml(d.title), ctx),
   );
   const intro = d.children.find((c) => c.kind === 'introduction' && !c.page);
   const introHtml = intro

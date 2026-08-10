@@ -50,9 +50,10 @@ export const knowlTargets = new Set<string>();
 
 /*
  * Heading markup: only the pieces the CSS actually addresses get spans —
- * .type (hide-type hides it), .codenumber, .title. Separator spaces and
- * periods are plain text (the PreTeXt span wrappers around them had no
- * styling and no consumers).
+ * .type, .codenumber, .title. Separator spaces and periods are plain
+ * text. Titled division headings carry no type at all (page.ts passes
+ * null); the "2.1 - Title" dash is the section>.heading .codenumber:after
+ * rule in book.css.
  */
 
 /**
