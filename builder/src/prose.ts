@@ -400,7 +400,6 @@ const EMITTERS: Record<string, Emitter> = {
     const desc = el.children.find((c) => isElement(c) && c.name === 'shortdescription') as XmlElement | undefined;
     const img = voidEl('img', {
       src: `external/${source}`,
-      class: 'contained',
       alt: desc ? trimText(textContent(desc)).trim() : undefined,
     });
     // Inside a sidebyside the PANEL controls the width; the image-box is
@@ -426,7 +425,6 @@ const EMITTERS: Record<string, Emitter> = {
         style: `width: ${width}%;padding-top: ${width * 0.5625}%; margin-left: ${margin}%; margin-right: ${margin}%;`,
       },
       h('iframe', {
-        class: 'video',
         allowfullscreen: '',
         src: `https://www.youtube-nocookie.com/embed/${yt}?&modestbranding=1&rel=0`,
         id,
@@ -497,7 +495,7 @@ const EMITTERS: Record<string, Emitter> = {
       .join('\n');
     return h(
       'div',
-      { class: 'tabular-box natural-width' },
+      { class: 'tabular-box' },
       h('table', { class: 'tabular' }, trs),
     );
   },
@@ -575,14 +573,12 @@ const EMITTERS: Record<string, Emitter> = {
     // Output-showing programs are language="text".
     if (el.attributes.language === '') ctx.warn('<program language=""> — use language="text" for output blocks');
     const lang = el.attributes.language ?? 'java';
+    // No wrapper div: the pre scrolls itself, and pretext-core's clipboard
+    // code re-wraps any .clipboardable at runtime to anchor its button.
     return h(
-      'div',
-      { class: 'code-box' },
-      h(
-        'pre',
-        { class: 'program clipboardable' },
-        h('code', { class: `language-${lang}` }, `${highlight(dedent(textContent(code ?? el)), lang)}\n`),
-      ),
+      'pre',
+      { class: 'program clipboardable' },
+      h('code', { class: `language-${lang}` }, `${highlight(dedent(textContent(code ?? el)), lang)}\n`),
     );
   },
   code: (el) => preBlock(dedent(textContent(el))),
@@ -603,7 +599,6 @@ const EMITTERS: Record<string, Emitter> = {
   gutterimage: (el, ctx) => {
     const img = voidEl('img', {
       src: `external/${el.attributes.source ?? ''}`,
-      class: 'contained',
       alt: el.attributes.description,
     });
     return h(

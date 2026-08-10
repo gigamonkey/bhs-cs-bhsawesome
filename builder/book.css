@@ -1241,10 +1241,6 @@ body.pretext {
     max-width: 765px;
 }}
 
-.code-box {
-    overflow-x: auto;
-}
-
 .program {
     border: 1px solid var(--page-border-color);
     padding: 5px 15px;
@@ -1847,7 +1843,7 @@ a[href^="mailto:"] {
     overflow-y: hidden;
 }
 
-.tabular-box.natural-width table {
+.tabular-box table {
     margin-left: auto;
     margin-right: auto;
 }
@@ -2001,7 +1997,7 @@ em+.indexknowl {
     position: relative;
 }
 
-.video-box .video {
+.video-box iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -2009,8 +2005,7 @@ em+.indexknowl {
     height: 100%;
 }
 
-.image-box img,
-img.contained {
+.image-box img {
     width: 100%;
 }
 

@@ -219,7 +219,7 @@ export function videoPage(label: string, youtube: string): string {
 <body class="pretext book">
 <div class="ptx-page"><main class="ptx-main"><div id="ptx-content">
 <div style="text-align: center;">Reloading this page will reset a start location</div>
-<div class="video-box" style="width: 100%;padding-top: 56.25%;"><iframe class="video" allowfullscreen="" src="https://www.youtube-nocookie.com/embed/${escapeHtml(youtube)}?&amp;modestbranding=1&amp;rel=0&amp;autoplay=1" id="${escapeHtml(label)}"></iframe></div>
+<div class="video-box" style="width: 100%;padding-top: 56.25%;"><iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/${escapeHtml(youtube)}?&amp;modestbranding=1&amp;rel=0&amp;autoplay=1" id="${escapeHtml(label)}"></iframe></div>
 </div></main></div>
 </body>
 </html>

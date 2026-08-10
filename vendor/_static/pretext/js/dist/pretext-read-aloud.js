@@ -91,7 +91,7 @@
   var ANNOUNCE_SELECTORS = [
     { selector: ".table, table", stringId: "read-aloud-skip-table" },
     {
-      selector: "pre, .code-box, .program, .console, .sage, .sagecell-practice, .ac_code_div, .sortable-code-container",
+      selector: "pre, .program, .console, .sage, .sagecell-practice, .ac_code_div, .sortable-code-container",
       stringId: "read-aloud-skip-code"
     },
     {
