@@ -39,7 +39,7 @@
   <subsection xml:id="part-b-1">
     <title>Part B</title>
 
-    <ol marker="a">
+    <ol type="a">
       <li>
         <p>
           Write the <c>StringFormatter</c> method <c>basicGapWidth</c>, which

@@ -321,24 +321,21 @@ const EMITTERS: Record<string, Emitter> = {
   },
 
   // -- lists -----------------------------------------------------------------
-  // Bare elements; book.css keeps every nesting level disc via
-  // `.ptx-content ul`, and ols are the UA default. The two @marker forms
-  // the source uses ("1", "a" — a counter with no trailing period) map to
-  // static classes.
+  // Bare elements: ols are the UA default (ol@type passes through for
+  // lettered AP-style parts); book.css keeps every ul nesting level disc
+  // via `.ptx-content ul`. PreTeXt's @marker is retired (it existed to
+  // strip the period off five lists).
   ul: (el, ctx) => {
     if (el.attributes.marker !== undefined) {
-      ctx.warn(`<ul marker="${el.attributes.marker}"> unsupported — markers are always disc`);
+      ctx.warn(`<ul marker="${el.attributes.marker}"> — @marker is retired; markers are always disc`);
     }
     return h('ul', { id: elementId(el) }, emitBlocks(el, ctx));
   },
   ol: (el, ctx) => {
-    const marker = el.attributes.marker;
-    let cls: string | undefined;
-    if (marker !== undefined) {
-      cls = OL_MARKER_CLASSES[marker];
-      if (!cls) ctx.warn(`<ol marker="${marker}"> unsupported — add the class + rule pair (book.css "@marker ols")`);
+    if (el.attributes.marker !== undefined) {
+      ctx.warn(`<ol marker="${el.attributes.marker}"> — @marker is retired; use @type for lettered lists`);
     }
-    return h('ol', { class: cls, id: elementId(el) }, emitBlocks(el, ctx));
+    return h('ol', { type: el.attributes.type, id: elementId(el) }, emitBlocks(el, ctx));
   },
   li: (el, ctx) => {
     // A list item is block context if it contains p's, inline otherwise.
@@ -722,11 +719,6 @@ function knowlDetails(type: string, classes: string, el: XmlElement, ctx: Ctx): 
     h('div', { class: `${classes} knowl__content` }, emitBlocks(el, ctx)),
   );
 }
-
-const OL_MARKER_CLASSES: Record<string, string> = {
-  '1': 'marker-decimal',
-  a: 'marker-lower-alpha',
-};
 
 function preBlock(code: string): string {
   return h('pre', { class: 'code-block clipboardable' }, `${escapeHtml(dedent(code))}\n`);

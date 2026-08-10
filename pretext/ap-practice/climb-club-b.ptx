@@ -151,7 +151,7 @@
   <subsection xml:id="walk-through-the-example">
     <title>Walk Through the Example</title>
 
-    <ol marker="1">
+    <ol>
       <li>
         <p>
           First you will create a new <c>ClimbInfo</c> object with a

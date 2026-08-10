@@ -14,7 +14,7 @@
       otherwise they are not balanced.
     </p>
 
-    <ol marker="1">
+    <ol>
       <li>
         <p>
           When traversing the <c>ArrayList</c> from the first element to the
@@ -171,7 +171,7 @@
       otherwise they are not balanced.
     </p>
 
-    <ol marker="1">
+    <ol>
       <li>
         <p>
           When traversing the <c>ArrayList&lt;String&gt; delimiters</c> from the
@@ -344,7 +344,7 @@
       otherwise they are not balanced.
     </p>
 
-    <ol marker="1">
+    <ol>
       <li>
         <p>
           When traversing the <c>ArrayList</c> from the first element to the

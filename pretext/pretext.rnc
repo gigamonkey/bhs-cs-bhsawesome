@@ -690,13 +690,13 @@
                 element ol {
                     Component?,
                     attribute cols {"2"|"3"|"4"|"5"|"6"}?,
-                    attribute marker {text}?,
+                    # HTML's ol@type, passed through (lettered AP-style parts)
+                    attribute type {"a" | "A" | "i" | "I" | "1"}?,
                     ListItem+
                 } |
                 element ul {
                     Component?,
                     attribute cols {"2"|"3"|"4"|"5"|"6"}?,
-                    attribute marker {"disc" | "circle" | "square" | ""}?,
                     ListItem+
                 } |
                 element dl {
@@ -1197,7 +1197,7 @@
             ExerciseOrderedList =
                 element ol {
                     attribute cols {"2"|"3"|"4"|"5"|"6"}?,
-                    attribute marker {text}?,
+                    attribute type {"a" | "A" | "i" | "I" | "1"}?,
                     ExerciseListItem+
                 }
             ExerciseListItem = element li {
