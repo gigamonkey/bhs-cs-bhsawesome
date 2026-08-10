@@ -110,6 +110,12 @@ export function tocJs(book: Book): string {
   var nav = document.getElementById('ptx-toc');
   if (!nav) return;
   nav.innerHTML = ${JSON.stringify(tocHtml(book))};
+  // The top-level list must be marked contains-active on EVERY page —
+  // pretext-core's CSS hides all items of a .ptx-toc.focused ul.structural
+  // without it — including pages with no ToC entry of their own (the
+  // contents page), so mark it before the active-link matching can bail.
+  var root = nav.querySelector('ul.structural');
+  if (root) root.classList.add('contains-active');
   // ToC hrefs are root-relative slashed URLs; normalize the location the
   // same way (a reader can arrive via the unslashed 301's cached form).
   var path = window.location.pathname;
@@ -123,8 +129,6 @@ export function tocJs(book: Book): string {
     p.classList.add('contains-active');
     p = p.parentElement && p.parentElement.closest('li.toc-item');
   }
-  var root = nav.querySelector('ul.structural');
-  if (root) root.classList.add('contains-active');
 })();
 `;
 }
