@@ -16,7 +16,7 @@ import path from 'node:path';
 import type { Ctx } from './prose.ts';
 import { escapeAttr, escapeHtml, h } from './html.ts';
 import { blockNumber, elementId, overrideId } from './ids.ts';
-import { autopermalink, blockHeadingSpans, dedent, emitBlocks, emitChildren, emitElement, smartQuotes, trimText } from './prose.ts';
+import { blockHeadingSpans, dedent, emitBlocks, emitChildren, emitElement, smartQuotes, trimText } from './prose.ts';
 import { type XmlElement, attr, child, elements, isElement, textContent } from './xml.ts';
 
 const ASSETS = path.resolve(import.meta.dirname, '..', '..', 'pretext', 'assets');
@@ -91,7 +91,6 @@ export function emitComponent(el: XmlElement, ctx: Ctx): string {
     heading,
     payload,
     extras,
-    autopermalink(id, number ? `${typeName} ${number}` : typeName),
   );
 }
 
@@ -113,8 +112,6 @@ function emitPayload(el: XmlElement, label: string, ctx: Ctx): string {
   if (kind === 'parsons') return emitParsons(el, label, ctx);
   return h('div', { class: 'ptx-runestone-container', 'data-bhs-todo': `${kind}:${label}` }, '');
 }
-
-const noPermalinks = (ctx: Ctx): Ctx => ({ ...ctx, permalinks: false });
 
 function statementBlocks(el: XmlElement, ctx: Ctx): string {
   const s = statementOf(el);
@@ -232,8 +229,8 @@ function emitFillin(el: XmlElement, label: string, ctx: Ctx): string {
 function fillinFeedback(fb: XmlElement | undefined, ctx: Ctx): string {
   if (!fb) return '';
   const paras = elements(fb, 'p');
-  if (paras.length === 0) return trimText(emitChildren(fb, noPermalinks(ctx))).trim();
-  return `\n${paras.map((p) => emitElement(p, noPermalinks(ctx))).join('\n')}`;
+  if (paras.length === 0) return trimText(emitChildren(fb, ctx)).trim();
+  return `\n${paras.map((p) => emitElement(p, ctx)).join('\n')}`;
 }
 
 // -- multiple choice ---------------------------------------------------------
@@ -255,13 +252,13 @@ function emitMcq(el: XmlElement, label: string, ctx: Ctx): string {
           id: `rs-${label}_opt_${letter}`,
           ...(choice.attributes.correct === 'yes' ? { 'data-correct': '' } : {}),
         },
-        st ? emitBlocks(st, noPermalinks(ctx)) : '',
+        st ? emitBlocks(st, ctx) : '',
       );
       const feedback = fb
         ? h(
             'li',
             { 'data-component': 'feedback', id: `rs-${label}_opt_${letter}` },
-            emitBlocks(fb, noPermalinks(ctx)),
+            emitBlocks(fb, ctx),
           )
         : '';
       return answer + feedback;
@@ -357,8 +354,8 @@ function emitClickablearea(el: XmlElement, label: string, ctx: Ctx): string {
           id: `rs-${label}`,
         },
         h('span', { 'data-question': '' }, statementBlocks(el, ctx)),
-        feedback ? h('span', { 'data-feedback': '' }, emitBlocks(feedback, noPermalinks(ctx))) : '',
-        tableEl ? emitElement(tableEl, noPermalinks(ctx)) : h('pre', {}, `${lines.join('\n')}\n`),
+        feedback ? h('span', { 'data-feedback': '' }, emitBlocks(feedback, ctx)) : '',
+        tableEl ? emitElement(tableEl, ctx) : h('pre', {}, `${lines.join('\n')}\n`),
       ),
     ),
   );
@@ -379,12 +376,12 @@ function emitCardsort(el: XmlElement, label: string, ctx: Ctx): string {
         h(
           'li',
           { 'data-subcomponent': 'draggable', id: `rs-${label}_drag${i + 1}`, 'data-category': category },
-          premise ? trimText(emitChildren(premise, noPermalinks(ctx))).trim() : '',
+          premise ? trimText(emitChildren(premise, ctx)).trim() : '',
         ) +
         h(
           'li',
           { 'data-subcomponent': 'dropzone', for: `rs-${label}_drag${i + 1}`, 'data-category': category },
-          response ? trimText(emitChildren(response, noPermalinks(ctx))).trim() : '',
+          response ? trimText(emitChildren(response, ctx)).trim() : '',
         )
       );
     })
@@ -405,7 +402,7 @@ function emitCardsort(el: XmlElement, label: string, ctx: Ctx): string {
         },
         h('span', { 'data-subcomponent': 'question' }, statementBlocks(el, ctx)),
         feedback
-          ? h('span', { 'data-subcomponent': 'feedback' }, emitBlocks(feedback, noPermalinks(ctx)))
+          ? h('span', { 'data-subcomponent': 'feedback' }, emitBlocks(feedback, ctx))
           : '',
         items,
       ),

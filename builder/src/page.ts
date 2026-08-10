@@ -47,7 +47,6 @@ function frontmatterPage(d: Division, ctx: Ctx): string {
     heading,
     introHtml,
     summaryLinks(d),
-    autopermalinkFor(d.id, 'Front Matter'),
   );
 }
 
@@ -91,13 +90,6 @@ function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boole
       inner.push(isInteractive(c) ? ctx.emitComponent(c, subCtx) : emitElement(c, subCtx));
     }
   }
-  if (!headingless) {
-    const kindLabel = KIND_LABELS[d.kind] ?? d.kind;
-    const desc = d.number
-      ? `${kindLabel} ${d.number}${d.title ? `: ${d.title}` : ''}`
-      : d.title || kindLabel;
-    inner.push(autopermalinkFor(d.id, desc));
-  }
   return h('section', { class: d.kind === 'subsection' ? 'subsection' : d.kind, id: d.id }, inner.join('\n'));
 }
 
@@ -139,22 +131,6 @@ function titleText(el: XmlElement): string {
   return out.replace(/\s+/g, ' ').trim();
 }
 
-function autopermalinkFor(id: string, description: string): string {
-  return h(
-    'div',
-    { class: 'autopermalink', 'aria-hidden': 'true', 'data-description': description },
-    h(
-      'a',
-      {
-        tabindex: '-1',
-        href: `#${id}`,
-        title: `Copy heading and permalink for ${description}`,
-        'aria-label': `Copy heading and permalink for ${description}`,
-      },
-      '🔗',
-    ),
-  );
-}
 
 /** Chapter page: heading, the inline introduction (our schema — same
  * treatment as the frontmatter's), then the linked summary of its

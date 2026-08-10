@@ -20,8 +20,6 @@ export type Ctx = {
   book: Book;
   page: string; // filename of the page being emitted
   headingLevel: number; // current division's heading level
-  // false inside component answers/feedback, where paras render bare.
-  permalinks?: boolean;
   emitComponent: (el: XmlElement, ctx: Ctx) => string;
   warn: (msg: string) => void;
 };
@@ -49,25 +47,6 @@ export function isInteractive(el: XmlElement): boolean {
 // Block-xref targets that need knowl pages emitted (filled during page
 // emission, consumed by build.ts).
 export const knowlTargets = new Set<string>();
-
-export function autopermalink(id: string, description: string): string {
-  // A span, not a div: permalinks live inside <p> now (phase 4), where a
-  // div would auto-close the paragraph. The CSS is class-based throughout.
-  return h(
-    'span',
-    { class: 'autopermalink', 'aria-hidden': 'true', 'data-description': description },
-    h(
-      'a',
-      {
-        tabindex: '-1',
-        href: `#${id}`,
-        title: `Copy heading and permalink for ${description}`,
-        'aria-label': `Copy heading and permalink for ${description}`,
-      },
-      '🔗',
-    ),
-  );
-}
 
 /*
  * Heading markup: only the pieces the CSS actually addresses get spans —
@@ -231,12 +210,7 @@ const EMITTERS: Record<string, Emitter> = {
     // No class: paragraphs are plain <p>, styled by element; the few
     // script-generated paragraphs opt out in book.css (the
     // runestone_caption exception).
-    return h(
-      'p',
-      { id },
-      trimText(emitChildren(el, ctx)).trim(),
-      ctx.permalinks === false ? '' : autopermalink(id, 'Paragraph'),
-    );
+    return h('p', { id }, trimText(emitChildren(el, ctx)).trim());
   },
 
   // -- inline ----------------------------------------------------------------
@@ -346,12 +320,7 @@ const EMITTERS: Record<string, Emitter> = {
     const body = hasBlocks
       ? emitBlocks(el, ctx)
       : h('p', { id: `p-derived-${id}` }, trimText(emitChildren(el, ctx)).trim());
-    const parent = el.parent as XmlElement | undefined;
-    let desc = 'Item';
-    if (parent && 'name' in parent && parent.name === 'ol') {
-      desc = `Item ${elements(parent, 'li').indexOf(el) + 1}`;
-    }
-    return h('li', { id }, body, autopermalink(id, desc));
+    return h('li', { id }, body);
   },
   dl: (el, ctx) =>
     h(
@@ -383,13 +352,11 @@ const EMITTERS: Record<string, Emitter> = {
       .map((c) => emitElement(c, ctx))
       .join('');
     // Captionless figures still get their numbered figcaption.
-    const desc = number ? `Figure ${number}` : 'Figure';
     const figcaption = h(
       'figcaption',
       {},
       figcaptionHeading('Figure', number ?? null),
       caption ? trimText(emitChildren(caption, ctx)).trim() : '',
-      ctx.permalinks === false ? '' : autopermalink(id, desc),
     );
     return h('figure', { class: 'figure', id }, body, figcaption);
   },
@@ -449,14 +416,9 @@ const EMITTERS: Record<string, Emitter> = {
       figcaptionHeading('Table', number ?? null),
       title ? trimText(emitChildren(title, ctx)).trim() : '',
     );
-    const desc = number ? `Table ${number}` : 'Table';
-    const figcaptionWithLink =
-      ctx.permalinks === false
-        ? figcaption
-        : figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
     return inSidebyside(el)
-      ? h('figure', { class: 'table', id }, body, figcaptionWithLink)
-      : h('figure', { class: 'table', id }, figcaptionWithLink, body);
+      ? h('figure', { class: 'table', id }, body, figcaption)
+      : h('figure', { class: 'table', id }, figcaption, body);
   },
   // PreTeXt's tabular model: per-cell classes `<halign> <valign> bN rN lN
   // tN lines` where borders resolve cell > row/col > tabular; left borders
@@ -516,7 +478,7 @@ const EMITTERS: Record<string, Emitter> = {
       .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
       .map((c) => emitElement(c, ctx))
       .join('');
-    return h('article', { class: 'note', id }, heading, body, autopermalink(id, number ? `Note ${number}` : 'Note'));
+    return h('article', { class: 'note', id }, heading, body);
   },
   blockquote: (el, ctx) => h('blockquote', { class: 'blockquote', id: elementId(el) }, emitBlocks(el, ctx)),
   attribution: (el, ctx) =>
@@ -553,14 +515,9 @@ const EMITTERS: Record<string, Emitter> = {
     );
     // Caption ABOVE the code (like tables) — except inside a sidebyside,
     // where panel captions render in a row BELOW the panels.
-    const desc = number ? `Listing ${number}` : 'Listing';
-    const figcaptionWithLink =
-      ctx.permalinks === false
-        ? figcaption
-        : figcaption.replace('</figcaption>', `${autopermalink(id, desc)}</figcaption>`);
     return inSidebyside(el)
-      ? h('figure', { class: 'listing', id }, body, figcaptionWithLink)
-      : h('figure', { class: 'listing', id }, figcaptionWithLink, body);
+      ? h('figure', { class: 'listing', id }, body, figcaption)
+      : h('figure', { class: 'listing', id }, figcaption, body);
   },
 
   // Non-interactive <program> in prose (interactive ones route to
@@ -691,7 +648,7 @@ function proseActivity(el: XmlElement, ctx: Ctx, typeName: string, classes: stri
     .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
     .map((c) => emitElement(c, ctx))
     .join('');
-  return h('article', { class: classes, id }, heading, body, autopermalink(id, number ? `${typeName} ${number}` : typeName));
+  return h('article', { class: classes, id }, heading, body);
 }
 
 function inSidebyside(el: XmlElement): boolean {

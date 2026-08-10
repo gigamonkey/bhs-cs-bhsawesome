@@ -159,6 +159,9 @@ function copyTree(src: string, dst: string): number {
 fs.copyFileSync(path.join(ROOT, 'builder', 'book.css'), path.join(OUT, 'book.css'));
 // The shared ToC script (one cacheable file instead of inline ToC per page).
 fs.writeFileSync(path.join(OUT, 'toc.js'), tocJs(book));
+// The permalink injector (css-cleanup step 9): permalink anchors are
+// client-injected, not emitted — one static cacheable file.
+fs.copyFileSync(path.join(ROOT, 'builder', 'permalinks.js'), path.join(OUT, 'permalinks.js'));
 fs.mkdirSync(path.join(OUT, 'fonts'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'builder', 'fonts'))) {
   fs.copyFileSync(path.join(ROOT, 'builder', 'fonts', f), path.join(OUT, 'fonts', f));

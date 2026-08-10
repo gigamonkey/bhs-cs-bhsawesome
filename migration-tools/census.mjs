@@ -83,6 +83,7 @@ const NOTES = new Map([
   ['ol-marker-1', 'step 7 target: per-page marker registry'],
   ['ol-marker-2', 'step 7 target: per-page marker registry'],
   ['dark-mode', 'set on :root by pretext-core theme toggle'],
+  ['autopermalink', 'injected at load by builder/permalinks.js (step 9 — not in static HTML); consumed by pretext-core (copy/expose machinery)'],
   ['hide-type', 'dissolvable: WE emit it on titled division headings, then hide the .type span we just emitted — see the step-5 follow-up in the plan (the " -" :after needs a new key first)'],
   ['language-java', 'census blind spot: consumed via `code[class*=language-]` ATTRIBUTE selectors (Prism theme rules) — not dead'],
   ['language-text', 'consumed via `code[class*=language-]` attribute selectors — not dead'],
