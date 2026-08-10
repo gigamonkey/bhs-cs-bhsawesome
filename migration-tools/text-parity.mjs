@@ -19,7 +19,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const SITE = path.join(import.meta.dirname, '..', 'build', 'site');
+const SITE = path.join(import.meta.dirname, '..', 'build', 'out', 'public', 'bhsawesome');
 
 function walk(dir) {
   const out = [];

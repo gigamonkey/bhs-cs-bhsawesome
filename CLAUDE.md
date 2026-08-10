@@ -23,9 +23,9 @@ The "source code" is almost entirely XML prose: the `.ptx` files under
 The build is Node only (`npm ci` once; Node 26 type-strips the TypeScript):
 
 ```bash
-node builder/build.ts        # the whole site -> build/site/ (~400ms)
+node builder/build.ts        # the whole site -> build/out/public/bhsawesome/ (~400ms)
 node builder/watch.ts        # rebuild on any pretext/, builder/, or vendor/ change
-node builder/serve.ts        # preview build/site at localhost:8237/bhsawesome/
+node builder/serve.ts        # preview the built site at localhost:8237/bhsawesome/
 node builder/check-links.ts  # verify every internal ref resolves (CI runs it)
 ```
 
@@ -49,7 +49,7 @@ shared toc.js/search corpus can't be depth-relative). `redirects.json`
 maps each old flat `<id>.html` name to its new URL; the web app serves
 those as 301s. Because the refs are root-relative, preview through
 `builder/serve.ts` (or the dev website's overlay) — a static server rooted
-at `build/site` won't resolve them.
+at the output dir won’t resolve them.
 
 Python tooling for the root scripts is managed by **uv** (`pyproject.toml`,
 `uv.lock`, Python ≥3.13; lxml + ruff — run lxml-using scripts through
@@ -155,9 +155,10 @@ This repo is one of the bhs-cs content overlay's prefix-scoped publishers
 (the monorepo's `plans/done/rehost-bhsawesome.md`): it owns
 `public/bhsawesome/`, served at `/bhsawesome/` on the website.
 
-- `.github/workflows/publish.yml` runs `npm ci`, `node builder/build.ts`,
-  stages `build/site` as `build/out/public/bhsawesome`, and mirrors it to
-  the server with `push-content --only public/bhsawesome/` (needs the
+- `.github/workflows/publish.yml` runs `npm ci`, `node builder/build.ts`
+  (which emits straight to `build/out/public/bhsawesome` — the
+  overlay-shaped tree push-content expects, no staging step), and mirrors
+  it to the server with `push-content --only public/bhsawesome/` (needs the
   `BHS_CS_SERVER` variable + `SERVICE_KEYS_SECRET` secret configured on
   GitHub — `./setup.sh` provisions both). Keep the workflow file named
   `publish.yml` — the monorepo's `scripts/republish` dispatches it by that

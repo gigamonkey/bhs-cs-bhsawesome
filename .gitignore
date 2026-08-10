@@ -1,4 +1,4 @@
-# Build output (builder/build.ts -> build/site; CI stages build/out)
+# Build output (builder/build.ts -> build/out/public/bhsawesome)
 build/
 node_modules/
 

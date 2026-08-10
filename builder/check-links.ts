@@ -1,7 +1,7 @@
 /*
  * Internal-link check over the emitted site (run after build.ts; CI runs it
  * before publishing). Every /bhsawesome/... href/src/data-knowl in every
- * emitted page must resolve inside build/site: a slashed URL to
+ * emitted page must resolve inside the built site (SITE_DIR): a slashed URL to
  * <path>/index.html, anything else to a literal file. Relative refs are an
  * error by construction — the site's URLs are root-relative
  * (plans/bhsawesome-index-html-urls.md) — as is any bare-#fragment whose id
@@ -12,10 +12,10 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { BASE } from './src/urls.ts';
+import { BASE, SITE_DIR } from './src/urls.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const SITE = path.join(ROOT, 'build', 'site');
+const SITE = path.join(ROOT, SITE_DIR);
 
 const REF_RE = /(?:href|src|data-knowl)="([^"]*)"/g;
 const ID_RE = /id="([^"]*)"/g;

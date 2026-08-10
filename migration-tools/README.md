@@ -56,7 +56,7 @@ node migration-tools/compare.mjs migration-tools/shots/{before,after} \
 Shots land under `migration-tools/shots/` (gitignored). For pages
 outside the fixed set, `shoot-one.mjs <outdir> <page>…` shoots arbitrary
 pages by name (same server, no states). Serving is local
-HTTP over `build/site` with `/js/bhsawesome.js` mapped from the bhs-cs
+HTTP over `build/out/public/bhsawesome` with `/js/bhsawesome.js` mapped from the bhs-cs
 checkout (same `BHS_CS` convention; a defer-loader stub fills in without
 it) and all external requests aborted; `Math.random` is seeded per page so
 the components' card/block/choice shuffles deal identically every run.

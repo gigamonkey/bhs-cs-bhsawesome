@@ -51,16 +51,13 @@ jobs:
         run: node builder/build.ts
 
       # Every emitted /bhsawesome/... href/src/data-knowl must resolve
-      # inside build/site — a dead internal link fails the publish.
+      # inside the built site — a dead internal link fails the publish.
       - name: Check internal links
         run: node builder/check-links.ts
 
-      # push-content pushes the build/out tree (hardcoded); the builder
-      # emits the site itself to build/site (what the dev overlay serves),
-      # so CI stages a copy at the prefix the overlay expects.
-      - name: Stage as an overlay tree
-        run: mkdir -p build/out/public && cp -a build/site build/out/public/bhsawesome
-
+      # The builder emits straight to build/out/public/bhsawesome — the
+      # overlay-shaped tree push-content pushes (it hardcodes build/out) —
+      # so there is no staging step.
       - name: Push to the website content overlay
         if: github.event_name != 'pull_request'
         env:

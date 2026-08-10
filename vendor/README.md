@@ -1,7 +1,7 @@
 # Vendored frozen assets
 
 Committed copies of the two asset trees the builder can't produce itself.
-`builder/build.ts` copies them into `build/site/` verbatim.
+`builder/build.ts` copies them into `build/out/public/bhsawesome/` verbatim.
 
 ## `generated/` — CodeLens traces
 

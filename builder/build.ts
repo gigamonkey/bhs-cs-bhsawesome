@@ -3,7 +3,9 @@
  *
  *     node builder/build.ts [--only <page-path>...] [--no-assets]
  *
- * Emits the complete site into build/site/ — every page an index.html in
+ * Emits the complete site into build/out/public/bhsawesome/ (SITE_DIR in
+ * src/urls.ts — overlay-shaped, so push-content and the monorepo's dev-all
+ * consume build/out directly with no staging step) — every page an index.html in
  * its own directory (plans/bhsawesome-index-html-urls.md; a --only key is
  * the page's URL path, e.g. `introduction/intro-to-java`, or `` for the
  * contents page): all division pages (chrome from builder/chrome.html), the
@@ -34,10 +36,10 @@ import {
 import { emitElement } from './src/prose.ts';
 import { knowlTargets } from './src/prose.ts';
 import { elementId } from './src/ids.ts';
-import { fileFor, href } from './src/urls.ts';
+import { fileFor, href, SITE_DIR } from './src/urls.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const OUT = path.join(ROOT, 'build', 'site');
+const OUT = path.join(ROOT, SITE_DIR);
 
 const args = process.argv.slice(2);
 const onlyIdx = args.indexOf('--only');

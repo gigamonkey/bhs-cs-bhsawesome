@@ -1,9 +1,10 @@
 /*
- * Local preview server: serves build/site under the /bhsawesome prefix
- * with the same directory-URL semantics the website's static mounts give
- * prod (index.html at slashed paths, 301 from unslashed) — needed because
- * the pages' refs are root-relative /bhsawesome/... URLs, so a static
- * server rooted at build/site can't preview them. Run beside watch.ts:
+ * Local preview server: serves the built site (SITE_DIR) under the
+ * /bhsawesome prefix with the same directory-URL semantics the website's
+ * static mounts give prod (index.html at slashed paths, 301 from
+ * unslashed) — needed because the pages' refs are root-relative
+ * /bhsawesome/... URLs, so a static server rooted at the output dir can't
+ * preview them. Run beside watch.ts:
  *
  *     node builder/serve.ts [port]      # default 8237; / redirects to /bhsawesome/
  */
@@ -11,10 +12,10 @@
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
-import { BASE } from './src/urls.ts';
+import { BASE, SITE_DIR } from './src/urls.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const SITE = path.join(ROOT, 'build', 'site');
+const SITE = path.join(ROOT, SITE_DIR);
 const PORT = Number(process.argv[2] ?? 8237);
 
 const TYPES: Record<string, string> = {
@@ -62,5 +63,5 @@ http
     res.end(fs.readFileSync(file));
   })
   .listen(PORT, '0.0.0.0', () => {
-    console.log(`previewing build/site at http://localhost:${PORT}${BASE}/`);
+    console.log(`previewing ${SITE_DIR} at http://localhost:${PORT}${BASE}/`);
   });

@@ -13,7 +13,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
-const SITE = path.resolve('build/site');
+const SITE = path.resolve('build/out/public/bhsawesome');
 const CLIENT = path.join(process.env.BHS_CS ?? path.resolve('..', 'bhs-cs'), 'website', 'public', 'js', 'bhsawesome.js');
 const server = http.createServer((req, res) => {
   const url = decodeURIComponent(new URL(req.url, 'http://x').pathname);

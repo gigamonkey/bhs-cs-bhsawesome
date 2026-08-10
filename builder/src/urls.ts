@@ -12,12 +12,19 @@
 
 export const BASE = '/bhsawesome';
 
+/**
+ * The builder's output tree, relative to the repo root. Overlay-shaped
+ * (build/out is what push-content mirrors and what the monorepo's dev-all
+ * symlinks into its content overlay), so the build needs no staging step.
+ */
+export const SITE_DIR = 'build/out/public/bhsawesome';
+
 /** The served URL of a page path: /bhsawesome/<path>/ (slashed canonical). */
 export function href(page: string): string {
   return page === '' ? `${BASE}/` : `${BASE}/${page}/`;
 }
 
-/** The build/site-relative output file of a page path. */
+/** The SITE_DIR-relative output file of a page path. */
 export function fileFor(page: string): string {
   return page === '' ? 'index.html' : `${page}/index.html`;
 }

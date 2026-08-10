@@ -2,7 +2,7 @@
 /*
  * Screenshot harness for the CSS cleanup (bhs-cs plans/bhsawesome-css-cleanup.md).
  *
- * Serves build/site over local HTTP (plus /js/bhsawesome.js from the bhs-cs
+ * Serves build/out/public/bhsawesome over local HTTP (plus /js/bhsawesome.js from the bhs-cs
  * checkout — sibling by default, override with BHS_CS; a minimal defer-loader
  * stub fills in if the bundle is missing) and full-page-screenshots a fixed
  * page set chosen so every class vocabulary the cleanup touches is covered,
@@ -28,7 +28,7 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 
 const ROOT = path.join(import.meta.dirname, '..');
-const SITE = path.join(ROOT, 'build', 'site');
+const SITE = path.join(ROOT, 'build', 'out', 'public', 'bhsawesome');
 const BHS_CS = process.env.BHS_CS ?? path.join(ROOT, '..', 'bhs-cs');
 const CLIENT_JS = path.join(BHS_CS, 'website', 'public', 'js', 'bhsawesome.js');
 

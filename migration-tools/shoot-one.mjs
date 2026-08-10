@@ -11,7 +11,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
-const SITE = path.resolve('build/site');
+const SITE = path.resolve('build/out/public/bhsawesome');
 const server = http.createServer((req, res) => {
   const url = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   const rel = url === '/bhsawesome' ? '/' : url.startsWith('/bhsawesome/') ? url.slice('/bhsawesome'.length) : url;

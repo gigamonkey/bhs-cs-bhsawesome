@@ -8,7 +8,7 @@
  * each cleanup step is idempotent and the doc tracks the burn-down.
  *
  * Evidence collected per class name:
- *   - count in static HTML (build/site pages + knowl pages, plus class
+ *   - count in static HTML (build/out/public/bhsawesome pages + knowl pages, plus class
  *     attributes inside toc.js's injected-HTML strings)
  *   - number of selectors in builder/book.css mentioning it
  *   - string-literal hits in the shipped JS (vendored pretext scripts, the
@@ -28,7 +28,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT = path.join(import.meta.dirname, '..');
-const SITE = path.join(ROOT, 'build', 'site');
+const SITE = path.join(ROOT, 'build', 'out', 'public', 'bhsawesome');
 
 // The bhs-cs monorepo checkout (for the client bundle the book pages load
 // at /js/bhsawesome.js, and as the home of the generated ledger — it lives
