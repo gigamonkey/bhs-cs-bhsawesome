@@ -198,7 +198,6 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 
 :root {
     --base-content-width: 725px;
-    --content-padding: 48px;
 }
 
 body {
@@ -1450,8 +1449,8 @@ summary.knowl__link {
 
 .note:not(.knowl__content,.born-hidden-knowl) {
     padding: 10px 10px 10px 15px;
-    border-left: 4px solid var(--remark-like-border-color);
-    background-color: var(--remark-like-body-background);
+    border-left: 4px solid var(--note-border-color);
+    background-color: var(--note-body-background);
     border-radius: 4px;
 }
 
@@ -1460,15 +1459,15 @@ summary.knowl__link {
 }
 
 .ptx-content .conclusion:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl) {
-    border: 3px solid var(--goal-like-border-color);
-    background-color: var(--goal-like-body-background);
+    border: 3px solid var(--conclusion-border-color);
+    background-color: var(--conclusion-body-background);
     padding: 20px;
     padding-top: calc(20px + .25ex);
     margin-top: 2.5em!important;
 }
 
 .ptx-content .conclusion:not(.ptx-runestone-container *):not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    background-color: var(--goal-like-border-color);
+    background-color: var(--conclusion-border-color);
     display: block;
     color: #fff;
     margin-bottom: .5em;
@@ -1483,15 +1482,15 @@ summary.knowl__link {
 }
 
 :is(.activity,.project):not(.knowl__content,.born-hidden-knowl) {
-    border-left: 1px solid var(--project-like-border-color);
-    border-bottom: 1px solid var(--project-like-border-color);
+    border-left: 1px solid var(--activity-border-color);
+    border-bottom: 1px solid var(--activity-border-color);
     background-color: var(--content-background-background);
     padding: 0 0 12px 12px;
     border-bottom-left-radius: 2px;
 }
 
 :is(.activity,.project):not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    background-color: var(--project-like-border-color);
+    background-color: var(--activity-border-color);
     display: inline-block;
     color: #fff;
     padding: 5px 10px;
@@ -1514,15 +1513,15 @@ summary.knowl__link {
 }
 
 .ptx-content .exercise:not(.knowl__content,.born-hidden-knowl) {
-    border-left: 1px solid var(--exercise-like-border-color);
-    border-bottom: 1px solid var(--exercise-like-border-color);
+    border-left: 1px solid var(--exercise-border-color);
+    border-bottom: 1px solid var(--exercise-border-color);
     background-color: var(--content-background-background);
     padding: 0 0 12px 12px;
     border-bottom-left-radius: 2px;
 }
 
 .ptx-content .exercise:not(.knowl__content,.born-hidden-knowl)>.heading:first-child {
-    background-color: var(--exercise-like-border-color);
+    background-color: var(--exercise-border-color);
     display: inline-block;
     color: #fff;
     padding: 5px 10px;
@@ -1585,7 +1584,6 @@ ol>li {
 }
 
 :root.dark-mode {
-    --fillin-background-color: #444;
 }
 
 .heading:is(h1,h2,h3,h4,h5,h6) {
@@ -2484,12 +2482,10 @@ body.pretext>a.assistive,
 }}
 
 :root {
-    --ptx-search-resultsbackground: #fff8;
     --ptx-search-resultshighlight: rgba(255, 255, 0, 50%);
 }
 
 :root.dark-mode {
-    --ptx-search-resultsbackground: #0008;
     --ptx-search-resultshighlight: rgba(255, 255, 0, 15%);
 }
 
@@ -2732,7 +2728,6 @@ to {
 }
 
 :root {
-    --font-print: PT Serif, Times New Roman, Times, serif;
 }
 
 section>.heading {
@@ -2883,7 +2878,6 @@ body.pretext {
 
 :root {
     --content-font-size: 1.1rem;
-    --auto-collapse-toc: yes;
 }
 
 @media screen and (width<800px){
@@ -2904,7 +2898,6 @@ body.pretext {
     --byline-color: #333;
     --banner-background: #f8f8f8;
     --navbar-background: var(--primary-color);
-    --footer-background: var(--banner-background);
     --toc-border-color: #666;
     --toc-background: var(--content-background);
     --tocitem-background: var(--toc-background);
@@ -2930,11 +2923,9 @@ body.pretext {
     --summary-link-hover-background: var(--button-hover-background);
     --summary-link-hover-text-color: var(--button-hover-text-color);
     --link-text-color: var(--primary-color);
-    --link-background: transparent;
     --link-active-text-color: var(--primary-color);
     --link-active-background: var(--primary-color-white-96);
     --link-alt-text-color: var(--link-text-color);
-    --link-alt-background: transparent;
     --link-alt-active-text-color: var(--link-alt-text-color);
     --link-alt-active-background: var(--primary-color-white-96);
     --knowl-link-color: var(--link-text-color);
@@ -2946,131 +2937,34 @@ body.pretext {
     --knowl-nested-4-background: #edf8fd;
     --block-body-background: #edf8fd;
     --block-border-color: #1dafe6;
-    --block-head-color: black;
-    --aside-like-link-color: var(--link-text-color);
     --button-background: var(--primary-color);
     --button-text-color: var(--primary-color-white-90);
     --button-border-color: #3a3a3a;
     --button-hover-background: #3a3a3a;
     --button-hover-text-color: var(--button-text-color);
-    --dropdown-background: var(--content-background);
-    --dropdown-border-color: var(--toc-border-color);
-    --dropdown-text-color: var(--toc-text-color);
-    --dropdown-hover-background: var(--tocitem-active-background);
-    --dropdown-hover-text-color: var(--tocitem-active-text-color);
     --code-background: #fdfdfd;
     --code-inline-background: #f4f4f4;
-    --assemblage-like-body-background: var(--block-body-background);
-    --assemblage-like-border-color: var(--block-border-color);
-    --definition-like-body-background: #eef7fb;
-    --definition-like-border-color: #0f80b0;
-    --theorem-like-body-background: #eef7fb;
-    --theorem-like-border-color: #0f80b0;
-    --axiom-like-body-background: var(--block-body-background);
-    --axiom-like-border-color: var(--block-border-color);
-    --remark-like-body-background: #f8f2f2;
-    --remark-like-border-color: #a13838;
-    --computation-like-body-background: #eef7fb;
-    --computation-like-border-color: #0f80b0;
-    --openproblem-like-body-background: var(--block-body-background);
-    --openproblem-like-border-color: var(--block-border-color);
-    --aside-like-body-background: var(--block-body-background);
-    --aside-like-border-color: var(--block-border-color);
-    --proof-like-body-background: #eef7fb;
-    --proof-like-border-color: #0f80b0;
-    --example-like-body-background: whitesmoke;
-    --example-like-border-color: hsl(208, 7%, 45%);
-    --project-like-body-background: whitesmoke;
-    --project-like-border-color: hsl(208, 7%, 45%);
-    --goal-like-body-background: #f8f2f2;
-    --goal-like-border-color: #a13838;
-    --solution-like-body-background: whitesmoke;
-    --solution-like-border-color: hsl(208, 7%, 45%);
-    --primary-color-white-1: color-mix(in oklab, var(--primary-color), white 1%);
-    --primary-color-white-2: color-mix(in oklab, var(--primary-color), white 2%);
-    --primary-color-white-3: color-mix(in oklab, var(--primary-color), white 3%);
-    --primary-color-white-4: color-mix(in oklab, var(--primary-color), white 4%);
-    --primary-color-white-5: color-mix(in oklab, var(--primary-color), white 5%);
+    --note-body-background: #f8f2f2;
+    --note-border-color: #a13838;
+    --activity-border-color: hsl(208, 7%, 45%);
+    --conclusion-body-background: #f8f2f2;
+    --conclusion-border-color: #a13838;
     --primary-color-white-10: color-mix(in oklab, var(--primary-color), white 10%);
     --primary-color-white-15: color-mix(in oklab, var(--primary-color), white 15%);
     --primary-color-white-20: color-mix(in oklab, var(--primary-color), white 20%);
-    --primary-color-white-25: color-mix(in oklab, var(--primary-color), white 25%);
     --primary-color-white-30: color-mix(in oklab, var(--primary-color), white 30%);
-    --primary-color-white-35: color-mix(in oklab, var(--primary-color), white 35%);
     --primary-color-white-40: color-mix(in oklab, var(--primary-color), white 40%);
-    --primary-color-white-50: color-mix(in oklab, var(--primary-color), white 50%);
-    --primary-color-white-60: color-mix(in oklab, var(--primary-color), white 60%);
-    --primary-color-white-65: color-mix(in oklab, var(--primary-color), white 65%);
-    --primary-color-white-70: color-mix(in oklab, var(--primary-color), white 70%);
-    --primary-color-white-75: color-mix(in oklab, var(--primary-color), white 75%);
-    --primary-color-white-80: color-mix(in oklab, var(--primary-color), white 80%);
-    --primary-color-white-85: color-mix(in oklab, var(--primary-color), white 85%);
     --primary-color-white-90: color-mix(in oklab, var(--primary-color), white 90%);
-    --primary-color-white-95: color-mix(in oklab, var(--primary-color), white 95%);
     --primary-color-white-96: color-mix(in oklab, var(--primary-color), white 96%);
-    --primary-color-white-97: color-mix(in oklab, var(--primary-color), white 97%);
     --primary-color-white-98: color-mix(in oklab, var(--primary-color), white 98%);
-    --primary-color-white-99: color-mix(in oklab, var(--primary-color), white 99%);
-    --primary-color-black-1: color-mix(in oklab, var(--primary-color), black 1%);
-    --primary-color-black-2: color-mix(in oklab, var(--primary-color), black 2%);
-    --primary-color-black-3: color-mix(in oklab, var(--primary-color), black 3%);
-    --primary-color-black-4: color-mix(in oklab, var(--primary-color), black 4%);
-    --primary-color-black-5: color-mix(in oklab, var(--primary-color), black 5%);
-    --primary-color-black-10: color-mix(in oklab, var(--primary-color), black 10%);
-    --primary-color-black-15: color-mix(in oklab, var(--primary-color), black 15%);
     --primary-color-black-20: color-mix(in oklab, var(--primary-color), black 20%);
-    --primary-color-black-25: color-mix(in oklab, var(--primary-color), black 25%);
     --primary-color-black-30: color-mix(in oklab, var(--primary-color), black 30%);
-    --primary-color-black-35: color-mix(in oklab, var(--primary-color), black 35%);
-    --primary-color-black-40: color-mix(in oklab, var(--primary-color), black 40%);
     --primary-color-black-50: color-mix(in oklab, var(--primary-color), black 50%);
-    --primary-color-black-60: color-mix(in oklab, var(--primary-color), black 60%);
-    --primary-color-black-65: color-mix(in oklab, var(--primary-color), black 65%);
-    --primary-color-black-70: color-mix(in oklab, var(--primary-color), black 70%);
-    --primary-color-black-75: color-mix(in oklab, var(--primary-color), black 75%);
     --primary-color-black-80: color-mix(in oklab, var(--primary-color), black 80%);
-    --primary-color-black-85: color-mix(in oklab, var(--primary-color), black 85%);
-    --primary-color-black-90: color-mix(in oklab, var(--primary-color), black 90%);
-    --primary-color-black-95: color-mix(in oklab, var(--primary-color), black 95%);
-    --primary-color-black-96: color-mix(in oklab, var(--primary-color), black 96%);
-    --primary-color-black-97: color-mix(in oklab, var(--primary-color), black 97%);
-    --primary-color-black-98: color-mix(in oklab, var(--primary-color), black 98%);
-    --primary-color-black-99: color-mix(in oklab, var(--primary-color), black 99%);
-    --primary-color-gray-1: color-mix(in oklab, var(--primary-color), gray 1%);
-    --primary-color-gray-2: color-mix(in oklab, var(--primary-color), gray 2%);
-    --primary-color-gray-3: color-mix(in oklab, var(--primary-color), gray 3%);
-    --primary-color-gray-4: color-mix(in oklab, var(--primary-color), gray 4%);
     --primary-color-gray-5: color-mix(in oklab, var(--primary-color), gray 5%);
-    --primary-color-gray-10: color-mix(in oklab, var(--primary-color), gray 10%);
-    --primary-color-gray-15: color-mix(in oklab, var(--primary-color), gray 15%);
-    --primary-color-gray-20: color-mix(in oklab, var(--primary-color), gray 20%);
-    --primary-color-gray-25: color-mix(in oklab, var(--primary-color), gray 25%);
-    --primary-color-gray-30: color-mix(in oklab, var(--primary-color), gray 30%);
-    --primary-color-gray-35: color-mix(in oklab, var(--primary-color), gray 35%);
-    --primary-color-gray-40: color-mix(in oklab, var(--primary-color), gray 40%);
-    --primary-color-gray-50: color-mix(in oklab, var(--primary-color), gray 50%);
-    --primary-color-gray-60: color-mix(in oklab, var(--primary-color), gray 60%);
-    --primary-color-gray-65: color-mix(in oklab, var(--primary-color), gray 65%);
-    --primary-color-gray-70: color-mix(in oklab, var(--primary-color), gray 70%);
-    --primary-color-gray-75: color-mix(in oklab, var(--primary-color), gray 75%);
     --primary-color-gray-80: color-mix(in oklab, var(--primary-color), gray 80%);
-    --primary-color-gray-85: color-mix(in oklab, var(--primary-color), gray 85%);
-    --primary-color-gray-90: color-mix(in oklab, var(--primary-color), gray 90%);
-    --primary-color-gray-95: color-mix(in oklab, var(--primary-color), gray 95%);
-    --primary-color-gray-96: color-mix(in oklab, var(--primary-color), gray 96%);
-    --primary-color-gray-97: color-mix(in oklab, var(--primary-color), gray 97%);
-    --primary-color-gray-98: color-mix(in oklab, var(--primary-color), gray 98%);
-    --primary-color-gray-99: color-mix(in oklab, var(--primary-color), gray 99%);
     --primary-color: #007FAF;
-    --toc-border: var(--primary-color-gray-10);
-    --color-main: #007FAF;
-    --color-meta: #a13838;
-    --color-do: hsl(208, 7%, 45%);
-    --color-fact: #0f80b0;
-    --exercise-like-body-background: whitesmoke;
-    --exercise-like-border-color: hsl(208, 7%, 45%);
-    --asside-like-body-background: #f8f2f2;
-    --asside-like-border-color: #a13838;
+    --exercise-border-color: hsl(208, 7%, 45%);
 }
 
 :root.dark-mode {
@@ -3082,7 +2976,6 @@ body.pretext {
     --byline-color: var(--background-color-white-50);
     --banner-background: #23241f;
     --navbar-background: var(--background-color-gray-15);
-    --footer-background: var(--background-color-black-10);
     --toc-border-color: #555;
     --toc-background: var(--content-background);
     --tocitem-background: var(--toc-background);
@@ -3108,11 +3001,9 @@ body.pretext {
     --summary-link-hover-background: var(--button-hover-background);
     --summary-link-hover-text-color: var(--button-hover-text-color);
     --link-text-color: var(--primary-color-white-10);
-    --link-background: transparent;
     --link-active-text-color: var(--primary-color-white-40);
     --link-active-background: var(--background-color-gray-30);
     --link-alt-text-color: var(--link-text-color);
-    --link-alt-background: transparent;
     --link-alt-active-text-color: var(--link-alt-text-color);
     --link-alt-active-background: var(--link-active-text-color);
     --knowl-link-color: var(--doc-title-color);
@@ -3124,198 +3015,44 @@ body.pretext {
     --knowl-nested-4-background: var(--background-color-black-10);
     --block-body-background: var(--content-background);
     --block-border-color: var(--knowl-border-color);
-    --block-head-color: var(--body-text-color);
-    --aside-like-link-color: var(--link-text-color);
     --button-background: var(--background-color-gray-15);
     --button-text-color: var(--body-text-color);
     --button-border-color: var(--background-color-white-25);
     --button-hover-background: var(--primary-color-black-50);
     --button-hover-text-color: var(--button-text-color);
-    --dropdown-background: var(--content-background);
-    --dropdown-border-color: var(--toc-border-color);
-    --dropdown-text-color: var(--toc-text-color);
-    --dropdown-hover-background: var(--tocitem-active-background);
-    --dropdown-hover-text-color: var(--tocitem-active-text-color);
     --code-background: var(--background-color-gray-20);
     --code-inline-background: var(--background-color-gray-25);
-    --assemblage-like-body-background: var(--block-body-background);
-    --assemblage-like-border-color: var(--block-border-color);
-    --definition-like-body-background: var(--block-body-background);
-    --definition-like-border-color: var(--block-border-color);
-    --theorem-like-body-background: var(--block-body-background);
-    --theorem-like-border-color: var(--block-border-color);
-    --axiom-like-body-background: var(--block-body-background);
-    --axiom-like-border-color: var(--block-border-color);
-    --remark-like-body-background: var(--block-body-background);
-    --remark-like-border-color: var(--block-border-color);
-    --computation-like-body-background: var(--block-body-background);
-    --computation-like-border-color: var(--block-border-color);
-    --openproblem-like-body-background: var(--block-body-background);
-    --openproblem-like-border-color: var(--block-border-color);
-    --aside-like-body-background: var(--block-body-background);
-    --aside-like-border-color: var(--block-border-color);
-    --proof-like-body-background: var(--block-body-background);
-    --proof-like-border-color: var(--block-border-color);
-    --example-like-body-background: var(--block-body-background);
-    --example-like-border-color: var(--block-border-color);
-    --project-like-body-background: var(--block-body-background);
-    --project-like-border-color: var(--block-border-color);
-    --goal-like-body-background: var(--block-body-background);
-    --goal-like-border-color: var(--block-border-color);
-    --solution-like-body-background: var(--block-body-background);
-    --solution-like-border-color: var(--block-border-color);
+    --note-body-background: var(--block-body-background);
+    --note-border-color: var(--block-border-color);
+    --activity-border-color: var(--block-border-color);
+    --conclusion-body-background: var(--block-body-background);
+    --conclusion-border-color: var(--block-border-color);
     --primary-color: #9db9d3;
     --background-color: #23241f;
-    --background-color-white-1: color-mix(in oklab, var(--background-color), white 1%);
-    --background-color-white-2: color-mix(in oklab, var(--background-color), white 2%);
-    --background-color-white-3: color-mix(in oklab, var(--background-color), white 3%);
-    --background-color-white-4: color-mix(in oklab, var(--background-color), white 4%);
-    --background-color-white-5: color-mix(in oklab, var(--background-color), white 5%);
-    --background-color-white-10: color-mix(in oklab, var(--background-color), white 10%);
-    --background-color-white-15: color-mix(in oklab, var(--background-color), white 15%);
     --background-color-white-20: color-mix(in oklab, var(--background-color), white 20%);
     --background-color-white-25: color-mix(in oklab, var(--background-color), white 25%);
-    --background-color-white-30: color-mix(in oklab, var(--background-color), white 30%);
-    --background-color-white-35: color-mix(in oklab, var(--background-color), white 35%);
-    --background-color-white-40: color-mix(in oklab, var(--background-color), white 40%);
     --background-color-white-50: color-mix(in oklab, var(--background-color), white 50%);
-    --background-color-white-60: color-mix(in oklab, var(--background-color), white 60%);
-    --background-color-white-65: color-mix(in oklab, var(--background-color), white 65%);
-    --background-color-white-70: color-mix(in oklab, var(--background-color), white 70%);
-    --background-color-white-75: color-mix(in oklab, var(--background-color), white 75%);
-    --background-color-white-80: color-mix(in oklab, var(--background-color), white 80%);
-    --background-color-white-85: color-mix(in oklab, var(--background-color), white 85%);
-    --background-color-white-90: color-mix(in oklab, var(--background-color), white 90%);
-    --background-color-white-95: color-mix(in oklab, var(--background-color), white 95%);
-    --background-color-white-96: color-mix(in oklab, var(--background-color), white 96%);
-    --background-color-white-97: color-mix(in oklab, var(--background-color), white 97%);
-    --background-color-white-98: color-mix(in oklab, var(--background-color), white 98%);
-    --background-color-white-99: color-mix(in oklab, var(--background-color), white 99%);
-    --background-color-black-1: color-mix(in oklab, var(--background-color), black 1%);
-    --background-color-black-2: color-mix(in oklab, var(--background-color), black 2%);
-    --background-color-black-3: color-mix(in oklab, var(--background-color), black 3%);
-    --background-color-black-4: color-mix(in oklab, var(--background-color), black 4%);
-    --background-color-black-5: color-mix(in oklab, var(--background-color), black 5%);
     --background-color-black-10: color-mix(in oklab, var(--background-color), black 10%);
-    --background-color-black-15: color-mix(in oklab, var(--background-color), black 15%);
-    --background-color-black-20: color-mix(in oklab, var(--background-color), black 20%);
-    --background-color-black-25: color-mix(in oklab, var(--background-color), black 25%);
-    --background-color-black-30: color-mix(in oklab, var(--background-color), black 30%);
-    --background-color-black-35: color-mix(in oklab, var(--background-color), black 35%);
-    --background-color-black-40: color-mix(in oklab, var(--background-color), black 40%);
     --background-color-black-50: color-mix(in oklab, var(--background-color), black 50%);
-    --background-color-black-60: color-mix(in oklab, var(--background-color), black 60%);
-    --background-color-black-65: color-mix(in oklab, var(--background-color), black 65%);
-    --background-color-black-70: color-mix(in oklab, var(--background-color), black 70%);
-    --background-color-black-75: color-mix(in oklab, var(--background-color), black 75%);
-    --background-color-black-80: color-mix(in oklab, var(--background-color), black 80%);
-    --background-color-black-85: color-mix(in oklab, var(--background-color), black 85%);
-    --background-color-black-90: color-mix(in oklab, var(--background-color), black 90%);
-    --background-color-black-95: color-mix(in oklab, var(--background-color), black 95%);
-    --background-color-black-96: color-mix(in oklab, var(--background-color), black 96%);
-    --background-color-black-97: color-mix(in oklab, var(--background-color), black 97%);
-    --background-color-black-98: color-mix(in oklab, var(--background-color), black 98%);
-    --background-color-black-99: color-mix(in oklab, var(--background-color), black 99%);
-    --background-color-gray-1: color-mix(in oklab, var(--background-color), gray 1%);
-    --background-color-gray-2: color-mix(in oklab, var(--background-color), gray 2%);
-    --background-color-gray-3: color-mix(in oklab, var(--background-color), gray 3%);
-    --background-color-gray-4: color-mix(in oklab, var(--background-color), gray 4%);
-    --background-color-gray-5: color-mix(in oklab, var(--background-color), gray 5%);
     --background-color-gray-10: color-mix(in oklab, var(--background-color), gray 10%);
     --background-color-gray-15: color-mix(in oklab, var(--background-color), gray 15%);
     --background-color-gray-20: color-mix(in oklab, var(--background-color), gray 20%);
     --background-color-gray-25: color-mix(in oklab, var(--background-color), gray 25%);
     --background-color-gray-30: color-mix(in oklab, var(--background-color), gray 30%);
-    --background-color-gray-35: color-mix(in oklab, var(--background-color), gray 35%);
-    --background-color-gray-40: color-mix(in oklab, var(--background-color), gray 40%);
-    --background-color-gray-50: color-mix(in oklab, var(--background-color), gray 50%);
-    --background-color-gray-60: color-mix(in oklab, var(--background-color), gray 60%);
-    --background-color-gray-65: color-mix(in oklab, var(--background-color), gray 65%);
-    --background-color-gray-70: color-mix(in oklab, var(--background-color), gray 70%);
-    --background-color-gray-75: color-mix(in oklab, var(--background-color), gray 75%);
-    --background-color-gray-80: color-mix(in oklab, var(--background-color), gray 80%);
-    --background-color-gray-85: color-mix(in oklab, var(--background-color), gray 85%);
-    --background-color-gray-90: color-mix(in oklab, var(--background-color), gray 90%);
-    --background-color-gray-95: color-mix(in oklab, var(--background-color), gray 95%);
-    --background-color-gray-96: color-mix(in oklab, var(--background-color), gray 96%);
-    --background-color-gray-97: color-mix(in oklab, var(--background-color), gray 97%);
-    --background-color-gray-98: color-mix(in oklab, var(--background-color), gray 98%);
-    --background-color-gray-99: color-mix(in oklab, var(--background-color), gray 99%);
-    --primary-color-white-1: color-mix(in oklab, var(--primary-color), white 1%);
-    --primary-color-white-2: color-mix(in oklab, var(--primary-color), white 2%);
-    --primary-color-white-3: color-mix(in oklab, var(--primary-color), white 3%);
-    --primary-color-white-4: color-mix(in oklab, var(--primary-color), white 4%);
-    --primary-color-white-5: color-mix(in oklab, var(--primary-color), white 5%);
     --primary-color-white-10: color-mix(in oklab, var(--primary-color), white 10%);
     --primary-color-white-15: color-mix(in oklab, var(--primary-color), white 15%);
     --primary-color-white-20: color-mix(in oklab, var(--primary-color), white 20%);
-    --primary-color-white-25: color-mix(in oklab, var(--primary-color), white 25%);
     --primary-color-white-30: color-mix(in oklab, var(--primary-color), white 30%);
-    --primary-color-white-35: color-mix(in oklab, var(--primary-color), white 35%);
     --primary-color-white-40: color-mix(in oklab, var(--primary-color), white 40%);
-    --primary-color-white-50: color-mix(in oklab, var(--primary-color), white 50%);
-    --primary-color-white-60: color-mix(in oklab, var(--primary-color), white 60%);
-    --primary-color-white-65: color-mix(in oklab, var(--primary-color), white 65%);
-    --primary-color-white-70: color-mix(in oklab, var(--primary-color), white 70%);
-    --primary-color-white-75: color-mix(in oklab, var(--primary-color), white 75%);
-    --primary-color-white-80: color-mix(in oklab, var(--primary-color), white 80%);
-    --primary-color-white-85: color-mix(in oklab, var(--primary-color), white 85%);
     --primary-color-white-90: color-mix(in oklab, var(--primary-color), white 90%);
-    --primary-color-white-95: color-mix(in oklab, var(--primary-color), white 95%);
     --primary-color-white-96: color-mix(in oklab, var(--primary-color), white 96%);
-    --primary-color-white-97: color-mix(in oklab, var(--primary-color), white 97%);
     --primary-color-white-98: color-mix(in oklab, var(--primary-color), white 98%);
-    --primary-color-white-99: color-mix(in oklab, var(--primary-color), white 99%);
-    --primary-color-black-1: color-mix(in oklab, var(--primary-color), black 1%);
-    --primary-color-black-2: color-mix(in oklab, var(--primary-color), black 2%);
-    --primary-color-black-3: color-mix(in oklab, var(--primary-color), black 3%);
-    --primary-color-black-4: color-mix(in oklab, var(--primary-color), black 4%);
-    --primary-color-black-5: color-mix(in oklab, var(--primary-color), black 5%);
-    --primary-color-black-10: color-mix(in oklab, var(--primary-color), black 10%);
-    --primary-color-black-15: color-mix(in oklab, var(--primary-color), black 15%);
     --primary-color-black-20: color-mix(in oklab, var(--primary-color), black 20%);
-    --primary-color-black-25: color-mix(in oklab, var(--primary-color), black 25%);
     --primary-color-black-30: color-mix(in oklab, var(--primary-color), black 30%);
-    --primary-color-black-35: color-mix(in oklab, var(--primary-color), black 35%);
-    --primary-color-black-40: color-mix(in oklab, var(--primary-color), black 40%);
     --primary-color-black-50: color-mix(in oklab, var(--primary-color), black 50%);
-    --primary-color-black-60: color-mix(in oklab, var(--primary-color), black 60%);
-    --primary-color-black-65: color-mix(in oklab, var(--primary-color), black 65%);
-    --primary-color-black-70: color-mix(in oklab, var(--primary-color), black 70%);
-    --primary-color-black-75: color-mix(in oklab, var(--primary-color), black 75%);
     --primary-color-black-80: color-mix(in oklab, var(--primary-color), black 80%);
-    --primary-color-black-85: color-mix(in oklab, var(--primary-color), black 85%);
-    --primary-color-black-90: color-mix(in oklab, var(--primary-color), black 90%);
-    --primary-color-black-95: color-mix(in oklab, var(--primary-color), black 95%);
-    --primary-color-black-96: color-mix(in oklab, var(--primary-color), black 96%);
-    --primary-color-black-97: color-mix(in oklab, var(--primary-color), black 97%);
-    --primary-color-black-98: color-mix(in oklab, var(--primary-color), black 98%);
-    --primary-color-black-99: color-mix(in oklab, var(--primary-color), black 99%);
-    --primary-color-gray-1: color-mix(in oklab, var(--primary-color), gray 1%);
-    --primary-color-gray-2: color-mix(in oklab, var(--primary-color), gray 2%);
-    --primary-color-gray-3: color-mix(in oklab, var(--primary-color), gray 3%);
-    --primary-color-gray-4: color-mix(in oklab, var(--primary-color), gray 4%);
     --primary-color-gray-5: color-mix(in oklab, var(--primary-color), gray 5%);
-    --primary-color-gray-10: color-mix(in oklab, var(--primary-color), gray 10%);
-    --primary-color-gray-15: color-mix(in oklab, var(--primary-color), gray 15%);
-    --primary-color-gray-20: color-mix(in oklab, var(--primary-color), gray 20%);
-    --primary-color-gray-25: color-mix(in oklab, var(--primary-color), gray 25%);
-    --primary-color-gray-30: color-mix(in oklab, var(--primary-color), gray 30%);
-    --primary-color-gray-35: color-mix(in oklab, var(--primary-color), gray 35%);
-    --primary-color-gray-40: color-mix(in oklab, var(--primary-color), gray 40%);
-    --primary-color-gray-50: color-mix(in oklab, var(--primary-color), gray 50%);
-    --primary-color-gray-60: color-mix(in oklab, var(--primary-color), gray 60%);
-    --primary-color-gray-65: color-mix(in oklab, var(--primary-color), gray 65%);
-    --primary-color-gray-70: color-mix(in oklab, var(--primary-color), gray 70%);
-    --primary-color-gray-75: color-mix(in oklab, var(--primary-color), gray 75%);
     --primary-color-gray-80: color-mix(in oklab, var(--primary-color), gray 80%);
-    --primary-color-gray-85: color-mix(in oklab, var(--primary-color), gray 85%);
-    --primary-color-gray-90: color-mix(in oklab, var(--primary-color), gray 90%);
-    --primary-color-gray-95: color-mix(in oklab, var(--primary-color), gray 95%);
-    --primary-color-gray-96: color-mix(in oklab, var(--primary-color), gray 96%);
-    --primary-color-gray-97: color-mix(in oklab, var(--primary-color), gray 97%);
-    --primary-color-gray-98: color-mix(in oklab, var(--primary-color), gray 98%);
-    --primary-color-gray-99: color-mix(in oklab, var(--primary-color), gray 99%);
 }
 
 
@@ -3332,7 +3069,6 @@ html:root {
     --emphasisColor: #007d9f;
     --codeColor: #641227;
     /* Make this as narrow as we can while still getting side-by-side Parson's problems. */
-    --contentWidthWide: calc(var(--contentWidthRegular) + 250px);
     /* Salem bumps body text to 1.1rem "to avoid long lines"; bring it back
        down. This is the knob the theme consumes on body.pretext, so the Aa
        readability font-size slider (which scales .ptx-content relative to

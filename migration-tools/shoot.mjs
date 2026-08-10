@@ -63,6 +63,9 @@ const SHOTS = [
 
   // JS-injected states:
   { name: 'variables-dark', page: 'variables.html', action: 'dark' },
+  { name: 'arraylist-summary-dark', page: 'arraylist-summary.html', action: 'dark' },
+  { name: 'frq-practice-dark', page: 'frq-practice.html', action: 'dark' },
+  { name: 'boolean-manipulation-dark', page: 'boolean-manipulation.html', action: 'dark' },
   { name: 'if-traps-knowl-open', page: 'if-traps.html', action: 'knowl' },
   { name: 'variables-search', page: 'variables.html', action: 'search' },
   { name: 'variables-readability', page: 'variables.html', action: 'readability' },
