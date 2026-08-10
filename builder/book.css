@@ -1551,6 +1551,12 @@ summary.knowl__link {
     --content-line-height: 1.35;
 }
 
+/* == the spacing layer ==
+   Inter-block vertical rhythm lives in a cascade layer ON PURPOSE:
+   layered rules lose to unlayered ones regardless of specificity, so a
+   component can claim its own margins with a plain low-specificity rule
+   (.tabular-box {margin-top:.5em}) without fighting the generic
+   sibling rules here. Don't unlayer these. */
 @layer spacing{
 
 :is(section,article,.knowl__content,.introduction,.conclusion)>*:not(:first-child) {
@@ -1566,6 +1572,23 @@ summary.knowl__link {
 
 .ptx-content :is(ul,td,li,dd,.blockquote,.sbspanel)>*:not(:first-child) {
     margin-top: .5em;
+}
+
+.runestone :is(.exercise-statement,.exercise-content)>*:not(:first-child) {
+    margin-top: 1em;
+}
+
+.ptx-runestone-container+.solutions {
+    margin-top: .5em;
+}
+
+/* Zero the UA default margins on paragraphs so spacing comes from the
+   rules above, exactly as when paragraphs were divs: in the layer, this
+   low-specificity reset loses to the sibling-margin rules while still
+   overriding the UA default. Script-generated paragraphs opt back out —
+   see the runestone_caption exception beside the caption display rules. */
+p {
+    margin: 0;
 }}
 
 /* Content lists are bare elements. ols take the UA default (decimal at
@@ -2561,16 +2584,6 @@ ul[data-component=timedAssessment] {
     background: #141414;
 }
 
-@layer spacing{
-
-.runestone :is(.exercise-statement,.exercise-content)>*:not(:first-child) {
-    margin-top: 1em;
-}
-
-.ptx-runestone-container+.solutions {
-    margin-top: .5em;
-}}
-
 .clipboardable {
     position: relative;
     display: flow-root;
@@ -3334,16 +3347,3 @@ code.keyword {
     font-weight: 600;
 }
 
-/* Zero the UA default margins on paragraphs so spacing comes from the
-   theme's rules exactly as it did when paragraphs were divs. This must
-   live IN the theme's `spacing` cascade layer: unlayered it would beat
-   every layered spacing rule regardless of specificity; inside the
-   layer its low specificity loses to the sibling-margin rules while
-   still overriding the UA default. Paragraphs some script generates
-   opt back OUT of this and the other bare-p rules — see the
-   runestone_caption exception beside the caption display rules. */
-@layer spacing {
-    p {
-        margin: 0;
-    }
-}
