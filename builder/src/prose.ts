@@ -20,9 +20,6 @@ export type Ctx = {
   book: Book;
   page: string; // filename of the page being emitted
   headingLevel: number; // current division's heading level
-  // Per-page registry of <ol @marker> formats in first-appearance order
-  // (the ol-marker-N class PreTeXt pairs with ol-markers.css).
-  olMarkers: Map<string, number>;
   // false inside component answers/feedback, where paras render bare.
   permalinks?: boolean;
   emitComponent: (el: XmlElement, ctx: Ctx) => string;
@@ -324,18 +321,22 @@ const EMITTERS: Record<string, Emitter> = {
   },
 
   // -- lists -----------------------------------------------------------------
+  // Bare elements; book.css keeps every nesting level disc via
+  // `.ptx-content ul`, and ols are the UA default. The two @marker forms
+  // the source uses ("1", "a" — a counter with no trailing period) map to
+  // static classes.
   ul: (el, ctx) => {
-    const marker = el.attributes.marker;
-    const cls = marker === undefined ? 'disc' : (UL_MARKERS[marker] ?? 'disc');
-    return h('ul', { class: cls, id: elementId(el) }, emitBlocks(el, ctx));
+    if (el.attributes.marker !== undefined) {
+      ctx.warn(`<ul marker="${el.attributes.marker}"> unsupported — markers are always disc`);
+    }
+    return h('ul', { id: elementId(el) }, emitBlocks(el, ctx));
   },
   ol: (el, ctx) => {
     const marker = el.attributes.marker;
-    let cls = 'decimal';
+    let cls: string | undefined;
     if (marker !== undefined) {
-      const format = OL_MARKERS[marker.replace(/\.$/, '')] ?? 'decimal';
-      if (!ctx.olMarkers.has(marker)) ctx.olMarkers.set(marker, ctx.olMarkers.size + 1);
-      cls = `${format} ol-marker-${ctx.olMarkers.get(marker)}`;
+      cls = OL_MARKER_CLASSES[marker];
+      if (!cls) ctx.warn(`<ol marker="${marker}"> unsupported — add the class + rule pair (book.css "@marker ols")`);
     }
     return h('ol', { class: cls, id: elementId(el) }, emitBlocks(el, ctx));
   },
@@ -722,20 +723,9 @@ function knowlDetails(type: string, classes: string, el: XmlElement, ctx: Ctx): 
   );
 }
 
-const UL_MARKERS: Record<string, string> = {
-  disc: 'disc',
-  circle: 'circle',
-  square: 'square',
-  '': 'no-marker',
-};
-
-const OL_MARKERS: Record<string, string> = {
-  '0': 'decimal',
-  '1': 'decimal',
-  a: 'lower-alpha',
-  A: 'upper-alpha',
-  i: 'lower-roman',
-  I: 'upper-roman',
+const OL_MARKER_CLASSES: Record<string, string> = {
+  '1': 'marker-decimal',
+  a: 'marker-lower-alpha',
 };
 
 function preBlock(code: string): string {

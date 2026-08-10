@@ -14,7 +14,7 @@ import { type XmlElement, elements } from './xml.ts';
 const DIVISION_KINDS = new Set(['introduction', 'section', 'subsection', 'conclusion']);
 
 export function makeCtx(book: Book, page: string, warn: (msg: string) => void): Ctx {
-  return { book, page, headingLevel: 1, olMarkers: new Map(), emitComponent, warn };
+  return { book, page, headingLevel: 1, emitComponent, warn };
 }
 
 /** The content area of one page. */

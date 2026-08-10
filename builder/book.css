@@ -1573,15 +1573,10 @@ summary.knowl__link {
     margin-top: .5em;
 }}
 
-ol.decimal {
-    list-style-type: decimal;
-}
-
-ol.lower-alpha {
-    list-style-type: lower-alpha;
-}
-
-ul.disc {
+/* Content lists are bare elements. ols take the UA default (decimal at
+   every level); uls get disc at every level — the UA would switch nested
+   lists to circle/square, and the book has always shown disc throughout. */
+.ptx-content ul {
     list-style-type: disc;
 }
 
@@ -3330,10 +3325,17 @@ body.pretext {
 
 
 
-/* == ol markers (from the retired ol-markers.css) == */
+/* == @marker ols ==
+   The source's <ol marker="1"> / <ol marker="a"> mean "counter with no
+   trailing period" (vs the UA's "1." / "a."). One static class + rule
+   pair per form (prose.ts OL_MARKER_CLASSES); a new @marker value needs
+   its pair added here. The list-style-type doubles as the fallback where
+   ::marker content isn't supported. */
 
-ol.ol-marker-1 > li::marker { content: ""counter(list-item,decimal)" "; }
-ol.ol-marker-2 > li::marker { content: ""counter(list-item,lower-alpha)" "; }
+ol.marker-decimal > li::marker { content: ""counter(list-item,decimal)" "; }
+
+ol.marker-lower-alpha { list-style-type: lower-alpha; }
+ol.marker-lower-alpha > li::marker { content: ""counter(list-item,lower-alpha)" "; }
 
 
 /* == book-specific styles (formerly external/_static/css/custom.css) == */
