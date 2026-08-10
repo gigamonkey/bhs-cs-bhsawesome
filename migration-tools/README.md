@@ -1,8 +1,10 @@
 # migration-tools — CSS-cleanup scaffolding (temporary)
 
-Tooling for the class-vocabulary renegotiation (the bhs-cs monorepo's
-`plans/bhsawesome-css-cleanup.md`). **This whole directory gets deleted
-when that plan is done** — nothing else may depend on it.
+Tooling built for the class-vocabulary renegotiation (the bhs-cs
+monorepo's `plans/done/bhsawesome-css-cleanup.md` — done 2026-08-09,
+final numbers there). **Kept alive past the plan for ongoing vocabulary
+work; delete the directory — and the generated ledger in the monorepo —
+when that work is truly over.** Nothing else may depend on it.
 
 ## census.mjs — the audit
 
