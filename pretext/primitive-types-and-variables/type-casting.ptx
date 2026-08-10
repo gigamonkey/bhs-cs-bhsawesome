@@ -16,7 +16,7 @@
 
     <p>
       Also both data types have some limitations that we need to understand in
-      order to avoid mathematically nonsensical results. (For instance, you’d
+      order to avoid mathematically nonsensical results. For instance, you’d
       probably get an F in math class if you said <c>2147483647 + 1</c> was
       <c>-2147483648</c>. But that’s what you’d get from Java due to the
       limitation on the range of values that can be represented with an
