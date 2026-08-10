@@ -1,11 +1,25 @@
 /*
- * The book's stylesheet — OURS (bhsawesome-next-steps.md phase 5).
+ * The book's stylesheet — OURS (bhsawesome-next-steps.md phase 5; the
+ * class-by-class simplification is bhs-cs plans/bhsawesome-css-cleanup.md).
  *
- * Assembled from the used subset of PreTeXt's compiled salem theme
- * (theme.css, 115K -> this), ol-markers.css, and our custom.css, in that
- * order. RULE ORDER IS LOAD-BEARING (cascade); reorganize only with the
- * screenshot harness in hand. Dead PreTeXt subsystems (webwork, sage,
- * worksheets, doenet, ...) are gone; simplify further rule-by-rule.
+ * Structure, top to bottom:
+ *   - self-hosted fonts (@font-face)
+ *   - prerendered-math container (the used subset of MathJax's SVG styles)
+ *   - the theme: the used subset of PreTeXt's compiled salem theme, kept
+ *     in ITS order — base + responsive passes interleave, so one concern
+ *     (masthead, navbar, ToC, dialogs, content, knowls, blocks, figures)
+ *     appears in several places; regroup only with the shot harness in
+ *     hand, because RULE ORDER IS LOAD-BEARING for same-specificity ties
+ *   - the spacing layer (see its header for why it is a cascade layer)
+ *   - code highlighting (the book's own Prism theme, light + dark)
+ *   - book adjustments to the runestone components
+ *   - dark-mode tokens and overrides (one block, not per-concern)
+ *   - book overrides (the old custom.css survivors — LAST on purpose;
+ *     several win same-specificity ties by order)
+ *
+ * Design tokens live on :root (fonts, accents, content sizing) with dark
+ * values in the :root.dark-mode token block; every defined custom
+ * property is used (the census in migration-tools enforces the hygiene).
  */
 
 /* == self-hosted fonts (formerly Google Fonts CDN; files in fonts/) == */
@@ -186,6 +200,13 @@ g[data-mml-node="merror"] > rect[data-background] {
 
 mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
   stroke-width: 3;
+}
+
+/* Match math to the surrounding text size (and thus the Aa slider) instead
+   of pinning it to the root size (every prerendered container carries the
+   MathJax class). */
+.MathJax {
+  font-size: 1em !important;
 }
 
 
@@ -1271,6 +1292,22 @@ code:not([class*=language-], .prettyprint) {
     line-height: calc(var(--content-line-height) - .15);
 }
 
+/* <k> — language keywords, as distinct from general inline code (<c>).
+   Visually identical today (all inline code is 600); the class keeps the
+   distinction stylable. */
+code.keyword {
+    font-weight: 600;
+}
+
+/* Inline code inherits its color inside headings, titles, terminology,
+   and datafile captions. */
+.ptx-content .heading code,
+.ptx-content span.title code,
+.ptx-content .terminology code,
+.datafile_caption code {
+    color: inherit;
+}
+
 .code-block {
     border-left: 1px solid #aaa;
     padding: 0 15px 5px;
@@ -1281,16 +1318,6 @@ code:not([class*=language-], .prettyprint) {
     background: var(--code-background);
     font-size: .93rem;
     line-height: 1.2;
-}
-
-.code-block:before {
-    content: " ";
-    font-size: 50%;
-    border-top: 1px solid #aaa;
-    display: block;
-    margin-right: auto;
-    margin-left: -15px;
-    width: 3em;
 }
 
 @media print{
@@ -2573,6 +2600,58 @@ body.pretext>a.assistive,
     margin-top: 0;
 }
 
+/* -- book adjustments to the runestone components -- */
+
+/* Show the component captions (they carry the exercise ids) — the theme
+   hides them above — and give these script-generated paragraphs back the
+   UA margins and inherited line-height the bare-p rules remove. */
+.ptx-content .runestone_caption,
+.runestone_caption {
+    display: block;
+}
+
+.runestone_caption {
+    margin: revert;
+    line-height: inherit;
+}
+
+/* Activecode stays at regular content width (--contentWidthRegular is
+   the runestone stylesheet's token). */
+.ptx-content #main-content section > .runestone.ac_section {
+    max-width: calc(var(--contentWidthRegular) + 100px);
+}
+
+/* Keep embedded iframes (videos) inside their boxes. */
+.runestone iframe {
+    width: 100%;
+}
+
+/* Unit-test feedback table: border + padding. */
+.ptx-content .ac-feedback,
+.ptx-runestone-container .ac-feedback {
+    border: 1px solid black;
+    padding: 3px;
+}
+
+/* Default editor font washes out in Windows Chrome. */
+.ptx-runestone-container .ac_section .CodeMirror pre,
+.ptx-content .ac_section .CodeMirror pre {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.ac_actions {
+    flex-wrap: wrap;
+}
+
+.unittest-results {
+    margin-bottom: 8px;
+}
+
+/* Hide hidden datafiles completely, not just their source. */
+.ptx-content div.runestone.datafile:has(pre[style="display: none"]) {
+    display: none;
+}
+
 ul[data-component=timedAssessment] {
     margin: 0;
     padding: 0;
@@ -2730,17 +2809,15 @@ to {
 
 :root {
     --font-body: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-
-:root {
     --font-headings: Noto Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-
-:root {
     --font-monospace: Inconsolata, Consolas, Monaco, monospace;
-}
-
-:root {
+    /* The book's own accent tokens (dark values in the dark block below). */
+    --emphasisColor: #007d9f;
+    --codeColor: #641227;
+    /* Default line height. The Aa readability slider sets this same
+       variable inline on <html>, which overrides this; its Reset button
+       removes the inline value, falling back here. */
+    --ptx-content-line-height: 1.5;
 }
 
 section>.heading {
@@ -2890,7 +2967,11 @@ body.pretext {
 }
 
 :root {
-    --content-font-size: 1.1rem;
+    /* Salem bumps body text to 1.1rem "to avoid long lines"; we keep 1rem.
+       This is the knob the theme consumes on body.pretext, so the Aa
+       readability font-size slider (which scales .ptx-content relative to
+       the body size) keeps working. */
+    --content-font-size: 1rem;
 }
 
 @media screen and (width<800px){
@@ -2982,6 +3063,8 @@ body.pretext {
 
 :root.dark-mode {
     color-scheme: dark;
+    --emphasisColor: #00b3e3;
+    --codeColor: #ffaaaa;
     --page-color: var(--background-color);
     --content-background: var(--page-color);
     --page-border-color: var(--background-color-white-25);
@@ -3071,279 +3154,132 @@ body.pretext {
 
 
 
-/* == book-specific styles (formerly external/_static/css/custom.css) == */
+/* == book overrides ==
+   The book's own look, applied over the theme rules above. These rules
+   are LAST ON PURPOSE: several win same-specificity ties by order, so
+   they stay at the end of the file rather than merging into the sections
+   they adjust. (Font sizes here use em, not rem/px, so text keeps scaling
+   with the Aa readability slider, which works by inheritance from
+   .ptx-content — rem is root-relative and immune to it.) */
 
-/* Most of these rules are from the rst version so might not work in ptx
-   Replaced .runestone-sphinx with .ptx-content. */
-
-/* html:root outranks the theme's :root declarations regardless of which
-   stylesheet loads last. */
-html:root {
-    --emphasisColor: #007d9f;
-    --codeColor: #641227;
-    /* Make this as narrow as we can while still getting side-by-side Parson's problems. */
-    /* Salem bumps body text to 1.1rem "to avoid long lines"; bring it back
-       down. This is the knob the theme consumes on body.pretext, so the Aa
-       readability font-size slider (which scales .ptx-content relative to
-       the body size) keeps working. */
-    --content-font-size: 1rem;
-    /* Default line height. The Aa readability slider sets this same variable
-       inline on <html>, which overrides this; its Reset button removes the
-       inline value, falling back here. */
-    --ptx-content-line-height: 1.5;
-}
-
-:root.dark-mode {
-    --emphasisColor: #00b3e3;
-    --codeColor: #ffaaaa;
-}
-
-.ptx-content cite {
-  display: block;
-  text-align: right;
-  margin-right: 2em;
-}
-
-/* Default spacing between paragraphs is too much. */
-.ptx-content section > p + p {
-  margin-top: 0.6em;
-}
-
-/* Font sizes below use em, not rem/px, so text keeps scaling with the Aa
-   readability font-size slider (which works by inheritance from
-   .ptx-content — rem is root-relative and immune to it). */
+/* -- headings: emphasis-colored with the green rule -- */
 
 .ptx-content section > .heading,
 .ptx-content section section > .heading,
-.ptx-content section section section > .heading
-{
+.ptx-content section section section > .heading {
     font-size: 1.4em;
-    color:  var(--emphasisColor);
+    color: var(--emphasisColor);
     border-bottom: 2px solid #70d549;
     padding-top: 0.5em;
     margin-bottom: 0.5em;
 }
 
-.ptx-content section section > .heading
-{
-  margin-top: 1em;
+.ptx-content section section > .heading {
+    margin-top: 1em;
 }
 
-.ptx-content .heading h4
-{
-  font-size: 1.4em;
-  color:  var(--emphasisColor);
+.ptx-content .heading h4 {
+    font-size: 1.4em;
+    color: var(--emphasisColor);
 }
 
-/* Add csawesome2 in title for the course name in course home,
-   but don't diplay that because there's the logo in the banner */
-.ptx-banner .title
-{
-   display: none;
+/* The banner has the logo; no text title next to it. */
+.ptx-banner .title {
+    display: none;
 }
 
-.ptx-content .terminology
-{
-    color:  var(--emphasisColor);
+/* -- prose -- */
+
+/* Tighter paragraph spacing than the theme's 1em. */
+.ptx-content section > p + p {
+    margin-top: 0.6em;
+}
+
+.ptx-content .terminology {
+    color: var(--emphasisColor);
     font-weight: bolder;
     font-style: normal;
 }
 
-.ptx-content .heading code,
-.ptx-content span.title code,
-.ptx-content .terminology code
-{
-  color: inherit;
+.ptx-content p a:link,
+.ptx-content p a:hover,
+.ptx-content p a:visited {
+    text-decoration: underline dotted;
+    font-weight: inherit;
 }
 
-/* The runestone stylesheet used to give datafile-caption code
-   color:inherit via a class our inline code no longer wears. */
-.datafile_caption code {
-  color: inherit;
+.ptx-content blockquote {
+    font-size: inherit;
 }
 
-/* I'm not sure why the .code-block:before rule exists in PtX but it just adds extra gorp. */
-.ptx-content .code-block:before {
-  content: none;
-}
-
-/* Code listings with <pre> in text washed out in Chrome */
-.ptx-content pre.program
-{
-  font-weight: bolder;
-  font-family: Menlo, Monaco, Consolas,"Courier New", monospace;
+.ptx-content cite {
+    display: block;
+    text-align: right;
+    margin-right: 2em;
 }
 
 .ptx-content .summary-links {
-  font-size: 1em;
+    font-size: 1em;
 }
 
-/* For displaying exercise ids */
-.ptx-content .runestone_caption,
-.runestone_caption {
-  display: block;
-}
-
-/* The bare-p rules (margin reset, line-height) describe the paragraphs
-   the BUILD emits; paragraphs a script generates opt back out here.
-   Today that's only the component captions — the codelens legend's own
-   stylesheet already pins its spacing, and nothing else makes <p>s. */
-.runestone_caption {
-  margin: revert;
-  line-height: inherit;
-}
-
-/* A potentialy gross hack to hide the footnotes PreTeXt loves to put on every link. */
+/* Footnotes render as knowls the book does not want; hide them. */
 .ptx-content details.ptx-footnote,
-.ptx-content .ptx-runestone-container details.ptx-footnote
-{
-  display: none;
-}
-
-.ptx-content p a:link,
-.ptx-content p a:hover,
-.ptx-content p a:visited
-{
-  text-decoration: underline dotted;
-  font-weight: inherit;
-}
-
-.ptx-content blockquote
-{
-  font-size: inherit;
-}
-
-.ptx-content figure.table {
-     margin-left: 0px;
-}
-
-/* Hide the "Paragraph" autopermalink in the interactive exercises.
-   This is a hack to avoid the autopermalink being added to every choice in MCQs
- */
-.ptx-content
-.exercise-interactives
-div.autopermalink[data-description="Paragraph"] {
+.ptx-content .ptx-runestone-container details.ptx-footnote {
     display: none;
 }
 
-
-
-/*
- * Table on Unit1's aboutcsa page.
- */
-
-#aboutcsa-table
-{
-  padding-top: 1em;
-}
-
-#aboutcsa-table th,
-#aboutcsa-table td
-{
-  text-align: center;
-}
-
-#aboutcsa-table thead {
-  background-color: lightblue;
-}
-
-/*
- * Give paragraphs immediately after certain elements a bit of breathing room.
- * This could also be achieved by giving some margin-bottom to those preceding
- * elements but this seems simpler for now.
- */
-
+/* A little air after embedded videos. */
 iframe + p,
-.ptx-content iframe + p
-{
-  margin-top: 10px;
+.ptx-content iframe + p {
+    margin-top: 10px;
 }
 
-/*
- * Override this which would otherwise be --contentWidthWide. (We've also
- * adjusted --contentWidthWide above to be slightly less wide.)
- */
-.ptx-content #main-content section > .runestone.ac_section
-{
-  max-width: calc(var(--contentWidthRegular) + 100px);
+/* -- code -- */
+
+/* The theme's program font washes out in Chrome. */
+.ptx-content pre.program {
+    font-weight: bolder;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/*
- * Set the width so it uses the space in the box. This was put in so the videos
- * wouldn't overflow their box. Don't know if there are other things it will
- * catch up that we don't want.
- */
-.runestone iframe
-{
-  width: 100%;
-}
+/* -- tables -- */
 
-/* Padding for table of unit test responses.
-   until Brad adds it to the template.
-*/
-.ptx-content .ac-feedback,
-.ptx-runestone-container .ac-feedback {
-    border: 1px solid black;
-    padding: 3px;
-}
-
-/* Changing font in code window in active codes
-   Default is washed out in Windows Chrome.
-*/
-.ptx-runestone-container .ac_section .CodeMirror pre,
-.ptx-content .ac_section .CodeMirror pre {
-  font-family: Menlo, Monaco, Consolas,"Courier New", monospace;
-}
-
-/* Try adding flex wrap on buttons */
-.ac_actions {
-  flex-wrap: wrap;
-}
-
-/* To unsquish bottom of unit test results box */
-.unittest-results {
-    margin-bottom: 8px;
-}
-
-/* For tables in the FRQs (default 0) */
 .ptx-runestone-container td, .ptx-runestone-container th,
 .ptx-content td, .ptx-content th {
     padding: 5px;
 }
 
 td {
-  text-align: left;
-}
-
-/* Match math to the surrounding text size (and thus the Aa slider) instead
-   of pinning it to the root size. */
-.MathJax {
-    font-size: 1em !important;
-}
-
-/* Kludge to completely hide datafiles, not just the source code. */
-.ptx-content div.runestone.datafile:has(pre[style="display: none"]) {
-    display: none;
+    text-align: left;
 }
 
 .ptx-content figure.table {
-  border: 1px dotted grey;
-  padding: 1em;
-}
-
-.ptx-content :is(.activity,.project) {
-  margin-top: 2em;
+    margin-left: 0;
+    border: 1px dotted grey;
+    padding: 1em;
 }
 
 .ptx-content .tabular-box {
-  width: unset;
-  margin-left: unset;
+    width: unset;
+    margin-left: unset;
 }
 
-/* <k> — language keywords, as distinct from general inline code (<c>).
-   Visually identical today (all inline code is 600); the class keeps the
-   distinction stylable. */
-code.keyword {
-    font-weight: 600;
+/* The aboutcsa page's comparison table. */
+#aboutcsa-table {
+    padding-top: 1em;
 }
 
+#aboutcsa-table th,
+#aboutcsa-table td {
+    text-align: center;
+}
+
+#aboutcsa-table thead {
+    background-color: lightblue;
+}
+
+/* -- blocks -- */
+
+.ptx-content :is(.activity,.project) {
+    margin-top: 2em;
+}
