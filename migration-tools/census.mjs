@@ -93,6 +93,7 @@ const NOTES = new Map([
   ['class-name', 'styled #30a/#e3e1c2 — restored 2026-08-09 with .function'],
   ['namespace', 'opacity .9 (package paths in imports) — restored 2026-08-09'],
   ['activity', 'block class (one per block since step 6); also in read-aloud BARE_BLOCKS'],
+  ['exercise-interactives', 'MCQ wrapper we emit; unstyled since step 11 deleted the dead permalink-hide rule — phase-7 (component) territory'],
 ]);
 
 // Runestone component vocabulary by shape: frozen (plan ground-rule 1)
