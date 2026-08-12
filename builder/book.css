@@ -147,6 +147,16 @@
   src: url(fonts/material-symbols-0.woff2) format('woff2');
 }
 
+/* The main site's logo font, for the banner wordmark (chrome.html's
+   .bhs-wordmark). Latin subset only — the wordmark is the only user. */
+@font-face {
+  font-family: 'Alfa Slab One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/alfa-slab-one-latin-1.woff2) format('woff2');
+}
+
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
@@ -3282,4 +3292,33 @@ td {
 
 .ptx-content :is(.activity,.project) {
     margin-top: 2em;
+}
+
+/* -- BHS branding in the banner (chrome.html) -- */
+
+.ptx-masthead .bhs-wordmark {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 1.3em;
+    line-height: 1.15;
+    max-width: 11em; /* wraps to "Berkeley High" / "Computer Science" */
+    flex-shrink: 0;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+/* The who-am-I indicator, filled by /js/bhsawesome.js from /whoami. The
+   title-container's flex:1 pushes it to the banner's right edge. */
+.ptx-masthead .bhs-username {
+    margin-left: 16px;
+    white-space: nowrap;
+    opacity: 0.75;
+}
+
+/* The <=480px pass hides the logo image and centers the title; hide the
+   branding there too rather than crowd a phone-width banner. */
+@media screen and (width<=480px) {
+    .ptx-masthead .bhs-wordmark,
+    .ptx-masthead .bhs-username {
+        display: none;
+    }
 }
