@@ -1,6 +1,8 @@
-# CSAwesome2
+# BHSawesome
 
-CSAwesome2 is a new revision in progress for the 2025 College Board changes. It is not yet complete! 
+BHSawesome is a revision of CSAwesome2, the Runestone book CSAwesome, a
+curriculum for the 2025 revision of the College Board AP Computer Science A
+Course and Exam Description.
 
 # Formatting `.ptx` files
 
@@ -30,4 +32,14 @@ directory.
 
 # Authors
 
-CSAwesome was based on the Java Review ebook written by Barbara Ericson of University of Michigan @ericsonga, and revised and reorganized by Beryl Hoffman of Elms College and the Mobile CSP project in 2019 for the 2019 AP CSA exam as CSAwesome. Kate McDonnell from Cherry Creek Schools created a JUnit test code suite in 2020 to provide feedback to students in every active code. Peter Seibel from Berkeley High School joined the authors and developers in 2023. Many others have contributed. For the most up to date listing of who has contributed to the ebook see the Preface.
+CSAwesome was based on the Java Review ebook written by Barbara Ericson of
+University of Michigan @ericsonga, and revised and reorganized by Beryl Hoffman
+of Elms College and the Mobile CSP project in 2019 for the 2019 AP CSA exam as
+CSAwesome. Kate McDonnell from Cherry Creek Schools created a JUnit test code
+suite in 2020 to provide feedback to students in every active code. Peter Seibel
+from Berkeley High School joined the authors and developers in 2023. Many others
+have contributed. For the most up to date listing of who has contributed to the
+ebook see the Preface.
+
+Peter Seibel then restructured the book into BHSawesome for use in his AP CSA
+classes at Berkeley High School.
