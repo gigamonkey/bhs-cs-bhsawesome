@@ -118,13 +118,11 @@
 
       <blocks>
         <block order="4">
-          <cline>public class Hello</cline>
-          <cline>{</cline>
+          <cline>public class Hello {</cline>
         </block>
 
         <block order="1">
-          <cline>   public static void main(String[] args)</cline>
-          <cline>   {</cline>
+          <cline>   public static void main(String[] args) {</cline>
         </block>
 
         <block order="2">
@@ -511,18 +509,19 @@
 
       <li>
         <p>
-          A <term>logic error</term> is a mistake in the algorithm or program
-          that causes it to behave incorrectly or unexpectedly. These errors are
-          detected by testing the program with specific data to see if it
-          produces the expected outcome.
+          A <term>run-time error</term> is a problem that occurs during the
+          execution of a program. It may be due to the program running into a
+          situation it isn’t prepared to handle. Run-time errors typically cause
+          the program to terminate abnormally.
         </p>
       </li>
 
       <li>
         <p>
-          A <term>run-time error</term> is a mistake in the program that occurs
-          during the execution of a program. Run-time errors typically cause the
-          program to terminate abnormally.
+          A <term>logic error</term> is a mistake in the algorithm or program
+          that causes it to behave incorrectly or unexpectedly. These errors are
+          detected by testing the program with specific data to see if it
+          produces the expected outcome.
         </p>
       </li>
 
