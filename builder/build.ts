@@ -17,7 +17,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadBook } from './src/book.ts';
+import { type Division, loadBook } from './src/book.ts';
 import { navFor, renderChrome } from './src/chrome.ts';
 import { tocJs } from './src/toc.ts';
 import { numberBlocks } from './src/ids.ts';
@@ -79,8 +79,23 @@ upOf.set('backmatter', '');
 upOf.set('backmatter/book-index', 'backmatter');
 upOf.set('backmatter/colophon', 'backmatter');
 
-const exercisesIndex: { file: string; title: string; exercises: object[] }[] = [];
+const exercisesIndex: {
+  file: string;
+  title: string;
+  number: string | null;
+  chapter: { number: string; title: string } | null;
+  exercises: object[];
+}[] = [];
 let emitted = 0;
+
+// The page's enclosing chapter (or itself, for a chapter's own page), for
+// the website's book-grid chapter-grouped column headers.
+function chapterOf(d: Division): Division | null {
+  for (let a: Division | null = d; a; a = a.parent) {
+    if (a.kind === 'chapter') return a;
+  }
+  return null;
+}
 
 function writeSiteFile(rel: string, content: string): void {
   const target = path.join(OUT, rel);
@@ -102,7 +117,16 @@ for (const division of book.pages) {
   const content = pageContent(division, ctx);
   writePage(page, division.title || book.title, content);
   const exercises = pageExercises(content);
-  if (exercises.length) exercisesIndex.push({ file: page, title: division.title || 'Introduction', exercises });
+  if (exercises.length) {
+    const ch = chapterOf(division);
+    exercisesIndex.push({
+      file: page,
+      title: division.title || 'Introduction',
+      number: division.number,
+      chapter: ch?.number ? { number: ch.number, title: ch.title } : null,
+      exercises,
+    });
+  }
 }
 
 // Special pages ('' is the contents page — the site-root index.html).
