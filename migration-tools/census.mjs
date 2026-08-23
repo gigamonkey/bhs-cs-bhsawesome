@@ -2,7 +2,7 @@
 /*
  * Class census for the CSS cleanup (bhs-cs plans/done/bhsawesome-css-cleanup.md).
  *
- * Regenerates the bhs-cs monorepo's plans/bhsawesome-class-audit.md from
+ * Regenerates the bhs-cs monorepo's plans/done/bhsawesome-class-audit.md from
  * the built site, book.css, and the shipped JS/CSS. Fully mechanical: hand
  * judgments live in the OVERRIDES and NOTES maps below so a re-run after
  * each cleanup step is idempotent and the doc tracks the burn-down.
@@ -35,7 +35,7 @@ const SITE = path.join(ROOT, 'build', 'out', 'public', 'bhsawesome');
 // in the monorepo's plans/ beside the cleanup plan itself). Sibling
 // checkout by default; override with BHS_CS.
 const BHS_CS = process.env.BHS_CS ?? path.join(ROOT, '..', 'bhs-cs');
-const OUT = path.join(BHS_CS, 'plans', 'bhsawesome-class-audit.md');
+const OUT = path.join(BHS_CS, 'plans', 'done', 'bhsawesome-class-audit.md');
 
 // ---------------------------------------------------------------------------
 // Hand judgments. OVERRIDES pins a class to a classification (with a note);

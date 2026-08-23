@@ -12,12 +12,12 @@ Who consumes every class name in the built book (static HTML, book.css,
 the vendored pretext scripts, the Runestone bundles/stylesheets, the
 bhs-cs client bundle), classified by what we may do with it. The
 generated ledger lives in the **monorepo**, beside the plan it serves:
-`bhs-cs/plans/bhsawesome-class-audit.md`. Regenerate after each cleanup
+`bhs-cs/plans/done/bhsawesome-class-audit.md`. Regenerate after each cleanup
 step:
 
 ```sh
 node builder/build.ts
-node migration-tools/census.mjs     # rewrites bhs-cs/plans/bhsawesome-class-audit.md
+node migration-tools/census.mjs     # rewrites bhs-cs/plans/done/bhsawesome-class-audit.md
 ```
 
 Hand judgments (verified evidence, reclassifications) live in the
