@@ -23,7 +23,7 @@
     </p>
 
     <p>
-      In a program the bits of code that produce values are called
+      In a program the pieces of code that produce values are called
       <term>expressions</term>. Every expression <term>evaluates to</term> a
       value. In this section we’ll deal with two of the most basic kinds of
       expressions. First, <term>literal values</term> are the way we write
