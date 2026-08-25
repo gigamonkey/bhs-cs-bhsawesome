@@ -131,7 +131,7 @@
     <p>
       Whenever we assign a value to a variable, the type of the value produced
       by the expression must be compatible with the declared type of the
-      variable. Usually this means there are the same type, such as assigning an
+      variable. Usually this means they are the same type, such as assigning an
       <k>int</k> value to an <k>int</k> variable or a <k>double</k> value to a
       <k>double</k> variable. But similar to the way we can use a mix of
       <k>int</k> and <k>double</k> values in an arithmetic expression and get a
