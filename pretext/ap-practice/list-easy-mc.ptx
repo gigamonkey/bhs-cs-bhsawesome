@@ -21,7 +21,7 @@
 
         <feedback>
           <p>
-            You can't use length on lists and the last index is one less than
+            You can't use length on lists, and the last index is one less than
             the size.
           </p>
         </feedback>
@@ -44,7 +44,7 @@
 
         <feedback>
           <p>
-            Since the first element in a list is at index 0 the last element is
+            Since the first element in a list is at index 0, the last element is
             at the size minus 1.
           </p>
         </feedback>
@@ -101,7 +101,7 @@
 
         <feedback>
           <p>
-            Every time an ArrayList fills up a new array is created that is
+            Every time an ArrayList fills up, a new array is created that is
             twice as big. This can lead to extra space that is wasted.
           </p>
         </feedback>
@@ -206,7 +206,7 @@
 
         <feedback>
           <p>
-            Use the <c>get</c> method to get a value from a list and the first
+            Use the <c>get</c> method to get a value from a list, and the first
             element in a list is at index 0.
           </p>
         </feedback>
@@ -310,7 +310,7 @@
         </statement>
 
         <feedback>
-          <p>This would remove the value at index 3 which is 1.</p>
+          <p>This would remove the value at index 3, which is 1.</p>
         </feedback>
       </choice>
 
@@ -320,7 +320,7 @@
         </statement>
 
         <feedback>
-          <p>This would remove the value at index 0 which is 5.</p>
+          <p>This would remove the value at index 0, which is 5.</p>
         </feedback>
       </choice>
 
@@ -330,7 +330,7 @@
         </statement>
 
         <feedback>
-          <p>This would remove the value at index 1 which is 3.</p>
+          <p>This would remove the value at index 1, which is 3.</p>
         </feedback>
       </choice>
 
@@ -340,7 +340,7 @@
         </statement>
 
         <feedback>
-          <p>This would remove the value at index 2 which is 2.</p>
+          <p>This would remove the value at index 2, which is 2.</p>
         </feedback>
       </choice>
     </choices>
@@ -388,7 +388,7 @@
 
         <feedback>
           <p>
-            This would add 2 at index 0 which would result in <c>[2, 1, 3,
+            This would add 2 at index 0, which would result in <c>[2, 1, 3,
             4]</c>
           </p>
         </feedback>
@@ -401,7 +401,7 @@
 
         <feedback>
           <p>
-            This would add 2 at index 1 which would result in <c>[1, 2, 3,
+            This would add 2 at index 1, which would result in <c>[1, 2, 3,
             4]</c>
           </p>
         </feedback>
@@ -414,7 +414,7 @@
 
         <feedback>
           <p>
-            This would add 2 at index 2 which would result in <c>[1, 3, 2,
+            This would add 2 at index 2, which would result in <c>[1, 3, 2,
             4]</c>
           </p>
         </feedback>
@@ -482,7 +482,7 @@
         </statement>
 
         <feedback>
-          <p>This removes the value at index 1 which is 2.</p>
+          <p>This removes the value at index 1, which is 2.</p>
         </feedback>
       </choice>
     </choices>

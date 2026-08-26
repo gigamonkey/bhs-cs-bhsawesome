@@ -154,7 +154,7 @@
     </p>
 
     <p>
-      Once you have created the <c>ClimbInfo</c> object you want to add it in
+      Once you have created the <c>ClimbInfo</c> object, you want to add it in
       the order they were created. To do this you can add it to the end of the
       <c>climbList</c>. How do you add an object to the end of a list?
     </p>

@@ -17,7 +17,7 @@
     <p>
       This question involves reasoning about the GridWorld case study that was
       formerly required knowledge for the APCSA exam. It is no longer expected
-      that you know this information and it will be provided to you in this
+      that you know this information, and it will be provided to you in this
       question. Because there is a lot of extra material that you need to read
       and understand, this question may seem more challenging and will require
       more time than a typical FRQ you would expect on your AP exam. It is still
@@ -66,12 +66,12 @@
 
     <p>
       The next important part is the <c>Grid Interface</c>. You may be
-      unfamiliar with interfaces so don’t worry too much about how they work.
+      unfamiliar with interfaces, so don’t worry too much about how they work.
       What you need to know is that the interface <c>Grid&lt;E&gt;</c> specifies
-      the methods for any <c>grid</c> that contains objects of the type <c>E</c>
-      which you choose at its initialization. For part A we will be working with
-      the class <c>BoundedGrid&lt;E&gt;</c> which implements the <c>Grid
-      Interface</c>. For this question, “E” will be a “Location”
+      the methods for any <c>grid</c> that contains objects of the type
+      <c>E</c>, which you choose at its initialization. For part A we will be
+      working with the class <c>BoundedGrid&lt;E&gt;</c>, which implements the
+      <c>Grid Interface</c>. For this question, “E” will be a “Location”
     </p>
 
     <figure align="center">
@@ -366,8 +366,8 @@
       type <c>Location</c>. Let’s call it <c>locs</c>. We need to have our
       program loop through the squares in <c>grid</c> from the start to the end
       (without going out of bounds). If the current square is empty, we need to
-      add that position to the end of <c>locs</c>. Finally our method should end
-      by returning <c>locs</c>.
+      add that position to the end of <c>locs</c>. Finally, our method should
+      end by returning <c>locs</c>.
     </p>
 
     <activity label="grdwrld_mcalg_answr_1">
@@ -467,7 +467,7 @@
 
           <feedback>
             <p>
-              you could use a nested for-each loop but it would make your code
+              you could use a nested for-each loop, but it would make your code
               longer and less efficient, as well as harder to read.
             </p>
           </feedback>
@@ -519,7 +519,7 @@
           <feedback>
             <p>
               You need to state that you a creating a new object with the
-              keyword, "new".
+              keyword "new".
             </p>
           </feedback>
         </choice>
@@ -551,7 +551,9 @@
 
     <activity label="grdwrld_mcalg_answr_4">
       <statement>
-        <p>How can you check if the current location, “locToCheck” is empty?</p>
+        <p>
+          How can you check if the current location, “locToCheck”, is empty?
+        </p>
       </statement>
 
       <choices>
@@ -585,7 +587,7 @@
 
           <feedback>
             <p>
-              We want locs to contain all the empty locations so it wouldn't
+              We want locs to contain all the empty locations, so it wouldn't
               make sense to call locs.get(locToCheck).
             </p>
           </feedback>
@@ -598,7 +600,7 @@
 
           <feedback>
             <p>
-              The grid could contain an integer object equal to 0 so that would
+              The grid could contain an integer object equal to 0, so that would
               mean the grid isn't empty at that spot.
             </p>
           </feedback>
