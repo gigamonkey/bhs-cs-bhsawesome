@@ -8,12 +8,12 @@
     <p>
       Another metaphor for classes that can help us understand the purpose of
       defining instance variables is to think of a class as like a blueprint for
-      a house. The blueprint is not a house but it defines the structure of a
-      house and if we build two houses from the same blueprint they will each be
-      different houses but they will have the same attributes. If the blueprint
-      says there’s a bathroom on the second floor, then both houses will have a
-      bathroom on the second floor. In this analogy, the blueprint is like the
-      class and the actual houses are the objects.
+      a house. The blueprint is not a house, but it defines the structure of a
+      house, and if we build two houses from the same blueprint, they will each
+      be different houses, but they will have the same attributes. If the
+      blueprint says there’s a bathroom on the second floor, then both houses
+      will have a bathroom on the second floor. In this analogy, the blueprint
+      is like the class, and the actual houses are the objects.
     </p>
 
     <figure align="center">
@@ -70,7 +70,7 @@
 
     <p>
       Even though <c>age</c> is neither a parameter nor a local variable
-      declared in <c>canVote</c> we can refer to it to access the value of the
+      declared in <c>canVote</c>, we can refer to it to access the value of the
       instance variable, getting the value stored in the object data of whatever
       object we called <c>canVote</c> on.
     </p>
@@ -133,8 +133,8 @@
       The keyword <k>this</k> is kind of like a variable that exists without
       being declared in the body of all constructors and instance methods and
       whose value is always a reference to the object being constructed or the
-      object an instance method was invoked on. Because it’s a keyword we can’t
-      use it as the name of a variable ourselves so it can’t be shadowed. That
+      object an instance method was invoked on. Because it’s a keyword, we can’t
+      use it as the name of a variable ourselves, so it can’t be shadowed. That
       guarantees that <c>this.name</c> is always a reference to the instance
       variable <c>name</c> on the current object.
     </p>
@@ -144,7 +144,7 @@
       above so that we can use the same name for parameters as the instance
       variables they are going to be assigned to. Some programmers prefer to use
       different, often shorter, names for parameters to avoid having to use
-      <k>this</k> but that just means they have to come up with twice as many
+      <k>this</k>, but that just means they have to come up with twice as many
       names. It’s simpler and idiomatic to use the same name and to disambiguate
       with <k>this</k>.
     </p>
@@ -152,10 +152,10 @@
     <note>
       <p>
         It is legal to use <k>this</k> and the dot operator to access an
-        instance variable even if it is not shadowed but usually Java
+        instance variable even if it is not shadowed, but usually Java
         programmers don’t. Some other languages such as Javascript and Python
         always require a <c>this.</c> (Javascript) or <c>self.</c> (Python) to
-        access instance variables so if you’ve used those languages you may be
+        access instance variables, so if you’ve used those languages, you may be
         in the habit of always using them.
       </p>
     </note>
@@ -186,7 +186,7 @@
 
         <p>
           As a result in the line <c>this.name = name</c> both <c>this.name</c>
-          and <c>name</c> refer to the instance variable so this line just
+          and <c>name</c> refer to the instance variable, so this line just
           assigns the current value (which will be <c>null</c>) back to the
           variable. It could just as well have been written <c>name = name</c>
           since there is no parameter shadowing it. Hopefully it’s obvious that
@@ -204,22 +204,22 @@
     <p>
       When an object is created, the memory to hold its instance variables is
       allocated and initialized. We’ll see in the next section how we can write
-      constructors to initialize instance variables to specific values but if we
-      don’t instance variables have to have some value so are initialized to the
-      zero value for their type. For <k>int</k> and <k>double</k> variables that
-      is <c>0</c> and <c>0.0</c>. For <k>boolean</k> variables it’s
+      constructors to initialize instance variables to specific values, but if
+      we don’t, instance variables have to have some value so are initialized to
+      the zero value for their type. For <k>int</k> and <k>double</k> variables
+      that is <c>0</c> and <c>0.0</c>. For <k>boolean</k> variables it’s
       <c>false</c>. And for all reference types it’s the special value
-      <c>null</c> which is a special reference value that doesn’t refer to any
+      <c>null</c>, which is a special reference value that doesn’t refer to any
       actual object.
     </p>
 
     <p>
       Local variables can also be assigned the value <c>null</c> as shown in the
       following <url
-      href="https://www.youtube.com/watch?v=5fpjgXAV2BU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
-      but usually we try to initialize local variables right away so <c>null</c>
-      values are most likely to arise as the value of instance variables in an
-      object.
+      href="https://www.youtube.com/watch?v=5fpjgXAV2BU&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>,
+      but usually we try to initialize local variables right away, so
+      <c>null</c> values are most likely to arise as the value of instance
+      variables in an object.
     </p>
 
     <video youtube="5fpjgXAV2BU" label="video-null" />
@@ -238,8 +238,8 @@
     </p>
 
     <p>
-      Since the <c>null</c> reference doesn’t point to any actual object data we
-      can’t use it to get at an instance variable because there’s nothing to
+      Since the <c>null</c> reference doesn’t point to any actual object data,
+      we can’t use it to get at an instance variable because there’s nothing to
       get. If we try to use the dot operator on an expression whose value is
       <c>null</c>, then we get a <term>NullPointerException</term>, which will
       crash our program. (It should really be called a
@@ -252,8 +252,8 @@
         Java actually provides a way to prevent errors like
         <c>NullPointerException</c> and others we’ve seen such as
         <c>IndexOutOfBoundsException</c> from crashing our whole program. But it
-        is sadly beyond the scope of the AP curriculum. If you want to know more
-        you can read the lesson <url
+        is sadly beyond the scope of the AP curriculum. If you want to know
+        more, you can read the lesson <url
         href="https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html">”Exceptions”</url>
         from Oracle’s <pubtitle>Java™ Tutorials</pubtitle> series.
       </p>
@@ -272,8 +272,8 @@
 
     <p>
       Since instance variables that are declared without an initial value are
-      initialized to <c>null</c> one common source of <c>null</c> references is
-      forgetting to initialize an instance variable which can later lead to a
+      initialized to <c>null</c>, one common source of <c>null</c> references is
+      forgetting to initialize an instance variable, which can later lead to a
       <c>NullPointerException</c> if we try to access an instance variable or
       invoke an instance method on that variable. We’ll see in more detail in
       <xref ref="constructors" /> how to make sure all our instance variables
@@ -283,9 +283,9 @@
     <p>
       Another common source of null references is arrays. And as we saw in <xref
       ref="array-basics" /> if we make an array with an array creation
-      expression like <c>new String[10]</c> it makes an array with places to
-      store ten <c>String</c> references but all those references start out
-      <c>null</c>. So when we make arrays with elements of a reference type we
+      expression like <c>new String[10]</c>, it makes an array with places to
+      store ten <c>String</c> references, but all those references start out
+      <c>null</c>. So when we make arrays with elements of a reference type, we
       need to be sure to initialize the elements before we try to use them.
     </p>
   </subsection>
@@ -306,7 +306,7 @@
     <p>
       In Java, the answer is that it’s up to the author of the class. The
       keyword <k>private</k> placed before the type in the variable declarations
-      in <c>Person</c> is called an <term>access modifier</term> and it tells
+      in <c>Person</c> is called an <term>access modifier</term>, and it tells
       Java that those variables cannot be accessed by code outside the
       <c>Person</c> class, even if that code has a reference to a <c>Person</c>
       object.
@@ -316,7 +316,7 @@
       Instance variables should almost always be declared <term>private</term>.
       The main reason is it makes it much easier to understand our own code: if
       we marked the variables as <k>public</k> and were trying to understand why
-      a <c>Person</c> object’s age had changed we’d have to check every line of
+      a <c>Person</c> object’s age had changed, we’d have to check every line of
       code in our whole program to see what code might have a reference to a
       <c>Person</c> object and might have assigned a new value to its <c>age</c>
       variable. Whereas with a <k>private</k> age variable, we know that the
@@ -329,7 +329,7 @@
       later. If only code in the class can access a variable, then we can rename
       it, change its type, or even delete it, if we decide we want to store the
       information in a different way or don’t need it any more. But if it’s
-      <k>public</k> we again have to look at all the code in any class that
+      <k>public</k>, we again have to look at all the code in any class that
       might use <c>Person</c> to see if it references that variable. Making
       variables <k>private</k> is one of Java’s main mechanisms for <term>data
       encapsulation</term> or <term>data hiding</term>. In <xref

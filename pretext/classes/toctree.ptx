@@ -16,8 +16,8 @@
       that one of the primary ways of designing and organizing a Java program is
       in terms of <term>objects</term>. All values in Java that are not
       primitive are objects. Arrays are not primitive, so they are one kind of
-      object. But usually when we talk about objects we are talking about values
-      defined by <term>classes</term>, the topic of this chapter.
+      object. But usually when we talk about objects, we are talking about
+      values defined by <term>classes</term>, the topic of this chapter.
     </p>
 
     <p>
@@ -35,7 +35,7 @@
 
     <p>
       But we can also open up the box and look inside to see how a class works.
-      And we can write our own. In fact quite a lot of what we think of as Java,
+      And we can write our own. In fact quite a lot of what we think of as Java
       is really just classes written <em>in</em> Java that we could write
       ourselves if they didn’t exist. There are a few classes, such as
       <c>String</c>, that are built into a Java at a slightly deeper level than
