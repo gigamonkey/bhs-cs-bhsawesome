@@ -12,7 +12,7 @@
     </p>
 
     <p>
-      In this unit we are going to look at <term>arrays</term> which as our
+      In this unit we are going to look at <term>arrays</term>, which as our
       first real dive into a reference type. Arrays sit a bit between the
       primitive types and classes, which we’ll learn about in <xref
       ref="classes" />, but they give us a good way to start to understand the
@@ -23,7 +23,8 @@
 
     <p>
       One way to describe the distinction is that primitive types are the things
-      the computer actually knows about and reference types are defined by Java.
+      the computer actually knows about, and reference types are defined by
+      Java.
     </p>
 
     <p>
@@ -41,7 +42,7 @@
     <p>
       Typically reference types represent more data than can fit in thirty-two
       or sixty-four bits; many can require an arbitrary amount of memory. For
-      instance, a <c>String</c> can be short like <c>"foo"</c> but it can also
+      instance, a <c>String</c> can be short like <c>"foo"</c>, but it can also
       be millions characters long, such as the complete text of <pubtitle>War
       and Peace</pubtitle>. Arrays, likewise, can represent essentially
       arbitrary amount of data from a handful of values to millions or even
@@ -49,23 +50,23 @@
     </p>
 
     <p>
-      To represent arbitrarily large values Java splits the value into two parts
-      which together make up an <term>object</term>. The actual data—the text of
-      <pubtitle>War and Peace</pubtitle> in a <c>String</c> or the millions of
-      numbers in an array—is called the <term>object data</term> and it lives
-      somewhere in the computer’s memory. But to get at the object data we need
-      a special number, called a <term>reference</term>, that the CPU knows how
-      to deal with. A reference is a single value that tells the CPU where in
-      memory the object data lives. References, not the object data they refer
-      to, are assigned to variables and passed as arguments to methods when
-      dealing with objects.
+      To represent arbitrarily large values, Java splits the value into two
+      parts, which together make up an <term>object</term>. The actual data—the
+      text of <pubtitle>War and Peace</pubtitle> in a <c>String</c> or the
+      millions of numbers in an array—is called the <term>object data</term>,
+      and it lives somewhere in the computer’s memory. But to get at the object
+      data, we need a special number, called a <term>reference</term>, that the
+      CPU knows how to deal with. A reference is a single value that tells the
+      CPU where in memory the object data lives. References, not the object data
+      they refer to, are assigned to variables and passed as arguments to
+      methods when dealing with objects.
     </p>
 
     <p>
       Most of the time we don’t have to distinguish between the object data and
       the reference to it since in Java there’s no way to get at the object data
       except through the reference. But when we say the value of some variable
-      is a particular object what we really mean is that the variable holds a
+      is a particular object, what we really mean is that the variable holds a
       reference to that object’s data. And when we say an object contains a
       particular value, we mean that that value is somewhere in the object data.
     </p>

@@ -19,12 +19,12 @@
       arranged along a one dimension like numbers on the number line or people
       on line to get a cinnamon bun or slice of pizza that’s gone viral on
       TikTok. In order to indicate which element we want out of a
-      one-dimensional array we need just one number, the index.
+      one-dimensional array, we need just one number, the index.
     </p>
 
     <p>
       But sometimes it’s useful to think of data arranged in more than one
-      dimension. For instance many things are arranged in horizontal
+      dimension. For instance, many things are arranged in horizontal
       <term>rows</term> and vertical <term>columns</term> like spreadsheets,
       chess boards, bingo cards, and theater seats. And all the images on a
       computer screen are ultimately made up of tiny pixels arranged into a
@@ -40,9 +40,9 @@
 
     <p>
       In Java we can also make <term>two-dimensional arrays</term> or <term>2d
-      arrays</term> which can be indexed with two indices which we can think of
-      as rows and columns or x and y. Though as it turns out, Java’s 2d arrays
-      are really just 1d arrays that happen to contain 1d arrays as their
+      arrays</term>, which can be indexed with two indices, which we can think
+      of as rows and columns or x and y. Though as it turns out, Java’s 2d
+      arrays are really just 1d arrays that happen to contain 1d arrays as their
       elements. So if we fully understand how arrays work in general, there’s
       not much more to learn about 2d arrays.
     </p>
@@ -55,7 +55,7 @@
       The key to understanding 2d arrays is to understanding that 1d arrays can
       contain any kind of value, which includes other arrays. So, to review, if
       we want to make an array of <k>int</k> values, we use <c>int[]</c>. And
-      for an array of <c>String</c> values we use <c>String[]</c>.
+      for an array of <c>String</c> values, we use <c>String[]</c>.
     </p>
 
     <p>
@@ -75,7 +75,7 @@
 
     <p>
       As with any array declarations, declaring a variable doesn’t cause an
-      actual array to be created so these variables will be <c>null</c> until
+      actual array to be created, so these variables will be <c>null</c> until
       they are initialized. And we have no idea how big the arrays will be that
       these variables will eventually reference.
     </p>
@@ -88,8 +88,8 @@
       The array creation expressions and array initializers we used with
       one-dimensional arrays also work to create 2d arrays. The main difference
       is that when we want to construct a 2d array of a specific size, we need
-      to specify the size of both dimensions and when we use an array
-      initializer we need use nested <c>{}</c> to provide initial values in two
+      to specify the size of both dimensions, and when we use an array
+      initializer, we need use nested <c>{}</c> to provide initial values in two
       dimensions.
     </p>
 
@@ -110,7 +110,7 @@
       creates that many inner arrays whose length is specified in the second set
       of <c>[]</c>. Typically (and always on the AP exam) we think of the first
       dimension as rows and the second as columns. So we’d describe
-      <c>ticketInfo</c> as two rows of three columns each while
+      <c>ticketInfo</c> as two rows of three columns each, while
       <c>seatingChart</c> is three rows of two columns each. Each row of a 2d
       array is represented by a 1d array containing the actual values in that
       row and each column.
@@ -121,7 +121,7 @@
       for their element type, <k>int</k> for the inner arrays of
       <c>ticketInfo</c> and <c>String</c> for the inner ararys of
       <c>seatingChart</c>. So in total ticketInfo contains six <k>int</k> zeros
-      arranged into two three-element inner arrays while <c>seatingChart</c>
+      arranged into two three-element inner arrays, while <c>seatingChart</c>
       contains six <c>null</c> refernces arranged into three two-element inner
       arrays.
     </p>
@@ -129,7 +129,7 @@
     <p>
       We can also use array initializers to create array values with specific
       values. We write the inner arrays as array initializers nested within an
-      outer set of <c>{}</c>. As with a one-dimensional array initializer we
+      outer set of <c>{}</c>. As with a one-dimensional array initializer, we
       don’t need to specify the dimensions of the array in the <c>[]</c> because
       it’s implicit in the number of values provided. Here are initializers for
       our two variables that set them to arrays of the same shape (number of
@@ -144,10 +144,10 @@
     </program>
 
     <p>
-      Also similar to creating 1d arrays we can use array initializers to
+      Also similar to creating 1d arrays, we can use array initializers to
       provide specific values. In this case, the syntactic sugar of not having
       to include the <k>new</k> and the type of the arrays when we’re
-      initializing a newly declared array variable, makes things pretty compact
+      initializing a newly declared array variable makes things pretty compact
       and readable:
     </p>
 
@@ -197,11 +197,11 @@
       <p>
         There are other ways to create arrays that are outside of the scope of
         the AP curriculum. For instance, we can make a new array with the second
-        dimension unspecified like <c>new int[10][]</c> which will create a
+        dimension unspecified like <c>new int[10][]</c>, which will create a
         ten-element array initialized with <c>null</c> values that can latter be
         assigned references to any <c>int[]</c>. And those arrays don’t
         necessarily all have be the same length, giving us a non-rectangular
-        array. Similarly with array initializers we can make arbitrarily shaped
+        array. Similarly with array initializers, we can make arbitrarily shaped
         arrays. But all 2d arrays on the AP exam will be rectangular, meaning
         every row will be the same length.
       </p>
@@ -622,7 +622,7 @@
       Another similarity between one-dimensional and 2d arrays is the way we
       access the values. Normally we want to get and set the actual values in
       the array, such as the <k>int</k> values in an <c>int[][]</c>. Just like
-      with a one-dimensional array we use an array access expression, but this
+      with a one-dimensional array, we use an array access expression, but this
       time with two pairs of <c>[]</c> rather than just one. The expression in
       the first pair gives us the index into the outer array, or the row index,
       and the expression in the second pair gives the column index used to index
@@ -718,7 +718,7 @@
     <activity label="twoDArraySet">
       <statement>
         <p>
-          Try to predict what the code below will print then run it. Did it
+          Try to predict what the code below will print, then run it. Did it
           print what you expected? If it didn’t, open the Hint below for an
           explanation. After you’ve run it once, edit the code to add an extra
           row to the <c>seatingChart</c> array and add your name and a friend’s
@@ -817,7 +817,7 @@
           </statement>
 
           <feedback>
-            <p>Remember that the row is first then the column.</p>
+            <p>Remember that the row is first, then the column.</p>
           </feedback>
         </choice>
 
@@ -886,9 +886,9 @@
       <c>length</c> property. That property of course exists on 2d arrays too,
       because they are just one-dimensional arrays that happen to contain other
       arrays. So the <c>length</c> of a 2d array is the number of rows in the
-      array and the <c>length</c> of any of those rows is the number of columns.
-      Traditionally programmers will use <c>array[0].length</c> since as long as
-      the array has any rows it has a row <c>0</c>.
+      array, and the <c>length</c> of any of those rows is the number of
+      columns. Traditionally programmers will use <c>array[0].length</c> since
+      as long as the array has any rows, it has a row <c>0</c>.
     </p>
 
     <program>
@@ -898,7 +898,7 @@
 
     <p>
       As always, the length of an array determines what indices are valid. So
-      the valid row indices of a 2d array, <c>grid</c> are from <c>0</c> to
+      the valid row indices of a 2d array, <c>grid</c>, are from <c>0</c> to
       <c>grid.length - 1</c>, inclusive, and the valid column indices are from
       <c>0</c> to <c>grid[0].length - 1</c>, also inclusive. Using an index
       value outside of these ranges will result in an
@@ -971,7 +971,7 @@
 
           <feedback>
             <p>
-              This would be true if array indices started with 1 but they start
+              This would be true if array indices started with 1, but they start
               with 0.
             </p>
           </feedback>
@@ -998,7 +998,7 @@
 
           <feedback>
             <p>
-              Array indices start with 0 so the third row has an index of 2 and
+              Array indices start with 0, so the third row has an index of 2 and
               the second column has an index of 1.
             </p>
           </feedback>
@@ -1026,7 +1026,7 @@
     <p>
       ASCII is a commonly used character encoding standard where each key you
       press on the keyboard is translated to an ASCII number to be stored in the
-      computer. ASCII has been mostly replaced by UNICODE which includes
+      computer. ASCII has been mostly replaced by UNICODE, which includes
       characters in other languages like Chinese. In the days before good
       graphics, some people made ASCII art just using the keyboard characters.
       Take a look at this <url href="https://www.asciiart.eu/">ASCII art</url>

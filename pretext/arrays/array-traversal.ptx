@@ -257,11 +257,11 @@
     </p>
 
     <p>
-      The basic structure looks like the loop on the left which is equivalent to
-      the normal <k>for</k> loop on the right, both looping over a <c>String</c>
-      array, <c>names</c>. The only difference is that in the enhanced
-      <k>for</k> loop the code doesn’t have to worry about the index variable
-      <c>i</c>.
+      The basic structure looks like the loop on the left, which is equivalent
+      to the normal <k>for</k> loop on the right, both looping over a
+      <c>String</c> array, <c>names</c>. The only difference is that in the
+      enhanced <k>for</k> loop the code doesn’t have to worry about the index
+      variable <c>i</c>.
     </p>
 
     <sidebyside>
@@ -291,12 +291,12 @@
     </sidebyside>
 
     <p>
-      In an enhanced <k>for</k> loop the loop variable before the <c>:</c> holds
-      the value of each element of the array in turn without us having to use a
-      separate index variable to get at it. This means the type of the variable
-      has to be the same as the element type of the array. We can read this loop
-      as “for each <c>s</c> in <c>names</c>” which is why this kind of loop is
-      called a for-each loop.
+      In an enhanced <k>for</k> loop, the loop variable before the <c>:</c>
+      holds the value of each element of the array in turn without us having to
+      use a separate index variable to get at it. This means the type of the
+      variable has to be the same as the element type of the array. We can read
+      this loop as “for each <c>s</c> in <c>names</c>”, which is why this kind
+      of loop is called a for-each loop.
     </p>
 
     <p>
@@ -321,13 +321,13 @@
 
     <p>
       We should use the enhanced <k>for</k> loop whenever we can, because it’s
-      more concise and cuts down on errors. However it isn’t always applicable.
+      more concise and cuts down on errors. However, it isn’t always applicable.
       The main limitation is that we don’t have access to the underlying index
       variable. So we can’t, for instance, easily compare adjacent elements of
       an array or modify the value at whatever position we are in, in the array.
       For instance, there’s no way to use an enhanced <k>for</k> loop to write
-      something like this regular <k>for</k> loop which adds one to each element
-      of an array of <k>int</k>:
+      something like this regular <k>for</k> loop, which adds one to each
+      element of an array of <k>int</k>:
     </p>
 
     <program>
@@ -340,11 +340,11 @@
 
     <p>
       Similarly, since we have no control over the order we access the elements
-      of the array we can’t use the enhanced <k>for</k> loop if we want to loop
+      of the array, we can’t use the enhanced <k>for</k> loop if we want to loop
       backwards through an array or over only part of an array. And to use the
-      enhanced loop we need something to loop over. That can be an array or a
-      few other data types, such as <c>ArrayList</c> which we’ll learn about in
-      <xref ref="array-lists" />. But we need <em>something</em> to loop over
+      enhanced loop, we need something to loop over. That can be an array or a
+      few other data types, such as <c>ArrayList</c>, which we’ll learn about in
+      <xref ref="array-lists" />. But we need <em>something</em> to loop over,
       whereas with a regular <k>for</k> loop we can loop using whatever
       initializer, condition, and updater we want.
     </p>
@@ -391,8 +391,8 @@
 
       <statement>
         <p>
-          Rewrite the following for loop which prints out the even numbers in
-          the array as an enhanced <k>for</k> loop. Make sure it works!
+          Rewrite the following for loop, which prints out the even numbers in
+          the array, as an enhanced <k>for</k> loop. Make sure it works!
         </p>
       </statement>
 
@@ -603,7 +603,7 @@
 
     <p>
       While we should us the enhanced <k>for</k> loop when we can, there are
-      cases where we will need the flexibility of a regular loop such as if we
+      cases where we will need the flexibility of a regular loop, such as if we
       want to loop over a specific range in the array, to process the array in
       reverse order, or to use the index for something beyond just getting the
       element from one position in one array.
@@ -615,7 +615,7 @@
       want the loop to run five times or the whole length of the array if it has
       fewer than five elements. Another way to write this would be with a more
       complex boolean expression such as <c>i &lt; values.length &amp;&amp; i
-      &lt; 5</c>. Which is clearer is a matter of taste but using
+      &lt; 5</c>. Which is clearer is a matter of taste, but using
       <c>Math.min</c> is arguably more to the point.
     </p>
 
@@ -630,7 +630,7 @@
 
     <p>
       We couldn’t write this with an enhanced <k>for</k> loop for two reasons:
-      we want to change the values in the array and we want to only loop over
+      we want to change the values in the array, and we want to only loop over
       part of the array.
     </p>
 
@@ -651,8 +651,8 @@
     </program>
 
     <p>
-      Or if we wanted to print out students with their ages, given two arrays we
-      could write this:
+      Or if we wanted to print out students with their ages, given two arrays,
+      we could write this:
     </p>
 
     <program>
@@ -781,7 +781,7 @@
       <statement>
         <gutterimage source="Unit4-Data-Collections/Figures/spellcheck.png" description="Spell Checker">
           <p>
-            This challenge includes a dictionary file of 10,000 English words
+            This challenge includes a dictionary file of 10,000 English words,
             which is read into the array <c>dictionary</c> for you. You could
             use this <url
             href="https://replit.com/@BerylHoffman/SpellChecker1">replit</url>
