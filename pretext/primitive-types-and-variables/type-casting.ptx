@@ -179,7 +179,7 @@
       like all the other operators and it is actually quite high. The expression
       above works because the cast of <c>total</c> to <k>double</k> happens
       first and then that <k>double</k> value infects <c>count</c> and the whole
-      expression is computed using <k>double</k> math. If instead, we had
+      expression is computed using <k>double</k> math. If instead we had
       written:
     </p>
 
