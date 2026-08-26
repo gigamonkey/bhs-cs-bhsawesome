@@ -17,7 +17,7 @@
 
     <p>
       In this section we will learn about how Java represents text and how to
-      print values to the screen allowing us to write programs that actually do
+      print values to the screen, allowing us to write programs that actually do
       something.
     </p>
   </introduction>
@@ -27,7 +27,7 @@
 
     <idx>output</idx>
     <p>
-      Java has two different methods to print output to the screen which we saw
+      Java has two different methods to print output to the screen, which we saw
       in passing in the Introduction.
     </p>
 
@@ -50,8 +50,8 @@
 
     <p>
       The <em>value</em> between the parentheses can be any Java
-      <term>expression</term> which just means some bit of code that produces a
-      value. One simple kind of expression is a <term>literal value</term> which
+      <term>expression</term>, which just means some bit of code that produces a
+      value. One simple kind of expression is a <term>literal value</term>, which
       is a way of representing a value directly—or literally—in our code. For
       instance <c>42</c> is a literal expression representing the <k>int</k>
       value 42. When we print a value with <c>print</c> or <c>println</c>, Java
@@ -68,7 +68,7 @@
     <idx>String</idx>
     <idx>String literal</idx>
     <p>
-      In order to print out a value Java has to convert it to text. In Java,
+      In order to print out a value, Java has to convert it to text. In Java,
       text is represented with a data type called a <c>String</c>. Why are they
       called "strings"? Who knows? Java didn’t make it up; computer scientists
       have been using “string” to refer to sequences of items since at least the
@@ -82,7 +82,7 @@
       novel, in a Java program, we would represent it as a <c>String</c>. As
       another data type, like <k>int</k> and <k>double</k>, we can declare
       <c>String</c> variables. We’ll learn a lot more about the <c>String</c>
-      data type in <xref ref="string-manipulation" /> but for now we just need
+      data type in <xref ref="string-manipulation" />, but for now we just need
       to know we can write <term>string literals</term> by enclosing the text we
       want in quotation marks: <c>""</c>.
     </p>
@@ -100,7 +100,7 @@
       <statement>
         <p>
           Run this code to see the output below it. How would you change it to
-          print the ! on the same line as Hi there keeping all 3 print
+          print the ! on the same line as Hi there, keeping all 3 print
           statements?
         </p>
       </statement>
@@ -133,7 +133,7 @@
       of the operands is a <c>String</c>, it produces a new <c>String</c> by
       smooshing together the <c>String</c> with the <c>String</c> representation
       of the other value. For instance if <c>name</c> and <c>age</c> were
-      variables containing someone’s name and age we could write:
+      variables containing someone’s name and age, we could write:
     </p>
 
     <program>
@@ -150,11 +150,11 @@
       Note that there’s an important difference between a variable in a string
       concatenation expression and the name of the variable in quotes <c>""</c>.
       The latter is just a <c>String</c> whose text happens to be the same as
-      the name of the variable while the former will produce the <c>String</c>
+      the name of the variable, while the former will produce the <c>String</c>
       representation of the variable’s value. A common mistake is to write
       something like <c>System.out.println("x")</c> when we meant to write
       <c>System.out.println(x)</c> On the other hand, a really good way to write
-      that would be: <c>System.out.println("x: " + x)</c> which would emit the
+      that would be: <c>System.out.println("x: " + x)</c>, which would emit the
       value of <c>x</c> labeled with the name of the variable.
     </p>
 
@@ -214,7 +214,7 @@
       provides a way to write string literals that contain double quotes using a
       mechanism called <term>escaping</term>. To “escape” the normal syntax of a
       string literal, where a quotation mark would indicate the end of the
-      string, we put a backslash (<c>\</c>) in front of the quotation mark which
+      string, we put a backslash (<c>\</c>) in front of the quotation mark, which
       tells Java to include the following quotation mark in the string value
       rather than treating it as the end of the literal.
     </p>
@@ -225,7 +225,7 @@
       we want to include a backslash in a string literal, we need to escape it
       with another backslash! There are a handful of other backslash escape
       sequences. The only other one the College Board wants you to know about is
-      <c>\n</c> which will be translated to a newline character, which will
+      <c>\n</c>, which will be translated to a newline character, which will
       break the text across lines.
     </p>
 
@@ -274,7 +274,7 @@
       user. Just as there are lots of ways for computers to generate output,
       modern programs can accept all kinds of input: UI gestures such as the
       user clicking on a button, audio input from the computer’s microphone,
-      visual input from a camera, etc. But as with output the simplest to deal
+      visual input from a camera, etc. But as with output, the simplest to deal
       with is textual input. In <xref ref="text-files" /> we’ll look at how to
       read input from files saved on the computer. But sometimes it’s useful to
       be able to get input typed by the user as a program runs.

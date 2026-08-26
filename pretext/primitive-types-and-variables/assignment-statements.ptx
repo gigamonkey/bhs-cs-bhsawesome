@@ -35,11 +35,11 @@
     <idx>assignment</idx>
     <p>
       Assignment statements are used both to initialize and change the value
-      stored in a variable using the <term>assignment operator</term> which is
+      stored in a variable using the <term>assignment operator</term>, which is
       written with a single equals sign: <c>=</c>. An assignment statement
       always consists of a single variable on the left hand side of the <c>=</c>
       and a single expression on the right hand side. The expression is
-      evaluated and then the resulting value is stored in the variable,
+      evaluated, and then the resulting value is stored in the variable,
       initializing it if this is the first time it has been assigned a value or
       replacing its old value with a new value.
     </p>
@@ -62,7 +62,7 @@
     <p>
       That is an assignment as part of the variable declaration. It initializes
       the variable <c>score</c> to the value <c>0</c>. Then as the game
-      progresses and the player scores points we need to update the value of
+      progresses and the player scores points, we need to update the value of
       <c>score</c> with a line like this:
     </p>
 
@@ -75,7 +75,7 @@
       current value plus one. As a formula in math class it would look strange
       since nothing plus one is equal to itself. But it makes sense in coding
       because the <c>=</c> is an assignment operator. Java just evaluates the
-      expression on the right, <c>score + 1</c>, which produces some number and
+      expression on the right, <c>score + 1</c>, which produces some number, and
       then that number becomes the new value of the variable <c>score</c>.
     </p>
 
@@ -92,7 +92,7 @@
 
       <p>
         it would be an error because this code would need to evaluate the right
-        hand side of the assignment in order to get <c>score</c>’s initial value
+        hand side of the assignment in order to get <c>score</c>’s initial value,
         but that would require getting the value of <c>score</c> before it was
         initialized.
       </p>
@@ -136,7 +136,7 @@
       <k>double</k> variable. But similar to the way we can use a mix of
       <k>int</k> and <k>double</k> values in an arithmetic expression and get a
       <k>double</k> result, we can also assign an <k>int</k> value to a
-      <k>double</k> variable and it will be automatically converted to the
+      <k>double</k> variable, and it will be automatically converted to the
       equivalent <k>double</k>. In the next lesson, we will see how to
       explicitly convert values to different types.
     </p>
@@ -361,7 +361,7 @@
     <p>
       If you need a way to remember the order of the two characters in the
       compound operators, think about the order things happen: first we use the
-      math operator, such as <c>+</c>, to get the new value and then the value
+      math operator, such as <c>+</c>, to get the new value, and then the value
       is assigned back to the variable with <c>=</c>. So it’s operator then
       equals sign: <c>+=</c>.
     </p>
@@ -370,7 +370,7 @@
       Since changing the value of a variable by one is especially common, there
       are two extra concise operators <c>++</c> and <c>--</c>, also called the
       plus-plus or <term>increment</term> operator and minus-minus or
-      <term>decrement</term> operator that set a variable to one greater or less
+      <term>decrement</term> operator, that set a variable to one greater or less
       than its current value.
     </p>
 
@@ -460,14 +460,14 @@
         operator is before the variable (the <term>prefix</term> operator), the
         value of the variable in incremented <em>before</em> the variable is
         evaluated to get the value of the expression. For example, if <c>x</c>
-        is 10 and we write, <c>System.out.println(x++)</c> it will print 10 but
-        afterwards <c>x</c> will be 11. On the other hand if we write,
-        <c>System.out.println(++x)</c>, it will print 11 and afterwards the
+        is 10 and we write <c>System.out.println(x++)</c>, it will print 10, but
+        afterwards <c>x</c> will be 11. On the other hand, if we write
+        <c>System.out.println(++x)</c>, it will print 11, and afterwards the
         value will be 11.
       </p>
 
       <p>
-        The AP exam will never use the prefix form of these operators nor will
+        The AP exam will never use the prefix form of these operators, nor will
         it use the postfix operators in a context where the value of the
         expression matters.
       </p>
@@ -620,7 +620,7 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
             = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
@@ -633,7 +633,7 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
             = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
@@ -646,7 +646,7 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
             = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
@@ -659,7 +659,7 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
             = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
@@ -672,7 +672,7 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2) and z
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
             = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
@@ -757,7 +757,7 @@
         dog or cat was born (if you don’t have one, make one up!) in the
         variables below. Then write formulas in assignment statements to
         calculate how old you are, how old your dog or cat is, and how old they
-        are in dog years which is 7 times a human year. Finally, print it all
+        are in dog years, which is 7 times a human year. Finally, print it all
         out. If you are pair programming, switch drivers (who has control of the
         keyboard in pair programming) after every line of code.
       </p>
