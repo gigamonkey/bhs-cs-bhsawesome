@@ -357,7 +357,7 @@
     </p>
 
     <p>
-      However this means, that like scientific notation, there is a limit to the
+      However this means that like scientific notation, there is a limit to the
       precision with which <k>double</k>s can represent numbers, about 14-15
       decimal places. That has a few consequences. One is that irrational
       numbers like <m>\pi</m> and <m>\sqrt{2}</m> that have an infinite decimal
