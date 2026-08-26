@@ -473,13 +473,13 @@
 
     <p>
       Loop through the list and scramble the current word. If the scrambled word
-      and original are equal then remove the word from the list and otherwise
+      and original are equal, then remove the word from the list and otherwise
       replace it. We will have to be careful since the size of the list can
-      change in the loop. If we remove an element all the other elements will
+      change in the loop. If we remove an element, all the other elements will
       shift left. We will only want to increment the index if the word was
-      replaced and not removed. There are many ways to solve this problem but we
-      have outlined 2 in the following optional questions. If you feel that you
-      are ready to solve the problem, please skip ahead to the active code
+      replaced and not removed. There are many ways to solve this problem, but
+      we have outlined 2 in the following optional questions. If you feel that
+      you are ready to solve the problem, please skip ahead to the active code
       block.
     </p>
 

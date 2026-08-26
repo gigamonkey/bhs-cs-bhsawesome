@@ -22,7 +22,7 @@
 
     <p>
       A collection of code written by other programmers that we can use is
-      called a <term>library</term> and the set of publicly available classes
+      called a <term>library</term>, and the set of publicly available classes
       and methods in the library are called its <term>Application Programming
       Interface</term>, or <term>API</term> for short.
       <c>System.out.println()</c> is part of the Java API, a large set of code
@@ -53,7 +53,7 @@
       One of the great things about Java is the number of libraries written by
       other programmers that we can use. One such library is the <c>Turtle</c>
       Java library, written by one of the author’s of this book, Dr. Barbara
-      Ericson and built into this book. It allows us to create drawings using
+      Ericson, and built into this book. It allows us to create drawings using
       animated turtles that move around the screen. Try clicking run below to
       see a turtle in action.
     </p>
@@ -90,8 +90,8 @@
       type</term>—<k>int</k>, <k>double</k>, and <k>boolean</k>—define a
       particular kind of value, such as a 32-bit integer quantity for an
       <k>int</k> or a 64-bit floating point value for a <k>double</k>. These new
-      kinds of values, defined by classes, are called <term>objects</term> which
-      is where <term>object-oriented programming</term> gets its name. The
+      kinds of values, defined by classes, are called <term>objects</term>,
+      which is where <term>object-oriented programming</term> gets its name. The
       values defined by the <c>Turtle</c> class represent turtles that can move
       around the screen, drawing lines. Objects are also called
       <term>instances</term> of their class.
@@ -102,12 +102,12 @@
       <term>attributes</term> and <term>behaviors</term>. Attributes are the
       data that makes up the object, each stored in a variable defined by the
       class. Objects can be more complex than primitive values since they can
-      consist of an arbitrary number of attributes unlike primitive values which
-      are always just one value. And unlike primitive values, which can only be
-      operated on with a fixed set of operators like <c>+</c> and <c>*</c>,
-      objects can have an arbitrary number of behaviors that describe what we
-      can do with those objects. These behaviors are defined in the class as
-      <term>methods</term>.
+      consist of an arbitrary number of attributes unlike primitive values,
+      which are always just one value. And unlike primitive values, which can
+      only be operated on with a fixed set of operators like <c>+</c> and
+      <c>*</c>, objects can have an arbitrary number of behaviors that describe
+      what we can do with those objects. These behaviors are defined in the
+      class as <term>methods</term>.
     </p>
 
     <p>
@@ -132,8 +132,8 @@
       one blue turtle at position <c>200,100</c> and one red turtle at position
       <c>50,75</c>, just like we can have one <k>int</k> whose value is <c>2</c>
       and another whose value is <c>10</c>. The actual <c>Turtle</c> class
-      defines several more attributes than the ones shown in the image but these
-      are the main ones we need to know about to understand drawing with
+      defines several more attributes than the ones shown in the image, but
+      these are the main ones we need to know about to understand drawing with
       turtles.
     </p>
 
@@ -143,12 +143,12 @@
       the attributes of the specific turtle object the method is called on. For
       instance, the <c>forward()</c> method, as you’ll see in the next exercise,
       causes a turtle to move forward and draw a line. Where the line is drawn
-      will depend on the turtle’s position and heading attributes and the color
+      will depend on the turtle’s position and heading attributes, and the color
       of the line will be determined by the turtle’s color. Calling
-      <c>forward()</c> on a different turtle value would still draw a line but
+      <c>forward()</c> on a different turtle value would still draw a line, but
       it would likely be in a different position and might be a different color.
       Calling a method may also change an object’s attributes—after we called
-      <c>forward()</c> the turtle’s position will have changed but its heading
+      <c>forward()</c>, the turtle’s position will have changed, but its heading
       and color will stay the same.
     </p>
 
@@ -166,7 +166,7 @@
 
     <p>
       The period (<c>.</c>) after <c>yertle</c> in both those lines is called
-      the <term>dot operator</term> and it allows us to access the attributes
+      the <term>dot operator</term>, and it allows us to access the attributes
       and methods of an object. In the first line the dot says get the method
       named <c>forward()</c> defined in the <c>Turtle</c> class and call it on
       the turtle object named by the variable <c>yertle</c>. The exact behavior
@@ -239,7 +239,7 @@
 
           <feedback>
             <p>
-              Turtles start off facing north which is toward the top of the
+              Turtles start off facing north, which is toward the top of the
               page.
             </p>
           </feedback>
@@ -633,7 +633,7 @@
       Sometimes there’s nothing between the parentheses, but they are still
       necessary. Other times they contain data that the method needs to do its
       job, for example what to print. Since attributes, a.k.a. fields, are just
-      variables they will not have parentheses after the name.
+      variables, they will not have parentheses after the name.
     </p>
 
     <activity label="count-println">
@@ -648,12 +648,12 @@
           href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/package-summary.html">Javadocs
           for the <c>java.lang</c> package</url>. Can you find the documentation
           for the <c>System</c> class? The dot after <c>System</c> is the dot
-          operator and since the name after the dot, <c>out</c> isn’t followed
-          by parenthesis it must be a field rather than a method. See if you can
-          find the documentation for the field <c>out</c> in the <c>System</c>
-          class. That should tell you that it is an instance of the class
-          <c>PrintStream</c>. From there you can click on <c>PrintStream</c> to
-          navigate to the <url
+          operator and since the name after the dot, <c>out</c>, isn’t followed
+          by parenthesis, it must be a field rather than a method. See if you
+          can find the documentation for the field <c>out</c> in the
+          <c>System</c> class. That should tell you that it is an instance of
+          the class <c>PrintStream</c>. From there you can click on
+          <c>PrintStream</c> to navigate to the <url
           href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/io/PrintStream.html">Javadocs</url>
           for that class. Once you’re there, see if you can find the
           documentation for the various versions of the <c>println()</c> method

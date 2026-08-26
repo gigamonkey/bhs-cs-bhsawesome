@@ -147,11 +147,11 @@
       remainder operator is based on truncating integer division where the
       quotient is truncated toward zero, while modulo is based on <url
       href="https://en.wikipedia.org/wiki/Euclidean_division">Euclidean
-      division</url>, which truncates toward negative infinity.) With operands of
-      the same sign, remainder and modulo give the same results. Java does have
-      a method <c>Math.floorMod</c> in the <c>Math</c> class if you need to use
-      modulo instead of remainder, but <c>%</c> is all you need in the AP exam,
-      and it will only be used with positive operands.
+      division</url>, which truncates toward negative infinity.) With operands
+      of the same sign, remainder and modulo give the same results. Java does
+      have a method <c>Math.floorMod</c> in the <c>Math</c> class if you need to
+      use modulo instead of remainder, but <c>%</c> is all you need in the AP
+      exam, and it will only be used with positive operands.
     </p>
 
     <p>

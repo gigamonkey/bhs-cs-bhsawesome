@@ -50,7 +50,7 @@
       position of the answer corresponds to the question number on the test
       (question numbers start at 0). A student’s score on the test is computed
       by comparing the student’s answers with the corresponding answers in the
-      answer key for the test. One point is awarded for each correct answer and
+      answer key for the test. One point is awarded for each correct answer, and
       1/4 of a point is deducted for each incorrect answer. Omitted answers
       (indicated by <c>"?"</c>) do not change the student’s score.
     </p>
@@ -109,7 +109,7 @@
       <c>List</c> of strings representing the correct answer key for the test
       being scored. The method computes and returns a <k>double</k> that
       represents the score for the student’s test answers when compared with the
-      answer key. One point is awarded for each correct answer and 1/4 of a
+      answer key. One point is awarded for each correct answer, and 1/4 of a
       point is deducted for each incorrect answer. Omitted answers (indicated by
       <c>"?"</c>) do not change the student’s score.
     </p>

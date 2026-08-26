@@ -182,9 +182,9 @@
       solve this smaller problem: find the size of all the files and sub-folders
       in <em>it</em> and add them up. Eventually, as we try to get the size of
       more deeply nested folders, eventually we’ll get to folders that only
-      contain plain files whose sizes we can add up and return and eventually we
-      work our way back up to give the answer to our question about the original
-      top-most folder.
+      contain plain files whose sizes we can add up and return, and eventually
+      we work our way back up to give the answer to our question about the
+      original top-most folder.
     </p>
 
     <p>
@@ -203,9 +203,9 @@
     <p>
       Recursion can also be used to traverse <c>String</c>s, arrays, and
       <c>ArrayList</c>s just like a loop. In fact, any loop—also known as
-      <em>iterative</em> code—can be written using recursion. However in most
+      <em>iterative</em> code—can be written using recursion. However, in most
       languages, including Java, there are limitations on how deeply code can
-      recurse which rules out using recursion for infinite or even very long
+      recurse, which rules out using recursion for infinite or even very long
       loops, so we don’t usually use recursion when a simple loop will do. In
       theory though, any iterative code can be written recursively and vice
       versa.
@@ -214,7 +214,7 @@
     <p>
       On the other hand, recursion is more powerful than simple loops,
       especially when dealing with branching structures like the file folder
-      example. Computer scientists call such structures “trees” and they are
+      example. Computer scientists call such structures “trees”, and they are
       incredibly common in computer programs.
     </p>
 
@@ -356,7 +356,7 @@
     </p>
 
     <p>
-      When we recurse through folders on our computer there are two base cases,
+      When we recurse through folders on our computer, there are two base cases,
       a simple file, whose size we can find out directly, and an empty folder
       whose size is 0 (or maybe some other fixed amount, depending on the
       operating system). In those two cases a method to compute the space used
@@ -385,7 +385,7 @@
 
       <feedback>
         <p>
-          When a base case test is true a value is returned and the recursion
+          When a base case test is true, a value is returned and the recursion
           stops.
         </p>
       </feedback>
@@ -578,10 +578,10 @@
 
     <p>
       When you are executing one method (method a) and it calls another method
-      (method b) the method call is placed on the call stack along with
+      (method b), the method call is placed on the call stack along with
       information about where it was called from, which tells the run-time where
       to return to when the current method finishes executing. When method b
-      finishes executing the run-time pops the method b off of the call stack
+      finishes executing, the run-time pops the method b off of the call stack
       and returns execution to the next line to be executed in method a.
     </p>
 
@@ -595,10 +595,10 @@
 
     <p>
       The code above will cause a run-time error of division by zero when it
-      runs. The <c>main</c> method calls the method <c>test1</c> (at line 20)
-      which calls the method <c>test2</c> (at line 6) which has the divide by
-      zero error (line 14). This can be seen in the call stack shown below which
-      shows the call stack from the top (most recent method) to the bottom
+      runs. The <c>main</c> method calls the method <c>test1</c> (at line 20),
+      which calls the method <c>test2</c> (at line 6), which has the divide by
+      zero error (line 14). This can be seen in the call stack shown below,
+      which shows the call stack from the top (most recent method) to the bottom
       (first method call).
     </p>
 
@@ -609,13 +609,13 @@
     </figure>
 
     <p>
-      When a method calls itself the new method call gets added to the top of
+      When a method calls itself, the new method call gets added to the top of
       the call stack. Execution of the current method pauses while the recursive
       call is being processed. Each recursive call on the stack has its own set
       of local variables, including the parameter variables. Parameter values
       capture the progress of a recursive process, much like loop control
       variable values capture the progress of a loop. The parameter values
-      usually change in each recursive call until we reach the base case which
+      usually change in each recursive call until we reach the base case, which
       stops the recursion by returning immediately.
     </p>
 
@@ -643,9 +643,9 @@
     <p>
       How can you show what is happening in a recursive call? Here is one way to
       do it. The lines below show the call stack upside down (with the bottom of
-      the stack, or the beginning at the top and the most recent call at the
+      the stack, or the beginning, at the top and the most recent call at the
       bottom) for a call to <c>factorial(5)</c>. This is a handy way to trace a
-      recursive method on the exam and you will do much better on recursive
+      recursive method on the exam, and you will do much better on recursive
       problems if you practice doing it this way.
     </p>
 
@@ -659,7 +659,7 @@
     </program>
 
     <p>
-      Once factorial(0) executes and returns 1 that value can be substituted
+      Once factorial(0) executes and returns 1, that value can be substituted
       back into the previous method call, starting at the top of the stack
       (shown at the bottom here) and working our way back to the bottom of the
       stack (shown at the top here).
@@ -697,7 +697,7 @@
     <activity label="qrb_5-old">
       <statement>
         <p>
-          Given the method defined below what does the following return:
+          Given the method defined below, what does the following return:
           factorial(6)?
         </p>
 
@@ -746,7 +746,7 @@
 
           <feedback>
             <p>
-              If you remember that factorial(5) was 120 then this is just 6 *
+              If you remember that factorial(5) was 120, then this is just 6 *
               120 = 720.
             </p>
           </feedback>
@@ -767,7 +767,7 @@
     <activity label="qrb_6">
       <statement>
         <p>
-          Given the method defined below what does the following return:
+          Given the method defined below, what does the following return:
           mystery(5)?
         </p>
 
@@ -836,7 +836,7 @@
     <activity label="qrb_7">
       <statement>
         <p>
-          Given the method defined below what does the following print:
+          Given the method defined below, what does the following print:
           mystery(4,3)?
         </p>
 
@@ -944,7 +944,7 @@
 
     <p>
       This approach shows the call stack from bottom to top. Once
-      <c>bunnyEars(1)</c> executes and returns 2 that value can be substituted
+      <c>bunnyEars(1)</c> executes and returns 2, that value can be substituted
       back into the previous method call, starting at the top and working our
       way back toward the bottom (or beginning) of the call stack.
     </p>
@@ -966,7 +966,7 @@
     <activity label="qrb_8">
       <statement>
         <p>
-          Given the method defined below what does the following print:
+          Given the method defined below, what does the following print:
           mystery(1234)?
         </p>
 
@@ -1051,7 +1051,7 @@
     <activity label="qrb_9">
       <statement>
         <p>
-          Given the method defined below what does the following return:
+          Given the method defined below, what does the following return:
           mystery(“xyzxyxy”)? Note that this recursive method traverses a
           String.
         </p>
@@ -1194,7 +1194,7 @@
     </activity>
 
     <p>
-      Once mystery(0) returns 1 the value for each call to mystery can now be
+      Once mystery(0) returns 1, the value for each call to mystery can now be
       calculated and returned.
     </p>
 

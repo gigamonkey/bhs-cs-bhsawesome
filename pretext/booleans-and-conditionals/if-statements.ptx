@@ -47,7 +47,7 @@
     </p>
 
     <p>
-      However there are a lot of ways we can produce <k>boolean</k> values.
+      However, there are a lot of ways we can produce <k>boolean</k> values.
       There are operators the operate <em>on</em> booleans to produce new
       <k>boolean</k> values which allow us to express complex conditions. There
       are operators that operate on other kinds of values to produce
@@ -92,7 +92,7 @@
       And the code in <c>{}</c>s is called the <term>body</term> of the
       <k>if</k> statement and contains the code to run if the <k>boolean</k>
       expression is true. It can contain any number of statements including, as
-      we’ll see other <k>if</k> statements and loops.
+      we’ll see, other <k>if</k> statements and loops.
     </p>
 
     <p>
@@ -112,8 +112,8 @@
       Imagine that your cell phone wanted to remind you to take an umbrella if
       it was currently raining in your area when it detected that you were
       leaving the house. This type of thing is going to become more common in
-      the future and it is an area of research called Human Computer Interaction
-      (HCI) or Ubiquitous Computing (computers are everywhere).
+      the future, and it is an area of research called Human Computer
+      Interaction (HCI) or Ubiquitous Computing (computers are everywhere).
     </p>
 
     <activity label="if-raining">
@@ -124,7 +124,7 @@
           In the code below, the <k>boolean</k> variable <c>isRaining</c> is
           used to control whether the message <c>Take an umbrella!</c> will be
           printed. Regardless of whether <c>isRaining</c> is true or false, then
-          execution will continue with the next statement which will print
+          execution will continue with the next statement, which will print
           <c>Drive carefully</c>. Run the code below to see this.
         </p>
       </statement>
@@ -241,7 +241,7 @@
     <activity label="ifHeads">
       <statement>
         <p>
-          Try the following code. If <c>isHeads</c> is true it will print
+          Try the following code. If <c>isHeads</c> is true, it will print
           <c>Let's go to the game</c> and then <c>after conditional</c>.
         </p>
       </statement>
@@ -351,14 +351,14 @@
     </program>
 
     <p>
-      This code also chooses between three outcomes but in each of the outcomes
+      This code also chooses between three outcomes, but in each of the outcomes
       some code runs: <c>eatSnack()</c> if <c>hungry</c> is true,
       <c>takeNap()</c> if <c>sleepy</c> is true, and <c>doHomework()</c>
       otherwise.
     </p>
 
     <p>
-      To emphasize that the three branches are all kind of at the same level
+      To emphasize that the three branches are all kind of at the same level,
       we’d normally format this code slightly differently:
     </p>
 
@@ -425,7 +425,7 @@
     <note>
       <p>
         Another way to handle 3 or more conditional cases is to use a
-        <k>switch</k> statement but that is outside the AP curriculum. For a
+        <k>switch</k> statement, but that is outside the AP curriculum. For a
         tutorial on using switch see <url
         href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html">The
         switch Statement</url> tutorial on Oracle’s website.
@@ -461,7 +461,7 @@
           </statement>
 
           <feedback>
-            <p>When x is equal to -5 the condition of x &lt; 0 is true.</p>
+            <p>When x is equal to -5, the condition of x &lt; 0 is true.</p>
           </feedback>
         </choice>
 
@@ -540,7 +540,7 @@
 
           <feedback>
             <p>
-              The first condition is false and x is not equal to zero so the
+              The first condition is false and x is not equal to zero, so the
               else will execute.
             </p>
           </feedback>
@@ -824,7 +824,7 @@
       <li>
         <p>
           <term>if statements</term> test a boolean expression and if it is
-          true, go on to execute the body which is the following statement or
+          true, go on to execute the body, which is the following statement or
           block of statements surrounded by curly braces (<c>{}</c>) like below.
         </p>
       </li>
@@ -953,7 +953,7 @@
 
           <feedback id="AP2-3-1_opt_a">
             <p>
-              Some of the if statement conditions are false so they will not
+              Some of the if statement conditions are false, so they will not
               run.
             </p>
           </feedback>
@@ -1161,7 +1161,7 @@
 
           <feedback id="AP2-3-if-else_opt_d">
             <p>
-              This would print out “Low” which is correct according to this
+              This would print out “Low”, which is correct according to this
               problem description.
             </p>
           </feedback>
@@ -1174,7 +1174,7 @@
 
           <feedback id="AP2-3-if-else_opt_e">
             <p>
-              This would print out “Low” which is correct according to this
+              This would print out “Low”, which is correct according to this
               problem description.
             </p>
           </feedback>

@@ -33,7 +33,7 @@
 
     <p>
       As with the arithmetic operators, the two logical operators
-      <c>&amp;&amp;</c> and <c>||</c> each apply to only two operands and
+      <c>&amp;&amp;</c> and <c>||</c> each apply to only two operands, and
       <c>!</c> only applies to one. But we can build compound expressions where
       the operands are other expressions using either other logical operators or
       comparison operators. We saw some examples of this in the previous
@@ -41,21 +41,22 @@
     </p>
 
     <p>
-      Once we start writing compound expressions it’s important to know what the
-      precedence of the different operators are and our middle-school PEMDAS is
-      no help. In Java, <c>!</c> has higher precedence than <c>&amp;&amp;</c>,
-      and <c>&amp;&amp;</c> is higher than <c>||</c>. But parentheses still have
-      the highest precedence of all so we can use them to group things the way
-      we want them to be evaluated. For example <c>!a &amp;&amp; b</c> is
-      equivalent to <c>(!a) &amp;&amp; b</c>. If instead we want to negate the
-      value produced by the and expression we can write: <c>!(a &amp;&amp;
-      b)</c>.
+      Once we start writing compound expressions, it’s important to know what
+      the precedence of the different operators are, and our middle-school
+      PEMDAS is no help. In Java, <c>!</c> has higher precedence than
+      <c>&amp;&amp;</c>, and <c>&amp;&amp;</c> is higher than <c>||</c>. But
+      parentheses still have the highest precedence of all, so we can use them
+      to group things the way we want them to be evaluated. For example, <c>!a
+      &amp;&amp; b</c> is equivalent to <c>(!a) &amp;&amp; b</c>. If instead we
+      want to negate the value produced by the and expression, we can write:
+      <c>!(a &amp;&amp; b)</c>.
     </p>
 
     <p>
       Also all the logical operators are lower precedence than the comparison
-      operators which is why we can write <c>0 &lt;= x &amp;&amp; x &lt; 100</c>
-      rather than having to write: <c>(0 &lt;= x) &amp;&amp; (x &lt; 100)</c>.
+      operators, which is why we can write <c>0 &lt;= x &amp;&amp; x &lt;
+      100</c> rather than having to write: <c>(0 &lt;= x) &amp;&amp; (x &lt;
+      100)</c>.
     </p>
   </subsection>
 
@@ -63,7 +64,7 @@
     <title>Simplifying algebraically</title>
 
     <p>
-      Once we start writing complex compund boolean expressions things can get
+      Once we start writing complex compund boolean expressions, things can get
       out of hand. Sometimes this happens organically as we write code because
       we add subexpressions to an expression as we realize different cases. “I
       want to run this code when the score is greater than one-hundred. No wait,
@@ -81,7 +82,7 @@
 
     <p>
       That’s maybe not terrible but it’s not trivial either. When we look at
-      that expression how sure are we that it’s capturing exactly the cases we
+      that expression, how sure are we that it’s capturing exactly the cases we
       care about? Luckily there are some techniques for simplifying an
       expression like that into something that might be easier to understand.
     </p>
@@ -114,11 +115,11 @@
     </program>
 
     <p>
-      This time in order for the whole expression to be true both of the
-      operands to the &amp;&amp;, i.e. the two <c>||</c> expressions have to be
+      This time in order for the whole expression to be true, both of the
+      operands to the &amp;&amp;, i.e. the two <c>||</c> expressions, have to be
       true. Since they both contain <c>bonusPoints &gt; 10</c>, if that
-      subexpression is true they will each be true and therefore the whole thing
-      will be true. So we can factor it out like this:
+      subexpression is true, they will each be true and therefore the whole
+      thing will be true. So we can factor it out like this:
     </p>
 
     <program>
@@ -130,7 +131,7 @@
     <p>
       But now there’s an even bigger payoff. Look carefully at the second
       expression. It’s true when the score is both greater and less than one
-      hundred. Which can never happen so that subexpression will always be
+      hundred. Which can never happen, so that subexpression will always be
       <c>false</c>. So we can simplify the larger expression to:
     </p>
 
@@ -142,7 +143,7 @@
 
     <p>
       And since the value of that now depends entirely on the left hand operand
-      of the <c>||</c> we’ve simplified the whole original expression down to
+      of the <c>||</c>, we’ve simplified the whole original expression down to
       just:
     </p>
 
@@ -192,7 +193,7 @@
       You can probably convince yourself that these are valid with an actual
       example. Imagine, for instance, that you are trying to express whether you
       want to go to the movies. You won’t go if you’re broke or if you’re too
-      tired but otherwise you will.
+      tired, but otherwise you will.
     </p>
 
     <p>
@@ -209,7 +210,7 @@
     </p>
 
     <p>
-      By themselves De Morgan’s laws don’t usually lead to big simplifications
+      By themselves De Morgan’s laws don’t usually lead to big simplifications,
       but by giving us a way to flip <c>&amp;&amp;</c> to <c>||</c> and vice
       versa, they can be a useful step toward rearranging a complex expression
       into a form where we can apply other rules to simplify it.
@@ -225,7 +226,7 @@
       We can also simplify negated <k>boolean</k> expressions involving
       comparison operators like <c>&lt;</c>, <c>&gt;</c>, and <c>==</c>. And we
       can negate a comparison expression by flipping the comparison operator.
-      For instance <c>!(a == b)</c> is flipped to <c>a != b</c>. The relational
+      For instance, <c>!(a == b)</c> is flipped to <c>a != b</c>. The relational
       operators can be flipped either by swapping the operands (<c>a &lt; b</c>
       becomes <c>b &lt; a</c>) or by flipping the operator. But we need to
       remember which are the actual flipped operators. For <c>&lt;</c> it is not
@@ -397,13 +398,13 @@
     </sidebyside>
 
     <p>
-      But we can also build truth tables for more complex expressions and if we
-      build tables for two different expressions we can then compare the tables
+      But we can also build truth tables for more complex expressions, and if we
+      build tables for two different expressions, we can then compare the tables
       to determine whether the expressions are equivalent.
     </p>
 
     <p>
-      Building truth tables is a brute force approach which can be more tedious
+      Building truth tables is a brute force approach, which can be more tedious
       than doing a bit of Boolean algebra but doesn’t rely on any algebraic
       insight to figure out which rules to apply in order to manipulate one
       expression into the same form as the other. So if you are comfortable with
@@ -411,7 +412,7 @@
     </p>
 
     <p>
-      To build a truth table for an expression make at table with, initially, a
+      To build a truth table for an expression, make at table with, initially, a
       column for each variable that occurs in the expression. Then add a column
       to the right for each subexpression, working back up to the whole
       expression. Each new column should be an expression that combines the
@@ -419,8 +420,8 @@
     </p>
 
     <p>
-      For instance to make a truth table for the expression <c>!(a &amp;&amp;
-      b)</c> we’d make a table with these columns.
+      For instance, to make a truth table for the expression <c>!(a &amp;&amp;
+      b)</c>, we’d make a table with these columns.
     </p>
 
     <tabular halign="center" bottom="minor" right="minor" top="minor" left="minor" row-headers="no">
@@ -478,7 +479,7 @@
     <p>
       After that, it’s just a matter of filling in the columns, moving from left
       to right. Since each column is an expression in terms of one or two
-      subexpressions whose column has already been filled in that should be
+      subexpressions whose column has already been filled in, that should be
       easy.
     </p>
 
@@ -581,9 +582,9 @@
       To compare the two tables, just look at the rightmost column of each and
       check that the values are the same for each now. (This assumes that you
       filled in the variabel combinations in the same order.) If they are, then
-      the two expressions are equivalent. As you can see in those two tables the
-      last column in both reads <c>true</c>, <c>true</c>, <c>true</c>,
-      <c>false</c> so the expressions are equivalent.
+      the two expressions are equivalent. As you can see in those two tables,
+      the last column in both reads <c>true</c>, <c>true</c>, <c>true</c>,
+      <c>false</c>, so the expressions are equivalent.
     </p>
   </subsection>
 

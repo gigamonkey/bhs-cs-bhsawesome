@@ -13,8 +13,8 @@
       collection of individual characters that we loop over. Some of them are
       somewhat similar to array algorithms we covered in <xref ref="arrays" />.
       Others are a bit different because, unlike arrays, <c>String</c> values
-      are immutable so we can produce new <c>String</c> values based on existing
-      values but we can’t change a <c>String</c> once it is created.
+      are immutable, so we can produce new <c>String</c> values based on
+      existing values, but we can’t change a <c>String</c> once it is created.
     </p>
 
     <p>In this section we will cover some standard algorithms to:</p>
@@ -47,15 +47,15 @@
       The first category of <c>String</c> algorithms are related to the array
       searching algorithms we discussed in <xref ref="min-max-search-algorithms"
       /> and the any and all algorithms from <xref ref="test-property" />.
-      However rather than searching for or testing elements of an array, we will
-      search for or test for the presence of substrings of a given string that
-      have certain properties. The basic structure of this sort of algorithm is
-      a canonical <k>for</k> loop that loops over the valid indices of the
-      <c>String</c> and calls to the <c>substring</c> method inside the loop to
-      extract substrings that we can then test to see if they have whatever
-      property we care about. As a really simple example of this we can test
-      whether any single character, a.k.a. a one-character substring, in the
-      <c>String</c> <c>s</c> is a lowercase vowel with this code:
+      However, rather than searching for or testing elements of an array, we
+      will search for or test for the presence of substrings of a given string
+      that have certain properties. The basic structure of this sort of
+      algorithm is a canonical <k>for</k> loop that loops over the valid indices
+      of the <c>String</c> and calls to the <c>substring</c> method inside the
+      loop to extract substrings that we can then test to see if they have
+      whatever property we care about. As a really simple example of this, we
+      can test whether any single character, a.k.a. a one-character substring,
+      in the <c>String</c> <c>s</c> is a lowercase vowel with this code:
     </p>
 
     <program>
@@ -155,7 +155,7 @@
     <title>Removing substrings</title>
 
     <p>
-      Since <c>String</c> values are immutable it might seem that we can’t
+      Since <c>String</c> values are immutable, it might seem that we can’t
       remove anything from a <c>String</c>. But we can in the same sense that we
       can subtract one number from another and get a new number. That is, we can
       make a new <c>String</c> that is made up of parts of the original
@@ -163,7 +163,7 @@
     </p>
 
     <p>
-      So to make a new <c>String</c> with a substring taken out we need to know
+      So to make a new <c>String</c> with a substring taken out, we need to know
       two things:
     </p>
 
@@ -176,7 +176,7 @@
     <p>
       To take a really simple example, suppose we wanted to remove the substring
       <c>"cd"</c> from <c>"abcdef"</c> to get <c>"abef"</c>. Since both values
-      are fixed we can just count letters and see that substring we want to
+      are fixed, we can just count letters and see that substring we want to
       remove starts at index <c>2</c> and ends at index <c>4</c> as shown in the
       diagram below.
     </p>
@@ -332,7 +332,7 @@
       <statement>
         <p>
           Google has been scanning old books and then using software to read the
-          scanned text. But, the software can get things mixed up like using the
+          scanned text. But the software can get things mixed up like using the
           number <c>1</c> for the letter <c>l</c>. Try the code below (and in
           the <url
           href="http://www.pythontutor.com/visualize.html#code=public%20class%20Test%0A%20%20%20%7B%0A%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20String%20message%20%3D%20%22Have%20a%201ong%20and%20happy%201ife%22%3B%20%0A%20%20%20%20%20%20%20%20int%20index%20%3D%200%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20while%20more%201s%20in%20the%20message%0A%20%20%20%20%20%20%20%20while%20%28message.indexOf%28%221%22%29%20%3E%3D%200%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20//%20Find%20the%20next%20index%20for%201%0A%20%20%20%20%20%20%20%20%20%20%20index%20%3D%20message.indexOf%28%221%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22Found%20a%201%20at%20index%3A%20%22%20%2B%20index%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20//%20Replace%20the%201%20with%20a%20l%20at%20index%20by%20concatenating%20substring%20up%20to%20index%20and%20then%20the%20rest%20of%20the%20string.%0A%20%20%20%20%20%20%20%20%20%20%20String%20firstpart%20%3D%20message.substring%280,index%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20String%20lastpart%20%3D%20message.substring%28index%2B1%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20message%20%3D%20firstpart%20%2B%20%22l%22%20%2B%20lastpart%3B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22Replaced%201%20with%20l%20at%20index%20%22%20%2B%20index%29%3B%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20System.out.println%28%22Cleaned%20text%3A%20%22%20%2B%20message%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%7D&amp;cumulative=false&amp;curInstr=21&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false&amp;curInstr=0">Java
@@ -411,7 +411,7 @@
     <p>
       Since we’re going to need to do something with each character of the
       <c>String</c>, a <k>for</k> loop is an appropriate choice. To keep things
-      simple we can use a canonical <k>for</k> loop, processing each character
+      simple, we can use a canonical <k>for</k> loop, processing each character
       in order and then reverse it by how we build up the new <c>String</c>.
     </p>
 
@@ -489,7 +489,7 @@
             cats and dogs? After you replace <c>"cat"</c> with <c>"dog"</c>, add
             another loop that looks for the word <c>"dogs"</c> and adds <c>" and
             cats"</c> to it. Do not replace <c>"dog"</c>, just <c>"dogs"</c>.
-            This will only change the first sentence in the example below but
+            This will only change the first sentence in the example below, but
             you can add other sentences to test.
           </p>
 
@@ -497,7 +497,7 @@
             For this loop, you will need to use a special version of
             <c>indexOf</c> that takes two arguments where the second argument is
             the index to start looking from, rather than starting at index
-            <c>0</c>. If you don’t use this version you’ll probabyl end up with
+            <c>0</c>. If you don’t use this version, you’ll probabyl end up with
             an infinite loop endlessly finding the first occurrence of
             <c>"dogs"</c>. Make sure you add a variable <c>fromIndex</c> that is
             initialized to 0 and that is changed each time through the loop to

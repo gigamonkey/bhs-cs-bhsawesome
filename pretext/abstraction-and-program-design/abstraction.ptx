@@ -37,8 +37,8 @@
     </p>
 
     <p>
-      In programming we also name things all the time and every name is a bit of
-      abstraction. When we declare a variable like:
+      In programming we also name things all the time, and every name is a bit
+      of abstraction. When we declare a variable like:
     </p>
 
     <program>
@@ -83,7 +83,7 @@
     </p>
 
     <p>
-      So once we have the ability to name things we have the ability to create
+      So once we have the ability to name things, we have the ability to create
       new higher levels of abstraction. Let’s look at a few of the main kinds of
       abstraction.
     </p>
@@ -102,7 +102,7 @@
     <p>
       Java’s primitives are a form of data abstraction. While the details of
       exactly how <k>int</k> and <k>double</k> values are represented are
-      actually specified (an <k>int</k> is always 32 bits, etc.) most of the
+      actually specified (an <k>int</k> is always 32 bits, etc.), most of the
       time we can ignore those details and just focus on what we can do with
       those values—add them, multiply them, etc. That is a lot easier to think
       about than if we had to think about exactly what is happening at the level
@@ -110,23 +110,23 @@
     </p>
 
     <p>
-      It’s worth noting that no abstraction is perfect. For example when we do
+      It’s worth noting that no abstraction is perfect. For example, when we do
       arithmetic with <k>int</k> values, the abstraction breaks down around the
       limits <c>Integer.MAX_VALUE</c> or <c>Integer.MIN_VALUE</c>. In the
       abstract, adding one to a positive integer should always yield a larger
-      number but if we add one to <c>Integer.MAX_VALUE</c> we get a negative
+      number, but if we add one to <c>Integer.MAX_VALUE</c> we get a negative
       number because of the way <k>int</k> values are represented! But most of
       the time we don’t have to think about those details.
     </p>
 
     <p>
       Classes provide an even more flexible form of data abstraction. When we
-      write a class we have to specify exactly how the data is stored in
-      instance variables but when we <em>use</em> a well-designed class we don’t
-      have to care or even know. For example, we can use Java’s <c>String</c>
-      class or the turtle library’s <c>Turtle</c> class without needing to know
-      exactly how those classes store the information that makes up each
-      instance.
+      write a class, we have to specify exactly how the data is stored in
+      instance variables, but when we <em>use</em> a well-designed class, we
+      don’t have to care or even know. For example, we can use Java’s
+      <c>String</c> class or the turtle library’s <c>Turtle</c> class without
+      needing to know exactly how those classes store the information that makes
+      up each instance.
     </p>
   </subsection>
 
@@ -142,7 +142,7 @@
 
     <p>
       In Java, we create procedural abstractions by writing methods. For
-      instance a method named <c>doubled</c> that takes an <k>int</k> argument
+      instance, a method named <c>doubled</c> that takes an <k>int</k> argument
       and returns a value that is twice the argument creates an abstraction of
       the idea of doubling a number.
     </p>
@@ -164,8 +164,8 @@
 
     <p>
       Procedural abstractions are typically built in layers via <term>method
-      decomposition</term>. When we <term>decompose</term> a method we break it
-      down into smaller parts which we then implement as their own methods.
+      decomposition</term>. When we <term>decompose</term> a method, we break it
+      down into smaller parts, which we then implement as their own methods.
       Here’s a toy example:
     </p>
 
@@ -183,27 +183,27 @@
       The <c>hypotenuse</c> method abstracts the computation of the length of
       the hypotenuse of a right triangle from the lengths of the triangle’s legs
       using the Pythagorean theorem. But it is built on top of two other
-      procedural abstractions: <c>Math.sqrt</c> which comes from Java’s
-      <c>Math</c> class and <c>square</c>, a method we wrote to abstract the
+      procedural abstractions: <c>Math.sqrt</c>, which comes from Java’s
+      <c>Math</c> class, and <c>square</c>, a method we wrote to abstract the
       idea of squaring a <k>double</k> value.
     </p>
 
     <p>
       While making a method to abstract <c>n * n</c> is maybe taking things a
-      bit too far it demonstrates the idea. By decomposing a method into helper
+      bit too far, it demonstrates the idea. By decomposing a method into helper
       methods, each method is an abstraction that we can think about on its own.
       We can ask, does <c>square</c> do what it’s supposed to do? Once we’re
-      sure about that we can ask, does <c>hypotenuse</c> correctly implement the
-      Pythagorean theorem, if we assume that <c>Math.sqrt</c> and <c>square</c>
-      work correctly? Whereas if we had written <c>hypotenuse</c> to do the
-      squaring inline as <c>a * a</c> and <c>b * b</c> it would probably still
-      be understandable but we’d have to decode those two expressions to
-      recognize that they are doing the squaring called for by the Pythagorean
-      theorem.
+      sure about that, we can ask, does <c>hypotenuse</c> correctly implement
+      the Pythagorean theorem, if we assume that <c>Math.sqrt</c> and
+      <c>square</c> work correctly? Whereas if we had written <c>hypotenuse</c>
+      to do the squaring inline as <c>a * a</c> and <c>b * b</c>, it would
+      probably still be understandable, but we’d have to decode those two
+      expressions to recognize that they are doing the squaring called for by
+      the Pythagorean theorem.
     </p>
 
     <p>
-      In general decomposing methods down to the point where each method can be
+      In general, decomposing methods down to the point where each method can be
       expressed in less than a half dozen lines of code is actually a good idea
       with several benefits:
     </p>
@@ -220,7 +220,7 @@
 
       <li>
         <p>
-          Reducing complexity: even methods that are only used once, help divide
+          Reducing complexity: even methods that are only used once help divide
           a program into smaller pieces that are each easier to understand and
           get correct than one big method that does a lot of things. Smaller
           methods are easier to debug and understand because they do less.
@@ -231,11 +231,11 @@
         <p>
           Maintainability: very little code is written and never changed. When
           methods are decomposed and duplicate code removed by putting it into
-          methods it is easier to make changes. If you ever find yourself fixing
-          a bug and having to make the same changes in a bunch of different
-          places in your program that’s a sign that that code should probably
-          have been put into its own method so you could make the fix in one
-          place.
+          methods, it is easier to make changes. If you ever find yourself
+          fixing a bug and having to make the same changes in a bunch of
+          different places in your program, that’s a sign that that code should
+          probably have been put into its own method so you could make the fix
+          in one place.
         </p>
       </li>
     </ul>
@@ -314,9 +314,9 @@
     </p>
 
     <p>
-      When designing a program we often start by deciding which classes are
+      When designing a program, we often start by deciding which classes are
       needed by thinking about the <term>nouns</term> we use when talking about
-      the program. The main nouns then become classes in our program and we use
+      the program. The main nouns then become classes in our program, and we use
       data abstraction within the class by defining the instance variables that
       make up the class and procedural abstraction by writing the methods that
       define what we can do with instances of the class.
@@ -324,10 +324,10 @@
 
     <p>
       For instance, if we wrote a description of the turtle drawing library
-      we’ve used in earlier chapters it would probably contain a phrase like,
+      we’ve used in earlier chapters, it would probably contain a phrase like,
       “make turtles that can exist on a 2-dimensional world and can draw lines
       by moving around the world”. The main nouns in that description are
-      “turtle” and “world” and indeed the classes in the system are
+      “turtle” and “world”, and indeed the classes in the system are
       <c>Turtle</c> and <c>World</c>.
     </p>
 
@@ -351,10 +351,10 @@
 
     <p>
       The two nouns in the problem description above, <term>Student</term> and
-      <term>Course</term> would make good class names! Then, you can think about
-      what data you need to keep track of for students and courses and what
-      methods you need. For example, for the Student class, you might need to
-      keep track of the student’s name and grade level. For the Course class,
+      <term>Course</term>, would make good class names! Then, you can think
+      about what data you need to keep track of for students and courses and
+      what methods you need. For example, for the Student class, you might need
+      to keep track of the student’s name and grade level. For the Course class,
       you might need to keep track of the course name and the teacher’s name.
       What other attributes did you and your classmates come up with?
     </p>
@@ -367,14 +367,14 @@
       Sometimes it’s useful, when designing a complex system with lots of
       classes, to make diagrams of the classes that show you at a glance what
       instance variables and methods they have. Often these can just be sketches
-      in your notebook or on a whiteboard but there are also more formal systems
-      such as the <term>Unified Modeling Language (UML)</term> for drawing these
-      diagrams.
+      in your notebook or on a whiteboard, but there are also more formal
+      systems such as the <term>Unified Modeling Language (UML)</term> for
+      drawing these diagrams.
     </p>
 
     <p>
-      For example, here is a UML class diagram for the <c>Turtle</c> class which
-      includes a list of its attributes and behaviors. <term>Class
+      For example, here is a UML class diagram for the <c>Turtle</c> class,
+      which includes a list of its attributes and behaviors. <term>Class
       Diagrams</term> are a way to represent the classes in a program and the
       data and procedural abstractions found in each class. The attributes are
       the instance variables and the methods are the behaviors of the class. The
@@ -382,9 +382,10 @@
       the <c>+</c> in front of the methods indicate that they are public. Here
       is a <url
       href="https://medium.com/@smagid_allThings/uml-class-diagrams-tutorial-step-by-step-520fd83b300b">tutorial
-      on class diagrams</url> that explains it in more detail if you are curious
-      but class diagrams are not on the AP CSA exam. If you want to draw your
-      own, <url href="https://app.diagrams.net/">app.diagrams.net</url> or <url
+      on class diagrams</url> that explains it in more detail if you are
+      curious, but class diagrams are not on the AP CSA exam. If you want to
+      draw your own, <url
+      href="https://app.diagrams.net/">app.diagrams.net</url> or <url
       href="https://creately.com">Creately.com</url> are good free online
       drawing tools for UML class diagrams.
     </p>
@@ -417,10 +418,10 @@
     <ul>
       <li>
         <p>
-          “Buy, sell, dream and scheme your way to riches. Players buy, sell and
-          trade to win. Build houses and hotels on your properties and bankrupt
-          your opponents to win it all. Chance and Community Chest cards can
-          change everything.”
+          “Buy, sell, dream and scheme your way to riches. Players buy, sell,
+          and trade to win. Build houses and hotels on your properties and
+          bankrupt your opponents to win it all. Chance and Community Chest
+          cards can change everything.”
         </p>
       </li>
     </ul>
@@ -449,7 +450,7 @@
           Say you wanted to make a computer game from a board game that you are
           playing. Think about what objects are in the game. For example, here
           is the description for Monopoly (trademark Hasbro games): “Buy, sell,
-          dream and scheme your way to riches. Players buy, sell and trade to
+          dream and scheme your way to riches. Players buy, sell, and trade to
           win. Build houses and hotels on your properties and bankrupt your
           opponents to win it all. Chance and Community Chest cards can change
           everything.” What classes would you need to create a computer version

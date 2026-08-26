@@ -65,7 +65,7 @@
     </program>
 
     <p>
-      Typically the start value is whatever provided and the end value is not
+      Typically the start value is whatever provided, and the end value is not
       included. If you want to include the end, change the &lt; to &lt;=.
     </p>
 

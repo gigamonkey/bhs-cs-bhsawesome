@@ -92,9 +92,9 @@
 
       <p>
         it would be an error because this code would need to evaluate the right
-        hand side of the assignment in order to get <c>score</c>’s initial value,
-        but that would require getting the value of <c>score</c> before it was
-        initialized.
+        hand side of the assignment in order to get <c>score</c>’s initial
+        value, but that would require getting the value of <c>score</c> before
+        it was initialized.
       </p>
     </note>
 
@@ -370,8 +370,8 @@
       Since changing the value of a variable by one is especially common, there
       are two extra concise operators <c>++</c> and <c>--</c>, also called the
       plus-plus or <term>increment</term> operator and minus-minus or
-      <term>decrement</term> operator, that set a variable to one greater or less
-      than its current value.
+      <term>decrement</term> operator, that set a variable to one greater or
+      less than its current value.
     </p>
 
     <p>
@@ -620,8 +620,8 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
-            = to z + 1 (2 + 1 = 3).
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and
+            z = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
       </choice>
@@ -633,8 +633,8 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
-            = to z + 1 (2 + 1 = 3).
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and
+            z = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
       </choice>
@@ -646,8 +646,8 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
-            = to z + 1 (2 + 1 = 3).
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and
+            z = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
       </choice>
@@ -659,8 +659,8 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
-            = to z + 1 (2 + 1 = 3).
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and
+            z = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
       </choice>
@@ -672,8 +672,8 @@
 
         <feedback>
           <p>
-            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and z
-            = to z + 1 (2 + 1 = 3).
+            This code sets x to z * 2 (4), y to y divided by 2 (5 / 2 = 2), and
+            z = to z + 1 (2 + 1 = 3).
           </p>
         </feedback>
       </choice>

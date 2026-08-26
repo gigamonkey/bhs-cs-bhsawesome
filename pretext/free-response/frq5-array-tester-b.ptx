@@ -14,7 +14,7 @@
     <p>
       <term>Part b.</term> Write the static method <c>isLatin</c>, which returns
       <c>true</c> if a given two-dimensional square array is a <c>Latin
-      square</c>, and otherwise, returns false.
+      square</c>, and otherwise returns false.
     </p>
 
     <p>

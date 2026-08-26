@@ -6,9 +6,9 @@
   <introduction>
     <p>
       Java programs usually consist of many classes that are combined in various
-      ways. For instance a class with a <c>main</c> method may make instances of
-      several other classes in that <c>main</c> method and then call methods on
-      those objects that do most of the work of the program. Or one class can
+      ways. For instance, a class with a <c>main</c> method may make instances
+      of several other classes in that <c>main</c> method and then call methods
+      on those objects that do most of the work of the program. Or one class can
       have instance variables that hold references to objects of other classes
       or to arrays of object types. And references can be passed as arguments to
       methods and returned from methods, allowing code in one class to use
@@ -29,7 +29,7 @@
       it means to ask if two objects are “equal”, something we discussed briefly
       in <xref ref="string-manipulation" />. And finally we’ll wrap up with some
       odds and ends about different kinds of variables that we now know enough
-      to understand including finally being able to answer the question, “What
+      to understand, including finally being able to answer the question, “What
       does <k>static</k> really mean?”
     </p>
   </introduction>

@@ -8,7 +8,7 @@
       In <xref ref="string-manipulation" /> we learned that we needed to use the
       <c>equals</c> method to test whether two <c>String</c> values were the
       same if what we cared about was whether they contained the same text. Now
-      that we understand object references we can dig a bit deeper into exactly
+      that we understand object references, we can dig a bit deeper into exactly
       why that is.
     </p>
   </introduction>
@@ -18,7 +18,7 @@
 
     <p>
       Watch the following <url
-      href="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
+      href="https://www.youtube.com/watch?v=bO9bejT0jwE&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>,
       which shows what happens in memory as both primitive types like <k>int</k>
       and reference types like <c>Dog</c> are compared with <c>==</c> in a
       physical model of Java memory.
@@ -26,12 +26,12 @@
 
     <video youtube="bO9bejT0jwE" label="video-ref-model" />
     <p>
-      As the video shows we can also use the <c>==</c> or <c>!=</c> to test if
-      two reference values, refer to the same object. In the video, she used
+      As the video shows, we can also use the <c>==</c> or <c>!=</c> to test if
+      two reference values refer to the same object. In the video, she used
       <c>Dog</c> objects. In the figure below, we use <c>Turtle</c> objects,
       creating two <c>Turtle</c> objects assigned to variables <c>juan</c> and
       <c>mia</c>. Because each variable is assigned to the result of calling the
-      <c>Turtle</c> constructor they do not refer to same object.
+      <c>Turtle</c> constructor, they do not refer to same object.
     </p>
 
     <p>
@@ -40,10 +40,10 @@
       referenced by the variable <c>friend</c> because each variable holds a
       copy of the same reference. This is sometimes called an
       <term>aliases</term> because there are two names, <c>mia</c> and
-      <c>friend</c> that refer to the same object in memory. If two reference
+      <c>friend</c>, that refer to the same object in memory. If two reference
       variables refer to the same object like the turtle on the right in the
-      image below, the test with <c>==</c> will return true which you can see in
-      the code below.
+      image below, the test with <c>==</c> will return true, which you can see
+      in the code below.
     </p>
 
     <figure align="center">
@@ -109,12 +109,12 @@
       The <term>equals</term> method for Strings compares two strings letter by
       letter. <c>s1.equals(s2)</c> is true if <c>s1</c> and <c>s2</c> have all
       the same characters in the same order. It is beyond the scope of the AP
-      curriculum but any class can define its own <c>equals</c> method to
+      curriculum, but any class can define its own <c>equals</c> method to
       compare instances of the class in some meaningful way. By default all
-      classes have an <c>equals</c> method that just uses <c>==</c> but many
-      classes will provide a more meaningful <c>equals</c> so in general
-      whenever you are testing whether two non-primitive values are the same you
-      should use <c>equals</c> unless for some reason you specifically care
+      classes have an <c>equals</c> method that just uses <c>==</c>, but many
+      classes will provide a more meaningful <c>equals</c>, so in general
+      whenever you are testing whether two non-primitive values are the same,
+      you should use <c>equals</c> unless for some reason you specifically care
       about whether they are literally the same (or different) objects in
       memory.
     </p>
@@ -125,7 +125,7 @@
       <c>a</c> is neither <c>==</c> nor <c>equals</c> to any of the other
       variables’ values since it is the only <c>String</c> with the contents
       <c>"hi"</c>. The other three variables’ values are all <c>equals</c> to
-      each other since they all contain the text <c>"bye"</c> but only <c>c</c>
+      each other since they all contain the text <c>"bye"</c>, but only <c>c</c>
       and <c>d</c> are <c>==</c> since they reference the same actual object.
       The values of <c>b</c> and <c>c</c> are not <c>==</c> because whenever a
       <c>String</c> (or any other object) is created with <k>new</k>, it is
@@ -248,7 +248,7 @@
         way of saving memory, that each unique string literal is represented by
         the same object in memory. Thus two string literals with the same
         content would in fact be <c>==</c>. But that is pretty esoteric Java
-        knowledge and nothing on the AP exam would expect you to know that and
+        knowledge, and nothing on the AP exam would expect you to know that, and
         almost no Java code is written to take advantage of that fact.
       </p>
     </note>
@@ -283,7 +283,7 @@
 
           <feedback>
             <p>
-              Yes s2 was set to refer to the same object as s1 and s1 and s3
+              Yes, s2 was set to refer to the same object as s1, and s1 and s3
               have the same characters.
             </p>
           </feedback>
@@ -342,7 +342,7 @@
 
           <feedback>
             <p>
-              s1 and s3 refer to different string objects but they contain the
+              s1 and s3 refer to different string objects, but they contain the
               same characters "hi" in the same order.
             </p>
           </feedback>
@@ -369,7 +369,7 @@
 
           <feedback>
             <p>
-              Since s3 uses the new operator it will not refer to the same
+              Since s3 uses the new operator, it will not refer to the same
               object as s1.
             </p>
           </feedback>
@@ -392,9 +392,9 @@
 
           <feedback>
             <p>
-              All of the variables refer to different objects. But,
-              s1.equals(s3) would be true since they have the same characters in
-              the same order.
+              All of the variables refer to different objects. But s1.equals(s3)
+              would be true since they have the same characters in the same
+              order.
             </p>
           </feedback>
         </choice>
@@ -409,13 +409,13 @@
       One time we do commonly use <c>==</c> or <c>!=</c> with reference values
       is to compare a reference value to <term>null</term> to see if it safe to
       use. Remember that accessing an instance variable or invoking a method on
-      <c>null</c> produces a <c>NullPointerException</c> so if we don’t know
-      that a reference is non-<c>null</c> we need to check before we use it.
+      <c>null</c> produces a <c>NullPointerException</c>, so if we don’t know
+      that a reference is non-<c>null</c>, we need to check before we use it.
     </p>
 
     <p>
       A common idiom is to use the <term>short-circuit evaluation</term> of
-      <c>&amp;&amp;</c> which ensures that if the first expression in the
+      <c>&amp;&amp;</c>, which ensures that if the first expression in the
       <c>&amp;&amp;</c> is <c>false</c>, it doesn’t evaluate the second
       expression since it already knows the whole <c>&amp;&amp;</c> test is
       false. So we can write something like:

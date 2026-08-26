@@ -87,7 +87,7 @@
 
         <feedback>
           <p>
-            This is an insertion sort which sorts the array in alphabetical
+            This is an insertion sort, which sorts the array in alphabetical
             order using the compareTo() method.
           </p>
         </feedback>
@@ -306,12 +306,12 @@
         <feedback>
           <p>
             This is the correct answer. The for loop is iterating through every
-            element in the guestList array and the first if statement is
+            element in the guestList array, and the first if statement is
             checking to see if the current element in the array starts with the
-            same letter and ends with the same letter. The variable, count
-            decreases by one if that is true. However if that is false, the
+            same letter and ends with the same letter. The variable count
+            decreases by one if that is true. However, if that is false, the
             program goes to the else if statment and checks to see if the first
-            letter is an A. If that is true count increases by one.
+            letter is an A. If that is true, count increases by one.
           </p>
         </feedback>
       </choice>

@@ -6,7 +6,7 @@
   <introduction>
     <p>
       The first and most obvious thing we need to learn about programming are
-      the details of our programming languge, Java in our case. However as
+      the details of our programming languge, Java in our case. However, as
       programmers have had to discover since the very beginning of programming,
       even when we know all those details, it can sometimes be frustratingly
       tricky to get our programs working correctly.
@@ -14,13 +14,13 @@
 
     <p>
       The informal term for anything that makes a program not work correctly is
-      <term>bug</term> and the process of getting all the bugs out of a program
+      <term>bug</term>, and the process of getting all the bugs out of a program
       is called <term>debugging</term>. The term <term>bug</term> predates
       computers by at over half a century, at least. Thomas Edison wrote about
       working out the “bugs” in his inventions in 1878. And it made its way into
       engineering and from there into the world of computers so that when
       opererators working under Grace Hopper on the Harvard Mark II computer in
-      1947 found an actual bug (a moth) inside the computer they taped it into
+      1947 found an actual bug (a moth) inside the computer, they taped it into
       the logbook with the note “First actual case of bug being found.”
     </p>
 
@@ -38,9 +38,9 @@
       But bugs and debugging really came into their own with the invention of
       software. You might think that with no physical parts to break down or get
       jammed and no wires to be crossed, it would be simple to make software
-      work. After all the computer just does what we tell it, right? Alas, it
+      work. After all, the computer just does what we tell it, right? Alas, it
       was not to be, as Maurice Wilkes recounts discovering when working on
-      EDSAC, one of the earliest stored-program computers in the world which
+      EDSAC, one of the earliest stored-program computers in the world, which
       came online in 1949:
     </p>
 
@@ -99,7 +99,7 @@
     <p>
       The more code you write and the more syntax errors you create and then
       remove, the more you will learn which details you really need to pay
-      attention to. To get some practice at creating syntactically correct code
+      attention to. To get some practice at creating syntactically correct code,
       try the following two exercises.
     </p>
 
@@ -209,7 +209,7 @@
     <p>
       It will be a lot easier to find the problems if you understand a few
       basics about how to read the error messages. They aren’t always easy to
-      understand but knowing how they’re structured can help so let’s take a
+      understand, but knowing how they’re structured can help, so let’s take a
       closer look.
     </p>
 
@@ -224,10 +224,10 @@
 
     <p>
       The first line starts with the name of the file that was being compiled.
-      (When we run code in this book we don’t name the file but it will be named
-      to match the name of the class.) Then there’s a colon (<c>:</c>) followed
-      by a number. That number tells us the line number in the file where the
-      compiler detected the error, in this case line 5.
+      (When we run code in this book, we don’t name the file, but it will be
+      named to match the name of the class.) Then there’s a colon (<c>:</c>)
+      followed by a number. That number tells us the line number in the file
+      where the compiler detected the error, in this case line 5.
     </p>
 
     <p>
@@ -239,12 +239,12 @@
 
     <p>
       After the line number and another colon, we will find the actual error
-      message. These can be kind of cryptic but you should still read it. As you
-      learn more Java vocabulary they will become more meaningful but they
-      almost always contain some useful clues. For instance take this error
+      message. These can be kind of cryptic, but you should still read it. As
+      you learn more Java vocabulary, they will become more meaningful, but they
+      almost always contain some useful clues. For instance, take this error
       message: “unclosed string literal”. You may not know what a string literal
-      is (yet) but “unclosed” suggests something was opened and then not closed.
-      Keep that thought in mind.
+      is (yet), but “unclosed” suggests something was opened and then not
+      closed. Keep that thought in mind.
     </p>
 
     <p>
@@ -255,7 +255,7 @@
       quotation mark (<c>"</c>) before “Hi”. So it’s complaining about something
       being unclosed and it’s pointing us at a quotation mark. Usually quotation
       marks come in pairs called the open quote and the close quote, right? And
-      if you look at the line of code you’ll see that there’s no closing
+      if you look at the line of code, you’ll see that there’s no closing
       quotation mark. Could that be the problem? Try adding a quotation mark and
       see if that fixes it!
     </p>
@@ -398,7 +398,7 @@
         <p>
           The following code has a run-time error. When you click on run, the
           compiler will not catch it since it is not a syntax error. The program
-          will run and try to compute 3 divided by 0 which cannot be computed.
+          will run and try to compute 3 divided by 0, which cannot be computed.
           This will cause a run-time error, and the program will report an
           <term>ArithmeticException</term>. Try it out!
         </p>
@@ -426,7 +426,7 @@
       unexpected ways because of an error in the logic. A <term>logic
       error</term> is a mistake in the algorithm or program that causes it to
       behave incorrectly or unexpectedly causing a run-time error. For example,
-      a programmer might have made a math mistake so the wrong value is
+      a programmer might have made a math mistake, so the wrong value is
       calculated. Logic errors can be detected by testing the program with
       specific data to see if it produces the expected outcome. We’ll see an
       example of this after learning about expressions in the next lessons.

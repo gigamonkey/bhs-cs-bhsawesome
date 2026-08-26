@@ -60,7 +60,7 @@
 
     <p>
       Write the method <c>contains</c> below in the class MultiGroups. (Note
-      that the original AP Question involved a NumberGroup interface which has
+      that the original AP Question involved a NumberGroup interface, which has
       been replaced with inheritance here).
     </p>
 

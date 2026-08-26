@@ -9,7 +9,7 @@
     <p>
       While the <k>while</k> loop is all we need to be able to provide the
       repetition component required by any algorithm, it’s a little bit
-      primitive. It has its uses but the real workhorse loop in Java is the
+      primitive. It has its uses, but the real workhorse loop in Java is the
       <k>for</k> loop.
     </p>
 
@@ -20,10 +20,10 @@
     </p>
 
     <p>
-      If you took AP CSP with a block programming language like Snap! you almost
-      certainly used a for loop block like the one shown below. It is a bit more
-      limited than a Java <k>for</k> loop but in simple cases, such as shown on
-      the right below, they are essentially the same.
+      If you took AP CSP with a block programming language like Snap!, you
+      almost certainly used a for loop block like the one shown below. It is a
+      bit more limited than a Java <k>for</k> loop, but in simple cases, such as
+      shown on the right below, they are essentially the same.
     </p>
 
     <figure>
@@ -95,9 +95,9 @@
     <p>
       After the initializer comes the <term>condition</term>, a <k>boolean</k>
       expression that acts just like the condition in a <k>while</k> loop; as
-      long as it is true the loop body executes. When it is true the program
-      proceeds to the body. When the condition is false we leave the loop and go
-      to whatever comes after it in the program.
+      long as it is true, the loop body executes. When it is true, the program
+      proceeds to the body. When the condition is false, we leave the loop and
+      go to whatever comes after it in the program.
     </p>
 
     <p>
@@ -110,7 +110,7 @@
       <p>
         Two of the most common ways to use a <k>for</k> loops is to count from 0
         up to an number (using &lt;) or count from 1 to the number including the
-        number (using &lt;=). Remember that if you start at 0 use &lt;, and if
+        number (using &lt;=). Remember that if you start at 0, use &lt;, and if
         you start at 1, use &lt;=. The two loops below using these two patterns
         both run 10 times. The variable i (for index) is often used as a counter
         in for-loops.
@@ -166,11 +166,11 @@
 
     <p>
       The advantage of the <k>for</k> loop is that we can see at a glance, by
-      looking at the loop header the overall structure of the loop: where the
+      looking at the loop header, the overall structure of the loop: where the
       loop variable starts, what the loop’s condition is, and how the loop
       variable changes on each iteration of the loop. So when a loop is simple
-      and fits into the pattern of a basic counting loop it makes sense to use a
-      <k>for</k> loop. It’s easy to read once you get used to it and it’s a
+      and fits into the pattern of a basic counting loop, it makes sense to use
+      a <k>for</k> loop. It’s easy to read once you get used to it, and it’s a
       signal that this is just a regular loop.
     </p>
 
@@ -295,7 +295,7 @@
 
           <feedback>
             <p>
-              The value of i is set to 3 before the loop executes and the loop
+              The value of i is set to 3 before the loop executes, and the loop
               stops when i is equal to 8. So the last time through the loop i is
               equal to 7.
             </p>
@@ -404,8 +404,8 @@
 
           <feedback>
             <p>
-              Since i starts at 3 and the last time through the loop it is 9 the
-              loop executes 7 times (9 - 3 + 1 = 7)
+              Since i starts at 3 and the last time through the loop it is 9,
+              the loop executes 7 times (9 - 3 + 1 = 7)
             </p>
           </feedback>
         </choice>
@@ -431,7 +431,7 @@
           The following method has the correct code to print out all the even
           values from 0 to the value of 10, but the code is mixed up. Drag the
           blocks from the left into the correct order on the right and indent
-          them correctly. Even though Java doesn’t require indention it is a
+          them correctly. Even though Java doesn’t require indention, it is a
           good habit to get into. You will be told if any of the blocks are in
           the wrong order or not indented correctly when you click the “Check
           Me” button.
@@ -471,8 +471,8 @@
       usually 0 or 1. If you want to change a forwards loop into a backwards
       loop that runs with the same values of the loop variable, just counting
       down instead of up, all three parts of the loop header must change. For
-      example, the forwards loop on the left which starts at <c>1</c> and goes
-      up to <c>5</c> has to change to the backwards loop on the right to count
+      example, the forwards loop on the left, which starts at <c>1</c> and goes
+      up to <c>5</c>, has to change to the backwards loop on the right to count
       down from <c>5</c> down to <c>1</c>.
     </p>
 
@@ -542,7 +542,7 @@
       the variable <c>i</c> to <c>5</c> and then checks if <c>i</c> is greater
       than <c>0</c>. Since <c>5</c> is greater than <c>0</c>, the body of the
       loop executes. Before the condition is checked again, <c>i</c> is
-      decreased by <c>1</c>. When the value of <c>i</c> is <c>0</c> it is no
+      decreased by <c>1</c>. When the value of <c>i</c> is <c>0</c>, it is no
       longer greater than <c>0</c> and the loop stops executing.
     </p>
 
@@ -839,7 +839,7 @@
           <feedback id="AP-for-loop-1_opt_b">
             <p>
               Correct! In the II, the loop counter increments by 2’s making sure
-              it visits only even numbers and III generates the same sum but
+              it visits only even numbers, and III generates the same sum but
               backwards.
             </p>
           </feedback>

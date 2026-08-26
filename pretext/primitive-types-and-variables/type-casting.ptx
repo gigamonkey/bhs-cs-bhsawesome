@@ -150,10 +150,10 @@
     </p>
 
     <p>
-      If an expressions involves at least one literal value, then we can just use
-      a literal <k>double</k> to force Java to use <k>double</k> math. But what
-      if we want to evaluate an expression using <k>int</k> variables but under
-      the rules of <k>double</k> math?
+      If an expressions involves at least one literal value, then we can just
+      use a literal <k>double</k> to force Java to use <k>double</k> math. But
+      what if we want to evaluate an expression using <k>int</k> variables but
+      under the rules of <k>double</k> math?
     </p>
 
     <p>
@@ -176,11 +176,11 @@
     <p>
       Another thing to notice is that cast is an operator, just like <c>+</c>,
       <c>*</c>, <c>-</c>, <c>/</c>, and <c>%</c>. So it has a precedence just
-      like all the other operators, and it is actually quite high. The expression
-      above works because the cast of <c>total</c> to <k>double</k> happens
-      first, and then that <k>double</k> value infects <c>count</c>, and the whole
-      expression is computed using <k>double</k> math. If instead we had
-      written:
+      like all the other operators, and it is actually quite high. The
+      expression above works because the cast of <c>total</c> to <k>double</k>
+      happens first, and then that <k>double</k> value infects <c>count</c>, and
+      the whole expression is computed using <k>double</k> math. If instead we
+      had written:
     </p>
 
     <program>
@@ -224,10 +224,10 @@
       above the next integer value if the decimal part is greater than
       <c>0.5</c>, as it is here. Then casting <em>that</em> value to an
       <k>int</k> will truncate down. So in this case <c>1.75 + 0.5</c> gives us
-      <c>2.25</c>, which is then truncated to <c>2</c>. On the other hand, adding
-      <c>0.5</c> to the result of evaluating <c>5.0 / 4.2</c>, namely
-      <c>1.25</c>, only gets us to <c>1.75</c>, which truncates back to <c>1</c>,
-      which is the nearest integer to <c>1.25</c>.
+      <c>2.25</c>, which is then truncated to <c>2</c>. On the other hand,
+      adding <c>0.5</c> to the result of evaluating <c>5.0 / 4.2</c>, namely
+      <c>1.25</c>, only gets us to <c>1.75</c>, which truncates back to
+      <c>1</c>, which is the nearest integer to <c>1.25</c>.
     </p>
 
     <p>
@@ -236,8 +236,8 @@
       <k>double</k>. Without the parentheses, the cast to <k>int</k> would
       convert <c>number</c> to an <k>int</k> first because of the higher
       precedence of casting than division, and then that truncated <k>int</k>
-      value would be infected by the <c>0.5</c>, giving us a double result with a
-      fractional part of <c>0.5</c>.
+      value would be infected by the <c>0.5</c>, giving us a double result with
+      a fractional part of <c>0.5</c>.
     </p>
 
     <activity label="nearestInt">
@@ -357,8 +357,8 @@
     </p>
 
     <p>
-      However, this means that, like scientific notation, there is a limit to the
-      precision with which <k>double</k>s can represent numbers, about 14-15
+      However, this means that, like scientific notation, there is a limit to
+      the precision with which <k>double</k>s can represent numbers, about 14-15
       decimal places. That has a few consequences. One is that irrational
       numbers like <m>\pi</m> and <m>\sqrt{2}</m> that have an infinite decimal
       representation can only be approximated. But also simpler numbers like 1/3
@@ -686,8 +686,8 @@
 
           <feedback>
             <p>
-              When you divide an integer by an integer, you get an integer result
-              and lose the fractional part.
+              When you divide an integer by an integer, you get an integer
+              result and lose the fractional part.
             </p>
           </feedback>
         </choice>

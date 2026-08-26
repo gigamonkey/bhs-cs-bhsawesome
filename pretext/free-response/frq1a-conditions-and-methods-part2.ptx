@@ -930,7 +930,7 @@
       same amount of food. This standard amount consumed is between 10 and 50
       grams of food, inclusive, in 1-gram increments. That is, on any given day,
       each bird might eat 10, 11, . . . , 49, or 50 grams of food. The amount of
-      food eaten by each bird on a given day is randomly generated and each
+      food eaten by each bird on a given day is randomly generated, and each
       integer from 10 to 50, inclusive, has an equal chance of being chosen.
     </p>
 
@@ -959,7 +959,7 @@
           and 50 grams of food, inclusive, in 1-gram increments. That is, on any
           given day, each bird might eat 10, 11, . . . , 49, or 50 grams of
           food. The amount of food eaten by each bird on a given day is randomly
-          generated and each integer from 10 to 50, inclusive, has an equal
+          generated, and each integer from 10 to 50, inclusive, has an equal
           chance of being chosen.
         </p>
 
@@ -972,13 +972,13 @@
 
         <p>
           If the simulated food consumed is greater than the amount of food in
-          the feeder, the birds empty the feeder and the amount of food in the
+          the feeder, the birds empty the feeder, and the amount of food in the
           feeder at the end of the day is zero.
         </p>
 
         <p>
-          Under abnormal conditions, a bear empties the feeder and the amount of
-          food in the feeder at the end of the day is zero.
+          Under abnormal conditions, a bear empties the feeder, and the amount
+          of food in the feeder at the end of the day is zero.
         </p>
 
         <p>

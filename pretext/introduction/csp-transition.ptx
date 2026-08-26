@@ -4,20 +4,20 @@
   <title>Transitioning from AP CSP to AP CSA</title>
 
   <p>
-    If you have taken the AP CSP (Computer Science Principles) course and exam
+    If you have taken the AP CSP (Computer Science Principles) course and exam,
     you should be well prepared for AP CSA. However, there are likely to be a
     few new things to get used to. If your CSP class used a block coding
     language like App Inventor, Scratch, Snap!, or App Lab, you learned to
     create program structures by plugging together blocks. In Java you’ll find
-    the structures are similar but you’ll have to get used to expressing them in
-    text.
+    the structures are similar, but you’ll have to get used to expressing them
+    in text.
   </p>
 
   <p>
     On the other hand, if you’ve previously used a different text-based
     language, such as Python or Javascript, while you will be used to the idea
-    of writing programs in text you’ll have to get used to some specific details
-    of Java’s syntax.
+    of writing programs in text, you’ll have to get used to some specific
+    details of Java’s syntax.
   </p>
 
   <p>
@@ -48,7 +48,7 @@
       <p>
         Punctuation is important. In particular, most statements in Java need to
         end with a semicolon (<c>;</c>). Leave a required semicolon out and your
-        program won’t run. That’s different than this paragraph which you can
+        program won’t run. That’s different than this paragraph, which you can
         still read even though we forgot the period at the end of this sentence
       </p>
     </li>
@@ -57,7 +57,7 @@
       <p>
         Java is in the family of programming languages that use curly braces
         (<c>{}</c>) to group together statements. The curly brace notation may
-        be familiar to you from the AP CSP pseudocode which uses them in a
+        be familiar to you from the AP CSP pseudocode, which uses them in a
         similar way.
       </p>
     </li>

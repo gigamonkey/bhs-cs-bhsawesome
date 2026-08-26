@@ -13,13 +13,13 @@
     </p>
 
     <p>
-      However, sequences of zeros and ones—let alone microscopic circuitry—aren't
-      convenient for humans to deal with, so programming languages like Java
-      give us higher-level abstractions for dealing with data that let us treat
-      those sequences of bits as <term>values</term> that have some meaning to
-      us humans. The kinds of values, called <term>data types</term>, supported
-      by a programming language and what we can do with them are the most basic
-      building blocks of our programs
+      However, sequences of zeros and ones—let alone microscopic
+      circuitry—aren't convenient for humans to deal with, so programming
+      languages like Java give us higher-level abstractions for dealing with
+      data that let us treat those sequences of bits as <term>values</term> that
+      have some meaning to us humans. The kinds of values, called <term>data
+      types</term>, supported by a programming language and what we can do with
+      them are the most basic building blocks of our programs
     </p>
 
     <p>
@@ -214,9 +214,9 @@
 
           <feedback>
             <p>
-              While you could use an int and use 0 for false and 1 for true, this
-              would waste 31 of the 32 bits an int uses. Java has a special type
-              for things that are either true or false.
+              While you could use an int and use 0 for false and 1 for true,
+              this would waste 31 of the 32 bits an int uses. Java has a special
+              type for things that are either true or false.
             </p>
           </feedback>
         </choice>
@@ -263,8 +263,8 @@
           <feedback>
             <p>
               The integer type (int) can't be used to represent numbers with
-              fractional parts, and the difference between gold and silver in the
-              Olympics is often measured in just thousandths of a second.
+              fractional parts, and the difference between gold and silver in
+              the Olympics is often measured in just thousandths of a second.
             </p>
           </feedback>
         </choice>
@@ -365,8 +365,8 @@
       tell Java the type of the variable because Java needs to know how many
       bits to use and how to represent the value. The 3 different primitive
       types all require different number of bits. An integer gets 32 bits of
-      memory, a double gets 64 bits of memory, and a boolean could be represented
-      by just one bit.
+      memory, a double gets 64 bits of memory, and a boolean could be
+      represented by just one bit.
     </p>
 
     <figure align="center">
@@ -380,10 +380,11 @@
 
     <p>
       To <term>declare</term> (create) a variable, you specify the type, leave
-      at least one space, then the name for the variable, and end the line with a
-      semicolon (<c>;</c>). Java uses the keyword <term>int</term> for integer,
-      <term>double</term> for a floating point number (a double precision
-      number), and <term>boolean</term> for a Boolean value (true or false).
+      at least one space, then the name for the variable, and end the line with
+      a semicolon (<c>;</c>). Java uses the keyword <term>int</term> for
+      integer, <term>double</term> for a floating point number (a double
+      precision number), and <term>boolean</term> for a Boolean value (true or
+      false).
     </p>
 
     <p>Here is an example declaration of a variable called score.</p>
@@ -602,7 +603,8 @@
             <strcmp use-answer="yes" />
             <feedback>
               <p>
-                Correct. You can’t buy half a ticket, so this will be an integer.
+                Correct. You can’t buy half a ticket, so this will be an
+                integer.
               </p>
             </feedback>
           </test>
@@ -725,10 +727,10 @@
       The convention in Java and many programming languages is to always start a
       variable name with a lower case letter and then uppercase the first letter
       of each additional word, for example <c>gameScore</c>. Variable names can
-      not include spaces, so uppercasing the first letter of each additional word
-      makes it easier to read the name. Uppercasing the first letter of each
-      additional word is called <term>camel case</term> because it looks like
-      the humps of a camel. Another option is to use underscore <c>_</c> to
+      not include spaces, so uppercasing the first letter of each additional
+      word makes it easier to read the name. Uppercasing the first letter of
+      each additional word is called <term>camel case</term> because it looks
+      like the humps of a camel. Another option is to use underscore <c>_</c> to
       separate words, but you cannot have spaces in a variable name.
     </p>
 

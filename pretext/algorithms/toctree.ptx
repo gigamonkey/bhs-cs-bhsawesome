@@ -8,7 +8,7 @@
       An <term>algorithm</term> is a step-by-step procedure that can be followed
       to solve a problem or perform a task. (The word comes from the
       Latinization of the name of the eighth-century Persian mathematician
-      Muhammad ibn Musa al-Khwarizmi who also gave us the term
+      Muhammad ibn Musa al-Khwarizmi, who also gave us the term
       <term>algebra</term>.)
     </p>
 
@@ -33,7 +33,7 @@
     <p>
       In this chapter we will look at two categories of the most basic and
       useful algorithms that are used in lots of programs: algorithms for
-      searching through a collection such as an array, a <c>String</c> or an
+      searching through a collection such as an array, a <c>String</c>, or an
       <c>ArrayList</c> and algorithms for sorting the values in an array or
       <c>ArrayList</c>, such as alphabetizing a list of names. We will also look
       at <term>recursion</term>, a technique for implementing certain

@@ -42,9 +42,9 @@
     </program>
 
     <p>
-      However you should always write it the second way. Here’s why—if you later
-      decide to add something, say maybe a <c>println</c> before the
-      <c>doSomething()</c> and you aren’t careful you might end up with this:
+      However, you should always write it the second way. Here’s why—if you
+      later decide to add something, say maybe a <c>println</c> before the
+      <c>doSomething()</c>, and you aren’t careful, you might end up with this:
     </p>
 
     <program>
@@ -67,7 +67,7 @@
 
     <p>
       Now the <c>doSomething</c>, which used to be controlled by the <k>if</k>,
-      is always run and the <k>if</k> only controls the <c>println</c>.
+      is always run, and the <k>if</k> only controls the <c>println</c>.
     </p>
 
     <p>
@@ -149,7 +149,7 @@
       listings (<xref ref="dedented-dangling-else" text="type-global" /> and
       <xref ref="indented-dangling-else" text="type-global" />) are equivalent.
       It’s actually ambiguous how to interpret the top versions similar to how
-      in English there are two ways to interpret a sentence like, “I saw the man
+      in English there are two ways to interpret a sentence like “I saw the man
       with a telescope”. Does that mean I used a telescope to see the man, or I
       saw a man who had a telescope?
     </p>
@@ -163,9 +163,9 @@
     </p>
 
     <p>
-      But always using braces means you will be forced to write one or the other
-      and you, and anyone else reading your code, will not have to worry about
-      being mislead by bad indentation and won’t have to remember how Java
+      But always using braces means you will be forced to write one or the
+      other, and you, and anyone else reading your code, will not have to worry
+      about being mislead by bad indentation and won’t have to remember how Java
       resolves the ambiguity.
     </p>
   </subsection>
@@ -195,12 +195,12 @@
     <p>
       A semicolon by itself is actually a statement. It’s called the <term>empty
       statement</term> and it does nothing. So that code checks if
-      <c>someBoolean</c> is true and if it is does nothing. Then it calls
+      <c>someBoolean</c> is true and, if it is, does nothing. Then it calls
       <c>doSomething()</c> regardless.
     </p>
 
     <p>
-      You can still this mistake even if you use braces but it’s probably less
+      You can still this mistake even if you use braces, but it’s probably less
       likely since you’d have to put the semicolon between the closing
       parentheses and the opening brace rather than at the end of the line:
     </p>
@@ -213,7 +213,7 @@
 
     <p>
       However, some Java programmers format their code with braces on lines by
-      themselves which would make this mistake easier to make since we’re used
+      themselves, which would make this mistake easier to make since we’re used
       to putting semicolons on the ends of lines:
     </p>
 
@@ -231,13 +231,13 @@
     <p>
       Another classic bug arises when we use a single equals sign <c>=</c> when
       we should have used two equals signs <c>==</c>. In Java (and in many other
-      languages) both are operators meaning they operate on some operands and
+      languages) both are operators, meaning they operate on some operands and
       produce a value.
     </p>
 
     <p>
       The single <c>=</c> is the assignment operator, which assigns a value to a
-      variable but it also produces a value, namely the value that was just
+      variable, but it also produces a value, namely the value that was just
       assigned. So an expression like <c>hungry = true</c> has the side effect
       of setting <c>hungry</c> to <c>true</c> but also evaluates to <c>true</c>.
     </p>
@@ -270,7 +270,7 @@
       The first <k>if</k> statement will always call <c>eat()</c>, regardless of
       what <c>hungry</c> was before the <k>if</k>. And the second will never
       call <c>study()</c>, regardless of <c>hungry</c>’s prior value. And both
-      of them will clobber the old value of <c>hungry</c> which will probably
+      of them will clobber the old value of <c>hungry</c>, which will probably
       cause some confusion down the road.
     </p>
 
@@ -312,12 +312,12 @@
     <p>
       The point is, <c>hungry</c> is already a <k>boolean</k>. Comparing it to a
       literal like <c>true</c> doesn’t make it any more of a <k>boolean</k>.
-      (Think of it this way: if you feel the need to write <c>hungry == true</c>
-      why not write <c>hungry == true == true</c>?) And if you know that
-      <c>!hungry</c> is pronunced “not hungry” then both of these bits of code
-      read almost like English, maybe as spoken by a caveman: “If hungry, eat,”
-      and “If not hungry, study.” Nobody says, “If it’s true that I’m hungry,
-      eat()” or “If it’s false that I’m hungry, study().”
+      (Think of it this way: if you feel the need to write <c>hungry ==
+      true</c>, why not write <c>hungry == true == true</c>?) And if you know
+      that <c>!hungry</c> is pronunced “not hungry”, then both of these bits of
+      code read almost like English, maybe as spoken by a caveman: “If hungry,
+      eat,” and “If not hungry, study.” Nobody says, “If it’s true that I’m
+      hungry, eat()” or “If it’s false that I’m hungry, study().”
     </p>
   </subsection>
 
@@ -328,7 +328,7 @@
       <li>
         <p>
           Always use braces (<c>{</c> and <c>}</c>) to enclose the body of an
-          <k>if</k> or <k>else</k>, even if it’s just one statement to avoid
+          <k>if</k> or <k>else</k>, even if it’s just one statement, to avoid
           misleading indentation and errors when you add lines to an existing
           body.
         </p>

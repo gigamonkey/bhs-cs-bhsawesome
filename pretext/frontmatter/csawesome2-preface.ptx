@@ -10,7 +10,7 @@
     provider for the 2025-2026 AP CSA revision. It was revised by Dr. Beryl
     Hoffman, Professor of Computer Science at Elms College, MA, with the help of
     many teachers. Special thanks to Kate McDonnell from Cherry Creek Schools in
-    CO who created a JUnit test code suite and many of the unit tests for
+    CO, who created a JUnit test code suite and many of the unit tests for
     autograding, and for writing the FRQ review unit, many assessments, and
     revising the lesson plans with help from Kimberly Polin from Williston
     Northampton School in MA. Special thanks to Leigh Anne Fitz of Virginia
@@ -81,7 +81,7 @@
 
     <li>
       <p>
-        Philip Guo who created the Java Visualizer, which we use in the e-book.
+        Philip Guo, who created the Java Visualizer, which we use in the e-book.
       </p>
     </li>
 

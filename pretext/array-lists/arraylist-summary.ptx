@@ -12,7 +12,7 @@
     <idx><h>method</h><h>abstract</h></idx>
     <idx><h>list</h><h>index</h></idx>
     <p>
-      In this chapter you learned about <term>ArrayLists</term> which are
+      In this chapter you learned about <term>ArrayLists</term>, which are
       dynamic re-sizable arrays. You learned how to declare and create
       ArrayLists, add and remove objects from them, set the object at an index,
       and get the object at an index.
@@ -44,7 +44,7 @@
       <li>
         <p>
           <term>Autoboxing</term> - Automatically wrapping a primitive type in a
-          wrapper class object. For instance if you try to add an <k>int</k>
+          wrapper class object. For instance, if you try to add an <k>int</k>
           value to a list, it will automatically be converted to an
           <c>Integer</c> object.
         </p>
@@ -80,7 +80,7 @@
           <term>Declaration</term> - To declare an ArrayList use
           <c>ArrayList&lt;Type&gt; name</c>, where <c>Type</c> is the class name
           for the type of objects in the list. If you leave off the
-          <c>&lt;Type&gt;</c> it will default to <c>Object</c>.
+          <c>&lt;Type&gt;</c>, it will default to <c>Object</c>.
         </p>
       </li>
 
@@ -136,7 +136,8 @@
         <p>
           <term>Wrapper Class</term> - Classes used to create objects that hold
           primitive type values like <c>Integer</c> for <k>int</k>,
-          <c>Double</c> for <k>double</k> and <c>Boolean</c> for <k>boolean</k>.
+          <c>Double</c> for <k>double</k>, and <c>Boolean</c> for
+          <k>boolean</k>.
         </p>
       </li>
 

@@ -21,10 +21,10 @@
 
     <p>
       As we learned in the <xref ref="introduction" />, all code in Java is
-      written within classes. There’s a lot to say about classes and we’ll get
+      written within classes. There’s a lot to say about classes, and we’ll get
       to it in later units. But some classes just exist as a place to put a
       bunch of useful methods. One such class is the <c>Math</c> class in the
-      <c>java.lang</c> package which is part of every Java program. (We’ll also
+      <c>java.lang</c> package, which is part of every Java program. (We’ll also
       learn more about packages in later units.)
     </p>
 
@@ -53,9 +53,9 @@
     </p>
 
     <p>
-      <c>Math.abs</c> is an example of an <term>overloaded</term> method meaning
-      there are two methods with the same name but different signatures: one
-      that takes an <k>int</k> and one that takes a <k>double</k>. They each
+      <c>Math.abs</c> is an example of an <term>overloaded</term> method,
+      meaning there are two methods with the same name but different signatures:
+      one that takes an <k>int</k> and one that takes a <k>double</k>. They each
       return the absolute value, i.e. the positive value of the number without
       its sign, of their argument. But the return type of each method also
       differs, being the same same as the type of the parameter.
@@ -69,7 +69,7 @@
     </program>
 
     <p>
-      <c>Math.pow</c> takes two arguments, both <k>double</k>s and returns a
+      <c>Math.pow</c> takes two arguments, both <k>double</k>s, and returns a
       <k>double</k> which is the first argument raised to the power of the
       second argument. I.e. <c>pow(a, b)</c> is what we would write in math as
       <m>a^b</m>. But because <k>int</k>s can be silently converted to
@@ -89,10 +89,10 @@
       <p>
         If you are a Desmos or graphical calculator user, note that <c>^</c> is
         <em>not</em> an exponentiation operator in Java. Worse luck, it is an
-        operator on <k>int</k>s but it does something completely different. So
+        operator on <k>int</k>s, but it does something completely different. So
         if <c>a</c> and <c>b</c> are <k>int</k>s and you write <c>a ^ b</c>,
         intending to raise <c>a</c> to the <c>b</c>th power, the compiler won’t
-        complain but your code will do something very different. If you want an
+        complain, but your code will do something very different. If you want an
         <k>int</k> result, use a cast: <c>(int) Math.pow(a, b)</c>. Though watch
         out for overflow errors since even relatively small exponents can
         produce values greater than <c>Integer.MAX_VALUE</c>.
@@ -103,8 +103,8 @@
       <c>Math.sqrt</c> takes an <k>double</k> argument and returns a
       <k>double</k> value which is the nearest approximation of the positive
       square root of the argument. As with <c>Math.pow</c>, we can call it with
-      an <k>int</k> argument but the argument will be converted to a
-      <k>double</k> and the result will always be a <k>double</k> even if it
+      an <k>int</k> argument, but the argument will be converted to a
+      <k>double</k>, and the result will always be a <k>double</k> even if it
       could have been represented with an <k>int</k>.
     </p>
 
@@ -233,7 +233,8 @@
           <feedback id="call-sqrt-mc_opt_f">
             <p>
               ✅ The argument passed to <c>Math.sqrt</c> is the value of
-              <em>another</em> call to <c>Math.sqrt</c> which is perfectly fine.
+              <em>another</em> call to <c>Math.sqrt</c>, which is perfectly
+              fine.
             </p>
           </feedback>
         </choice>
@@ -357,9 +358,9 @@
           Ironically, given the dependence of so many kinds of programs on
           randomness, computers are actually not capable of generating truly
           random numbers. This is because computers are fundamentally
-          deterministic so from a given starting state and executing a given
-          algorithm they should always produce exactly the same result. Or as
-          John von Neumann, one of the early giants of computer science said.
+          deterministic, so from a given starting state and executing a given
+          algorithm, they should always produce exactly the same result. Or as
+          John von Neumann, one of the early giants of computer science, said.
         </p>
 
         <blockquote>
@@ -370,9 +371,9 @@
         </blockquote>
 
         <p>
-          However there are algorithms that produce <term>pseudorandom</term>
-          numbers which are good enough for most purposes. <c>Math.random</c> is
-          a pseudorandom number generator.
+          However, there are algorithms that produce <term>pseudorandom</term>
+          numbers, which are good enough for most purposes. <c>Math.random</c>
+          is a pseudorandom number generator.
         </p>
       </note>
     </gutterimage>
@@ -381,10 +382,10 @@
       <c>Math.random()</c> is not a function in the mathematical sense—it
       doesn’t return the same value every time it is called with the same
       arguments. In fact, it doesn’t even take any arguments. But every time we
-      call it we will get a <k>double</k> greater than or equal to 0.0, and less
-      than 1.0. For all practical purposes the number we get each time is random
-      and all numbers that can be represented by a <k>double</k> between zero
-      and one are equally likely.
+      call it we will get a <k>double</k> greater than or equal to 0.0 and less
+      than 1.0. For all practical purposes the number we get each time is
+      random, and all numbers that can be represented by a <k>double</k> between
+      zero and one are equally likely.
     </p>
 
     <activity label="random1">
@@ -412,32 +413,32 @@
 
     <note>
       <p>
-        When we talk about ranges of numbers sometimes we need to be precise
+        When we talk about ranges of numbers, sometimes we need to be precise
         about whether the ends of the range are part of the range. For example,
-        loosely speaking we might say that <c>Math.random</c> returns a number
+        loosely speaking, we might say that <c>Math.random</c> returns a number
         between zero and one. But does that mean it can return exactly
-        <c>0.0</c>? Or exactly <c>1.0</c>? As it turns out it can return
+        <c>0.0</c>? Or exactly <c>1.0</c>? As it turns out, it can return
         <c>0.0</c> but never returns <c>1.0</c>.
       </p>
 
       <p>
-        When we need to be precise about this we’d say that it returns a number
+        When we need to be precise about this, we’d say that it returns a number
         between zero, <em>inclusive</em>, and one, <em>exclusive</em>, meaning
         <em>include</em> zero but <em>exclude</em> one. Lots of ranges in Java
-        are expressed this way, as you’ll see later on with an inclusive bottom
+        are expressed this way, as you’ll see later on, with an inclusive bottom
         and exclusive top.
       </p>
     </note>
 
     <p>
-      Getting a number in the range from zero to one, may not seem all that
+      Getting a number in the range from zero to one may not seem all that
       useful by itself. But we can expand the range easily enough. To see how,
       imagine you had less than a dollar to your name and you wanted to be
       richer—you’d want to find a way to multiply your money. If you could
       invest every penny you had in something that would multiply your money by
-      1,000 then instead of having somewhere between $0 and $1, then you’d have
+      1,000, then instead of having somewhere between $0 and $1, then you’d have
       somewhere between $0 (inclusive—if you started with $0) and $1,000
-      (exclusive, since if you had even a fraction of a penny less than $1
+      (exclusive, since if you had even a fraction of a penny less than $1,
       multiplying by 1,000 would still leave you just a bit shy of $1,000.) If
       the investment multiplied your original money by a million, you’d have
       between $0 and $1,000,000! (But never <em>quite</em> $1,000,000.)
@@ -663,7 +664,7 @@
 
           <feedback>
             <p>
-              The first part would return a number between 0 and 4 and adding 1
+              The first part would return a number between 0 and 4, and adding 1
               produces a number from 1 to 5, inclusive.
             </p>
           </feedback>
@@ -709,7 +710,7 @@
 
           <feedback>
             <p>
-              The first part would return a number between 0 and 9 and adding 1
+              The first part would return a number between 0 and 9, and adding 1
               produces a number from 1 to 10, inclusive.
             </p>
           </feedback>
@@ -969,7 +970,7 @@
       </p>
 
       <p>
-        This may seems like a bunch of Greek to you but one common, real-world
+        This may seems like a bunch of Greek to you, but one common, real-world
         use for the Pythagorean theorem is to calculate the length of ladder you
         will need to reach the window of your beloved, given that their cruel
         parents have locked them in a tower surrounded by a moat. The ladder
@@ -1001,7 +1002,7 @@
           <feedback id="hypotenuse-java-mc_opt_a">
             <p>
               ✅ <c>a * a</c> is a squared, likewise <c>b * b</c>. Adding them
-              with <c>+</c> gives us the sum which is then passed to
+              with <c>+</c> gives us the sum, which is then passed to
               <c>Math.sqrt</c>.
             </p>
           </feedback>
@@ -1015,7 +1016,7 @@
           <feedback id="hypotenuse-java-mc_opt_b">
             <p>
               ✅ <c>Math.pow(a, 2)</c> is <c>a</c> squared, likewise
-              <c>Math.pow(b, 2)</c>. Adding them with <c>+</c> gives us the sum
+              <c>Math.pow(b, 2)</c>. Adding them with <c>+</c> gives us the sum,
               which is then passed to <c>Math.sqrt</c>.
             </p>
           </feedback>
@@ -1038,7 +1039,7 @@
 
           <feedback id="hypotenuse-java-mc_opt_d">
             <p>
-              ❌ This is the sum of the squares of the lengths of the legs which
+              ❌ This is the sum of the squares of the lengths of the legs, which
               gives us the square of the hypotenuse. We need a <c>Math.sqrt</c>
               to get the length of the hypotenuse.
             </p>

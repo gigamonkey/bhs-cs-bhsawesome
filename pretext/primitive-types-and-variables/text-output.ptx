@@ -51,9 +51,9 @@
     <p>
       The <em>value</em> between the parentheses can be any Java
       <term>expression</term>, which just means some bit of code that produces a
-      value. One simple kind of expression is a <term>literal value</term>, which
-      is a way of representing a value directly—or literally—in our code. For
-      instance <c>42</c> is a literal expression representing the <k>int</k>
+      value. One simple kind of expression is a <term>literal value</term>,
+      which is a way of representing a value directly—or literally—in our code.
+      For instance <c>42</c> is a literal expression representing the <k>int</k>
       value 42. When we print a value with <c>print</c> or <c>println</c>, Java
       converts the value to its textual representation and then emits that to
       the screen. So we could write <c>System.out.print(42)</c> to print the
@@ -214,9 +214,9 @@
       provides a way to write string literals that contain double quotes using a
       mechanism called <term>escaping</term>. To “escape” the normal syntax of a
       string literal, where a quotation mark would indicate the end of the
-      string, we put a backslash (<c>\</c>) in front of the quotation mark, which
-      tells Java to include the following quotation mark in the string value
-      rather than treating it as the end of the literal.
+      string, we put a backslash (<c>\</c>) in front of the quotation mark,
+      which tells Java to include the following quotation mark in the string
+      value rather than treating it as the end of the literal.
     </p>
 
     <p>

@@ -16,7 +16,7 @@
 
     <p>
       In this chapter we will introduce the notion of algorithms and then talk
-      about <term>if statements</term> which allow us to write programs that do
+      about <term>if statements</term>, which allow us to write programs that do
       things only if certain conditions are true.
     </p>
   </introduction>

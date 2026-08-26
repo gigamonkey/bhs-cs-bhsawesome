@@ -1,0 +1,1204 @@
+pretext/abstraction-and-program-design/abstraction.ptx:40 - added comma between independent clauses joined by "and"
+pretext/abstraction-and-program-design/abstraction.ptx:86 - added comma after introductory dependent clause
+pretext/abstraction-and-program-design/abstraction.ptx:105 - added comma after long introductory "While" clause
+pretext/abstraction-and-program-design/abstraction.ptx:113 - added comma after "For example" interrupter
+pretext/abstraction-and-program-design/abstraction.ptx:116 - added comma between independent clauses joined by "but"
+pretext/abstraction-and-program-design/abstraction.ptx:123 - added comma after introductory dependent clause
+pretext/abstraction-and-program-design/abstraction.ptx:124 - added comma between independent clauses joined by "but"
+pretext/abstraction-and-program-design/abstraction.ptx:125 - added comma after dependent clause before main clause
+pretext/abstraction-and-program-design/abstraction.ptx:144 - added comma after "For instance" interrupter
+pretext/abstraction-and-program-design/abstraction.ptx:167 - added comma after introductory dependent clause
+pretext/abstraction-and-program-design/abstraction.ptx:168 - added comma before nonrestrictive "which" clause
+pretext/abstraction-and-program-design/abstraction.ptx:186 - added comma before nonrestrictive "which" clause
+pretext/abstraction-and-program-design/abstraction.ptx:186 - added closing comma of nonrestrictive "which" clause
+pretext/abstraction-and-program-design/abstraction.ptx:192 - added comma after long introductory "While" clause
+pretext/abstraction-and-program-design/abstraction.ptx:195 - added comma after introductory dependent clause
+pretext/abstraction-and-program-design/abstraction.ptx:199 - added comma after long introductory "if" clause
+pretext/abstraction-and-program-design/abstraction.ptx:200 - added comma between independent clauses joined by "but"
+pretext/abstraction-and-program-design/abstraction.ptx:206 - added comma after "In general" to prevent misreading
+pretext/abstraction-and-program-design/abstraction.ptx:223 - removed comma between subject and verb
+pretext/abstraction-and-program-design/abstraction.ptx:233 - added comma after long introductory "When" clause
+pretext/abstraction-and-program-design/abstraction.ptx:236 - added comma after long introductory "If" clause
+pretext/abstraction-and-program-design/abstraction.ptx:317 - added comma after introductory dependent clause
+pretext/abstraction-and-program-design/abstraction.ptx:319 - added comma between independent clauses joined by "and"
+pretext/abstraction-and-program-design/abstraction.ptx:327 - added comma after long introductory "if" clause
+pretext/abstraction-and-program-design/abstraction.ptx:330 - added comma between independent clauses joined by "and"
+pretext/abstraction-and-program-design/abstraction.ptx:353 - added closing comma of appositive before verb
+pretext/abstraction-and-program-design/abstraction.ptx:370 - added comma between independent clauses joined by "but"
+pretext/abstraction-and-program-design/abstraction.ptx:376 - added comma before nonrestrictive "which" clause
+pretext/abstraction-and-program-design/abstraction.ptx:385 - added comma between independent clauses joined by "but"
+pretext/abstraction-and-program-design/abstraction.ptx:421 - added Oxford comma (first occurrence, in the bulleted Monopoly quote)
+pretext/abstraction-and-program-design/abstraction.ptx:453 - added Oxford comma (second occurrence, in the project statement's Monopoly quote)
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:8 - removed spurious comma splitting paired modifiers
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:37 - added comma before nonrestrictive trailing phrase
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:72 - added comma before nonrestrictive "which" clause
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:145 - added comma after long introductory "If" clause
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:247 - added comma between independent clauses joined by "and"
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:249 - added comma after long "If" clause before "then"
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:249 - added comma between independent clauses joined by "and"
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:251 - added comma before nonrestrictive summative "which" clause
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:257 - added comma after introductory dependent clause
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:259 - added comma after introductory dependent clause
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:279 - added comma after "For instance" interrupter
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:282 - added comma after introductory dependent clause
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:290 - added comma after long introductory phrase
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:304 - added comma before nonrestrictive "which" clause
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:314 - added comma between independent clauses joined by "but"
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:316 - added comma between independent clauses joined by "so"
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:397 - added opening comma of nonrestrictive "which" clause
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:397 - added closing comma of nonrestrictive "which" clause
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:494 - added opening comma of "such as" interrupter between subject and verb
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:495 - added closing comma of "such as" interrupter before verb
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:496 - added opening comma of interrupting phrase
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:496 - added closing comma of interrupting phrase
+pretext/abstraction-and-program-design/documentation-and-invariants.ptx:503 - added Oxford comma
+pretext/abstraction-and-program-design/impacts.ptx:8 - added comma after introductory dependent clause
+pretext/abstraction-and-program-design/impacts.ptx:11 - added comma between independent clauses joined by "and"
+pretext/abstraction-and-program-design/impacts.ptx:18 - added comma before nonrestrictive "which" clause
+pretext/abstraction-and-program-design/impacts.ptx:26 - added comma before nonrestrictive "which" clause
+pretext/abstraction-and-program-design/impacts.ptx:27 - added comma between independent clauses joined by "but"
+pretext/abstraction-and-program-design/impacts.ptx:28 - added comma after long introductory phrase
+pretext/abstraction-and-program-design/impacts.ptx:234 - added comma after "for example" interrupter
+pretext/abstraction-and-program-design/toctree.ptx:19 - added closing comma after interrupting clause
+pretext/abstraction-and-program-design/toctree.ptx:20 - added comma between independent clauses joined by "and"
+pretext/abstraction-and-program-design/toctree.ptx:26 - added comma after long introductory phrase
+pretext/algorithms/recursion.ptx:185 - added comma between independent clauses joined by "and"
+pretext/algorithms/recursion.ptx:206 - added comma after sentence-initial "However"
+pretext/algorithms/recursion.ptx:207 - added comma before nonrestrictive "which" clause
+pretext/algorithms/recursion.ptx:217 - added comma between independent clauses joined by "and"
+pretext/algorithms/recursion.ptx:359 - added comma after introductory when-clause
+pretext/algorithms/recursion.ptx:388 - added comma after introductory when-clause
+pretext/algorithms/recursion.ptx:580 - added comma after long introductory when-clause
+pretext/algorithms/recursion.ptx:583 - added comma after introductory when-clause
+pretext/algorithms/recursion.ptx:598 - added comma before nonrestrictive "which" clause
+pretext/algorithms/recursion.ptx:599 - added comma before nonrestrictive "which" clause
+pretext/algorithms/recursion.ptx:600 - added comma before nonrestrictive "which" clause
+pretext/algorithms/recursion.ptx:612 - added comma after introductory when-clause
+pretext/algorithms/recursion.ptx:618 - added comma before nonrestrictive "which" clause
+pretext/algorithms/recursion.ptx:645 - added closing comma of "or the beginning" appositive
+pretext/algorithms/recursion.ptx:648 - added comma between independent clauses joined by "and"
+pretext/algorithms/recursion.ptx:662 - added comma after introductory once-clause
+pretext/algorithms/recursion.ptx:700 - added comma after introductory participial phrase
+pretext/algorithms/recursion.ptx:749 - added comma before "then" after introductory if-clause
+pretext/algorithms/recursion.ptx:770 - added comma after introductory participial phrase
+pretext/algorithms/recursion.ptx:839 - added comma after introductory participial phrase
+pretext/algorithms/recursion.ptx:947 - added comma after introductory once-clause
+pretext/algorithms/recursion.ptx:969 - added comma after introductory participial phrase
+pretext/algorithms/recursion.ptx:1054 - added comma after introductory participial phrase
+pretext/algorithms/recursion.ptx:1197 - added comma after introductory once-clause
+pretext/algorithms/recursive-search-sort.ptx:69 - added comma after introductory prepositional phrase
+pretext/algorithms/recursive-search-sort.ptx:72 - added opening comma of absolute participial phrase
+pretext/algorithms/recursive-search-sort.ptx:73 - added closing comma of absolute participial phrase
+pretext/algorithms/recursive-search-sort.ptx:78 - added comma after introductory phrase
+pretext/algorithms/recursive-search-sort.ptx:96 - added comma between independent clauses joined by "and"
+pretext/algorithms/recursive-search-sort.ptx:98 - added comma after introductory infinitive phrase
+pretext/algorithms/recursive-search-sort.ptx:141 - added comma before nonrestrictive "including" phrase
+pretext/algorithms/recursive-search-sort.ptx:199 - added comma before trailing "though" clause with unbalanced interrupter
+pretext/algorithms/recursive-search-sort.ptx:256 - added comma between independent clauses joined by "but"
+pretext/algorithms/recursive-search-sort.ptx:335 - added comma after introductory infinitive phrase
+pretext/algorithms/recursive-search-sort.ptx:455 - added comma before trailing participial phrase
+pretext/algorithms/search-sort-easy-mc.ptx:347 - added comma after introductory if-clause
+pretext/algorithms/search-sort-hard-mc.ptx:90 - added comma before nonrestrictive "which" clause
+pretext/algorithms/search-sort-hard-mc.ptx:309 - added comma between independent clauses joined by "and"
+pretext/algorithms/search-sort-hard-mc.ptx:311 - removed unbalanced comma splitting subject from its noun
+pretext/algorithms/search-sort-hard-mc.ptx:312 - added comma after sentence-initial "However"
+pretext/algorithms/search-sort-hard-mc.ptx:314 - added comma after introductory if-clause
+pretext/algorithms/searching.ptx:15 - added comma after introductory if-clause
+pretext/algorithms/searching.ptx:40 - added comma before nonrestrictive "including" phrase
+pretext/algorithms/searching.ptx:115 - added comma before nonrestrictive "which" clause
+pretext/algorithms/searching.ptx:127 - added comma before nonrestrictive "which" clause
+pretext/algorithms/searching.ptx:436 - added comma after introductory if-clause
+pretext/algorithms/searching.ptx:438 - added comma between independent clauses joined by "or"
+pretext/algorithms/searching.ptx:446 - added comma after introductory if-clause
+pretext/algorithms/searching.ptx:465 - added comma before nonrestrictive "which" clause
+pretext/algorithms/searching.ptx:471 - added comma before nonrestrictive "which" clause
+pretext/algorithms/searching.ptx:478 - added comma before nonrestrictive "which" clause
+pretext/algorithms/searching.ptx:495 - added comma between independent clauses joined by "and"
+pretext/algorithms/searching.ptx:505 - added comma after introductory if-clause
+pretext/algorithms/searching.ptx:517 - added comma before nonrestrictive "which" clause
+pretext/algorithms/searching.ptx:660 - added comma after introductory if-clause
+pretext/algorithms/searching.ptx:672 - added comma before nonrestrictive "which" clause
+pretext/algorithms/searching.ptx:682 - added comma between independent clauses joined by "and"
+pretext/algorithms/searching.ptx:688 - added closing comma of interrupting participial phrase
+pretext/algorithms/searching.ptx:714 - added opening comma of "on the other hand" interrupter
+pretext/algorithms/searching.ptx:717 - added comma before nonrestrictive "which" clause
+pretext/algorithms/searching.ptx:728 - added comma after long introductory because-clause
+pretext/algorithms/searching.ptx:794 - added comma between independent clauses joined by "and"
+pretext/algorithms/searching.ptx:835 - added comma after introductory if-clause
+pretext/algorithms/searching.ptx:1002 - removed spurious comma splitting verb phrase from adverbial
+pretext/algorithms/searching.ptx:1002 - added comma before nonrestrictive "which" clause
+pretext/algorithms/sorting.ptx:76 - added comma after introductory infinitive phrase
+pretext/algorithms/sorting.ptx:103 - added comma before "then" after long if-clause
+pretext/algorithms/sorting.ptx:170 - added comma after introductory infinitive phrase (selection sort section, first occurrence)
+pretext/algorithms/sorting.ptx:220 - removed spurious comma after sentence-initial "But" (selection sort question qsel_2)
+pretext/algorithms/sorting.ptx:340 - added comma after introductory infinitive phrase
+pretext/algorithms/sorting.ptx:381 - added comma after introductory when-clause
+pretext/algorithms/sorting.ptx:438 - added comma after introductory infinitive phrase (insertion sort section, second occurrence of identical sentence)
+pretext/algorithms/sorting.ptx:456 - added comma after introductory if-clause (qins_1 feedback)
+pretext/algorithms/sorting.ptx:487 - removed spurious comma after sentence-initial "But" (insertion sort question qins_2, second occurrence of identical sentence)
+pretext/algorithms/toctree.ptx:11 - added comma before nonrestrictive "who" clause
+pretext/algorithms/toctree.ptx:36 - added Oxford comma
+pretext/ap-practice/climb-club-a.ptx:157 - added comma after introductory dependent clause
+pretext/ap-practice/climb-club-b.ptx:167 - added comma between independent clauses joined by "and"
+pretext/ap-practice/climb-club-b.ptx:167 - added comma after introductory "since" clause
+pretext/ap-practice/climb-club-b.ptx:168 - added comma between independent clauses joined by "but"
+pretext/ap-practice/climb-club-b.ptx:168 - added comma between independent clauses joined by "so"
+pretext/ap-practice/climb-club-b.ptx:177 - added comma between independent clauses joined by "and"
+pretext/ap-practice/climb-club-b.ptx:177 - added comma after introductory "since" clause
+pretext/ap-practice/climb-club-b.ptx:186 - added comma between independent clauses joined by "and"
+pretext/ap-practice/climb-club-b.ptx:186 - added comma after introductory "since" clause
+pretext/ap-practice/climb-club-b.ptx:187 - added comma between independent clauses joined by "and"
+pretext/ap-practice/climb-club-b.ptx:187 - added comma after introductory "since" clause
+pretext/ap-practice/delimiters-q3a.ptx:284 - added comma between independent clauses joined by "and"
+pretext/ap-practice/delimiters-q3a.ptx:285 - added comma after introductory "if" clause
+pretext/ap-practice/delimiters-q3a.ptx:286 - added comma after sentence adverb "Finally"
+pretext/ap-practice/delimiters-q3b.ptx:214 - added opening comma of nonrestrictive "which" clause
+pretext/ap-practice/delimiters-q3b.ptx:214 - added closing comma of nonrestrictive "which" clause
+pretext/ap-practice/delimiters-q3b.ptx:216 - added comma after "if" clause before imperative
+pretext/ap-practice/delimiters-q3b.ptx:217 - added comma after introductory "if" clause
+pretext/ap-practice/delimiters-q3b.ptx:218 - added comma after introductory phrase to prevent misreading
+pretext/ap-practice/frq-practice.ptx:16 - added missing space after serial comma ("analyze,and")
+pretext/ap-practice/gridworld-q3a.ptx:20 - added comma between independent clauses joined by "and"
+pretext/ap-practice/gridworld-q3a.ptx:69 - added comma between independent clauses joined by "so"
+pretext/ap-practice/gridworld-q3a.ptx:71 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/gridworld-q3a.ptx:73 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/gridworld-q3a.ptx:369 - added comma after sentence adverb "Finally"
+pretext/ap-practice/gridworld-q3a.ptx:470 - added comma between independent clauses joined by "but"
+pretext/ap-practice/gridworld-q3a.ptx:521 - removed comma before restrictive appositive
+pretext/ap-practice/gridworld-q3a.ptx:555 - added closing comma of appositive opened with a comma
+pretext/ap-practice/gridworld-q3a.ptx:590 - added comma between independent clauses joined by "so"
+pretext/ap-practice/gridworld-q3a.ptx:603 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-easy-mc.ptx:24 - added comma between independent clauses joined by "and"
+pretext/ap-practice/list-easy-mc.ptx:47 - added comma after introductory "since" clause
+pretext/ap-practice/list-easy-mc.ptx:104 - added comma after introductory clause to prevent misreading
+pretext/ap-practice/list-easy-mc.ptx:209 - added comma between independent clauses joined by "and"
+pretext/ap-practice/list-easy-mc.ptx:313 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-easy-mc.ptx:323 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-easy-mc.ptx:333 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-easy-mc.ptx:343 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-easy-mc.ptx:391 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-easy-mc.ptx:404 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-easy-mc.ptx:417 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-easy-mc.ptx:485 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-hard-mc.ptx:37 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-hard-mc.ptx:140 - added comma between independent clauses joined by "but"
+pretext/ap-practice/list-hard-mc.ptx:140 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-hard-mc.ptx:153 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-hard-mc.ptx:166 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-hard-mc.ptx:192 - added comma between independent clauses joined by "and"
+pretext/ap-practice/list-hard-mc.ptx:195 - added comma between independent clauses joined by "but"
+pretext/ap-practice/list-medium-mc.ptx:40 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-medium-mc.ptx:53 - added comma before contrasting "not" (two identical occurrences)
+pretext/ap-practice/list-medium-mc.ptx:82 - added comma before contrasting "not" (two identical occurrences)
+pretext/ap-practice/list-medium-mc.ptx:138 - added comma between independent clauses joined by "and"
+pretext/ap-practice/list-medium-mc.ptx:139 - added comma after "if" clause
+pretext/ap-practice/list-medium-mc.ptx:140 - added comma after introductory "when" clause
+pretext/ap-practice/list-medium-mc.ptx:141 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-medium-mc.ptx:154 - added comma between independent clauses joined by "and"
+pretext/ap-practice/list-medium-mc.ptx:154 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-medium-mc.ptx:167 - added comma between independent clauses joined by "and"
+pretext/ap-practice/list-medium-mc.ptx:167 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-medium-mc.ptx:180 - added comma after introductory "since" clause
+pretext/ap-practice/list-medium-mc.ptx:193 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-medium-mc.ptx:363 - added comma between independent clauses joined by "so"
+pretext/ap-practice/list-medium-mc.ptx:374 - added comma before contrasting "not" (second of two identical occurrences)
+pretext/ap-practice/list-medium-mc.ptx:403 - added comma before contrasting "not" (second of two identical occurrences)
+pretext/ap-practice/list-medium-mc.ptx:416 - added comma after introductory "when" clause
+pretext/ap-practice/list-medium-mc.ptx:616 - added comma after introductory "given" phrase
+pretext/ap-practice/list-medium-mc.ptx:629 - added comma between independent clauses joined by "but"
+pretext/ap-practice/list-medium-mc.ptx:664 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/list-medium-mc.ptx:822 - added comma before nonrestrictive "which" clause
+pretext/ap-practice/string-formatter-a.ptx:61 - added missing space after comma ("],then")
+pretext/ap-practice/string-formatter-a.ptx:90 - added comma after introductory "when" clause
+pretext/ap-practice/string-formatter-b.ptx:91 - added comma after "if" clause to prevent misreading
+pretext/ap-practice/string-formatter-b.ptx:97 - added comma after introductory conditional before "then"
+pretext/ap-practice/string-formatter-b.ptx:97 - added comma between independent clauses joined by "and"
+pretext/ap-practice/string-formatter-b.ptx:103 - added comma after introductory conditional before "then"
+pretext/ap-practice/string-formatter-b.ptx:103 - added comma between independent clauses joined by "and"
+pretext/ap-practice/string-formatter-b.ptx:104 - added comma between independent clauses joined by "so"
+pretext/ap-practice/string-formatter-b.ptx:109 - added comma after introductory conditional before "then"
+pretext/ap-practice/string-formatter-b.ptx:110 - added comma between independent clauses joined by "and"
+pretext/ap-practice/string-formatter-b.ptx:110 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-algorithms.ptx:19 - added comma after "For instance"
+pretext/array-lists/arraylist-algorithms.ptx:49 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-algorithms.ptx:55 - added comma after embedded introductory when-clause
+pretext/array-lists/arraylist-algorithms.ptx:64 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-algorithms.ptx:81 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-algorithms.ptx:106 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-algorithms.ptx:138 - added comma after conditional clause
+pretext/array-lists/arraylist-algorithms.ptx:138 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-algorithms.ptx:147 - added comma between independent clauses joined by "but"
+pretext/array-lists/arraylist-algorithms.ptx:148 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-algorithms.ptx:178 - added comma after introductory if-clause
+pretext/array-lists/arraylist-algorithms.ptx:207 - added comma after introductory clause
+pretext/array-lists/arraylist-algorithms.ptx:207 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-algorithms.ptx:238 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-algorithms.ptx:240 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-algorithms.ptx:338 - added comma after "For instance"
+pretext/array-lists/arraylist-algorithms.ptx:370 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-exercises.ptx:42 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-exercises.ptx:162 - added comma after introductory when-clause
+pretext/array-lists/arraylist-methods.ptx:17 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-methods.ptx:20 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-methods.ptx:22 - added comma after "In other words" interrupter
+pretext/array-lists/arraylist-methods.ptx:29 - added comma after introductory phrase
+pretext/array-lists/arraylist-methods.ptx:33 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-methods.ptx:40 - set off nonrestrictive "which" clause with paired commas (also separates independent clauses)
+pretext/array-lists/arraylist-methods.ptx:43 - added comma after introductory if-clause
+pretext/array-lists/arraylist-methods.ptx:102 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-methods.ptx:133 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-methods.ptx:139 - added comma after introductory if-clause
+pretext/array-lists/arraylist-methods.ptx:141 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-methods.ptx:142 - added comma after long introductory phrase
+pretext/array-lists/arraylist-methods.ptx:161 - added comma after long introductory clause
+pretext/array-lists/arraylist-methods.ptx:176 - removed comma between verb and its object
+pretext/array-lists/arraylist-methods.ptx:179 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-methods.ptx:182 - added comma between independent clauses joined by "but"
+pretext/array-lists/arraylist-methods.ptx:258 - added comma after introductory when-clause
+pretext/array-lists/arraylist-methods.ptx:274 - added comma after "For example"
+pretext/array-lists/arraylist-methods.ptx:286 - added comma after introductory if-clause
+pretext/array-lists/arraylist-methods.ptx:292 - added comma after long introductory if-clause
+pretext/array-lists/arraylist-methods.ptx:299 - added comma after "For example"
+pretext/array-lists/arraylist-methods.ptx:299 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-methods.ptx:302 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-methods.ptx:307 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-methods.ptx:309 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-methods.ptx:343 - added comma after introductory "such as" phrase before main clause
+pretext/array-lists/arraylist-methods.ptx:369 - added comma before nonrestrictive "such as" example (parallel with earlier list item)
+pretext/array-lists/arraylist-methods.ptx:370 - added comma before trailing nonrestrictive "though" clause
+pretext/array-lists/arraylist-methods.ptx:375 - added comma after sentence-initial "However"
+pretext/array-lists/arraylist-methods.ptx:375 - added comma between independent clauses joined by "so"
+pretext/array-lists/arraylist-methods.ptx:395 - set off nonrestrictive "which" clause with paired commas
+pretext/array-lists/arraylist-methods.ptx:448 - added comma after introductory clause
+pretext/array-lists/arraylist-methods.ptx:472 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-methods.ptx:481 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-methods.ptx:501 - added comma before nonrestrictive "in which case" clause
+pretext/array-lists/arraylist-methods.ptx:516 - added comma after sentence-initial "However"
+pretext/array-lists/arraylist-methods.ptx:859 - added comma after introductory if-clause
+pretext/array-lists/arraylist-methods.ptx:864 - added comma after long introductory clause
+pretext/array-lists/arraylist-methods.ptx:866 - added comma after introductory while-clause
+pretext/array-lists/arraylist-methods.ptx:874 - added comma after introductory because-clause
+pretext/array-lists/arraylist-methods.ptx:889 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-methods.ptx:917 - added closing comma of comma-opened interrupter (was leaving lone comma between subject and verb)
+pretext/array-lists/arraylist-methods.ptx:1124 - added comma after sentence-initial "However"
+pretext/array-lists/arraylist-practice.ptx:225 - added closing comma of comma-opened appositive
+pretext/array-lists/arraylist-practice.ptx:475 - added comma after conditional clause before "then"
+pretext/array-lists/arraylist-summary.ptx:15 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-summary.ptx:47 - added comma after "For instance"
+pretext/array-lists/arraylist-summary.ptx:82 - added comma after introductory if-clause
+pretext/array-lists/arraylist-summary.ptx:139 - added Oxford comma in three-item list
+pretext/array-lists/arraylist-traversal.ptx:26 - added comma before trailing nonrestrictive "though" clause
+pretext/array-lists/arraylist-traversal.ptx:48 - added comma after introductory when-clause
+pretext/array-lists/arraylist-traversal.ptx:63 - added comma separating parallel adverbial phrases
+pretext/array-lists/arraylist-traversal.ptx:132 - added comma between independent clauses joined by "but"
+pretext/array-lists/arraylist-traversal.ptx:133 - added comma after introductory if-clause
+pretext/array-lists/arraylist-traversal.ptx:206 - added comma after introductory prepositional phrase before if-clause
+pretext/array-lists/arraylist-traversal.ptx:214 - added comma after introductory if-clause
+pretext/array-lists/arraylist-traversal.ptx:218 - added comma between independent clauses joined by "but"
+pretext/array-lists/arraylist-traversal.ptx:233 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-traversal.ptx:233 - added comma after conditional clause
+pretext/array-lists/arraylist-traversal.ptx:234 - added comma after conditional clause
+pretext/array-lists/arraylist-traversal.ptx:235 - added comma after conditional clause
+pretext/array-lists/arraylist-traversal.ptx:303 - added comma after introductory if-clause
+pretext/array-lists/arraylist-traversal.ptx:304 - added comma before nonrestrictive "at which point" clause
+pretext/array-lists/arraylist-traversal.ptx:306 - added comma after conditional clause
+pretext/array-lists/arraylist-traversal.ptx:307 - added comma after "For example"
+pretext/array-lists/arraylist-traversal.ptx:325 - added comma after introductory clause
+pretext/array-lists/arraylist-traversal.ptx:327 - added comma between independent clauses joined by "but"
+pretext/array-lists/arraylist-traversal.ptx:404 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-traversal.ptx:404 - added comma after conditional clause
+pretext/array-lists/arraylist-traversal.ptx:407 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-traversal.ptx:778 - added comma between independent clauses joined by "and"
+pretext/array-lists/arraylist-traversal.ptx:786 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-traversal.ptx:834 - added comma before nonrestrictive "which" clause
+pretext/array-lists/arraylist-traversal.ptx:924 - added comma between independent clauses joined by "and"
+pretext/array-lists/toctree.ptx:8 - removed spurious comma between verb phrase and its complement
+pretext/array-lists/toctree.ptx:9 - added comma after sentence-initial "However"
+pretext/array-lists/toctree.ptx:21 - added comma before nonrestrictive "which" clause
+pretext/array-lists/toctree.ptx:24 - added comma between independent clauses joined by "and"
+pretext/array-lists/toctree.ptx:26 - added comma after long introductory if-clause
+pretext/array-lists/wrapper-classes.ptx:35 - added comma after introductory clause
+pretext/array-lists/wrapper-classes.ptx:52 - added comma after introductory if-clause
+pretext/array-lists/wrapper-classes.ptx:66 - added comma before nonrestrictive "which" clause
+pretext/array-lists/wrapper-classes.ptx:68 - added comma between independent clauses joined by "but"
+pretext/array-lists/wrapper-classes.ptx:100 - added comma before contrasting "whereas" clause
+pretext/array-lists/wrapper-classes.ptx:100 - added comma after embedded introductory if-clause
+pretext/array-lists/wrapper-classes.ptx:123 - added comma after introductory when-clause
+pretext/array-lists/wrapper-classes.ptx:125 - added comma after introductory if-clause
+pretext/array-lists/wrapper-classes.ptx:131 - set off nonrestrictive "called unboxing" appositive with paired commas
+pretext/array-lists/wrapper-classes.ptx:143 - added comma between independent clauses joined by "but"
+pretext/array-lists/wrapper-classes.ptx:149 - added comma after introductory phrase
+pretext/array-lists/wrapper-classes.ptx:153 - added comma before nonrestrictive "which" clause
+pretext/array-lists/wrapper-classes.ptx:359 - added comma after introductory if-clause
+pretext/array-lists/wrapper-classes.ptx:359 - added comma between independent clauses joined by "but"
+pretext/array-lists/wrapper-classes.ptx:376 - removed comma before "and" in compound predicate sharing one subject
+pretext/array-lists/wrapper-classes.ptx:376 - added comma between independent questions joined by "or"
+pretext/array-lists/wrapper-classes.ptx:406 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-algorithms.ptx:29 - added comma after "For instance" interrupter
+pretext/arrays/array-algorithms.ptx:35 - added comma after sentence adverb "Additionally"
+pretext/arrays/array-algorithms.ptx:35 - added comma before nonrestrictive "such as" phrase
+pretext/arrays/array-algorithms.ptx:37 - added comma before nonrestrictive "such as" phrase
+pretext/arrays/array-algorithms.ptx:42 - added comma after introductory phrase
+pretext/arrays/array-algorithms.ptx:54 - added comma after "For instance" interrupter
+pretext/arrays/array-algorithms.ptx:77 - added comma after introductory infinitive phrase
+pretext/arrays/array-algorithms.ptx:144 - added comma after introductory phrase
+pretext/arrays/array-algorithms.ptx:146 - added comma before "but" joining independent clauses
+pretext/arrays/array-algorithms.ptx:146 - added comma closing "rather than" phrase before the main clause
+pretext/arrays/array-algorithms.ptx:148 - added comma after introductory conditional clause
+pretext/arrays/array-algorithms.ptx:246 - added comma after long introductory conditional clause
+pretext/arrays/array-algorithms.ptx:291 - added comma before "but" joining independent clauses
+pretext/arrays/array-algorithms.ptx:326 - added comma before trailing participial phrase
+pretext/arrays/array-algorithms.ptx:368 - added comma after introductory dependent clause
+pretext/arrays/array-algorithms.ptx:374 - added comma before "but" joining independent clauses
+pretext/arrays/array-algorithms.ptx:401 - added comma after introductory dependent clause
+pretext/arrays/array-algorithms.ptx:402 - added comma before "but" joining independent clauses
+pretext/arrays/array-algorithms.ptx:405 - added comma after introductory "Because" clause
+pretext/arrays/array-algorithms.ptx:409 - added comma between independent clauses joined by "and"
+pretext/arrays/array-algorithms.ptx:410 - added comma before "but" joining independent clauses
+pretext/arrays/array-algorithms.ptx:414 - added comma after "For instance" interrupter
+pretext/arrays/array-algorithms.ptx:415 - removed comma between subject and verb
+pretext/arrays/array-algorithms.ptx:421 - added comma after introductory conditional clause
+pretext/arrays/array-algorithms.ptx:692 - added comma before "but" joining independent clauses
+pretext/arrays/array-algorithms.ptx:695 - added comma before "so" joining independent clauses
+pretext/arrays/array-algorithms.ptx:704 - added comma after introductory conditional clause
+pretext/arrays/array-algorithms.ptx:732 - added comma after long introductory infinitive phrase
+pretext/arrays/array-algorithms.ptx:737 - added comma after conditional clause before "then"
+pretext/arrays/array-algorithms.ptx:805 - added comma after introductory phrase
+pretext/arrays/array-algorithms.ptx:806 - added comma before "so" joining independent clauses
+pretext/arrays/array-algorithms.ptx:831 - added comma after conditional clause before "then"
+pretext/arrays/array-algorithms.ptx:833 - added comma between independent clauses joined by "and"
+pretext/arrays/array-algorithms.ptx:997 - added comma after "For instance" interrupter
+pretext/arrays/array-algorithms.ptx:1045 - added comma after sentence adverb "However"
+pretext/arrays/array-algorithms.ptx:1064 - added comma after introductory "Once" clause
+pretext/arrays/array-algorithms.ptx:1066 - added comma between independent clauses joined by "and"
+pretext/arrays/array-algorithms.ptx:1276 - added comma after conditional clause before "then"
+pretext/arrays/array-basics.ptx:41 - added comma to close the "such as" interrupter before the main clause
+pretext/arrays/array-basics.ptx:65 - added comma between independent clauses joined by "and"
+pretext/arrays/array-basics.ptx:67 - added comma before "but" joining independent clauses
+pretext/arrays/array-basics.ptx:70 - added comma before "so" joining independent clauses
+pretext/arrays/array-basics.ptx:105 - added comma after "For example" interrupter
+pretext/arrays/array-basics.ptx:106 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:130 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:131 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:137 - added comma after introductory dependent clause
+pretext/arrays/array-basics.ptx:154 - added comma after introductory infinitive phrase
+pretext/arrays/array-basics.ptx:188 - added comma after introductory dependent clause
+pretext/arrays/array-basics.ptx:212 - removed comma between subject and verb
+pretext/arrays/array-basics.ptx:213 - added comma before nonrestrictive participial phrase
+pretext/arrays/array-basics.ptx:214 - added comma before "but" joining independent clauses
+pretext/arrays/array-basics.ptx:270 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:300 - added comma after interjection "Yes"
+pretext/arrays/array-basics.ptx:361 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:417 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:443 - added comma after introductory phrase "If not"
+pretext/arrays/array-basics.ptx:448 - added comma after introductory dependent clause
+pretext/arrays/array-basics.ptx:449 - added comma before "but" joining independent clauses
+pretext/arrays/array-basics.ptx:450 - added comma closing the "starting at 0" phrase before the main clause
+pretext/arrays/array-basics.ptx:455 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:490 - added comma after introductory dependent clause
+pretext/arrays/array-basics.ptx:635 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:667 - added comma before "or" joining independent clauses
+pretext/arrays/array-basics.ptx:676 - added comma after "For instance" interrupter
+pretext/arrays/array-basics.ptx:696 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:774 - added comma before "but" joining independent clauses
+pretext/arrays/array-basics.ptx:778 - added comma after long introductory "because" clause
+pretext/arrays/array-basics.ptx:822 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-basics.ptx:845 - added comma after introductory phrase
+pretext/arrays/array-basics.ptx:846 - added comma between independent clauses joined by "and"
+pretext/arrays/array-basics.ptx:961 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-traversal.ptx:260 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-traversal.ptx:294 - added comma after introductory phrase
+pretext/arrays/array-traversal.ptx:298 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-traversal.ptx:324 - added comma after sentence adverb "However"
+pretext/arrays/array-traversal.ptx:329 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-traversal.ptx:342 - added comma after long introductory "since" clause
+pretext/arrays/array-traversal.ptx:344 - added comma after introductory infinitive phrase
+pretext/arrays/array-traversal.ptx:346 - added comma before nonrestrictive "which" clause
+pretext/arrays/array-traversal.ptx:347 - added comma before "whereas" contrast clause
+pretext/arrays/array-traversal.ptx:394 - added paired commas setting off nonrestrictive "which" clause
+pretext/arrays/array-traversal.ptx:606 - added comma before nonrestrictive "such as" phrase
+pretext/arrays/array-traversal.ptx:618 - added comma before "but" joining independent clauses
+pretext/arrays/array-traversal.ptx:633 - added comma between independent clauses joined by "and"
+pretext/arrays/array-traversal.ptx:654 - added comma closing "given two arrays" before the main clause
+pretext/arrays/array-traversal.ptx:784 - added comma before nonrestrictive "which" clause
+pretext/arrays/toctree.ptx:15 - added comma before nonrestrictive "which" clause
+pretext/arrays/toctree.ptx:26 - added comma between independent clauses joined by "and"
+pretext/arrays/toctree.ptx:45 - added comma before "but" joining independent clauses
+pretext/arrays/toctree.ptx:53 - added comma after introductory infinitive phrase
+pretext/arrays/toctree.ptx:53 - added comma before nonrestrictive "which" clause
+pretext/arrays/toctree.ptx:56 - added comma between independent clauses joined by "and"
+pretext/arrays/toctree.ptx:57 - added comma after introductory infinitive phrase
+pretext/arrays/toctree.ptx:69 - added comma after long introductory "when" clause
+pretext/arrays/two-dimensional-array-algorithms.ptx:10 - added comma after introductory phrase
+pretext/arrays/two-dimensional-array-algorithms.ptx:65 - added comma before nonrestrictive "which" clause
+pretext/arrays/two-dimensional-array-algorithms.ptx:68 - added comma before nonrestrictive "which" clause
+pretext/arrays/two-dimensional-array-algorithms.ptx:69 - added comma after introductory infinitive phrase
+pretext/arrays/two-dimensional-array-algorithms.ptx:86 - added comma in "X, not Y" contrast
+pretext/arrays/two-dimensional-array-algorithms.ptx:253 - added comma after introductory "Since" clause
+pretext/arrays/two-dimensional-array-algorithms.ptx:263 - removed comma between subject and verb
+pretext/arrays/two-dimensional-array-algorithms.ptx:360 - added comma after sentence adverb "Relatedly"
+pretext/arrays/two-dimensional-array-algorithms.ptx:364 - added comma before "and" balancing paired "On the left/on the right" phrases
+pretext/arrays/two-dimensional-array-algorithms.ptx:519 - added comma before nonrestrictive "such as" phrase
+pretext/arrays/two-dimensional-array-algorithms.ptx:560 - added comma before "so" joining independent clauses
+pretext/arrays/two-dimensional-arrays.ptx:21 - added comma after long introductory phrase
+pretext/arrays/two-dimensional-arrays.ptx:27 - added comma after "For instance" interrupter
+pretext/arrays/two-dimensional-arrays.ptx:42 - added comma before nonrestrictive "which" clause
+pretext/arrays/two-dimensional-arrays.ptx:43 - added comma before nonrestrictive "which" clause
+pretext/arrays/two-dimensional-arrays.ptx:58 - added comma after introductory phrase, parallel to preceding sentence
+pretext/arrays/two-dimensional-arrays.ptx:78 - added comma before "so" joining independent clauses
+pretext/arrays/two-dimensional-arrays.ptx:91 - added comma between coordinated clauses joined by "and"
+pretext/arrays/two-dimensional-arrays.ptx:91 - added comma after introductory "when" clause
+pretext/arrays/two-dimensional-arrays.ptx:113 - added comma before "while" contrast clause
+pretext/arrays/two-dimensional-arrays.ptx:124 - added comma before "while" contrast clause
+pretext/arrays/two-dimensional-arrays.ptx:132 - added comma after introductory phrase
+pretext/arrays/two-dimensional-arrays.ptx:147 - added comma after introductory phrase
+pretext/arrays/two-dimensional-arrays.ptx:150 - removed comma between subject and verb
+pretext/arrays/two-dimensional-arrays.ptx:200 - added comma before nonrestrictive "which" clause
+pretext/arrays/two-dimensional-arrays.ptx:204 - added comma after introductory phrase
+pretext/arrays/two-dimensional-arrays.ptx:624 - added comma after introductory phrase
+pretext/arrays/two-dimensional-arrays.ptx:721 - added comma before "then" joining sequential imperatives
+pretext/arrays/two-dimensional-arrays.ptx:820 - added comma before elliptical "then" phrase
+pretext/arrays/two-dimensional-arrays.ptx:888 - added comma between independent clauses joined by "and"
+pretext/arrays/two-dimensional-arrays.ptx:891 - added comma after "as long as" conditional clause
+pretext/arrays/two-dimensional-arrays.ptx:901 - added closing comma of nonrestrictive appositive
+pretext/arrays/two-dimensional-arrays.ptx:974 - added comma before "but" joining independent clauses
+pretext/arrays/two-dimensional-arrays.ptx:1001 - added comma before "so" joining independent clauses
+pretext/arrays/two-dimensional-arrays.ptx:1029 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/alogrithm-building-blocks.ptx:19 - added comma before "but" joining independent clauses
+pretext/booleans-and-conditionals/alogrithm-building-blocks.ptx:19 - added comma before "and" joining independent clauses
+pretext/booleans-and-conditionals/alogrithm-building-blocks.ptx:29 - added comma before nonrestrictive "each of which" clause
+pretext/booleans-and-conditionals/alogrithm-building-blocks.ptx:62 - added comma after introductory if-clause
+pretext/booleans-and-conditionals/alogrithm-building-blocks.ptx:83 - added comma before "but" joining independent clauses
+pretext/booleans-and-conditionals/alogrithm-building-blocks.ptx:176 - added comma after introductory dependent clause
+pretext/booleans-and-conditionals/alogrithm-building-blocks.ptx:193 - added comma after introductory dependent clause
+pretext/booleans-and-conditionals/alogrithm-building-blocks.ptx:381 - removed comma before "and" in a two-item pair
+pretext/booleans-and-conditionals/boolean-expressions.ptx:51 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:126 - added commas around "however" interrupter
+pretext/booleans-and-conditionals/boolean-expressions.ptx:131 - added comma before contrastive "not" phrase
+pretext/booleans-and-conditionals/boolean-expressions.ptx:149 - added comma after introductory "As we’ll see" clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:199 - added comma before "as well as" closing the list
+pretext/booleans-and-conditionals/boolean-expressions.ptx:209 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:225 - added comma before "so" joining independent clauses
+pretext/booleans-and-conditionals/boolean-expressions.ptx:226 - added comma after "even though" dependent clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:241 - added comma after introductory phrase
+pretext/booleans-and-conditionals/boolean-expressions.ptx:357 - added comma after introductory to-clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:398 - added comma before contrastive "not" phrase
+pretext/booleans-and-conditionals/boolean-expressions.ptx:488 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:497 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:530 - added comma between contrasted parallel clauses
+pretext/booleans-and-conditionals/boolean-expressions.ptx:609 - added comma after introductory if-clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:770 - added Oxford comma
+pretext/booleans-and-conditionals/boolean-expressions.ptx:781 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:824 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:826 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:829 - added comma before "but" joining independent clauses
+pretext/booleans-and-conditionals/boolean-expressions.ptx:872 - added closing comma of appositive "logical not"
+pretext/booleans-and-conditionals/boolean-expressions.ptx:872 - removed comma between preposition "of" and its object
+pretext/booleans-and-conditionals/boolean-expressions.ptx:988 - added comma after introductory if-clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:989 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:1116 - added comma before "and" joining independent clauses
+pretext/booleans-and-conditionals/boolean-expressions.ptx:1141 - added comma after introductory when-clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:1176 - added comma after introductory since-clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:1191 - added comma after introductory since-clause
+pretext/booleans-and-conditionals/boolean-expressions.ptx:1192 - added comma before "so" joining independent clauses
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:36 - added comma before "and" joining independent clauses
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:44 - added comma after introductory dependent clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:45 - added comma before "and" joining independent clauses
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:48 - added comma before "so" joining independent clauses
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:49 - added comma after "For example"
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:51 - added comma after introductory if-clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:56 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:67 - added comma after introductory dependent clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:84 - added comma after introductory when-clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:118 - added comma after introductory "in order for" phrase
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:119 - added closing comma of "i.e." appositive
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:121 - added comma after if-clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:134 - added comma before "so" joining clauses
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:146 - added comma after introductory since-clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:195 - added comma before "but" joining independent clauses
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:213 - added comma before "but" joining independent clauses
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:229 - added comma after "For instance"
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:401 - added comma before "and" joining independent clauses
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:402 - added comma after if-clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:407 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:415 - added comma after introductory to-phrase
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:423 - added comma after "For instance"
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:423 - added comma after introductory to-clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:482 - added comma after introductory since-clause
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:585 - added comma after introductory "As you can see" phrase
+pretext/booleans-and-conditionals/boolean-manipulation.ptx:587 - added comma before "so" joining independent clauses
+pretext/booleans-and-conditionals/if-statements.ptx:50 - added comma after sentence-initial "However"
+pretext/booleans-and-conditionals/if-statements.ptx:94 - added closing comma of "as we'll see" interrupter
+pretext/booleans-and-conditionals/if-statements.ptx:114 - added comma before "and" joining independent clauses
+pretext/booleans-and-conditionals/if-statements.ptx:127 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/if-statements.ptx:244 - added comma after introductory if-clause
+pretext/booleans-and-conditionals/if-statements.ptx:354 - added comma before "but" joining independent clauses
+pretext/booleans-and-conditionals/if-statements.ptx:361 - added comma after introductory dependent clause
+pretext/booleans-and-conditionals/if-statements.ptx:428 - added comma before "but" joining independent clauses
+pretext/booleans-and-conditionals/if-statements.ptx:464 - added comma after introductory when-clause
+pretext/booleans-and-conditionals/if-statements.ptx:543 - added comma before "so" joining independent clauses
+pretext/booleans-and-conditionals/if-statements.ptx:827 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/if-statements.ptx:956 - added comma before "so" joining independent clauses
+pretext/booleans-and-conditionals/if-statements.ptx:1164 - added comma before nonrestrictive "which" clause (two identical feedback occurrences)
+pretext/booleans-and-conditionals/if-statements.ptx:1177 - added comma before nonrestrictive "which" clause (second of two identical feedback occurrences)
+pretext/booleans-and-conditionals/if-traps.ptx:45 - added comma after sentence-initial "However"
+pretext/booleans-and-conditionals/if-traps.ptx:46 - added closing comma of "say maybe a println" interrupter
+pretext/booleans-and-conditionals/if-traps.ptx:47 - added comma after introductory conditional clause
+pretext/booleans-and-conditionals/if-traps.ptx:70 - added comma before "and" joining independent clauses
+pretext/booleans-and-conditionals/if-traps.ptx:152 - removed comma between "like" and its object
+pretext/booleans-and-conditionals/if-traps.ptx:166 - added comma before "and" joining independent clauses
+pretext/booleans-and-conditionals/if-traps.ptx:198 - added commas around interrupting "if it is" clause
+pretext/booleans-and-conditionals/if-traps.ptx:203 - added comma before "but" joining independent clauses
+pretext/booleans-and-conditionals/if-traps.ptx:215 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/if-traps.ptx:234 - added comma before nonrestrictive "meaning" phrase
+pretext/booleans-and-conditionals/if-traps.ptx:239 - added comma before "but" joining independent clauses
+pretext/booleans-and-conditionals/if-traps.ptx:273 - added comma before nonrestrictive "which" clause
+pretext/booleans-and-conditionals/if-traps.ptx:315 - added comma after introductory if-clause
+pretext/booleans-and-conditionals/if-traps.ptx:317 - added comma before "then" after if-clause
+pretext/booleans-and-conditionals/if-traps.ptx:331 - added comma setting off trailing purpose phrase
+pretext/booleans-and-conditionals/toctree.ptx:19 - added comma before nonrestrictive "which" clause
+pretext/classes/anatomy-of-class.ptx:13 - added comma before "but" joining independent clauses
+pretext/classes/anatomy-of-class.ptx:22 - added comma before nonrestrictive appositive
+pretext/classes/anatomy-of-class.ptx:75 - added comma before "and" joining independent clauses
+pretext/classes/anatomy-of-class.ptx:139 - added comma before nonrestrictive "which" clause
+pretext/classes/anatomy-of-class.ptx:153 - added comma before nonrestrictive "which" clause
+pretext/classes/anatomy-of-class.ptx:173 - added comma before "and" joining independent clauses
+pretext/classes/anatomy-of-class.ptx:177 - added comma before "so" joining independent clauses
+pretext/classes/anatomy-of-class.ptx:183 - added comma before "but" joining independent clauses
+pretext/classes/anatomy-of-class.ptx:203 - added comma before "and" joining independent clauses
+pretext/classes/anatomy-of-class.ptx:208 - removed comma splitting two-item appositive pair
+pretext/classes/anatomy-of-class.ptx:238 - added comma before nonrestrictive "which" clause
+pretext/classes/anatomy-of-class.ptx:245 - added comma before "and" joining independent clauses
+pretext/classes/constructors.ptx:27 - added comma before "but" joining independent clauses
+pretext/classes/constructors.ptx:51 - added comma after long introductory dependent clause
+pretext/classes/constructors.ptx:62 - removed comma before parenthesis
+pretext/classes/constructors.ptx:63 - removed comma between subject and verb
+pretext/classes/constructors.ptx:63 - removed comma before parenthesis
+pretext/classes/constructors.ptx:65 - added comma before nonrestrictive "which" clause
+pretext/classes/constructors.ptx:79 - added comma after introductory dependent clause
+pretext/classes/constructors.ptx:254 - added comma before nonrestrictive "as well as" phrase
+pretext/classes/constructors.ptx:289 - added comma before "so" joining independent clauses
+pretext/classes/constructors.ptx:300 - added comma before "so" joining independent clauses
+pretext/classes/constructors.ptx:307 - added comma before "but" joining independent clauses
+pretext/classes/constructors.ptx:355 - added comma before nonrestrictive "which" clause
+pretext/classes/constructors.ptx:374 - added comma after introductory dependent clause
+pretext/classes/constructors.ptx:375 - added comma before "and" joining independent clauses
+pretext/classes/constructors.ptx:398 - added closing comma of "such as" parenthetical before main clause
+pretext/classes/constructors.ptx:400 - added comma before nonrestrictive "which" clause
+pretext/classes/constructors.ptx:415 - added comma after introductory phrase
+pretext/classes/constructors.ptx:420 - added comma before "and" joining independent clauses
+pretext/classes/constructors.ptx:425 - added comma after introductory phrase
+pretext/classes/constructors.ptx:431 - added comma before nonrestrictive "which" clause
+pretext/classes/constructors.ptx:458 - added comma before "but" joining independent clauses
+pretext/classes/constructors.ptx:478 - added comma after sentence-initial "However"
+pretext/classes/constructors.ptx:479 - removed comma before restrictive "that" clause
+pretext/classes/constructors.ptx:493 - added comma after introductory dependent clause
+pretext/classes/constructors.ptx:494 - added comma before nonrestrictive "which" clause
+pretext/classes/constructors.ptx:497 - added comma after long introductory phrase
+pretext/classes/constructors.ptx:654 - added comma before nonrestrictive "which" clause
+pretext/classes/constructors.ptx:812 - added comma before "but" joining independent clauses
+pretext/classes/constructors.ptx:851 - added opening comma of interrupting phrase (closing comma already present)
+pretext/classes/constructors.ptx:1167 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-methods.ptx:48 - added comma before "but" joining independent clauses
+pretext/classes/instance-methods.ptx:79 - added comma after introductory phrase
+pretext/classes/instance-methods.ptx:88 - added comma after introductory conditional clause
+pretext/classes/instance-methods.ptx:90 - added comma before "but" joining independent clauses
+pretext/classes/instance-methods.ptx:98 - added comma after introductory phrase
+pretext/classes/instance-methods.ptx:101 - added comma before "so" joining independent clauses
+pretext/classes/instance-methods.ptx:118 - added comma before "so" joining independent clauses
+pretext/classes/instance-methods.ptx:211 - removed comma before restrictive "that" clause
+pretext/classes/instance-methods.ptx:211 - removed comma before "and" in two-item pair of relative clauses
+pretext/classes/instance-methods.ptx:215 - added comma before "and" joining independent clauses
+pretext/classes/instance-methods.ptx:231 - added comma after conditional clause before "then"
+pretext/classes/instance-methods.ptx:232 - added comma before "but" joining independent clauses
+pretext/classes/instance-methods.ptx:233 - added comma after introductory dependent clause
+pretext/classes/instance-methods.ptx:246 - added comma before nonrestrictive "rather than" phrase
+pretext/classes/instance-methods.ptx:267 - added comma before "and" joining independent clauses
+pretext/classes/instance-methods.ptx:274 - added comma before "and" joining independent clauses
+pretext/classes/instance-methods.ptx:367 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-methods.ptx:445 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-methods.ptx:490 - added comma before "and" joining independent clauses
+pretext/classes/instance-methods.ptx:533 - added comma before "so" joining independent clauses
+pretext/classes/instance-methods.ptx:629 - added comma after introductory dependent clause
+pretext/classes/instance-methods.ptx:711 - added comma after introductory phrase
+pretext/classes/instance-methods.ptx:717 - added comma before "or" joining independent clauses
+pretext/classes/instance-methods.ptx:750 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-methods.ptx:836 - added comma after dependent clause
+pretext/classes/instance-methods.ptx:861 - added comma before "but" joining independent clauses
+pretext/classes/instance-methods.ptx:1241 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-methods.ptx:1241 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-methods.ptx:1285 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-methods.ptx:1779 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-methods.ptx:2581 - added comma before "and" joining independent clauses (in two identical feedback blocks)
+pretext/classes/instance-methods.ptx:2594 - added comma before "and" joining independent clauses (second of two identical feedback blocks)
+pretext/classes/instance-variables.ptx:11 - added comma before "but" joining independent clauses
+pretext/classes/instance-variables.ptx:11 - added comma before "and" joining independent clauses
+pretext/classes/instance-variables.ptx:12 - added comma after introductory conditional clause
+pretext/classes/instance-variables.ptx:13 - added comma before "but" joining independent clauses
+pretext/classes/instance-variables.ptx:16 - added comma before "and" joining independent clauses
+pretext/classes/instance-variables.ptx:73 - added comma after introductory concessive clause
+pretext/classes/instance-variables.ptx:136 - added comma after introductory dependent clause
+pretext/classes/instance-variables.ptx:137 - added comma before "so" joining independent clauses
+pretext/classes/instance-variables.ptx:146 - added comma before "but" joining independent clauses
+pretext/classes/instance-variables.ptx:155 - added comma before "but" joining independent clauses
+pretext/classes/instance-variables.ptx:158 - added comma before "so" joining independent clauses
+pretext/classes/instance-variables.ptx:158 - added comma after conditional clause
+pretext/classes/instance-variables.ptx:189 - added comma before "so" joining independent clauses
+pretext/classes/instance-variables.ptx:207 - added comma before "but" joining independent clauses
+pretext/classes/instance-variables.ptx:207 - added comma after elliptical conditional clause
+pretext/classes/instance-variables.ptx:212 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-variables.ptx:219 - added comma before "but" joining independent clauses
+pretext/classes/instance-variables.ptx:220 - added comma before "so" joining independent clauses
+pretext/classes/instance-variables.ptx:241 - added comma after introductory dependent clause
+pretext/classes/instance-variables.ptx:255 - added comma after introductory conditional clause
+pretext/classes/instance-variables.ptx:275 - added comma after long introductory dependent clause
+pretext/classes/instance-variables.ptx:276 - added comma before nonrestrictive "which" clause
+pretext/classes/instance-variables.ptx:286 - added comma after introductory conditional clause
+pretext/classes/instance-variables.ptx:287 - added comma before "but" joining independent clauses
+pretext/classes/instance-variables.ptx:288 - added comma after introductory dependent clause
+pretext/classes/instance-variables.ptx:309 - added comma before "and" joining independent clauses
+pretext/classes/instance-variables.ptx:319 - added comma after long conditional clause
+pretext/classes/instance-variables.ptx:331 - added comma after introductory conditional clause
+pretext/classes/toctree.ptx:19 - added comma after introductory clause
+pretext/classes/toctree.ptx:38 - removed comma between subject and verb
+pretext/free-response/frq1a-conditions-and-methods-part2.ptx:933 - added comma between independent clauses joined by "and"
+pretext/free-response/frq1a-conditions-and-methods-part2.ptx:962 - added comma between independent clauses joined by "and"
+pretext/free-response/frq1a-conditions-and-methods-part2.ptx:975 - added comma between independent clauses joined by "and"
+pretext/free-response/frq1a-conditions-and-methods-part2.ptx:980 - added comma between independent clauses joined by "and"
+pretext/free-response/frq1a-loops-and-iteration-part3.ptx:68 - added comma between independent clauses joined by "and"
+pretext/free-response/frq1a-methods-and-control-part1.ptx:303 - added comma before nonrestrictive "which" clause
+pretext/free-response/frq2-class-design-hidden-word-part3.ptx:90 - added closing comma of nonrestrictive appositive
+pretext/free-response/frq2-class-design-signatures-part2.ptx:67 - added comma between independent clauses joined by "and"
+pretext/free-response/frq3-arraylist-scramble-strings-part2.ptx:476 - added comma after introductory dependent clause before "then"
+pretext/free-response/frq3-arraylist-scramble-strings-part2.ptx:478 - added comma after introductory dependent clause
+pretext/free-response/frq3-arraylist-scramble-strings-part2.ptx:480 - added comma between independent clauses joined by "but"
+pretext/free-response/frq3-arraylist-student-scores-part1.ptx:53 - added comma between independent clauses joined by "and"
+pretext/free-response/frq3-arraylist-student-scores-part1.ptx:112 - added comma between independent clauses joined by "and"
+pretext/free-response/frq4-2d-array-puzzle-game-part3.ptx:91 - added comma between independent clauses joined by "and"
+pretext/free-response/frq4-2d-array-puzzle-game-part3.ptx:183 - added comma between independent clauses joined by "and"
+pretext/free-response/frq4-2d-array-puzzle-game-part3.ptx:186 - added comma between independent clauses joined by "and"
+pretext/free-response/frq4-2d-array-telescope-scan-part1.ptx:147 - removed comma between subject and verb
+pretext/free-response/frq4-2d-array-telescope-scan-part1.ptx:168 - removed comma between subject and verb
+pretext/free-response/frq5-array-tester-b.ptx:17 - removed spurious comma between adverb and verb in compound predicate
+pretext/free-response/frq6-number-group-b.ptx:25 - added comma before nonrestrictive "which" clause
+pretext/free-response/frq6-number-group-c.ptx:63 - added comma before nonrestrictive "which" clause
+pretext/free-response/toctree.ptx:15 - added comma between independent clauses joined by "so"
+pretext/frontmatter/about-csa.ptx:8 - added comma before nonrestrictive "which" clause
+pretext/frontmatter/csawesome2-preface.ptx:12 - added comma before nonrestrictive "who" clause after proper name
+pretext/frontmatter/csawesome2-preface.ptx:84 - added comma before nonrestrictive "who" clause after proper name
+pretext/frontmatter/toctree.ptx:6 - added comma before nonrestrictive appositive
+pretext/frontmatter/toctree.ptx:6 - added comma after introductory dependent clause
+pretext/frontmatter/toctree.ptx:16 - added comma after introductory dependent clause
+pretext/frontmatter/toctree.ptx:24 - added comma before "however" interrupter
+pretext/frontmatter/toctree.ptx:26 - added comma between independent clauses joined by "but"
+pretext/introduction/csp-transition.ptx:7 - added comma after introductory dependent clause
+pretext/introduction/csp-transition.ptx:12 - added comma between independent clauses joined by "but"
+pretext/introduction/csp-transition.ptx:19 - added comma after introductory dependent clause
+pretext/introduction/csp-transition.ptx:51 - added comma before nonrestrictive "which" clause
+pretext/introduction/csp-transition.ptx:60 - added comma before nonrestrictive "which" clause
+pretext/introduction/debugging-and-being-stuck.ptx:9 - added comma after sentence-initial "However"
+pretext/introduction/debugging-and-being-stuck.ptx:16 - added comma between independent clauses joined by "and"
+pretext/introduction/debugging-and-being-stuck.ptx:23 - added comma after long dependent clause before main clause
+pretext/introduction/debugging-and-being-stuck.ptx:41 - added comma after "After all" interrupter to prevent misreading
+pretext/introduction/debugging-and-being-stuck.ptx:43 - added comma before nonrestrictive "which" clause
+pretext/introduction/debugging-and-being-stuck.ptx:102 - added comma after long introductory phrase
+pretext/introduction/debugging-and-being-stuck.ptx:211 - added comma between independent clauses joined by "but"
+pretext/introduction/debugging-and-being-stuck.ptx:212 - added comma between independent clauses joined by "so"
+pretext/introduction/debugging-and-being-stuck.ptx:227 - added comma after introductory dependent clause
+pretext/introduction/debugging-and-being-stuck.ptx:227 - added comma between independent clauses joined by "but"
+pretext/introduction/debugging-and-being-stuck.ptx:242 - added comma between independent clauses joined by "but"
+pretext/introduction/debugging-and-being-stuck.ptx:243 - added comma after introductory dependent clause
+pretext/introduction/debugging-and-being-stuck.ptx:243 - added comma between independent clauses joined by "but"
+pretext/introduction/debugging-and-being-stuck.ptx:244 - added comma after "For instance" interrupter
+pretext/introduction/debugging-and-being-stuck.ptx:246 - added comma between independent clauses joined by "but"
+pretext/introduction/debugging-and-being-stuck.ptx:258 - added comma after introductory dependent clause
+pretext/introduction/debugging-and-being-stuck.ptx:401 - added comma before nonrestrictive "which" clause
+pretext/introduction/debugging-and-being-stuck.ptx:429 - added comma between independent clauses joined by "so"
+pretext/introduction/growth-mindset.ptx:29 - added comma after introductory dependent clause
+pretext/introduction/growth-mindset.ptx:31 - added comma after introductory dependent clause
+pretext/introduction/intro-to-java.ptx:48 - added comma between independent clauses joined by "and"
+pretext/introduction/intro-to-java.ptx:50 - added comma after introductory dependent clause
+pretext/introduction/intro-to-java.ptx:59 - added comma before nonrestrictive "which" clause
+pretext/introduction/intro-to-java.ptx:82 - added comma after long introductory phrase
+pretext/introduction/intro-to-java.ptx:83 - added comma between independent clauses joined by "but"
+pretext/introduction/intro-to-java.ptx:142 - added comma before nonrestrictive "which" clause
+pretext/introduction/intro-to-java.ptx:144 - removed comma between subject and verb
+pretext/introduction/intro-to-java.ptx:145 - removed spurious comma after conjunction "while"
+pretext/introduction/intro-to-java.ptx:145 - removed comma between subject and verb
+pretext/introduction/intro-to-java.ptx:148 - added closing comma of interrupting phrase before verb
+pretext/introduction/intro-to-java.ptx:167 - added comma after long introductory phrase
+pretext/introduction/intro-to-java.ptx:185 - added closing comma of interrupting phrase before verb
+pretext/introduction/intro-to-java.ptx:198 - added comma after introductory dependent clause
+pretext/introduction/intro-to-java.ptx:209 - added comma after introductory dependent clause
+pretext/introduction/intro-to-java.ptx:370 - added comma before nonrestrictive "which" clause
+pretext/introduction/intro-to-java.ptx:383 - removed comma between subject and verb
+pretext/introduction/intro-to-java.ptx:389 - added comma between independent clauses joined by "but"
+pretext/introduction/intro-to-java.ptx:438 - added comma before nonrestrictive "which" clause
+pretext/introduction/intro-to-java.ptx:445 - added comma after introductory dependent clause
+pretext/introduction/intro-to-java.ptx:468 - added comma after introductory dependent clause
+pretext/introduction/java-ides.ptx:37 - added comma before nonrestrictive "which" clause
+pretext/introduction/java-ides.ptx:61 - added comma before nonrestrictive appositive
+pretext/introduction/java-ides.ptx:133 - added comma before nonrestrictive "which" clause
+pretext/introduction/java-ides.ptx:168 - removed comma before "and" in compound predicate sharing one subject
+pretext/loops/for-loops.ptx:12 - added comma before "but" joining independent clauses
+pretext/loops/for-loops.ptx:23 - added comma after introductory clause
+pretext/loops/for-loops.ptx:25 - added comma before "but" joining independent clauses
+pretext/loops/for-loops.ptx:97 - added comma after introductory clause
+pretext/loops/for-loops.ptx:98 - added comma after introductory clause
+pretext/loops/for-loops.ptx:99 - added comma after introductory clause
+pretext/loops/for-loops.ptx:113 - added comma after introductory clause, matching parallel clause
+pretext/loops/for-loops.ptx:169 - added closing comma of "by looking at the loop header" interrupter
+pretext/loops/for-loops.ptx:172 - added comma after introductory clause
+pretext/loops/for-loops.ptx:173 - added comma before "and" joining independent clauses
+pretext/loops/for-loops.ptx:298 - added comma before "and" joining independent clauses
+pretext/loops/for-loops.ptx:407 - added comma after introductory "Since" clause
+pretext/loops/for-loops.ptx:434 - added comma after introductory clause
+pretext/loops/for-loops.ptx:474 - added opening comma of nonrestrictive "which" clause
+pretext/loops/for-loops.ptx:475 - added closing comma of nonrestrictive "which" clause
+pretext/loops/for-loops.ptx:545 - added comma after introductory clause
+pretext/loops/for-loops.ptx:842 - added comma before "and" joining independent clauses
+pretext/loops/loop-algorithms.ptx:26 - added comma before nonrestrictive "which" clause
+pretext/loops/loop-algorithms.ptx:47 - added comma after introductory clause
+pretext/loops/loop-algorithms.ptx:77 - added comma before nonrestrictive "such as" phrase
+pretext/loops/loop-algorithms.ptx:105 - added comma before "and" joining independent clauses
+pretext/loops/loop-algorithms.ptx:106 - added comma after introductory clause
+pretext/loops/loop-algorithms.ptx:152 - added comma after introductory clause
+pretext/loops/loop-algorithms.ptx:158 - added comma before contrastive "while" clause
+pretext/loops/loop-algorithms.ptx:193 - added comma after "For instance" interrupter
+pretext/loops/loop-algorithms.ptx:300 - added comma before "or" joining independent imperative clauses
+pretext/loops/loop-algorithms.ptx:415 - added comma before "but" joining independent clauses
+pretext/loops/loop-algorithms.ptx:416 - added comma before "and" joining independent clauses
+pretext/loops/loop-algorithms.ptx:417 - added comma before trailing "though" clause
+pretext/loops/loop-algorithms.ptx:482 - added comma after introductory clause
+pretext/loops/loop-algorithms.ptx:486 - added comma after "For example" interrupter
+pretext/loops/loop-algorithms.ptx:488 - removed comma between verb and its object clause
+pretext/loops/loop-analysis.ptx:36 - added comma before "and" joining independent clauses
+pretext/loops/loop-analysis.ptx:42 - added comma before nonrestrictive "which" clause
+pretext/loops/loop-analysis.ptx:46 - added comma after introductory clause
+pretext/loops/loop-analysis.ptx:52 - added comma after introductory "If so"
+pretext/loops/loop-analysis.ptx:84 - added closing comma of appositive
+pretext/loops/loop-analysis.ptx:89 - added comma before "so" joining independent clauses
+pretext/loops/loop-analysis.ptx:102 - added comma after introductory clause
+pretext/loops/loop-analysis.ptx:190 - added comma after "For instance" interrupter
+pretext/loops/loop-analysis.ptx:190 - added comma after introductory "if" clause
+pretext/loops/loop-analysis.ptx:192 - added comma after introductory clause
+pretext/loops/loop-analysis.ptx:511 - added comma before "so" joining independent clauses
+pretext/loops/loop-analysis.ptx:513 - added comma before "so" joining independent clauses
+pretext/loops/loop-analysis.ptx:596 - added comma before nonrestrictive "which" clause
+pretext/loops/loop-analysis.ptx:605 - added comma before "and" joining independent clauses
+pretext/loops/loop-analysis.ptx:606 - added comma after introductory phrase
+pretext/loops/loop-analysis.ptx:622 - added comma before "but" joining independent clauses
+pretext/loops/loop-analysis.ptx:647 - added comma after introductory phrase
+pretext/loops/loop-analysis.ptx:647 - added closing comma of "i.e." interrupter before "and fill in"
+pretext/loops/loop-analysis.ptx:672 - added comma after introductory clause
+pretext/loops/loop-analysis.ptx:844 - added comma after introductory clause
+pretext/loops/loop-analysis.ptx:845 - added comma before "so" joining independent clauses
+pretext/loops/loop-analysis.ptx:1029 - added comma before "and" joining independent clauses
+pretext/loops/loop-analysis.ptx:1030 - added comma before nonrestrictive "which" clause
+pretext/loops/loop-analysis.ptx:1036 - added comma after introductory "once" clause
+pretext/loops/loop-analysis.ptx:1039 - added comma after introductory clause
+pretext/loops/loop-analysis.ptx:1041 - added comma after introductory phrase
+pretext/loops/loop-analysis.ptx:1047 - added comma after "However" sentence adverb
+pretext/loops/loop-analysis.ptx:1052 - added comma before nonrestrictive "in which case" clause
+pretext/loops/loop-analysis.ptx:1117 - added comma before "so" joining independent clauses
+pretext/loops/loop-analysis.ptx:1200 - added comma before "so" joining independent clauses
+pretext/loops/loop-analysis.ptx:1200 - added comma before "and" joining independent clauses
+pretext/loops/loop-analysis.ptx:1201 - added comma before "so" joining independent clauses
+pretext/loops/nested-loops.ptx:13 - added comma before "and" joining independent clauses
+pretext/loops/nested-loops.ptx:22 - added comma after "for example" interrupter
+pretext/loops/nested-loops.ptx:117 - added comma before "so" joining independent clauses
+pretext/loops/nested-loops.ptx:118 - added comma before "and" joining independent clauses
+pretext/loops/nested-loops.ptx:118 - added comma before "so" joining independent clauses
+pretext/loops/nested-loops.ptx:173 - added comma before "so" joining independent clauses
+pretext/loops/nested-loops.ptx:174 - added comma before "and" joining independent clauses
+pretext/loops/nested-loops.ptx:174 - added comma before elliptical "so" result clause
+pretext/loops/nested-loops.ptx:212 - removed spurious comma after conjunction "But"
+pretext/loops/nested-loops.ptx:342 - added comma before "and" joining independent clauses
+pretext/loops/while-loops.ptx:15 - added comma before "so" joining independent clauses
+pretext/loops/while-loops.ptx:16 - added closing comma of nonrestrictive "which" clause
+pretext/loops/while-loops.ptx:80 - added comma before contrastive "where" clause
+pretext/loops/while-loops.ptx:180 - added comma after introductory clause
+pretext/loops/while-loops.ptx:437 - added comma before "so" joining independent clauses
+pretext/loops/while-loops.ptx:456 - added comma before "but" joining independent clauses
+pretext/loops/while-loops.ptx:472 - added comma after introductory "although" clause
+pretext/loops/while-loops.ptx:473 - added comma before "and" joining independent clauses
+pretext/loops/while-loops.ptx:474 - added comma before nonrestrictive "which" clause
+pretext/loops/while-loops.ptx:509 - added closing comma of appositive before "or"
+pretext/loops/while-loops.ptx:531 - added closing comma of appositive phrase
+pretext/loops/while-loops.ptx:574 - added comma before "but" joining independent clauses
+pretext/loops/while-loops.ptx:575 - added comma before "and" joining independent clauses
+pretext/loops/while-loops.ptx:596 - added comma before contrasting "not" phrase
+pretext/loops/while-loops.ptx:597 - added closing comma of appositive
+pretext/loops/while-loops.ptx:608 - added closing comma of participial phrase before "or"
+pretext/loops/while-loops.ptx:618 - added comma after introductory phrase
+pretext/loops/while-loops.ptx:833 - added comma before "and" joining independent clauses
+pretext/methods/apis-and-libraries.ptx:25 - added comma before "and" joining independent clauses
+pretext/methods/apis-and-libraries.ptx:54 - added closing comma after appositive
+pretext/methods/apis-and-libraries.ptx:92 - added comma before nonrestrictive which clause
+pretext/methods/apis-and-libraries.ptx:104 - added comma before nonrestrictive which clause
+pretext/methods/apis-and-libraries.ptx:134 - added comma before "but" joining independent clauses
+pretext/methods/apis-and-libraries.ptx:145 - added comma before "and" joining independent clauses
+pretext/methods/apis-and-libraries.ptx:147 - added comma before "but" joining independent clauses
+pretext/methods/apis-and-libraries.ptx:149 - added comma after introductory dependent clause
+pretext/methods/apis-and-libraries.ptx:150 - added comma before "but" joining independent clauses
+pretext/methods/apis-and-libraries.ptx:168 - added comma before "and" joining independent clauses
+pretext/methods/apis-and-libraries.ptx:241 - added comma before nonrestrictive which clause
+pretext/methods/apis-and-libraries.ptx:634 - added comma after introductory since-clause
+pretext/methods/apis-and-libraries.ptx:650 - added closing comma after appositive
+pretext/methods/apis-and-libraries.ptx:651 - added comma after introductory since-clause
+pretext/methods/math-class.ptx:24 - added comma before "and" joining independent clauses
+pretext/methods/math-class.ptx:27 - added comma before nonrestrictive which clause
+pretext/methods/math-class.ptx:56 - added comma before nonrestrictive participial phrase
+pretext/methods/math-class.ptx:72 - added closing comma after appositive
+pretext/methods/math-class.ptx:91 - added comma before "but" joining independent clauses
+pretext/methods/math-class.ptx:94 - added comma before "but" joining independent clauses
+pretext/methods/math-class.ptx:106 - added comma before "but" joining independent clauses
+pretext/methods/math-class.ptx:106 - added comma before "and" joining independent clauses
+pretext/methods/math-class.ptx:236 - added comma before nonrestrictive which clause
+pretext/methods/math-class.ptx:360 - added comma before "so" joining independent clauses
+pretext/methods/math-class.ptx:361 - added comma after long introductory phrase
+pretext/methods/math-class.ptx:363 - added closing comma after appositive
+pretext/methods/math-class.ptx:374 - added comma after sentence-initial "However"
+pretext/methods/math-class.ptx:374 - added comma before nonrestrictive which clause
+pretext/methods/math-class.ptx:385 - removed comma splitting a two-item compound complement
+pretext/methods/math-class.ptx:386 - added comma before "and" joining independent clauses
+pretext/methods/math-class.ptx:416 - added comma after introductory when-clause
+pretext/methods/math-class.ptx:418 - added comma after introductory phrase
+pretext/methods/math-class.ptx:420 - added comma after introductory phrase
+pretext/methods/math-class.ptx:425 - added comma after introductory when-clause
+pretext/methods/math-class.ptx:428 - added closing comma after interrupter
+pretext/methods/math-class.ptx:434 - removed comma between subject and verb
+pretext/methods/math-class.ptx:438 - added comma after introductory if-clause
+pretext/methods/math-class.ptx:441 - added comma after introductory if-clause
+pretext/methods/math-class.ptx:667 - added comma before "and" joining independent clauses
+pretext/methods/math-class.ptx:713 - added comma before "and" joining independent clauses
+pretext/methods/math-class.ptx:973 - added comma before "but" joining independent clauses
+pretext/methods/math-class.ptx:1004 - added comma before nonrestrictive which clause
+pretext/methods/math-class.ptx:1018 - added comma before nonrestrictive which clause
+pretext/methods/math-class.ptx:1042 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:8 - added comma before "but" joining independent clauses
+pretext/methods/method-signatures.ptx:10 - added comma before "so" joining independent clauses
+pretext/methods/method-signatures.ptx:27 - added comma before "but" joining independent clauses
+pretext/methods/method-signatures.ptx:32 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:33 - added comma after sentence-initial "Additionally"
+pretext/methods/method-signatures.ptx:33 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:37 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:39 - added Oxford comma
+pretext/methods/method-signatures.ptx:58 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:61 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:99 - added comma before "but" joining independent clauses
+pretext/methods/method-signatures.ptx:110 - added comma after introductory when-clause
+pretext/methods/method-signatures.ptx:161 - added comma before nonrestrictive "at which point" clause
+pretext/methods/method-signatures.ptx:183 - added comma after introductory infinitive phrase
+pretext/methods/method-signatures.ptx:215 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:271 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:273 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:274 - added comma before "so" joining independent clauses
+pretext/methods/method-signatures.ptx:274 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:381 - added comma before "but" joining independent clauses
+pretext/methods/method-signatures.ptx:433 - added comma before "but" joining independent clauses
+pretext/methods/method-signatures.ptx:726 - added closing comma after appositive
+pretext/methods/method-signatures.ptx:819 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:826 - added closing comma of parenthetical phrase
+pretext/methods/method-signatures.ptx:855 - added comma before nonrestrictive which clause
+pretext/methods/method-signatures.ptx:1179 - added comma before nonrestrictive which clause
+pretext/objects/connecting-objects.ptx:21 - added comma before nonrestrictive "which" clause
+pretext/objects/connecting-objects.ptx:28 - added closing comma of parenthetical phrase
+pretext/objects/connecting-objects.ptx:68 - added comma after introductory clause
+pretext/objects/connecting-objects.ptx:104 - added comma before nonrestrictive "which" clause
+pretext/objects/connecting-objects.ptx:125 - added comma before nonrestrictive "which" clause
+pretext/objects/connecting-objects.ptx:137 - added comma after sentence-initial "However"
+pretext/objects/connecting-objects.ptx:141 - added comma between independent clauses joined by "and"
+pretext/objects/connecting-objects.ptx:155 - added comma between independent clauses joined by "so"
+pretext/objects/connecting-objects.ptx:166 - added comma between independent clauses joined by "so"
+pretext/objects/connecting-objects.ptx:168 - added comma after introductory conditional clause
+pretext/objects/connecting-objects.ptx:275 - added comma after sentence-initial "For instance"
+pretext/objects/connecting-objects.ptx:286 - added Oxford comma
+pretext/objects/connecting-objects.ptx:468 - added comma after introductory conditional clause
+pretext/objects/connecting-objects.ptx:664 - added comma after introductory "In general"
+pretext/objects/connecting-objects.ptx:666 - added comma after sentence-initial "However"
+pretext/objects/connecting-objects.ptx:667 - added comma after introductory conditional clause
+pretext/objects/connecting-objects.ptx:830 - added comma after introductory dependent clause
+pretext/objects/connecting-objects.ptx:835 - added comma after introductory dependent clause
+pretext/objects/connecting-objects.ptx:841 - added comma before nonrestrictive "which" clause
+pretext/objects/connecting-objects.ptx:851 - added comma after conditional clause before "then"
+pretext/objects/connecting-objects.ptx:853 - added comma between independent clauses joined by "but"
+pretext/objects/connecting-objects.ptx:861 - added comma before nonrestrictive "which" clause
+pretext/objects/connecting-objects.ptx:967 - added comma between independent clauses joined by "and"
+pretext/objects/connecting-objects.ptx:1167 - added comma before nonrestrictive "which" clause
+pretext/objects/connecting-objects.ptx:1184 - added comma before nonrestrictive "which" clause
+pretext/objects/connecting-objects.ptx:1275 - added comma before nonrestrictive "which" clause
+pretext/objects/connecting-objects.ptx:1502 - added comma before trailing participial phrase
+pretext/objects/object-equality.ptx:11 - added comma after introductory dependent clause
+pretext/objects/object-equality.ptx:21 - added comma before nonrestrictive "which" clause
+pretext/objects/object-equality.ptx:29 - added comma after introductory clause
+pretext/objects/object-equality.ptx:30 - removed comma between subject and verb
+pretext/objects/object-equality.ptx:33 - added comma after introductory dependent clause
+pretext/objects/object-equality.ptx:42 - added closing comma of appositive
+pretext/objects/object-equality.ptx:45 - added comma before nonrestrictive "which" clause
+pretext/objects/object-equality.ptx:111 - added comma between independent clauses joined by "but"
+pretext/objects/object-equality.ptx:114 - added comma between independent clauses joined by "but"
+pretext/objects/object-equality.ptx:115 - added comma between independent clauses joined by "so"
+pretext/objects/object-equality.ptx:116 - added comma after long introductory dependent clause
+pretext/objects/object-equality.ptx:128 - added comma between independent clauses joined by "but"
+pretext/objects/object-equality.ptx:250 - added comma between independent clauses joined by "and"
+pretext/objects/object-equality.ptx:251 - added comma between independent clauses joined by "and"
+pretext/objects/object-equality.ptx:286 - added comma after interjection "Yes"
+pretext/objects/object-equality.ptx:286 - added comma between independent clauses joined by "and"
+pretext/objects/object-equality.ptx:345 - added comma between independent clauses joined by "but"
+pretext/objects/object-equality.ptx:372 - added comma after introductory dependent clause
+pretext/objects/object-equality.ptx:395 - removed spurious comma after sentence-initial "But"
+pretext/objects/object-equality.ptx:412 - added comma between independent clauses joined by "so"
+pretext/objects/object-equality.ptx:413 - added comma after introductory conditional clause
+pretext/objects/object-equality.ptx:417 - added comma before nonrestrictive "which" clause
+pretext/objects/scope-and-access.ptx:11 - added comma after introductory dependent clause
+pretext/objects/scope-and-access.ptx:23 - removed comma directly before sentence-final position
+pretext/objects/scope-and-access.ptx:31 - added comma after introductory dependent clause
+pretext/objects/scope-and-access.ptx:33 - added comma after introductory clause
+pretext/objects/scope-and-access.ptx:41 - added closing comma of "on the other hand" interrupter
+pretext/objects/scope-and-access.ptx:140 - removed spurious comma after sentence-initial "Whereas"
+pretext/objects/scope-and-access.ptx:153 - added comma between independent clauses joined by "so"
+pretext/objects/scope-and-access.ptx:233 - added comma before nonrestrictive "which" clause
+pretext/objects/scope-and-access.ptx:385 - added comma after introductory phrase
+pretext/objects/scope-and-access.ptx:412 - added comma before nonrestrictive "which" clause
+pretext/objects/scope-and-access.ptx:420 - added comma after introductory dependent clause
+pretext/objects/scope-and-access.ptx:433 - added comma after sentence-initial "For instance"
+pretext/objects/scope-and-access.ptx:435 - added comma between independent clauses joined by "but"
+pretext/objects/scope-and-access.ptx:464 - added comma after long introductory phrase
+pretext/objects/scope-and-access.ptx:467 - added comma between independent clauses joined by "and"
+pretext/objects/scope-and-access.ptx:480 - added comma before nonrestrictive "which" clause
+pretext/objects/scope-and-access.ptx:640 - added comma between independent clauses joined by "but"
+pretext/objects/scope-and-access.ptx:642 - added comma after introductory dependent clause
+pretext/objects/scope-and-access.ptx:650 - added comma before nonrestrictive "in which case" clause
+pretext/objects/scope-and-access.ptx:652 - added comma after sentence-initial "For instance"
+pretext/objects/scope-and-access.ptx:653 - added comma before nonrestrictive "which" clause
+pretext/objects/scope-and-access.ptx:654 - added comma after introductory dependent clause
+pretext/objects/scope-and-access.ptx:663 - added comma after conditional clause before "then"
+pretext/objects/scope-and-access.ptx:663 - added comma after introductory phrase
+pretext/objects/scope-and-access.ptx:666 - added comma after introductory conditional clause
+pretext/objects/scope-and-access.ptx:757 - added comma between independent clauses joined by "and"
+pretext/objects/scope-and-access.ptx:764 - added closing comma of nonrestrictive "which" clause
+pretext/objects/scope-and-access.ptx:788 - added comma before nonrestrictive "in which case" clause
+pretext/objects/scope-and-access.ptx:796 - added comma after introductory dependent clause
+pretext/objects/toctree.ptx:9 - added comma after sentence-initial "For instance"
+pretext/objects/toctree.ptx:31 - added comma before nonrestrictive "including" phrase
+pretext/objects/turtles.ptx:9 - added comma after introductory dependent clause
+pretext/objects/turtles.ptx:25 - added comma after introductory phrase
+pretext/objects/turtles.ptx:67 - added comma before trailing participial phrase
+pretext/objects/turtles.ptx:89 - added comma between independent clauses joined by "so"
+pretext/objects/turtles.ptx:97 - added comma after sentence-initial "For example"
+pretext/objects/turtles.ptx:142 - added comma between independent clauses joined by "so"
+pretext/objects/turtles.ptx:142 - added comma after introductory dependent clause
+pretext/objects/turtles.ptx:151 - added Oxford comma
+pretext/objects/turtles.ptx:352 - added comma between independent clauses joined by "but"
+pretext/objects/turtles.ptx:365 - added comma after introductory dependent clause
+pretext/objects/turtles.ptx:366 - added comma before nonrestrictive "which" clause
+pretext/objects/turtles.ptx:370 - added comma between independent clauses joined by "and"
+pretext/objects/turtles.ptx:375 - added comma before nonrestrictive "which" clause
+pretext/objects/turtles.ptx:393 - added comma after introductory conditional clause
+pretext/objects/turtles.ptx:601 - added comma after introductory conditional clause
+pretext/objects/turtles.ptx:639 - added comma before nonrestrictive "which" clause
+pretext/objects/turtles.ptx:649 - added comma before nonrestrictive "which" clause
+pretext/objects/turtles.ptx:967 - added comma after sentence-initial "For example"
+pretext/objects/turtles.ptx:975 - added comma after sentence-initial "For example"
+pretext/primitive-types-and-variables/assignment-statements.ptx:38 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/assignment-statements.ptx:41 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/assignment-statements.ptx:65 - added comma after introductory dependent clause
+pretext/primitive-types-and-variables/assignment-statements.ptx:78 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/assignment-statements.ptx:95 - added comma before "but" joining independent clauses
+pretext/primitive-types-and-variables/assignment-statements.ptx:138 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/assignment-statements.ptx:364 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/assignment-statements.ptx:373 - added closing comma of appositive "also called..." before "that" clause
+pretext/primitive-types-and-variables/assignment-statements.ptx:463 - removed comma between verb "write" and its object
+pretext/primitive-types-and-variables/assignment-statements.ptx:463 - added comma after introductory conditional clause
+pretext/primitive-types-and-variables/assignment-statements.ptx:463 - added comma before "but" joining independent clauses
+pretext/primitive-types-and-variables/assignment-statements.ptx:464 - added comma after "On the other hand" interrupter
+pretext/primitive-types-and-variables/assignment-statements.ptx:464 - removed comma between verb "write" and its object
+pretext/primitive-types-and-variables/assignment-statements.ptx:465 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/assignment-statements.ptx:470 - added comma before "nor" joining independent clauses
+pretext/primitive-types-and-variables/assignment-statements.ptx:623 - added Oxford comma in three-item list (five identical feedback blocks)
+pretext/primitive-types-and-variables/assignment-statements.ptx:636 - added Oxford comma in three-item list (identical feedback block)
+pretext/primitive-types-and-variables/assignment-statements.ptx:649 - added Oxford comma in three-item list (identical feedback block)
+pretext/primitive-types-and-variables/assignment-statements.ptx:662 - added Oxford comma in three-item list (identical feedback block)
+pretext/primitive-types-and-variables/assignment-statements.ptx:675 - added Oxford comma in three-item list (identical feedback block)
+pretext/primitive-types-and-variables/assignment-statements.ptx:760 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/expressions.ptx:71 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/expressions.ptx:75 - added comma after introductory conditional clause
+pretext/primitive-types-and-variables/expressions.ptx:116 - added comma after introductory prepositional phrase
+pretext/primitive-types-and-variables/expressions.ptx:144 - added comma before trailing contrastive "though" clause
+pretext/primitive-types-and-variables/expressions.ptx:148 - added comma before contrastive "while" clause
+pretext/primitive-types-and-variables/expressions.ptx:149 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/expressions.ptx:153 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/expressions.ptx:254 - added comma before "so" joining independent clauses
+pretext/primitive-types-and-variables/expressions.ptx:268 - added comma before "but" joining independent clauses
+pretext/primitive-types-and-variables/expressions.ptx:291 - added comma after introductory dependent clause
+pretext/primitive-types-and-variables/expressions.ptx:304 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/expressions.ptx:350 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/expressions.ptx:380 - added closing comma of "not 21" interrupter before "because"
+pretext/primitive-types-and-variables/expressions.ptx:493 - added comma before nonrestrictive appositive "also known as"
+pretext/primitive-types-and-variables/text-output.ptx:20 - added comma before trailing nonrestrictive participial phrase
+pretext/primitive-types-and-variables/text-output.ptx:30 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/text-output.ptx:52 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/text-output.ptx:54 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/text-output.ptx:71 - added comma after introductory phrase
+pretext/primitive-types-and-variables/text-output.ptx:85 - added comma before "but" joining independent clauses
+pretext/primitive-types-and-variables/text-output.ptx:103 - added comma before trailing nonrestrictive participial phrase
+pretext/primitive-types-and-variables/text-output.ptx:136 - added comma after introductory conditional clause
+pretext/primitive-types-and-variables/text-output.ptx:153 - added comma before contrastive "while" clause
+pretext/primitive-types-and-variables/text-output.ptx:157 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/text-output.ptx:217 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/text-output.ptx:227 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/text-output.ptx:277 - added comma after introductory phrase to avoid misreading
+pretext/primitive-types-and-variables/type-casting.ptx:9 - added comma after introductory conditional clause
+pretext/primitive-types-and-variables/type-casting.ptx:12 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/type-casting.ptx:46 - added comma after introductory dependent clause
+pretext/primitive-types-and-variables/type-casting.ptx:59 - added closing comma of nonrestrictive "which looks like..." clause before main verb
+pretext/primitive-types-and-variables/type-casting.ptx:81 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/type-casting.ptx:153 - added comma after introductory conditional clause
+pretext/primitive-types-and-variables/type-casting.ptx:179 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/type-casting.ptx:180 - added comma between independent clauses joined by "and then"
+pretext/primitive-types-and-variables/type-casting.ptx:181 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/type-casting.ptx:191 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/type-casting.ptx:203 - added comma after introductory dependent clause
+pretext/primitive-types-and-variables/type-casting.ptx:219 - added comma after introductory conditional clause
+pretext/primitive-types-and-variables/type-casting.ptx:226 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/type-casting.ptx:227 - added comma after "On the other hand" interrupter
+pretext/primitive-types-and-variables/type-casting.ptx:229 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/type-casting.ptx:229 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/type-casting.ptx:239 - added comma before trailing nonrestrictive participial phrase
+pretext/primitive-types-and-variables/type-casting.ptx:300 - added comma before nonrestrictive appositive "also known as"
+pretext/primitive-types-and-variables/type-casting.ptx:312 - added comma after sentence-adverb "Roughly speaking"
+pretext/primitive-types-and-variables/type-casting.ptx:312 - added comma before "so" joining independent clauses
+pretext/primitive-types-and-variables/type-casting.ptx:314 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/type-casting.ptx:319 - added comma after introductory conditional clause
+pretext/primitive-types-and-variables/type-casting.ptx:353 - removed comma splitting a two-item pair
+pretext/primitive-types-and-variables/type-casting.ptx:360 - added comma after sentence-adverb "However"
+pretext/primitive-types-and-variables/type-casting.ptx:360 - added opening comma of "like scientific notation" interrupter
+pretext/primitive-types-and-variables/type-casting.ptx:374 - added comma after introductory dependent clause
+pretext/primitive-types-and-variables/type-casting.ptx:377 - added comma before "but" joining independent clauses
+pretext/primitive-types-and-variables/type-casting.ptx:385 - added opening comma of appositive "a formatted print method"
+pretext/primitive-types-and-variables/type-casting.ptx:386 - added closing comma of appositive "a formatted print method"
+pretext/primitive-types-and-variables/type-casting.ptx:387 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/type-casting.ptx:493 - added comma after introductory conditional clause
+pretext/primitive-types-and-variables/type-casting.ptx:506 - removed comma before "and" in compound infinitive pair
+pretext/primitive-types-and-variables/type-casting.ptx:511 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/type-casting.ptx:676 - added comma before "so" joining independent clauses
+pretext/primitive-types-and-variables/type-casting.ptx:689 - added comma after introductory dependent clause
+pretext/primitive-types-and-variables/variables.ptx:8 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/variables.ptx:16 - added comma after sentence-adverb "However"
+pretext/primitive-types-and-variables/variables.ptx:30 - removed comma before restrictive "that" clause
+pretext/primitive-types-and-variables/variables.ptx:32 - added closing comma of appositive "called variables"
+pretext/primitive-types-and-variables/variables.ptx:60 - added closing comma of appositive "reference types"
+pretext/primitive-types-and-variables/variables.ptx:79 - added serial-list comma between numbers
+pretext/primitive-types-and-variables/variables.ptx:85 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/variables.ptx:105 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/variables.ptx:140 - added comma after introductory phrase
+pretext/primitive-types-and-variables/variables.ptx:141 - added comma before "so" joining independent clauses
+pretext/primitive-types-and-variables/variables.ptx:174 - added comma before "so" joining independent clauses
+pretext/primitive-types-and-variables/variables.ptx:217 - added comma after introductory dependent clause
+pretext/primitive-types-and-variables/variables.ptx:265 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/variables.ptx:305 - added comma before nonrestrictive "which" clause
+pretext/primitive-types-and-variables/variables.ptx:315 - added comma before "but" joining independent clauses
+pretext/primitive-types-and-variables/variables.ptx:363 - added comma between independent clauses joined by "and"
+pretext/primitive-types-and-variables/variables.ptx:368 - added Oxford comma in three-item list
+pretext/primitive-types-and-variables/variables.ptx:383 - added serial comma before final list item
+pretext/primitive-types-and-variables/variables.ptx:606 - added comma before "so" joining independent clauses
+pretext/primitive-types-and-variables/variables.ptx:729 - added comma before "so" joining independent clauses
+pretext/primitive-types-and-variables/variables.ptx:740 - added comma before "so" joining independent clauses
+pretext/strings/string-algorithms.ptx:16 - added comma before "so" joining independent clauses
+pretext/strings/string-algorithms.ptx:16 - added comma before "but" joining independent clauses
+pretext/strings/string-algorithms.ptx:50 - added comma after sentence-initial "However"
+pretext/strings/string-algorithms.ptx:56 - added comma after introductory phrase
+pretext/strings/string-algorithms.ptx:158 - added comma after introductory since-clause
+pretext/strings/string-algorithms.ptx:166 - added comma after introductory infinitive phrase
+pretext/strings/string-algorithms.ptx:178 - added comma after introductory since-clause
+pretext/strings/string-algorithms.ptx:335 - removed spurious comma directly after conjunction "But"
+pretext/strings/string-algorithms.ptx:413 - added comma after introductory infinitive phrase
+pretext/strings/string-algorithms.ptx:492 - added comma before "but" joining independent clauses
+pretext/strings/string-algorithms.ptx:500 - added comma after introductory if-clause
+pretext/strings/string-manipulation.ptx:33 - added comma after introductory phrase
+pretext/strings/string-manipulation.ptx:40 - added closing comma after appositive
+pretext/strings/string-manipulation.ptx:53 - added commas around interrupter
+pretext/strings/string-manipulation.ptx:57 - added comma after introductory when-clause
+pretext/strings/string-manipulation.ptx:59 - added comma after introductory when-clause
+pretext/strings/string-manipulation.ptx:61 - added comma after introductory when-clause
+pretext/strings/string-manipulation.ptx:174 - added comma after introductory if-clause
+pretext/strings/string-manipulation.ptx:196 - added comma after introductory since-clause
+pretext/strings/string-manipulation.ptx:197 - added comma before "and" joining independent clauses
+pretext/strings/string-manipulation.ptx:228 - added comma before nonrestrictive which clause
+pretext/strings/string-manipulation.ptx:260 - added comma before "but" joining independent clauses
+pretext/strings/string-manipulation.ptx:273 - added comma before nonrestrictive which clause
+pretext/strings/string-manipulation.ptx:284 - added comma after sentence-initial "For example"
+pretext/strings/string-manipulation.ptx:305 - added comma before "but" joining independent clauses
+pretext/strings/string-manipulation.ptx:327 - added comma before nonrestrictive which clause
+pretext/strings/string-manipulation.ptx:329 - added comma after sentence-initial "For instance"
+pretext/strings/string-manipulation.ptx:330 - added comma before nonrestrictive which clause
+pretext/strings/string-manipulation.ptx:336 - added comma before "so" joining independent clauses
+pretext/strings/string-manipulation.ptx:337 - added comma after sentence-initial "Instead"
+pretext/strings/string-manipulation.ptx:342 - added comma before "and" joining independent clauses
+pretext/strings/string-manipulation.ptx:344 - added comma after introductory if-clause
+pretext/strings/string-manipulation.ptx:352 - added comma after introductory infinitive phrase
+pretext/strings/string-manipulation.ptx:369 - added closing comma of nonrestrictive clause before "and for"
+pretext/strings/string-manipulation.ptx:390 - added comma after long introductory if-clause
+pretext/strings/string-manipulation.ptx:428 - added comma before "and" joining independent clauses
+pretext/strings/string-manipulation.ptx:430 - added comma after introductory if-clause
+pretext/strings/string-manipulation.ptx:446 - added comma before nonrestrictive which clause
+pretext/strings/string-manipulation.ptx:448 - added comma after introductory if-clause
+pretext/strings/string-manipulation.ptx:460 - removed comma between subject and verb
+pretext/strings/string-manipulation.ptx:460 - added comma before nonrestrictive which clause
+pretext/strings/string-manipulation.ptx:754 - added comma before "but" joining independent clauses
+pretext/strings/string-manipulation.ptx:755 - added comma before "and" joining independent clauses
+pretext/strings/string-manipulation.ptx:776 - added comma before "but" joining independent clauses
+pretext/strings/string-manipulation.ptx:785 - added comma before nonrestrictive which clause
+pretext/strings/string-manipulation.ptx:810 - added comma before "but" joining independent clauses
+pretext/strings/string-manipulation.ptx:995 - added comma before "so" joining independent clauses
+pretext/strings/string-manipulation.ptx:1039 - added comma before "so" joining independent clauses
+pretext/strings/string-manipulation.ptx:1098 - added comma before nonrestrictive which clause
+pretext/strings/string-manipulation.ptx:1113 - removed comma between subject and verb
+pretext/strings/string-manipulation.ptx:1127 - added comma before contrastive "but not" phrase
+pretext/strings/string-manipulation.ptx:1128 - added comma before nonrestrictive including-phrase
+pretext/strings/string-manipulation.ptx:1138 - added comma before nonrestrictive which clause
+pretext/strings/toctree.ptx:12 - added comma before "and" joining independent clauses
+pretext/strings/toctree.ptx:22 - added comma before nonrestrictive which clause
+pretext/text-files/data-sets.ptx:11 - added comma after long introductory "If" clause
+pretext/text-files/data-sets.ptx:11 - added comma after "For example" interrupter
+pretext/text-files/data-sets.ptx:101 - added comma after introductory dependent clause
+pretext/text-files/data-sets.ptx:119 - added comma after "For instance" interrupter
+pretext/text-files/data-sets.ptx:136 - added comma before nonrestrictive "which" clause
+pretext/text-files/data-sets.ptx:254 - added closing comma of appositive before verb
+pretext/text-files/data-sets.ptx:254 - added comma between independent clauses joined by "so"
+pretext/text-files/data-sets.ptx:638 - added comma after "for example" interrupter
+pretext/text-files/data-sets.ptx:652 - added comma after "for example" interrupter
+pretext/text-files/data-sets.ptx:785 - added comma before nonrestrictive appositive
+pretext/text-files/data-sets.ptx:796 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:40 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:49 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:56 - added comma after "For example" interrupter
+pretext/text-files/input-files.ptx:57 - added comma after introductory dependent clause
+pretext/text-files/input-files.ptx:74 - added comma after introductory dependent clause
+pretext/text-files/input-files.ptx:91 - added comma between independent clauses joined by "and"
+pretext/text-files/input-files.ptx:91 - added comma between independent clauses joined by "so"
+pretext/text-files/input-files.ptx:97 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:151 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:157 - added comma after "For instance" interrupter
+pretext/text-files/input-files.ptx:157 - added comma after introductory dependent clause
+pretext/text-files/input-files.ptx:191 - added comma after "For instance" interrupter
+pretext/text-files/input-files.ptx:200 - added comma between independent clauses joined by "and"
+pretext/text-files/input-files.ptx:207 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:210 - added comma between independent clauses joined by "and"
+pretext/text-files/input-files.ptx:223 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:230 - added comma after sentence-initial "However"
+pretext/text-files/input-files.ptx:230 - added comma between independent clauses joined by "so"
+pretext/text-files/input-files.ptx:232 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:238 - added comma after long introductory phrase
+pretext/text-files/input-files.ptx:243 - added comma between independent clauses joined by "or"
+pretext/text-files/input-files.ptx:419 - added comma after introductory dependent clause
+pretext/text-files/input-files.ptx:421 - added comma between independent clauses joined by "but"
+pretext/text-files/input-files.ptx:426 - removed comma between subject and verb
+pretext/text-files/input-files.ptx:433 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:509 - added comma before nonrestrictive "which" clause
+pretext/text-files/input-files.ptx:525 - added comma between independent clauses joined by "so"
+pretext/text-files/input-files.ptx:526 - added comma after introductory phrase within clause
+pretext/text-files/input-files.ptx:537 - added comma before nonrestrictive "which" clause
+pretext/text-files/toctree.ptx:9 - added comma after introductory dependent clause
+pretext/text-files/toctree.ptx:39 - added comma between independent clauses joined by "but"

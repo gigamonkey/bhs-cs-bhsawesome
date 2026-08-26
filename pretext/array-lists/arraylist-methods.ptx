@@ -14,34 +14,34 @@
     </figure>
 
     <p>
-      Unlike arrays which are built into Java the language and are used with
+      Unlike arrays, which are built into Java the language and are used with
       special syntax such as array initializers like <c>new int[] { 1, 2, 3
       }</c> and array access expressions like <c>nums[0]</c>, and even unlike
-      the <c>String</c> class which gets some special support from the language,
-      <c>ArrayList</c> is a class that we could write ourselves if it didn’t
-      exist. In other words <c>ArrayList</c> is a new class abstraction that
-      hides some of the messy details of using an array to represent a
+      the <c>String</c> class, which gets some special support from the
+      language, <c>ArrayList</c> is a class that we could write ourselves if it
+      didn’t exist. In other words, <c>ArrayList</c> is a new class abstraction
+      that hides some of the messy details of using an array to represent a
       collection of values when we want to be able to change the number of
       values in the collection over time.
     </p>
 
     <p>
-      Thus to learn how to use it we just need to learn about its public API—the
-      constructors and methods the class provides. The whole API is quite large
-      and is fully documented in the <url
+      Thus to learn how to use it, we just need to learn about its public
+      API—the constructors and methods the class provides. The whole API is
+      quite large and is fully documented in the <url
       href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/ArrayList.html">class’s
       Javadocs</url>. But for our purposes we only need to know a handful of
-      methods which we’ll cover in this chapter.
+      methods, which we’ll cover in this chapter.
     </p>
 
     <note>
       <p>
         An <c>ArrayList</c> is often called just a list. Prior to 2020 the AP
-        CSA curriculum included <term>interfaces</term> which are somewhat like
-        classes and the interface <c>List</c> was often used to declare a
+        CSA curriculum included <term>interfaces</term>, which are somewhat like
+        classes, and the interface <c>List</c> was often used to declare a
         variable that would refer to an <c>ArrayList</c>. Interfaces are no
         longer on the exam, but if you see <c>List</c> being used in an old exam
-        question just assume it’s an <c>ArrayList</c>. You will also see
+        question, just assume it’s an <c>ArrayList</c>. You will also see
         references to <c>List</c> if you read the <c>ArrayList</c> Javadocs.
       </p>
     </note>
@@ -99,9 +99,9 @@
 
         <feedback>
           <p>
-            No, an <c>ArrayList</c> is implemented using an array so the time to
-            access an element of an array list is essentially the same same as
-            the time to access the element of the underlying array.
+            No, an <c>ArrayList</c> is implemented using an array, so the time
+            to access an element of an array list is essentially the same same
+            as the time to access the element of the underlying array.
           </p>
         </feedback>
       </choice>
@@ -130,16 +130,16 @@
       Recall from <xref ref="packages" /> that classes in Java are organized
       into packages. The standard Java classes we have used until now,
       <c>String</c> and <c>Math</c>, are in the special package <c>java.lang</c>
-      whose classes are always available in any Java program so we’ve been able
+      whose classes are always available in any Java program, so we’ve been able
       to refer to them without doing anything special.
     </p>
 
     <p>
       <c>ArrayList</c>, on the other hand, is in a different package, called
       <c>java.util</c>. That means that if we want to use <c>ArrayList</c> in a
-      program we need to either <term>import</term> it or (much more rarely)
-      refer to it by its full name which includes the package as a prefix:
-      <c>java.util.ArrayList</c>. But rather than type that out all the time
+      program, we need to either <term>import</term> it or (much more rarely)
+      refer to it by its full name, which includes the package as a prefix:
+      <c>java.util.ArrayList</c>. But rather than type that out all the time,
       we’ll almost always use an <k>import</k> statement.
     </p>
 
@@ -159,7 +159,7 @@
     <idx><h>statement</h><h>import</h></idx>
     <p>
       Anywhere <c>ArrayList</c> is used in a class containing that import
-      statement it will be taken to mean <c>java.util.ArrayList</c>.
+      statement, it will be taken to mean <c>java.util.ArrayList</c>.
     </p>
 
     <p>
@@ -173,13 +173,13 @@
     </program>
 
     <p>
-      This import statement will also cause, <c>ArrayList</c> to refer
+      This import statement will also cause <c>ArrayList</c> to refer
       <c>java.util.ArrayList</c>. But many other names of classes defined in the
       <c>java.util</c> package will also be available whether you use them or
-      not. (One that you have probably used by now is <c>Scanner</c> which can
+      not. (One that you have probably used by now is <c>Scanner</c>, which can
       be used to read input a user types at the command line.) Using wildcard
       imports can cause conflicts if you import all the classes from two
-      different packages and they have class names in common but usually that’s
+      different packages and they have class names in common, but usually that’s
       not a problem, at least with packages that are part of Java itself.
     </p>
 
@@ -255,10 +255,10 @@
     <p>
       Just like when we declare an array and have to specify what kind of array
       it is in terms of what kind of values it can hold (e.g. <c>String[]</c> vs
-      <c>int[]</c>), when we declare an <c>ArrayList</c> we also need to specify
-      what kind of values it will hold. The syntax is slightly different from
-      the array declaration syntax and is actually an example of a feature of
-      Java called <term>generic types</term>. Generic types are not otherwise
+      <c>int[]</c>), when we declare an <c>ArrayList</c>, we also need to
+      specify what kind of values it will hold. The syntax is slightly different
+      from the array declaration syntax and is actually an example of a feature
+      of Java called <term>generic types</term>. Generic types are not otherwise
       covered in the AP curriculum but are an important part of real-world Java
       programming.
     </p>
@@ -271,7 +271,7 @@
     </p>
 
     <p>
-      For example a variable whose type is an <c>ArrayList</c> meant to hold
+      For example, a variable whose type is an <c>ArrayList</c> meant to hold
       <c>String</c> values is declared as <c>ArrayList&lt;String&gt;</c> as
       shown in the code below.
     </p>
@@ -283,30 +283,30 @@
     </program>
 
     <p>
-      If you look at the <c>ArrayList</c> Javadocs you’ll see the class listed
+      If you look at the <c>ArrayList</c> Javadocs, you’ll see the class listed
       as <c>ArrayList&lt;E&gt;</c>. The <c>E</c> is the name for the type
       parameter and tells us that we need to provide an actual type like
       <c>String</c> when we declare an <c>ArrayList</c>. If you look at the
       Javadocs for <c>ArrayList</c> methods (or at the <url
       href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
-      CSA Java Quick Reference Sheet</url>) you’ll see the <c>E</c> again as the
-      type of method parameters and return types. That means that those methods
-      take parameters and return values of whatever specific type you specified
-      when you declared a particular <c>ArrayList</c>.
+      CSA Java Quick Reference Sheet</url>), you’ll see the <c>E</c> again as
+      the type of method parameters and return types. That means that those
+      methods take parameters and return values of whatever specific type you
+      specified when you declared a particular <c>ArrayList</c>.
     </p>
 
     <p>
-      For example the <c>add</c> method has the signature <c>boolean add(E
-      e)</c> which means if you’ve declared an <c>ArrayList&lt;String&gt;</c>
+      For example, the <c>add</c> method has the signature <c>boolean add(E
+      e)</c>, which means if you’ve declared an <c>ArrayList&lt;String&gt;</c>
       then, for that <c>ArrayList</c>, it’s as if the <c>add</c> method had the
-      signature <c>boolean add(String e)</c> which makes sure that no code can
+      signature <c>boolean add(String e)</c>, which makes sure that no code can
       add anything other than a <c>String</c> to that <c>ArrayList</c>.
     </p>
 
     <p>
-      Similarly the <c>get</c> method has the signature <c>E get(int index)</c>
+      Similarly the <c>get</c> method has the signature <c>E get(int index)</c>,
       which means that the values returned by <c>get</c> from the same
-      <c>ArrayList</c> will be of type <c>String</c> so we can safely use
+      <c>ArrayList</c> will be of type <c>String</c>, so we can safely use
       <c>String</c> methods on them.
     </p>
 
@@ -341,7 +341,7 @@
       ArrayList&lt;String&gt;()</c> with a type parameter or <c>new
       ArrayList&lt;&gt;()</c> without the type parameter. The latter way is
       generally preferred; in most contexts, such as when initializing a
-      variable declaration Java will <term>infer</term> the necessary type
+      variable declaration, Java will <term>infer</term> the necessary type
       parameter so you don’t have to specify it twice:
     </p>
 
@@ -366,15 +366,15 @@
     <p>
       The type parameter of an <c>ArrayList</c> can be any reference type
       including classes that we write, such as the <c>Student</c> or
-      <c>Person</c>, classes that other programmers have written such as
-      <c>Turtle</c>, or even arrays like <c>int[]</c> though it is a bit odd to
+      <c>Person</c>, classes that other programmers have written, such as
+      <c>Turtle</c>, or even arrays like <c>int[]</c>, though it is a bit odd to
       mix <c>ArrayList</c>s and arrays that way.
     </p>
 
     <p>
-      However the type parameter cannot be a primitive type so we cannot make an
-      <c>ArrayList&lt;int&gt;</c> or <c>ArrayList&lt;double&gt;</c>. In the next
-      section we’ll discuss how to use wrapper classes to work around that
+      However, the type parameter cannot be a primitive type, so we cannot make
+      an <c>ArrayList&lt;int&gt;</c> or <c>ArrayList&lt;double&gt;</c>. In the
+      next section we’ll discuss how to use wrapper classes to work around that
       limitation.
     </p>
 
@@ -392,8 +392,8 @@
     <activity label="ArrayListCreateStr">
       <statement>
         <p>
-          The code below uses the <c>size</c> method which will discuss in a
-          moment to show how many elements are in an <c>ArrayList</c>. Notice
+          The code below uses the <c>size</c> method, which will discuss in a
+          moment, to show how many elements are in an <c>ArrayList</c>. Notice
           that a newly constructed <c>ArrayList</c> is empty and thus has a size
           of 0.
         </p>
@@ -445,8 +445,8 @@
       the AP CSA exam. These are included on the <url
       href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
       CSA Java Quick Reference Sheet</url> that you will receive during the exam
-      so you do not need to memorize them. As we discussed above the <c>E</c> in
-      the method headers is a placeholder for the specific type used when we
+      so you do not need to memorize them. As we discussed above, the <c>E</c>
+      in the method headers is a placeholder for the specific type used when we
       declare an specific <c>ArrayList</c>.
     </p>
 
@@ -470,15 +470,15 @@
           <c>E get(int index)</c> returns the item in the list at the position
           <c>index</c>. The <c>index</c> must be a valid index into the list. As
           with array and <c>String</c> indexes, index of the first item in an
-          <c>ArrayList</c> is <c>0</c> and the last valid index is one less than
-          the <c>size()</c> of the list.
+          <c>ArrayList</c> is <c>0</c>, and the last valid index is one less
+          than the <c>size()</c> of the list.
         </p>
       </li>
 
       <li>
         <p>
           <c>E set(int index, E obj)</c> replaces the item at position
-          <c>index</c> with <c>obj</c> which must be a valid index into the
+          <c>index</c> with <c>obj</c>, which must be a valid index into the
           list.
         </p>
       </li>
@@ -498,7 +498,7 @@
           greater than or equal to <c>index</c> to the right (to a higher
           indexes) and inserts <c>obj</c> at the position <c>index</c>. The
           <c>index</c> argument must be a valid index or exactly the
-          <c>size()</c> of the list in which case the item is added at the end
+          <c>size()</c> of the list, in which case the item is added at the end
           of the list.
         </p>
       </li>
@@ -513,8 +513,8 @@
         get the number of characters in the <c>String</c>. And with an
         <c>ArrayList</c> we use the <c>size()</c> method to get the number of
         items in the list. Mixing these up is a common mistake for new Java
-        programmers. However you will not be penalized if you mix them up on the
-        AP exam.
+        programmers. However, you will not be penalized if you mix them up on
+        the AP exam.
       </p>
     </note>
 
@@ -856,22 +856,22 @@
     <p>
       Suppose we need to store a collection of values. How do we decide when to
       use an array vs an <c>ArrayList</c>? Often the choice is obvious: if we
-      want to store a collection of values that can grow or shrink we definitely
-      want to use an <c>ArrayList</c>.
+      want to store a collection of values that can grow or shrink, we
+      definitely want to use an <c>ArrayList</c>.
     </p>
 
     <p>
-      And even if we don’t think we need to grow or shrink our collection an
+      And even if we don’t think we need to grow or shrink our collection, an
       <c>ArrayList</c> is often still a good choice. While you need to know how
       to use arrays to be a competent Java programmer (and to do well on the AP
-      exam) in day-to-day programming you can get pretty far just using
+      exam), in day-to-day programming you can get pretty far just using
       <c>ArrayList</c> when you need a collection of values.
     </p>
 
     <p>
       That said, arrays have some advantages: precisely because they are
       relatively limited, they are also very efficient. And because they have
-      special syntax in the language they can be easier to use.
+      special syntax in the language, they can be easier to use.
     </p>
 
     <p>
@@ -887,7 +887,7 @@
 
     <p>
       Simply constructing the array allocates memory to hold sixty-four
-      <c>Piece</c> objects and then we can set an element with the simple array
+      <c>Piece</c> objects, and then we can set an element with the simple array
       access expression <c>board[0][0]</c>.
     </p>
 
@@ -914,7 +914,7 @@
     <p>
       Pretty much everything about the <c>ArrayList</c> version, from the type
       of the variable to the code we have to write to initialize things and then
-      the code to access elements of the nested <c>ArrayList</c>s is way more
+      the code to access elements of the nested <c>ArrayList</c>s, is way more
       complicated with no real benefit since the size of the chess board is
       never going to change.
     </p>
@@ -1121,7 +1121,7 @@
           <c>ArrayList</c>s cannot hold primitive types like <k>int</k> or
           <k>double</k>, so you must use the wrapper classes <c>Integer</c> or
           <c>Double</c> to put numerical values into an <c>ArrayList</c>.
-          However autoboxing usually takes care of that for you.
+          However, autoboxing usually takes care of that for you.
         </p>
       </li>
 
