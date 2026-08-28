@@ -22,10 +22,11 @@
 
     <p>
       A collection of code written by other programmers that we can use is
-      called a <term>library</term> and the details of how to use a library are
-      described in its <term>Application Programming Interface</term>, or
-      <term>API</term> for short. <c>System.out.println()</c> is part of the
-      Java API, a large set of code that comes with Java.
+      called a <term>library</term> and the set of publicly available classes
+      and methods in the library are called its <term>Application Programming
+      Interface</term>, or <term>API</term> for short.
+      <c>System.out.println()</c> is part of the Java API, a large set of code
+      that comes with Java.
     </p>
 
     <p>
