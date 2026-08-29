@@ -762,25 +762,18 @@ const EMITTERS: Record<string, Emitter> = {
     );
   },
 
-  // <checkpoint material="…"/>: the button-styled checkpoint-quiz link
-  // (same resolution contract as <assignment>).
+  // <checkpoint material="…"/>: the button-styled checkpoint-quiz link,
+  // inline like <assignment> (it sits mid-sentence in a task) but with a
+  // fixed default label and no autotitle — matching the Quarto
+  // checkpoint shortcode's contract exactly.
   checkpoint: (el, ctx) => {
     const material = el.attributes.material;
     if (!material) ctx.warn('<checkpoint> with no material');
-    const text = el.children.length ? trimText(emitChildren(el, ctx)) : null;
+    const text = el.children.length ? trimText(emitChildren(el, ctx)) : 'Checkpoint';
     return h(
-      'p',
-      { class: 'checkpoint' },
-      h(
-        'a',
-        {
-          href: '#',
-          class: 'btn btn-danger bhs-assignment',
-          'data-material': material ?? '',
-          ...(text === null ? { 'data-autotitle': '' } : {}),
-        },
-        text ?? 'Checkpoint',
-      ),
+      'a',
+      { href: '#', class: 'btn btn-danger bhs-assignment', 'data-material': material ?? '' },
+      text,
     );
   },
 };

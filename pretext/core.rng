@@ -114,6 +114,7 @@
       <ref name="Fillin"/>
       <ref name="Idx"/>
       <ref name="Assignment"/>
+      <ref name="Checkpoint"/>
       <ref name="InlineImage"/>
       <ref name="Area"/>
     </choice>
@@ -302,7 +303,6 @@
       <ref name="Standard"/>
       <ref name="Reveal"/>
       <ref name="Iframe"/>
-      <ref name="Checkpoint"/>
       <ref name="Solution"/>
       <ref name="Answer"/>
       <ref name="Hint"/>
@@ -874,7 +874,10 @@
       <empty/>
     </element>
   </define>
-  <!-- The button-styled checkpoint-quiz link (block form of Assignment). -->
+  <!--
+    The button-styled checkpoint-quiz link (inline, like Assignment, with a
+    fixed default label).
+  -->
   <define name="Checkpoint">
     <element name="checkpoint">
       <attribute name="material"/>

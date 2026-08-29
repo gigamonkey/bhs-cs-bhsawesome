@@ -52,8 +52,8 @@ AnyElement =
 
 InlineEl =
   C | K | Term | Em | Strong | Var | Pubtitle | TitleReference | Url
-  | Reference | Target | M | Xref | Fillin | Idx | Assignment | InlineImage
-  | Area
+  | Reference | Target | M | Xref | Fillin | Idx | Assignment | Checkpoint
+  | InlineImage | Area
 
 Inline = (text | InlineEl)*
 
@@ -121,7 +121,7 @@ BlockEl =
   P | Ul | Ol | Dl | Figure | Image | Video | Table | Tabular | Note
   | Blockquote | Activity | Project | Exercise | Pre | Listing | Program
   | Code | Datafile | Sidebyside | Gutterimage | Container | Box | Aside
-  | Task | Todo | Comment | Standard | Reveal | Iframe | Checkpoint
+  | Task | Todo | Comment | Standard | Reveal | Iframe
   | Solution | Answer | Hint | Idx | XInclude
 
 Block = BlockEl*
@@ -306,7 +306,8 @@ Iframe =
     empty
   }
 
-# The button-styled checkpoint-quiz link (block form of Assignment).
+# The button-styled checkpoint-quiz link (inline, like Assignment, with a
+# fixed default label).
 Checkpoint =
   element checkpoint {
     attribute material { text },
