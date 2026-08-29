@@ -35,6 +35,11 @@ export type BookConfig = {
   /** Additional asset trees copied verbatim into the site (vendor bundles
    * etc). dest is site-relative. */
   assetTrees?: { src: string; dest: string }[];
+  /** Per-file veto over the asset copies (assetsDir + assetTrees): return
+   * false to skip a file (BJC excludes design sources and over-cap files;
+   * log the reason yourself). Receives the tree-relative path and the
+   * absolute source path. */
+  assetFilter?: (relPath: string, absPath: string) => boolean;
   /** Dirs watch.ts watches (absolute). */
   watchDirs?: string[];
   /** Division depth that starts pages (default 2 — chapter children are

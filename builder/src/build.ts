@@ -209,16 +209,19 @@ export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Pr
     fs.writeFileSync(path.join(OUT, 'lunr-pretext-search-index.js'), lunrIndexJs(book));
   }
 
-  // Asset-tree copy, mtime/size-guarded so unchanged files aren't rewritten.
-  function copyTree(src: string, dst: string): number {
+  // Asset-tree copy, mtime/size-guarded so unchanged files aren't
+  // rewritten; config.assetFilter can veto files.
+  function copyTree(src: string, dst: string, rel = ''): number {
     if (!fs.existsSync(src)) return 0;
     let n = 0;
     fs.mkdirSync(dst, { recursive: true });
     for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
       const s = path.join(src, entry.name);
       const d = path.join(dst, entry.name);
-      if (entry.isDirectory()) n += copyTree(s, d);
+      const r = rel ? `${rel}/${entry.name}` : entry.name;
+      if (entry.isDirectory()) n += copyTree(s, d, r);
       else {
+        if (config.assetFilter && !config.assetFilter(r, s)) continue;
         const st = fs.statSync(s);
         const dt = fs.existsSync(d) ? fs.statSync(d) : null;
         if (!dt || dt.mtimeMs < st.mtimeMs || dt.size !== st.size) {
