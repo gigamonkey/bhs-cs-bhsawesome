@@ -119,7 +119,7 @@ export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Pr
     if (only && !only.has(page)) continue;
     const ctx = makeCtx(book, page, makeWarn(page));
     const content = pageContent(division, ctx);
-    writePage(page, division.title || book.title, content);
+    writePage(page, config.pageTitle?.(division) ?? (division.title || book.title), content);
     const exercises = pageExercises(content);
     if (exercises.length) {
       const ch = chapterOf(division);
@@ -214,8 +214,9 @@ export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Pr
   // beside the pages, with any self-hosted font files it references under
   // fonts/ and the optional client-side permalink injector.
   fs.copyFileSync(config.cssFile, path.join(OUT, 'book.css'));
-  // The shared ToC script (one cacheable file instead of inline ToC per page).
-  fs.writeFileSync(path.join(OUT, 'toc.js'), tocJs(book));
+  // The shared ToC script (one cacheable file instead of inline ToC per
+  // page); a book can supply its own generator (config.tocJs).
+  fs.writeFileSync(path.join(OUT, 'toc.js'), (config.tocJs ?? tocJs)(book));
   if (config.permalinksFile) fs.copyFileSync(config.permalinksFile, path.join(OUT, 'permalinks.js'));
   if (config.fontsDir) {
     fs.mkdirSync(path.join(OUT, 'fonts'), { recursive: true });

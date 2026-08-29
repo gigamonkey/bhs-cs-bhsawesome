@@ -9,6 +9,8 @@
  * own, so a book config computes them from its own import.meta.dirname.
  */
 
+import type { Book, Division } from './book.ts';
+
 export type BookConfig = {
   /** Book id: the exercises.json `book` field and the `<id>.html` legacy
    * redirect key. */
@@ -57,6 +59,18 @@ export type BookConfig = {
   boxKinds?: Record<string, BoxKind>;
   /** The book's <aside kind="…"> vocabulary (the margin/floating family). */
   asideKinds?: Record<string, BoxKind>;
+  /** Override the generated toc.js (the sidebar-injecting script) — a book
+   * whose chrome wants different sidebar markup (e.g. BJC's Quarto-classed
+   * sidebar) supplies its own generator. Default: the PreTeXt-classed ToC
+   * (src/toc.ts). The argument is the loaded Book model. */
+  tocJs?: (book: Book) => string;
+  /** Override the browser-tab <title> per page (default: the division's
+   * title, or the book title). Receives the page division. */
+  pageTitle?: (division: Division) => string;
+  /** How exercise payloads render: 'runestone' (default — the vendored
+   * Runestone component payloads) or 'llab' (BJC's quiz.js DOM for
+   * multiple choice). */
+  mcqStyle?: 'runestone' | 'llab';
 };
 
 export type BoxKind = {

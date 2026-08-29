@@ -56,6 +56,12 @@ const PAYLOAD = new Set([
 ]);
 
 export function emitComponent(el: XmlElement, ctx: Ctx): string {
+  // llab-style books (BJC): a multiple-choice exercise emits the bare
+  // assessment-data payload its quiz.js runtime consumes — no article
+  // wrapper, heading, or numbering (matching the Quarto site's DOM).
+  if (getConfig().mcqStyle === 'llab' && ['activity', 'project', 'exercise'].includes(el.name) && detectKind(el) === 'mcq') {
+    return emitLlabMcq(el, el.attributes.label ?? elementId(el), ctx);
+  }
   // Standalone <datafile>: fully static — emit the real component.
   if (el.name === 'datafile') return emitDatafile(el);
   // Bare interactive <program> (run-only demo / embedded codelens): the
@@ -285,6 +291,54 @@ function emitMcq(el: XmlElement, label: string, ctx: Ctx): string {
         items,
       ),
     ),
+  );
+}
+
+// -- llab multiple choice (BJC's quiz.js runtime) -----------------------------
+//
+// The DOM llab/script/quiz.js + multiplechoice.js consume (exactly what the
+// Quarto site's .assessment-data fenced divs rendered to): the qdata div
+// with .prompt/.choice(.text/.feedback)/.responseDeclaration children; the
+// runtime replaces it with the interactive question at page load.
+
+function emitLlabMcq(el: XmlElement, label: string, ctx: Ctx): string {
+  const choicesEl = findDescendant(el, 'choices');
+  const choiceEls = choicesEl ? elements(choicesEl, 'choice') : [];
+  const correctCount = choiceEls.filter((c) => c.attributes.correct === 'yes').length;
+  const hasFeedback = choiceEls.some((c) => child(c, 'feedback'));
+  const ri = `ri-${label}`;
+  const items = choiceEls
+    .map((choice, i) => {
+      const st = child(choice, 'statement');
+      const fb = child(choice, 'feedback');
+      return h(
+        'div',
+        { class: 'choice', 'data-identifier': `c${i + 1}` },
+        h('div', { class: 'text' }, st ? emitBlocks(st, ctx) : ''),
+        fb ? h('div', { class: 'feedback' }, emitBlocks(fb, ctx)) : '',
+      );
+    })
+    .join('\n');
+  const correctDivs = choiceEls
+    .map((c, i) =>
+      c.attributes.correct === 'yes'
+        ? h('div', { class: 'correctResponse', 'data-identifier': `c${i + 1}` }, '')
+        : '',
+    )
+    .join('');
+  return h(
+    'div',
+    {
+      class: 'assessment-data',
+      type: 'multiplechoice',
+      ...(hasFeedback ? { 'data-hasinlinefeedback': 'true' } : {}),
+      'data-maxchoices': String(Math.max(1, correctCount)),
+      'data-responseidentifier': ri,
+      'data-shuffle': choicesEl?.attributes.randomize === 'yes' ? 'true' : 'false',
+    },
+    h('div', { class: 'prompt' }, statementBlocks(el, ctx)),
+    items,
+    h('div', { class: 'responseDeclaration', 'data-identifier': ri }, correctDivs),
   );
 }
 
