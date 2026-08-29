@@ -180,16 +180,21 @@ export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Pr
   // The web app serves these as 301s (plans/bhsawesome-index-html-urls.md
   // phase 0), and the content repo's material-url rewrite reads the same map.
   if (!only) {
-    // index.html too: the old root was a meta-refresh stub at that name, so
-    // links to it exist; send them to the clean root URL.
-    const redirects: Record<string, string> = { [`${config.id}.html`]: href(''), 'index.html': href('') };
-    for (const d of book.pages) redirects[`${d.id}.html`] = href(d.page as string);
-    if (hasBackmatter) {
-      redirects['backmatter.html'] = href('backmatter');
-      redirects['book-index.html'] = href('backmatter/book-index');
-      redirects['colophon.html'] = href('backmatter/colophon');
+    let redirects: Record<string, string>;
+    if (config.redirects) {
+      redirects = config.redirects(book);
+    } else {
+      // index.html too: the old root was a meta-refresh stub at that name,
+      // so links to it exist; send them to the clean root URL.
+      redirects = { [`${config.id}.html`]: href(''), 'index.html': href('') };
+      for (const d of book.pages) redirects[`${d.id}.html`] = href(d.page as string);
+      if (hasBackmatter) {
+        redirects['backmatter.html'] = href('backmatter');
+        redirects['book-index.html'] = href('backmatter/book-index');
+        redirects['colophon.html'] = href('backmatter/colophon');
+      }
+      for (const v of videos) redirects[`${v.label}.html`] = href(`video/${v.label}`);
     }
-    for (const v of videos) redirects[`${v.label}.html`] = href(`video/${v.label}`);
     fs.writeFileSync(path.join(OUT, 'redirects.json'), JSON.stringify(redirects, null, 1));
   }
 

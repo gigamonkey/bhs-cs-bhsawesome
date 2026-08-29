@@ -70,6 +70,19 @@
     <ref name="LabelAtt"/>
     <ref name="BaseAtt"/>
   </define>
+  <!--
+    A division's URL segment when it must differ from the xml:id (BJC's labs:
+    every unit has a lab-1, so ids are unique u1-lab-1 style but slugs repeat).
+  -->
+  <define name="SlugAtt">
+    <optional>
+      <attribute name="slug"/>
+    </optional>
+  </define>
+  <define name="DivisionAtts">
+    <ref name="CommonAtts"/>
+    <ref name="SlugAtt"/>
+  </define>
   <define name="XInclude">
     <element name="xi:include">
       <attribute name="href"/>
@@ -1276,7 +1289,7 @@
   -->
   <define name="Chapter">
     <element name="chapter">
-      <ref name="CommonAtts"/>
+      <ref name="DivisionAtts"/>
       <zeroOrMore>
         <choice>
           <ref name="Title"/>
@@ -1291,7 +1304,7 @@
   </define>
   <define name="Section">
     <element name="section">
-      <ref name="CommonAtts"/>
+      <ref name="DivisionAtts"/>
       <zeroOrMore>
         <choice>
           <ref name="Title"/>
@@ -1308,7 +1321,7 @@
   </define>
   <define name="Subsection">
     <element name="subsection">
-      <ref name="CommonAtts"/>
+      <ref name="DivisionAtts"/>
       <zeroOrMore>
         <choice>
           <ref name="Title"/>
@@ -1322,7 +1335,7 @@
   </define>
   <define name="Page">
     <element name="page">
-      <ref name="CommonAtts"/>
+      <ref name="DivisionAtts"/>
       <zeroOrMore>
         <choice>
           <ref name="Title"/>

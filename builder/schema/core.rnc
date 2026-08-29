@@ -35,6 +35,10 @@ LabelAtt = attribute label { text }?
 # xml:base on included roots.
 BaseAtt = attribute xml:base { text }?
 CommonAtts = IdAtt, LangAtt, LabelAtt, BaseAtt
+# A division's URL segment when it must differ from the xml:id (BJC's labs:
+# every unit has a lab-1, so ids are unique u1-lab-1 style but slugs repeat).
+SlugAtt = attribute slug { text }?
+DivisionAtts = CommonAtts, SlugAtt
 
 XInclude =
   element xi:include {
@@ -429,17 +433,17 @@ Preface = element preface { CommonAtts, Title?, Block }
 # nest (aggregation files xi:include section files inside a section).
 Chapter =
   element chapter {
-    CommonAtts,
+    DivisionAtts,
     (Title | Introduction | Conclusion | Section | XInclude | BlockEl)*
   }
 Section =
   element section {
-    CommonAtts,
+    DivisionAtts,
     (Title | Introduction | Conclusion | Section | Subsection | Page | XInclude | BlockEl)*
   }
 Subsection =
-  element subsection { CommonAtts, (Title | Introduction | Conclusion | Subsection | BlockEl)* }
-Page = element page { CommonAtts, (Title | Introduction | Conclusion | Subsection | BlockEl)* }
+  element subsection { DivisionAtts, (Title | Introduction | Conclusion | Subsection | BlockEl)* }
+Page = element page { DivisionAtts, (Title | Introduction | Conclusion | Subsection | BlockEl)* }
 
 Introduction = element introduction { CommonAtts, Title?, Block }
 Conclusion = element conclusion { CommonAtts, Title?, Block }

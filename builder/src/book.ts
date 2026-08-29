@@ -125,8 +125,11 @@ export function loadBook(mainPtx: string): Book {
     if (startsPage) {
       // Nested under the closest ancestor page (sections under their
       // chapter, prefaces under frontmatter); chapters and frontmatter
-      // hang off the root.
-      d.page = d.parent?.page ? `${d.parent.page}/${d.id}` : d.id;
+      // hang off the root. The URL segment is @slug when present, else
+      // the xml:id — BJC's labs share slugs (every unit has a lab-1)
+      // while xml:ids stay globally unique.
+      const segment = attr(d.el, 'slug') ?? d.id;
+      d.page = d.parent?.page ? `${d.parent.page}/${segment}` : segment;
       pages.push(d);
     }
     for (const c of d.children) assignPages(c);

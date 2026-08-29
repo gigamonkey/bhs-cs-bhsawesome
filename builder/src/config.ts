@@ -75,6 +75,10 @@ export type BookConfig = {
    * Runestone component payloads) or 'llab' (BJC's quiz.js DOM for
    * multiple choice). */
   mcqStyle?: 'runestone' | 'llab';
+  /** Override redirects.json generation (default: every division's flat
+   * legacy `<id>.html` name -> its URL). BJC's legacy URLs are nested
+   * Quarto paths recorded by the converter, so its config supplies them. */
+  redirects?: (book: Book) => Record<string, string>;
 };
 
 export type BoxKind = {
