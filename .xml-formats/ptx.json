@@ -14,7 +14,12 @@
     "m",
     "pubtitle",
     "var",
-    "assignment"
+    "assignment",
+    "br",
+    "sup",
+    "sub",
+    "small",
+    "checkpoint"
   ],
   "code": [
     "program"
@@ -28,7 +33,6 @@
   ],
   "compact": [
     "cell",
-    "checkpoint",
     "idx",
     "premise",
     "standard"

@@ -249,7 +249,12 @@ const EMITTERS: Record<string, Emitter> = {
   url: (el, ctx) => {
     const target = el.attributes.href ?? '';
     const label = el.children.length ? trimText(emitChildren(el, ctx)) : escapeHtml(el.attributes.visual ?? target);
-    return h('a', { class: 'external', href: target, target: '_blank' }, label);
+    // A root-relative href is an internal link (same-tab, no external
+    // class) — e.g. BJC links into the website or in-page anchors.
+    const internal = target.startsWith('/') || target.startsWith('#');
+    return internal
+      ? h('a', { class: 'internal', href: target }, label)
+      : h('a', { class: 'external', href: target, target: '_blank' }, label);
   },
   // Math prerenders at build time (builder/src/math.ts) — no MathJax runtime.
   m: (el) => renderMath(textContent(el)),
@@ -265,6 +270,9 @@ const EMITTERS: Record<string, Emitter> = {
       // bare when the target starts its page. Unnumbered divisions whose
       // title IS the type ("Preface") don't repeat it; @text="title"
       // renders the bare title.
+      // Custom link text: an xref with children renders them as the text
+    // (BJC's prose cross-links); an empty xref gets the auto text.
+      const custom = el.children.length ? trimText(emitChildren(el, ctx)) : null;
       const text =
         el.attributes.text === 'title'
           ? d.title || typeName
@@ -272,7 +280,7 @@ const EMITTERS: Record<string, Emitter> = {
       const target =
         d.page !== null ? href(d.page) : `${href(division.pageOf.page as string)}#${ref}`;
       const tooltip = d.number ? `${typeName} ${d.number}: ${d.title}` : d.title || typeName;
-      return h('a', { href: target, class: 'internal', title: tooltip }, escapeHtml(text));
+      return h('a', { href: target, class: 'internal', title: tooltip }, custom ?? escapeHtml(text));
     }
     const label = ctx.book.labels.get(ref);
     if (!label) {
@@ -284,6 +292,7 @@ const EMITTERS: Record<string, Emitter> = {
     // Block targets render as knowl popups (with an href fallback); the
     // knowl page itself is emitted at the end of the build.
     knowlTargets.add(ref);
+    const customText = el.children.length ? trimText(emitChildren(el, ctx)) : null;
     const typeName = blockTypeNames()[label.el.name] ?? capitalize(label.el.name);
     const number = blockNumber(label.el);
     const titleEl = label.el.children.find((c) => isElement(c) && c.name === 'title') as
@@ -303,9 +312,15 @@ const EMITTERS: Record<string, Emitter> = {
         'data-close-label': 'Close',
         title: text,
       },
-      escapeHtml(text),
+      customText ?? escapeHtml(text),
     );
   },
+
+  // -- basic HTML inlines (BJC's converted-from-HTML prose) ------------------
+  br: () => '<br>',
+  sup: (el, ctx) => h('sup', {}, trimText(emitChildren(el, ctx))),
+  sub: (el, ctx) => h('sub', {}, trimText(emitChildren(el, ctx))),
+  small: (el, ctx) => h('small', {}, trimText(emitChildren(el, ctx))),
 
   // -- lists -----------------------------------------------------------------
   // Bare elements: ols are the UA default (ol@type passes through for
@@ -792,9 +807,10 @@ function emitBoxLike(
   const id = elementId(el);
   const body = emitBlocks(el, ctx);
   if (spec?.collapsible) {
+    const open = el.attributes.open === 'yes' || spec.collapsible.open;
     return h(
       'details',
-      { class: cls, id, ...(spec.collapsible.open ? { open: '' } : {}) },
+      { class: cls, id, ...(open ? { open: '' } : {}) },
       h('summary', {}, escapeHtml(spec.collapsible.label)),
       h('div', { class: `${cls}__content` }, body),
     );

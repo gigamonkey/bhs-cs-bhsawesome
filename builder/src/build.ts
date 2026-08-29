@@ -145,7 +145,7 @@ export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Pr
   }
 
   // Special pages ('' is the contents page — the site-root index.html).
-  writePage('', book.title, contentsPageContent(book));
+  writePage('', book.title, contentsPageContent(book, makeCtx(book, '', makeWarn('contents'))));
   if (hasBackmatter) {
     writePage('backmatter', 'Back Matter', backmatterContent(book, makeCtx(book, 'backmatter', makeWarn('backmatter'))));
     writePage('backmatter/book-index', 'Index', bookIndexContent(book));

@@ -117,6 +117,10 @@
       <ref name="Checkpoint"/>
       <ref name="InlineImage"/>
       <ref name="Area"/>
+      <ref name="Br"/>
+      <ref name="Sup"/>
+      <ref name="Sub"/>
+      <ref name="Small"/>
     </choice>
   </define>
   <define name="Inline">
@@ -213,6 +217,10 @@
       <empty/>
     </element>
   </define>
+  <!--
+    An empty xref renders the auto text ("Section 2.1 Title"); children are
+    custom link text.
+  -->
   <define name="Xref">
     <element name="xref">
       <attribute name="ref"/>
@@ -224,7 +232,28 @@
           </choice>
         </attribute>
       </optional>
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <!-- Basic HTML inlines (BJC's converted-from-HTML prose). -->
+  <define name="Br">
+    <element name="br">
       <empty/>
+    </element>
+  </define>
+  <define name="Sup">
+    <element name="sup">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Sub">
+    <element name="sub">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Small">
+    <element name="small">
+      <ref name="Inline"/>
     </element>
   </define>
   <define name="Fillin">
@@ -809,6 +838,12 @@
       <attribute name="kind">
         <ref name="BoxKind"/>
       </attribute>
+      <optional>
+        <!-- A collapsible box expanded by default (per instance). -->
+        <attribute name="open">
+          <value>yes</value>
+        </attribute>
+      </optional>
       <ref name="Block"/>
     </element>
   </define>
@@ -1201,6 +1236,7 @@
         <choice>
           <ref name="Frontmatter"/>
           <ref name="Chapter"/>
+          <ref name="Page"/>
           <ref name="Introduction"/>
           <ref name="Conclusion"/>
           <ref name="Backmatter"/>
@@ -1292,6 +1328,7 @@
           <ref name="Title"/>
           <ref name="Introduction"/>
           <ref name="Conclusion"/>
+          <ref name="Subsection"/>
           <ref name="BlockEl"/>
         </choice>
       </zeroOrMore>

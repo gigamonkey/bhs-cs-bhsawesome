@@ -30,17 +30,34 @@ function summaryLi(href: string, number: string | null, title: string): string {
   return h('li', {}, h('a', { href, class: 'internal' }, label));
 }
 
-export function contentsPageContent(book: Book): string {
-  const items = book.divisions.children.map((d) =>
-    summaryLi(href(d.page as string), d.number, d.title || (d.kind === 'frontmatter' ? 'Front Matter' : d.title)),
-  );
+export function contentsPageContent(book: Book, ctx?: Ctx): string {
+  const items = book.divisions.children
+    .filter((d) => d.page !== null)
+    .map((d) =>
+      summaryLi(href(d.page as string), d.number, d.title || (d.kind === 'frontmatter' ? 'Front Matter' : d.title)),
+    );
   if (elements(book.bookEl).some((c) => c.name === 'backmatter')) {
     items.push(summaryLi(href('backmatter'), null, 'Back Matter'));
   }
+  // A book <introduction> renders on the contents page, above the links
+  // (BJC's old root index.qmd content).
+  const intro = book.divisions.children.find((d) => d.kind === 'introduction' && !d.page);
+  const introHtml =
+    intro && ctx
+      ? h(
+          'section',
+          { class: 'introduction', id: intro.id },
+          elements(intro.el)
+            .filter((c) => c.name !== 'title')
+            .map((c) => (isInteractive(c) ? ctx.emitComponent(c, ctx) : emitElement(c, ctx)))
+            .join('\n'),
+        )
+      : '';
   return h(
     'section',
     { class: 'book', id: book.divisions.id },
     h('h1', { class: 'heading ptx-toc-heading' }, 'Contents'),
+    introHtml,
     h('nav', { class: 'summary-links' }, h('ul', {}, items.join('\n'))),
   );
 }

@@ -53,7 +53,7 @@ AnyElement =
 InlineEl =
   C | K | Term | Em | Strong | Var | Pubtitle | TitleReference | Url
   | Reference | Target | M | Xref | Fillin | Idx | Assignment | Checkpoint
-  | InlineImage | Area
+  | InlineImage | Area | Br | Sup | Sub | Small
 
 Inline = (text | InlineEl)*
 
@@ -88,12 +88,19 @@ Target =
     attribute names { text }?,
     empty
   }
+# An empty xref renders the auto text ("Section 2.1 Title"); children are
+# custom link text.
 Xref =
   element xref {
     attribute ref { text },
     attribute text { "title" | "type-global" }?,
-    empty
+    Inline
   }
+# Basic HTML inlines (BJC's converted-from-HTML prose).
+Br = element br { empty }
+Sup = element sup { Inline }
+Sub = element sub { Inline }
+Small = element small { Inline }
 Fillin =
   element fillin {
     attribute name { text }?,
@@ -273,6 +280,8 @@ Box =
   element box {
     IdAtt,
     attribute kind { BoxKind },
+    # A collapsible box expanded by default (per instance).
+    attribute open { "yes" }?,
     Block
   }
 Aside =
@@ -404,7 +413,7 @@ Book =
     CommonAtts,
     Title,
     element subtitle { Inline }?,
-    (Frontmatter | Chapter | Introduction | Conclusion | Backmatter | XInclude)*
+    (Frontmatter | Chapter | Page | Introduction | Conclusion | Backmatter | XInclude)*
   }
 
 Frontmatter =
@@ -430,7 +439,7 @@ Section =
   }
 Subsection =
   element subsection { CommonAtts, (Title | Introduction | Conclusion | Subsection | BlockEl)* }
-Page = element page { CommonAtts, (Title | Introduction | Conclusion | BlockEl)* }
+Page = element page { CommonAtts, (Title | Introduction | Conclusion | Subsection | BlockEl)* }
 
 Introduction = element introduction { CommonAtts, Title?, Block }
 Conclusion = element conclusion { CommonAtts, Title?, Block }
