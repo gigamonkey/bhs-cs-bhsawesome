@@ -75,15 +75,18 @@ function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boole
   // Titled divisions show no type label ("2.1 - Title", the dash coming
   // from the section>.heading .codenumber:after rule); the type is simply
   // not emitted rather than emitted-and-hidden.
-  const heading = headingless
-    ? ''
-    : h(
-        `h${Math.min(6, level)}`,
-        { class: 'heading' },
-        d.kind === 'introduction' && !d.title
-          ? h('span', { class: 'type' }, 'Introduction')
-          : headingSpans(d.title ? null : (kindLabels()[d.kind] ?? d.kind), d.number, titleHtml, ctx),
-      );
+  const custom = isPageRoot ? getConfig().pageHeading?.(d) : undefined;
+  const heading =
+    custom ??
+    (headingless
+      ? ''
+      : h(
+          `h${Math.min(6, level)}`,
+          { class: 'heading' },
+          d.kind === 'introduction' && !d.title
+            ? h('span', { class: 'type' }, 'Introduction')
+            : headingSpans(d.title ? null : (kindLabels()[d.kind] ?? d.kind), d.number, titleHtml, ctx),
+        ));
   const inner: string[] = [heading];
   const subCtx: Ctx = { ...ctx, headingLevel: level };
   // A page-root division whose children are themselves pages (chunk depth
@@ -152,11 +155,13 @@ function titleText(el: XmlElement): string {
  * treatment as the frontmatter's), then the linked summary of its
  * page-children. */
 function chapterSummaryPage(d: Division, ctx: Ctx): string {
-  const heading = h(
-    'h1',
-    { class: 'heading' },
-    headingSpans(null, d.number, escapeHtml(d.title), ctx),
-  );
+  const heading =
+    getConfig().pageHeading?.(d) ??
+    h(
+      'h1',
+      { class: 'heading' },
+      headingSpans(null, d.number, escapeHtml(d.title), ctx),
+    );
   const intro = d.children.find((c) => c.kind === 'introduction' && !c.page);
   const introHtml = intro
     ? h('section', { class: 'introduction', id: intro.id }, blocksOf(intro.el, ctx))

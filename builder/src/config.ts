@@ -67,6 +67,10 @@ export type BookConfig = {
   /** Override the browser-tab <title> per page (default: the division's
    * title, or the book title). Receives the page division. */
   pageTitle?: (division: Division) => string;
+  /** Override the heading block at the top of every page-root division
+   * (default: the h1.heading with type/number/title spans). BJC uses this
+   * for the Quarto-style title block (breadcrumbs + title + subtitle). */
+  pageHeading?: (division: Division) => string;
   /** How exercise payloads render: 'runestone' (default — the vendored
    * Runestone component payloads) or 'llab' (BJC's quiz.js DOM for
    * multiple choice). */

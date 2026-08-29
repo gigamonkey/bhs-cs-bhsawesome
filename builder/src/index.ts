@@ -12,3 +12,7 @@ export { checkLinks } from './check-links.ts';
 export { serve } from './serve.ts';
 export { watchAndBuild } from './watch.ts';
 export { type Book, type Division, loadBook } from './book.ts';
+// Helpers a book config's hook functions (tocJs, pageHeading, …) need.
+export { href } from './urls.ts';
+export { escapeHtml, escapeAttr, h } from './html.ts';
+export { type XmlElement, child, elements, textContent } from './xml.ts';
