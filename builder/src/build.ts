@@ -71,17 +71,28 @@ export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Pr
     warnings.set(key, (warnings.get(key) ?? 0) + 1);
   };
 
+  // Backmatter pages exist only when the book has a <backmatter>.
+  const hasBackmatter = book.bookEl.children.some(
+    (c) => c instanceof Object && 'name' in c && (c as { name: string }).name === 'backmatter',
+  );
+
   // The book-order page sequence for prev/next, and each page's Up target
   // ('' is the contents page at the site root).
-  const sequence = ['', ...book.pages.map((d) => d.page as string), 'backmatter', 'backmatter/book-index', 'backmatter/colophon'];
+  const sequence = [
+    '',
+    ...book.pages.map((d) => d.page as string),
+    ...(hasBackmatter ? ['backmatter', 'backmatter/book-index', 'backmatter/colophon'] : []),
+  ];
   const upOf = new Map<string, string | null>();
   upOf.set('', null);
   for (const d of book.pages) {
     upOf.set(d.page as string, d.parent?.page ?? '');
   }
-  upOf.set('backmatter', '');
-  upOf.set('backmatter/book-index', 'backmatter');
-  upOf.set('backmatter/colophon', 'backmatter');
+  if (hasBackmatter) {
+    upOf.set('backmatter', '');
+    upOf.set('backmatter/book-index', 'backmatter');
+    upOf.set('backmatter/colophon', 'backmatter');
+  }
 
   const exercisesIndex: {
     file: string;
@@ -135,9 +146,11 @@ export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Pr
 
   // Special pages ('' is the contents page — the site-root index.html).
   writePage('', book.title, contentsPageContent(book));
-  writePage('backmatter', 'Back Matter', backmatterContent(book, makeCtx(book, 'backmatter', makeWarn('backmatter'))));
-  writePage('backmatter/book-index', 'Index', bookIndexContent(book));
-  writePage('backmatter/colophon', 'Colophon', colophonContent(book, makeCtx(book, 'backmatter/colophon', makeWarn('colophon'))));
+  if (hasBackmatter) {
+    writePage('backmatter', 'Back Matter', backmatterContent(book, makeCtx(book, 'backmatter', makeWarn('backmatter'))));
+    writePage('backmatter/book-index', 'Index', bookIndexContent(book));
+    writePage('backmatter/colophon', 'Colophon', colophonContent(book, makeCtx(book, 'backmatter/colophon', makeWarn('colophon'))));
+  }
 
   // Standalone video pages.
   const videos = collectVideos(book);
@@ -171,9 +184,11 @@ export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Pr
     // links to it exist; send them to the clean root URL.
     const redirects: Record<string, string> = { [`${config.id}.html`]: href(''), 'index.html': href('') };
     for (const d of book.pages) redirects[`${d.id}.html`] = href(d.page as string);
-    redirects['backmatter.html'] = href('backmatter');
-    redirects['book-index.html'] = href('backmatter/book-index');
-    redirects['colophon.html'] = href('backmatter/colophon');
+    if (hasBackmatter) {
+      redirects['backmatter.html'] = href('backmatter');
+      redirects['book-index.html'] = href('backmatter/book-index');
+      redirects['colophon.html'] = href('backmatter/colophon');
+    }
     for (const v of videos) redirects[`${v.label}.html`] = href(`video/${v.label}`);
     fs.writeFileSync(path.join(OUT, 'redirects.json'), JSON.stringify(redirects, null, 1));
   }

@@ -34,7 +34,9 @@ export function contentsPageContent(book: Book): string {
   const items = book.divisions.children.map((d) =>
     summaryLi(href(d.page as string), d.number, d.title || (d.kind === 'frontmatter' ? 'Front Matter' : d.title)),
   );
-  items.push(summaryLi(href('backmatter'), null, 'Back Matter'));
+  if (elements(book.bookEl).some((c) => c.name === 'backmatter')) {
+    items.push(summaryLi(href('backmatter'), null, 'Back Matter'));
+  }
   return h(
     'section',
     { class: 'book', id: book.divisions.id },
