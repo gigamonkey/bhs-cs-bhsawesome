@@ -904,11 +904,18 @@
       <text/>
     </element>
   </define>
-  <!-- Click-to-expand content (BJC's collapse hints). -->
+  <!--
+    Click-to-expand content (BJC's collapse hints). The optional Title is
+    inline content sharing the summary line before the label (icon pills,
+    lead-in text).
+  -->
   <define name="Reveal">
     <element name="reveal">
       <ref name="IdAtt"/>
       <attribute name="label"/>
+      <optional>
+        <ref name="Title"/>
+      </optional>
       <ref name="Block"/>
     </element>
   </define>

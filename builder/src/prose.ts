@@ -149,6 +149,49 @@ export function emitChildren(el: XmlElement, ctx: Ctx): string {
   return out;
 }
 
+// Elements that stand as blocks inside mixed li/task flow; everything else
+// (text, inline elements, placement-images) joins a bare run.
+const FLOW_BLOCKS = new Set([
+  'p', 'ul', 'ol', 'dl', 'program', 'pre', 'code', 'figure', 'table', 'tabular',
+  'box', 'aside', 'reveal', 'iframe', 'blockquote', 'note', 'activity',
+  'project', 'exercise', 'task', 'video', 'sidebyside', 'gutterimage',
+  'datafile', 'listing', 'todo', 'comment', 'standard', 'subsection',
+  'introduction', 'conclusion', 'solution', 'answer', 'hint',
+]);
+
+const isFlowBlock = (c: XmlElement): boolean =>
+  FLOW_BLOCKS.has(c.name) || (c.name === 'image' && c.attributes.placement === undefined);
+
+/**
+ * Mixed li/task content: block children emit as blocks; each contiguous
+ * bare run (text + inline elements) wraps in a derived para
+ * (`p-derived-<id>`, `-2`, … for later runs) so it survives block context
+ * and stays styleable apart from authored paragraphs.
+ */
+export function emitFlow(el: XmlElement, ctx: Ctx, idBase: string): string {
+  const parts: string[] = [];
+  let run: XmlElement['children'] = [];
+  let derived = 0;
+  const flushRun = (): void => {
+    if (!run.length) return;
+    const html = trimText(emitChildren({ children: run } as XmlElement, ctx)).trim();
+    run = [];
+    if (!html) return;
+    derived += 1;
+    parts.push(h('p', { id: `p-derived-${idBase}${derived > 1 ? `-${derived}` : ''}` }, html));
+  };
+  for (const c of el.children) {
+    if (isElement(c) && isFlowBlock(c)) {
+      flushRun();
+      parts.push(emitElement(c, ctx));
+    } else if (isElement(c) || (isText(c) && c.text.trim() !== '')) {
+      run.push(c);
+    }
+  }
+  flushRun();
+  return parts.join('');
+}
+
 /** Children that are elements only (block context: whitespace between blocks dropped). */
 export function emitBlocks(el: XmlElement, ctx: Ctx): string {
   let out = '';
@@ -343,10 +386,12 @@ const EMITTERS: Record<string, Emitter> = {
     // A list item is block context if it contains p's, inline otherwise.
     const hasBlocks = el.children.some((c) => isElement(c) && ['p', 'ul', 'ol', 'program', 'pre', 'figure'].includes(c.name));
     const id = elementId(el);
-    // Bare (inline) item content gets wrapped in a derived para. Ordered
-    // lists number their items' permalink descriptions ("Item 1").
+    // Bare (inline) item content gets wrapped in a derived para — and in
+    // MIXED content (bare runs beside blocks, a converted tight list with
+    // a nested list) each bare run gets its own derived para, so books
+    // can style the synthetic wrappers apart from authored paragraphs.
     const body = hasBlocks
-      ? emitBlocks(el, ctx)
+      ? emitFlow(el, ctx, id)
       : h('p', { id: `p-derived-${id}` }, trimText(emitChildren(el, ctx)).trim());
     return h('li', { id }, body);
   },
@@ -740,7 +785,7 @@ const EMITTERS: Record<string, Emitter> = {
         !(c.name === 'image' && c.attributes.placement !== undefined),
     );
     const body = hasBlocks
-      ? emitBlocks(el, ctx)
+      ? emitFlow(el, ctx, id)
       : h('p', { id: `p-derived-${id}` }, trimText(emitChildren(el, ctx)).trim());
     return h('ol', { class: 'tasks', start: String(n ?? 1) }, h('li', { id }, body));
   },
@@ -756,13 +801,27 @@ const EMITTERS: Record<string, Emitter> = {
   var: (el, ctx) => h('var', {}, trimText(emitChildren(el, ctx))),
 
   // <reveal label="…">: click-to-expand content (BJC's collapse hints).
-  reveal: (el, ctx) =>
-    h(
+  // An optional <title> child is inline content that shares the summary
+  // line BEFORE the label (the old sites put icon pills and lead-in text
+  // on the toggle's line); the label itself wears .reveal-label so css
+  // can style just it as the link-like toggle.
+  reveal: (el, ctx) => {
+    const titleEl = el.children.find((c) => isElement(c) && c.name === 'title') as XmlElement | undefined;
+    const label = h('span', { class: 'reveal-label' }, escapeHtml(el.attributes.label ?? 'Show'));
+    const summary = titleEl
+      ? h('summary', {}, `${trimText(emitChildren(titleEl, ctx)).trim()} `, label)
+      : h('summary', {}, label);
+    const body = el.children
+      .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
+      .map((c) => emitElement(c, ctx))
+      .join('');
+    return h(
       'details',
       { class: 'reveal', id: elementId(el) },
-      h('summary', {}, escapeHtml(el.attributes.label ?? 'Show')),
-      h('div', { class: 'reveal__content' }, emitBlocks(el, ctx)),
-    ),
+      summary,
+      h('div', { class: 'reveal__content' }, body),
+    );
+  },
 
   // <iframe src="…">: the rare embedded-page block (Drive previews etc).
   iframe: (el, ctx) => {
