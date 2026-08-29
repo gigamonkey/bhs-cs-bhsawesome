@@ -6,6 +6,7 @@
 
 import type { Book, Division } from './book.ts';
 import { emitComponent } from './components.ts';
+import { getConfig } from './config.ts';
 import { escapeHtml, h } from './html.ts';
 import { elementId } from './ids.ts';
 import { type Ctx, emitChildren, emitElement, headingSpans, isInteractive } from './prose.ts';
@@ -51,13 +52,18 @@ function frontmatterPage(d: Division, ctx: Ctx): string {
   );
 }
 
-const KIND_LABELS: Record<string, string> = {
+const DEFAULT_KIND_LABELS: Record<string, string> = {
   chapter: 'Chapter',
   section: 'Section',
   subsection: 'Subsection',
   introduction: 'Introduction',
   preface: 'Preface',
 };
+
+const kindLabels = (): Record<string, string> => ({
+  ...DEFAULT_KIND_LABELS,
+  ...getConfig().divisionLabels,
+});
 
 function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boolean): string {
   // Inline introductions/conclusions are anonymous — no heading (only the
@@ -75,7 +81,7 @@ function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boole
         { class: 'heading' },
         d.kind === 'introduction' && !d.title
           ? h('span', { class: 'type' }, 'Introduction')
-          : headingSpans(d.title ? null : (KIND_LABELS[d.kind] ?? d.kind), d.number, titleHtml, ctx),
+          : headingSpans(d.title ? null : (kindLabels()[d.kind] ?? d.kind), d.number, titleHtml, ctx),
       );
   const inner: string[] = [heading];
   const subCtx: Ctx = { ...ctx, headingLevel: level };

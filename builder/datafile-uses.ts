@@ -6,16 +6,16 @@
  * Consumed by extract-datafiles.py (which turns the non-jar entries into
  * book-tests/<label>.datafiles manifests for the monorepo jar). This walks
  * the assembled source model — main.ptx and its includes — so dead legacy
- * trees are excluded and no rendered pages are involved (the scan formerly
- * read land.py's converted PreTeXt output).
+ * trees are excluded and no rendered pages are involved.
  */
 
-import path from 'node:path';
+import { config } from './bhsawesome.ts';
 import { loadBook } from './src/book.ts';
+import { setConfig } from './src/config.ts';
 import { attr, elements, type XmlElement } from './src/xml.ts';
 
-const ROOT = path.resolve(import.meta.dirname, '..');
-const book = loadBook(path.join(ROOT, 'pretext', 'main.ptx'));
+setConfig(config);
+const book = loadBook(config.mainPtx);
 
 const uses: Record<string, string[]> = {};
 

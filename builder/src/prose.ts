@@ -13,8 +13,9 @@ import type { Book } from './book.ts';
 import { highlight } from './highlight.ts';
 import { type Attrs, escapeHtml, h, voidEl } from './html.ts';
 import { NUMBERED_BLOCKS, blockNumber, elementId } from './ids.ts';
+import { getConfig } from './config.ts';
 import { renderMath } from './math.ts';
-import { BASE, href } from './urls.ts';
+import { base, href } from './urls.ts';
 import { type XmlElement, elements, isElement, isText, textContent } from './xml.ts';
 
 export type Ctx = {
@@ -159,7 +160,7 @@ export function emitBlocks(el: XmlElement, ctx: Ctx): string {
   return out;
 }
 
-const BLOCK_TYPE_NAMES: Record<string, string> = {
+const DEFAULT_BLOCK_TYPE_NAMES: Record<string, string> = {
   activity: 'Activity',
   project: 'Project',
   exercise: 'Activity',
@@ -169,6 +170,10 @@ const BLOCK_TYPE_NAMES: Record<string, string> = {
   note: 'Note',
   video: 'Video',
 };
+
+export function blockTypeNames(): Record<string, string> {
+  return { ...DEFAULT_BLOCK_TYPE_NAMES, ...getConfig().blockTypeNames };
+}
 
 function capitalize(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -273,7 +278,7 @@ const EMITTERS: Record<string, Emitter> = {
     // Block targets render as knowl popups (with an href fallback); the
     // knowl page itself is emitted at the end of the build.
     knowlTargets.add(ref);
-    const typeName = BLOCK_TYPE_NAMES[label.el.name] ?? capitalize(label.el.name);
+    const typeName = blockTypeNames()[label.el.name] ?? capitalize(label.el.name);
     const number = blockNumber(label.el);
     const titleEl = label.el.children.find((c) => isElement(c) && c.name === 'title') as
       | XmlElement
@@ -287,7 +292,7 @@ const EMITTERS: Record<string, Emitter> = {
       'a',
       {
         href: `${href(label.pageOf.page as string)}#${ref}`,
-        'data-knowl': `${BASE}/knowl/xref/${ref}.html`,
+        'data-knowl': `${base()}/knowl/xref/${ref}.html`,
         'data-reveal-label': 'Reveal',
         'data-close-label': 'Close',
         title: text,
@@ -368,7 +373,7 @@ const EMITTERS: Record<string, Emitter> = {
     const margin = (100 - width) / 2;
     const desc = el.children.find((c) => isElement(c) && c.name === 'shortdescription') as XmlElement | undefined;
     const img = voidEl('img', {
-      src: `${BASE}/external/${source}`,
+      src: `${base()}/external/${source}`,
       alt: desc ? trimText(textContent(desc)).trim() : undefined,
     });
     // Inside a sidebyside the PANEL controls the width; the image-box is
@@ -531,7 +536,7 @@ const EMITTERS: Record<string, Emitter> = {
     // java default (empty isn't nullish) and emits class="language-".
     // Output-showing programs are language="text".
     if (el.attributes.language === '') ctx.warn('<program language=""> — use language="text" for output blocks');
-    const lang = el.attributes.language ?? 'java';
+    const lang = el.attributes.language ?? getConfig().defaultProgramLanguage ?? 'java';
     // No wrapper div: the pre scrolls itself, and pretext-core's clipboard
     // code re-wraps any .clipboardable at runtime to anchor its button.
     return h(
@@ -557,7 +562,7 @@ const EMITTERS: Record<string, Emitter> = {
   // text). Children are the content blocks.
   gutterimage: (el, ctx) => {
     const img = voidEl('img', {
-      src: `${BASE}/external/${el.attributes.source ?? ''}`,
+      src: `${base()}/external/${el.attributes.source ?? ''}`,
       alt: el.attributes.description,
     });
     return h(

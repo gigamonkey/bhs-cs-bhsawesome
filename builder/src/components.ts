@@ -14,13 +14,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { Ctx } from './prose.ts';
+import { getConfig } from './config.ts';
 import { escapeAttr, escapeHtml, h } from './html.ts';
 import { blockNumber, elementId, overrideId } from './ids.ts';
 import { blockHeadingSpans, dedent, emitBlocks, emitChildren, emitElement, smartQuotes, trimText } from './prose.ts';
-import { BASE } from './urls.ts';
+import { base } from './urls.ts';
 import { type XmlElement, attr, child, elements, isElement, textContent } from './xml.ts';
 
-const ASSETS = path.resolve(import.meta.dirname, '..', '..', 'pretext', 'assets');
+const defaultLanguage = () => getConfig().defaultProgramLanguage ?? 'java';
 
 const TYPE_NAMES: Record<string, string> = {
   activity: 'Activity',
@@ -451,7 +452,7 @@ function emitParsons(el: XmlElement, label: string, ctx: Ctx): string {
             class: 'parsonsblocks',
             'data-question_label': '',
             style: 'visibility: hidden;',
-            'data-language': el.attributes.language ?? 'java',
+            'data-language': el.attributes.language ?? defaultLanguage(),
             'data-adaptive': el.attributes.adaptive === 'no' ? 'false' : 'true',
             'data-noindent': noindent,
           },
@@ -484,7 +485,7 @@ function emitHparsons(el: XmlElement, blocks: XmlElement, label: string, ctx: Ct
           'textarea',
           {
             style: 'visibility: hidden',
-            'data-language': el.attributes.language ?? 'java',
+            'data-language': el.attributes.language ?? defaultLanguage(),
             'data-randomize': 'true',
             'data-reuse': 'false',
             'data-blockanswer': answerIndices.join(' '),
@@ -511,7 +512,7 @@ function emitCodelens(el: XmlElement, label: string, ctx: Ctx): string {
         h('div', { class: 'exercise-statement' }, statementBlocks(el, ctx)),
         `<div class="pytutorVisualizer exercise-interactive" id="rs-${label}" data-params='{"embeddedMode": true, "lang": "java", "jumpToEnd": false}'></div>`,
       ),
-      h('script', { src: `${BASE}/generated/trace/${label}.js` }, ' '),
+      h('script', { src: `${base()}/generated/trace/${label}.js` }, ' '),
     ),
   );
 }
@@ -593,7 +594,9 @@ function emitDatafile(el: XmlElement): string {
   // already assembled) or points at an asset file with @source.
   let raw = textContent(pre ?? el);
   if (pre?.attributes.source) {
-    raw = fs.readFileSync(path.join(ASSETS, pre.attributes.source), 'utf8');
+    const assets = getConfig().assetsDir;
+    if (!assets) throw new Error(`<pre source="${pre.attributes.source}"> but the book config has no assetsDir`);
+    raw = fs.readFileSync(path.join(assets, pre.attributes.source), 'utf8');
   }
   const content = `${dedent(raw)}\n`;
   return h(

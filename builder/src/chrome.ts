@@ -4,12 +4,18 @@
  */
 
 import fs from 'node:fs';
-import path from 'node:path';
 import type { Book, Division } from './book.ts';
+import { getConfig } from './config.ts';
 import { escapeHtml, h } from './html.ts';
 import { href } from './urls.ts';
 
-const TEMPLATE = fs.readFileSync(path.join(import.meta.dirname, '..', 'chrome.html'), 'utf8');
+let template: string | null = null;
+
+/** The book's chrome template (BookConfig.chromeFile), read once. */
+export function chromeTemplate(): string {
+  if (template === null) template = fs.readFileSync(getConfig().chromeFile, 'utf8');
+  return template;
+}
 
 const ICON = (code: string) =>
   `<span class="icon material-symbols-outlined" aria-hidden="true">${code}</span>`;
@@ -46,7 +52,7 @@ export function renderChrome(
   nav: PageNav,
 ): string {
   const buttons = treeButtons(nav.prev, nav.up, nav.next);
-  return TEMPLATE.replace('{{TITLE}}', escapeHtml(title))
+  return chromeTemplate().replace('{{TITLE}}', escapeHtml(title))
     .replace('{{TREEBUTTONS}}', () => buttons)
     .replace('{{TREEBUTTONS_FOOTER}}', () => buttons)
     .replace('{{CONTENT}}', () => content);

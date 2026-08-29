@@ -4,18 +4,19 @@
  * corpus (plans/rehost-bhsawesome.md 3a global features).
  */
 
-import fs from 'node:fs';
-import path from 'node:path';
 import lunr from 'lunr';
 import type { Book, Division } from './book.ts';
+import { chromeTemplate } from './chrome.ts';
 import { escapeHtml, h } from './html.ts';
 import { NUMBERED_BLOCKS, blockNumber, elementId } from './ids.ts';
 import { type Ctx, emitElement, isInteractive, smartQuotes } from './prose.ts';
 import { href } from './urls.ts';
 import { type XmlElement, child, elements, isElement, textContent, xmlId } from './xml.ts';
 
-const CHROME = fs.readFileSync(path.join(import.meta.dirname, '..', 'chrome.html'), 'utf8');
-const CHROME_HEAD = CHROME.slice(0, CHROME.indexOf('</head>'));
+const chromeHead = () => {
+  const chrome = chromeTemplate();
+  return chrome.slice(0, chrome.indexOf('</head>'));
+};
 
 // -- contents / backmatter ---------------------------------------------------
 
@@ -201,7 +202,7 @@ export function bookIndexContent(book: Book): string {
 // -- standalone video pages ---------------------------------------------------
 
 export function videoPage(label: string, youtube: string): string {
-  return `${CHROME_HEAD}</head>
+  return `${chromeHead()}</head>
 <body class="pretext book">
 <div class="ptx-page"><main class="ptx-main"><div id="ptx-content">
 <div style="text-align: center;">Reloading this page will reset a start location</div>

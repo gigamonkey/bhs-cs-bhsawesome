@@ -12,12 +12,19 @@
 
 import Prism from 'prismjs';
 import loadLanguages from 'prismjs/components/index.js';
+import { getConfig } from './config.ts';
 import { escapeHtml } from './html.ts';
 
-loadLanguages(['java']);
+let loaded = false;
+function ensureLanguages(): void {
+  if (loaded) return;
+  loadLanguages(getConfig().highlightLanguages ?? ['java']);
+  loaded = true;
+}
 
 /** Code -> HTML: token spans for known languages, plain escape otherwise. */
 export function highlight(code: string, lang: string): string {
+  ensureLanguages();
   const grammar = Prism.languages[lang];
   if (!grammar) return escapeHtml(code);
   return Prism.highlight(code, grammar, lang);
