@@ -120,8 +120,12 @@ export function loadBook(mainPtx: string): Book {
   const pages: Division[] = [];
   const assignPages = (d: Division): void => {
     const depth = divisionDepth(d);
+    // Subsections are always in-page headings, whatever their depth (a
+    // book-level page's h2 chunks sit at depth 2 under chunkDepth 3).
     const startsPage =
-      (d.kind === 'frontmatter' || (depth <= chunkDepth && d.kind !== 'book')) && d.kind !== 'introduction';
+      (d.kind === 'frontmatter' || (depth <= chunkDepth && d.kind !== 'book')) &&
+      d.kind !== 'introduction' &&
+      d.kind !== 'subsection';
     if (startsPage) {
       // Nested under the closest ancestor page (sections under their
       // chapter, prefaces under frontmatter); chapters and frontmatter

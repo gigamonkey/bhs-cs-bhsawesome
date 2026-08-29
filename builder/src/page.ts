@@ -76,6 +76,7 @@ function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boole
   // from the section>.heading .codenumber:after rule); the type is simply
   // not emitted rather than emitted-and-hidden.
   const custom = isPageRoot ? getConfig().pageHeading?.(d) : undefined;
+  const number = getConfig().numberDivisionHeadings === false ? null : d.number;
   const heading =
     custom ??
     (headingless
@@ -85,7 +86,7 @@ function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boole
           { class: 'heading' },
           d.kind === 'introduction' && !d.title
             ? h('span', { class: 'type' }, 'Introduction')
-            : headingSpans(d.title ? null : (kindLabels()[d.kind] ?? d.kind), d.number, titleHtml, ctx),
+            : headingSpans(d.title ? null : (kindLabels()[d.kind] ?? d.kind), number, titleHtml, ctx),
         ));
   const inner: string[] = [heading];
   const subCtx: Ctx = { ...ctx, headingLevel: level };
@@ -120,6 +121,7 @@ function blocksOf(el: XmlElement, ctx: Ctx): string {
 }
 
 function summaryLinks(d: Division): string {
+  const numbered = getConfig().numberDivisionHeadings !== false;
   const items = d.children
     .filter((c) => c.page)
     .map((c) =>
@@ -130,7 +132,7 @@ function summaryLinks(d: Division): string {
           'a',
           { href: href(c.page as string), class: 'internal' },
           [
-            c.number ? h('span', { class: 'codenumber' }, escapeHtml(c.number)) : '',
+            numbered && c.number ? h('span', { class: 'codenumber' }, escapeHtml(c.number)) : '',
             h('span', { class: 'title' }, escapeHtml(c.title || 'Introduction')),
           ]
             .filter(Boolean)

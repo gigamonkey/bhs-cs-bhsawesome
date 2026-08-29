@@ -57,7 +57,7 @@ AnyElement =
 InlineEl =
   C | K | Term | Em | Strong | Var | Pubtitle | TitleReference | Url
   | Reference | Target | M | Xref | Fillin | Idx | Assignment | Checkpoint
-  | InlineImage | Area | Br | Sup | Sub | Small
+  | InlineImage | Area | Br | Sup | Sub | Small | Comment
 
 Inline = (text | InlineEl)*
 
@@ -133,7 +133,7 @@ BlockEl =
   | Blockquote | Activity | Project | Exercise | Pre | Listing | Program
   | Code | Datafile | Sidebyside | Gutterimage | Container | Box | Aside
   | Task | Todo | Comment | Standard | Reveal | Iframe
-  | Solution | Answer | Hint | Idx | XInclude
+  | Solution | Answer | Hint | Idx | XInclude | Subsection
 
 Block = BlockEl*
 # Contexts that take either inline prose or blocks (list items, cells, tasks).

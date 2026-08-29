@@ -134,6 +134,7 @@
       <ref name="Sup"/>
       <ref name="Sub"/>
       <ref name="Small"/>
+      <ref name="Comment"/>
     </choice>
   </define>
   <define name="Inline">
@@ -350,6 +351,7 @@
       <ref name="Hint"/>
       <ref name="Idx"/>
       <ref name="XInclude"/>
+      <ref name="Subsection"/>
     </choice>
   </define>
   <define name="Block">

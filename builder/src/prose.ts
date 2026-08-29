@@ -694,6 +694,25 @@ const EMITTERS: Record<string, Emitter> = {
   introduction: (el, ctx) => emitBlocks(el, ctx),
   conclusion: (el, ctx) => emitBlocks(el, ctx),
 
+  // A subsection INSIDE a block context (a box, a book introduction —
+  // BJC's converted pages nest headed chunks anywhere): a plain headed
+  // section, outside the division/numbering fabric.
+  subsection: (el, ctx) => {
+    const titleEl = el.children.find((c) => isElement(c) && c.name === 'title') as XmlElement | undefined;
+    const heading = titleEl
+      ? h(
+          `h${Math.min(6, ctx.headingLevel + 1)}`,
+          { class: 'heading' },
+          h('span', { class: 'title' }, trimText(emitChildren(titleEl, ctx)).trim()),
+        )
+      : '';
+    const body = el.children
+      .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
+      .map((c) => emitElement(c, { ...ctx, headingLevel: ctx.headingLevel + 1 }))
+      .join('\n');
+    return h('section', { class: 'subsection', id: elementId(el) }, heading, body);
+  },
+
   // -- shared-format extensions (plans/bjc-quarto-to-xml.md P2) --------------
 
   // <box kind="…">: the generic admonition/callout block; the book's kind
@@ -713,7 +732,10 @@ const EMITTERS: Record<string, Emitter> = {
     if (n === undefined) ctx.warn('<task> outside any page — no number assigned');
     const id = elementId(el);
     const hasBlocks = el.children.some(
-      (c) => isElement(c) && ['p', 'ul', 'ol', 'box', 'aside', 'image', 'program', 'pre', 'figure', 'reveal'].includes(c.name),
+      (c) =>
+        isElement(c) &&
+        ['p', 'ul', 'ol', 'box', 'aside', 'image', 'program', 'pre', 'figure', 'reveal'].includes(c.name) &&
+        !(c.name === 'image' && c.attributes.placement !== undefined),
     );
     const body = hasBlocks
       ? emitBlocks(el, ctx)

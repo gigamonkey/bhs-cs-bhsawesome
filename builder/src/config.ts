@@ -75,6 +75,9 @@ export type BookConfig = {
    * Runestone component payloads) or 'llab' (BJC's quiz.js DOM for
    * multiple choice). */
   mcqStyle?: 'runestone' | 'llab';
+  /** Emit division numbers in headings and summary links (default true).
+   * BJC's look has no visible numbering, so it turns this off. */
+  numberDivisionHeadings?: boolean;
   /** Override redirects.json generation (default: every division's flat
    * legacy `<id>.html` name -> its URL). BJC's legacy URLs are nested
    * Quarto paths recorded by the converter, so its config supplies them. */
