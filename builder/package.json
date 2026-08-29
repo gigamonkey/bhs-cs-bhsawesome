@@ -1,0 +1,44 @@
+{
+  "name": "@peterseibel/book-builder",
+  "version": "0.1.0",
+  "description": "PreTeXt-derived XML book builder for the BHS CS books (BHSawesome, BJC).",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gigamonkey/bhs-cs-bhsawesome.git",
+    "directory": "builder"
+  },
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "typecheck": "tsc -p . --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "node scripts/prepack.mjs",
+    "postpack": "node scripts/postpack.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@rgrove/parse-xml": "^4.2.3",
+    "lunr": "^2.3.9",
+    "mathjax-full": "^3.2.1",
+    "prismjs": "^1.30.0",
+    "speech-rule-engine": "^4.1.4"
+  },
+  "devDependencies": {
+    "@types/lunr": "^2.3.7",
+    "@types/node": "^24.0.0",
+    "@types/prismjs": "^1.26.6",
+    "typescript": "^5.9.0"
+  }
+}

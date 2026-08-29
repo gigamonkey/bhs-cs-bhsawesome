@@ -35,6 +35,11 @@ export type BookConfig = {
   assetTrees?: { src: string; dest: string }[];
   /** Dirs watch.ts watches (absolute). */
   watchDirs?: string[];
+  /** Division depth that starts pages (default 2 — chapter children are
+   * pages; 3 makes the next level down pages too, e.g. BJC's
+   * unit/lab/page). Divisions above the chunk depth render summary pages;
+   * below it, inline. */
+  chunkDepth?: number;
   /** Division-heading type labels by kind (merged over the defaults). */
   divisionLabels?: Record<string, string>;
   /** Block-heading/xref type names by element (merged over the defaults). */

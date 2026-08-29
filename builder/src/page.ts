@@ -56,6 +56,7 @@ const DEFAULT_KIND_LABELS: Record<string, string> = {
   chapter: 'Chapter',
   section: 'Section',
   subsection: 'Subsection',
+  page: 'Page',
   introduction: 'Introduction',
   preface: 'Preface',
 };
@@ -85,6 +86,10 @@ function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boole
       );
   const inner: string[] = [heading];
   const subCtx: Ctx = { ...ctx, headingLevel: level };
+  // A page-root division whose children are themselves pages (chunk depth
+  // 3: a lab whose pages hang under it) links them like a chapter summary
+  // does, after its own inline content.
+  const childPageLinks = isPageRoot && d.children.some((c) => c.page) ? summaryLinks(d) : '';
   for (const c of elements(d.el)) {
     if (c.name === 'title') continue;
     const childDivision = d.children.find((cd) => cd.el === c);
@@ -100,6 +105,7 @@ function divisionSection(d: Division, ctx: Ctx, level: number, isPageRoot: boole
       inner.push(isInteractive(c) ? ctx.emitComponent(c, subCtx) : emitElement(c, subCtx));
     }
   }
+  if (childPageLinks) inner.push(childPageLinks);
   return h('section', { class: d.kind === 'subsection' ? 'subsection' : d.kind, id: d.id }, inner.join('\n'));
 }
 

@@ -1,0 +1,76 @@
+# Publish @peterseibel/book-builder to npmjs via Trusted Publisher (OIDC —
+# no NPM_TOKEN secret; the package must be linked to this repo under
+# Trusted Publishers on npmjs.com, workflow file publish-book-builder.yml).
+#
+# Trigger: push a tag like book-builder-v0.1.0 (must match the version in
+# builder/package.json — `make release-book-builder` does the whole dance),
+# or run manually via workflow_dispatch.
+
+name: publish-book-builder
+
+on:
+  push:
+    tags:
+      - 'book-builder-v*'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: builder
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 26
+          registry-url: 'https://registry.npmjs.org'
+
+      # OIDC trusted publishing needs a recent npm.
+      - run: npm install -g npm@latest
+
+      # Workspace install at the repo root (builder/ is a workspace there).
+      - run: npm ci
+        working-directory: .
+
+      - name: Check tag matches package version
+        if: github.ref_type == 'tag'
+        run: |
+          v=$(node -p "require('./package.json').version")
+          [ "${GITHUB_REF_NAME}" = "book-builder-v${v}" ] || {
+            echo "tag ${GITHUB_REF_NAME} != package version ${v}"; exit 1; }
+
+      - run: npm run typecheck
+
+      # The whole-book build IS the test suite: a builder that can't build
+      # this book cleanly must not publish.
+      - run: node builder/build.ts && node builder/check-links.ts
+        working-directory: .
+
+      # Pack (prepack builds dist/ and stages the manifest at it) and prove
+      # the tarball works for a plain-node registry consumer before
+      # publishing: Node refuses to type-strip under node_modules, so a
+      # tarball that accidentally shipped TS source would be unusable.
+      - name: Pack and smoke-test the tarball
+        run: |
+          tarball=$(npm pack --pack-destination "$RUNNER_TEMP" | tail -1)
+          mkdir "$RUNNER_TEMP/smoke" && cd "$RUNNER_TEMP/smoke"
+          npm init -y > /dev/null
+          npm install "$RUNNER_TEMP/$tarball"
+          node --input-type=module -e "
+            const { buildBook, checkLinks, loadBook } = await import('@peterseibel/book-builder');
+            if (typeof buildBook !== 'function') throw new Error('bad buildBook');
+            if (typeof checkLinks !== 'function') throw new Error('bad checkLinks');
+            if (typeof loadBook !== 'function') throw new Error('bad loadBook');
+            console.log('tarball smoke OK');
+          "
+
+      # npm publish re-runs prepack (deterministic rebuild). No --provenance:
+      # provenance attestation requires a PUBLIC source repo; trusted
+      # publishing itself works fine either way.
+      - run: npm publish --access public

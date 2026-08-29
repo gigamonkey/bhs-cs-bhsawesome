@@ -11,11 +11,12 @@
  * among the parent's ELEMENT children (title included), repeated per level.
  */
 
+import { getConfig } from './config.ts';
 import { type XmlElement, attr, child, elements, loadXml, textContent, xmlId } from './xml.ts';
 
 export type Division = {
   el: XmlElement;
-  kind: 'book' | 'frontmatter' | 'preface' | 'chapter' | 'introduction' | 'section' | 'subsection';
+  kind: 'book' | 'frontmatter' | 'preface' | 'chapter' | 'introduction' | 'conclusion' | 'section' | 'subsection' | 'page';
   id: string;
   title: string;
   number: string | null; // "2", "2.1", "2.1.3"; null = unnumbered
@@ -40,7 +41,7 @@ export type Book = {
   labels: Map<string, { el: XmlElement; pageOf: Division }>;
 };
 
-const DIVISION_KINDS = new Set(['frontmatter', 'preface', 'chapter', 'introduction', 'section', 'subsection']);
+const DIVISION_KINDS = new Set(['frontmatter', 'preface', 'chapter', 'introduction', 'section', 'subsection', 'page']);
 
 /** Assign the PreTeXt positional auto-id. */
 export function autoId(el: XmlElement, parentId: string): string {
@@ -86,7 +87,7 @@ export function loadBook(mainPtx: string): Book {
       if (kind === 'chapter') {
         chapterNum += 1;
         number = String(chapterNum);
-      } else if (kind === 'section' || kind === 'subsection') {
+      } else if (kind === 'section' || kind === 'subsection' || kind === 'page') {
         const numberedSibs = parent.children.filter((d) => d.kind === kind && d.number !== null);
         number = numberPrefix === null ? null : `${numberPrefix}.${numberedSibs.length + 1}`;
       }
@@ -106,23 +107,21 @@ export function loadBook(mainPtx: string): Book {
   };
   walk(bookEl, bookDiv, null);
 
-  // Chunk level 2: frontmatter + its children, chapters, and every
-  // chapter-level child (introduction, section) start pages. Subsections
-  // and section-level introductions render inline — and so does the
-  // FRONTMATTER's introduction (our schema, restoring the pre-PreTeXt-2.47
-  // shape: its content flows on the frontmatter page itself under the
-  // book title, not on a page of its own).
+  // Chunking (config.chunkDepth, default 2): frontmatter + its children
+  // and every division at or above the chunk depth start pages; deeper
+  // divisions render inline. At the default depth of 2, chapters and every
+  // chapter-level child (introduction, section) are pages and subsections
+  // are inline; at 3 (e.g. BJC's unit/lab/page) the third level is pages
+  // too. A division's introduction NEVER starts a page — our schema
+  // (restoring the pre-PreTeXt-2.47 shape) renders it ON the division's
+  // own page (frontmatter's under the book title, a chapter's on its
+  // contents page).
+  const chunkDepth = getConfig().chunkDepth ?? 2;
   const pages: Division[] = [];
   const assignPages = (d: Division): void => {
     const depth = divisionDepth(d);
     const startsPage =
-      (d.kind === 'frontmatter' ||
-        (depth <= 2 && d.kind !== 'book') ||
-        (d.parent?.kind === 'chapter' && d.kind === 'section')) &&
-      // Our schema: a division's introduction renders ON that division's
-      // page (frontmatter's under the book title, a chapter's on its
-      // contents page), never as a page of its own.
-      !(d.kind === 'introduction' && (d.parent?.kind === 'frontmatter' || d.parent?.kind === 'chapter'));
+      (d.kind === 'frontmatter' || (depth <= chunkDepth && d.kind !== 'book')) && d.kind !== 'introduction';
     if (startsPage) {
       // Nested under the closest ancestor page (sections under their
       // chapter, prefaces under frontmatter); chapters and frontmatter

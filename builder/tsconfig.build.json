@@ -1,0 +1,18 @@
+{
+  // The PUBLISH build (scripts/prepack.mjs): the book repos consume this
+  // package buildless (this repo relatively, dev consumers via workspace
+  // symlinks), but Node refuses to type-strip under real node_modules, so
+  // the published tarball ships compiled JS + declarations in dist/
+  // instead. Never used in dev.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    // Sources import with .ts extensions (the no-build convention); the
+    // emitted JS rewrites them to .js.
+    "rewriteRelativeImportExtensions": true
+  },
+  "include": ["src", "types"]
+}

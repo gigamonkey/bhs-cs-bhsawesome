@@ -19,3 +19,6 @@ words.txt
 
 # SQLite db files
 *.db
+# The builder package publish build (scripts/prepack.mjs)
+builder/dist/
+builder/package.json.orig
