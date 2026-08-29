@@ -14,7 +14,9 @@
     ".": "./src/index.ts"
   },
   "files": [
-    "src"
+    "src",
+    "schema",
+    "FORMAT.md"
   ],
   "publishConfig": {
     "access": "public"

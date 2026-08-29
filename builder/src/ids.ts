@@ -61,6 +61,33 @@ export function blockNumber(el: XmlElement): string | undefined {
   return numbers.get(el);
 }
 
+// Tasks (<task>, plans/bjc-quarto-to-xml.md D4) number CONTINUOUSLY per
+// page — the "for you to do" steps a BJC page numbers 1..N across all its
+// boxes — independent of the section-scoped block numbering above.
+const taskNumbers = new WeakMap<XmlElement, number>();
+
+export function taskNumber(el: XmlElement): number | undefined {
+  return taskNumbers.get(el);
+}
+
+/** Walk a page division assigning 1..N to its <task>s, stopping at child
+ * divisions that start their own pages (they number their own). */
+export function numberTasks(division: Division): void {
+  const childPages = new Set(division.children.filter((c) => c.page).map((c) => c.el));
+  let n = 0;
+  const walk = (el: XmlElement): void => {
+    for (const c of elements(el)) {
+      if (childPages.has(c)) continue;
+      if (c.name === 'task') {
+        n += 1;
+        taskNumbers.set(c, n);
+      }
+      walk(c);
+    }
+  };
+  walk(division.el);
+}
+
 /** Walk a section-level division assigning serial numbers to its blocks. */
 export function numberBlocks(division: Division): void {
   // Unnumbered page divisions still number their blocks: preface blocks

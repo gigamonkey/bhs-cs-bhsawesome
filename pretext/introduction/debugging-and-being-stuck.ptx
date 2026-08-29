@@ -567,41 +567,41 @@ Unexpected '}' on line 32.
 
       <choices>
         <choice>
-          <statement id="AP1-1-print_opt_a">
+          <statement>
             <p>Replacing <c>System</c> with <c>system</c> on all lines.</p>
           </statement>
 
-          <feedback id="AP1-1-print_opt_a">
+          <feedback>
             <p>The class name System is always capitalized.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP1-1-print_opt_b">
+          <statement>
             <p>Replacing println with print on lines 1 and 2.</p>
           </statement>
 
-          <feedback id="AP1-1-print_opt_b">
+          <feedback>
             <p>println is correct to print out with a newline in between.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP1-1-print_opt_c">
+          <statement>
             <p>Removing the single quotes in line 3.</p>
           </statement>
 
-          <feedback id="AP1-1-print_opt_c">
+          <feedback>
             <p>The single quotes are fine in this line.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP1-1-print_opt_d">
+          <statement>
             <p>Putting the semicolon after the ) on each line.</p>
           </statement>
 
-          <feedback id="AP1-1-print_opt_d">
+          <feedback>
             <p>
               Correct! The semicolon should go after each statement but not in
               the comment.

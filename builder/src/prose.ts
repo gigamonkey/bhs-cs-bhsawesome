@@ -14,6 +14,7 @@ import { highlight } from './highlight.ts';
 import { type Attrs, escapeHtml, h, voidEl } from './html.ts';
 import { NUMBERED_BLOCKS, blockNumber, elementId } from './ids.ts';
 import { getConfig } from './config.ts';
+import { taskNumber } from './ids.ts';
 import { renderMath } from './math.ts';
 import { base, href } from './urls.ts';
 import { type XmlElement, elements, isElement, isText, textContent } from './xml.ts';
@@ -211,7 +212,12 @@ const EMITTERS: Record<string, Emitter> = {
     // content — block children live as siblings now. Warn if one sneaks
     // back in (a browser would silently auto-close the <p> around it).
     const block = el.children.find(
-      (c) => isElement(c) && ['ul', 'ol', 'dl', 'program', 'pre', 'console', 'blockquote', 'image', 'tabular'].includes(c.name),
+      (c) =>
+        isElement(c) &&
+        ['ul', 'ol', 'dl', 'program', 'pre', 'console', 'blockquote', 'image', 'tabular'].includes(c.name) &&
+        // An <image> with a placement flows inline/floated inside the
+        // paragraph (D8) — only the block image-box form is out of place.
+        !(c.name === 'image' && c.attributes.placement !== undefined),
     );
     if (block && isElement(block)) ctx.warn(`<p> contains block <${block.name}> — move it out to a sibling`);
     // No class: paragraphs are plain <p>, styled by element; the few
@@ -369,13 +375,45 @@ const EMITTERS: Record<string, Emitter> = {
   },
   image: (el, ctx) => {
     const source = el.attributes.source ?? '';
+    const src = `${base()}/external/${source}`;
+    const desc = el.children.find((c) => isElement(c) && c.name === 'shortdescription') as XmlElement | undefined;
+    const alt = desc ? trimText(textContent(desc)).trim() : el.attributes.description;
+    // The D8 extensions: an image with a @placement (inline | left | right
+    // | indent), a pixel @width (no % sign), or @animated flows as a bare
+    // <img> — in-sentence Snap! block pictures, floats, click-to-play GIFs
+    // (data-gifffer, the gifffer runtime assigns the src on click) —
+    // instead of PreTeXt's centered image-box.
+    const placement = el.attributes.placement;
+    const pixelWidth = el.attributes.width !== undefined && !el.attributes.width.endsWith('%');
+    const animated = el.attributes.animated === 'click-to-play';
+    if (placement !== undefined || pixelWidth || animated) {
+      const classes =
+        [
+          placement === 'inline'
+            ? 'inline'
+            : placement === 'left'
+              ? 'float-start'
+              : placement === 'right'
+                ? 'float-end'
+                : placement === 'indent'
+                  ? 'indent'
+                  : undefined,
+          el.attributes.shadow === 'no' ? 'noshadow' : undefined,
+        ]
+          .filter(Boolean)
+          .join(' ') || undefined;
+      return voidEl('img', {
+        ...(animated ? { 'data-gifffer': src } : { src }),
+        alt,
+        title: el.attributes.title,
+        class: classes,
+        width: pixelWidth ? el.attributes.width : undefined,
+        height: el.attributes.height,
+      });
+    }
     const width = Number.parseFloat(el.attributes.width ?? '100');
     const margin = (100 - width) / 2;
-    const desc = el.children.find((c) => isElement(c) && c.name === 'shortdescription') as XmlElement | undefined;
-    const img = voidEl('img', {
-      src: `${base()}/external/${source}`,
-      alt: desc ? trimText(textContent(desc)).trim() : undefined,
-    });
+    const img = voidEl('img', { src, alt, title: el.attributes.title });
     // Inside a sidebyside the PANEL controls the width; the image-box is
     // bare (the source @width is ignored there, as PreTeXt does).
     return inSidebyside(el)
@@ -640,7 +678,137 @@ const EMITTERS: Record<string, Emitter> = {
   statement: (el, ctx) => emitBlocks(el, ctx),
   introduction: (el, ctx) => emitBlocks(el, ctx),
   conclusion: (el, ctx) => emitBlocks(el, ctx),
+
+  // -- shared-format extensions (plans/bjc-quarto-to-xml.md P2) --------------
+
+  // <box kind="…">: the generic admonition/callout block; the book's kind
+  // vocabulary lives in its BookConfig (D3), so a new kind is config +
+  // schema-enum + css, not a new element. Collapsible kinds render as
+  // <details> with the configured summary label.
+  box: (el, ctx) => emitBoxLike('div', getConfig().boxKinds, el, ctx),
+  // <aside kind="…">: same registry pattern for the margin/floating family
+  // (sidenotes, endnotes, narrows).
+  aside: (el, ctx) => emitBoxLike('aside', getConfig().asideKinds, el, ctx),
+
+  // <task>: a numbered "for you to do" step (D4). Numbered continuously
+  // per page (ids.ts numberTasks); rendered as a one-item ol so the number
+  // is a real list marker — adjacent tasks read as one list via CSS.
+  task: (el, ctx) => {
+    const n = taskNumber(el);
+    if (n === undefined) ctx.warn('<task> outside any page — no number assigned');
+    const id = elementId(el);
+    const hasBlocks = el.children.some(
+      (c) => isElement(c) && ['p', 'ul', 'ol', 'box', 'aside', 'image', 'program', 'pre', 'figure', 'reveal'].includes(c.name),
+    );
+    const body = hasBlocks
+      ? emitBlocks(el, ctx)
+      : h('p', { id: `p-derived-${id}` }, trimText(emitChildren(el, ctx)).trim());
+    return h('ol', { class: 'tasks', start: String(n ?? 1) }, h('li', { id }, body));
+  },
+
+  // Hidden authoring metadata (D5): preserved in the source, invisible in
+  // the output. <standard> carries curriculum-standard codes (the AP CSP
+  // EK annotations); <todo>/<comment> are author notes.
+  todo: () => '',
+  comment: () => '',
+  standard: () => '',
+
+  // Inline <var>: a (Snap!/program) variable name.
+  var: (el, ctx) => h('var', {}, trimText(emitChildren(el, ctx))),
+
+  // <reveal label="…">: click-to-expand content (BJC's collapse hints).
+  reveal: (el, ctx) =>
+    h(
+      'details',
+      { class: 'reveal', id: elementId(el) },
+      h('summary', {}, escapeHtml(el.attributes.label ?? 'Show')),
+      h('div', { class: 'reveal__content' }, emitBlocks(el, ctx)),
+    ),
+
+  // <iframe src="…">: the rare embedded-page block (Drive previews etc).
+  iframe: (el, ctx) => {
+    if (!el.attributes.src) ctx.warn('<iframe> with no src');
+    return h(
+      'div',
+      { class: 'iframe-box' },
+      h('iframe', {
+        src: el.attributes.src ?? '',
+        width: el.attributes.width,
+        height: el.attributes.height,
+        allowfullscreen: '',
+      }),
+    );
+  },
+
+  // <assignment material="…" [assignment="kind/name"]>: a BHS assignment
+  // link (D7) — the exact bhs-assignment contract the website's
+  // /api/bjc/resolve + bjc-assignments.js client resolve per viewer. The
+  // href stays inert; with no link text the client fills the title in via
+  // data-autotitle.
+  assignment: (el, ctx) => {
+    const material = el.attributes.material;
+    if (!material) ctx.warn('<assignment> with no material');
+    const text = el.children.length ? trimText(emitChildren(el, ctx)) : null;
+    return h(
+      'a',
+      {
+        href: '#',
+        class: 'bhs-assignment',
+        'data-material': material ?? '',
+        ...(el.attributes.assignment ? { 'data-assignment': el.attributes.assignment } : {}),
+        ...(text === null ? { 'data-autotitle': '' } : {}),
+      },
+      text ?? 'Assignment',
+    );
+  },
+
+  // <checkpoint material="…"/>: the button-styled checkpoint-quiz link
+  // (same resolution contract as <assignment>).
+  checkpoint: (el, ctx) => {
+    const material = el.attributes.material;
+    if (!material) ctx.warn('<checkpoint> with no material');
+    const text = el.children.length ? trimText(emitChildren(el, ctx)) : null;
+    return h(
+      'p',
+      { class: 'checkpoint' },
+      h(
+        'a',
+        {
+          href: '#',
+          class: 'btn btn-danger bhs-assignment',
+          'data-material': material ?? '',
+          ...(text === null ? { 'data-autotitle': '' } : {}),
+        },
+        text ?? 'Checkpoint',
+      ),
+    );
+  },
 };
+
+/** <box>/<aside> emission against a kind registry (D3). */
+function emitBoxLike(
+  tag: string,
+  kinds: Record<string, import('./config.ts').BoxKind> | undefined,
+  el: XmlElement,
+  ctx: Ctx,
+): string {
+  const kind = el.attributes.kind ?? '';
+  const spec = (kinds ?? {})[kind];
+  if (!spec) ctx.warn(`<${el.name} kind="${kind}"> — kind not in the book's config`);
+  const cls = spec?.className ?? kind;
+  const id = elementId(el);
+  const body = emitBlocks(el, ctx);
+  if (spec?.collapsible) {
+    return h(
+      'details',
+      { class: cls, id, ...(spec.collapsible.open ? { open: '' } : {}) },
+      h('summary', {}, escapeHtml(spec.collapsible.label)),
+      h('div', { class: `${cls}__content` }, body),
+    );
+  }
+  const title = spec?.title ? h('p', { class: 'box-title' }, escapeHtml(spec.title)) : '';
+  return h(tag, { class: cls, id }, title, body);
+}
 
 function proseActivity(el: XmlElement, ctx: Ctx, typeName: string, classes: string): string {
   const id = elementId(el);

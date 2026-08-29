@@ -38,6 +38,6 @@ pkg.exports = Object.fromEntries(
       .replace(/\.ts$/, '.js'),
   ]),
 );
-pkg.files = ['dist'];
+pkg.files = ['dist', 'schema', 'FORMAT.md'];
 fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
 console.log('prepack: staged package.json at dist/');

@@ -18,6 +18,19 @@ all-files.mk: pretext/full-main.ptx $(files)
 pretext/full-main.ptx: pretext/main.ptx
 	perl -pe 's/<!-- (.*) -->/$$1/;' $< > $@
 
+
+# The book schema: bhsawesome.rnc (which includes the shared
+# builder/schema/core.rnc) compiles to the committed bhsawesome.rng that
+# ./validate.py (and CI) validate against. Regenerate after editing either
+# .rnc (needs trang; brew install jing-trang / apt install trang).
+schema: pretext/bhsawesome.rng
+
+pretext/bhsawesome.rng: pretext/bhsawesome.rnc builder/schema/core.rnc
+	trang -I rnc -O rng pretext/bhsawesome.rnc $@
+
+validate: pretext/bhsawesome.rng
+	./validate.py
+
 clean:
 	rm -f all-files.mk
 	rm -f pretext/files.txt
@@ -49,4 +62,4 @@ release-book-builder:
 	echo "Pushing $$tag (and the current branch) to origin…"; \
 	git push --follow-tags origin HEAD
 
-.PHONY: release-book-builder
+.PHONY: release-book-builder schema validate

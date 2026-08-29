@@ -641,7 +641,7 @@
 
       <choices>
         <choice correct="yes">
-          <statement id="mcq-rnd-ifs_opt_a">
+          <statement>
             <program>
               <![CDATA[
               if (Math.random() < 0.25) { System.out.println("Rain"); }
@@ -649,13 +649,13 @@
             </program>
           </statement>
 
-          <feedback id="mcq-rnd-ifs_opt_a">
+          <feedback>
             <p>Correct! This code will print “Rain” 25% of the time.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="mcq-rnd-ifs_opt_b">
+          <statement>
             <program>
               <![CDATA[
               if (Math.random() > 0.75) { System.out.println("Rain"); }
@@ -663,7 +663,7 @@
             </program>
           </statement>
 
-          <feedback id="mcq-rnd-ifs_opt_b">
+          <feedback>
             <p>
               Correct. This code will print “Rain” 25% (1 - .75) of the time.
             </p>
@@ -671,7 +671,7 @@
         </choice>
 
         <choice>
-          <statement id="mcq-rnd-ifs_opt_c">
+          <statement>
             <program>
               <![CDATA[
               if (Math.random() > 0.25) { System.out.println("Rain"); }
@@ -679,13 +679,13 @@
             </program>
           </statement>
 
-          <feedback id="mcq-rnd-ifs_opt_c">
+          <feedback>
             <p>Incorrect. This code will print “Rain” 75% of the time.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="mcq-rnd-ifs_opt_d">
+          <statement>
             <program>
               <![CDATA[
               if (Math.random() < 0.75) { System.out.println("No Rain"); }
@@ -693,7 +693,7 @@
             </program>
           </statement>
 
-          <feedback id="mcq-rnd-ifs_opt_d">
+          <feedback>
             <p>
               Correct! This code will print “No Rain” 75% of the time, so it
               will rain 25% of the time.
@@ -1323,11 +1323,11 @@
 
       <choices>
         <choice>
-          <statement id="AP2-2-1_opt_a">
+          <statement>
             <p>false</p>
           </statement>
 
-          <feedback id="AP2-2-1_opt_a">
+          <feedback>
             <p>
               Although both sides of the middle == are false, false == false is
               true! Tricky!
@@ -1336,11 +1336,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="AP2-2-1_opt_b">
+          <statement>
             <p>true</p>
           </statement>
 
-          <feedback id="AP2-2-1_opt_b">
+          <feedback>
             <p>
               (5 % 3 == 0) is false and (3 &gt; 5) is false, and false == false
               is true! Tricky!
@@ -1349,31 +1349,31 @@
         </choice>
 
         <choice>
-          <statement id="AP2-2-1_opt_c">
+          <statement>
             <p>(5 % 3 == 0)</p>
           </statement>
 
-          <feedback id="AP2-2-1_opt_c">
+          <feedback>
             <p>The boolean x should hold true or false.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP2-2-1_opt_d">
+          <statement>
             <p>(3 &gt; 5)</p>
           </statement>
 
-          <feedback id="AP2-2-1_opt_d">
+          <feedback>
             <p>The boolean x should hold true or false.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP2-2-1_opt_e">
+          <statement>
             <p>2</p>
           </statement>
 
-          <feedback id="AP2-2-1_opt_e">
+          <feedback>
             <p>The boolean x should hold true or false.</p>
           </feedback>
         </choice>
@@ -1401,11 +1401,11 @@
 
       <choices>
         <choice>
-          <statement id="AP2-2-2_opt_a">
+          <statement>
             <p>x = 10 and y = 12</p>
           </statement>
 
-          <feedback id="AP2-2-2_opt_a">
+          <feedback>
             <p>
               The left side is true, but y must be less than 12 to make the
               right side true.
@@ -1414,11 +1414,11 @@
         </choice>
 
         <choice>
-          <statement id="AP2-2-2_opt_b">
+          <statement>
             <p>x = 9 and y = 9</p>
           </statement>
 
-          <feedback id="AP2-2-2_opt_b">
+          <feedback>
             <p>
               The left side is false (x must be greater than or equal to 10),
               but the right side is true.
@@ -1427,21 +1427,21 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="AP2-2-2_opt_c">
+          <statement>
             <p>x = 10 and y = 11</p>
           </statement>
 
-          <feedback id="AP2-2-2_opt_c">
+          <feedback>
             <p>Correct! Both sides are true!</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP2-2-2_opt_d">
+          <statement>
             <p>x = 10 and y = 13</p>
           </statement>
 
-          <feedback id="AP2-2-2_opt_d">
+          <feedback>
             <p>
               The left side is true, but y must be less than 12 to make the
               right side true.
@@ -1450,11 +1450,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="AP2-2-2_opt_e">
+          <statement>
             <p>x = 9 and y = 12</p>
           </statement>
 
-          <feedback id="AP2-2-2_opt_e">
+          <feedback>
             <p>Correct! Both sides are false! This is tricky!</p>
           </feedback>
         </choice>
@@ -1492,31 +1492,31 @@
 
       <choices>
         <choice>
-          <statement id="AP-compound-bools_opt_a">
+          <statement>
             <p>Nothing is printed out.</p>
           </statement>
 
-          <feedback id="AP-compound-bools_opt_a">
+          <feedback>
             <p>Some of these conditions are true.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-compound-bools_opt_b">
+          <statement>
             <p>First</p>
           </statement>
 
-          <feedback id="AP-compound-bools_opt_b">
+          <feedback>
             <p>This is partially correct.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-compound-bools_opt_c">
+          <statement>
             <p>Third</p>
           </statement>
 
-          <feedback id="AP-compound-bools_opt_c">
+          <feedback>
             <p>
               Third cannot be printed out unless First is printed out first.
             </p>
@@ -1524,21 +1524,21 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-compound-bools_opt_d">
+          <statement>
             <p>First Second</p>
           </statement>
 
-          <feedback id="AP-compound-bools_opt_d">
+          <feedback>
             <p>Good tracing!</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-compound-bools_opt_e">
+          <statement>
             <p>First Third</p>
           </statement>
 
-          <feedback id="AP-compound-bools_opt_e">
+          <feedback>
             <p>Take another look at the second condition.</p>
           </feedback>
         </choice>

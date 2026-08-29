@@ -947,11 +947,11 @@
 
       <choices>
         <choice>
-          <statement id="AP2-3-1_opt_a">
+          <statement>
             <p>28</p>
           </statement>
 
-          <feedback id="AP2-3-1_opt_a">
+          <feedback>
             <p>
               Some of the if statement conditions are false, so they will not
               run.
@@ -960,21 +960,21 @@
         </choice>
 
         <choice>
-          <statement id="AP2-3-1_opt_b">
+          <statement>
             <p>35</p>
           </statement>
 
-          <feedback id="AP2-3-1_opt_b">
+          <feedback>
             <p>Take a look at the changes to speed in the if statements.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP2-3-1_opt_c">
+          <statement>
             <p>38</p>
           </statement>
 
-          <feedback id="AP2-3-1_opt_c">
+          <feedback>
             <p>
               Correct! The first if statement condition is false, and the second
               and third if conditions are true.
@@ -983,21 +983,21 @@
         </choice>
 
         <choice>
-          <statement id="AP2-3-1_opt_d">
+          <statement>
             <p>25</p>
           </statement>
 
-          <feedback id="AP2-3-1_opt_d">
+          <feedback>
             <p>The first if statement would only run if rain is true.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP2-3-1_opt_e">
+          <statement>
             <p>33</p>
           </statement>
 
-          <feedback id="AP2-3-1_opt_e">
+          <feedback>
             <p>The second if statement would run since rain is false.</p>
           </feedback>
         </choice>
@@ -1031,51 +1031,51 @@
 
       <choices>
         <choice>
-          <statement id="AP2-3-2_opt_a">
+          <statement>
             <p>3</p>
           </statement>
 
-          <feedback id="AP2-3-2_opt_a">
+          <feedback>
             <p>Take a look at the second if statement again!</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP2-3-2_opt_b">
+          <statement>
             <p>11</p>
           </statement>
 
-          <feedback id="AP2-3-2_opt_b">
+          <feedback>
             <p>Take a look at the second if statement again!</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP2-3-2_opt_c">
+          <statement>
             <p>31</p>
           </statement>
 
-          <feedback id="AP2-3-2_opt_c">
+          <feedback>
             <p>The first if statement condition is false.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP2-3-2_opt_d">
+          <statement>
             <p>15</p>
           </statement>
 
-          <feedback id="AP2-3-2_opt_d">
+          <feedback>
             <p>The first if statement condition is false.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP2-3-2_opt_e">
+          <statement>
             <p>5</p>
           </statement>
 
-          <feedback id="AP2-3-2_opt_e">
+          <feedback>
             <p>
               Correct! The first if statement is not true. The second one is
               true since 5 is odd, and x becomes 2. And 2*2 + 1 = 5 is printed
@@ -1120,11 +1120,11 @@
 
       <choices>
         <choice correct="yes">
-          <statement id="AP2-3-if-else_opt_a">
+          <statement>
             <p>80</p>
           </statement>
 
-          <feedback id="AP2-3-if-else_opt_a">
+          <feedback>
             <p>
               This would print out both “High” and “Middle”, showing that there
               is an error in the code. As you will see in the next lesson, one
@@ -1135,31 +1135,31 @@
         </choice>
 
         <choice>
-          <statement id="AP2-3-if-else_opt_b">
+          <statement>
             <p>60</p>
           </statement>
 
-          <feedback id="AP2-3-if-else_opt_b">
+          <feedback>
             <p>This would correctly print out “Middle”.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP2-3-if-else_opt_c">
+          <statement>
             <p>50</p>
           </statement>
 
-          <feedback id="AP2-3-if-else_opt_c">
+          <feedback>
             <p>This would correctly print out “Middle”.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP2-3-if-else_opt_d">
+          <statement>
             <p>30</p>
           </statement>
 
-          <feedback id="AP2-3-if-else_opt_d">
+          <feedback>
             <p>
               This would print out “Low”, which is correct according to this
               problem description.
@@ -1168,11 +1168,11 @@
         </choice>
 
         <choice>
-          <statement id="AP2-3-if-else_opt_e">
+          <statement>
             <p>-10</p>
           </statement>
 
-          <feedback id="AP2-3-if-else_opt_e">
+          <feedback>
             <p>
               This would print out “Low”, which is correct according to this
               problem description.
@@ -1235,31 +1235,31 @@
 
       <choices>
         <choice>
-          <statement id="AP-nested-if-else_opt_a">
+          <statement>
             <p>I only</p>
           </statement>
 
-          <feedback id="AP-nested-if-else_opt_a">
+          <feedback>
             <p>If x = 66, it should print out “High”.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-nested-if-else_opt_b">
+          <statement>
             <p>II only</p>
           </statement>
 
-          <feedback id="AP-nested-if-else_opt_b">
+          <feedback>
             <p>Correct!</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-nested-if-else_opt_c">
+          <statement>
             <p>III only</p>
           </statement>
 
-          <feedback id="AP-nested-if-else_opt_c">
+          <feedback>
             <p>
               If x is 66, the code in III. will print out more than one thing.
             </p>
@@ -1267,21 +1267,21 @@
         </choice>
 
         <choice>
-          <statement id="AP-nested-if-else_opt_d">
+          <statement>
             <p>I and II only</p>
           </statement>
 
-          <feedback id="AP-nested-if-else_opt_d">
+          <feedback>
             <p>If x = 66, it should print out “High”.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-nested-if-else_opt_e">
+          <statement>
             <p>II and III only</p>
           </statement>
 
-          <feedback id="AP-nested-if-else_opt_e">
+          <feedback>
             <p>
               If x is 66, the code in III. will print out more than one thing.
             </p>

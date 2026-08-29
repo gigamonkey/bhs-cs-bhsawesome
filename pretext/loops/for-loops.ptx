@@ -819,11 +819,11 @@
 
       <choices>
         <choice>
-          <statement id="AP-for-loop-1_opt_a">
+          <statement>
             <p>I and II only</p>
           </statement>
 
-          <feedback id="AP-for-loop-1_opt_a">
+          <feedback>
             <p>
               Note that I has an extra count++ at the beginning of the loop body
               that should be deleted.
@@ -832,11 +832,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-for-loop-1_opt_b">
+          <statement>
             <p>II and III only</p>
           </statement>
 
-          <feedback id="AP-for-loop-1_opt_b">
+          <feedback>
             <p>
               Correct! In the II, the loop counter increments by 2’s making sure
               it visits only even numbers, and III generates the same sum but
@@ -846,11 +846,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-for-loop-1_opt_c">
+          <statement>
             <p>I and III only</p>
           </statement>
 
-          <feedback id="AP-for-loop-1_opt_c">
+          <feedback>
             <p>
               Note that I has an extra count++ at the beginning of the loop body
               that should be deleted.
@@ -859,21 +859,21 @@
         </choice>
 
         <choice>
-          <statement id="AP-for-loop-1_opt_d">
+          <statement>
             <p>III only</p>
           </statement>
 
-          <feedback id="AP-for-loop-1_opt_d">
+          <feedback>
             <p>This is partially correct.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-for-loop-1_opt_e">
+          <statement>
             <p>I, II, and III</p>
           </statement>
 
-          <feedback id="AP-for-loop-1_opt_e">
+          <feedback>
             <p>
               Note that I has an extra count++ at the beginning of the loop body
               that should be deleted.
@@ -906,60 +906,60 @@
 
       <choices>
         <choice>
-          <statement id="AP-for-loop-2_opt_a">
+          <statement>
             <p>The output of the code segment will be unchanged.</p>
           </statement>
 
-          <feedback id="AP-for-loop-2_opt_a">
+          <feedback>
             <p>One will multiply odd numbers and the other even numbers.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-for-loop-2_opt_b">
+          <statement>
             <p>
               The output will be the same, but the new loop will iterate more
               times.
             </p>
           </statement>
 
-          <feedback id="AP-for-loop-2_opt_b">
+          <feedback>
             <p>One will multiply odd numbers and the other even numbers.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-for-loop-2_opt_c">
+          <statement>
             <p>
               The output will be different, but both versions of the loop will
               iterate two times.
             </p>
           </statement>
 
-          <feedback id="AP-for-loop-2_opt_c">
+          <feedback>
             <p>Correct! One will multiply 3*5 and the other 4*6.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-for-loop-2_opt_d">
+          <statement>
             <p>
               The output will be different, and the new loop will iterate more
               times.
             </p>
           </statement>
 
-          <feedback id="AP-for-loop-2_opt_d">
+          <feedback>
             <p>The output is different but they both would iterate 2 times.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-for-loop-2_opt_e">
+          <statement>
             <p>This will cause an error.</p>
           </statement>
 
-          <feedback id="AP-for-loop-2_opt_e">
+          <feedback>
             <p>It will not cause an error.</p>
           </feedback>
         </choice>

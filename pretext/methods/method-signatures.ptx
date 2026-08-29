@@ -1272,32 +1272,32 @@
 
       <choices>
         <choice>
-          <statement id="AP-trace-method-calls_opt_a">
+          <statement>
             <program>
               hello();
             </program>
           </statement>
 
-          <feedback id="AP-trace-method-calls_opt_a">
+          <feedback>
             <p>This would print “purr meow “</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-trace-method-calls_opt_b">
+          <statement>
             <program>
               hello();
               sound2();
             </program>
           </statement>
 
-          <feedback id="AP-trace-method-calls_opt_b">
+          <feedback>
             <p>Correct!</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-trace-method-calls_opt_c">
+          <statement>
             <program>
               sound1()
               sound2();
@@ -1305,7 +1305,7 @@
             </program>
           </statement>
 
-          <feedback id="AP-trace-method-calls_opt_c">
+          <feedback>
             <p>
               This would print out “meow purr meow” instead of “purr meow purr”.
             </p>
@@ -1313,7 +1313,7 @@
         </choice>
 
         <choice>
-          <statement id="AP-trace-method-calls_opt_d">
+          <statement>
             <program>
               purr();
               meow();
@@ -1321,7 +1321,7 @@
             </program>
           </statement>
 
-          <feedback id="AP-trace-method-calls_opt_d">
+          <feedback>
             <p>
               This would cause a syntax error since those are not the names of
               the methods.
@@ -1350,11 +1350,11 @@
 
       <choices>
         <choice>
-          <statement id="AP1-10-static-method_opt_a">
+          <statement>
             <p>int result = calculatePizzaBoxes(45, 9.0);</p>
           </statement>
 
-          <feedback id="AP1-10-static-method_opt_a">
+          <feedback>
             <p>
               The method calculatePizzaBoxes returns a double value that cannot
               be saved into an int variable.
@@ -1363,11 +1363,11 @@
         </choice>
 
         <choice>
-          <statement id="AP1-10-static-method_opt_b">
+          <statement>
             <p>double result = calculatePizzaBoxes(45.0, 9.0);</p>
           </statement>
 
-          <feedback id="AP1-10-static-method_opt_b">
+          <feedback>
             <p>
               The method calculatePizzaBoxes has an int parameter that cannot
               hold a double value 45.0.
@@ -1376,11 +1376,11 @@
         </choice>
 
         <choice>
-          <statement id="AP1-10-static-method_opt_c">
+          <statement>
             <p>int result = calculatePizzaBoxes(45.0, 9);</p>
           </statement>
 
-          <feedback id="AP1-10-static-method_opt_c">
+          <feedback>
             <p>
               The method calculatePizzaBoxes has an int parameter that cannot
               hold a double value 45.0. Note that the int 9 can be passed into a
@@ -1390,11 +1390,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="AP1-10-static-method_opt_d">
+          <statement>
             <p>double result = calculatePizzaBoxes(45, 9.0);</p>
           </statement>
 
-          <feedback id="AP1-10-static-method_opt_d">
+          <feedback>
             <p>
               The method calculatePizzaBoxes has an int and a double parameter
               and returns a double result.
@@ -1403,11 +1403,11 @@
         </choice>
 
         <choice>
-          <statement id="AP1-10-static-method_opt_e">
+          <statement>
             <p>result = calculatePizzaBoxes(45, 9);</p>
           </statement>
 
-          <feedback id="AP1-10-static-method_opt_e">
+          <feedback>
             <p>
               The variable result has not been declared (with an appropriate
               data type).
@@ -1447,11 +1447,11 @@
 
       <choices>
         <choice>
-          <statement id="AP1-10-static-method2_opt_a">
+          <statement>
             <p>inches –&gt; centimeters</p>
           </statement>
 
-          <feedback id="AP1-10-static-method2_opt_a">
+          <feedback>
             <p>
               The values of the variables inches and centimeters should be
               printed out, not the words.
@@ -1460,11 +1460,11 @@
         </choice>
 
         <choice>
-          <statement id="AP1-10-static-method2_opt_b">
+          <statement>
             <p>10 –&gt; 25</p>
           </statement>
 
-          <feedback id="AP1-10-static-method2_opt_b">
+          <feedback>
             <p>
               Two doubles should be printed, not two ints, and the centimeters
               should be 25.4
@@ -1473,31 +1473,31 @@
         </choice>
 
         <choice>
-          <statement id="AP1-10-static-method2_opt_c">
+          <statement>
             <p>25.4 –&gt; 10</p>
           </statement>
 
-          <feedback id="AP1-10-static-method2_opt_c">
+          <feedback>
             <p>Inches should be printed before centimeters.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP1-10-static-method2_opt_d">
+          <statement>
             <p>10 –&gt; 12.54</p>
           </statement>
 
-          <feedback id="AP1-10-static-method2_opt_d">
+          <feedback>
             <p>c = 10 * 2.54 = 25.4, not 12.54.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP1-10-static-method2_opt_e">
+          <statement>
             <p>10.0 –&gt; 25.4</p>
           </statement>
 
-          <feedback id="AP1-10-static-method2_opt_e">
+          <feedback>
             <p>Correct! centimeters = 10 * 2.54 = 25.4.</p>
           </feedback>
         </choice>

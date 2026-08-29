@@ -1200,40 +1200,40 @@
 
       <choices>
         <choice>
-          <statement id="AP-array2_opt_a">
+          <statement>
             <program>
               int[] array1 = {5, 10, 15};
               int[] array2 = mystery(array1, 0, 10);
             </program>
           </statement>
 
-          <feedback id="AP-array2_opt_a">
+          <feedback>
             <p>This would result in <c>{5, 15, 15}</c>.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-array2_opt_b">
+          <statement>
             <program>
               int[] array1 = {5, 15, 20};
               int[] array2 = mystery(array1, 0, 0);
             </program>
           </statement>
 
-          <feedback id="AP-array2_opt_b">
+          <feedback>
             <p>This would result in <c>{5, 5, 20}</c>.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-array2_opt_c">
+          <statement>
             <program>
               int[] array1 = {5, 10, 15};
               int[] array2 = mystery(array1, 1, 10);
             </program>
           </statement>
 
-          <feedback id="AP-array2_opt_c">
+          <feedback>
             <p>
               Correct! a[i+1] = a[2] = a[i] + value = a[1] + 10 = 10 + 10 = 20.
             </p>
@@ -1241,14 +1241,14 @@
         </choice>
 
         <choice>
-          <statement id="AP-array2_opt_d">
+          <statement>
             <program>
               int[] array1 = {5, 15, 20};
               int[] array2 = mystery(array1, 2, 0);
             </program>
           </statement>
 
-          <feedback id="AP-array2_opt_d">
+          <feedback>
             <p>
               This would result in an <c>ArrayIndexOutOfBoundsException</c>.
             </p>
@@ -1256,14 +1256,14 @@
         </choice>
 
         <choice>
-          <statement id="AP-array2_opt_e">
+          <statement>
             <program>
               int[] array1 = {5, 10, 15};
               int[] array2 = mystery(array1, 1, 20);
             </program>
           </statement>
 
-          <feedback id="AP-array2_opt_e">
+          <feedback>
             <p>This would result in <c>{5, 10, 30}</c>.</p>
           </feedback>
         </choice>

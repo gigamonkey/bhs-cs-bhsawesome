@@ -52,6 +52,22 @@ export type BookConfig = {
   emitExercisesJson?: boolean;
   /** check-links allowlist of known-missing refs (site-absolute URLs). */
   knownMissing?: string[];
+  /** The book's <box kind="…"> vocabulary (plans/bjc-quarto-to-xml.md D3):
+   * kind -> rendering. A kind absent from the map warns at build time. */
+  boxKinds?: Record<string, BoxKind>;
+  /** The book's <aside kind="…"> vocabulary (the margin/floating family). */
+  asideKinds?: Record<string, BoxKind>;
+};
+
+export type BoxKind = {
+  /** CSS class(es) on the emitted element; defaults to the kind name. */
+  className?: string;
+  /** Fixed heading text rendered at the top of the box (e.g. a box family
+   * whose every instance is titled "On this page"). */
+  title?: string;
+  /** Collapsible boxes render as <details> with this summary label
+   * (e.g. "If There Is Time…"); open = expanded by default. */
+  collapsible?: { label: string; open?: boolean };
 };
 
 let active: BookConfig | null = null;

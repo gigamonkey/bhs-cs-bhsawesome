@@ -17,7 +17,7 @@ import { type Division, loadBook } from './book.ts';
 import { type BookConfig, setConfig } from './config.ts';
 import { navFor, renderChrome } from './chrome.ts';
 import { tocJs } from './toc.ts';
-import { numberBlocks } from './ids.ts';
+import { numberBlocks, numberTasks } from './ids.ts';
 import { initMath } from './math.ts';
 import { makeCtx, pageContent } from './page.ts';
 import {
@@ -50,7 +50,10 @@ export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Pr
   const started = performance.now();
   await initMath(); // the speech engine loads its locale async; emission is sync
   const book = loadBook(config.mainPtx);
-  for (const page of book.pages) numberBlocks(page);
+  for (const page of book.pages) {
+    numberBlocks(page);
+    numberTasks(page);
+  }
 
   // Page directories share the site root with the asset trees; a division id
   // (or the video/ namespace) colliding with one would silently interleave

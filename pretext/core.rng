@@ -1,0 +1,1334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The shared book-source schema (RELAX NG compact syntax) for the
+  PreTeXt-derived XML format @peterseibel/book-builder builds — written
+  fresh for the vocabulary the builder actually supports (the monorepo's
+  plans/bjc-quarto-to-xml.md D13), replacing the stock 77KB PreTeXt 2.47
+  grammar, which had drifted from reality (no k/strong/datafile/
+  gutterimage/cardsort) and validated nothing in CI.
+  
+  Per-book drivers include this file and may override BoxKind / AsideKind
+  to enumerate their <box>/<aside> vocabularies:
+  
+      include "core.rnc" {
+        BoxKind = "learn" | "forYouToDo"
+        AsideKind = "sidenote" | "endnote"
+      }
+  
+  A schema change here needs a matching emitter case in src/prose.ts (or
+  src/components.ts) and possibly an .xml-formats/ptx.json entry, then
+  regenerate each book's committed .rng with trang (the books' Makefiles).
+-->
+<grammar xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!--
+    Any assembled fragment is a valid document: main.ptx (<pretext>), a
+    chapter's toctree, a section/page file.
+  -->
+  <start>
+    <choice>
+      <ref name="Pretext"/>
+      <ref name="Book"/>
+      <ref name="Chapter"/>
+      <ref name="Section"/>
+      <ref name="Subsection"/>
+      <ref name="Page"/>
+      <ref name="Frontmatter"/>
+      <ref name="Preface"/>
+    </choice>
+  </start>
+  <!-- - - common - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <define name="IdAtt">
+    <optional>
+      <attribute name="xml:id">
+        <data type="NCName"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="LangAtt">
+    <optional>
+      <attribute name="xml:lang"/>
+    </optional>
+  </define>
+  <!-- The exercise/component identity (rs-<label>, answer tracking, book-tests). -->
+  <define name="LabelAtt">
+    <optional>
+      <attribute name="label"/>
+    </optional>
+  </define>
+  <!--
+    XInclude processors (jing validates with includes resolved) stamp
+    xml:base on included roots.
+  -->
+  <define name="BaseAtt">
+    <optional>
+      <attribute name="xml:base"/>
+    </optional>
+  </define>
+  <define name="CommonAtts">
+    <ref name="IdAtt"/>
+    <ref name="LangAtt"/>
+    <ref name="LabelAtt"/>
+    <ref name="BaseAtt"/>
+  </define>
+  <define name="XInclude">
+    <element name="xi:include">
+      <attribute name="href"/>
+      <optional>
+        <attribute name="parse">
+          <value>text</value>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <!-- Lenient tree for author-note content and legacy docinfo furniture. -->
+  <define name="AnyElement">
+    <element>
+      <anyName/>
+      <zeroOrMore>
+        <choice>
+          <attribute>
+            <anyName/>
+          </attribute>
+          <text/>
+          <ref name="AnyElement"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- - - inline - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <define name="InlineEl">
+    <choice>
+      <ref name="C"/>
+      <ref name="K"/>
+      <ref name="Term"/>
+      <ref name="Em"/>
+      <ref name="Strong"/>
+      <ref name="Var"/>
+      <ref name="Pubtitle"/>
+      <ref name="TitleReference"/>
+      <ref name="Url"/>
+      <ref name="Reference"/>
+      <ref name="Target"/>
+      <ref name="M"/>
+      <ref name="Xref"/>
+      <ref name="Fillin"/>
+      <ref name="Idx"/>
+      <ref name="Assignment"/>
+      <ref name="InlineImage"/>
+      <ref name="Area"/>
+    </choice>
+  </define>
+  <define name="Inline">
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <ref name="InlineEl"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="C">
+    <element name="c">
+      <text/>
+    </element>
+  </define>
+  <define name="K">
+    <element name="k">
+      <text/>
+    </element>
+  </define>
+  <define name="Term">
+    <element name="term">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Em">
+    <element name="em">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Strong">
+    <element name="strong">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Var">
+    <element name="var">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Pubtitle">
+    <element name="pubtitle">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="TitleReference">
+    <element name="title_reference">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="M">
+    <element name="m">
+      <text/>
+    </element>
+  </define>
+  <define name="Url">
+    <element name="url">
+      <attribute name="href"/>
+      <optional>
+        <attribute name="visual"/>
+      </optional>
+      <optional>
+        <attribute name="style"/>
+      </optional>
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <!--
+    docutils-conversion leftovers: <reference> is an external link, <target>
+    its invisible anchor definition.
+  -->
+  <define name="Reference">
+    <element name="reference">
+      <optional>
+        <attribute name="refuri"/>
+      </optional>
+      <optional>
+        <attribute name="name"/>
+      </optional>
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Target">
+    <element name="target">
+      <optional>
+        <attribute name="refuri"/>
+      </optional>
+      <optional>
+        <attribute name="ids"/>
+      </optional>
+      <optional>
+        <attribute name="names"/>
+      </optional>
+      <empty/>
+    </element>
+  </define>
+  <define name="Xref">
+    <element name="xref">
+      <attribute name="ref"/>
+      <optional>
+        <attribute name="text">
+          <choice>
+            <value>title</value>
+            <value>type-global</value>
+          </choice>
+        </attribute>
+      </optional>
+      <empty/>
+    </element>
+  </define>
+  <define name="Fillin">
+    <element name="fillin">
+      <optional>
+        <attribute name="name"/>
+      </optional>
+      <optional>
+        <attribute name="mode"/>
+      </optional>
+      <optional>
+        <attribute name="answer"/>
+      </optional>
+      <empty/>
+    </element>
+  </define>
+  <define name="Idx">
+    <element name="idx">
+      <choice>
+        <text/>
+        <oneOrMore>
+          <element name="h">
+            <text/>
+          </element>
+        </oneOrMore>
+      </choice>
+    </element>
+  </define>
+  <!--
+    An image with a @placement (inline | left | right | indent), pixel
+    @width, or @animated flows inline (D8); Image below is the block form.
+  -->
+  <define name="InlineImage">
+    <ref name="Image"/>
+  </define>
+  <!-- The BHS assignment link (D7): resolved per viewer by the website. -->
+  <define name="Assignment">
+    <element name="assignment">
+      <attribute name="material"/>
+      <optional>
+        <attribute name="assignment"/>
+      </optional>
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <!-- - - blocks - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <define name="BlockEl">
+    <choice>
+      <ref name="P"/>
+      <ref name="Ul"/>
+      <ref name="Ol"/>
+      <ref name="Dl"/>
+      <ref name="Figure"/>
+      <ref name="Image"/>
+      <ref name="Video"/>
+      <ref name="Table"/>
+      <ref name="Tabular"/>
+      <ref name="Note"/>
+      <ref name="Blockquote"/>
+      <ref name="Activity"/>
+      <ref name="Project"/>
+      <ref name="Exercise"/>
+      <ref name="Pre"/>
+      <ref name="Listing"/>
+      <ref name="Program"/>
+      <ref name="Code"/>
+      <ref name="Datafile"/>
+      <ref name="Sidebyside"/>
+      <ref name="Gutterimage"/>
+      <ref name="Container"/>
+      <ref name="Box"/>
+      <ref name="Aside"/>
+      <ref name="Task"/>
+      <ref name="Todo"/>
+      <ref name="Comment"/>
+      <ref name="Standard"/>
+      <ref name="Reveal"/>
+      <ref name="Iframe"/>
+      <ref name="Checkpoint"/>
+      <ref name="Solution"/>
+      <ref name="Answer"/>
+      <ref name="Hint"/>
+      <ref name="Idx"/>
+      <ref name="XInclude"/>
+    </choice>
+  </define>
+  <define name="Block">
+    <zeroOrMore>
+      <ref name="BlockEl"/>
+    </zeroOrMore>
+  </define>
+  <!-- Contexts that take either inline prose or blocks (list items, cells, tasks). -->
+  <define name="Flow">
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <ref name="InlineEl"/>
+        <ref name="BlockEl"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="Title">
+    <element name="title">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Caption">
+    <element name="caption">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="P">
+    <element name="p">
+      <ref name="IdAtt"/>
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Ul">
+    <element name="ul">
+      <ref name="IdAtt"/>
+      <oneOrMore>
+        <ref name="Li"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Ol">
+    <element name="ol">
+      <ref name="IdAtt"/>
+      <optional>
+        <attribute name="type">
+          <choice>
+            <value>a</value>
+            <value>A</value>
+            <value>i</value>
+            <value>I</value>
+            <value>1</value>
+          </choice>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <ref name="Li"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Li">
+    <element name="li">
+      <ref name="IdAtt"/>
+      <optional>
+        <ref name="Title"/>
+      </optional>
+      <ref name="Flow"/>
+    </element>
+  </define>
+  <define name="Dl">
+    <element name="dl">
+      <ref name="IdAtt"/>
+      <oneOrMore>
+        <ref name="Li"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Figure">
+    <element name="figure">
+      <ref name="CommonAtts"/>
+      <optional>
+        <attribute name="align"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="Caption"/>
+          <ref name="BlockEl"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Image">
+    <element name="image">
+      <ref name="CommonAtts"/>
+      <attribute name="source"/>
+      <optional>
+        <attribute name="width"/>
+      </optional>
+      <optional>
+        <attribute name="height"/>
+      </optional>
+      <optional>
+        <attribute name="alt"/>
+      </optional>
+      <optional>
+        <attribute name="description"/>
+      </optional>
+      <optional>
+        <attribute name="title"/>
+      </optional>
+      <optional>
+        <attribute name="placement">
+          <choice>
+            <value>inline</value>
+            <value>left</value>
+            <value>right</value>
+            <value>indent</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="shadow">
+          <value>no</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="animated">
+          <value>click-to-play</value>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="shortdescription">
+          <text/>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="Video">
+    <element name="video">
+      <ref name="CommonAtts"/>
+      <attribute name="youtube"/>
+      <optional>
+        <attribute name="width"/>
+      </optional>
+      <empty/>
+    </element>
+  </define>
+  <define name="Table">
+    <element name="table">
+      <ref name="CommonAtts"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="Title"/>
+          <ref name="Tabular"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="BorderAtt">
+    <choice>
+      <value>none</value>
+      <value>minor</value>
+      <value>medium</value>
+      <value>major</value>
+    </choice>
+  </define>
+  <define name="HalignAtt">
+    <choice>
+      <value>left</value>
+      <value>center</value>
+      <value>right</value>
+    </choice>
+  </define>
+  <define name="ValignAtt">
+    <choice>
+      <value>top</value>
+      <value>middle</value>
+      <value>bottom</value>
+    </choice>
+  </define>
+  <define name="Tabular">
+    <element name="tabular">
+      <ref name="CommonAtts"/>
+      <optional>
+        <attribute name="top">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="bottom">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="left">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="right">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="halign">
+          <ref name="HalignAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="valign">
+          <ref name="ValignAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="row-headers">
+          <choice>
+            <value>yes</value>
+            <value>no</value>
+          </choice>
+        </attribute>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="Title"/>
+          <ref name="Col"/>
+        </choice>
+      </zeroOrMore>
+      <oneOrMore>
+        <ref name="Row"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Col">
+    <element name="col">
+      <optional>
+        <attribute name="top">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="right">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="halign">
+          <ref name="HalignAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="width"/>
+      </optional>
+      <empty/>
+    </element>
+  </define>
+  <define name="Row">
+    <element name="row">
+      <optional>
+        <attribute name="header">
+          <choice>
+            <value>yes</value>
+            <value>no</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="bottom">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="left">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="valign">
+          <ref name="ValignAtt"/>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <ref name="Cell"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Cell">
+    <element name="cell">
+      <optional>
+        <attribute name="bottom">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="right">
+          <ref name="BorderAtt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="halign">
+          <ref name="HalignAtt"/>
+        </attribute>
+      </optional>
+      <ref name="Flow"/>
+    </element>
+  </define>
+  <define name="Note">
+    <element name="note">
+      <ref name="CommonAtts"/>
+      <optional>
+        <ref name="Title"/>
+      </optional>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Blockquote">
+    <element name="blockquote">
+      <ref name="IdAtt"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="BlockEl"/>
+          <ref name="Attribution"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Attribution">
+    <element name="attribution">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Pre">
+    <element name="pre">
+      <optional>
+        <attribute name="source"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="XInclude"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Code">
+    <element name="code">
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="XInclude"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Listing">
+    <element name="listing">
+      <ref name="CommonAtts"/>
+      <optional>
+        <choice>
+          <ref name="Title"/>
+          <ref name="Caption"/>
+        </choice>
+      </optional>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Program">
+    <element name="program">
+      <ref name="CommonAtts"/>
+      <optional>
+        <attribute name="interactive">
+          <choice>
+            <value>activecode</value>
+            <value>codelens</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="datafile"/>
+      </optional>
+      <optional>
+        <attribute name="run-only">
+          <value>yes</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="line-numbers">
+          <choice>
+            <value>yes</value>
+            <value>no</value>
+          </choice>
+        </attribute>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="Code"/>
+          <ref name="Stdin"/>
+          <element name="preamble">
+            <text/>
+          </element>
+          <element name="postamble">
+            <text/>
+          </element>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Stdin">
+    <element name="stdin">
+      <text/>
+    </element>
+  </define>
+  <define name="Datafile">
+    <element name="datafile">
+      <ref name="CommonAtts"/>
+      <optional>
+        <attribute name="filename"/>
+      </optional>
+      <optional>
+        <attribute name="editable">
+          <choice>
+            <value>yes</value>
+            <value>no</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="hide">
+          <choice>
+            <value>yes</value>
+            <value>no</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <ref name="Pre"/>
+      </optional>
+    </element>
+  </define>
+  <define name="Sidebyside">
+    <element name="sidebyside">
+      <ref name="IdAtt"/>
+      <optional>
+        <attribute name="widths"/>
+      </optional>
+      <optional>
+        <attribute name="margins"/>
+      </optional>
+      <optional>
+        <attribute name="valign">
+          <ref name="ValignAtt"/>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="Stack"/>
+          <ref name="Container"/>
+          <ref name="BlockEl"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Stack">
+    <element name="stack">
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Container">
+    <element name="container">
+      <optional>
+        <attribute name="names"/>
+      </optional>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Gutterimage">
+    <element name="gutterimage">
+      <attribute name="source"/>
+      <optional>
+        <attribute name="description"/>
+      </optional>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <!-- - - the shared-format extensions (P2) - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- Per-book box/aside vocabularies: drivers override these enumerations. -->
+  <define name="BoxKind">
+    <text/>
+  </define>
+  <define name="AsideKind">
+    <text/>
+  </define>
+  <define name="Box">
+    <element name="box">
+      <ref name="IdAtt"/>
+      <attribute name="kind">
+        <ref name="BoxKind"/>
+      </attribute>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Aside">
+    <element name="aside">
+      <ref name="IdAtt"/>
+      <attribute name="kind">
+        <ref name="AsideKind"/>
+      </attribute>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <!-- A numbered "for you to do" step; numbered continuously per page. -->
+  <define name="Task">
+    <element name="task">
+      <ref name="IdAtt"/>
+      <ref name="Flow"/>
+    </element>
+  </define>
+  <!-- Hidden authoring metadata: invisible in output, preserved in source. -->
+  <define name="Todo">
+    <element name="todo">
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="AnyElement"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Comment">
+    <element name="comment">
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="AnyElement"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Standard">
+    <element name="standard">
+      <text/>
+    </element>
+  </define>
+  <!-- Click-to-expand content (BJC's collapse hints). -->
+  <define name="Reveal">
+    <element name="reveal">
+      <ref name="IdAtt"/>
+      <attribute name="label"/>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Iframe">
+    <element name="iframe">
+      <attribute name="src"/>
+      <optional>
+        <attribute name="width"/>
+      </optional>
+      <optional>
+        <attribute name="height"/>
+      </optional>
+      <empty/>
+    </element>
+  </define>
+  <!-- The button-styled checkpoint-quiz link (block form of Assignment). -->
+  <define name="Checkpoint">
+    <element name="checkpoint">
+      <attribute name="material"/>
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <!-- - - exercises / interactive payloads - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <define name="ExerciseAtts">
+    <ref name="CommonAtts"/>
+    <optional>
+      <attribute name="adaptive">
+        <choice>
+          <value>yes</value>
+          <value>no</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="indentation">
+        <choice>
+          <value>show</value>
+          <value>hide</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="language"/>
+    </optional>
+    <optional>
+      <attribute name="numbered">
+        <choice>
+          <value>yes</value>
+          <value>no</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="ExerciseChild">
+    <choice>
+      <ref name="Title"/>
+      <ref name="Statement"/>
+      <ref name="Introduction"/>
+      <ref name="Conclusion"/>
+      <ref name="Program"/>
+      <ref name="Choices"/>
+      <ref name="Blocks"/>
+      <ref name="Areas"/>
+      <ref name="Cardsort"/>
+      <ref name="Response"/>
+      <ref name="Evaluation"/>
+      <ref name="Feedback"/>
+      <ref name="Stdin"/>
+      <ref name="Datafile"/>
+      <ref name="BlockEl"/>
+    </choice>
+  </define>
+  <define name="Activity">
+    <element name="activity">
+      <ref name="ExerciseAtts"/>
+      <zeroOrMore>
+        <ref name="ExerciseChild"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Project">
+    <element name="project">
+      <ref name="ExerciseAtts"/>
+      <zeroOrMore>
+        <ref name="ExerciseChild"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Exercise">
+    <element name="exercise">
+      <ref name="ExerciseAtts"/>
+      <zeroOrMore>
+        <ref name="ExerciseChild"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Statement">
+    <element name="statement">
+      <ref name="IdAtt"/>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Solution">
+    <element name="solution">
+      <ref name="IdAtt"/>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Answer">
+    <element name="answer">
+      <ref name="IdAtt"/>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Hint">
+    <element name="hint">
+      <ref name="IdAtt"/>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Feedback">
+    <element name="feedback">
+      <ref name="IdAtt"/>
+      <ref name="Flow"/>
+    </element>
+  </define>
+  <define name="Choices">
+    <element name="choices">
+      <optional>
+        <attribute name="randomize">
+          <choice>
+            <value>yes</value>
+            <value>no</value>
+          </choice>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <ref name="Choice"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Choice">
+    <element name="choice">
+      <optional>
+        <attribute name="correct">
+          <choice>
+            <value>yes</value>
+            <value>no</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="order"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="Statement"/>
+          <ref name="Feedback"/>
+          <ref name="Cline"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Blocks">
+    <element name="blocks">
+      <optional>
+        <attribute name="layout">
+          <choice>
+            <value>horizontal</value>
+            <value>vertical</value>
+          </choice>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <ref name="BlocksBlock"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="BlocksBlock">
+    <element name="block">
+      <optional>
+        <attribute name="correct">
+          <choice>
+            <value>yes</value>
+            <value>no</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="order"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="InlineEl"/>
+          <ref name="Cline"/>
+          <ref name="Choice"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Cline">
+    <element name="cline">
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="Area"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Areas">
+    <element name="areas">
+      <zeroOrMore>
+        <choice>
+          <ref name="Cline"/>
+          <ref name="Table"/>
+          <ref name="Tabular"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Area">
+    <element name="area">
+      <optional>
+        <attribute name="correct">
+          <choice>
+            <value>yes</value>
+            <value>no</value>
+          </choice>
+        </attribute>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="Cardsort">
+    <element name="cardsort">
+      <oneOrMore>
+        <ref name="Match"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Match">
+    <element name="match">
+      <ref name="Premise"/>
+      <ref name="ResponseEl"/>
+    </element>
+  </define>
+  <define name="Premise">
+    <element name="premise">
+      <optional>
+        <attribute name="order"/>
+      </optional>
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="ResponseEl">
+    <element name="response">
+      <ref name="Inline"/>
+    </element>
+  </define>
+  <define name="Response">
+    <ref name="ResponseEl"/>
+  </define>
+  <define name="Evaluation">
+    <element name="evaluation">
+      <oneOrMore>
+        <element name="evaluate">
+          <zeroOrMore>
+            <ref name="Test"/>
+          </zeroOrMore>
+        </element>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Test">
+    <element name="test">
+      <zeroOrMore>
+        <choice>
+          <element name="strcmp">
+            <optional>
+              <attribute name="use-answer">
+                <choice>
+                  <value>yes</value>
+                  <value>no</value>
+                </choice>
+              </attribute>
+            </optional>
+            <text/>
+          </element>
+          <element name="numcmp">
+            <optional>
+              <attribute name="use-answer">
+                <choice>
+                  <value>yes</value>
+                  <value>no</value>
+                </choice>
+              </attribute>
+            </optional>
+            <text/>
+          </element>
+          <ref name="Feedback"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- - - divisions - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <define name="Pretext">
+    <element name="pretext">
+      <ref name="LangAtt"/>
+      <optional>
+        <ref name="Docinfo"/>
+      </optional>
+      <ref name="Book"/>
+    </element>
+  </define>
+  <define name="Docinfo">
+    <element name="docinfo">
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="AnyElement"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Book">
+    <element name="book">
+      <ref name="CommonAtts"/>
+      <ref name="Title"/>
+      <optional>
+        <element name="subtitle">
+          <ref name="Inline"/>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="Frontmatter"/>
+          <ref name="Chapter"/>
+          <ref name="Introduction"/>
+          <ref name="Conclusion"/>
+          <ref name="Backmatter"/>
+          <ref name="XInclude"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Frontmatter">
+    <element name="frontmatter">
+      <ref name="CommonAtts"/>
+      <optional>
+        <ref name="Title"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="Introduction"/>
+          <ref name="Preface"/>
+          <ref name="XInclude"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Preface">
+    <element name="preface">
+      <ref name="CommonAtts"/>
+      <optional>
+        <ref name="Title"/>
+      </optional>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <!--
+    Division content: title-anywhere (the file convention puts it first, but
+    idx elements legitimately precede it), sub-divisions, blocks. Sections
+    nest (aggregation files xi:include section files inside a section).
+  -->
+  <define name="Chapter">
+    <element name="chapter">
+      <ref name="CommonAtts"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="Title"/>
+          <ref name="Introduction"/>
+          <ref name="Conclusion"/>
+          <ref name="Section"/>
+          <ref name="XInclude"/>
+          <ref name="BlockEl"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Section">
+    <element name="section">
+      <ref name="CommonAtts"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="Title"/>
+          <ref name="Introduction"/>
+          <ref name="Conclusion"/>
+          <ref name="Section"/>
+          <ref name="Subsection"/>
+          <ref name="Page"/>
+          <ref name="XInclude"/>
+          <ref name="BlockEl"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Subsection">
+    <element name="subsection">
+      <ref name="CommonAtts"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="Title"/>
+          <ref name="Introduction"/>
+          <ref name="Conclusion"/>
+          <ref name="Subsection"/>
+          <ref name="BlockEl"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Page">
+    <element name="page">
+      <ref name="CommonAtts"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="Title"/>
+          <ref name="Introduction"/>
+          <ref name="Conclusion"/>
+          <ref name="BlockEl"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Introduction">
+    <element name="introduction">
+      <ref name="CommonAtts"/>
+      <optional>
+        <ref name="Title"/>
+      </optional>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Conclusion">
+    <element name="conclusion">
+      <ref name="CommonAtts"/>
+      <optional>
+        <ref name="Title"/>
+      </optional>
+      <ref name="Block"/>
+    </element>
+  </define>
+  <define name="Backmatter">
+    <element name="backmatter">
+      <ref name="CommonAtts"/>
+      <zeroOrMore>
+        <choice>
+          <element name="index">
+            <ref name="CommonAtts"/>
+            <element name="index-list">
+              <empty/>
+            </element>
+          </element>
+          <element name="colophon">
+            <ref name="CommonAtts"/>
+            <ref name="Block"/>
+          </element>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+</grammar>

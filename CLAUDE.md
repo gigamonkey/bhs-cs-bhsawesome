@@ -55,10 +55,23 @@ Python tooling for the root scripts is managed by **uv** (`pyproject.toml`,
 `uv.lock`, Python ≥3.13; lxml + ruff — run lxml-using scripts through
 `uv run`).
 
-`pretext/pretext.rnc` is the RELAX NG schema for validation/editor support.
-It is a frozen copy from the last PreTeXt install — ours to evolve as the
-source format grows beyond PreTeXt (schema changes need a matching emitter
-case in `builder/src/prose.ts` and possibly `.xml-formats/ptx.json`).
+The schema is ours, written fresh for the vocabulary the builder actually
+supports (the stock PreTeXt grammar is retired): the shared core is
+`builder/schema/core.rnc` (documented in `builder/FORMAT.md`, shipped in
+the package), and `pretext/bhsawesome.rnc` is this book's driver (it
+enumerates the book's `<box>`/`<aside>` kinds). `./validate.py` (and CI)
+validate every source file against the committed, trang-compiled
+`pretext/bhsawesome.rng` — regenerate it with `make schema` after editing
+either `.rnc`. A format change needs the matching emitter case in
+`builder/src/prose.ts` (or `components.ts`), the schema, and possibly
+`.xml-formats/ptx.json`.
+
+The builder itself is generic (everything book-specific is the
+`BookConfig` in `builder/bhsawesome.ts`) and is published to npm as
+**`@peterseibel/book-builder`** for the BJC build in bhs-cs-content
+(release with `make release-book-builder`, the monorepo's
+release-bhs-content pattern; the publish-book-builder workflow publishes
+on the tag via npm Trusted Publisher).
 
 ## Document structure
 

@@ -165,11 +165,11 @@
 
       <choices>
         <choice correct="yes">
-          <statement id="call-sqrt-mc_opt_a">
+          <statement>
             <p><c>Math.sqrt(2)</c></p>
           </statement>
 
-          <feedback id="call-sqrt-mc_opt_a">
+          <feedback>
             <p>
               ✅ This is a simple call to <c>Math.sqrt</c> with the argument 2.
             </p>
@@ -177,11 +177,11 @@
         </choice>
 
         <choice>
-          <statement id="call-sqrt-mc_opt_b">
+          <statement>
             <p><c>Math.sqrt()</c></p>
           </statement>
 
-          <feedback id="call-sqrt-mc_opt_b">
+          <feedback>
             <p>
               ❌ <c>Math.sqrt</c> takes one argument. This would be a correct
               call if it took no arguments.
@@ -190,11 +190,11 @@
         </choice>
 
         <choice>
-          <statement id="call-sqrt-mc_opt_c">
+          <statement>
             <p><c>Math.sqrt(2, 4)</c></p>
           </statement>
 
-          <feedback id="call-sqrt-mc_opt_c">
+          <feedback>
             <p>
               ❌ <c>Math.sqrt</c> takes one argument. This would be a correct
               call if it took two arguments.
@@ -203,11 +203,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="call-sqrt-mc_opt_d">
+          <statement>
             <p><c>Math.sqrt(2 + 3)</c></p>
           </statement>
 
-          <feedback id="call-sqrt-mc_opt_d">
+          <feedback>
             <p>
               ✅ The argument passed to <c>Math.sqrt</c> is the value of the
               expression 2 + 3, namely 5.
@@ -216,21 +216,21 @@
         </choice>
 
         <choice>
-          <statement id="call-sqrt-mc_opt_e">
+          <statement>
             <p><c>Math.sqrt 2</c></p>
           </statement>
 
-          <feedback id="call-sqrt-mc_opt_e">
+          <feedback>
             <p>❌ You must have parentheses around the arguments.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="call-sqrt-mc_opt_f">
+          <statement>
             <p><c>Math.sqrt(Math.sqrt(2))</c></p>
           </statement>
 
-          <feedback id="call-sqrt-mc_opt_f">
+          <feedback>
             <p>
               ✅ The argument passed to <c>Math.sqrt</c> is the value of
               <em>another</em> call to <c>Math.sqrt</c>, which is perfectly
@@ -265,11 +265,11 @@
 
       <choices>
         <choice correct="yes">
-          <statement id="distance-mc_opt_a">
+          <statement>
             <p><c>Math.abs(a - b)</c></p>
           </statement>
 
-          <feedback id="distance-mc_opt_a">
+          <feedback>
             <p>
               ✅ <c>a - b</c> gives us the difference and <c>Math.abs</c> gives
               us the absolute value of that difference.
@@ -278,11 +278,11 @@
         </choice>
 
         <choice>
-          <statement id="distance-mc_opt_b">
+          <statement>
             <p><c>Math.abs(a) - Math.abs(b)</c></p>
           </statement>
 
-          <feedback id="distance-mc_opt_b">
+          <feedback>
             <p>
               ❌ Consider the distance between -2 and 3. It should be five. What
               value would this expression produce in that case?
@@ -291,11 +291,11 @@
         </choice>
 
         <choice>
-          <statement id="distance-mc_opt_c">
+          <statement>
             <p><c>Math.abs(a + b)</c></p>
           </statement>
 
-          <feedback id="distance-mc_opt_c">
+          <feedback>
             <p>
               ❌ We need to start with the difference between <c>a</c> and
               <c>b</c>, not their sum.
@@ -1005,11 +1005,11 @@
 
       <choices>
         <choice correct="yes">
-          <statement id="hypotenuse-java-mc_opt_a">
+          <statement>
             <p><c>Math.sqrt(a * a + b * b)</c></p>
           </statement>
 
-          <feedback id="hypotenuse-java-mc_opt_a">
+          <feedback>
             <p>
               ✅ <c>a * a</c> is a squared, likewise <c>b * b</c>. Adding them
               with <c>+</c> gives us the sum, which is then passed to
@@ -1019,11 +1019,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="hypotenuse-java-mc_opt_b">
+          <statement>
             <p><c>Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))</c></p>
           </statement>
 
-          <feedback id="hypotenuse-java-mc_opt_b">
+          <feedback>
             <p>
               ✅ <c>Math.pow(a, 2)</c> is <c>a</c> squared, likewise
               <c>Math.pow(b, 2)</c>. Adding them with <c>+</c> gives us the sum,
@@ -1033,21 +1033,21 @@
         </choice>
 
         <choice>
-          <statement id="hypotenuse-java-mc_opt_c">
+          <statement>
             <p><c>Math.sqrt(a + b)</c></p>
           </statement>
 
-          <feedback id="hypotenuse-java-mc_opt_c">
+          <feedback>
             <p>❌ Close, but we need to square the lengths of the legs.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="hypotenuse-java-mc_opt_d">
+          <statement>
             <p><c>a * a + b * b</c></p>
           </statement>
 
-          <feedback id="hypotenuse-java-mc_opt_d">
+          <feedback>
             <p>
               ❌ This is the sum of the squares of the lengths of the legs, which
               gives us the square of the hypotenuse. We need a <c>Math.sqrt</c>

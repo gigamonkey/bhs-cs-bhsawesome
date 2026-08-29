@@ -812,11 +812,11 @@
 
       <choices>
         <choice>
-          <statement id="AP-while-loop1_opt_a">
+          <statement>
             <p>35</p>
           </statement>
 
-          <feedback id="AP-while-loop1_opt_a">
+          <feedback>
             <p>
               Keep track of the variables n, d, and result. Watch the tracing
               video.
@@ -825,21 +825,21 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-while-loop1_opt_b">
+          <statement>
             <p>15</p>
           </statement>
 
-          <feedback id="AP-while-loop1_opt_b">
+          <feedback>
             <p>Correct! The digits in n = 35 are 3 and 5, and 3*5 = 15.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-while-loop1_opt_c">
+          <statement>
             <p>10</p>
           </statement>
 
-          <feedback id="AP-while-loop1_opt_c">
+          <feedback>
             <p>
               Keep track of the variables n, d, and result. Watch the tracing
               video.
@@ -848,11 +848,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-while-loop1_opt_d">
+          <statement>
             <p>8</p>
           </statement>
 
-          <feedback id="AP-while-loop1_opt_d">
+          <feedback>
             <p>
               Although the sum of the digits in 35 are 8. This code uses
               multiplication.
@@ -861,11 +861,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-while-loop1_opt_e">
+          <statement>
             <p>33</p>
           </statement>
 
-          <feedback id="AP-while-loop1_opt_e">
+          <feedback>
             <p>
               Keep track of the variables n, d, and result. Watch the tracing
               video.
@@ -903,21 +903,21 @@
 
       <choices>
         <choice>
-          <statement id="AP-while-loop2_opt_a">
+          <statement>
             <p>while (count &gt; 0)</p>
           </statement>
 
-          <feedback id="AP-while-loop2_opt_a">
+          <feedback>
             <p>This would cause an infinite loop.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-while-loop2_opt_b">
+          <statement>
             <p>while (count &gt;= 8)</p>
           </statement>
 
-          <feedback id="AP-while-loop2_opt_b">
+          <feedback>
             <p>
               This would not print out anything since count is 0 before the loop
               and not greater than 8.
@@ -926,11 +926,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-while-loop2_opt_c">
+          <statement>
             <p>while (count &lt; 8)</p>
           </statement>
 
-          <feedback id="AP-while-loop2_opt_c">
+          <feedback>
             <p>
               This would print out one too few numbers and would stop before it
               printed out 8.
@@ -939,21 +939,21 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-while-loop2_opt_d">
+          <statement>
             <p>while (count &lt; 10)</p>
           </statement>
 
-          <feedback id="AP-while-loop2_opt_d">
+          <feedback>
             <p>Correct! This would stop the loop when count is 10.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-while-loop2_opt_e">
+          <statement>
             <p>while (count &lt;= 10)</p>
           </statement>
 
-          <feedback id="AP-while-loop2_opt_e">
+          <feedback>
             <p>This would print out one too many numbers, 0, 2, 4, 6, 8, 10.</p>
           </feedback>
         </choice>

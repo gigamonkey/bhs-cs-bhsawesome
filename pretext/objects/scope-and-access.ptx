@@ -260,11 +260,11 @@
 
       <choices>
         <choice>
-          <statement id="staticTrace_opt_a">
+          <statement>
             <p>Max Temp: 0</p>
           </statement>
 
-          <feedback id="staticTrace_opt_a">
+          <feedback>
             <p>
               maxTemp is changed in each call to the Temperature() constructor.
             </p>
@@ -272,14 +272,14 @@
         </choice>
 
         <choice>
-          <statement id="staticTrace_opt_b">
+          <statement>
             <p>
               There is a compiler error because the static variable maxTemp
               cannot be used inside a non-static constructor.
             </p>
           </statement>
 
-          <feedback id="staticTrace_opt_b">
+          <feedback>
             <p>
               Non-static methods and constructors can use any instance or static
               variables in the class.
@@ -288,11 +288,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="staticTrace_opt_c">
+          <statement>
             <p>Max Temp: 100</p>
           </statement>
 
-          <feedback id="staticTrace_opt_c">
+          <feedback>
             <p>
               Yes, maxTemp is initialized to 0 and then changed to 75 and then
               100 by the constructor calls.
@@ -301,11 +301,11 @@
         </choice>
 
         <choice>
-          <statement id="staticTrace_opt_d">
+          <statement>
             <p>Max Temp: 75</p>
           </statement>
 
-          <feedback id="staticTrace_opt_d">
+          <feedback>
             <p>
               maxTemp will be changed to 100 by the second constructor call
               since 100 &gt; 75.
@@ -314,11 +314,11 @@
         </choice>
 
         <choice>
-          <statement id="staticTrace_opt_e">
+          <statement>
             <p>Max Temp: 65</p>
           </statement>
 
-          <feedback id="staticTrace_opt_e">
+          <feedback>
             <p>
               maxTemp will not be changed to 65 by the third constructor call
               because 67 is not &gt; 100.
@@ -1178,43 +1178,43 @@
 
       <choices>
         <choice>
-          <statement id="AP5-8-2_opt_a">
+          <statement>
             <p>
               The private variables currentPrice and movieRating are not
               properly initialized.
             </p>
           </statement>
 
-          <feedback id="AP5-8-2_opt_a">
+          <feedback>
             <p>The constructor will initialize them.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP5-8-2_opt_b">
+          <statement>
             <p>
               The private variables currentPrice and movieRating should have
               been declared public.
             </p>
           </statement>
 
-          <feedback id="AP5-8-2_opt_b">
+          <feedback>
             <p>Instance variables should be private.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP5-8-2_opt_c">
+          <statement>
             <p>The printPrice method should have been declared as private.</p>
           </statement>
 
-          <feedback id="AP5-8-2_opt_c">
+          <feedback>
             <p>Methods are usually public.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP5-8-2_opt_d">
+          <statement>
             <p>
               currentPrice is declared as a local variable in the
               getCurrentPrice method and set to 16, and will be used instead of
@@ -1222,17 +1222,17 @@
             </p>
           </statement>
 
-          <feedback id="AP5-8-2_opt_d">
+          <feedback>
             <p>Correct!</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP5-8-2_opt_e">
+          <statement>
             <p>The currentPrice instance variable does not have a value.</p>
           </statement>
 
-          <feedback id="AP5-8-2_opt_e">
+          <feedback>
             <p>Accessor methods are usually public.</p>
           </feedback>
         </choice>

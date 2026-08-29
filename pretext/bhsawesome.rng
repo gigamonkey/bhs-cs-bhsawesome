@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <!--
+    BHSawesome's book-schema driver: the shared core vocabulary
+    (builder/schema/core.rnc) with this book's <box>/<aside> kinds. This book
+    currently uses neither element, so the enumerations are empty-ish
+    placeholders — add kinds here (plus BookConfig boxKinds + css) as they're
+    adopted. Regenerate the committed bhsawesome.rng with `make schema` after
+    editing.
+  -->
+  <include href="core.rng"/>
+</grammar>

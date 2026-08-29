@@ -467,11 +467,11 @@
 
       <choices>
         <choice>
-          <statement id="setSignature_opt_a">
+          <statement>
             <p>public int getNum(int people)</p>
           </statement>
 
-          <feedback id="setSignature_opt_a">
+          <feedback>
             <p>
               The set method should not have a return value and is usually named
               set, not get.
@@ -480,11 +480,11 @@
         </choice>
 
         <choice>
-          <statement id="setSignature_opt_b">
+          <statement>
             <p>public int setNum()</p>
           </statement>
 
-          <feedback id="setSignature_opt_b">
+          <feedback>
             <p>
               The set method should have a <k>void</k> return value as the body
               does not contain a <k>return</k> statement, and it needs a
@@ -494,11 +494,11 @@
         </choice>
 
         <choice>
-          <statement id="setSignature_opt_c">
+          <statement>
             <p>public int setNum(int people)</p>
           </statement>
 
-          <feedback id="setSignature_opt_c">
+          <feedback>
             <p>
               The set method should have a <k>void</k> return value as the body
               does not contain a <k>return</k> statement.
@@ -507,11 +507,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="setSignature_opt_d">
+          <statement>
             <p>public void setNum(int people)</p>
           </statement>
 
-          <feedback id="setSignature_opt_d">
+          <feedback>
             <p>
               Yes, the set method should take a parameter called people and have
               a <k>void</k> return type. The name of the set method is usually
@@ -522,11 +522,11 @@
         </choice>
 
         <choice>
-          <statement id="setSignature_opt_e">
+          <statement>
             <p>public int setNumOfPeople(int p)</p>
           </statement>
 
-          <feedback id="setSignature_opt_e">
+          <feedback>
             <p>
               The parameter of this set method should be called people in order
               to match the code in the method body. Also the method body does
@@ -2109,55 +2109,55 @@
 
       <choices>
         <choice>
-          <statement id="AP-get2_opt_a">
+          <statement>
             <p>The id instance variable should be public.</p>
           </statement>
 
-          <feedback id="AP-get2_opt_a">
+          <feedback>
             <p>Instance variables should be private.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-get2_opt_b">
+          <statement>
             <p>The getId method should be declared as private.</p>
           </statement>
 
-          <feedback id="AP-get2_opt_b">
+          <feedback>
             <p>Accessor methods should be public methods.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-get2_opt_c">
+          <statement>
             <p>The getId method requires a parameter.</p>
           </statement>
 
-          <feedback id="AP-get2_opt_c">
+          <feedback>
             <p>Accessor methods usually do not require parameters.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-get2_opt_d">
+          <statement>
             <p>
               The return type of the getId method needs to be defined as void.
             </p>
           </statement>
 
-          <feedback id="AP-get2_opt_d">
+          <feedback>
             <p>void is not the correct return type.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-get2_opt_e">
+          <statement>
             <p>
               The return type of the getId method needs to be defined as int.
             </p>
           </statement>
 
-          <feedback id="AP-get2_opt_e">
+          <feedback>
             <p>
               Correct! Accessor methods have a return type of the instance
               variable they are returning.
@@ -2193,41 +2193,41 @@
 
       <choices>
         <choice>
-          <statement id="AP-mutator1_opt_a">
+          <statement>
             <p>The constructor header does not have a return type.</p>
           </statement>
 
-          <feedback id="AP-mutator1_opt_a">
+          <feedback>
             <p>The constructor should not have a return type.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-mutator1_opt_b">
+          <statement>
             <p>The resetTemp method is missing a return type.</p>
           </statement>
 
-          <feedback id="AP-mutator1_opt_b">
+          <feedback>
             <p>Mutator methods usually have a void return type.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-mutator1_opt_c">
+          <statement>
             <p>The constructor should not have a parameter.</p>
           </statement>
 
-          <feedback id="AP-mutator1_opt_c">
+          <feedback>
             <p>Constructors can have parameters.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-mutator1_opt_d">
+          <statement>
             <p>The resetTemp method should have a parameter.</p>
           </statement>
 
-          <feedback id="AP-mutator1_opt_d">
+          <feedback>
             <p>
               Correct! The resetTemp method should have a parameter for the
               newTemp value to set the currentTemp.
@@ -2236,14 +2236,14 @@
         </choice>
 
         <choice>
-          <statement id="AP-mutator1_opt_e">
+          <statement>
             <p>
               The instance variable currentTemp should be public instead of
               private.
             </p>
           </statement>
 
-          <feedback id="AP-mutator1_opt_e">
+          <feedback>
             <p>Instance variables should be private variables.</p>
           </feedback>
         </choice>
@@ -2369,41 +2369,41 @@
 
       <choices>
         <choice correct="yes">
-          <statement id="AP-Party-Methods_opt_a">
+          <statement>
             <p>myParty.cancelParty();</p>
           </statement>
 
-          <feedback id="AP-Party-Methods_opt_a">
+          <feedback>
             <p>Correct!</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-Party-Methods_opt_b">
+          <statement>
             <p>myParty.inviteFriend(2);</p>
           </statement>
 
-          <feedback id="AP-Party-Methods_opt_b">
+          <feedback>
             <p>The method inviteFriend() does not have any parameters.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-Party-Methods_opt_c">
+          <statement>
             <p>myParty.endParty();</p>
           </statement>
 
-          <feedback id="AP-Party-Methods_opt_c">
+          <feedback>
             <p>There is no endParty() method in the class Party.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-Party-Methods_opt_d">
+          <statement>
             <p>myParty.numInvited();</p>
           </statement>
 
-          <feedback id="AP-Party-Methods_opt_d">
+          <feedback>
             <p>
               There is no numInvited() method in the class Party. It is an
               instance variable.
@@ -2412,11 +2412,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-Party-Methods_opt_e">
+          <statement>
             <p>System.out.println( myParty.cancelParty() );</p>
           </statement>
 
-          <feedback id="AP-Party-Methods_opt_e">
+          <feedback>
             <p>
               This would cause an error because the void method cancelParty()
               does not return a String that could be printed.
@@ -2457,7 +2457,7 @@
 
       <choices>
         <choice>
-          <statement id="AP-Cat-trace_opt_a">
+          <statement>
             <program>
               Cat a = new Cat();
               Cat.meow();
@@ -2465,7 +2465,7 @@
             </program>
           </statement>
 
-          <feedback id="AP-Cat-trace_opt_a">
+          <feedback>
             <p>
               You must use the object a, not the class name Cat, to call these
               methods.
@@ -2474,20 +2474,20 @@
         </choice>
 
         <choice>
-          <statement id="AP-Cat-trace_opt_b">
+          <statement>
             <program>
               Cat a = new Cat();
               a.welcomeHome();
             </program>
           </statement>
 
-          <feedback id="AP-Cat-trace_opt_b">
+          <feedback>
             <p>This would print “purrMeow “</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-Cat-trace_opt_c">
+          <statement>
             <program>
               Cat a = new Cat();
               a.meow();
@@ -2495,32 +2495,32 @@
             </program>
           </statement>
 
-          <feedback id="AP-Cat-trace_opt_c">
+          <feedback>
             <p>Correct!</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-Cat-trace_opt_d">
+          <statement>
             <program>
               Cat a = new Cat().welcomeHome();
             </program>
           </statement>
 
-          <feedback id="AP-Cat-trace_opt_d">
+          <feedback>
             <p>This would cause a syntax error.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-Cat-trace_opt_e">
+          <statement>
             <program>
               Cat a = new Cat();
               a.meow();
             </program>
           </statement>
 
-          <feedback id="AP-Cat-trace_opt_e">
+          <feedback>
             <p>This would just print “Meow “.</p>
           </feedback>
         </choice>
@@ -2572,11 +2572,11 @@
 
       <choices>
         <choice>
-          <statement id="AP-Liquid-return_opt_a">
+          <statement>
             <p>-10</p>
           </statement>
 
-          <feedback id="AP-Liquid-return_opt_a">
+          <feedback>
             <p>
               The Liquid() constructor sets the currentTemp instance variable to
               50, and the lowerTemp() method subtracts 10 from it.
@@ -2585,11 +2585,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-Liquid-return_opt_b">
+          <statement>
             <p>50</p>
           </statement>
 
-          <feedback id="AP-Liquid-return_opt_b">
+          <feedback>
             <p>
               The Liquid() constructor sets the currentTemp instance variable to
               50, and the lowerTemp() method subtracts 10 from it.
@@ -2598,11 +2598,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-Liquid-return_opt_c">
+          <statement>
             <p>water.getTemp()</p>
           </statement>
 
-          <feedback id="AP-Liquid-return_opt_c">
+          <feedback>
             <p>
               The System.out.println will print the value returned from
               water.getTemp().
@@ -2611,21 +2611,21 @@
         </choice>
 
         <choice>
-          <statement id="AP-Liquid-return_opt_d">
+          <statement>
             <p>The code will not compile.</p>
           </statement>
 
-          <feedback id="AP-Liquid-return_opt_d">
+          <feedback>
             <p>This code should compile.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-Liquid-return_opt_e">
+          <statement>
             <p>40.0</p>
           </statement>
 
-          <feedback id="AP-Liquid-return_opt_e">
+          <feedback>
             <p>
               Correct, the Liquid() constructor sets the currentTemp instance
               variable to 50, and the lowerTemp() method subtracts 10 from it,
@@ -2661,11 +2661,11 @@
 
       <choices>
         <choice correct="yes">
-          <statement id="AP-Pizza-trace-args_opt_a">
+          <statement>
             <p>printSlices(slicesPerPerson);</p>
           </statement>
 
-          <feedback id="AP-Pizza-trace-args_opt_a">
+          <feedback>
             <p>
               Correct! If you had 4 people, slicesPerPerson would be 8/4=2 and
               printSlices would print out “Each person gets 2 slices each”.
@@ -2674,11 +2674,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-Pizza-trace-args_opt_b">
+          <statement>
             <p>printSlices(numOfPeople);</p>
           </statement>
 
-          <feedback id="AP-Pizza-trace-args_opt_b">
+          <feedback>
             <p>
               If you had 4 people, this would print out that they get 4 slices
               each of an 8 slice pizza.
@@ -2687,31 +2687,31 @@
         </choice>
 
         <choice>
-          <statement id="AP-Pizza-trace-args_opt_c">
+          <statement>
             <p>printSlices(8);</p>
           </statement>
 
-          <feedback id="AP-Pizza-trace-args_opt_c">
+          <feedback>
             <p>This would always print out 8 slices each.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-Pizza-trace-args_opt_d">
+          <statement>
             <p>splitPizza(8);</p>
           </statement>
 
-          <feedback id="AP-Pizza-trace-args_opt_d">
+          <feedback>
             <p>This would not call the printSlices method.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-Pizza-trace-args_opt_e">
+          <statement>
             <p>splitPizza(slicesPerPerson);</p>
           </statement>
 
-          <feedback id="AP-Pizza-trace-args_opt_e">
+          <feedback>
             <p>This would not call the printSlices method.</p>
           </feedback>
         </choice>

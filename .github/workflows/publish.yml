@@ -47,6 +47,13 @@ jobs:
 
       - run: npm ci
 
+      # Schema validation (pretext/bhsawesome.rng, compiled from the rnc by
+      # `make schema`): invalid source fails the publish.
+      - uses: astral-sh/setup-uv@v7
+
+      - name: Validate the source against the schema
+        run: uv run ./validate.py
+
       - name: Build the site (builder/build.ts)
         run: node builder/build.ts
 

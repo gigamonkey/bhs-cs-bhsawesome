@@ -1,18 +1,62 @@
 {
   "indent": 2,
   "width": 80,
-  "inline": ["term", "url", "c", "k", "h", "area", "em", "strong", "xref", "m", "pubtitle"],
-  "code": ["program"],
-  "preserve_whitespace": ["cline", "pre"],
-  "one_line": ["cline"],
-  "compact": ["cell", "idx", "premise"],
+  "inline": [
+    "term",
+    "url",
+    "c",
+    "k",
+    "h",
+    "area",
+    "em",
+    "strong",
+    "xref",
+    "m",
+    "pubtitle",
+    "var",
+    "assignment"
+  ],
+  "code": [
+    "program"
+  ],
+  "preserve_whitespace": [
+    "cline",
+    "pre"
+  ],
+  "one_line": [
+    "cline"
+  ],
+  "compact": [
+    "cell",
+    "checkpoint",
+    "idx",
+    "premise",
+    "standard"
+  ],
   "compound_code": {
-    "program": { "code_children": ["preamble", "code", "postamble"] }
+    "program": {
+      "code_children": [
+        "preamble",
+        "code",
+        "postamble"
+      ]
+    }
   },
   "rules": [
-    { "tag": "pre", "parent": "datafile", "without_attr": "source", "treat_as": "code" }
+    {
+      "tag": "pre",
+      "parent": "datafile",
+      "without_attr": "source",
+      "treat_as": "code"
+    }
   ],
   "formatters": {
-    "code": ["java", "-jar", "google-java-format-1.25.2-all-deps.jar", "-a", "-"]
+    "code": [
+      "java",
+      "-jar",
+      "google-java-format-1.25.2-all-deps.jar",
+      "-a",
+      "-"
+    ]
   }
 }

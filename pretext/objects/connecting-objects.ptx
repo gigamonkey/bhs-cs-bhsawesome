@@ -398,41 +398,41 @@
 
       <choices>
         <choice>
-          <statement id="AP-this-arg_opt_a">
+          <statement>
             <p>10.0</p>
           </statement>
 
-          <feedback id="AP-this-arg_opt_a">
+          <feedback>
             <p>The pay starts at 20 and then increases with overtime.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-this-arg_opt_b">
+          <statement>
             <p>15.0</p>
           </statement>
 
-          <feedback id="AP-this-arg_opt_b">
+          <feedback>
             <p>If the pay started at 10, this would be the result.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-this-arg_opt_c">
+          <statement>
             <p>20.0</p>
           </statement>
 
-          <feedback id="AP-this-arg_opt_c">
+          <feedback>
             <p>The pay starts at 20 and then increases with overtime.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-this-arg_opt_d">
+          <statement>
             <p>30.0</p>
           </statement>
 
-          <feedback id="AP-this-arg_opt_d">
+          <feedback>
             <p>
               Correct! The pay starts at 20 and then increases with overtime by
               multiplying by 1.5.
@@ -441,11 +441,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-this-arg_opt_e">
+          <statement>
             <p>Nothing is printed because the code will not compile.</p>
           </statement>
 
-          <feedback id="AP-this-arg_opt_e">
+          <feedback>
             <p>Incorrect. The code will compile.</p>
           </feedback>
         </choice>
@@ -1473,31 +1473,31 @@
 
       <choices>
         <choice>
-          <statement id="AP-string-equality_opt_a">
+          <statement>
             <p>message == note &amp;&amp; message == memo</p>
           </statement>
 
-          <feedback id="AP-string-equality_opt_a">
+          <feedback>
             <p>Message does not refer to the same object as memo.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-string-equality_opt_b">
+          <statement>
             <p>message.equals(note) &amp;&amp; message.equals(memo)</p>
           </statement>
 
-          <feedback id="AP-string-equality_opt_b">
+          <feedback>
             <p>Message is not the same string as in memo.</p>
           </feedback>
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-string-equality_opt_c">
+          <statement>
             <p>message == note &amp;&amp; memo.equals(“Practice”)</p>
           </statement>
 
-          <feedback id="AP-string-equality_opt_c">
+          <feedback>
             <p>
               Yes, both if statements in the code above execute, changing
               message to equal note and memo to equal “Practice”.
@@ -1506,21 +1506,21 @@
         </choice>
 
         <choice>
-          <statement id="AP-string-equality_opt_d">
+          <statement>
             <p>message != note || message == memo</p>
           </statement>
 
-          <feedback id="AP-string-equality_opt_d">
+          <feedback>
             <p>Both of these are false.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-string-equality_opt_e">
+          <statement>
             <p>message.equals(memo) || memo.equals(note)</p>
           </statement>
 
-          <feedback id="AP-string-equality_opt_e">
+          <feedback>
             <p>Both of these are false.</p>
           </feedback>
         </choice>
@@ -1589,11 +1589,11 @@
 
       <choices>
         <choice>
-          <statement id="AP-this_opt_a">
+          <statement>
             <p>50</p>
           </statement>
 
-          <feedback id="AP-this_opt_a">
+          <feedback>
             <p>
               The liquid water has a temperature of 50 but more is added to the
               jar.
@@ -1602,11 +1602,11 @@
         </choice>
 
         <choice>
-          <statement id="AP-this_opt_b">
+          <statement>
             <p>15</p>
           </statement>
 
-          <feedback id="AP-this_opt_b">
+          <feedback>
             <p>
               The liquid milk has a temperature of 15 but more is added to the
               jar.
@@ -1615,11 +1615,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="AP-this_opt_c">
+          <statement>
             <p>65</p>
           </statement>
 
-          <feedback id="AP-this_opt_c">
+          <feedback>
             <p>
               Correct! The liquid water with a temperature of 50 and then the
               liquid milk with a temperature of 15 are added to the jar.
@@ -1628,27 +1628,27 @@
         </choice>
 
         <choice>
-          <statement id="AP-this_opt_d">
+          <statement>
             <p>
               Nothing, the code segment attempts to access the private variable
               currentTemp outside of its scope.
             </p>
           </statement>
 
-          <feedback id="AP-this_opt_d">
+          <feedback>
             <p>Incorrect. The currentTemp is never used outside its scope.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="AP-this_opt_e">
+          <statement>
             <p>
               Nothing, the code segment attempts to access the private variable
               totalTemp outside of its scope.
             </p>
           </statement>
 
-          <feedback id="AP-this_opt_e">
+          <feedback>
             <p>Incorrect. The totalTemp is never used outside its scope.</p>
           </feedback>
         </choice>

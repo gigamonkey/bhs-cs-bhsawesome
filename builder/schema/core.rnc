@@ -1,0 +1,442 @@
+# The shared book-source schema (RELAX NG compact syntax) for the
+# PreTeXt-derived XML format @peterseibel/book-builder builds — written
+# fresh for the vocabulary the builder actually supports (the monorepo's
+# plans/bjc-quarto-to-xml.md D13), replacing the stock 77KB PreTeXt 2.47
+# grammar, which had drifted from reality (no k/strong/datafile/
+# gutterimage/cardsort) and validated nothing in CI.
+#
+# Per-book drivers include this file and may override BoxKind / AsideKind
+# to enumerate their <box>/<aside> vocabularies:
+#
+#     include "core.rnc" {
+#       BoxKind = "learn" | "forYouToDo"
+#       AsideKind = "sidenote" | "endnote"
+#     }
+#
+# A schema change here needs a matching emitter case in src/prose.ts (or
+# src/components.ts) and possibly an .xml-formats/ptx.json entry, then
+# regenerate each book's committed .rng with trang (the books' Makefiles).
+
+namespace xi = "http://www.w3.org/2001/XInclude"
+namespace xml = "http://www.w3.org/XML/1998/namespace"
+
+# Any assembled fragment is a valid document: main.ptx (<pretext>), a
+# chapter's toctree, a section/page file.
+start =
+  Pretext | Book | Chapter | Section | Subsection | Page | Frontmatter | Preface
+
+# -- common ------------------------------------------------------------------
+
+IdAtt = attribute xml:id { xsd:NCName }?
+LangAtt = attribute xml:lang { text }?
+# The exercise/component identity (rs-<label>, answer tracking, book-tests).
+LabelAtt = attribute label { text }?
+# XInclude processors (jing validates with includes resolved) stamp
+# xml:base on included roots.
+BaseAtt = attribute xml:base { text }?
+CommonAtts = IdAtt, LangAtt, LabelAtt, BaseAtt
+
+XInclude =
+  element xi:include {
+    attribute href { text },
+    attribute parse { "text" }?
+  }
+
+# Lenient tree for author-note content and legacy docinfo furniture.
+AnyElement =
+  element * {
+    (attribute * { text } | text | AnyElement)*
+  }
+
+# -- inline ------------------------------------------------------------------
+
+InlineEl =
+  C | K | Term | Em | Strong | Var | Pubtitle | TitleReference | Url
+  | Reference | Target | M | Xref | Fillin | Idx | Assignment | InlineImage
+  | Area
+
+Inline = (text | InlineEl)*
+
+C = element c { text }
+K = element k { text }
+Term = element term { Inline }
+Em = element em { Inline }
+Strong = element strong { Inline }
+Var = element var { Inline }
+Pubtitle = element pubtitle { Inline }
+TitleReference = element title_reference { Inline }
+M = element m { text }
+Url =
+  element url {
+    attribute href { text },
+    attribute visual { text }?,
+    attribute style { text }?,
+    Inline
+  }
+# docutils-conversion leftovers: <reference> is an external link, <target>
+# its invisible anchor definition.
+Reference =
+  element reference {
+    attribute refuri { text }?,
+    attribute name { text }?,
+    Inline
+  }
+Target =
+  element target {
+    attribute refuri { text }?,
+    attribute ids { text }?,
+    attribute names { text }?,
+    empty
+  }
+Xref =
+  element xref {
+    attribute ref { text },
+    attribute text { "title" | "type-global" }?,
+    empty
+  }
+Fillin =
+  element fillin {
+    attribute name { text }?,
+    attribute mode { text }?,
+    attribute answer { text }?,
+    empty
+  }
+Idx = element idx { text | element h { text }+ }
+
+# An image with a @placement (inline | left | right | indent), pixel
+# @width, or @animated flows inline (D8); Image below is the block form.
+InlineImage = Image
+
+# The BHS assignment link (D7): resolved per viewer by the website.
+Assignment =
+  element assignment {
+    attribute material { text },
+    attribute assignment { text }?,
+    Inline
+  }
+
+# -- blocks ------------------------------------------------------------------
+
+BlockEl =
+  P | Ul | Ol | Dl | Figure | Image | Video | Table | Tabular | Note
+  | Blockquote | Activity | Project | Exercise | Pre | Listing | Program
+  | Code | Datafile | Sidebyside | Gutterimage | Container | Box | Aside
+  | Task | Todo | Comment | Standard | Reveal | Iframe | Checkpoint
+  | Solution | Answer | Hint | Idx | XInclude
+
+Block = BlockEl*
+# Contexts that take either inline prose or blocks (list items, cells, tasks).
+Flow = (text | InlineEl | BlockEl)*
+
+Title = element title { Inline }
+Caption = element caption { Inline }
+
+P = element p { IdAtt, Inline }
+
+Ul = element ul { IdAtt, Li+ }
+Ol =
+  element ol {
+    IdAtt,
+    attribute type { "a" | "A" | "i" | "I" | "1" }?,
+    Li+
+  }
+Li = element li { IdAtt, Title?, Flow }
+Dl = element dl { IdAtt, Li+ }
+
+Figure =
+  element figure {
+    CommonAtts,
+    attribute align { text }?,
+    (Caption | BlockEl)*
+  }
+
+Image =
+  element image {
+    CommonAtts,
+    attribute source { text },
+    attribute width { text }?,
+    attribute height { text }?,
+    attribute alt { text }?,
+    attribute description { text }?,
+    attribute title { text }?,
+    attribute placement { "inline" | "left" | "right" | "indent" }?,
+    attribute shadow { "no" }?,
+    attribute animated { "click-to-play" }?,
+    element shortdescription { text }?
+  }
+
+Video =
+  element video {
+    CommonAtts,
+    attribute youtube { text },
+    attribute width { text }?,
+    empty
+  }
+
+Table = element table { CommonAtts, (Title | Tabular)* }
+BorderAtt = "none" | "minor" | "medium" | "major"
+HalignAtt = "left" | "center" | "right"
+ValignAtt = "top" | "middle" | "bottom"
+Tabular =
+  element tabular {
+    CommonAtts,
+    attribute top { BorderAtt }?,
+    attribute bottom { BorderAtt }?,
+    attribute left { BorderAtt }?,
+    attribute right { BorderAtt }?,
+    attribute halign { HalignAtt }?,
+    attribute valign { ValignAtt }?,
+    attribute row-headers { "yes" | "no" }?,
+    (Title | Col)*,
+    Row+
+  }
+Col =
+  element col {
+    attribute top { BorderAtt }?,
+    attribute right { BorderAtt }?,
+    attribute halign { HalignAtt }?,
+    attribute width { text }?,
+    empty
+  }
+Row =
+  element row {
+    attribute header { "yes" | "no" }?,
+    attribute bottom { BorderAtt }?,
+    attribute left { BorderAtt }?,
+    attribute valign { ValignAtt }?,
+    Cell+
+  }
+Cell =
+  element cell {
+    attribute bottom { BorderAtt }?,
+    attribute right { BorderAtt }?,
+    attribute halign { HalignAtt }?,
+    Flow
+  }
+
+Note = element note { CommonAtts, Title?, Block }
+Blockquote = element blockquote { IdAtt, (BlockEl | Attribution)* }
+Attribution = element attribution { Inline }
+
+Pre = element pre { attribute source { text }?, (text | XInclude)* }
+Code = element code { (text | XInclude)* }
+Listing = element listing { CommonAtts, (Title | Caption)?, Block }
+
+Program =
+  element program {
+    CommonAtts,
+    attribute interactive { "activecode" | "codelens" }?,
+    attribute language { text }?,
+    attribute datafile { text }?,
+    attribute run-only { "yes" }?,
+    attribute line-numbers { "yes" | "no" }?,
+    (text | Code | Stdin | element preamble { text } | element postamble { text })*
+  }
+Stdin = element stdin { text }
+
+Datafile =
+  element datafile {
+    CommonAtts,
+    attribute filename { text }?,
+    attribute editable { "yes" | "no" }?,
+    attribute hide { "yes" | "no" }?,
+    Pre?
+  }
+
+Sidebyside =
+  element sidebyside {
+    IdAtt,
+    attribute widths { text }?,
+    attribute margins { text }?,
+    attribute valign { ValignAtt }?,
+    (Stack | Container | BlockEl)+
+  }
+Stack = element stack { Block }
+Container =
+  element container {
+    attribute names { text }?,
+    Block
+  }
+Gutterimage =
+  element gutterimage {
+    attribute source { text },
+    attribute description { text }?,
+    Block
+  }
+
+# -- the shared-format extensions (P2) ---------------------------------------
+
+# Per-book box/aside vocabularies: drivers override these enumerations.
+BoxKind = text
+AsideKind = text
+Box =
+  element box {
+    IdAtt,
+    attribute kind { BoxKind },
+    Block
+  }
+Aside =
+  element aside {
+    IdAtt,
+    attribute kind { AsideKind },
+    Block
+  }
+
+# A numbered "for you to do" step; numbered continuously per page.
+Task = element task { IdAtt, Flow }
+
+# Hidden authoring metadata: invisible in output, preserved in source.
+Todo = element todo { (text | AnyElement)* }
+Comment = element comment { (text | AnyElement)* }
+Standard = element standard { text }
+
+# Click-to-expand content (BJC's collapse hints).
+Reveal =
+  element reveal {
+    IdAtt,
+    attribute label { text },
+    Block
+  }
+
+Iframe =
+  element iframe {
+    attribute src { text },
+    attribute width { text }?,
+    attribute height { text }?,
+    empty
+  }
+
+# The button-styled checkpoint-quiz link (block form of Assignment).
+Checkpoint =
+  element checkpoint {
+    attribute material { text },
+    Inline
+  }
+
+# -- exercises / interactive payloads ----------------------------------------
+
+ExerciseAtts =
+  CommonAtts,
+  attribute adaptive { "yes" | "no" }?,
+  attribute indentation { "show" | "hide" }?,
+  attribute language { text }?,
+  attribute numbered { "yes" | "no" }?
+
+ExerciseChild =
+  Title | Statement | Introduction | Conclusion | Program | Choices
+  | Blocks | Areas | Cardsort | Response | Evaluation | Feedback | Stdin
+  | Datafile | BlockEl
+
+Activity = element activity { ExerciseAtts, ExerciseChild* }
+Project = element project { ExerciseAtts, ExerciseChild* }
+Exercise = element exercise { ExerciseAtts, ExerciseChild* }
+
+Statement = element statement { IdAtt, Block }
+Solution = element solution { IdAtt, Block }
+Answer = element answer { IdAtt, Block }
+Hint = element hint { IdAtt, Block }
+Feedback = element feedback { IdAtt, Flow }
+
+Choices =
+  element choices {
+    attribute randomize { "yes" | "no" }?,
+    Choice+
+  }
+Choice =
+  element choice {
+    attribute correct { "yes" | "no" }?,
+    attribute order { text }?,
+    (Statement | Feedback | Cline)*
+  }
+
+Blocks =
+  element blocks {
+    attribute layout { "horizontal" | "vertical" }?,
+    BlocksBlock+
+  }
+BlocksBlock =
+  element block {
+    attribute correct { "yes" | "no" }?,
+    attribute order { text }?,
+    (text | InlineEl | Cline | Choice)*
+  }
+Cline = element cline { (text | Area)* }
+
+Areas = element areas { (Cline | Table | Tabular)* }
+Area =
+  element area {
+    attribute correct { "yes" | "no" }?,
+    text
+  }
+
+Cardsort = element cardsort { Match+ }
+Match = element match { Premise, ResponseEl }
+Premise =
+  element premise {
+    attribute order { text }?,
+    Inline
+  }
+ResponseEl = element response { Inline }
+Response = ResponseEl
+
+Evaluation = element evaluation { element evaluate { Test* }+ }
+Test =
+  element test {
+    (element strcmp {
+       attribute use-answer { "yes" | "no" }?,
+       text
+     }
+     | element numcmp {
+         attribute use-answer { "yes" | "no" }?,
+         text
+       }
+     | Feedback)*
+  }
+
+# -- divisions ---------------------------------------------------------------
+
+Pretext = element pretext { LangAtt, Docinfo?, Book }
+Docinfo = element docinfo { (text | AnyElement)* }
+
+Book =
+  element book {
+    CommonAtts,
+    Title,
+    element subtitle { Inline }?,
+    (Frontmatter | Chapter | Introduction | Conclusion | Backmatter | XInclude)*
+  }
+
+Frontmatter =
+  element frontmatter {
+    CommonAtts,
+    Title?,
+    (Introduction | Preface | XInclude)*
+  }
+Preface = element preface { CommonAtts, Title?, Block }
+
+# Division content: title-anywhere (the file convention puts it first, but
+# idx elements legitimately precede it), sub-divisions, blocks. Sections
+# nest (aggregation files xi:include section files inside a section).
+Chapter =
+  element chapter {
+    CommonAtts,
+    (Title | Introduction | Conclusion | Section | XInclude | BlockEl)*
+  }
+Section =
+  element section {
+    CommonAtts,
+    (Title | Introduction | Conclusion | Section | Subsection | Page | XInclude | BlockEl)*
+  }
+Subsection =
+  element subsection { CommonAtts, (Title | Introduction | Conclusion | Subsection | BlockEl)* }
+Page = element page { CommonAtts, (Title | Introduction | Conclusion | BlockEl)* }
+
+Introduction = element introduction { CommonAtts, Title?, Block }
+Conclusion = element conclusion { CommonAtts, Title?, Block }
+
+Backmatter =
+  element backmatter {
+    CommonAtts,
+    (element index { CommonAtts, element index-list { empty } }
+     | element colophon { CommonAtts, Block })*
+  }

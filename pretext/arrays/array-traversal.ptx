@@ -147,21 +147,21 @@
 
       <choices>
         <choice>
-          <statement id="qIndexOutOfBounds_opt_a">
+          <statement>
             <p>for (int i = 0; i &lt; scores.length; i++)</p>
           </statement>
 
-          <feedback id="qIndexOutOfBounds_opt_a">
+          <feedback>
             <p>This loop will traverse the complete array.</p>
           </feedback>
         </choice>
 
         <choice>
-          <statement id="qIndexOutOfBounds_opt_b">
+          <statement>
             <p>for (int i = 1; i &lt; scores.length; i++)</p>
           </statement>
 
-          <feedback id="qIndexOutOfBounds_opt_b">
+          <feedback>
             <p>
               This loop will not cause an error even though it will not visit
               the element at index 0.
@@ -170,11 +170,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="qIndexOutOfBounds_opt_c">
+          <statement>
             <p>for (int i = 0; i &lt;= scores.length; i++)</p>
           </statement>
 
-          <feedback id="qIndexOutOfBounds_opt_c">
+          <feedback>
             <p>
               The index cannot be equal to scores.length, since (scores.length -
               1) is the index of the last element.
@@ -183,11 +183,11 @@
         </choice>
 
         <choice>
-          <statement id="qIndexOutOfBounds_opt_d">
+          <statement>
             <p>for (int i = 0; scores.length &gt; i; i++)</p>
           </statement>
 
-          <feedback id="qIndexOutOfBounds_opt_d">
+          <feedback>
             <p>
               Although the ending condition looks strange, (scores.length &gt;
               i) is equivalent to (i &lt; scores.length).
@@ -196,11 +196,11 @@
         </choice>
 
         <choice correct="yes">
-          <statement id="qIndexOutOfBounds_opt_e">
+          <statement>
             <p>for (int i = scores.length - 1; i &gt;= 0; i++)</p>
           </statement>
 
-          <feedback id="qIndexOutOfBounds_opt_e">
+          <feedback>
             <p>
               This will cause an error because i++ will continue to increment
               the index past the end of the array. It should be replaced with i–
@@ -546,11 +546,11 @@
 
       <choices>
         <choice correct="yes">
-          <statement id="mcqfor-each2_opt_a">
+          <statement>
             <p>44 33 22 11</p>
           </statement>
 
-          <feedback id="mcqfor-each2_opt_a">
+          <feedback>
             <p>
               The array is unchanged because the foreach loop cannot modify the
               array elements.
@@ -559,11 +559,11 @@
         </choice>
 
         <choice>
-          <statement id="mcqfor-each2_opt_b">
+          <statement>
             <p>46 35 24 13</p>
           </statement>
 
-          <feedback id="mcqfor-each2_opt_b">
+          <feedback>
             <p>
               Remember that the foreach loop cannot modify the array elements,
               but it also uses multiplication, not addition.
@@ -572,11 +572,11 @@
         </choice>
 
         <choice>
-          <statement id="mcqfor-each2_opt_c">
+          <statement>
             <p>88 66 44 22</p>
           </statement>
 
-          <feedback id="mcqfor-each2_opt_c">
+          <feedback>
             <p>
               Remember that the foreach loop cannot modify the array elements.
               Only the variable num will be doubled, not the original array
@@ -586,11 +586,11 @@
         </choice>
 
         <choice>
-          <statement id="mcqfor-each2_opt_d">
+          <statement>
             <p>The code will not compile.</p>
           </statement>
 
-          <feedback id="mcqfor-each2_opt_d">
+          <feedback>
             <p>This code will compile.</p>
           </feedback>
         </choice>
