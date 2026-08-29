@@ -721,8 +721,10 @@ const EMITTERS: Record<string, Emitter> = {
   // <details> with the configured summary label.
   box: (el, ctx) => emitBoxLike('div', getConfig().boxKinds, el, ctx),
   // <aside kind="…">: same registry pattern for the margin/floating family
-  // (sidenotes, endnotes, narrows).
-  aside: (el, ctx) => emitBoxLike('aside', getConfig().asideKinds, el, ctx),
+  // (sidenotes, endnotes, narrows). Emitted as a DIV, not <aside> — BJC's
+  // frozen Quarto CSS styles the aside ELEMENT as muted margin content
+  // (.825rem gray, grid-column'd), which is not these boxes' look.
+  aside: (el, ctx) => emitBoxLike('div', getConfig().asideKinds, el, ctx),
 
   // <task>: a numbered "for you to do" step (D4). Numbered continuously
   // per page (ids.ts numberTasks); rendered as a one-item ol so the number
