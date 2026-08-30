@@ -3269,7 +3269,13 @@ td {
     padding: 1em;
 }
 
-.ptx-content .tabular-box {
+/* Keep tables in the text column: cancel the theme's wide-screen bleed
+   (the container-query width/margin-left above). The .table>.tabular-box
+   selector is needed to outweigh the bleed rule's (0,3,0) specificity for
+   figure-wrapped (titled) tables, which would otherwise overflow
+   figure.table's dotted border. */
+.ptx-content .tabular-box,
+.ptx-content .table>.tabular-box {
     width: unset;
     margin-left: unset;
 }
