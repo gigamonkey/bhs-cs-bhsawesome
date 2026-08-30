@@ -26,20 +26,20 @@
       In <xref ref="loop-algorithms" /> we learned some basic loop algorithms
       for summing, counting, averaging, and finding minimums and maximums. Those
       algorithms become a lot more useful now that we know enough to use them
-      with arrays. For instance we can sum or average all the elements in an
+      with arrays. For instance, we can sum or average all the elements in an
       array of numeric values or count the number of elements of an array that
       meet some criteria.
     </p>
 
     <p>
-      Additionally there are some algorithms that are more specific to arrays
+      Additionally, there are some algorithms that are more specific to arrays,
       such as those that operate on pairs of elements and algorithms that modify
-      the order of elements in an array such as by reversing or rotating the
+      the order of elements in an array, such as by reversing or rotating the
       elements within an array.
     </p>
 
     <p>
-      In this lesson we’ll look at how to implement these algorithms with
+      In this lesson, we’ll look at how to implement these algorithms with
       arrays.
     </p>
   </introduction>
@@ -51,7 +51,7 @@
       As we have seen before with loops, the <term>accumulator pattern</term>
       decribes loops that iterate through a set of values while accumulating
       values into a variable where the accumulation can take on various forms.
-      For instance summing numbers is a form of accumulation. The accumulator
+      For instance, summing numbers is a form of accumulation. The accumulator
       pattern has four steps:
     </p>
 
@@ -74,7 +74,7 @@
     </ol>
 
     <p>
-      To apply this pattern to summing the elements of an array we just need to
+      To apply this pattern to summing the elements of an array, we just need to
       recognize that the values to loop through in step 2 are just the elements
       of the array. Since we need to process all the elements in the array to
       sum them and don’t care about their positions, this is a great use for an
@@ -141,12 +141,12 @@
     <title>Minimizing, maximizing, and counting</title>
 
     <p>
-      As you may recall from <xref ref="loop-algorithms" /> the basic pattern
+      As you may recall from <xref ref="loop-algorithms" />, the basic pattern
       for finding the minimum or maximum value in a sequence is also an
-      accumulator pattern like summing but rather than adding each value into a
-      running total we instead put each smaller (or larger) value we see into
+      accumulator pattern like summing, but rather than adding each value into a
+      running total, we instead put each smaller (or larger) value we see into
       our accumulator variable. If we want to find the smallest value in an
-      array we can use a very similar pattern with an enhanced <k>for</k> loop.
+      array, we can use a very similar pattern with an enhanced <k>for</k> loop.
     </p>
 
     <p>
@@ -244,7 +244,7 @@
 
     <p>
       If you want to step through the correct code to see what it does in the
-      Java Visualizer click on the following <url
+      Java Visualizer, click on the following <url
       href="http://www.pythontutor.com/java.html#code=public+class+ArrayWorker%0A%7B%0A+++private+int%5B+%5D+values%3B%0A%0A+++public+ArrayWorker(int%5B%5D+theValues)%0A+++%7B%0A++++++values+%3D+theValues%3B%0A+++%7D%0A%0A+++public+double+getAverage()%0A+++%7B%0A+++++double+total+%3D+0%3B%0A+++++for+(int+val+%3A+values)%0A+++++%7B%0A+++++++total++%3D+total+%2B+val%3B%0A+++++%7D%0A+++++return+total+/+values.length%3B%0A+++%7D%0A+++%0A+++public+int+getLargest()%0A+++%7B%0A++%0A+++++int+largest+%3D+values%5B0%5D%3B%0A%0A+++++for+(int+item+%3A+values)%0A+++++%7B%0A%0A+++++++if+(item+%3E+largest)%0A+++++++%7B%0A%0A+++++++++largest+%3D+item%3B%0A%0A+++++++%7D++//+end+if+%0A%0A+++++%7D+//+end+for%0A+++++return+largest%3B%0A%0A+++%7D+//+end+method%0A%0A+++public+static+void+main(String%5B%5D+args)%0A+++%7B%0A+++++int%5B%5D+numArray+%3D++%7B2,+6,+7,+12,+5%7D%3B%0A+++++ArrayWorker+aWorker+%3D+new+ArrayWorker(numArray)%3B%0A+++++System.out.println(aWorker.getLargest())%3B%0A+++%7D%0A%7D%0A%0A&amp;mode=display&amp;curInstr=0">Java
       visualizer link</url>.
     </p>
@@ -288,7 +288,7 @@
     <p>
       Related to minimizing and maximizing algorithms are counting algorithms
       where we want to count the number of values that have some particular
-      property. In counting algorithms we also use an <k>if</k> statement but
+      property. In counting algorithms we also use an <k>if</k> statement, but
       rather than storing new values when we see a larger or smaller one, we
       instead increment a count whenever we see a value that meets our criteria.
     </p>
@@ -323,7 +323,7 @@
       <statement>
         <p>
           The following program segment should count the number of elements in
-          the array that are even using an enhanced for each loop. But, the
+          the array that are even, using an enhanced for each loop. But, the
           blocks have been mixed up. Drag the blocks from the left and put them
           in the correct order on the right. Click the Check button to check
           your solution.
@@ -365,13 +365,13 @@
     <title>Searching</title>
 
     <p>
-      When we’re summing, minimizing, maximizing, and counting we have to look
+      When we’re summing, minimizing, maximizing, and counting, we have to look
       at every element in the array in order to get our final answer. Searching
       algorithms often don’t have to look at every elemement because their goal
       is to find one element that meets some criteria; as soon as we find an
       element that meets the criteria we’re done and don’t need to look at any
       more values. It’s like when you’re looking for your keys—there’s a long
-      list of places you can look but as soon as you find them you stop. Which
+      list of places you can look, but as soon as you find them you stop. Which
       is why your keys are always in the last place you look.
     </p>
 
@@ -398,28 +398,28 @@
     </program>
 
     <p>
-      When this method runs it will return the first name in the array that is
-      longer than ten characters. There may be many long names in the array but
+      When this method runs, it will return the first name in the array that is
+      longer than ten characters. There may be many long names in the array, but
       the goal of this method is just to find the first one. Note the <c>return
       null</c> at the end of the method. Because the return type of the method
-      is <c>String</c> we have to return something even if we didn’t find any
+      is <c>String</c>, we have to return something even if we didn’t find any
       name that met our criteria in the array. Returning <c>null</c> is a
       traditional way to deal with that situation and makes some sense since it
       indicates “no object”. That is, the method did not find any actual
       <c>String</c> longer than ten characters. There are some problems with
-      this idiom and Java gives some better ways to handle this kind of
-      situation but they are beyond the scope of this course. If we were
+      this idiom, and Java gives some better ways to handle this kind of
+      situation, but they are beyond the scope of this course. If we were
       searching for a value in a an array of some primitive type, we couldn’t
       return <c>null</c> but would have to return some other <term>distinguished
       value</term> that would not be a possible actual value to be found. For
-      instance methods that are intended to searching in an array of positive
-      <k>int</k> values, often use -1 as a distinguished value.
+      instance, methods that are intended to searching in an array of positive
+      <k>int</k> values often use -1 as a distinguished value.
     </p>
 
     <p>
       Note that when searching for an element, while we <k>return</k> from
       inside the <k>if</k> when we find what we’re looking for, if we don’t find
-      it we need to keep looking and only return <c>null</c> or our other
+      it, we need to keep looking and only return <c>null</c> or our other
       distinguished value after the loop has completed.
     </p>
 
@@ -690,9 +690,9 @@
 
     <p>
       The algorithms to answer these questions are similar to the searching
-      algorithm but instead of returning the value we from in the array, we
+      algorithm, but instead of returning the value we from in the array, we
       return a <k>boolean</k> value that answers the question. On the AP exam
-      they will frequently provide a method to use to test the criteria so all
+      they will frequently provide a method to use to test the criteria, so all
       you’ll have to do is write the right method structure.
     </p>
 
@@ -702,7 +702,7 @@
       way to think about these is as doing a search and using the fact of
       whether you found what you were looking for to answer the any or all
       question. Obviously if any item matches the criteria and you search for
-      that criterial you’ll find one. So an any method is structured very
+      that criterial, you’ll find one. So an any method is structured very
       similar to a search:
     </p>
 
@@ -730,12 +730,12 @@
 
     <p>
       You might think that to check whether all elements of an array meet some
-      criteria you’d have to loop through the whole array and look at them all.
+      criteria, you’d have to loop through the whole array and look at them all.
       It’s right there in the name, right? However, we can flip things around
       and realize that saying <em>all</em> the elements meet some criteria is
       the same as saying there is <em>no</em> element that <em>doesn’t</em> meet
-      the criteria. In other words, if we can find just one counter example then
-      we know not all the elements meet the criteria. So the all pattern is
+      the criteria. In other words, if we can find just one counter example,
+      then we know not all the elements meet the criteria. So the all pattern is
       actually almost the same as the any pattern, we just test the opposite
       condition: <c>!hasProperty(value)</c> rather than
       <c>hasProperty(value)</c> and then swap the return values, <c>false</c>
@@ -802,8 +802,8 @@
       Sometimes we need to go beyond testing criteria against individiual
       elements of the array and test facts about relationships between elements
       within the array. For instance, suppose we had a sorted array so the
-      elements went from smallest to largest. In a sorted array elements with
-      the same value will be next to each other in the array so we can test
+      elements went from smallest to largest. In a sorted array, elements with
+      the same value will be next to each other in the array, so we can test
       whether there are any duplicate elements by looping through the array and
       checking all the pairs at adjacent indices:
     </p>
@@ -829,9 +829,9 @@
       through the loop. And we had to adjust the loop header from the canonical
       <k>for</k> loop, changing the limit from the normal <c>values.length</c>
       to <c>values.length - 1</c>. If we looped with a limit of
-      <c>values.length</c> then the last iteration of the loop <c>i</c> would be
-      the largest legal index and <c>i + 1</c> would be one greater and out of
-      bounds.
+      <c>values.length</c>, then the last iteration of the loop <c>i</c> would
+      be the largest legal index, and <c>i + 1</c> would be one greater and out
+      of bounds.
     </p>
 
     <p>
@@ -994,9 +994,9 @@
     <p>
       We can also rotate in place without constructing another array if we use a
       temporary variable to hold one value while we move all the others to their
-      new position in the array. For instance to rotate left, store the value of
-      the first element and then shift all the other elements one to the left in
-      order. When all the elements have been shifted, put the original first
+      new position in the array. For instance, to rotate left, store the value
+      of the first element and then shift all the other elements one to the left
+      in order. When all the elements have been shifted, put the original first
       element in the last position to complete the rotation.
     </p>
 
@@ -1042,12 +1042,12 @@
     <title>Reversing an array</title>
 
     <p>
-      Reversing an array is similar to rotating it. However rather than shifting
-      elements one position either up or down, which only requires keeping track
-      of one extra value in a temporary variable, when we reverse an array in
-      place (meaning we are actually moving the values in the original array,
-      not making a new array with the same values in reverse order), we will
-      repeatedly <term>swap</term> elements.
+      Reversing an array is similar to rotating it. However, rather than
+      shifting elements one position either up or down, which only requires
+      keeping track of one extra value in a temporary variable, when we reverse
+      an array in place (meaning we are actually moving the values in the
+      original array, not making a new array with the same values in reverse
+      order), we will repeatedly <term>swap</term> elements.
     </p>
 
     <p>
@@ -1062,9 +1062,9 @@
       juice and we want to swap the contents of the two glasses without making a
       huge mess? We would need a third glass to temporarily hold the contents of
       one of the glasses, let’s say the glass of water. Once the water glass is
-      empty we can pour the contents of the glass of orange juice into it. Then
+      empty, we can pour the contents of the glass of orange juice into it. Then
       we can pour the water from the third glass into the now empty orange juice
-      glass and the contents have been swapped. (At the point we can put the
+      glass, and the contents have been swapped. (At the point we can put the
       third glass in the dishwasher.) This is the same idea behind swapping
       elements in an array.
     </p>
@@ -1273,7 +1273,7 @@
 
           <feedback>
             <p>
-              When <c>a</c> contains a value that is less than or equal to zero
+              When <c>a</c> contains a value that is less than or equal to zero,
               then multiplying that value by 2 will never make the result larger
               than the <c>temp</c> value (which was set to some value &gt; 0),
               so an infinite loop will occur.

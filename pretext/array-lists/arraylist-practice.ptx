@@ -222,7 +222,7 @@
         In line 8, the for loop should be written as <c>for (int i = 0; i &lt;
         list.size(); i++)</c> so that the method will traverse through all
         elements of the ArrayList <c>list</c>. In the line 10 conditional, it
-        should be checking when the index, <c>i</c> is even - in other words,
+        should be checking when the index, <c>i</c>, is even - in other words,
         checking if it is divisible by 2 with no remainder: <c>i % 2 == 0</c>.
       </p>
 
@@ -472,7 +472,7 @@
       <p>
         Declare a variable to hold the <c>sum</c> and initialize it to zero.
         Loop through all the values in the ArrayList. If the current value is
-        negative (less than 0) then add it to the <c>sum</c>. Return the
+        negative (less than 0), then add it to the <c>sum</c>. Return the
         <c>sum</c>.
       </p>
 

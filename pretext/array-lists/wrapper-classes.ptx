@@ -33,7 +33,7 @@
       As reference types, these types can be used as the element type of an
       <c>ArrayList</c>: <c>ArrayList&lt;Integer&gt;</c>,
       <c>ArrayList&lt;Double&gt;</c>, and <c>ArrayList&lt;Boolean&gt;</c>. As
-      we’ll see Java provides a bit of extra support for these types,
+      we’ll see, Java provides a bit of extra support for these types,
       automatically converting between wrapper types and the corresponding
       primitive values in many contexts.
     </p>
@@ -49,7 +49,7 @@
 
     <p>
       The main use of wrapper types is as type parameter in an <c>ArrayList</c>
-      declaration. If what we really want is a list of <k>int</k> values we can
+      declaration. If what we really want is a list of <k>int</k> values, we can
       declare an <c>ArrayList&lt;Integer&gt;</c>.
     </p>
 
@@ -64,8 +64,8 @@
       The oldest, and worst, way is to construct a new instance of the wrapper
       class with a the constructor that takes a single value of the
       corresponding primitive type. These constructors exist but have been
-      <term>deprecated</term> which means they still exist because removing them
-      would break old code but they are now considered a mistake.
+      <term>deprecated</term>, which means they still exist because removing
+      them would break old code, but they are now considered a mistake.
     </p>
 
     <program>
@@ -97,8 +97,8 @@
       save a lot of memory by reusing the same object for the same commonly
       wrapped primitive value. For example, making an array list containing a
       million zeros obtained with with <c>Integer.valueOf(0)</c> would use only
-      one object to represent all the zeros whereas if we made them with <c>new
-      Integer(0)</c> Java would have to allocate a million different objects,
+      one object to represent all the zeros, whereas if we made them with <c>new
+      Integer(0)</c>, Java would have to allocate a million different objects,
       each holding the same <c>0</c> value, using a million times as much
       memory.
     </p>
@@ -121,15 +121,15 @@
       passed as a parameter to a method that expects an object of the
       corresponding wrapper class or assigned to a variable of the corresponding
       wrapper class. So when we call <c>add</c> on an
-      <c>ArrayList&lt;Integer&gt;</c> the compiler knows <c>add</c> expects an
-      <c>Integer</c>. If it sees that we’re passing an <k>int</k> it
+      <c>ArrayList&lt;Integer&gt;</c>, the compiler knows <c>add</c> expects an
+      <c>Integer</c>. If it sees that we’re passing an <k>int</k>, it
       automatically gets an instance of <c>Integer</c>to wrap it, basically as
       if we had written a call to <c>Integer.valueOf</c>.
     </p>
 
     <p>
-      An automatic conversion going in the other direction called
-      <term>unboxing</term> happens when a value of a wrapper type is passed as
+      An automatic conversion going in the other direction, called
+      <term>unboxing</term>, happens when a value of a wrapper type is passed as
       a parameter or assigned to a variable that expects the corresponding
       primitive type. This means we can write code like this:
     </p>
@@ -141,16 +141,16 @@
 
     <p>
       The values actally returned by <c>get</c> in those two lines are
-      <c>Integer</c> and <c>Double</c> but Java unwraps them and assigns the
+      <c>Integer</c> and <c>Double</c>, but Java unwraps them and assigns the
       underlying value to the primitive variables <c>i</c> and <c>d</c>.
     </p>
 
     <p>
-      Thanks to autoboxing and unboxing we almost never need to use the wrapper
+      Thanks to autoboxing and unboxing, we almost never need to use the wrapper
       types anywhere except as the type parameters when declaring an
       <c>ArrayList</c>. For the most part we can just use primitive values and
       everything will work out fine. Unfortunately they are a few edge cases
-      where it doesn’t which we’ll discuss below.
+      where it doesn’t, which we’ll discuss below.
     </p>
 
     <activity label="qArrayListInteger">
@@ -356,7 +356,7 @@
     <p>
       As mentioned above, there are a few times when we can’t completely ignore
       what’s going on with autoboxing and unboxing. If we stick strictly within
-      the AP curriculum we won’t hit them but we don’t have to go very far
+      the AP curriculum, we won’t hit them, but we don’t have to go very far
       outside the bounds to run into one.
     </p>
 
@@ -373,7 +373,7 @@
     <p>
       The subtlety is this. What happens if we have an
       <c>ArrayList&lt;Integer&gt;</c> and then call <c>remove(42)</c>? Should it
-      call <c>remove(int)</c>, and remove the element at index <c>42</c> or
+      call <c>remove(int)</c> and remove the element at index <c>42</c>, or
       should it autobox <c>42</c> and remove the first element of the list whose
       value is an <c>Integer</c> wrapping the value <c>42</c>?
     </p>
@@ -403,7 +403,7 @@
       of the list, <c>10</c>, because the argument is treated as the index 0,
       not a value. The third call successfully removes the <c>20</c> from the
       list. And the fourth call crashes with an <c>IndexOutOfBoundsException</c>
-      because 20, as an index, is way too big for the list which now only has
+      because 20, as an index, is way too big for the list, which now only has
       one element in it.
     </p>
 

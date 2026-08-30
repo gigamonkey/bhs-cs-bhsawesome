@@ -5,7 +5,7 @@
 
   <introduction>
     <p>
-      Computers operate on <term>data</term> which is stored as
+      Computers operate on <term>data</term>, which is stored as
       <term>bits</term>, usually described as “zeros and ones”, in the
       computer's memory. Though even that’s a bit of a fairy tale: in the
       computer each bit is actually represented by the state of a tiny
@@ -13,13 +13,13 @@
     </p>
 
     <p>
-      However sequences of zeros and ones—let alone microscopic circuitry—aren't
-      convenient for humans to deal with, so programming languages like Java
-      give us higher-level abstractions for dealing with data that let us treat
-      those sequences of bits as <term>values</term> that have some meaning to
-      us humans. The kinds of values, called <term>data types</term>, supported
-      by a programming language and what we can do with them are the most basic
-      building blocks of our programs
+      However, sequences of zeros and ones—let alone microscopic
+      circuitry—aren't convenient for humans to deal with, so programming
+      languages like Java give us higher-level abstractions for dealing with
+      data that let us treat those sequences of bits as <term>values</term> that
+      have some meaning to us humans. The kinds of values, called <term>data
+      types</term>, supported by a programming language and what we can do with
+      them are the most basic building blocks of our programs
     </p>
 
     <p>
@@ -27,10 +27,10 @@
       <term>expressions</term>. Every expression <term>evaluates to</term> a
       value. In this section we’ll deal with two of the most basic kinds of
       expressions. First, <term>literal values</term> are the way we write
-      specific values in our program, that will be turned into the appropriate
+      specific values in our program that will be turned into the appropriate
       bits in memory when the program runs. These are things like <c>123</c> and
       <c>3.14</c>. Second, we can create names in our program, called
-      <term>variables</term> that represent a place in the computer’s memory
+      <term>variables</term>, that represent a place in the computer’s memory
       where a value can be stored which we can then refer to by the variable’s
       name. In a later unit we’ll talk about expressions that use
       <term>operators</term> that cause the computer to perform computations
@@ -58,7 +58,7 @@
       types in Java. One, <term>primitive types</term>, hold the kinds of values
       that the computer can directly operate on such as numbers which we can do
       math with and logical values that we can do, well, logic with. The other,
-      <term>reference types</term> hold a reference to a more complex value
+      <term>reference types</term>, hold a reference to a more complex value
       called an object. For now we’ll focus on three of the main primitive data
       types in Java. We’ll come back to reference types in <xref ref="classes"
       />.
@@ -76,13 +76,13 @@
 
       <li>
         <p>
-          <k>double</k> which can represent non-integer numbers like 6.3 -0.9,
+          <k>double</k> which can represent non-integer numbers like 6.3, -0.9,
           and 60293.93032. Computer people call these “floating point” numbers
           because the decimal point “floats” relative to the magnitude of the
           number, similar to the way it does in scientific notation like <m>6.5
           \times 10^8</m>. The name <k>double</k> comes from the fact that
           <k>double</k> values are represented using sixty-four bits, double the
-          thirty-two bits used for the type <k>float</k> which used to be the
+          thirty-two bits used for the type <k>float</k>, which used to be the
           normal size floating point number when most computers did math in
           units of 32-bits. (<k>float</k> is rarely used these days and is not
           part of the AP curriculum.)
@@ -102,7 +102,7 @@
       Another way to think of a data type is as a set of values and a set of
       operations on those values. For example, the <k>int</k> datatype
       represents the set of integers that can be represented in thirty-two bits
-      (-2,147,483,648 to 2,147,483,647) and they support the normal arithmetic
+      (-2,147,483,648 to 2,147,483,647), and they support the normal arithmetic
       operations like addition, subtraction, multiplication, and division as
       well as a few that you probably didn’t learn about in elementary school.
     </p>
@@ -137,8 +137,8 @@
           <feedback>
             <p>
               An average is calculated by summing all the values and dividing by
-              the number of values. To keep the most amount of information this
-              should be done with decimal numbers so use a double.
+              the number of values. To keep the most amount of information, this
+              should be done with decimal numbers, so use a double.
             </p>
           </feedback>
         </choice>
@@ -171,7 +171,7 @@
 
           <feedback>
             <p>
-              The number of people is a whole number so using an integer make
+              The number of people is a whole number, so using an integer make
               sense.
             </p>
           </feedback>
@@ -214,9 +214,9 @@
 
           <feedback>
             <p>
-              While you could use an int and use 0 for false and 1 for true this
-              would waste 31 of the 32 bits an int uses. Java has a special type
-              for things that are either true or false.
+              While you could use an int and use 0 for false and 1 for true,
+              this would waste 31 of the 32 bits an int uses. Java has a special
+              type for things that are either true or false.
             </p>
           </feedback>
         </choice>
@@ -263,8 +263,8 @@
           <feedback>
             <p>
               The integer type (int) can't be used to represent numbers with
-              fractional parts and the difference between gold and silver in the
-              Olympics is often measured in just thousandths of a second.
+              fractional parts, and the difference between gold and silver in
+              the Olympics is often measured in just thousandths of a second.
             </p>
           </feedback>
         </choice>
@@ -302,7 +302,7 @@
     <p>
       There are two aspects to a <term>variable</term>. To the computer a
       variable is a location in its memory that can store a value. The value
-      stored at that location can change, or vary, while the program is running
+      stored at that location can change, or vary, while the program is running,
       which is why we call them variables. To us human programmers, on the other
       hand, the important aspect of a variable as its name that we can use to
       refer to the data without having to know about the variable’s exact
@@ -312,7 +312,7 @@
     <p>
       For example, in a computer game we might need to keep track of the
       player’s score, which will start at 0 and increase as the player earns
-      points. The score can be stored somewhere in memory but in our program
+      points. The score can be stored somewhere in memory, but in our program
       we’ll refer to it with the name <c>score</c> since that’s much more
       convenient than something like “address <c>66a3ffec</c>”.
     </p>
@@ -360,13 +360,13 @@
 
     <p>
       Computers store all values using <term>bits</term> (binary digits). A
-      <term>bit</term> can represent two values and we usually say that the
+      <term>bit</term> can represent two values, and we usually say that the
       value of a bit is either 0 or 1. When you declare a variable, you have to
       tell Java the type of the variable because Java needs to know how many
       bits to use and how to represent the value. The 3 different primitive
       types all require different number of bits. An integer gets 32 bits of
-      memory, a double gets 64 bits of memory and a boolean could be represented
-      by just one bit.
+      memory, a double gets 64 bits of memory, and a boolean could be
+      represented by just one bit.
     </p>
 
     <figure align="center">
@@ -380,10 +380,11 @@
 
     <p>
       To <term>declare</term> (create) a variable, you specify the type, leave
-      at least one space, then the name for the variable and end the line with a
-      semicolon (<c>;</c>). Java uses the keyword <term>int</term> for integer,
-      <term>double</term> for a floating point number (a double precision
-      number), and <term>boolean</term> for a Boolean value (true or false).
+      at least one space, then the name for the variable, and end the line with
+      a semicolon (<c>;</c>). Java uses the keyword <term>int</term> for
+      integer, <term>double</term> for a floating point number (a double
+      precision number), and <term>boolean</term> for a Boolean value (true or
+      false).
     </p>
 
     <p>Here is an example declaration of a variable called score.</p>
@@ -602,7 +603,8 @@
             <strcmp use-answer="yes" />
             <feedback>
               <p>
-                Correct. You can’t buy half a ticket so this will be an integer.
+                Correct. You can’t buy half a ticket, so this will be an
+                integer.
               </p>
             </feedback>
           </test>
@@ -725,17 +727,17 @@
       The convention in Java and many programming languages is to always start a
       variable name with a lower case letter and then uppercase the first letter
       of each additional word, for example <c>gameScore</c>. Variable names can
-      not include spaces so uppercasing the first letter of each additional word
-      makes it easier to read the name. Uppercasing the first letter of each
-      additional word is called <term>camel case</term> because it looks like
-      the humps of a camel. Another option is to use underscore <c>_</c> to
+      not include spaces, so uppercasing the first letter of each additional
+      word makes it easier to read the name. Uppercasing the first letter of
+      each additional word is called <term>camel case</term> because it looks
+      like the humps of a camel. Another option is to use underscore <c>_</c> to
       separate words, but you cannot have spaces in a variable name.
     </p>
 
     <activity label="varCaseSensitive">
       <statement>
         <p>
-          Java is case sensitive so <c>gameScore</c> and <c>gamescore</c> are
+          Java is case sensitive, so <c>gameScore</c> and <c>gamescore</c> are
           not the same. Run and fix the code below to use the right variable
           name.
         </p>

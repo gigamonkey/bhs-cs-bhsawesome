@@ -6,11 +6,11 @@
   <introduction>
     <p>
       When a Java program runs, the data it operates on has to be in the
-      computer’s memory. When we create a variable we are allocating a small bit
-      of memory which we can then initialize to hold one value. When we create
-      an array on an <c>ArrayList</c>, we are allocating a larger chunk of
-      memory that can hold lots of values. But where do any of those values come
-      from?
+      computer’s memory. When we create a variable, we are allocating a small
+      bit of memory which we can then initialize to hold one value. When we
+      create an array on an <c>ArrayList</c>, we are allocating a larger chunk
+      of memory that can hold lots of values. But where do any of those values
+      come from?
     </p>
 
     <p>They might come from our code. If we make an array like:</p>
@@ -37,7 +37,7 @@
       and then load the data from those files into our programs. This allows us
       to write a program once that can run the same computation on different
       data just by loading a different file. (Programs can also write data to
-      files but we are not going to cover that in this course.)
+      files, but we are not going to cover that in this course.)
     </p>
 
     <p>

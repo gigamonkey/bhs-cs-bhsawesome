@@ -17,13 +17,13 @@
     <p>
       In some sense that’s all we need to know to write Java programs. Now it’s
       just a matter of putting the pieces together. However, as you’ve probably
-      already discovered even small programs can start to get complicated and it
-      can be hard to keep track of all the pieces and how they fit together.
+      already discovered, even small programs can start to get complicated, and
+      it can be hard to keep track of all the pieces and how they fit together.
     </p>
 
     <p>
       In this unit, we will look at how to think at a higher level about
-      designing our programs. For any given program that we might want to write
+      designing our programs. For any given program that we might want to write,
       there are many, many ways to break it down into classes. While the Java
       compiler doesn’t care how your program is organized, as long as it follows
       the rules of Java, programmers have learned that it matters a lot to us

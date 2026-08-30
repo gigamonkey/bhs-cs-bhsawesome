@@ -6,10 +6,10 @@
   <introduction>
     <p>
       Java's two numeric types, <k>int</k> and <k>double</k>, serve different
-      purposes: if we’re counting things <k>int</k>s are great. And
+      purposes: if we’re counting things, <k>int</k>s are great. And
       <k>double</k>s are great for scientific calculations such as those
       involving measured quantities. But some computations will require us to
-      work with values of both types which will require us to control when we
+      work with values of both types, which will require us to control when we
       convert between the two types if we want to get mathematically correct
       results.
     </p>
@@ -43,7 +43,7 @@
       fishing, but it is a similar idea to casting a bronze, without needing to
       heat anything to 913 degrees Celsius. But like molten bronze is reshaped
       by melting it and pouring it into a mold, our data is reshaped via a
-      <term>cast</term> operator. In Java when you cast you are changing the
+      <term>cast</term> operator. In Java when you cast, you are changing the
       “shape” (or type) of the value.
     </p>
 
@@ -56,7 +56,7 @@
     <p>
       The <term>cast operator</term>, which looks like <c>(int)</c> and
       <c>(double)</c> placed before any expression (a literal, a number, a
-      variable, or more complex expression in parentheses) produces a value of
+      variable, or more complex expression in parentheses), produces a value of
       the given type by converting the value of the original expression to the
       new type. The casting operators <c>(int)</c> and <c>(double)</c> can be
       used to convert from a double value to an int value (or vice versa).
@@ -78,7 +78,7 @@
 
     <note>
       <p>
-        <k>int</k>s in Java are always 32-bit signed values which mean they can
+        <k>int</k>s in Java are always 32-bit signed values, which mean they can
         represent values from <m>-2^{31}</m> to <m>2^{31} - 1</m>, inclusive,
         while the range of consecutive integer values that can be represented by
         a double is from <m>-2^{53}</m> to <m>2^{53}</m>, inclusive. (A
@@ -150,10 +150,10 @@
     </p>
 
     <p>
-      If an expressions involves at least one literal value then we can just use
-      a literal <k>double</k> to force Java to use <k>double</k> math. But what
-      if we want to evaluate an expression using <k>int</k> variables but under
-      the rules of <k>double</k> math?
+      If an expressions involves at least one literal value, then we can just
+      use a literal <k>double</k> to force Java to use <k>double</k> math. But
+      what if we want to evaluate an expression using <k>int</k> variables but
+      under the rules of <k>double</k> math?
     </p>
 
     <p>
@@ -176,11 +176,11 @@
     <p>
       Another thing to notice is that cast is an operator, just like <c>+</c>,
       <c>*</c>, <c>-</c>, <c>/</c>, and <c>%</c>. So it has a precedence just
-      like all the other operators and it is actually quite high. The expression
-      above works because the cast of <c>total</c> to <k>double</k> happens
-      first and then that <k>double</k> value infects <c>count</c> and the whole
-      expression is computed using <k>double</k> math. If instead we had
-      written:
+      like all the other operators, and it is actually quite high. The
+      expression above works because the cast of <c>total</c> to <k>double</k>
+      happens first, and then that <k>double</k> value infects <c>count</c>, and
+      the whole expression is computed using <k>double</k> math. If instead we
+      had written:
     </p>
 
     <program>
@@ -189,7 +189,7 @@
 
     <p>
       then the division would have happened first, yielding a truncated
-      <k>int</k> value which would then—too late—be converted to the equivalent
+      <k>int</k> value, which would then—too late—be converted to the equivalent
       <k>double</k> value, losing the fractional part of the true mathematical
       answer.
     </p>
@@ -201,7 +201,7 @@
     <idx>rounding</idx>
     <p>
       Since casting a <k>double</k> value to <k>int</k> throws away mathematical
-      precision it might seem that we’d rarely want to do that. But we can use
+      precision, it might seem that we’d rarely want to do that. But we can use
       truncation, with a bit of arithmetic, to round <k>double</k> values to the
       nearest <k>int</k> value by adding or subtracting 0.5 and then casting the
       result with <c>(int)</c>:
@@ -216,7 +216,7 @@
     </program>
 
     <p>
-      For example, if we divide <c>7.0 / 4.0</c> we get <c>1.75</c>. And if we
+      For example, if we divide <c>7.0 / 4.0</c>, we get <c>1.75</c>. And if we
       cast that to an <k>int</k>, it would be truncated to <c>1</c>. But if we
       want to round it to the nearest <k>int</k>, rather than truncating it,
       adding <c>0.5</c> will produce a number that is greater than <c>2.0</c>
@@ -224,10 +224,10 @@
       above the next integer value if the decimal part is greater than
       <c>0.5</c>, as it is here. Then casting <em>that</em> value to an
       <k>int</k> will truncate down. So in this case <c>1.75 + 0.5</c> gives us
-      <c>2.25</c> which is then truncated to <c>2</c>. On the other hand adding
-      <c>0.5</c> to the result of evaluating <c>5.0 / 4.2</c>, namely
-      <c>1.25</c>, only gets us to <c>1.75</c> which truncates back to <c>1</c>
-      which is the nearest integer to <c>1.25</c>.
+      <c>2.25</c>, which is then truncated to <c>2</c>. On the other hand,
+      adding <c>0.5</c> to the result of evaluating <c>5.0 / 4.2</c>, namely
+      <c>1.25</c>, only gets us to <c>1.75</c>, which truncates back to
+      <c>1</c>, which is the nearest integer to <c>1.25</c>.
     </p>
 
     <p>
@@ -236,8 +236,8 @@
       <k>double</k>. Without the parentheses, the cast to <k>int</k> would
       convert <c>number</c> to an <k>int</k> first because of the higher
       precedence of casting than division, and then that truncated <k>int</k>
-      value would be infected by the <c>0.5</c> giving us a double result with a
-      fractional part of <c>0.5</c>.
+      value would be infected by the <c>0.5</c>, giving us a double result with
+      a fractional part of <c>0.5</c>.
     </p>
 
     <activity label="nearestInt">
@@ -297,7 +297,7 @@
       a fixed number of digits. Because <k>int</k>s can represent both positive
       and negative numbers, half of the bit patters are used to represent
       negative numbers and half to represent the non-negative numbers including
-      zero. The maximum <k>int</k> value is <m>2,147,483,647</m> also known as
+      zero. The maximum <k>int</k> value is <m>2,147,483,647</m>, also known as
       <m>2^{31} - 1</m>. The minimum value (most negative) is
       <m>-2,147,483,648</m> or <m>-(2^{31})</m>. There are constants in Java,
       <c>Integer.MAX_VALUE</c> and <c>Integer.MIN_VALUE</c>, that we can use if
@@ -309,14 +309,14 @@
       than <c>Integer.MAX_VALUE</c> in an <k>int</k> variable or if an
       expression that is supposed to produce an <k>int</k> value would produce a
       value outside that range, the result <term>overflows</term> and produces a
-      mathematically incorrect value. Roughly speaking the value will “wrap
-      around” so, for instance, <c>Integer.MAX_VALUE + 1</c> gives us the same
-      value as <c>Integer.MIN_VALUE</c> and <c>Integer.MIN_VALUE - 1</c> brings
+      mathematically incorrect value. Roughly speaking, the value will “wrap
+      around”, so, for instance, <c>Integer.MAX_VALUE + 1</c> gives us the same
+      value as <c>Integer.MIN_VALUE</c>, and <c>Integer.MIN_VALUE - 1</c> brings
       us back to <c>Integer.MAX_VALUE</c>.
     </p>
 
     <p>
-      If we try to write a literal <k>int</k> that is out of range the compiler
+      If we try to write a literal <k>int</k> that is out of range, the compiler
       will give us an error as shown in the exercise below.
     </p>
 
@@ -350,15 +350,15 @@
     <p>
       The <k>double</k> type, despite using twice as many bits per number as
       <k>int</k>s, also has limitations. Doubles work more like scientific
-      notation, storing a signed magnitude, and an exponent. This means they can
+      notation, storing a signed magnitude and an exponent. This means they can
       represent both very small numbers (the smallest positive value is
       approximately <m>4.9 \times 10^{-324}</m>) and very large (the largest
       positive <k>double</k> value is approximately <m>1.8 \times 10^{308}</m>.)
     </p>
 
     <p>
-      However this means that like scientific notation, there is a limit to the
-      precision with which <k>double</k>s can represent numbers, about 14-15
+      However, this means that, like scientific notation, there is a limit to
+      the precision with which <k>double</k>s can represent numbers, about 14-15
       decimal places. That has a few consequences. One is that irrational
       numbers like <m>\pi</m> and <m>\sqrt{2}</m> that have an infinite decimal
       representation can only be approximated. But also simpler numbers like 1/3
@@ -371,11 +371,11 @@
       In practice, of course, 14-15 digits of precision is plenty for most
       purposes. But you should be aware that the accuracy of any calculation on
       a computer is limited by the fact that computers can only hold a limited
-      number of digits. When these limitations lead to incorrect results it is
+      number of digits. When these limitations lead to incorrect results, it is
       called a <term>round-off error</term>. Programmers who write software that
       does complex scientific calculations do something called <term>numeric
       analysis</term> to make sure their programs won’t be affected by round-off
-      errors but most of us don’t have to worry about that most of the time.
+      errors, but most of us don’t have to worry about that most of the time.
     </p>
 
     <idx><h>double</h><h>precision format</h></idx>
@@ -383,8 +383,8 @@
       <p>
         Although it’s not on the AP exam, you can format long decimal numbers to
         just show 2 digits after the decimal point with the following code using
-        <c>printf</c> a formatted print method or <c>format</c> instead of
-        <c>println</c>. It takes a format string like <c>%.02f</c> which tells
+        <c>printf</c>, a formatted print method, or <c>format</c> instead of
+        <c>println</c>. It takes a format string like <c>%.02f</c>, which tells
         <c>printf</c> to print a floating point number indicated by the <c>%</c>
         with 2 digits after the decimal point. See <url
         href="https://docs.oracle.com/javase/tutorial/java/data/numberformat.html">https://docs.oracle.com/javase/tutorial/java/data/numberformat.html</url>
@@ -490,7 +490,7 @@
           <feedback>
             <p>
               Casting results in the type that you cast to. However, if you
-              can't really cast the value to the specified type then you will
+              can't really cast the value to the specified type, then you will
               get an error.
             </p>
           </feedback>
@@ -503,12 +503,12 @@
     <title>Coding Challenge: Average three numbers</title>
 
     <p>
-      This would be a good project to work together in pairs, and switch drivers
+      This would be a good project to work together in pairs and switch drivers
       (who has control of the keyboard in pair programming) after every line of
       code. In the code below, type in three made up int grades and then sum and
       average them. Use casting to report the result as a double. For example,
       if the grades are 90, 100, and 94, the sum of the three numbers is 90 +
-      100 + 94 = 284, and the average is the sum 284 divided by 3 which, when
+      100 + 94 = 284, and the average is the sum 284 divided by 3, which, when
       cast to a double, is 94.666667. You should use your variables instead of
       the numbers in your formulas. Follow the pseudo code below.
     </p>
@@ -673,7 +673,7 @@
 
           <feedback>
             <p>
-              This does integer division before casting the result to double so
+              This does integer division before casting the result to double, so
               it loses the fractional part.
             </p>
           </feedback>
@@ -686,8 +686,8 @@
 
           <feedback>
             <p>
-              When you divide an integer by an integer you get an integer result
-              and lose the fractional part.
+              When you divide an integer by an integer, you get an integer
+              result and lose the fractional part.
             </p>
           </feedback>
         </choice>

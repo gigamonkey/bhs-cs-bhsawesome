@@ -87,7 +87,7 @@
     <p>
       The <c>HiddenWord</c> class will be used to represent the hidden word in
       the game. The hidden word is passed to the constructor. The class contains
-      a method, <c>getHint</c> that takes a guess and produces a hint.
+      a method, <c>getHint</c>, that takes a guess and produces a hint.
     </p>
 
     <p>

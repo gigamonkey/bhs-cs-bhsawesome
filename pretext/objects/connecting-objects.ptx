@@ -19,14 +19,14 @@
     <p>
       A class can declare instance variables whose type is another class. For
       example, a <c>Person</c> class could have an instance variable of type
-      <c>Address</c> which has its own instance variables that hold a street,
+      <c>Address</c>, which has its own instance variables that hold a street,
       city, state, and zipcode. This is sometimes called <term>has-a</term>
       relationship because a person <em>has</em> an address.
     </p>
 
     <p>
-      The person class, with just its instance variables and a constructor might
-      look like this:
+      The person class, with just its instance variables and a constructor,
+      might look like this:
     </p>
 
     <program>
@@ -65,7 +65,7 @@
       <c>street</c>, <c>city</c>, <c>state</c>, and <c>zipcode</c> instance
       variables for a couple reasons. The main one is it makes <c>Person</c>
       simpler—a <c>Person</c> is just made up of two things, a name and an
-      address. When trying to understand the <c>Person</c> class we don’t have
+      address. When trying to understand the <c>Person</c> class, we don’t have
       to deal with the complexity of how an address is represented. And then
       when we do look at the <c>Address</c> class, we don’t have to think about
       the <c>Person</c> class at all; we can understand the <c>Address</c> class
@@ -101,7 +101,7 @@
       The <c>Person</c> constructor above demonstrates one of the ways that
       objects can be connected, by passing one object to the constructor of
       another. Remember that every object is made up of two parts: its object
-      data that lives somewhere in memory and a reference to that data which is
+      data that lives somewhere in memory and a reference to that data, which is
       the value that can be passed around and stored. So when we write code like
       this to construct an <c>Address</c>:
     </p>
@@ -122,7 +122,7 @@
 
     <p>
       The value of <c>addr</c>, i.e. the reference, is what is passed to the
-      <c>Person</c> contructor which then stores it in the <c>address</c>
+      <c>Person</c> contructor, which then stores it in the <c>address</c>
       instance variable in the <c>Person</c> object data.
     </p>
 
@@ -134,11 +134,11 @@
     </p>
 
     <p>
-      However because the value of <c>addr</c> is a reference to the
+      However, because the value of <c>addr</c> is a reference to the
       <c>Address</c> object, if the <c>Address</c> class defined methods that
       let us modify an <c>Address</c> object, then code in the constructor or
       elsewhere in <c>Person</c> could use those methods to change the
-      <c>Address</c> object and those changes would be visible to any code that
+      <c>Address</c> object, and those changes would be visible to any code that
       had a reference to that <c>Address</c> object.
     </p>
 
@@ -152,7 +152,7 @@
     </program>
 
     <p>
-      Fred and Wilma live at the same address so it makes sense that they share
+      Fred and Wilma live at the same address, so it makes sense that they share
       an <c>Address</c> object. Now suppose that <c>Address</c> provided a
       <c>setCity</c> method that changed the <c>city</c> instance variable in an
       <c>Address</c>. What happens to Fred and Wilma if we execute this line?
@@ -163,9 +163,9 @@
     </program>
 
     <p>
-      In this case, there’s just one <c>Address</c> object so the change would
+      In this case, there’s just one <c>Address</c> object, so the change would
       affect both <c>Person</c> objects in that if you got their address and
-      then got the city from that address it would now return <c>"Orbit
+      then got the city from that address, it would now return <c>"Orbit
       City"</c>. Sometimes that’s what we want and the whole point of passing
       around mutable objects. Other times it can be the source of subtle bugs if
       we forget or don’t realize that an object referenced by one object may be
@@ -272,7 +272,7 @@
 
     <p>
       The <k>this</k> variable can be used anywhere you need a reference to the
-      current class. For instance you can pass it to a method or constructor as
+      current class. For instance, you can pass it to a method or constructor as
       an argument. Consider the classes below, <c>Pay</c> and <c>Overtime</c>.
       The <c>calculatePayWithOvertime</c> method in the <c>Pay</c> class
       contstructs an <c>Overtime</c> object, passing in <k>this</k> (the current
@@ -283,7 +283,7 @@
     <p>
       Try this code in the active code exercise below with the Show CodeLens
       button to trace through it step by step. Here is an image that shows how
-      <k>this</k>, <c>myPay</c> and <c>p</c> all refer to the same object in
+      <k>this</k>, <c>myPay</c>, and <c>p</c> all refer to the same object in
       memory.
     </p>
 
@@ -465,7 +465,7 @@
     </p>
 
     <p>
-      Sometimes that exactly what we want. If Fred and Wilma live together it
+      Sometimes that exactly what we want. If Fred and Wilma live together, it
       makes sense that changing their <c>Address</c> object changes it for both
       of them. But sometimes that can lead to surprising results where you think
       code is just changing the <c>Address</c> for one <c>Person</c> but is
@@ -661,10 +661,10 @@
     <title>Parameters of the same class</title>
 
     <p>
-      In general code in methods and constructors cannot access the
+      In general, code in methods and constructors cannot access the
       <k>private</k> data and methods of their parameters—that’s what it means
-      for something to be <k>private</k>. However if a parameter is of the same
-      type as the method or constructor’s enclosing class it can. We saw an
+      for something to be <k>private</k>. However, if a parameter is of the same
+      type as the method or constructor’s enclosing class, it can. We saw an
       example of that in the <c>Address</c> copy constructor in the code above.
       For another example, in the following code, the <c>Person</c> class
       accesses the <c>Adress</c> instance variable of another <c>Person</c>
@@ -828,29 +828,29 @@
     <p>
       Methods can also return references to objects. Just like when we pass
       arguments <em>to</em> a method, when we return values <em>from</em> a
-      method we return a copy of the value. For primitive types like <k>int</k>
+      method, we return a copy of the value. For primitive types like <k>int</k>
       or <k>double</k> the value itself is copied, just like when we pass a
       primitive value as an argument. And just like when we pass an object as an
       argument to a method or constructor and a copy of the reference is passed,
-      when we return an object from a method the value that is returned is also
+      when we return an object from a method, the value that is returned is also
       a copy of the reference.
     </p>
 
     <p>
       For example, the <c>Person</c> class’s <c>getAddress</c> getter returns
-      the <c>Address</c> stored in the <c>addr</c> instance variable which means
-      it returns a reference to the same object referenced by <c>addr</c>. And
-      that means that if some code calls <c>getAddress</c> and then mutates the
-      returned <c>Address</c>, it mutates it for the <c>Person</c> that is still
-      holding a reference to that same object.
+      the <c>Address</c> stored in the <c>addr</c> instance variable, which
+      means it returns a reference to the same object referenced by <c>addr</c>.
+      And that means that if some code calls <c>getAddress</c> and then mutates
+      the returned <c>Address</c>, it mutates it for the <c>Person</c> that is
+      still holding a reference to that same object.
     </p>
 
     <p>
       This is another way that mutable objects can lead to surprising results.
       Even if <c>Person</c> made a defensive copy of the <c>Address</c> it was
       passed in its constructor, if it returns a reference to that object from
-      any of its methods then code outside the <c>Person</c> class can still
-      mutate it. Sometimes that’s exactly the point of having mutable objects
+      any of its methods, then code outside the <c>Person</c> class can still
+      mutate it. Sometimes that’s exactly the point of having mutable objects,
       but other times it can lead to subtle bugs with code in different classes
       interfering with each other.
     </p>
@@ -859,7 +859,7 @@
       <statement>
         <p>
           Run the code to see that the <c>Person</c> class can return the
-          <c>Address</c> object which is mutable. Add code in the <c>main</c>
+          <c>Address</c> object, which is mutable. Add code in the <c>main</c>
           method that changes the zipcode of the <c>Address</c> object returned
           by the <c>getAddress</c> method. It will change the zipcode in the
           <c>Person</c> object too.
@@ -964,7 +964,7 @@
     <p>
       Programmers will sometimes call methods in a chain, one after another on
       the same line, for example <c>p.getAddress().getCity()</c>. The method
-      calls are separated by a dot and the return value of each method is used
+      calls are separated by a dot, and the return value of each method is used
       as the object for the next method call. It is important to know the types
       that each method returns so that you can call the methods of that object.
       For example, if the first method returns a String, the next method must be
@@ -1164,7 +1164,7 @@
 
     <gutterimage source="Unit3-Class-Creation/Figures/cake.png" description="Birthday cake">
       <p>
-        In this challenge, you will create a class <c>Friend</c> which keeps
+        In this challenge, you will create a class <c>Friend</c>, which keeps
         track of your friends’ names and birthdays using another class called
         <c>Date</c>.
       </p>
@@ -1181,7 +1181,7 @@
         <li>
           <p>
             Create a class called <c>Friend</c> with the following instance
-            variables: name and birthdate which is of type <c>Date</c>.
+            variables: name and birthdate, which is of type <c>Date</c>.
           </p>
         </li>
 
@@ -1272,7 +1272,7 @@
 
       <p>
         Many people keep their money in a bank account. The bank may keep track
-        of the account holder’s name, the acount balance which is the amount of
+        of the account holder’s name, the acount balance, which is the amount of
         money in the account, and assign an account number to each account. At
         the bank or an ATM (automatic teller machine) or on a phone app, the
         account holder can deposit (add) or withdraw (subtract) an amount from
@@ -1499,8 +1499,8 @@
 
           <feedback id="AP-string-equality_opt_c">
             <p>
-              Yes, both if statements in the code above execute changing message
-              to equal note and memo to equal “Practice”.
+              Yes, both if statements in the code above execute, changing
+              message to equal note and memo to equal “Practice”.
             </p>
           </feedback>
         </choice>

@@ -8,7 +8,7 @@
     <idx>access</idx>
     <idx>local variable</idx>
     <p>
-      Now that we know about classes and objects we know enough to talk about a
+      Now that we know about classes and objects, we know enough to talk about a
       few odds and ends that are important but don’t really fit in anywhere
       else.
     </p>
@@ -20,7 +20,7 @@
       where we can refer to what variables, about how to use the <k>final</k>
       modifier to make some variables immutable, and how to use the <term>access
       modifiers</term> <k>public</k> and <k>private</k> to control what code can
-      access the variables and methods in our classes,
+      access the variables and methods in our classes
     </p>
   </introduction>
 
@@ -28,17 +28,17 @@
     <title>Class methods vs. instance methods</title>
 
     <p>
-      In <xref ref="method-signatures" /> when we first learned to write methods
-      we made all our methods <k>static</k>. Then in <xref
+      In <xref ref="method-signatures" /> when we first learned to write
+      methods, we made all our methods <k>static</k>. Then in <xref
       ref="instance-methods" /> we learned about instance methods. As you may
-      have already figured out the important difference between <k>static</k>
+      have already figured out, the important difference between <k>static</k>
       and instance methods is that instance methods must be invoked on a
       specific object—an instance of the class—in order to be able to access the
       instance variables stored in that object.
     </p>
 
     <p>
-      Methods declared with the <k>static</k> modifier, on the other hand don’t
+      Methods declared with the <k>static</k> modifier, on the other hand, don’t
       have access to instance variables because they are not invoked on any
       particular object. They are also called <term>class methods</term> because
       we can think of them as belonging to the class as a whole, rather than to
@@ -137,7 +137,7 @@
 
     <p>
       This example also shows how instance methods easily share data variables
-      without the need for parameters. Whereas, static methods cannot directly
+      without the need for parameters. Whereas static methods cannot directly
       access the instance methods. They are often used for utility methods, like
       Math operations, that do not need access to the instance variables of an
       object.
@@ -150,7 +150,7 @@
     <p>
       Like class methods, <term>class variables</term> are declared with the
       <k>static</k> modifier before the variable type. Class variables belong to
-      the class as a whole rather than to a specific object so each
+      the class as a whole rather than to a specific object, so each
       <k>static</k> variable is shared by all instances of the class. Class
       variables that are declared <k>public</k> can be accessed by code outside
       of the class by using the class name and the dot operator. <c>Math.PI</c>
@@ -230,8 +230,8 @@
     <activity label="staticTrace">
       <statement>
         <p>
-          Consider the class Temperature below which has a static variable. What
-          is the output of the main method below?
+          Consider the class Temperature below, which has a static variable.
+          What is the output of the main method below?
         </p>
 
         <program>
@@ -382,7 +382,7 @@
       The <term>scope</term> of a variable is defined the textual part of a
       program where a variable can be referred to. The scope of a variable is
       determined by where you declare the variable when you write your programs.
-      Roughly speaking each set of curly braces (<c>{}</c>) encloses a scope.
+      Roughly speaking, each set of curly braces (<c>{}</c>) encloses a scope.
       Thus scopes can be nested within each other.
     </p>
 
@@ -409,7 +409,7 @@
     </p>
 
     <p>
-      Finally we have <term>block scope</term> which is defined by control
+      Finally we have <term>block scope</term>, which is defined by control
       constructs within methods and constructors that have their own bodies such
       as <k>for</k> and <k>while</k> loop and <k>if</k> statements. The curly
       braces that mark the bodies of <k>while</k> loops and <k>if</k> statements
@@ -417,7 +417,7 @@
       be referred to within those curly braces. And <k>for</k> loops define a
       scope that includes both the body within the curly braces but also the
       initializer, condition, and updater in the loop header. This is why when
-      we write a loop like this we can only refer to <c>i</c> within the loop:
+      we write a loop like this, we can only refer to <c>i</c> within the loop:
     </p>
 
     <program>
@@ -430,9 +430,9 @@
     </program>
 
     <p>
-      Block scopes can be nested within each other. For instance in the nested
+      Block scopes can be nested within each other. For instance, in the nested
       loops below, the code of the inner loop can refer to the variable <c>i</c>
-      defined in the outer loop but code outside the inner loop can’t refer to
+      defined in the outer loop, but code outside the inner loop can’t refer to
       <c>j</c>.
     </p>
 
@@ -461,10 +461,10 @@
     <note>
       <p>
         Java inherits its basic scope model from Algol 60, invented in the
-        1960s. In most languages in that lineage variables in a nested scope
+        1960s. In most languages in that lineage, variables in a nested scope
         with the same name as a variable defined in an enclosing scope
         <term>shadow</term> the variable, meaning that within the inner scope
-        the name refers to the variable declared in the the inner scope and the
+        the name refers to the variable declared in the the inner scope, and the
         variable from the outer scope is not accessible. This is sometimes
         convenient but can also lead to subtle bugs.
       </p>
@@ -478,7 +478,7 @@
 
       <p>
         Java does allow locally scoped variables shadow to shadow class scoped
-        variables which is why we can define constructors with parameter names
+        variables, which is why we can define constructors with parameter names
         that are the same as the names of instance variables and then use the
         <c>this.x = x</c> to set the instance variable to the value of a
         parameter with the same name.
@@ -637,9 +637,9 @@
     <title>The <k>final</k> keyword</title>
 
     <p>
-      The keyword <term>final</term> is used for a few things in Java but the
+      The keyword <term>final</term> is used for a few things in Java, but the
       only one we need to know about is as a modifier in a variable declaration.
-      When we include <k>final</k> before the type in a variable declaration it
+      When we include <k>final</k> before the type in a variable declaration, it
       tells Java that we want the variable to be immutable. Thus if we declare a
       variable to be <k>final</k> and later write code that tries to assign a
       new value to the variable, the compiler will give us an error.
@@ -647,12 +647,12 @@
 
     <p>
       There are two main ways to use <k>final</k> variables. Perhaps the
-      simplest is when we want to define a constant value in which case we
+      simplest is when we want to define a constant value, in which case we
       usually combine it with <k>static</k> to make a <c>static final</c>
-      variable. For instance the variable <c>PI</c> is a <c>public static
-      final</c> variable in the <c>Math</c> class which means it can be
+      variable. For instance, the variable <c>PI</c> is a <c>public static
+      final</c> variable in the <c>Math</c> class, which means it can be
       referenced by code anywhere as <c>Math.PI</c> . And since it’s
-      <k>final</k> we don’t have to worry about some code accidentally
+      <k>final</k>, we don’t have to worry about some code accidentally
       redefining <m>π</m>. Constants defined this way are typicall given all
       uppercase names.
     </p>
@@ -660,11 +660,11 @@
     <p>
       The other main way to use <k>final</k> is when we are defining a class
       whose instances are immutable. If we declare all the class’s instance
-      variables to be <k>final</k> then the instances will be immutable. As a
-      convinence we can declare variables as <k>final</k> without providing an
+      variables to be <k>final</k>, then the instances will be immutable. As a
+      convinence, we can declare variables as <k>final</k> without providing an
       initial value as long as they are initialized in every constructor. For
       instance, if we wanted our <c>Address</c> class to have immutable
-      instances we might write it like this:
+      instances, we might write it like this:
     </p>
 
     <program>
@@ -755,14 +755,14 @@
 
     <p>
       The basics are <k>public</k> members are can accessible to code in any
-      class and <k>private</k> members are only accessibel to code within the
+      class, and <k>private</k> members are only accessibel to code within the
       same class.
     </p>
 
     <p>
       The short version of how to use these two modifiers, which are a good set
       of rules for basic Java programming and everything you need to know for
-      the AP exam is:
+      the AP exam, is:
     </p>
 
     <ul>
@@ -786,14 +786,14 @@
 
     <p>
       The rule also applies to <k>static</k> variables unless they are also
-      <k>final</k> in which case they can be made <k>public</k> if they are
+      <k>final</k>, in which case they can be made <k>public</k> if they are
       meant to defined a value that is useful outside of the class, like
       <c>Math.PI</c>.
     </p>
 
     <p>
       Constructors and methods, however, require more judgement. Often as we
-      break up big methods into smaller methods we will write methods that
+      break up big methods into smaller methods, we will write methods that
       shouldn’t be used directly by code outside the class; those methods should
       be declared <k>private</k> so we know they are only used within the class.
       And sometimes, though less commonly, we will have constructors that are

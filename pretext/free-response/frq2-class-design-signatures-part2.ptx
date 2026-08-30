@@ -64,7 +64,7 @@
 
     <p>
       The SignedText constructor takes two String parameters. The first
-      parameter is a first name and the second parameter is a last name. The
+      parameter is a first name, and the second parameter is a last name. The
       length of the second parameter is always greater than or equal to 1.
     </p>
 

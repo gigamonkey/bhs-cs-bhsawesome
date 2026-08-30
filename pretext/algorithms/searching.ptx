@@ -12,7 +12,7 @@
     <p>
       Computers can store vast amounts of data. And lots of programs exist to
       find things in that data. For instance, if we have a dictionary of the
-      million-plus words in English we might want to be able to check whether a
+      million-plus words in English, we might want to be able to check whether a
       given word is in the dictionary. At a much smaller scale, if we manage or
       our todo list with a computer program, that program might need to be able
       to find the item that is due soonest.
@@ -37,8 +37,8 @@
     <p>
       The following video is also on YouTube at <url
       href="https://youtu.be/DHLCXXX1OtE">https://youtu.be/DHLCXXX1OtE</url>. It
-      introduces the concept of searching including sequential search and binary
-      search.
+      introduces the concept of searching, including sequential search and
+      binary search.
     </p>
 
     <video youtube="DHLCXXX1OtE" label="video-search" />
@@ -112,7 +112,7 @@
       Here is the same search with an <c>ArrayList</c>. The same algorithms can
       be used with arrays or <c>ArrayList</c>s, but notice that <c>size()</c>
       and <c>get(i)</c> are used with <c>ArrayList</c>s instead of <c>length</c>
-      and <c>[i]</c> which are used in arrays. Many of our examples will use
+      and <c>[i]</c>, which are used in arrays. Many of our examples will use
       arrays for simplicity since with arrays, we know how many items we have
       and the size won’t change during run time. There are methods such as
       <c>contains</c> that can be used with <c>ArrayList</c> instead of writing
@@ -124,7 +124,7 @@
         <p>
           Here is a linear search using <c>ArrayList</c>s. Notice that
           <c>size()</c> and <c>get(i)</c> is used with <c>ArrayList</c>s instead
-          of <c>length</c> and <c>[i]</c> which are used with arrays. Click on
+          of <c>length</c> and <c>[i]</c>, which are used with arrays. Click on
           the Code Lens button to step through this code in the visualizer.
         </p>
       </statement>
@@ -433,17 +433,17 @@
     <idx>binary search</idx>
     <idx><h>search</h><h>binary</h></idx>
     <p>
-      If we need to search through a list that is not in any particular order
+      If we need to search through a list that is not in any particular order,
       there’s nothing better to do than to look through the list one item at a
       time. We might get lucky and find the thing we’re looking for early in the
-      list or it might be near the end. If we do a lot of linear searches for
+      list, or it might be near the end. If we do a lot of linear searches for
       different values, on average we’ll have to look through half the list
       before we find what we’re looking for.
     </p>
 
     <p>
       But things change if the list is sorted. If you’ve ever looked up a word
-      in a physical dictionary you probably didn’t start on the first page and
+      in a physical dictionary, you probably didn’t start on the first page and
       read all the words until you found the one you were looking for. Instead,
       you probably opened the dictionary to about the middle and then looked to
       see if the words on that page were before or after the word you were
@@ -463,21 +463,21 @@
 
     <p>
       This technique is the the idea behind the <term>binary search</term>
-      algorithm which we can use to search in an array or <c>ArrayList</c> whose
-      contents are sorted.
+      algorithm, which we can use to search in an array or <c>ArrayList</c>
+      whose contents are sorted.
     </p>
 
     <p>
       In code, binary search works by keeping track of a range we call the
-      <term>search space</term> which is a range somewhere in the whole array or
-      <c>ArrayList</c>. Initially the search space spans the whole array or
+      <term>search space</term>, which is a range somewhere in the whole array
+      or <c>ArrayList</c>. Initially the search space spans the whole array or
       list. Binary search then repeatedly divides the search space in half by
       comparing the value we are searching for to the value at the index in the
       middle of a search space and then updates the search space to be one half
       or the other of the current search space. Eventually it will either narrow
-      down the search space down to one element which is either the value we are
-      looking for, in which case we found it, or not, in which case it isn’t in
-      the array or <c>ArrayList</c> at all.
+      down the search space down to one element, which is either the value we
+      are looking for, in which case we found it, or not, in which case it isn’t
+      in the array or <c>ArrayList</c> at all.
     </p>
 
     <p>
@@ -493,7 +493,7 @@
     <p>
       Binary search can be surprisingly hard to implement correctly. Stanford
       computer science courses used to start by having everyone try to write a
-      binary search algorithm and according to Stanford professor Donald Knuth,
+      binary search algorithm, and according to Stanford professor Donald Knuth,
       fewer than ten percent of students wrote a bug free implementation. Even
       the version of binary search in the Java standard library contained a bug
       for nine years before it was <url
@@ -502,19 +502,19 @@
     </p>
 
     <p>
-      Luckily if you need to use a binary search you can probably use one that’s
-      already been written and debugged, even if it did take them nine years to
-      get out the last bug (we think). But if you do want to write one, the key
-      is to keep track of what the current search space is and make sure that at
-      every step the search space gets strictly smaller but also that you don’t
-      shrink it too much.
+      Luckily if you need to use a binary search, you can probably use one
+      that’s already been written and debugged, even if it did take them nine
+      years to get out the last bug (we think). But if you do want to write one,
+      the key is to keep track of what the current search space is and make sure
+      that at every step the search space gets strictly smaller but also that
+      you don’t shrink it too much.
     </p>
 
     <activity label="binSearch">
       <statement>
         <p>
           Here’s an implementation of binary search that keeps track of the
-          search space using a pair of variables <c>low</c> and <c>high</c>
+          search space using a pair of variables <c>low</c> and <c>high</c>,
           which represent a half-open interval, meaning the range of indexes
           from <c>low</c> (inclusive) to <c>high</c> (exclusive).
         </p>
@@ -657,8 +657,8 @@
     <p>
       At a high level, linear search and binary search are two different
       algorithms that solve the same problem. How do we choose between them?
-      Sometimes the choice is easy: if our array or list is not sorted we pretty
-      much have to use a linear search.
+      Sometimes the choice is easy: if our array or list is not sorted, we
+      pretty much have to use a linear search.
     </p>
 
     <p>
@@ -669,7 +669,7 @@
 
     <p>
       Computer scientists like to answer these questions by analyzing algorithms
-      in terms of their <term>run time</term> which isn’t measured by running a
+      in terms of their <term>run time</term>, which isn’t measured by running a
       program and timing it but rather by characterizing, slightly abstractly,
       how many steps the algorithm will have to execute before it finishes. In
       particular computer scientist think about the <term>worst case</term> run
@@ -679,13 +679,13 @@
 
     <p>
       With searching, the abstract step is something like, how many items does
-      the algorithm have to compare to the thing it is searching for and the
+      the algorithm have to compare to the thing it is searching for, and the
       worst case is usually if the thing we are searching for isn’t there to be
       found.
     </p>
 
     <p>
-      A linear search, searching an array would have to look at every item in
+      A linear search, searching an array, would have to look at every item in
       the array before it could say that the item wasn’t present. By contrast a
       binary search would only have to look at a handful of items before the
       search space would collapse and it could determine that the search had
@@ -711,11 +711,11 @@
     </p>
 
     <p>
-      Binary search on the other hand, doesn’t always need to look at every
+      Binary search, on the other hand, doesn’t always need to look at every
       element. It only needs to look at the middle elements of ever-shrinking
       search spaces until the search space is just one element. After comparing
       the middle element of the array to the target, it will reduce the search
-      space by half which means half of the elements will never be looked at.
+      space by half, which means half of the elements will never be looked at.
       And half of the remaining half will be eliminated with one more
       comparison.
     </p>
@@ -726,7 +726,7 @@
       one more comparison with binary search. So even though for a two-element
       array linear search and binary search take the same number of steps,
       because the number of steps increases so much slower as the size of the
-      input grows we say that binary search is faster than linear search.
+      input grows, we say that binary search is faster than linear search.
     </p>
 
     <table>
@@ -791,9 +791,9 @@
     <p>
       Binary search’s run time grows logarithmically since the number of steps
       is basically log base 2 of the size of the input, so <m>f(n) =
-      \log_{2}n</m>. But again, we don’t care about coefficients and the base of
-      the logarithm is really just a coefficient, so a computer scientist would
-      describe binary search’s run time as <m>O(\log n)</m>.
+      \log_{2}n</m>. But again, we don’t care about coefficients, and the base
+      of the logarithm is really just a coefficient, so a computer scientist
+      would describe binary search’s run time as <m>O(\log n)</m>.
     </p>
 
     <p>
@@ -832,7 +832,7 @@
 
           <feedback>
             <p>
-              If the value is in the middle of the array the binary search will
+              If the value is in the middle of the array, the binary search will
               return after one iteration of the loop.
             </p>
           </feedback>
@@ -999,8 +999,8 @@
 
           <feedback>
             <p>
-              You can divide 500 in half, 9 times, or you can observe that 2^9 =
-              512 which is slightly bigger than 500.
+              You can divide 500 in half 9 times, or you can observe that 2^9 =
+              512, which is slightly bigger than 500.
             </p>
           </feedback>
         </choice>

@@ -33,22 +33,23 @@
       take. (A loop that runs a billion times is going to take a lot longer than
       one that runs ten times even though, textually, the code of the two loops
       might be identical.) More often we know how many times the loop is
-      supposed to run and we want to make sure we’ve written the loop correctly.
+      supposed to run, and we want to make sure we’ve written the loop
+      correctly.
     </p>
 
     <p>
       In particular, a common bug that occurs in loops is called a
-      <term>fencepost error</term> or an <term>off-by-one error</term> which is
+      <term>fencepost error</term> or an <term>off-by-one error</term>, which is
       when a loop iterates one fewer times (or occasionally one more) than it
       should. The name comes from the mistake that many people make when asked
       how many fenceposts—the uprights in a fence—you need to build a hundred
-      foot fence with fenceposts every ten feet. If you think the answer is ten
+      foot fence with fenceposts every ten feet. If you think the answer is ten,
       you have a fencepost error because the correct answer is eleven.
     </p>
 
     <p>
       If all else fails, sometimes it is necessary to trace through some or all
-      the iterations of loop. If so we’ll want to use a techniue called a
+      the iterations of loop. If so, we’ll want to use a techniue called a
       <term>trace table</term> to keep track of things.
     </p>
 
@@ -80,12 +81,12 @@
     </p>
 
     <ol>
-      <li>The loop variable, <c>i</c> starts at <c>0</c>.</li>
+      <li>The loop variable, <c>i</c>, starts at <c>0</c>.</li>
 
       <li>The loop variable is incremented by one in the updater.</li>
 
       <li>
-        The comparison uses <c>&lt;</c> so the maximum value of <c>i</c> is one
+        The comparison uses <c>&lt;</c>, so the maximum value of <c>i</c> is one
         less than <c>n</c>.
       </li>
     </ol>
@@ -98,10 +99,10 @@
     </p>
 
     <p>
-      If it was a literal number like <c>10</c> the answer would be “ten times”.
-      And if it was some other expression like <c>s.length()</c> where <c>s</c>
-      was a <c>String</c>, the answer would be “once for every character in
-      <c>s</c>”.
+      If it was a literal number like <c>10</c>, the answer would be “ten
+      times”. And if it was some other expression like <c>s.length()</c> where
+      <c>s</c> was a <c>String</c>, the answer would be “once for every
+      character in <c>s</c>”.
     </p>
 
     <p>
@@ -186,10 +187,10 @@
     </p>
 
     <p>
-      For instance if a loop uses <c>&lt;=</c> rather than <c>&lt;</c> we can
+      For instance, if a loop uses <c>&lt;=</c> rather than <c>&lt;</c>, we can
       change the <c>&lt;=</c> to a <c>&lt;</c> if we add one to the limit. And
       assuming we’re only trying to figure out how many times the loop body will
-      run we’re can add or subtract the same amount from both the initial value
+      run, we’re can add or subtract the same amount from both the initial value
       and the limit to get a canonical loop that will run the same number of
       times (though obviously with different values for the loop variable).
     </p>
@@ -507,10 +508,10 @@
 
     <p>
       Analyzing the nested loops using the formula from above, we see that the
-      outer loop has a smallest value of <c>0</c> and a limit of <c>5</c> so it
+      outer loop has a smallest value of <c>0</c> and a limit of <c>5</c>, so it
       runs <m>5 - 0 = 5</m> times. And the inner loop has a smallest value of
-      <c>0</c> and a limit of <c>10</c> so it runs <m>10 - 0 = 10</m> times. And
-      five times ten gives us fifty total stars.
+      <c>0</c> and a limit of <c>10</c>, so it runs <m>10 - 0 = 10</m> times.
+      And five times ten gives us fifty total stars.
     </p>
 
     <activity label="swap-rows-cols">
@@ -592,17 +593,17 @@
       Because they are hard enough to get right even when they’re simple, it’s a
       good idea to keep loops as simple as possible. But sometimes we come
       across loop that contain multiple variables that all change in the body of
-      the loop and which may all be involved in the loop’s condition which makes
-      all our simpler loop analysis techniques less useful. In those situations
-      it may be time to pull out a piece of scratch paper and create a
-      <term>trace table</term>.
+      the loop and which may all be involved in the loop’s condition, which
+      makes all our simpler loop analysis techniques less useful. In those
+      situations it may be time to pull out a piece of scratch paper and create
+      a <term>trace table</term>.
     </p>
 
     <p>
       A trace table is a table that we use to track the values of the variables
       in a loop at each iteration of the loop. Each row of the table represents
-      one iteration of the loop and each column holds the value for one
-      variable. To see how to build a trace table we’ll use this example loop.
+      one iteration of the loop, and each column holds the value for one
+      variable. To see how to build a trace table, we’ll use this example loop.
     </p>
 
     <program>
@@ -618,8 +619,8 @@
     </program>
 
     <p>
-      This is not absurdly complicated but it’s definitely not a simple counting
-      loop.
+      This is not absurdly complicated, but it’s definitely not a simple
+      counting loop.
     </p>
 
     <p>
@@ -643,8 +644,8 @@
     </tabular>
 
     <p>
-      Now to fill out the table add row for iteration <c>0</c>, i.e. before the
-      loop body has run and fill in the initial value of each variable in the
+      Now to fill out the table, add row for iteration <c>0</c>, i.e. before the
+      loop body has run, and fill in the initial value of each variable in the
       appropriate column.
     </p>
 
@@ -668,8 +669,8 @@
     <p>
       Then add rows to the table, Before you add a new row, check whether the
       loop condition given the values of the variables recorded in the current
-      row. If it is <c>false</c> the loop ends and the table is complete. But if
-      it’s <c>true</c>, add a row, increasing the number in the iteration
+      row. If it is <c>false</c>, the loop ends and the table is complete. But
+      if it’s <c>true</c>, add a row, increasing the number in the iteration
       column, and then mentally executing the code in the loop to determine the
       new value of each variable.
     </p>
@@ -840,9 +841,9 @@
 
           <feedback>
             <p>
-              Even though var1 = 2 and var2 = 0 when the conditional is executed
-              the first condition is true so the rest of the complex conditional
-              won't execute.
+              Even though var1 = 2 and var2 = 0 when the conditional is
+              executed, the first condition is true, so the rest of the complex
+              conditional won't execute.
             </p>
           </feedback>
         </choice>
@@ -1025,30 +1026,30 @@
     <title>Limits of trace tables</title>
 
     <p>
-      It’s useful to know how to build trace tables and actually making them is
-      good practice for following a mechanical procedure precisely which is good
-      practice for thinking about how code works.
+      It’s useful to know how to build trace tables, and actually making them is
+      good practice for following a mechanical procedure precisely, which is
+      good practice for thinking about how code works.
     </p>
 
     <p>
       In actual programming practice, trace tables are of limited use. They have
       the virtue that, similar to boolean truth tables, once you master the
-      mechanics you can reliably crank them out without having to think too
+      mechanics, you can reliably crank them out without having to think too
       hard. On the other hand, code tracing is only possible if we know the
-      initial values. And if we knew the initial values we could just run the
+      initial values. And if we knew the initial values, we could just run the
       program to find out what it does. Or write a program to print out the
-      trace table! To actually understand a loop via tracing you might need to
+      trace table! To actually understand a loop via tracing, you might need to
       trace it multiple times with different initial values. Which is even more
       tedious than making just one.
     </p>
 
     <p>
-      However there are times (particularly on the AP exam) when a trace table
+      However, there are times (particularly on the AP exam) when a trace table
       can quickly and reliably answer certain questions about a piece of code.
       If you ever find yourself confronting as hairy a loop as the one in <xref
       ref="complex-loop-trace-table" />, you way want to make a trace table to
       help yourself understand what’s going on so you can rewrite it to be
-      simpler. Unless the loop is on the AP exam in which case just shake your
+      simpler. Unless the loop is on the AP exam, in which case just shake your
       fist at the AP exam writers and then answer the question.
     </p>
   </subsection>
@@ -1113,7 +1114,7 @@
 
           <feedback>
             <p>
-              The outer loop executes 7-3+1=5 times and the inner 4-1+1=4 so
+              The outer loop executes 7-3+1=5 times and the inner 4-1+1=4, so
               this will print 5 * 4 = 20 stars.
             </p>
           </feedback>
@@ -1196,8 +1197,8 @@
 
           <feedback>
             <p>
-              The outer loop executes 8-2+1=6 times so there are 6 rows and the
-              inner loop executes 5-1+1=5 times so there are 5 columns.
+              The outer loop executes 8-2+1=6 times, so there are 6 rows, and
+              the inner loop executes 5-1+1=5 times, so there are 5 columns.
             </p>
           </feedback>
         </choice>

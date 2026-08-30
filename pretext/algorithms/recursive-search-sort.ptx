@@ -66,18 +66,18 @@
       searching an array with length 8. So the <c>low</c> and <c>high</c>
       variables will start at <c>0</c> and <c>8</c>, representing the half-open
       interval <m>[0, 8)</m>. And the first value of <c>mid</c> will be
-      <c>4</c>. On the next iteration of the loop <c>low</c> and <c>high</c>
+      <c>4</c>. On the next iteration of the loop, <c>low</c> and <c>high</c>
       will be either <c>0</c> and <c>4</c> or <c>4</c> and <c>8</c>, depending
       on which half of the original range the target value is determined to be
       in. And then whichever range we end up in, on the next iteration it will
-      be split in half one one of it’s halves chosen and so on until we get down
-      to ranges containing just a single number.
+      be split in half, one one of it’s halves chosen, and so on until we get
+      down to ranges containing just a single number.
     </p>
 
     <p>
-      While in any given call to <c>search</c> we will go down one path until we
-      find, or fail to find, our target number. But we could also think of the
-      possible paths as a tree that starts with one range covering the whole
+      While in any given call to <c>search</c>, we will go down one path until
+      we find, or fail to find, our target number. But we could also think of
+      the possible paths as a tree that starts with one range covering the whole
       range and then has children that represent each half, and each of them
       have children representing their two halves until we reach the leaves
       containing only one number each. We can draw the tree like this.
@@ -94,8 +94,8 @@
       Unlike our iterative binary search method, the recursive search needs to
       take two extra arguments that specify what part of the array any single
       call is responsible for. The first call will pass a range covering the
-      whole array and then each recursive calls will narrow the range to one
-      half of the range. In other words, to find a number in a given range we
+      whole array, and then each recursive calls will narrow the range to one
+      half of the range. In other words, to find a number in a given range, we
       determine which half of that range it’s in and then find in in that
       smaller range. Eventually the range will get small enough that we either
       found it or we know it’s not there.
@@ -139,7 +139,7 @@
 
         <p>
           Try running the code below with different values for <c>target</c> in
-          main including some values that are in the array and some that are
+          main, including some values that are in the array and some that are
           not.
         </p>
       </statement>
@@ -197,7 +197,7 @@
     <p>
       Note that binary search is one of many algorithms that can be written
       either using loops or recursively. Which you prefer when is largely a
-      matter of taste though all other things being equal, in many languages
+      matter of taste, though all other things being equal, in many languages
       iteration is preferred and likely to be more efficient. On the other hand,
       for some algorithms, it can be very straightforward to express them
       recursively and very difficult to translate them into iterative code.
@@ -253,14 +253,14 @@
     <video youtube="4VqmGXwpLqc" label="video-mergesort" />
     <p>
       And here is an implementation of merge sort. Note that the only
-      <k>public</k> method here is <c>sort</c> but it is written in terms of two
-      helper methods: <c>sortRange</c> and <c>merge</c>. The <c>sortRange</c>
-      method is actually the recursive method. Since recursive methods often
-      need some extra arguments to specify what sub-problem each recursive call
-      is working on, it’s common to write a non-recursive method that calls a
-      recursive method with the right initial arguments to kick things off. Here
-      <c>sort</c> calls <c>sortRange</c> with the range covering the whole
-      array.
+      <k>public</k> method here is <c>sort</c>, but it is written in terms of
+      two helper methods: <c>sortRange</c> and <c>merge</c>. The
+      <c>sortRange</c> method is actually the recursive method. Since recursive
+      methods often need some extra arguments to specify what sub-problem each
+      recursive call is working on, it’s common to write a non-recursive method
+      that calls a recursive method with the right initial arguments to kick
+      things off. Here <c>sort</c> calls <c>sortRange</c> with the range
+      covering the whole array.
     </p>
 
     <program interactive="activecode" label="merge-sort-code" run-only="yes">
@@ -332,8 +332,8 @@
     </p>
 
     <p>
-      To understand merge sort it can be useful to trace through the steps using
-      parentheses or curly braces to show how the array is divided into
+      To understand merge sort, it can be useful to trace through the steps
+      using parentheses or curly braces to show how the array is divided into
       sub-arrays and then merged. For example, here is a trace of of sorting the
       array <c>{86, 3, 43, 5}</c> from the code above.
     </p>
@@ -453,7 +453,7 @@
       <statement>
         <p>
           Trace through mergeSort(array) where array = {5, 2, 20, 22, 17, 15, 8,
-          10} writing down each split and merge.
+          10}, writing down each split and merge.
         </p>
       </statement>
 

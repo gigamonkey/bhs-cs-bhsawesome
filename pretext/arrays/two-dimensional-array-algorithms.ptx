@@ -7,7 +7,7 @@
     <p>
       There are a few algorithms and idioms that are specific to 2D arrays. And
       then there are ways we can apply the patterns and algorithms we already
-      know how to use with one-dimensional arrays to 2D arrays. In this section
+      know how to use with one-dimensional arrays to 2D arrays. In this section,
       we will quickly run through some of those.
     </p>
   </introduction>
@@ -63,10 +63,10 @@
 
     <p>
       That loop traverses the array in what’s called <term>row-major
-      order</term> which just means that we visit every element of each row
+      order</term>, which just means that we visit every element of each row
       before moving to the next row. It’s also possible to visit the elements in
-      <term>column-major order</term> which means going down each column before
-      moving to the next one. To implement a column-major traversal we simply
+      <term>column-major order</term>, which means going down each column before
+      moving to the next one. To implement a column-major traversal, we simply
       need to swap the order of the two loop headers so the column loop is now
       the outer loop:
     </p>
@@ -83,7 +83,7 @@
 
     <p>
       Note that we <em>don’t</em> swap the order of the indices in the array
-      access expression. It’s still <c>array[r][c]</c> not <c>array[c][r]</c>.
+      access expression. It’s still <c>array[r][c]</c>, not <c>array[c][r]</c>.
     </p>
 
     <activity label="lcgetAverage">
@@ -250,7 +250,7 @@
     <idx><h>2D Array</h><h>for-each loop</h></idx>
     <idx>enhanced for loop</idx>
     <p>
-      Since 2D arrays are just regular arrays we can also use nested enhanced
+      Since 2D arrays are just regular arrays, we can also use nested enhanced
       <k>for</k> loops to loop through all elements in an array. When we use
       enhanced <k>for</k> loops with a 2D array, the fact that we can only loop
       forward through the array means that we can only easily loop through a 2D
@@ -260,7 +260,7 @@
     </p>
 
     <p>
-      The only trick with enhanced <k>for</k> loops and 2D arrays, is that the
+      The only trick with enhanced <k>for</k> loops and 2D arrays is that the
       type of the loop variable in the outer loop has to be a 1D array:
     </p>
 
@@ -357,11 +357,11 @@
     </p>
 
     <p>
-      Relatedly we can also apply the idea of any of the 1D algorithms that
+      Relatedly, we can also apply the idea of any of the 1D algorithms that
       accumulate a value to 2D arrays by accumulating across all the values in
       the 2D array. In that case we just use nested loops and do the
       accumulation in the body of the inner loop. Compare these two bits of
-      code. On the left, accumulating the total in a 1D array and on the right,
+      code. On the left, accumulating the total in a 1D array, and on the right,
       the same algorithm with a 2D array.
     </p>
 
@@ -517,8 +517,8 @@
     <idx><h>2D Array</h><h>loop range</h></idx>
     <p>
       Finally, we can write algorithms that operate on arbitrary slices of a 2D
-      array such as a single row, a single column, or some rectangular subset of
-      the array. We will need to use regular <k>for</k> loops because we need
+      array, such as a single row, a single column, or some rectangular subset
+      of the array. We will need to use regular <k>for</k> loops because we need
       control over exactly what indices we use, but beyond that it’s just a
       matter of determining what the 2D indices are of the elements in the slice
       we want.
@@ -557,7 +557,7 @@
     </listing>
 
     <p>
-      Rectangular slices are still 2D so we still need nested loops. We control
+      Rectangular slices are still 2D, so we still need nested loops. We control
       the slice by where we start and end the row and column loops. Here are
       some examples:
     </p>

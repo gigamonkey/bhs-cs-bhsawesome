@@ -16,7 +16,7 @@
     <p>
       All the basic loop algorithms we discussed in <xref ref="loop-algorithms"
       /> and again in <xref ref="array-algorithms" /> can also be used with an
-      <c>ArrayList</c>. For instance we can sum the elements of an
+      <c>ArrayList</c>. For instance, we can sum the elements of an
       <c>ArrayList&lt;Integer&gt;</c> or <c>ArrayList&lt;Double&gt;</c>. We can
       count the number of elements of an <c>ArrayList&lt;String&gt;</c> that
       start with a specific letter or that are greater than a certain length. We
@@ -46,13 +46,13 @@
 
     <p>
       Suppose we want to remove items matching some criteria from an
-      <c>ArrayList</c>. We need to check all the elements of the list so that
+      <c>ArrayList</c>. We need to check all the elements of the list, so that
       suggests we need a loop.
     </p>
 
     <p>
       But we need to be a bit careful about how we iterate through the loop
-      since when we remove an item from a list all the items to the right (at
+      since when we remove an item from a list, all the items to the right (at
       greater indexes) shift down one index.
     </p>
 
@@ -61,8 +61,8 @@
       <k>for</k> loop because it will throw a
       <c>ConcurrentModificationException</c> if the size of the <c>ArrayList</c>
       changes while the loop is running. Also, in an enhanced <k>for</k> loop we
-      don’t know what index we are on so we can’t remove the current item anyway
-      with the <c>remove(int)</c> method.
+      don’t know what index we are on, so we can’t remove the current item
+      anyway with the <c>remove(int)</c> method.
     </p>
 
     <p>
@@ -78,7 +78,7 @@
       upon, namely modifying the loop variable in the body of the loop. The
       problem is, if we determine that we want to remove the element at index
       <c>i</c> and call <c>list.remove(i)</c>, then all the elements after the
-      removed one shift down one and if we continue looping as normal, <c>i</c>
+      removed one shift down one, and if we continue looping as normal, <c>i</c>
       will get incrementeed and we will not consider the element that used to be
       at position <c>i + 1</c> and is now at position <c>i</c>. So we have to
       write something like this;
@@ -103,9 +103,9 @@
     <p>
       In the case where we remove the item, we decrement <c>i</c> with
       <c>i--</c> so that when the <k>for</k> loop increments it in the updater,
-      it gets set back to the same value and the next iteration of the loop will
-      consider the element that just shifted down into position we just removed
-      the element from.
+      it gets set back to the same value, and the next iteration of the loop
+      will consider the element that just shifted down into position we just
+      removed the element from.
     </p>
 
     <p>
@@ -135,7 +135,7 @@
       is about to be incremented, we can instead only increment it when we don’t
       remove the current item. Thus <c>i</c> always points to the position of
       the next element to consider for removal: if we just removed an item and
-      things have shifted down it stays where it is and if we have considered
+      things have shifted down, it stays where it is, and if we have considered
       the element at position <c>i</c> and kept it, then <c>i</c> is incremented
       to we can consider the next element.
     </p>
@@ -144,8 +144,8 @@
       The third approach is possibly the cleanest. Instead of looping forward
       through the loop, if we loop backwards, starting at the last index and
       decrementing toward 0, then we don’t have to compensate at all. When we
-      remove an item, the items at greater indices shift down but they’ve all
-      been considered already so we can just keep going.
+      remove an item, the items at greater indices shift down, but they’ve all
+      been considered already, so we can just keep going.
     </p>
 
     <program>
@@ -175,7 +175,7 @@
     </p>
 
     <p>
-      If we just want to insert one element things are pretty easy. The
+      If we just want to insert one element, things are pretty easy. The
       <c>add(int, E)</c> method will insert an element at a given index. So all
       we have to do is figure out where we want to insert the new element and
       then call <c>add</c> with that index.
@@ -204,7 +204,7 @@
     </program>
 
     <p>
-      In this method as soon as the word is added we’re done and we can return
+      In this method as soon as the word is added, we’re done and we can return,
       so it doesn’t matter that the rest of the list has shifted down. Then
       outside the loop, if we get there, we add <c>word</c> at the end of the
       list because it must belong after all the other words in the list.
@@ -235,9 +235,9 @@
       10. The line <c>words.add(i, "very")</c> insert <c>"very"</c> at position
       10 as we want. But now where is <c>"special"</c>? It has shifted up one
       position to index 11. But now the loop continues and <c>i</c> is
-      incremented to 11. So <c>words.get(i)</c> returns <c>"special"</c> again
+      incremented to 11. So <c>words.get(i)</c> returns <c>"special"</c> again,
       and the code insert another <c>"very"</c> shifting <c>"special"</c> up to
-      position 12. We are stuck in an infinite loop which will eventually crash
+      position 12. We are stuck in an infinite loop, which will eventually crash
       with an <c>OutOfMemoryError</c> when we’ve inserted more very’s than we
       have room to store in our computers memory.
     </p>
@@ -335,7 +335,7 @@
     <p>
       Another related pattern is <term>mapping</term> where we make a new list
       containing an element for every element of the original list but
-      transformed in some way. For instance this loop makes a list of
+      transformed in some way. For instance, this loop makes a list of
       all-uppercase version of all the words in <c>words</c>.
     </p>
 
@@ -367,7 +367,7 @@
       First, let’s discuss how to break up a number into its digits. Try the
       code below. What happens if you divide an integer by 10? Remember that in
       integer division the result truncates (cuts off) everything to the right
-      of the decimal point. Which digit can you get by using <c>% 10</c> which
+      of the decimal point. Which digit can you get by using <c>% 10</c>, which
       returns the remainder after dividing by 10? Try a different number and
       guess what it will print and then run to check.
     </p>

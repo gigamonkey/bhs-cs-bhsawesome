@@ -6,10 +6,10 @@
   <introduction>
     <p>
       Writing Java code consists of about equal parts writing methods and using
-      them but it is probably easier to understand how to use them if we
-      understand what they are so we’ll start by looking at how to write our own
-      methods. In the next lesson we’ll look at a bunch of methods that are part
-      of Java that we don’t have to write but which we can use.
+      them, but it is probably easier to understand how to use them if we
+      understand what they are, so we’ll start by looking at how to write our
+      own methods. In the next lesson we’ll look at a bunch of methods that are
+      part of Java that we don’t have to write but which we can use.
     </p>
   </introduction>
 
@@ -24,19 +24,19 @@
     <p>
       As we learned in the previous unit, to create a variable we need to
       declare it, specify its name and its type, and optionally provide an
-      initial value. Declaring methods is similar but there are more parts we
+      initial value. Declaring methods is similar, but there are more parts we
       need to specify.
     </p>
 
     <p>
-      Like a variable, a method has a name which we will use to call it.
-      Additionally a method has a <term>return type</term> which specifies the
+      Like a variable, a method has a name, which we will use to call it.
+      Additionally, a method has a <term>return type</term>, which specifies the
       kind of value (if any) the method returns when called. And a method can
       take any number of <term>arguments</term>, values it can use in its
       computation. To specify what number and types of arguments it needs, a
-      method defines <term>parameters</term> which are variables that are
+      method defines <term>parameters</term>, which are variables that are
       declared as part of the method and which hold the argument values when the
-      method is called. Together all these pieces—the name, the return type and
+      method is called. Together all these pieces—the name, the return type, and
       the parameters—make up the <term>method signature</term> or <term>method
       header</term>.
     </p>
@@ -56,10 +56,10 @@
       writing methods without <k>static</k> in <xref ref="classes" />. And your
       teacher may have you write methods in environments where the <k>static</k>
       is not required before then.) The next word, <k>int</k>, is the return
-      type. It is the name of a type or the special keyword <k>void</k> which
+      type. It is the name of a type or the special keyword <k>void</k>, which
       means the method doesn't return any value. Then comes the name of the
       method, in this case, <c>add</c>. And finally, in parentheses, the
-      method’s <term>parameter list</term>, a comma-delimited list of variables
+      method’s <term>parameter list</term>, a comma-delimited list of variables,
       which are the method's parameters. Parameters are declared like other
       variables with a type and a name. In this method there are two, named
       <c>a</c> and <c>b</c>, both of type <k>int</k>.
@@ -108,7 +108,7 @@
 
     <p>
       If a method takes no arguments, i.e. has an empty parameter list, there
-      will be nothing between the parentheses but the parentheses are still
+      will be nothing between the parentheses, but the parentheses are still
       needed so Java knows we are calling a method and not referring to a
       variable.
     </p>
@@ -171,7 +171,7 @@
       When Java hits the call to <c>add</c>, it first creates variables
       corresponding to the parameters <c>a</c> and <c>b</c> and initializes them
       with the argument values <c>10</c> and <c>20</c>. Then it executes the
-      body of the method until it hits a <k>return</k> at which point it
+      body of the method until it hits a <k>return</k>, at which point it
       evaluates the expression after the <k>return</k> and makes that value the
       value of the method call. In other words, roughly equivalent to this.
     </p>
@@ -193,11 +193,11 @@
 
       <statement>
         <p>
-          To see how a method call works click on the next button below the code
-          to step through the code and watch the red arrow jump to the method
-          that is being run and watch how the arguments are passed into the
-          parameter variables and how the returned value comes back to where the
-          method was called.
+          To see how a method call works, click on the next button below the
+          code to step through the code and watch the red arrow jump to the
+          method that is being run and watch how the arguments are passed into
+          the parameter variables and how the returned value comes back to where
+          the method was called.
         </p>
       </statement>
 
@@ -226,7 +226,7 @@
     <p>
       The main purpose of methods is to break a program up into smaller chunks
       that are easier to think about. That also often results in removing
-      duplicated code which also helps reduce the overall complexity of our
+      duplicated code, which also helps reduce the overall complexity of our
       code. All other things being equal, less code is better than more code.
     </p>
 
@@ -282,9 +282,9 @@
       class. Then, the <term>flow of control</term> skips from method to method
       as they are called. Notice that when a method ends, it returns to where
       the method was called. The <c>main</c> method below calls the <c>intro</c>
-      method which prints a line and then calls the <c>chorus</c> method. The
+      method, which prints a line and then calls the <c>chorus</c> method. The
       code in <c>chorus</c> prints one line and then returns back to
-      <c>intro</c> which is then done so it returns to <c>main</c> which then
+      <c>intro</c>, which is then done, so it returns to <c>main</c>, which then
       executes the next line.
     </p>
 
@@ -391,10 +391,10 @@
           Figuring out what the code does is called <term>code tracing</term> or
           <term>mental execution</term>. You can use a tool like <url
           href="https://pythontutor.com/render.html#code=public%20class%20Song%20%7B%0A%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20print%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22I%20like%20to%20%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20eat%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20fruit%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20fruit%28%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20System.out.println%28%22apples%20and%20bananas!%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20static%20void%20eat%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20System.out.print%28%22eat%20%22%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20print%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D&amp;cumulative=false&amp;curInstr=15&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">the
-          visualizer</url> we used above to step through code but it’s important
-          to develop the skill of mentally executing code to determine what it
-          does. Start at the <c>main</c> method and then follow each method call
-          to see what happens.
+          visualizer</url> we used above to step through code, but it’s
+          important to develop the skill of mentally executing code to determine
+          what it does. Start at the <c>main</c> method and then follow each
+          method call to see what happens.
         </p>
 
         <program>
@@ -443,7 +443,7 @@
 
           <feedback>
             <p>
-              There is a fruit() method but it does not print out the word
+              There is a fruit() method, but it does not print out the word
               fruit.
             </p>
           </feedback>
@@ -737,8 +737,8 @@
 
     <p>
       Here’s another song, <url href="https://youtu.be/QPwEZ8Vv2YQ">The Ants Go
-      Marching</url> with a repetitive structure. The verses below have a lot of
-      repeated words and phrases. Click on the words or phrases that are
+      Marching</url>, with a repetitive structure. The verses below have a lot
+      of repeated words and phrases. Click on the words or phrases that are
       different in each verse. These will be the arguments that you will pass to
       the methods in your song code.
     </p>
@@ -830,14 +830,14 @@
     <idx>non-void method</idx>
     <p>
       Most of the methods we have written so far have been <term>void
-      methods</term> which do not return a value but are called for their side
+      methods</term>, which do not return a value but are called for their side
       effects. However, many methods act like mathematical functions that
       calculate and return a value based on their arguments.
     </p>
 
     <p>
-      Since these methods all have some actual return type, not <k>void</k> they
-      are called <term>non-void methods</term>. You can imagine a non-void
+      Since these methods all have some actual return type, not <k>void</k>,
+      they are called <term>non-void methods</term>. You can imagine a non-void
       method as a calculating machine that takes numbers as arguments and
       returns a calculated result or like a toaster that takes bread as an input
       and returns toast.
@@ -865,7 +865,7 @@
     </figure>
 
     <p>
-      Here is a simple implementation of this method which takes an int number
+      Here is a simple implementation of this method, which takes an int number
       as an argument, squares that number, and returns the result. Notice that
       instead of <c>static void</c>, the header includes <c>static int</c> to
       indicate that the method returns an integer value.
@@ -1190,7 +1190,7 @@
       <li>
         <p>
           (AP 1.10.A.1) Class methods are associated with the class (not
-          instances of the class which we will see in later lessons).
+          instances of the class, which we will see in later lessons).
         </p>
       </li>
 

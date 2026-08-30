@@ -23,7 +23,7 @@
       parameters. The first parameter represents the minimum value, and the
       second parameter represents the maximum value of the range. You may assume
       that the minimum is less than or equal to the maximum. Write the contains
-      method which returns true or false if a given int argument is within the
+      method, which returns true or false if a given int argument is within the
       range set up by the constructor.
     </p>
   </introduction>

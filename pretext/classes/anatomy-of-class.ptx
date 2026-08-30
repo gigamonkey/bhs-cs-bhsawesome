@@ -10,7 +10,7 @@
       <term>behaviors</term>. We also saw how different objects, while having
       the same abstract attributes, each have their own values for those
       attributes and how an object’s values can then affect their behavior in
-      some way. For instance all <c>Turtle</c> objects have a position but two
+      some way. For instance all <c>Turtle</c> objects have a position, but two
       <c>Turtle</c> objects can be at different positions on the screen. And
       both can be made to move forward from wherever they are with the
       <c>forward()</c> method.
@@ -19,7 +19,7 @@
     <p>
       To review the vocabulary, a <term>class</term> defines the
       <term>attributes</term> and <term>behaviors</term> that all objects of
-      that class will have. From a class we make many <term>objects</term> also
+      that class will have. From a class we make many <term>objects</term>, also
       called <term>instances</term> of the class. Each instance has its own
       values for the attributes defined in the class. <term>Attributes</term>
       are the data or properties that an object knows about itself, for example,
@@ -72,7 +72,7 @@
     <p>
       The purpose of this class is to model a person as someone who has two
       attributes, a name and an age. A person also has two behaviors: they can
-      print out a greeting where they introduce themselves and they can answer
+      print out a greeting where they introduce themselves, and they can answer
       the <k>boolean</k> question of whether they can vote, which depends on
       whether they are eighteen or older.
     </p>
@@ -136,8 +136,8 @@
       It just means the class can be used in other classes. We will occasionally
       have to write classes without the <k>public</k> in exercises in this book
       but only because of limitations of the platform this book runs on.
-      However, the really important word in this line is <k>class</k> which says
-      we’re defining a class.
+      However, the really important word in this line is <k>class</k>, which
+      says we’re defining a class.
     </p>
 
     <p>
@@ -151,7 +151,7 @@
 
     <p>
       After the name of the class comes the opening <c>{</c> of the <term>class
-      body</term> which, like the body of a method, is defined inside a pair of
+      body</term>, which, like the body of a method, is defined inside a pair of
       <c>{}</c>s. Everything that makes up the definition of the class must be
       inside that pair of <c>{}</c>.
     </p>
@@ -170,18 +170,18 @@
       seen, is the keyword <k>private</k>. After that, they look like regular
       variable declarations with a type and a name. But because these variables
       are defined at the top level of the class, meaning not inside a method,
-      they are called <term>instance variables</term> and they are what define
+      they are called <term>instance variables</term>, and they are what define
       the attributes instances of this class have. So from these two lines we
       can see that every <c>Person</c> object has two attributes, a name and an
       age. Each instance of the class has its own set of instance variables that
-      aren’t shared with other instances so we can have two different
+      aren’t shared with other instances, so we can have two different
       <c>Person</c> objects, each with their own <c>name</c>.
     </p>
 
     <p>
       The next thing we define in a class are usually its
       <term>constructors</term>. We’ll talk a lot more about constructors in a
-      future section but the short version is, a constructor’s job is to
+      future section, but the short version is, a constructor’s job is to
       initialize an object’s instance variables. Our <c>Person</c> class has one
       constructor:
     </p>
@@ -200,14 +200,14 @@
       and <c>age</c>. Those values are then assigned to <c>this.name</c> and
       <c>this.age</c> which are specifically the instance variables we defined
       above. This constructor guarantees that whenever we make a <c>Person</c>
-      we have to supply a name and an age and those values are stored in the
+      we have to supply a name and an age, and those values are stored in the
       object’s instance variables.
     </p>
 
     <p>
-      Finally the behaviors of this class, emitting a greeting, and answering
-      the question of whether a specific <c>Person</c> can vote, are provided by
-      the two methods:
+      Finally the behaviors of this class, emitting a greeting and answering the
+      question of whether a specific <c>Person</c> can vote, are provided by the
+      two methods:
     </p>
 
     <program>
@@ -236,13 +236,13 @@
       This works because of the second new thing that about these methods,
       compared to the ones we’ve written before now: they do not have the
       keyword <k>static</k> in their signature. That makes them <term>instance
-      methods</term> which means they have access to the instance variables
+      methods</term>, which means they have access to the instance variables
       defined in the class.
     </p>
 
     <p>
       Watch this short video to review some of the key vocabulary of
-      object-oriented programming and then we’ll move on to a more detailed
+      object-oriented programming, and then we’ll move on to a more detailed
       examination of these three parts of a class.
     </p>
 

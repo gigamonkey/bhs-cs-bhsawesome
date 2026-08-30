@@ -69,10 +69,10 @@
 
     <p>
       This means that when if we divide two <k>int</k>s, we will get an
-      <k>int</k> result and the decimal part of the result will be thrown away.
+      <k>int</k> result, and the decimal part of the result will be thrown away.
       So, for instance, <c>5 / 2</c> would give us <c>2</c>, not <c>2.5</c>.
       This is called <term>truncating division</term>. If we want to preserve
-      the part after the decimal point we need a <k>double</k> result, so we
+      the part after the decimal point, we need a <k>double</k> result, so we
       should make at least one of the values in the expression a double like
       2.0. The expression <c>5 / 2.0</c> will give us <c>2.5</c>.
     </p>
@@ -114,7 +114,7 @@
     <p>
       Java also supports a fifth arithmetic operator, <c>%</c>, called the
       <term>remainder</term> operator. Like the other four basic arithmetic
-      operators it takes two operands. Mathematically it returns the remainder
+      operators, it takes two operands. Mathematically it returns the remainder
       after dividing the first number by the second, using truncating division.
       For instance, <c>5 % 2</c> evaluates to 1 since 2 goes into 5 two times
       with a remainder of 1.
@@ -141,17 +141,17 @@
     <p>
       Sometimes people—including Professor Lewis in the next video—will call
       <c>%</c> the <term>modulo</term>, or <term>mod</term>, operator. That is
-      not actually correct though the difference between remainder and modulo
+      not actually correct, though the difference between remainder and modulo
       only matters when the signs of the operands differ. (The difference has to
       do with what kind of division is done before finding the remainder; the
       remainder operator is based on truncating integer division where the
-      quotient is truncated toward zero while modulo is based on <url
+      quotient is truncated toward zero, while modulo is based on <url
       href="https://en.wikipedia.org/wiki/Euclidean_division">Euclidean
-      division</url> which truncates toward negative infinity.) With operands of
-      the same sign, remainder and modulo give the same results. Java does have
-      a method <c>Math.floorMod</c> in the <c>Math</c> class if you need to use
-      modulo instead of remainder, but <c>%</c> is all you need in the AP exam
-      and it will only be used with positive operands.
+      division</url>, which truncates toward negative infinity.) With operands
+      of the same sign, remainder and modulo give the same results. Java does
+      have a method <c>Math.floorMod</c> in the <c>Math</c> class if you need to
+      use modulo instead of remainder, but <c>%</c> is all you need in the AP
+      exam, and it will only be used with positive operands.
     </p>
 
     <p>
@@ -251,7 +251,7 @@
 
           <feedback>
             <p>
-              8 goes into 3 no times so the remainder is 3. The remainder of a
+              8 goes into 3 no times, so the remainder is 3. The remainder of a
               smaller number divided by a larger number is always the smaller
               number!
             </p>
@@ -265,7 +265,7 @@
 
           <feedback>
             <p>
-              This would be the remainder if the question was 8 % 3 but here we
+              This would be the remainder if the question was 8 % 3, but here we
               are asking for the reminder after we divide 3 by 8.
             </p>
           </feedback>
@@ -288,7 +288,7 @@
     <title>Math bugs</title>
 
     <p>
-      While computers are pretty good at math they will only do what we tell
+      While computers are pretty good at math, they will only do what we tell
       them. And sometimes what we tell them isn’t exactly what we wanted. For
       instance, we can get bit by an unexpected truncating division if we divide
       two <k>int</k>s when we really wanted a <k>double</k> result.
@@ -301,7 +301,7 @@
       href="https://scholar.lib.vt.edu/VA-news/ROA-Times/issues/1990/rt9005/900510/05100615.htm">subtracted
       when they should have added</url> (or possibly the other way around)
       caused it to point in the wrong direction! It missed its target stars by
-      about half a degree which is about the width of the moon seen from Earth.
+      about half a degree, which is about the width of the moon seen from Earth.
       Thorough testing is the only way to make sure there are no logic errors
       that will cause run-time errors in your code. Try the following example
       that tries to convert centimeters to inches. Can you fix the run-time
@@ -347,7 +347,7 @@
     <note>
       <p>
         In <k>double</k> expressions, dividing by zero is not an error. Instead
-        we get a special <k>double</k> value <c>Infinity</c> which might makes
+        we get a special <k>double</k> value <c>Infinity</c>, which might makes
         sense to you if you’ve learned about limits in math class. But if not,
         don’t worry about it; it’s not part of the AP exam.
       </p>
@@ -377,7 +377,7 @@
     <p>
       When compound expressions are evaluated, Java uses <term>operator
       precedence</term> rules, just like we do in regular math. So the
-      expression <c>2 + 5 * 3</c> is <c>17</c>, not <c>21</c> because the
+      expression <c>2 + 5 * 3</c> is <c>17</c>, not <c>21</c>, because the
       expression <c>5 * 3</c> is evaluated first and then becomes one of the
       operands to the <c>+</c> operator.
     </p>
@@ -490,7 +490,7 @@
       <li>
         <p>
           (AP 1.3.C.2) The arithmetic <term>operators</term> consist of
-          <c>+</c>, <c>-</c>, <c>*</c> , <c>/</c>, and <c>%</c> also known as
+          <c>+</c>, <c>-</c>, <c>*</c> , <c>/</c>, and <c>%</c>, also known as
           addition, subtraction, multiplication, division, and remainder.
         </p>
       </li>

@@ -12,8 +12,8 @@
   <introduction>
     <p>
       Java has two flavors of loop, <k>while</k> and <k>for</k>. Of the two the
-      <k>while</k> loop is simpler, with fewer moving parts so we’ll talk about
-      it first. The <k>for</k> loop, which we’ll discuss in the next section is
+      <k>while</k> loop is simpler, with fewer moving parts, so we’ll talk about
+      it first. The <k>for</k> loop, which we’ll discuss in the next section, is
       actually the one you’ll use most of the time as it has some amenities to
       make it easier to express common looping patterns.
     </p>
@@ -77,7 +77,7 @@
     <p>
       If you took AP CSP using a block program like Snap!, you may be familiar
       with the Repeat Until block. Unfortunately Repeat Until is the opposite of
-      a <k>while</k> loops: it loops until the condition is <em>true</em> where
+      a <k>while</k> loops: it loops until the condition is <em>true</em>, where
       a <k>while</k> loop loops until its condition is <em>false</em>.
     </p>
 
@@ -177,7 +177,7 @@
           The following method has the correct code to print out all the odd
           values from 1 to 10, but the code is mixed up. Drag the blocks from
           the left into the correct order on the right and indent them
-          correctly. Even though Java doesn’t require indention it is a good
+          correctly. Even though Java doesn’t require indention, it is a good
           habit to get into. You will be told if any of the blocks are in the
           wrong order or not indented correctly when you click the “Check Me”
           button.
@@ -434,7 +434,7 @@
 
           <feedback>
             <p>
-              x is set to -5 to start but then incremented by 1 so it first
+              x is set to -5 to start but then incremented by 1, so it first
               prints -4.
             </p>
           </feedback>
@@ -453,7 +453,7 @@
       <term>infinite loop</term>. An infinite loop runs forever because
       condition never becomes false. If we create an infinite loop by accident,
       our program may seem to get stuck. For an example, look at the following
-      loop. It looks a lot like the loops earlier in this chapter but it is
+      loop. It looks a lot like the loops earlier in this chapter, but it is
       actually an infinite loop. Can you see why?
     </p>
 
@@ -469,11 +469,11 @@
     <p>
       The problem in this loop—and a common way to accidentally create an
       infinite <k>while</k> loop—is that although it includes steps 1 and 2
-      (initializing the loop variable and testing it) it forgot step 3 and never
-      changes the loop variable. The loop variable, <c>i</c>, starts at <c>0</c>
-      and the loop loops as long as <c>i &lt; 10</c> which will always be true
-      because there’s no code in the loop that changes <c>i</c>. The simple fix
-      is to add a line that increments <c>i</c>:
+      (initializing the loop variable and testing it), it forgot step 3 and
+      never changes the loop variable. The loop variable, <c>i</c>, starts at
+      <c>0</c>, and the loop loops as long as <c>i &lt; 10</c>, which will
+      always be true because there’s no code in the loop that changes <c>i</c>.
+      The simple fix is to add a line that increments <c>i</c>:
     </p>
 
     <program>
@@ -506,7 +506,7 @@
     <p>
       An error that’s the opposite of creating an infinite loop is writing a
       loop that never runs. (An infinitely short loop!) This can be a problem
-      either in step one, initializing the loop variable or step two, writing
+      either in step one, initializing the loop variable, or step two, writing
       the loop condition. For example, if the loop variable is initialized to 10
       and test tests that it is less than 10, the loop body will never run.
     </p>
@@ -528,7 +528,7 @@
     <p>
       Another common error with loops is an <term>off-by-one error</term> where
       the loop runs one too many or one too few times. This is usually a problem
-      in step two, writing the test condition caused by using the incorrect
+      in step two, writing the test condition, caused by using the incorrect
       relational operator such as <c>&lt;=</c> when it should have been
       <c>&lt;</c> or vice versa.
     </p>
@@ -571,9 +571,9 @@
       of the loop a certain number of times, we’ll see in the next section that
       that’s more easily done with a <k>for</k> loop. A <k>while</k> loop is
       more typically used when we don’t know how many times the loop will need
-      to execute—when the condition will eventually become false but it might be
-      after a few iterations or a lot and the only way to find out is to execute
-      the loop.
+      to execute—when the condition will eventually become false, but it might
+      be after a few iterations or a lot, and the only way to find out is to
+      execute the loop.
     </p>
 
     <p>
@@ -593,19 +593,19 @@
     </program>
 
     <p>
-      Notice how the loop variable in this loop is a <c>String</c> not a number.
-      And the condition, <c>statement.equals("Bye")</c> is how we test whether
-      that <c>String</c> is a particular value, <c>"Bye"</c>. (More on this in
-      the <xref ref="objects" />). A special value, like <c>"Bye</c>, that is
-      the sign to stop the loop is called a <term>sentinel value</term> for the
-      loop.
+      Notice how the loop variable in this loop is a <c>String</c>, not a
+      number. And the condition, <c>statement.equals("Bye")</c>, is how we test
+      whether that <c>String</c> is a particular value, <c>"Bye"</c>. (More on
+      this in the <xref ref="objects" />). A special value, like <c>"Bye</c>,
+      that is the sign to stop the loop is called a <term>sentinel value</term>
+      for the loop.
     </p>
 
     <p>
       Also notice how the loop still contains a line at the bottom of the loop
       to update the loop variable with new input from the user. Without that
       line the loop would either be an infinite loop, endlessly printing out the
-      first thing the user typed or an infinitely short loop if the typed
+      first thing the user typed, or an infinitely short loop if the typed
       <c>"Bye"</c> as the very first thing.
     </p>
   </subsection>
@@ -615,7 +615,7 @@
 
     <p>
       Do you remember when we used the turtle objects to draw shapes? To create
-      a square without loops we had to repeat code to go forward and turn 90
+      a square without loops, we had to repeat code to go forward and turn 90
       degrees to the right 4 times like below. This is a lot of repeated code!
     </p>
 
@@ -830,7 +830,7 @@
           </statement>
 
           <feedback id="AP-while-loop1_opt_b">
-            <p>Correct! The digits in n = 35 are 3 and 5 and 3*5 = 15.</p>
+            <p>Correct! The digits in n = 35 are 3 and 5, and 3*5 = 15.</p>
           </feedback>
         </choice>
 

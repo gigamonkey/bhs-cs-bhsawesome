@@ -37,7 +37,7 @@
 
     <p>
       These days there are two sets of classes for interacting with files from
-      Java. We’ll start with the more traditional classes which are part of the
+      Java. We’ll start with the more traditional classes, which are part of the
       AP curriculum. Then we’ll look at a more modern and convenient set of
       classes that you might want to use in real programs.
     </p>
@@ -46,15 +46,15 @@
       On order to work with files, the first thing we need is an object to
       represent a file. The traditional way—and the AP way—is with the class
       <c>File</c> in the package <c>java.io</c>. The <c>io</c> in the package
-      name stands for <term>I/O</term> which is itself an abbreviation for
+      name stands for <term>I/O</term>, which is itself an abbreviation for
       <term>Input/Output</term> since the classes in that package are all
       related to moving data into a program (input) and back out (output).
     </p>
 
     <p>
       A <c>File</c> object can be constructed with a constructor that takes a
-      <c>String</c> containing the name of the file. For example if we want to
-      use a file named <c>data.txt</c> we can construct a <c>File</c> object
+      <c>String</c> containing the name of the file. For example, if we want to
+      use a file named <c>data.txt</c>, we can construct a <c>File</c> object
       like this:
     </p>
 
@@ -71,7 +71,7 @@
       for doing that depending on how we want to access the data. In the AP
       curriculum we use the class <c>Scanner</c> which is in the package
       <c>java.util</c>, the same package as <c>ArrayList</c>. If we construct a
-      <c>Scanner</c> with a <c>File</c> object as an argument we get a
+      <c>Scanner</c> with a <c>File</c> object as an argument, we get a
       <c>Scanner</c> that we can use to read data from the file. (We previously
       used <c>Scanner</c> in <xref ref="scanner" /> to read input typed by the
       user.)
@@ -88,13 +88,13 @@
     <p>
       Once we construct a <c>Scanner</c>, we can use it to repeatedly read from
       the same file. It has a number of methods that will each read different
-      data from the underlying file and it keeps track of where it left off so
+      data from the underlying file, and it keeps track of where it left off, so
       calling the same method multiple times will probably return different
       things each time as the <c>Scanner</c> advances through the file.
     </p>
 
     <p>
-      The simplest of these methods to use is <c>nextLine</c> which reads the
+      The simplest of these methods to use is <c>nextLine</c>, which reads the
       next complete line from the file, up to either the next newline character
       or the end of the file. It returns the line as a <c>String</c> with the
       newline removed.
@@ -148,14 +148,14 @@
       In practice the methods other than <c>nextLine</c> are tricky to use
       because of the way the <c>Scanner</c> decides whether there’s another
       token. One method that is not part of the AP curriculum but which goes
-      very well with <c>nextLine</c> is <c>hasNextLine</c> which returns a
+      very well with <c>nextLine</c> is <c>hasNextLine</c>, which returns a
       boolean indicating whether it is possible to get another line with
       <c>nextLine</c>.
     </p>
 
     <p>
-      For instance if we wanted to load all the lines from a file into an
-      <c>ArrayList</c> we could do it fairly simply with this code:
+      For instance, if we wanted to load all the lines from a file into an
+      <c>ArrayList</c>, we could do it fairly simply with this code:
     </p>
 
     <program>
@@ -188,7 +188,7 @@
 
     <p>
       Exceptions are how Java handles situations where a bit of code just can’t
-      do what it’s supposed to do. For instance if we try to access an array
+      do what it’s supposed to do. For instance, if we try to access an array
       element that doesn’t exist, there’s no good way to continue—the program
       was expecting a value and there's no value to be had. Which is why Java
       throws an <c>ArrayIndexOutOfBoundsException</c> in that case.
@@ -197,7 +197,7 @@
     <p>
       To create a <c>Scanner</c> to read from a file, the file has to actually
       exist—if it doesn’t, there’s obviously no way to read data from it. It
-      doesn’t really matter why the file doesn’t exist and it’s not necessarily
+      doesn’t really matter why the file doesn’t exist, and it’s not necessarily
       due to to a bug in the program. Maybe the user provided the wrong file
       name or maybe they deleted the file before they ran the program.
     </p>
@@ -205,9 +205,9 @@
     <p>
       Whatever the reason, if the file does not exist or is otherwise
       inaccessible, the <c>Scanner</c> constructor will <term>throw</term> a
-      <c>FileNotFoundException</c> which is a kind of <c>IOException</c>. (In
+      <c>FileNotFoundException</c>, which is a kind of <c>IOException</c>. (In
       real-world Java programs there are ways to handle exceptions so they don’t
-      crash our program and exceptions are organized into hierarchies so
+      crash our program, and exceptions are organized into hierarchies so
       programs can choose to handle different kinds of exceptions differently.
       The different kinds of <c>IOException</c> represent all the things that
       can go wrong when trying to read and write data. Not finding a needed file
@@ -221,26 +221,26 @@
     <p>
       Unlike <c>ArrayIndexOutOfBoundsException</c> and
       <c>NullPointerException</c>, an <c>IOException</c> is a <term>checked
-      exception</term> which means that Java requires us to specify what our
+      exception</term>, which means that Java requires us to specify what our
       code will do if one is thrown.
     </p>
 
     <p>
       There are basically two choices. Our code can also throw the exception or
-      we can handle it. However the second option is not part of the AP
-      curriculum so for now the simplest thing to do is to have our code also
-      throw the exception which we achieve by simply adding <c>throws
+      we can handle it. However, the second option is not part of the AP
+      curriculum, so for now the simplest thing to do is to have our code also
+      throw the exception, which we achieve by simply adding <c>throws
       IOException</c> clause to the signature of the method that constructs the
       <c>Scanner</c>.
     </p>
 
     <p>
-      The throws clause goes after the argument list. By adding a throws clause
+      The throws clause goes after the argument list. By adding a throws clause,
       we are passing the buck, declaring that this this bad thing can happen in
       the method and the method can’t recover if it does, so it is now the
       responsibility of whatever other methods call it to deal with it. Those
       methods can continue to pass the buck by adding <c>throws IOException</c>
-      to their own signatures or eventually some method could handle the
+      to their own signatures, or eventually some method could handle the
       exception using a construct we’ll describe below. But within the bounds of
       the AP curriculum, we should just add <c>throws IOException</c> to any
       method that needs it. Here’s how we could add it to a <c>main</c> method.
@@ -416,22 +416,21 @@
       ref="array-traversal" />, code was provided that read all the words into a
       array. But that code required us to hard-code the size of the array to
       match the number of lines in our dictionary file. If we added or removed
-      words from the dictionary we’d have to change our code to fix the size of
+      words from the dictionary, we’d have to change our code to fix the size of
       the array. (Or we could write code like the previous example to count the
       number of lines in the file and then make the array and then load the
-      lines into it but that would require reading through the file twice.)
+      lines into it, but that would require reading through the file twice.)
     </p>
 
     <p>
-      <c>ArrayList</c>s, are a much better data structure to use to collect
-      lines from a file since we don’t need to know how many lines the file
-      contains in order to build up an <c>ArrayList</c> they way we would with
-      an array.
+      <c>ArrayList</c>s are a much better data structure to use to collect lines
+      from a file since we don’t need to know how many lines the file contains
+      in order to build up an <c>ArrayList</c> they way we would with an array.
     </p>
 
     <p>
       The following exercise reads in a data file about Pokémon and prints out
-      the first ten lines in the file. This file has the extension <em>csv</em>
+      the first ten lines in the file. This file has the extension <em>csv</em>,
       which stands for <term>Comma Separated Values</term>. All spreadsheets can
       be saved as CSV text files, and spreadsheet software can easily open CSV
       files as spreadsheets. You can take a look at the <url
@@ -507,7 +506,7 @@
     </p>
 
     <p>
-      The one we care about is <c>readAllLines</c> which takes a <c>Path</c> as
+      The one we care about is <c>readAllLines</c>, which takes a <c>Path</c> as
       its argument and returns a <c>List</c> of <c>String</c> values, one
       <c>String</c> per line. <c>List</c> is an <term>interface</term>, another
       feature of Java that’s not part of the AP curriculum but which are a key
@@ -524,7 +523,7 @@
 
     <p>
       The <c>Path</c> equivalent of <c>new File("filename.txt")</c> is
-      <c>Path.of("filename.txt")</c> so after importing <c>java.nio.file.*</c>
+      <c>Path.of("filename.txt")</c>, so after importing <c>java.nio.file.*</c>,
       we can get all the lines in a file using one line:
     </p>
 
@@ -536,7 +535,7 @@
 
     <p>
       Under the covers <c>readAllLines</c> is almost certainly using an
-      <c>ArrayList</c> which is a kind of <c>List</c>. The advantage of storing
+      <c>ArrayList</c>, which is a kind of <c>List</c>. The advantage of storing
       the lines in a dynamic data structure like an <c>ArrayList</c>, instead of
       an array, is that we do not need to know how many lines we are going to
       read when you create the <c>ArrayList</c> the way we do when we create an

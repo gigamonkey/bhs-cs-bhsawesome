@@ -48,8 +48,8 @@
       operators</term> that operate on numbers but produce <k>boolean</k>
       values. Comparison operators can be further divided into four
       <term>relational operators</term> that test ordering relationships between
-      numbers and two <term>equality operators</term> which simply check whether
-      two numbers are the same or different.
+      numbers and two <term>equality operators</term>, which simply check
+      whether two numbers are the same or different.
     </p>
 
     <table>
@@ -123,12 +123,12 @@
 
     <p>
       The four relational operators (<c>&lt;</c>, <c>&gt;</c>, <c>&lt;=</c>,
-      <c>&gt;=</c>) should be familiar from math class. Note however that due to
-      the limitations of character sets traditionally used in programming
+      <c>&gt;=</c>) should be familiar from math class. Note, however, that due
+      to the limitations of character sets traditionally used in programming
       languages, we write <c>&lt;=</c> rather than ≤ and <c>&gt;=</c> instead of
       ≥. To remember the correct order of the two characters in <c>&lt;=</c> and
       <c>&gt;=</c>, just write them in the same order you would say them in
-      English: “less than or equal to” not “equal to or less than”.
+      English: “less than or equal to”, not “equal to or less than”.
     </p>
 
     <p>
@@ -146,7 +146,7 @@
       <p>
         In some programming languages comparison operators like <c>&lt;</c> can
         be used to compare non-numeric values such as strings. But in Java they
-        can only be used with numbers. As we’ll see in <xref ref="classes" />
+        can only be used with numbers. As we’ll see in <xref ref="classes" />,
         there are other ways to compare <c>String</c> values for both ordering
         and equality.
       </p>
@@ -196,7 +196,7 @@
 
     <p>
       Unlike the relational operators, the equality operators can be used with
-      any kinds of values, <k>int</k>, <k>double</k>, <k>boolean</k> as well as
+      any kinds of values, <k>int</k>, <k>double</k>, <k>boolean</k>, as well as
       reference types like <c>String</c> and other types we’ll learn about
       later. But there are some subtleties to how they work with different kinds
       of values.
@@ -206,7 +206,7 @@
       For <k>int</k> and <k>boolean</k> values, <c>==</c> and <c>!=</c> are
       quite straightforward. Either two <k>int</k> values are the same or they
       are not. However, we will rarely use these operators with <k>boolean</k>
-      values as doing so is usually unecessary and lead to a common mistake
+      values as doing so is usually unecessary and lead to a common mistake,
       which we’ll discuss in <xref ref="if-traps" />.
     </p>
 
@@ -222,9 +222,9 @@
       values are exactly the same, they will be <c>==</c>. The problem is that
       because computers perform <k>double</k> math with limited precision,
       sometimes expressions that seem like they should produce mathematically
-      equivalent results don’t produce exactly the same <k>double</k> values so
-      even though they should be equal according to math they won’t be according
-      to <c>==</c>. One of the simplest examples is:
+      equivalent results don’t produce exactly the same <k>double</k> values, so
+      even though they should be equal according to math, they won’t be
+      according to <c>==</c>. One of the simplest examples is:
     </p>
 
     <program>
@@ -238,12 +238,12 @@
       are represented in memory that are well beyond the AP curriculum. But
       suffice it to say that this is a fact about how modern computers work, not
       a bug in Java. As a practical matter when doing <k>double</k> math,
-      instead of comparing values for exact equality we should check whether the
-      difference between two values is less than some meaningful threshold. For
-      instance, if we were performing some computation on measurements in meters
-      and wanted to check that the answer we got was “the same” as some expected
-      value, we might use an expression like the following to check that they
-      are the same to a tenth of a millimeter:
+      instead of comparing values for exact equality, we should check whether
+      the difference between two values is less than some meaningful threshold.
+      For instance, if we were performing some computation on measurements in
+      meters and wanted to check that the answer we got was “the same” as some
+      expected value, we might use an expression like the following to check
+      that they are the same to a tenth of a millimeter:
     </p>
 
     <program>
@@ -354,7 +354,7 @@
       If <c>a</c> is evenly divisible by <c>b</c>, that just means that the
       remainder if you divide <c>a</c> by <c>b</c> is zero. So to check if
       <c>a</c> is evenly divisible by <c>b</c> (or is a multiple of <c>b</c>,
-      which is another way to say the same thing) we can just write <c>a % b ==
+      which is another way to say the same thing), we can just write <c>a % b ==
       0</c>.
     </p>
 
@@ -395,7 +395,7 @@
         <c>number % 2 == 1</c> rather than <c>number % 2 != 0</c>. However,
         because Java’s <c>%</c> operator is a remainder operator and not a true
         mathematical modulo operator, this won’t always work: when <c>number</c>
-        is a negative odd number, <c>number % 2</c> is <c>-1</c> not <c>1</c>.
+        is a negative odd number, <c>number % 2</c> is <c>-1</c>, not <c>1</c>.
         Thus you should always use <c>number % 2 != 0</c> to check if
         <c>number</c> is odd.
       </p>
@@ -485,7 +485,7 @@
       Another common way to want to produce <k>boolean</k> values is at random
       with some probability. This is quite easy since <c>Math.random()</c>,
       which we first saw in <xref ref="math-class" />, returns a random number
-      between 0.0 and 1.0 which is exactly how probabilities are usually
+      between 0.0 and 1.0, which is exactly how probabilities are usually
       expressed. (Zero probability means something definitely won’t happen;
       probability one means it definitely will.)
     </p>
@@ -494,7 +494,7 @@
       So we use <c>Math.random()</c> in combination with the <c>&lt;</c>
       operator to write an expression that will be <c>true</c> with a given
       probability. For example, to simulate a coin flip, we can use the
-      expression <c>Math.random() &lt; 0.5</c> which will be true with
+      expression <c>Math.random() &lt; 0.5</c>, which will be true with
       probability 0.5 or 50% of the time.
     </p>
 
@@ -527,7 +527,7 @@
       The easy way to remember that it should be <c>&lt;</c> and not <c>&gt;</c>
       or <c>&lt;=</c> is to remember that <c>Math.random()</c> returns a number
       greater than or equal to <c>0.0</c> and less than <c>1.0</c>. So
-      <c>Math.random() &lt; 0.0</c> is never true <c>Math.random() &lt; 1.0</c>
+      <c>Math.random() &lt; 0.0</c> is never true, <c>Math.random() &lt; 1.0</c>
       always is.
     </p>
 
@@ -607,7 +607,7 @@
             <p>
               This is true about 75% of the time, since it will be a number from
               0 to not quite 1. Note that if the expression used &gt; rather
-              than &gt;= it would be very slightly off. Generally it's best to
+              than &gt;=, it would be very slightly off. Generally it's best to
               write this kind of expression with &lt; and the probability of a
               true value so <c>Math.random() &lt; 0.75</c> in this case.
             </p>
@@ -767,7 +767,7 @@
       <url href="https://en.wikipedia.org/wiki/George_Boole">George Boole</url>,
       a 19th century English mathematician most famous for his book <em>The Laws
       of Thought</em>. These days we call these three operatarors <term>logical
-      and</term>, <term>logical or</term> and <term>logical not</term>. And you
+      and</term>, <term>logical or</term>, and <term>logical not</term>. And you
       are almost certainly already completely familiar with these operators and
       how they work even if you’ve never heard of George Boole.
     </p>
@@ -778,7 +778,7 @@
       and who also likes chocolate. A friend who likes ice cream but doesn’t
       like chocolate wouldn’t be interested. And another friend who likes
       chocolate but hates ice cream would also not be interested. If you
-      understand that, you understand the logic of the situation which is
+      understand that, you understand the logic of the situation, which is
       expressed with logical and.
     </p>
 
@@ -821,13 +821,13 @@
           completely match with their sense in Boolean logic is when we use “or”
           to express a choice between two options when we can only pick one: “do
           you want to be player 1 <em>or</em> player 2?” In Boolean logic and in
-          Java the or operator is called an <term>inclusive or</term> which
+          Java the or operator is called an <term>inclusive or</term>, which
           means that the whole expression is true if either one or the other or
           <em>both</em> conditions are true. Logically speaking there’s also an
-          <term>exclusive or</term> which is true if either sub-statement is
+          <term>exclusive or</term>, which is true if either sub-statement is
           true but false if they both are. There isn’t a separate exclusive or
-          operator in Java but <c>!=</c> applied to <k>boolean</k> values serves
-          as one.
+          operator in Java, but <c>!=</c> applied to <k>boolean</k> values
+          serves as one.
         </p>
 
         <table>
@@ -869,7 +869,7 @@
     </note>
 
     <p>
-      The final logical operator, logical not covers the logic of, “You can go
+      The final logical operator, logical not, covers the logic of “You can go
       out if you’re not grounded”. If the statement “you’re grounded” is true,
       then you can’t go out. But if the statement is false, then you can. In
       other words, logical not just flips the meaning of the statement, true to
@@ -985,11 +985,11 @@
     <p>
       In math we can write <m>0 \le x \lt 100</m> to express that <m>x</m> is in
       the range from zero (inclusive) to one hundred (exclusive). Unfortunately
-      if we translate that directly to Java as <c>0 &lt;= x &lt; 100</c> we will
-      get a compiler error. This is because <c>0 &lt;= x</c> produces a
-      <k>boolean</k> which can’t then be an operand to the <c>&lt;</c> operator.
-      Instead we need to use <c>&amp;&amp;</c> to combine two <k>boolean</k>
-      expressions:
+      if we translate that directly to Java as <c>0 &lt;= x &lt; 100</c>, we
+      will get a compiler error. This is because <c>0 &lt;= x</c> produces a
+      <k>boolean</k>, which can’t then be an operand to the <c>&lt;</c>
+      operator. Instead we need to use <c>&amp;&amp;</c> to combine two
+      <k>boolean</k> expressions:
     </p>
 
     <program>
@@ -1113,7 +1113,7 @@
 
           <feedback>
             <p>
-              first case will only print if x is greater than 0 and it is not.
+              first case will only print if x is greater than 0, and it is not.
             </p>
           </feedback>
         </choice>
@@ -1138,7 +1138,7 @@
 
           <feedback>
             <p>
-              Since the first condition is false when x is equal to zero the
+              Since the first condition is false when x is equal to zero, the
               second condition won't execute. Execution moves to the else.
             </p>
           </feedback>
@@ -1173,7 +1173,7 @@
 
           <feedback>
             <p>
-              Since x is equal to zero the first expression in the complex
+              Since x is equal to zero, the first expression in the complex
               conditional will be true and the (y / x) == 3 won't be evaluated,
               so it won't cause a divide by zero error. It will print "first
               case".
@@ -1188,8 +1188,8 @@
 
           <feedback>
             <p>
-              Since x is equal to zero the first part of the complex conditional
-              is true so it will print first case.
+              Since x is equal to zero, the first part of the complex
+              conditional is true, so it will print first case.
             </p>
           </feedback>
         </choice>

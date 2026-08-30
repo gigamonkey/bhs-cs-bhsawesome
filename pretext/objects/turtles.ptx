@@ -7,7 +7,7 @@
     <p>
       We first used the Turtle library that is built into this book in <xref
       ref="apis-and-libraries" />. Now that we’ve learned more about classes and
-      objects we can use the classes from the Turtle library, <c>Turtle</c> and
+      objects, we can use the classes from the Turtle library, <c>Turtle</c> and
       <c>World</c>, to look at some concrete examples of some of the topics
       we’ve discussed in the last two chapters.
     </p>
@@ -22,7 +22,7 @@
     <title>Turtle basics</title>
 
     <p>
-      Like any class the <c>Turtle</c> class is a blueprint for making objects
+      Like any class, the <c>Turtle</c> class is a blueprint for making objects
       that each represent one turtle we can use to draw lines on a graphical
       world. It defines attributes for graphical turtles like their color and
       position and methods to make the turtles move. As a refresher, here’s a
@@ -65,7 +65,7 @@
       The following <url
       href="https://www.youtube.com/watch?v=TFmmG4_KK8I&amp;list=PLHqz-wcqDQIEP6p1_0wOb9l9aQ0qFijrP&amp;ab_channel=colleenlewis">video</url>
       walk through how the program creates a <c>World</c> object and a
-      <c>Turtle</c> object assigning them to the variables <c>habitat</c> and
+      <c>Turtle</c> object, assigning them to the variables <c>habitat</c> and
       <c>yertle</c>
     </p>
 
@@ -86,8 +86,8 @@
     <p>
       For example, <c>yertle.forward()</c> asks the turtle referenced by the
       variable <c>yertle</c> to go <c>forward</c>. The <c>forward</c> method
-      doesn’t take any arguments so it moves the turtle forward a default amount
-      of one hundred pixels.
+      doesn’t take any arguments, so it moves the turtle forward a default
+      amount of one hundred pixels.
     </p>
 
     <p>
@@ -95,7 +95,7 @@
       we learned about in <xref ref="overloaded-methods" />. It defines two
       <c>forward</c> methods; the no-args version used above and another that
       takes an <k>int</k> arguments specifying the number of pixels to move. For
-      example to have the turtle move forward fifty pixels instead of one
+      example, to have the turtle move forward fifty pixels instead of one
       hundred, we can use <c>yertle.forward(50);</c>. Try making that change in
       the code above and then run it again to see the change.
     </p>
@@ -139,8 +139,8 @@
       Remember that a class is a blueprint from which we can make as many
       instances as we want. The code below creates two turtle objects and stores
       references to them in the variables <c>yertle</c> and <c>myrtle</c>. They
-      are both added to the same <c>World</c> so when we run the code we see two
-      turtles drawing.
+      are both added to the same <c>World</c>, so when we run the code, we see
+      two turtles drawing.
     </p>
 
     <activity label="TurtleTest3">
@@ -149,7 +149,7 @@
           After running the code once to see what <c>yertle</c> and
           <c>myrtle</c> draw, can you add another turtle object to the code
           below? You will need to declare a new variable, construct a new
-          <c>Turtle</c> and then call some methods on the new turtle to make it
+          <c>Turtle</c>, and then call some methods on the new turtle to make it
           draw something.
         </p>
       </statement>
@@ -350,7 +350,7 @@
     <p>
       The <c>Turtle</c> class also also has multiple constructors. They all take
       at least a <c>World</c> argument in order to have a place to draw the
-      turtle but one of them takes two <k>int</k> arguments to specify the
+      turtle, but one of them takes two <k>int</k> arguments to specify the
       initial <c>x</c> and <c>y</c> position of the <c>Turtle</c> in the
       <c>World</c>. The constructor that does not take these <k>int</k>
       arguments puts the <c>Turtle</c> in the middle of the <c>World</c>.
@@ -362,17 +362,17 @@
     </program>
 
     <p>
-      In order to understand how to position a new <c>Turtle</c> in the world we
-      need to know how the <c>x</c> and <c>y</c> values are used which may be
-      surprising since the Turtle world does not use the Cartesian coordinate
+      In order to understand how to position a new <c>Turtle</c> in the world,
+      we need to know how the <c>x</c> and <c>y</c> values are used, which may
+      be surprising since the Turtle world does not use the Cartesian coordinate
       system with (0,0) in the middle the screen like we may be used to from
       math class or languages like Snap! Instead, (0,0) is at the top left
-      corner of the screen and x increases to the right and y increases towards
+      corner of the screen, and x increases to the right and y increases towards
       the bottom of the screen.
     </p>
 
     <p>
-      Most computer graphics systems use this coordinate system which is a
+      Most computer graphics systems use this coordinate system, which is a
       carryover from when computers dealt only with text being printed line by
       line, where it made sense to think of row zero, column zero as where the
       first character would come out.
@@ -390,7 +390,7 @@
       <p>
         Notice that the order of the arguments matter. The three-argument
         <c>Turtle</c> constructor takes the arguments <c>x</c>, <c>y</c>, and
-        <c>world</c> in that order. If we put the <c>World</c> argument first
+        <c>world</c> in that order. If we put the <c>World</c> argument first,
         Java will complain because there is no constructor that takes a
         <c>World</c>followed by two <k>int</k> values. Worse yet, if we swap the
         <c>x</c> and <c>y</c> values, the code will compile and probably run
@@ -598,7 +598,7 @@
       <statement>
         <p>
           Can you make yertle draw the number 8, as two squares on top of each
-          other? If you want to be really fancy you can use <c>penUp</c> and
+          other? If you want to be really fancy, you can use <c>penUp</c> and
           <c>penDown</c> to put some space between the two squares. Maybe you
           can even draw an 8 as it would be displayed on a <url
           href="https://en.wikipedia.org/wiki/Seven-segment_display">seven
@@ -636,7 +636,7 @@
               each side of the square? Try something like:
               yertle.setColor(Color.red); This uses the <url
               href="https://docs.oracle.com/en/java/javase/26/docs/api/java.desktop/java/awt/Color.html">Color</url>
-              class in Java which has some colors predefined like red, yellow,
+              class in Java, which has some colors predefined like red, yellow,
               blue, magenta, cyan. You can also use more specific methods like
               setPenColor, setBodyColor, and setShellColor.
             </p>
@@ -646,7 +646,7 @@
             <p>
               Can you draw a triangle? The turnRight() method always does 90
               degree turns, but you’ll need external angles of 120 degree for an
-              equilateral triangle. Use the turn method which has a parameter
+              equilateral triangle. Use the turn method, which has a parameter
               for the angle of the turn in degrees. For example, turn(90) is the
               same as turnRight(). Try drawing a triangle with different colors.
             </p>
@@ -964,7 +964,7 @@
       <li>
         <p>
           An <term>attribute</term> or <term>instance variable</term> is data
-          the object knows about itself. For example a turtle object knows the
+          the object knows about itself. For example, a turtle object knows the
           direction it is facing or its color.
         </p>
       </li>
@@ -972,7 +972,7 @@
       <li>
         <p>
           A <term>behavior</term> or <term>method</term> is something that an
-          object can do. For example a turtle object can go forward 100 pixels.
+          object can do. For example, a turtle object can go forward 100 pixels.
         </p>
       </li>
 

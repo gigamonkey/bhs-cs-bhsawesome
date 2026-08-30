@@ -24,7 +24,7 @@
     <p>
       So another way to describe the job of a constructor is to set the object’s
       instance values so it’s in a valid state and ready to be used. As we’ll
-      see, classes can have zero or more constructors but they should all
+      see, classes can have zero or more constructors, but they should all
       produce an object in a valid state.
     </p>
 
@@ -48,9 +48,9 @@
       In the source code for a class, constructors are usually written after the
       instance variables and before any methods. Which make sense because first
       we need to see the instance variables to understand the basic structure of
-      a class. But before we can look at methods and see how to use the class we
-      need to see how those variables are initialized. And to understand that,
-      we need to look at the classes constructors.
+      a class. But before we can look at methods and see how to use the class,
+      we need to see how those variables are initialized. And to understand
+      that, we need to look at the classes constructors.
     </p>
   </introduction>
 
@@ -59,10 +59,10 @@
 
     <p>
       Just like with method calls, when a constructor is called, such as <c>new
-      Date(2005,9,1)</c>, the <term>parameters</term>, (<c>year</c>,
-      <c>month</c>, and <c>day</c>), are set to copies of the
-      <term>arguments</term>, (<c>2005</c>, <c>9</c>, and <c>1</c>). This is
-      <term>call by value</term> which means that copies of the argument values
+      Date(2005,9,1)</c>, the <term>parameters</term> (<c>year</c>,
+      <c>month</c>, and <c>day</c>) are set to copies of the
+      <term>arguments</term> (<c>2005</c>, <c>9</c>, and <c>1</c>). This is
+      <term>call by value</term>, which means that copies of the argument values
       are passed to the constructor. These values can then be used to initialize
       the object’s instance variables.
     </p>
@@ -76,7 +76,7 @@
     </figure>
 
     <p>
-      Also like when we call a method, when we call a constructor the types of
+      Also like when we call a method, when we call a constructor, the types of
       the values passed as arguments have to match the types of the parameter
       variables. We cannot give a constructor a <c>String</c> object when it is
       expecting an <k>int</k>. And the order of the arguments also matters. If
@@ -251,7 +251,7 @@
 
     <p>
       Here’s a class that has one instance variable with no explicit initial
-      value and one with as well as an instance method to show their values and
+      value and one with, as well as an instance method to show their values and
       a <c>main</c> to instantiate an object and call the method.
     </p>
 
@@ -287,7 +287,7 @@
       appropriate zero value for its type, <c>0</c>, <c>0.0</c>, <c>false</c>,
       or <c>null</c>. But otherwise the variable is assigned the value specified
       in the declaration. These assignments happen even before the constructor
-      runs so code in the constructor can rely on instance variables being
+      runs, so code in the constructor can rely on instance variables being
       initialized.
     </p>
 
@@ -297,14 +297,14 @@
       lets you make sure that instances of your class are always properly
       initialized. For example, because our <c>Person</c> class contains an
       explicit constructor, there’s no way to construct a <c>Person</c> object
-      without providing the required name and age values so there will never be
+      without providing the required name and age values, so there will never be
       an instance of <c>Person</c> missing those values.
     </p>
 
     <note>
       <p>
         Technically someone could call our <c>Person</c> constructor like <c>new
-        Person(null, 0)</c> but then they’d kind of get what they deserve. And
+        Person(null, 0)</c>, but then they’d kind of get what they deserve. And
         some Java programmers, especially when working in large systems, would
         write the constructor to check that the arguments themselves are valid
         and to fail immediately if they are not.
@@ -352,7 +352,7 @@
     <p>
       As we can see, there is no return type between <k>public</k> and
       <c>Person</c>. And <c>Person</c> is the name of the class this constructor
-      came from. After the name comes a list of parameters which work just like
+      came from. After the name comes a list of parameters, which work just like
       parameters in a method: they are local variables that will hold the values
       of the arguments passed to the constructor. And constructors don’t need a
       <k>return</k> statement because they don’t return a value.
@@ -371,8 +371,8 @@
     </program>
 
     <p>
-      When we invoke a constructor with <k>new</k> two things happen: first a
-      new object is created and the memory needed to hold all its instance
+      When we invoke a constructor with <k>new</k>, two things happen: first a
+      new object is created, and the memory needed to hold all its instance
       variables is allocated somewhere in the computer’s memory. Then, after the
       instance variables are initialized either to their default zero value or
       the value specified in the declaration, the constructor is run with
@@ -395,9 +395,9 @@
 
     <p>
       In order to use most classes, such as the <c>Turtle</c> class we first
-      used in <xref ref="apis-and-libraries" /> we need to look up how to
+      used in <xref ref="apis-and-libraries" />, we need to look up how to
       construct an instance of the class. Usually we’ll look at the class’s <url
-      href="https://cseweb.ucsd.edu/~ricko/CSE11/turtleClassesDocs/index.html?turtleClasses/SimpleTurtle.html">documentation</url>
+      href="https://cseweb.ucsd.edu/~ricko/CSE11/turtleClassesDocs/index.html?turtleClasses/SimpleTurtle.html">documentation</url>,
       which will list the signatures of the constructors available.
     </p>
 
@@ -412,24 +412,24 @@
     <note>
       <p>
         Like classes, constructors will usually be made <k>public</k>. As with
-        making a class <k>public</k> it means the constructor can be invoked
+        making a class <k>public</k>, it means the constructor can be invoked
         from any code anywhere.
       </p>
 
       <p>
-        Constructors can also be <k>private</k> and sometimes that’s useful to
+        Constructors can also be <k>private</k>, and sometimes that’s useful to
         control how instances of a class are created. And there is a level of
         accessibility in between <k>public</k> and <k>private</k> that requires
         a deeper understanding of Java packages than we want to get into. But
         both of those options are well outside the AP curriculum. For the
-        purposes of the AP exam classes and their constructors are always
+        purposes of the AP exam, classes and their constructors are always
         <k>public</k>.
       </p>
 
       <p>
         Constructors cannot have the <k>static</k> modifier that we’ve used with
-        methods until this unit. That’s only an option for methods and variables
-        which will discuss more in <xref ref="objects" />.
+        methods until this unit. That’s only an option for methods and
+        variables, which will discuss more in <xref ref="objects" />.
       </p>
     </note>
   </subsection>
@@ -455,7 +455,7 @@
 
     <p>
       For instance, in our <c>Person</c> class, suppose we wanted to be able to
-      make objects to represent anonymous people but we wanted all anonymous
+      make objects to represent anonymous people, but we wanted all anonymous
       people to be named the same thing: <c>"Anonymous"</c>. Rather than
       requiring all the code that wants to construct an anonymous <c>Person</c>
       to pass that specific <c>String</c> to the two-argument constructor we’ve
@@ -475,8 +475,8 @@
     </p>
 
     <p>
-      However there’s an even better way to write that constructor using the
-      <k>this</k> keyword, that we’ve previously used to access instance
+      However, there’s an even better way to write that constructor using the
+      <k>this</k> keyword that we’ve previously used to access instance
       variables. In the context of a constructor, we can use <k>this</k>
       followed by an argument list in parentheses to invoke another
       constructor’s code to let it initialize the object. So we could write that
@@ -490,11 +490,11 @@
     </program>
 
     <p>
-      Then when we evaluate <c>new Person(20)</c> the argument <c>20</c> is
-      passed to that constructor which then passes it along to the original
+      Then when we evaluate <c>new Person(20)</c>, the argument <c>20</c> is
+      passed to that constructor, which then passes it along to the original
       constructor with the <c>"Anonymous"</c> as the name argument. In this case
       it doesn’t simplify things much since both constructors are so simple. But
-      in more complicated classes that do more complicated initialization it
+      in more complicated classes that do more complicated initialization, it
       lets us write the complicated stuff in just one place.
     </p>
 
@@ -651,7 +651,7 @@
       <feedback>
         <p>
           Constructors are public and have the same name as the class. Click on
-          the constructor headers which are the first line of the constructors
+          the constructor headers, which are the first line of the constructors
           showing their name and parameters.
         </p>
       </feedback>
@@ -809,8 +809,8 @@
 
           <feedback>
             <p>
-              The object is already created before the constructor is called but
-              the constructor initializes the instance variables.
+              The object is already created before the constructor is called,
+              but the constructor initializes the instance variables.
             </p>
           </feedback>
         </choice>
@@ -849,7 +849,7 @@
           <feedback>
             <p>
               A constructor initializes the instance variables to their default
-              values or in the case of a parameterized constructor, to the
+              values or, in the case of a parameterized constructor, to the
               values passed in to the constructor.
             </p>
           </feedback>
@@ -1165,8 +1165,8 @@
       <li>
         <p>
           (AP 1.13.B.1) The new object is saved in a variable of a
-          <term>reference type</term> which holds an object reference or null if
-          there is no object.
+          <term>reference type</term>, which holds an object reference or null
+          if there is no object.
         </p>
       </li>
 

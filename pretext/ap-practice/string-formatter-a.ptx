@@ -58,7 +58,7 @@
       (a) Write the <c>StringFormatter</c> method <c>totalLetters</c>, which
       returns the total number of letters in the words in its parameter
       <c>wordList</c>. For example, if the <c>variableList&lt;String&gt;
-      words</c> is [“A”, “frog”, “is”],then the call
+      words</c> is [“A”, “frog”, “is”], then the call
       <c>StringFormatter.totalLetters(words)</c> returns 7. You may assume that
       all words in <c>wordList</c> consist of one or more letters.
     </p>
@@ -87,7 +87,7 @@
       <c>wordList</c>. We will need to create an integer variable to keep track
       of the number of letters and initialize it to 0. Then we will loop through
       all of the strings in <c>wordList</c> and add the length of the current
-      string to the number of letters. When the loop is finished we will return
+      string to the number of letters. When the loop is finished, we will return
       the number of letters.
     </p>
 

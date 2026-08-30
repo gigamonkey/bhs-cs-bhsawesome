@@ -5,8 +5,8 @@
 
   <introduction>
     <p>
-      In <xref ref="arrays" /> we learned about arrays, as our first data type
-      that we can use to hold multiple values. However arrays are not very
+      In <xref ref="arrays" /> we learned about arrays as our first data type
+      that we can use to hold multiple values. However, arrays are not very
       flexible. Most notably, the size of an array is established at the time of
       creation and cannot be changed. What are we supposed to do if we want to
       collect an unknown number of objects. Or if we want to both add and remove
@@ -18,14 +18,14 @@
     </p>
 
     <p>
-      For cases like this, Java has a class called <c>ArrayList</c> which is a
+      For cases like this, Java has a class called <c>ArrayList</c>, which is a
       resizable list. It is called <c>ArrayList</c> because it stores the items
       that have been added to it in an underlying array. But it also takes care
-      of keeping track of how many items have been added to the array and it
+      of keeping track of how many items have been added to the array, and it
       will create a new bigger array under the covers when needed to hold more
-      items. If you’ve used other languages like Javascript, Python, or Snap! an
-      <c>ArrayList</c> is much more like the lists and arrays in those languages
-      than Java’s arrays are.
+      items. If you’ve used other languages like Javascript, Python, or Snap!,
+      an <c>ArrayList</c> is much more like the lists and arrays in those
+      languages than Java’s arrays are.
     </p>
 
     <p>

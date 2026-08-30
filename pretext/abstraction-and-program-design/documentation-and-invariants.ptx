@@ -5,7 +5,7 @@
 
   <introduction>
     <p>
-      Another two important, and related aspects of program design are internal
+      Another two important and related aspects of program design are internal
       documentation of the program with comments and especially documenting the
       <term>invariants</term> that the program relies on.
     </p>
@@ -34,7 +34,7 @@
       made about how the pieces fit together. A few well-placed comments can
       help us remember those things when we come back to a section of code after
       a few months or a few years. Good comments are a gift to other programmers
-      who might have to understand and modify the code including our future
+      who might have to understand and modify the code, including our future
       selves.
     </p>
 
@@ -69,7 +69,7 @@
     <p>
       Multi-line comments marked with <c>/*</c> and <c>*/</c> are typically used
       for higher-level comments at the top level of classes. And in Java the
-      most important form of these comments are the Javadoc variation which
+      most important form of these comments are the Javadoc variation, which
       start with <c>/**</c> rather than <c>/*</c>. These comments are placed
       before instance and class variables, methods, constructors, and classes to
       document their purpose. A tool called <url
@@ -142,7 +142,7 @@
       online documentation for your classes as the Javadoc tool will use them to
       extract the different parts of the Javadoc comment and put them in the
       right place in the generated documentation. If you are just writing
-      Javadocs to be read in the code it’s less important to use these tags.
+      Javadocs to be read in the code, it’s less important to use these tags.
       Some of the main Javadoc tags are:
     </p>
 
@@ -244,19 +244,20 @@
     <p>
       One of the most important things to think about as we write programs and
       often to document in comments are the <term>invariants</term> of our
-      program. Invariant means “constant or unchanging” and in a program
+      program. Invariant means “constant or unchanging”, and in a program
       invariants are the things that should always be true. If something we
-      think is an invariant is ever <em>not</em> true then we have a bug in our
-      program and we can focus on tracking down how that invariant was violated.
-      But the rest of the time we can write code assuming our invariants hold
-      which reduces the number of things we have to worry about.
+      think is an invariant is ever <em>not</em> true, then we have a bug in our
+      program, and we can focus on tracking down how that invariant was
+      violated. But the rest of the time we can write code assuming our
+      invariants hold, which reduces the number of things we have to worry
+      about.
     </p>
 
     <p>
       Some invariants are enforced for us by Java. When we declare a variable to
-      be an <k>int</k> we can rely on the fact that that the value of that
+      be an <k>int</k>, we can rely on the fact that that the value of that
       variable will always be an integer. And when we write a method that takes
-      two arguments it will always be true that any code that calls that method
+      two arguments, it will always be true that any code that calls that method
       will have to provide two arguments of the right types because otherwise
       the code wouldn’t compile.
     </p>
@@ -275,18 +276,18 @@
     </p>
 
     <p>
-      For instance the version the <c>String</c> class’s <c>substring</c> method
-      that takes a single <k>int</k> argument has a further precondition that
-      the argument be in the bounds of the string index (not negative and not
-      larger than the length of the string. If called with an invalid argument
-      it throws an <c>IndexOutOfBoundsException</c> and crashes your program
-      rather than returning a substring.
+      For instance, the version the <c>String</c> class’s <c>substring</c>
+      method that takes a single <k>int</k> argument has a further precondition
+      that the argument be in the bounds of the string index (not negative and
+      not larger than the length of the string. If called with an invalid
+      argument, it throws an <c>IndexOutOfBoundsException</c> and crashes your
+      program rather than returning a substring.
     </p>
 
     <p>
       The beauty of establishing a precondition for a method (even just in your
       mind) is that it tells you where the bug is if it is violated: it has to
-      be in the code that is calling the method. By establishing a precondition
+      be in the code that is calling the method. By establishing a precondition,
       you are saying, this method doesn’t have to work at all unless this thing
       is true.
     </p>
@@ -300,7 +301,7 @@
     </p>
 
     <p>
-      Unlike a precondition which frees a method from having to deal with
+      Unlike a precondition, which frees a method from having to deal with
       certain situations, a postcondition puts responsibility on the method. If
       a method is called with its preconditions met and fails to meet its
       postconditions, then the method is buggy and we know what code we need to
@@ -311,9 +312,9 @@
       Preconditions and postconditions are related to comments because they are
       some of the most important things to document about our code. We don’t
       need to document things like variable types that are enforced by the
-      compiler but the interesting preconditions and postconditions of our
+      compiler, but the interesting preconditions and postconditions of our
       methods are things that the compiler can’t enforce but our code implicitly
-      relies on so it's important to make them explicit in comments.
+      relies on, so it's important to make them explicit in comments.
     </p>
 
     <activity label="turtle-preconditions">
@@ -393,9 +394,9 @@
 
     <p>
       Preconditions and postconditions are covered on the AP CSA exam. Software
-      validity, testing, and use-case diagrams which are discussed in this
-      subsection are not covered on the AP CSA exam, but they are described here
-      because they use preconditions and postconditions and are used by
+      validity, testing, and use-case diagrams, which are discussed in this
+      subsection, are not covered on the AP CSA exam, but they are described
+      here because they use preconditions and postconditions and are used by
       professional programmers.
     </p>
 
@@ -490,16 +491,16 @@
     <p>
       There are many different models for software development. The term
       <term>waterfall model</term> was first used in the 1970s to critique
-      existing step-by-step models where each phase such as requirements
-      gathering, coding, and testing is finished before the next phase begins.
-      Such models despite their many flaws were nonetheless adopted by some
+      existing step-by-step models where each phase, such as requirements
+      gathering, coding, and testing, is finished before the next phase begins.
+      Such models, despite their many flaws, were nonetheless adopted by some
       large organizations such as the U.S. Department of Defense. But these days
       many developers use some flavor of an <term>Agile</term> development model
       that involves iterative, incremental development where teams work in short
       two to three week <term>sprints</term> to completely develop, test, and
       release a component of the project to the customer for feedback. It is
       very adaptable as project requirements change because of early testing,
-      immediate customer feedback and collaboration.
+      immediate customer feedback, and collaboration.
     </p>
 
     <figure align="center">

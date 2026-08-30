@@ -164,9 +164,9 @@
         <p>
           Next you will create a new <c>ClimbInfo</c> object with a
           <c>peakName</c> of Whiteface and a <c>climbTime</c> of 301. You will
-          compare the <c>peakName</c> of Whiteface to Monadnock and since it is
-          greater you will try to continue but you will have reached the end of
-          the <c>climbList</c> so you will insert it there.
+          compare the <c>peakName</c> of Whiteface to Monadnock, and since it is
+          greater, you will try to continue, but you will have reached the end
+          of the <c>climbList</c>, so you will insert it there.
         </p>
       </li>
 
@@ -174,8 +174,8 @@
         <p>
           Next you will create a new <c>ClimbInfo</c> object with a
           <c>peakName</c> of Algonquin and a <c>climbTime</c> of 225. You will
-          compare Algonquin to Monadnock and since Algonquin is less than
-          Monadnock you will insert it at position 0.
+          compare Algonquin to Monadnock, and since Algonquin is less than
+          Monadnock, you will insert it at position 0.
         </p>
       </li>
 
@@ -183,9 +183,9 @@
         <p>
           Next you will create a new <c>ClimbInfo</c> object with a
           <c>peakName</c> of Monadnock and a <c>climbTime</c> of 334. You will
-          compare Monadnock to Algonquin and since it is greater you will
-          continue. You will next check Monadnock to Monadnock and since they
-          are equal you can insert it there.
+          compare Monadnock to Algonquin, and since it is greater, you will
+          continue. You will next check Monadnock to Monadnock, and since they
+          are equal, you can insert it there.
         </p>
       </li>
     </ol>

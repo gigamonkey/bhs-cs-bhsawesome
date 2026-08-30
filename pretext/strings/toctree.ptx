@@ -9,7 +9,7 @@
       Like arrays and the rest of the data types we will learn about from here
       on out, the <c>String</c> datatype is a reference type. However, unlike
       arrays, but like most other reference types in Java, <c>String</c> is
-      defined by a <term>class</term>. Classes are a critical part of Java and
+      defined by a <term>class</term>. Classes are a critical part of Java, and
       we’ll discuss them in depth starting in <xref ref="classes" />. But first
       we’re going to fill in some more details we need to know about how to use
       <c>String</c> values to represent and manipulate text.
@@ -19,7 +19,7 @@
       It also makes sense to look at <c>String</c> on its own before we get to
       classes more generally since it’s a special class that gets a bit of extra
       love from Java. For one thing it’s one of the handful of classes in the
-      <c>java.lang</c> package which means its available by default in all Java
+      <c>java.lang</c> package, which means its available by default in all Java
       programs. But it is also special in that it is the only class in Java that
       supports an operator other than <c>==</c> and <c>!=</c>, namely the
       <c>+</c> string concatenation operator. And it’s the only class in Java

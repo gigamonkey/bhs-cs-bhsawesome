@@ -144,7 +144,7 @@
 
     <p>
       Using the scanned array above, a <c>SkyView</c> object created with <c>new
-      SkyView(4, 3, values)</c>, would have <c>view</c> initialized with the
+      SkyView(4, 3, values)</c> would have <c>view</c> initialized with the
       following values.
     </p>
 
@@ -165,7 +165,7 @@
     </figure>
 
     <p>
-      A <c>SkyView</c> object created with <c>new SkyView(3, 2, values)</c>,
+      A <c>SkyView</c> object created with <c>new SkyView(3, 2, values)</c>
       would have <c>view</c> initialized with the following values.
     </p>
 

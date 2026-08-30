@@ -16,7 +16,7 @@
       we’ve learned so far aren’t really sufficient to create algorithms in
       Java. The most complex code we’ve written so far has only involved code
       that proceeds in an essentially straight line. We may use methods to break
-      up the code but each method runs from top to bottom and if we wanted we
+      up the code, but each method runs from top to bottom, and if we wanted we
       could get rid of all the methods but one and—at the cost of some
       duplication—put all the code in one sequence in that one method.
     </p>
@@ -26,7 +26,7 @@
       is that we only need a three pretty simple building blocks to be able to
       create code that implements any algorithm that can be run on any computer.
       The three building blocks of algorithms are <term>sequencing</term>,
-      <term>selection</term>, and <term>repetition</term> each of which control
+      <term>selection</term>, and <term>repetition</term>, each of which control
       how our program executes.
     </p>
 
@@ -60,8 +60,8 @@
     <p>
       It's only because of sequencing that we can know that that program will
       print <c>"x: 30; y: 30"</c>. If we didn’t know that the lines would run in
-      order maybe the assignment to <c>y</c> would happen after <c>x</c> was set
-      to 30 rather than before. Or maybe the <c>println</c> would run before
+      order, maybe the assignment to <c>y</c> would happen after <c>x</c> was
+      set to 30 rather than before. Or maybe the <c>println</c> would run before
       either variable had been given a value! But the default <term>control
       flow</term> of sequencing one thing after another lets us understand what
       is going to happen when.
@@ -80,7 +80,7 @@
     </p>
 
     <p>
-      As we’ll see there are all kinds of ways to make complicated selections
+      As we’ll see there are all kinds of ways to make complicated selections,
       but ultimately they all boil down to some combination of a simple
       selection based on some condition being either true or false. Either the
       student’s average score is greater than 90% and they get an A or it’s not
@@ -173,7 +173,7 @@
     <p>
       Although we can build any algorithm with some combination of just three
       simple building blocks, as is often the case with programming, when we are
-      building complex things out of simple parts it can be hard to keep track
+      building complex things out of simple parts, it can be hard to keep track
       of how everything fits together. Indeed, arguably the whole task of
       learning to program is really about learning to manage that complexity.
     </p>
@@ -190,7 +190,7 @@
       Pseudocode is a simplified, informal way of describing the steps in an
       algorithm in a language that’s part way between a human language like
       English and an actual programming language like Java. As long as we have
-      some way of describing sequences, selection, and repetition we can
+      some way of describing sequences, selection, and repetition, we can
       describe an algorithm.
     </p>
 
@@ -378,7 +378,7 @@
 
         <choice correct="yes">
           <statement>
-            <p>You will give them two cakes, and two cards.</p>
+            <p>You will give them two cakes and two cards.</p>
           </statement>
 
           <feedback>

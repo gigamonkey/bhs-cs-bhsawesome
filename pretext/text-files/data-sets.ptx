@@ -8,8 +8,8 @@
       The Pokémon CSV file from the previous section is an example of a
       <term>data set</term>, a collection of a bunch of pieces of information
       with the same structure. If you’ve ever used a spreadsheet with a bunch of
-      rows of data organized into columns you’ve dealt with a dataset. For
-      example here is bit of a spreadsheet containing data about students with
+      rows of data organized into columns, you’ve dealt with a dataset. For
+      example, here is bit of a spreadsheet containing data about students with
       columns for their first name, last name, email, and GPA.
     </p>
 
@@ -98,11 +98,11 @@
       In the previous section we saw how we can use methods like
       <c>Scanner.nextLine</c> or <c>Files.readAllLines</c> to get the contents
       of a file broken up into individual lines. But if we want to do
-      computations with that data we will usually need to extract the individual
-      parts of each line and maybe convert them into types like <k>int</k> or
-      <k>double</k> to work with. The process of extracting structure from a
-      linear sequence of such as the characters in a <c>String</c> is called
-      <term>parsing</term>.
+      computations with that data, we will usually need to extract the
+      individual parts of each line and maybe convert them into types like
+      <k>int</k> or <k>double</k> to work with. The process of extracting
+      structure from a linear sequence of such as the characters in a
+      <c>String</c> is called <term>parsing</term>.
     </p>
 
     <p>
@@ -116,7 +116,7 @@
       contains multiple values separated by commas. These values are the
       attributes of a single Pokémon: its name, type, speed, etc. Often the
       first line of a CSV file is a header line, consisting of a comma-separated
-      list of names of the attributes represented by each column. For instance
+      list of names of the attributes represented by each column. For instance,
       the Pokémon CSV file starts with this header line:
     </p>
 
@@ -133,7 +133,7 @@
     <p>
       The <c>String</c> class provides a useful method <c>split(String
       delimiter)</c> that splits a string into an array of <c>String</c> values
-      based on a specified <term>delimiter</term> which is a character like a
+      based on a specified <term>delimiter</term>, which is a character like a
       comma or a space that separates the units of data. This method returns a
       <c>String[]</c> where each element in the array contains one substring
       from the original string.
@@ -251,7 +251,7 @@
 
     <p>
       For values like a Pokémon’s name, using <c>String</c> is fine. But the
-      attributes, HP, Attack, Defense, or Speed are numbers so if we want to
+      attributes, HP, Attack, Defense, or Speed, are numbers, so if we want to
       answer questions about them, we will need to convert the <c>String</c>
       values we get from <c>split</c> into <k>int</k> or <k>double</k> values we
       can do math with.
@@ -635,7 +635,7 @@
 
       <li>
         <p>
-          Do something interesting with the data using a loop, for example you
+          Do something interesting with the data using a loop, for example, you
           could find the maximum or minimum value of an attribute or print out
           all the objects that have the same attribute value.
         </p>
@@ -649,7 +649,7 @@
           file that has at least 3 attributes that can be found in the file.
           Then, read in the data from the file, split each line, and save the
           data in an array of objects. Finally, do something interesting with
-          the data using a loop, for example you could find the object with the
+          the data using a loop, for example, you could find the object with the
           max or min attribute value or print out all the objects of a certain
           attribute value. You can use the files pokemon.csv,
           WorldIndicators2000.csv, or StateData2020-CDC-Census.csv.
@@ -782,8 +782,8 @@
         <ul>
           <li>
             <p>
-              <c>Scanner(File f)</c> the Scanner constructor that accepts a File
-              for reading.
+              <c>Scanner(File f)</c>, the Scanner constructor that accepts a
+              File for reading.
             </p>
           </li>
 
@@ -793,7 +793,7 @@
               input source. If the next <k>int</k> does not exist, it will
               result in an <c>InputMismatchException</c>. Note that this method
               does not read the end of the line, so the next call to
-              <c>nextLine()</c> will return the rest of the line which will be
+              <c>nextLine()</c> will return the rest of the line, which will be
               empty.
             </p>
           </li>

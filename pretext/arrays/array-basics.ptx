@@ -38,7 +38,7 @@
       <c>score1</c> and <c>score2</c>, we can have one variable named
       <c>scores</c> and access the elements like <c>scores[0]</c> and
       <c>scores[1]</c>. Anything we can do with a regular variable, such as
-      using it in an expression or assigning it a value we can also do with an
+      using it in an expression or assigning it a value, we can also do with an
       array element.
     </p>
 
@@ -62,13 +62,13 @@
 
     <p>
       In Java, the object data of arrays is stored in the computer’s memory as a
-      contiguous block and the index indicates how far each element is from the
+      contiguous block, and the index indicates how far each element is from the
       front of the block. So the first index is <c>0</c>, not <c>1</c>. Most
       programming languages these days use this kind of <term>zero-based
-      indices</term> but a few, including many block-based languages such as
+      indices</term>, but a few, including many block-based languages such as
       Snap!, use <term>one-based indices</term> where the first item in a list
       is at index <c>1</c>. One-based indices fit better with how English
-      speakers number things so if you are coming from Snap! or if Java is your
+      speakers number things, so if you are coming from Snap! or if Java is your
       first programming langauge, it may take a little while to remember that
       the first element of an array is at index <c>0</c>. (Sometimes programmers
       will refer to the first element of an array as the “zeroth” element to be
@@ -102,8 +102,8 @@
       As we’ve already learned, when we declare a variable, we specify its type
       and name. Declaring an array variable is no different except we need to
       declare it with an array type. Array types are written with the element
-      type of the array, followed by square brackets. For example to make an
-      array of <k>int</k> values, we use the type <c>int[]</c> which is
+      type of the array, followed by square brackets. For example, to make an
+      array of <k>int</k> values, we use the type <c>int[]</c>, which is
       pronounced “array of <k>int</k>” or “<k>int</k> array”.
     </p>
 
@@ -127,14 +127,14 @@
       only memory that is allocated is a place to hold a reference to an array.
       Declaring the variable doesn’t actually create the array object. But what
       is stored in the variable if there’s no object to reference? Java has a
-      special value <c>null</c> which is the reference equivalent of <c>0</c>
-      for an <k>int</k> or <c>0.0</c> for a <k>double</k> which means, “no
+      special value <c>null</c>, which is the reference equivalent of <c>0</c>
+      for an <k>int</k> or <c>0.0</c> for a <k>double</k>, which means, “no
       object”. Any variable with a reference type that hasn’t been assigned an
       actual reference value will have the value <c>null</c>.
     </p>
 
     <p>
-      So before we can use the array variable we need to actually create an
+      So before we can use the array variable, we need to actually create an
       array.
     </p>
   </subsection>
@@ -151,7 +151,7 @@
     </p>
 
     <p>
-      To create an array of a specific size we use the keyword <k>new</k>
+      To create an array of a specific size, we use the keyword <k>new</k>
       followed by what looks like an array type but with an <k>int</k>
       expression (often a literal <k>int</k>) inside the square brackets that
       says how big the array should be. The whole expression causes a new array
@@ -185,7 +185,7 @@
     </program>
 
     <p>
-      When we create an array like this all the values in the new array are
+      When we create an array like this, all the values in the new array are
       initialized to the “zero” value for the element type.
     </p>
 
@@ -209,11 +209,11 @@
     </figure>
 
     <p>
-      The other way to make an array, is with specific values using an
-      <term>array initializer</term> sometimes called an <term>initializer
-      list</term>. We still use <k>new</k> but instead of specifying the size of
-      the array inside the square brackets, we place a list of initial values in
-      curly braces (<c>{}</c>) after the square brackets:
+      The other way to make an array is with specific values using an
+      <term>array initializer</term>, sometimes called an <term>initializer
+      list</term>. We still use <k>new</k>, but instead of specifying the size
+      of the array inside the square brackets, we place a list of initial values
+      in curly braces (<c>{}</c>) after the square brackets:
     </p>
 
     <program>
@@ -267,7 +267,7 @@
     </program>
 
     <p>
-      Watch the following <url href="https://youtu.be/IbPFjw1FNkE">video</url>
+      Watch the following <url href="https://youtu.be/IbPFjw1FNkE">video</url>,
       which shows the two ways of creating an array with a physical model of
       Java memory.
     </p>
@@ -297,7 +297,7 @@
           </statement>
 
           <feedback>
-            <p>Yes correct!</p>
+            <p>Yes, correct!</p>
           </feedback>
         </choice>
 
@@ -358,7 +358,7 @@
 
     <idx><h>array</h><h>initialization</h></idx>
     <p>
-      Watch the following <url href="https://youtu.be/T-YZvVvPOac">video</url>
+      Watch the following <url href="https://youtu.be/T-YZvVvPOac">video</url>,
       which shows an array of String objects with a physical model of Java
       memory.
     </p>
@@ -415,8 +415,8 @@
 
     <p>
       To access the items in an array, we use an <term>array access
-      expression</term> which is a reference to an array (such as the name of an
-      array variable) followed by a pair of square brackets containing an
+      expression</term>, which is a reference to an array (such as the name of
+      an array variable) followed by a pair of square brackets containing an
       <k>int</k> expression that gives us the index of the element we want to
       access. Remember that an <term>index</term> is a number that indicates the
       position of an item in a list, starting at 0.
@@ -440,19 +440,19 @@
 
     <p>
       When accessing array elements, either to get their value or to assign to
-      them, the index must be valid given the size of the array. If not Java
+      them, the index must be valid given the size of the array. If not, Java
       will crash your program with an <c>ArrayIndexOutOfBoundsException</c>.
     </p>
 
     <p>
-      Since the first element is at index 0 that means the last valid index is
-      one less than the length of the array. (An egg carton contains twelve eggs
-      but if you numbered the eggs, starting at 0 the last one would be number
-      11.)
+      Since the first element is at index 0, that means the last valid index is
+      one less than the length of the array. (An egg carton contains twelve
+      eggs, but if you numbered the eggs, starting at 0, the last one would be
+      number 11.)
     </p>
 
     <p>
-      Watch the following <url href="https://youtu.be/uagEJw6bTM4">video</url>
+      Watch the following <url href="https://youtu.be/uagEJw6bTM4">video</url>,
       which shows a physical model of Java memory setting array values.
     </p>
 
@@ -487,8 +487,8 @@
 
           <feedback>
             <p>
-              Since the first element in an array is at index 0 the last element
-              is the length minus 1.
+              Since the first element in an array is at index 0, the last
+              element is the length minus 1.
             </p>
           </feedback>
         </choice>
@@ -632,7 +632,7 @@
     <activity label="array-set">
       <statement>
         <p>
-          Try out the following code which has two parallel arrays, highScores
+          Try out the following code, which has two parallel arrays, highScores
           and names. Can you print out Mateo’s score? Can you change Sofia’s
           score to 97 using an assignment statement in the code? Can you change
           the arrays so that they have 6 elements and add your name and score
@@ -664,15 +664,16 @@
     <p>
       What happens if you try to access an element that is not there? Try to
       access a <c>highScore</c> or <c>name</c> at index 7 above to see what
-      happens. The index must be between 0 and the length of the array - 1 or it
-      will give an error message called <c>ArrayIndexOutOfBoundsException</c>.
+      happens. The index must be between 0 and the length of the array - 1, or
+      it will give an error message called
+      <c>ArrayIndexOutOfBoundsException</c>.
     </p>
 
     <p>
       Note also that the index can be any expression, not just a literal
       <k>int</k>. In fact, it is somewhat unusual to use a literal index. More
       likely we will use at least a variable or even a more complex arithmetic
-      expression. For instance given an array like <c>highScores</c>, the
+      expression. For instance, given an array like <c>highScores</c>, the
       expression <c>highScores.length - 1</c> gives us the index of the last
       element of the array. Here are some examples, assuming <c>i</c> is an
       <k>int</k> variable that is a legal index into <c>highScores</c>:
@@ -692,7 +693,7 @@
         <gutterimage source="Unit4-Data-Collections/array-images/cow.jpg">
           <p>
             This code contains an array of image filenames. Run the code and see
-            that it displays images[0] which is “cow.jpg”. Can you change the
+            that it displays images[0], which is “cow.jpg”. Can you change the
             index variable’s value so that it prints out the puppy image? Can
             you print out the reindeer? Try all of them! What indices did you
             need to use? Then try using a random number for the index instead.
@@ -770,11 +771,11 @@
       In this listing the method <c>changeIntParameter</c> accepts an <k>int</k>
       argument which is stored in the parameter <c>n</c>. That parameter is a
       variable that only exists until <c>changeIntParameter</c> returns. In this
-      method, <c>n</c> is assigned a new value but the code has no effect
+      method, <c>n</c> is assigned a new value, but the code has no effect
       because immediately after that the method returns and the variable
       <c>n</c> doesn’t exist any more. The assignment to <c>n</c> has no effect
       on wherever its argument value came from. In this case because the
-      argument came from the variable <c>num</c> some people expect the change
+      argument came from the variable <c>num</c>, some people expect the change
       to <c>n</c> to also change <c>num</c>. But it’s the <em>value</em> of
       <c>num</c> that was passed to <c>changeIntParameter</c>. This would
       perhaps be more obvious if we had instead called
@@ -818,7 +819,7 @@
     </p>
 
     <p>
-      Now consider this final listing which works quite differently than the
+      Now consider this final listing, which works quite differently than the
       first two:
     </p>
 
@@ -841,8 +842,8 @@
     </listing>
 
     <p>
-      As in the previous listing the variable <c>nums</c> is a reference to a
-      newly created array and a copy of that reference is passed to
+      As in the previous listing, the variable <c>nums</c> is a reference to a
+      newly created array, and a copy of that reference is passed to
       <c>changeArrayElement</c> where it is stored in the parameter <c>ns</c>.
       But <c>changeArrayElement</c> doesn’t assign a new value to <c>ns</c>.
       Instead it uses an array access expression to assign a new value to the
@@ -957,10 +958,10 @@
           have image files for each country in the CSAwesome map images, we do
           have regional map images called south-america.png,
           central-america.png, north-america.png, asia-pacific.png, europe.png,
-          africa.png, and middle-east.png which you can use. Note that these are
-          png files and not jpg. If you create more maps for your project, you
-          can have your teacher share it in the teaching-csawesome google group
-          to contribute to this map image collection.
+          africa.png, and middle-east.png, which you can use. Note that these
+          are png files and not jpg. If you create more maps for your project,
+          you can have your teacher share it in the teaching-csawesome google
+          group to contribute to this map image collection.
         </p>
       </li>
 

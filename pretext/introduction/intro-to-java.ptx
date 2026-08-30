@@ -45,9 +45,9 @@
     </p>
 
     <p>
-      Complex programs will be made up of lots of algorithms and while we
+      Complex programs will be made up of lots of algorithms, and while we
       ultimately have to express them all in a programming language like Java,
-      when we are working on programs we will frequently shift between thinking
+      when we are working on programs, we will frequently shift between thinking
       like a human about <em>what</em> we want our program to do to then
       translating that into Java that tells the computer exactly <em>how</em> to
       do it.
@@ -56,7 +56,7 @@
     <p>
       It can be useful to plan out our code by first describing the steps in
       English or another natural language or by drawing diagrams. Sometimes
-      programmers will use <term>pseudocode</term> which looks kind of like a
+      programmers will use <term>pseudocode</term>, which looks kind of like a
       programming language but lets us leave out some of the details that a real
       programming language would need.
     </p>
@@ -79,8 +79,8 @@
       that contains the code that runs if that class is run as program. In the
       coding activities in this book, there is almost always one class and that
       is the one that is run when you hit the run button. In other programming
-      environments that you will use for more complex programs there will be
-      some other way to run your programs but they always start from some
+      environments that you will use for more complex programs, there will be
+      some other way to run your programs, but they always start from some
       class’s <c>main</c> method.
     </p>
 
@@ -139,14 +139,14 @@
     <title>Java syntax</title>
 
     <p>
-      Every programming language has a <term>syntax</term> which is a set of
+      Every programming language has a <term>syntax</term>, which is a set of
       rules for how the text of a program has to be organized. Human languages
-      also have syntax. For instance in English, “The robot ate the cupcake”, is
-      a syntactically correct sentence while, “Ate robot cupcake the the”, is
-      not. A program, like a sentence, can only actually be a program if it is
+      also have syntax. For instance in English, “The robot ate the cupcake” is
+      a syntactically correct sentence while “Ate robot cupcake the the” is not.
+      A program, like a sentence, can only actually be a program if it is
       syntactically correct. But computers are even more picky than humans about
       syntax, so one of the first things we need to learn, when learning a new
-      programming language are the exact rules of its syntax. Luckily most
+      programming language, are the exact rules of its syntax. Luckily most
       programming languages are designed to have a relatively simple syntax,
       even if it looks a bit odd at first, so we can usually pick it up by
       reading and writing code and paying attention to the error messages we get
@@ -165,7 +165,7 @@
       Semicolons <c>;</c> are also used all the time in Java. They are kind of
       like Java’s equivalent of a perod in English, used to end a complete
       statement like <c>System.out.println("Hi there!");</c>. For most beginning
-      Java programmers the most common error is leaving out a necessary
+      Java programmers, the most common error is leaving out a necessary
       semicolon.
     </p>
 
@@ -182,7 +182,7 @@
 
     <p>
       So punctuation is critical. Whitespace, on the other hand, such as the
-      indentation at the beginning of lines or blank lines is completely
+      indentation at the beginning of lines or blank lines, is completely
       unimportant to the computer, except in a few special contexts. But it is
       very important to human progarammers to help show the structure of code.
       You should pay attention to how code in this book is indented and try to
@@ -195,7 +195,7 @@
       is made up of words. Some words are special to Java and are called
       <term>keywords</term>. In the programs above the keywords are
       <k>public</k>, <k>class</k>, <k>static</k>, and <k>void</k>. Because
-      keywords have a special meaning to Java we can only use them for the
+      keywords have a special meaning to Java, we can only use them for the
       particular purpose each one has. All keywords in Java are lower case.
     </p>
 
@@ -207,7 +207,7 @@
       variables later.) Java doesn’t care at all what names we use there other
       than that they be made up of just letters and numbers and start with a
       letter. And as you can see, when a name is made up of multiple words like
-      <c>MyClass</c> the convention is to capitalize the first letter of each
+      <c>MyClass</c>, the convention is to capitalize the first letter of each
       word.
     </p>
 
@@ -367,8 +367,8 @@
     <title>Comments</title>
 
     <p>
-      Another important piece of Java syntax are <term>comments</term> which are
-      bits of the program that Java ignores but which are useful for humans
+      Another important piece of Java syntax are <term>comments</term>, which
+      are bits of the program that Java ignores but which are useful for humans
       reading the program.
     </p>
 
@@ -380,14 +380,14 @@
     </p>
 
     <p>
-      Multi-line comments, are marked with a <c>/*</c> to start the comment and
-      a <c>*/</c> to end it.
+      Multi-line comments are marked with a <c>/*</c> to start the comment and a
+      <c>*/</c> to end it.
     </p>
 
     <p>
       Commenting code well is an art form: there is no need to explain things
-      that can be understood from the code itself but it can be very valuable to
-      explain <em>why</em> code is a certain way.
+      that can be understood from the code itself, but it can be very valuable
+      to explain <em>why</em> code is a certain way.
     </p>
 
     <p>
@@ -435,14 +435,14 @@
         Some languages compile their source code to something called
         <term>machine code</term> that can run directly on the computer
         hardware. Java uses a different strategy, compliling to an intermediate
-        form called <term>bytecode</term> which is run by another program called
-        the <term>Java Virtual Machine</term>. But bytecode is much closer to
-        machine code than it is to Java source code.
+        form called <term>bytecode</term>, which is run by another program
+        called the <term>Java Virtual Machine</term>. But bytecode is much
+        closer to machine code than it is to Java source code.
       </p>
     </note>
 
     <p>
-      If the compiler can’t understand our program because of syntax errors it
+      If the compiler can’t understand our program because of syntax errors, it
       will try to tell us what is wrong. That’s when we need to check for
       missing semicolons and unmatched curly braces; we have to fix any syntax
       errors before the program can be run.
@@ -465,7 +465,7 @@
     </p>
 
     <p>
-      When working in an IDEs or text editor you must name the file the same
+      When working in an IDEs or text editor, you must name the file the same
       name as the class name with “.java” as the extension. All code (programs)
       in Java must be defined inside a class in a source file, and the name of
       the class must match the file name.

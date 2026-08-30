@@ -2,10 +2,9 @@
 
 <section xml:id="growth-mindset">
   <title>Growth mindset and pair programming</title>
+
   <idx>growth mindset</idx>
-
   <introduction>
-
     <p>
       Learning to code can be hard at times and sometimes frustrating. However,
       the feeling you get when your code works is incredible! And your brain
@@ -18,7 +17,6 @@
       brain together with a partner in a structure called <term>pair
       programming</term>.
     </p>
-
   </introduction>
 
   <subsection>
@@ -28,9 +26,9 @@
       The basic idea of a growth mindset (which you may well have heard about
       before in school as it’s a very popular idea and not specific to
       programming) is that none of our capabilities are fixed and we can improve
-      at the things we practice. That means when something seems hard it’s just
+      at the things we practice. That means when something seems hard, it’s just
       because we haven’t mastered it yet. And conversely, when something seems
-      easy for someone else it’s because they have, not because they’re just
+      easy for someone else, it’s because they have, not because they’re just
       naturally good at it.
     </p>
 
@@ -47,64 +45,57 @@
     </p>
 
     <tabular halign="center">
-        <row header="yes">
-          <cell>Instead of thinking/saying</cell>
-          <cell>Try thinking/saying</cell>
-        </row>
+      <row header="yes">
+        <cell>Instead of thinking/saying</cell>
+        <cell>Try thinking/saying</cell>
+      </row>
 
-        <row>
-          <cell>I’m not good at this.</cell>
-          <cell>I can learn to do this.</cell>
-        </row>
+      <row>
+        <cell>I’m not good at this.</cell>
+        <cell>I can learn to do this.</cell>
+      </row>
 
-        <row>
-          <cell>I’m awesome at this.</cell>
-          <cell>I’m on the right track.</cell>
-        </row>
+      <row>
+        <cell>I’m awesome at this.</cell>
+        <cell>I’m on the right track.</cell>
+      </row>
 
-        <row>
-          <cell>I give up.</cell>
-          <cell>
-            I’ll use a different learning strategy.
-          </cell>
-        </row>
+      <row>
+        <cell>I give up.</cell>
+        <cell>I’ll use a different learning strategy.</cell>
+      </row>
 
-        <row>
-          <cell>This is too hard.</cell>
-          <cell>
-            This may take some time and effort.
-          </cell>
-        </row>
+      <row>
+        <cell>This is too hard.</cell>
+        <cell>This may take some time and effort.</cell>
+      </row>
 
-        <row>
-          <cell>I can’t make this any better</cell>
-          <cell>I can improve it!</cell>
-        </row>
+      <row>
+        <cell>I can’t make this any better</cell>
+        <cell>I can improve it!</cell>
+      </row>
 
-        <row>
-          <cell>I just can’t do programming.</cell>
-          <cell>
-            I’m going to train my brain to do this.
-          </cell>
-        </row>
+      <row>
+        <cell>I just can’t do programming.</cell>
+        <cell>I’m going to train my brain to do this.</cell>
+      </row>
 
-        <row>
-          <cell>Plan A didn’t work.</cell>
-          <cell>Let’s try something else.</cell>
-        </row>
+      <row>
+        <cell>Plan A didn’t work.</cell>
+        <cell>Let’s try something else.</cell>
+      </row>
 
-        <row>
-          <cell>It’s good enough.</cell>
-          <cell>How can I improve this?</cell>
-        </row>
-      </tabular>
-
+      <row>
+        <cell>It’s good enough.</cell>
+        <cell>How can I improve this?</cell>
+      </row>
+    </tabular>
   </subsection>
 
   <subsection>
     <title>Pair Programming</title>
-    <idx>pair programming</idx>
 
+    <idx>pair programming</idx>
     <p>
       In this curriculum, you are encouraged to work together in pairs to
       complete the coding challenges. <term>Pair programming</term> is a

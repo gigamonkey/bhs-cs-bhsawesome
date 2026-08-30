@@ -10,7 +10,7 @@
       <term>Nested loops</term> (or as the College Board likes to call them
       <term>nested iterations</term>) are simply loops placed in the body of
       another loop. If we understand how loops work, there’s nothing magic about
-      nested loops: the outer loop runs its body in the normal way for a loop
+      nested loops: the outer loop runs its body in the normal way for a loop,
       and if that body contains a loop, that loop also runs in the normal way.
       The whole inner loop, like any other statement in the body of the outer
       loop, will run as many times as the outer loop’s body runs. And each time
@@ -20,7 +20,7 @@
 
     <p>
       Nested loops are typically used for working with two dimensions, for
-      example printing a rectangle of stars in rows and columns as shown below.
+      example, printing a rectangle of stars in rows and columns as shown below.
     </p>
 
     <figure align="center">
@@ -114,9 +114,9 @@
 
         <feedback>
           <p>
-            The outer loop runs from 1 up to 7 but not including 7 so there are
-            6 rows and the inner loop runs 1 to 5 times including 5 so there are
-            5 columns.
+            The outer loop runs from 1 up to 7 but not including 7, so there are
+            6 rows, and the inner loop runs 1 to 5 times including 5, so there
+            are 5 columns.
           </p>
         </feedback>
       </choice>
@@ -170,8 +170,9 @@
 
         <feedback>
           <p>
-            Yes, the outer loop runs from 0 up to 5 but not including 5 so there
-            are 5 rows and the inner loop runs from 3 down to 1 so 3 times.
+            Yes, the outer loop runs from 0 up to 5 but not including 5, so
+            there are 5 rows, and the inner loop runs from 3 down to 1, so 3
+            times.
           </p>
         </feedback>
       </choice>
@@ -208,7 +209,7 @@
     <statement>
       <p>
         The main method in the following class should print 10 rows with 5 *s in
-        each row. But, the blocks have been mixed up and include one extra block
+        each row. But the blocks have been mixed up and include one extra block
         that isn’t needed in the solution. Drag the needed blocks from the left
         and put them in the correct order on the right. Click the Check button
         to check your solution.
@@ -338,7 +339,7 @@
       <li>
         <p>
           Complete the code in the active code window below to draw a snowflake
-          of triangles. Remember that triangles have 3 sides and you will need
+          of triangles. Remember that triangles have 3 sides, and you will need
           to turn 120 degrees (external angle) 3 times to draw the triangle. Use
           the <c>turnAmount</c> variable for the single turn after drawing a
           triangle. How many times did you need to run the outer loop to go all

@@ -30,7 +30,7 @@
     <idx><h>String</h><h>append</h></idx>
     <p>
       We used string concatention in <xref ref="text-output" /> to generate
-      formatted strings to be printed out. As we saw then a <c>+</c> expression
+      formatted strings to be printed out. As we saw then, a <c>+</c> expression
       where one of the values is a <c>String</c> results in a new <c>String</c>
       formed by concatenating (smooshing together) the string representation of
       both values.
@@ -38,7 +38,7 @@
 
     <p>
       Like the arithmetic <c>+</c> operator, there’s also a compound assignment
-      version, <c>+=</c> that updates <c>String</c> variable to a new
+      version, <c>+=</c>, that updates <c>String</c> variable to a new
       <c>String</c> consisting of its old value plus the string representation
       of the value being added.
     </p>
@@ -50,17 +50,17 @@
     </program>
 
     <p>
-      It’s important to note that like the arithmetic version <c>String</c>
+      It’s important to note that, like the arithmetic version, <c>String</c>
       <c>+=</c> changes the variable, not the <c>String</c> itself. In fact
       <c>String</c> values are <term>immutable</term>, meaning once a
       <c>String</c> is created, its text cannot be changed. When we add two
       <c>String</c>s (or a <c>String</c> and another value converted to a
-      <c>String</c>) we get a new <c>String</c> without making any change to the
-      values being added together just like when we add the <k>int</k> values
-      <c>1 + 2</c> the original <c>1</c> and <c>2</c> aren’t changed. When we
-      use <c>+=</c> we are making a new <c>String</c> by adding something to the
-      current value of a variable and then assigning that new value back into
-      the variable, again just like with numbers.
+      <c>String</c>), we get a new <c>String</c> without making any change to
+      the values being added together just like when we add the <k>int</k>
+      values <c>1 + 2</c>, the original <c>1</c> and <c>2</c> aren’t changed.
+      When we use <c>+=</c>, we are making a new <c>String</c> by adding
+      something to the current value of a variable and then assigning that new
+      value back into the variable, again just like with numbers.
     </p>
 
     <activity label="lcso1">
@@ -172,7 +172,7 @@
         <p>
           What do you think the following will print? Guess before you hit run.
           If you want the addition to take place before the numbers are turned
-          into a string what should you do? Try to modify the code so that it
+          into a string, what should you do? Try to modify the code so that it
           adds 4 + 3 before appending the value to the string. Hint: you used
           this to do addition before multiplication in arithmetic expressions.
         </p>
@@ -193,8 +193,8 @@
     </activity>
 
     <p>
-      Since the same operators are processed from left to right this will print
-      <c>1243</c>. First 4 will be turned into a string and appended to 12 and
+      Since the same operators are processed from left to right, this will print
+      <c>1243</c>. First 4 will be turned into a string and appended to 12, and
       then 3 will be turned into a string and appended to 124. If you want to do
       addition instead, try using parentheses!
     </p>
@@ -225,8 +225,8 @@
 
     <p>
       Then we can think about the position of each character in a <c>String</c>.
-      The position of each character is called its <term>index</term> which is a
-      number that says how many positions away from the front of the
+      The position of each character is called its <term>index</term>, which is
+      a number that says how many positions away from the front of the
       <c>String</c> it is. That means that unlike in English, but like many
       other programming languages (but not Snap!), indices start at zero, rather
       than one, since the first character is zero positions from the front of
@@ -257,7 +257,7 @@
     <title>String instance methods</title>
 
     <p>
-      So that’s fine but how do we actually use the length of a string or the
+      So that’s fine, but how do we actually use the length of a string or the
       index of a character in a program? This brings us to one of the big
       differences between primitive types and classes like <c>String</c>.
     </p>
@@ -271,7 +271,7 @@
 
     <p>
       To do things with <c>String</c> values we instead use <term>instance
-      methods</term> which are like the methods we learned about in <xref
+      methods</term>, which are like the methods we learned about in <xref
       ref="method-signatures" /> but attached to the specific object so it has
       access to the data that makes up that object’s value. When we call a
       method with the dot operator, we say we <term>call</term> or
@@ -281,7 +281,7 @@
     </p>
 
     <p>
-      For example there’s a <c>length</c> method defined in the <c>String</c>
+      For example, there’s a <c>length</c> method defined in the <c>String</c>
       class that returns the <c>String</c>’s length. The number it returns
       depends on the specific <c>String</c> we call it on.
     </p>
@@ -302,9 +302,9 @@
     </program>
 
     <p>
-      The <c>String</c> class includes a ton of methods but for the AP exam, you
-      only need to know how to use the methods we look at below. They are all
-      also decribed in the <url
+      The <c>String</c> class includes a ton of methods, but for the AP exam,
+      you only need to know how to use the methods we look at below. They are
+      all also decribed in the <url
       href="https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-java-quick-reference.pdf">AP
       CSA Java Quick Reference Sheet</url> that you have access to during the
       exam.
@@ -325,23 +325,23 @@
 
     <p>
       To get a part of an existing <c>String</c> we use the <c>substring</c>
-      method which takes two <k>int</k> arguments specifying the part of the
-      original string to extract. For instance <c>"abcdef".substring(2, 5)</c>
-      returns the <c>"cde"</c> which is made up the characters starting at index
-      <c>2</c> of <c>"abcdef"</c> and ending at (but not including) index
+      method, which takes two <k>int</k> arguments specifying the part of the
+      original string to extract. For instance, <c>"abcdef".substring(2, 5)</c>
+      returns the <c>"cde"</c>, which is made up the characters starting at
+      index <c>2</c> of <c>"abcdef"</c> and ending at (but not including) index
       <c>5</c>.
     </p>
 
     <p>
-      Remember that <c>String</c> objects are immutable so the original
-      <c>String</c> isn’t changed. Instead <c>substring</c> method returns a new
-      <c>String</c> that contains a copy of some of the same text.
+      Remember that <c>String</c> objects are immutable, so the original
+      <c>String</c> isn’t changed. Instead, <c>substring</c> method returns a
+      new <c>String</c> that contains a copy of some of the same text.
     </p>
 
     <p>
       The first argument to <c>substring</c> must be a valid index into the
-      string and the second must either be a valid index or the length of the
-      string. If either argument is invalid the method will crash with a
+      string, and the second must either be a valid index or the length of the
+      string. If either argument is invalid, the method will crash with a
       <c>StringIndexOutOfBoundsException</c>.
     </p>
 
@@ -349,7 +349,7 @@
       Perhaps the easiest way to understand both arguments to <c>substring</c>
       is to think of them as specifying where to cut the string to extract the
       substring. If we had the string shown below on a strip piece of paper, to
-      cut out the <c>substring(5, 9)</c> we’d cut at the line just before box 5
+      cut out the <c>substring(5, 9)</c>, we’d cut at the line just before box 5
       and again just before box 9, giving us the shaded substring <c>"is a"</c>.
     </p>
 
@@ -367,7 +367,7 @@
 
     <p>
       Note that this also works for <c>0</c>, which just means “cut” before the
-      first character in the string and for the length of the string, which
+      first character in the string, and for the length of the string, which
       means “cut” just before the non-existant character that would be at that
       position. Here are some more examples.
     </p>
@@ -387,7 +387,7 @@
       Note how we can use any expression that produces an <k>int</k> as either
       argument to <c>substring</c>, such as <c>s.length() - 3</c> and
       <c>s.length()</c> in the last example. That also means if we had a
-      variable, <c>i</c>, that held a valid index into a string <c>s</c> we
+      variable, <c>i</c>, that held a valid index into a string <c>s</c>, we
       could get a <c>String</c> containing the one character at that index with
       the <c>substring</c> call <c>s.substring(i, i + 1)</c>.
     </p>
@@ -425,9 +425,9 @@
       is kind of the opposite, allowing us to find the position where a
       particular substring occurs in a <c>String</c>. We call the method on the
       string we want to search in (sometimes called the haystack) and pass the
-      string whose text we are looking for (the needle) as an argument and the
+      string whose text we are looking for (the needle) as an argument, and the
       method returns the index indicating the position where the needle is found
-      in the haystack. If the needle doesn’t occur in the haystack it returns
+      in the haystack. If the needle doesn’t occur in the haystack, it returns
       -1.
     </p>
 
@@ -443,9 +443,9 @@
 
     <p>
       We can use <c>indexOf</c> when we are taking apart strings to find the
-      index of some particular piece of text which we can then pass to
+      index of some particular piece of text, which we can then pass to
       <c>substring</c> to extract the text before or after it. For instance, if
-      we had a text containing the first paragraph of a book we could extract
+      we had a text containing the first paragraph of a book, we could extract
       the first sentence with an expression like this:
     </p>
 
@@ -457,9 +457,9 @@
       The call to <c>indexOf</c> finds the index of the first period followed by
       a space. (This does assume that the first sentence doesn’t end in a
       exclamation point or a question mark.) The resulting index is where the
-      period is. That index plus one, is used as the second argument to a call
-      to <c>substring</c> which then extracts everything from index <c>0</c> up
-      to and including the period.
+      period is. That index plus one is used as the second argument to a call to
+      <c>substring</c>, which then extracts everything from index <c>0</c> up to
+      and including the period.
     </p>
 
     <activity label="lcsm1">
@@ -751,8 +751,8 @@
       In <xref ref="boolean-expressions" /> we learned comparison operators that
       work on primitive types such as <c>==</c>, <c>&lt;</c>, and <c>&gt;</c>.
       We also mentioned that we can’t really use them with <c>String</c> values.
-      Technically we can use <c>==</c> but it probably doesn’t do what we want
-      for reasons we’ll discuss in <xref ref="string-equality" /> and we can’t
+      Technically we can use <c>==</c>, but it probably doesn’t do what we want
+      for reasons we’ll discuss in <xref ref="string-equality" />, and we can’t
       use use <c>&lt;</c> or <c>&gt;</c> at all.
     </p>
 
@@ -773,7 +773,7 @@
       <c>String</c> objects whose data is stored in two different places in
       memory but which contain the same sequence of characters. According to
       <c>==</c> those references are not the same (because they live in
-      different places in memory) but according to <c>equals</c> they
+      different places in memory), but according to <c>equals</c> they
       <em>are</em> same because the sequences of characters are the same.
     </p>
 
@@ -782,7 +782,7 @@
       the <c>String</c> we invoked the method on, and the other being the single
       argument passed to the method. It compares the text of both Strings
       character by character the way we would if we were putting them into an
-      dictionary. So <c>"aardvark"</c> comes before <c>"acme"</c> which comes
+      dictionary. So <c>"aardvark"</c> comes before <c>"acme"</c>, which comes
       before <c>"zoologist"</c>. The return value of <c>compareTo</c> is an
       <k>int</k> that indicates the ordering between the <c>String</c> we
       invoked <c>compareTo</c> on (call that the first string) and the argument
@@ -807,7 +807,7 @@
     </ul>
 
     <p>
-      That may be a bit hard to wrap your head around but this table shows that
+      That may be a bit hard to wrap your head around, but this table shows that
       we can translate an expression using any of the four relational operators
       to an expression that compares the value returned by <c>compareTo</c> to
       <c>0</c> using that same operator.
@@ -992,7 +992,7 @@
           </statement>
 
           <feedback>
-            <p>H is after B in the alphabet so s1 is greater than s2.</p>
+            <p>H is after B in the alphabet, so s1 is greater than s2.</p>
           </feedback>
         </choice>
 
@@ -1036,8 +1036,8 @@
         Create a program that takes a word and transforms it to Pig Latin using
         String methods. You may need the word’s length, a substring that does
         not include the first letter, and a substring that is just the first
-        letter (you can get the ith letter of a string using substring(i,i+1) so
-        for example the letter at index 3 would be substring(3,4)).
+        letter (you can get the ith letter of a string using substring(i,i+1),
+        so for example the letter at index 3 would be substring(3,4)).
       </p>
     </gutterimage>
 
@@ -1096,7 +1096,7 @@
       Java was one of the first programming languages to use <url
       href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">UNICODE</url>
       for its characters rather than ASCII. While ASCII could represent 128
-      characters which was plenty for English, Unicode is an international
+      characters, which was plenty for English, Unicode is an international
       standard that tries to assign a number (which they like to call a
       “codepoint”) to every character in every language. Unicode codepoints are
       traditionally represented in hex code (a base 16 code that uses the digits
@@ -1110,7 +1110,7 @@
       and the Unicode people had declared they would only ever need
       <m>2^{16}</m> or 65,536 code points to represent all the characters used
       in the world. So Java included a <k>char</k> data type that can hold
-      exactly <m>2^{16}</m> values. Then, seven months later, the Unicode folks,
+      exactly <m>2^{16}</m> values. Then, seven months later, the Unicode folks
       said, “Ooops, that’s not enough”, and extended their system to its current
       size of 1,112,064 possible codepoints. (As of September 2024, 154,998
       codepoints have actually been assigned characters. The next version of
@@ -1124,10 +1124,10 @@
       <k>int</k> to represent a codepoint and the method
       <c>Character.toString</c> to translate an <k>int</k> into a <c>String</c>
       containing the character for that codepoint. (You might see older Java
-      code that casts numbers to <k>char</k>. For many codepoints that will work
-      but not on more recently added codepoints including, critically, those for
-      Emoji. 😞 So better to use <c>Character.toString</c> and ignore <k>char</k>
-      altogether.)
+      code that casts numbers to <k>char</k>. For many codepoints that will
+      work, but not on more recently added codepoints, including, critically,
+      those for Emoji. 😞 So better to use <c>Character.toString</c> and ignore
+      <k>char</k> altogether.)
     </p>
 
     <project label="challenge1-6-unicode">
@@ -1135,7 +1135,7 @@
 
       <statement>
         <p>
-          Try the following program which prints out an English “A”, a <url
+          Try the following program, which prints out an English “A”, a <url
           href="https://unicodelookup.com/#cjk/1">Chinese character</url>, and
           an <url
           href="http://unicode.org/emoji/charts/full-emoji-list.html">emoji</url>.

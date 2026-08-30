@@ -5,17 +5,17 @@
 
   <introduction>
     <p>
-      Usually when we think about our program design we are thinking about how
+      Usually when we think about our program design, we are thinking about how
       to make our program correct and efficient. But in an age of rapid
       development in technology and automation, the work of software developers
-      has real impacts on people’s lives and we need to think about the effects
+      has real impacts on people’s lives, and we need to think about the effects
       the software we build will have on people and society.
     </p>
 
     <p>
       Programmers also have to be aware of legal and ethical issues in how
       software is developed. Much of modern software is developed using code
-      written by others and published as <term>open source</term> which is free
+      written by others and published as <term>open source</term>, which is free
       to use. But even freely available open source software comes with licenses
       that developers have to abide by if they want to use it.
     </p>
@@ -23,9 +23,9 @@
     <p>
       Professional software developers and computer scientists have codes of
       conduct that they can follow such as <url
-      href="https://ethics.acm.org/">ACM professional code of ethics</url> which
-      includes guidelines such as “Avoid harm” and “Respect privacy” but in
-      order to live up to codes like that we need to understand the ways
+      href="https://ethics.acm.org/">ACM professional code of ethics</url>,
+      which includes guidelines such as “Avoid harm” and “Respect privacy”, but
+      in order to live up to codes like that, we need to understand the ways
       software can have unintended harmful effects.
     </p>
   </introduction>
@@ -232,7 +232,7 @@
           are interested in. Find an appropriate (“good”) dataset and an
           inappropriate (“bad”) dataset for your topic and put links to them
           below. Explain why the datasets are appropriate or inappropriate, for
-          example the inappropriate dataset might be too small or incomplete or
+          example, the inappropriate dataset might be too small or incomplete or
           biased. Explain how the choice of your dataset could affect the
           results of a program that uses the data. We encourage you to work on
           this activity in pairs or groups.

@@ -281,9 +281,9 @@
     <p>
       This implies that the code needs to create an empty <c>ArrayList</c> of
       type <c>String</c>. Let’s call it <c>delList</c>. The code will loop
-      through the strings in the array <c>tokens</c> from the start to the end
+      through the strings in the array <c>tokens</c> from the start to the end,
       and if the current string is equal to either the <c>openDel</c> or
-      <c>closeDel</c> it adds that string to the end of delList. Finally it
+      <c>closeDel</c>, it adds that string to the end of delList. Finally, it
       should return delList.
     </p>
 

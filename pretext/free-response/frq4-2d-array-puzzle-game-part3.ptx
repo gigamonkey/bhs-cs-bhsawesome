@@ -88,7 +88,7 @@
 
     <p>
       When an element of the two-dimensional array is accessed, the first index
-      is used to specify the row and the second index is used to specify the
+      is used to specify the row, and the second index is used to specify the
       column.
     </p>
 
@@ -180,10 +180,10 @@
 
     <p>
       If such an array element is found, both array elements of the pair are
-      cleared (set to 0) and the method returns true. If more than one such
+      cleared (set to 0), and the method returns true. If more than one such
       array element is found, any one of those identified array elements can be
       used to complete the pair and can be cleared. If no such array element is
-      found, no changes are made to <c>puzzle</c> and the method returns false.
+      found, no changes are made to <c>puzzle</c>, and the method returns false.
     </p>
 
     <p>

@@ -23,7 +23,7 @@
       algorithms. There are quite a few algorithms we can build out of a single
       loop with an occasional <k>if</k> inside the body of the loop. In later
       units we will apply these ideas to data types like <c>String</c>, arrays,
-      <c>ArrayList</c> which contain multiple elements and are naturally
+      <c>ArrayList</c>, which contain multiple elements and are naturally
       processed with loops. But in this section we will stick with loops dealing
       with the data types we’ve already learned, mostly <k>int</k> and
       <k>double</k>.
@@ -45,7 +45,7 @@
       accumulate some kind of value by updating a variable each time the loop
       body runs. The value of the accumulator variable when the loop is complete
       is the result the algorithm is intended to compute. If you’ve ever counted
-      on your fingers you already understand the basic idea. In this section
+      on your fingers, you already understand the basic idea. In this section
       we’ll apply the accumulator pattern to summing, counting, and averaging
       algorithms.
     </p>
@@ -74,7 +74,7 @@
     <p>
       Note, the accumulator variable is different than the loop variable that
       controls the loop itself; this is a variable that is going to hold the
-      eventual answer we are trying to compute such as a count or a sum.
+      eventual answer we are trying to compute, such as a count or a sum.
     </p>
 
     <p>
@@ -103,7 +103,7 @@
 
     <p>
       Then each time through the loop, <c>sum</c> is incremented by the current
-      value of <c>i</c> and as a result when the loop ends <c>sum</c> is the
+      value of <c>i</c>, and as a result when the loop ends, <c>sum</c> is the
       total we want.
     </p>
 
@@ -149,14 +149,14 @@
     </program>
 
     <p>
-      If we compare this loop to the summing loop we can see the two key
+      If we compare this loop to the summing loop, we can see the two key
       difference between summing and counting: when counting we only increase
       the accumulator by one each time, usually with <c>++</c>, and we use an
       <k>if</k> to decide when to update it at all. For instance, this loop
       looks at all the measurements from a twenty-four hour period but only
       counts the ones that satisfy the criteria. Finally, the accumulator when
       we’re counting is typically an <k>int</k> since we don’t need any
-      fractional parts while in a summing loop in might be an <k>int</k> or a
+      fractional parts, while in a summing loop in might be an <k>int</k> or a
       <k>double</k>, depending on what the values we’re summing are.
     </p>
 
@@ -190,7 +190,7 @@
       a set of values is the sum of the values divided by the count, we just
       need to combine summing and counting. And in a simple average computation
       we don’t even need to count the values separately because we may know how
-      many there are. For instance here’s a loop to get the average rainfall in
+      many there are. For instance, here’s a loop to get the average rainfall in
       a day:
     </p>
 
@@ -297,7 +297,7 @@
     </program>
 
     <p>
-      You can try this below on the input numbers below the code or for more
+      You can try this below on the input numbers below the code, or for more
       interactive input, try it in your own IDE online with <url
       href="https://play.juicemind.com/dashboard/teams/Mk2wWMTqPkekcxTDWqRn/item/fce2f5ea-b4fe-4acd-9190-f24c22891a27#9c210139-7c72-441f-88c8-d68482488aa1">JuiceMind</url>
       or <url
@@ -412,9 +412,9 @@
 
     <p>
       That code works essentially the same way with the very sight difference
-      that the first version always assigns a value to <c>min</c> but sometimes
-      it’s the current value and in the second version we only assign to
-      <c>min</c> when we’ve actually found a smaller value. Either way is fine
+      that the first version always assigns a value to <c>min</c>, but sometimes
+      it’s the current value, and in the second version we only assign to
+      <c>min</c> when we’ve actually found a smaller value. Either way is fine,
       though avoiding <k>if</k> statements that we don’t need often leads to
       clearer code.
     </p>
@@ -479,15 +479,15 @@
     </p>
 
     <p>
-      Before we got to the loop part of this problem there are two key facts to
+      Before we got to the loop part of this problem, there are two key facts to
       keep in mind about some arithmetic operators we first talked about in
       <xref ref="expressions" />. First off, we need to realize that to get the
       rightmost digit of any <k>int</k> value is the remainder when divided by
-      ten. For example <c>1234 % 10</c> ⟹ <c>4</c>. Second, dividing an
+      ten. For example, <c>1234 % 10</c> ⟹ <c>4</c>. Second, dividing an
       <k>int</k> value by ten effectively throws away the rightmost digit
-      because of truncation. <c>1234 / 10</c> ⟹ <c>123</c>. Also note, that if
-      we divide an <k>int</k> value less than ten by ten, we get <c>0</c> after
-      the last digit is thrown away: <c>9 / 10</c> ⟹ <c>0</c>.
+      because of truncation. <c>1234 / 10</c> ⟹ <c>123</c>. Also note that if we
+      divide an <k>int</k> value less than ten by ten, we get <c>0</c> after the
+      last digit is thrown away: <c>9 / 10</c> ⟹ <c>0</c>.
     </p>
 
     <p>

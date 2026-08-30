@@ -211,11 +211,11 @@
       track of the number of open and close delimiters we have found so far. To
       do that we can create two integer variables: <c>totalOpen</c> and
       <c>totalClose</c> and set them to 0 initially. Each time through the loop
-      we will check if the current string which we will call currString is equal
-      to <c>openDel</c> and if so increment <c>totalOpen</c>, otherwise if it is
-      equal to <c>closeDel</c> increment <c>totalClose</c>. Next if
-      <c>totalClose</c> &gt; <c>totalOpen</c> the method should return false. A
-      After the loop return <c>totalOpen</c> == <c>totalClose</c>. This will
+      we will check if the current string, which we will call currString, is
+      equal to <c>openDel</c> and if so increment <c>totalOpen</c>, otherwise if
+      it is equal to <c>closeDel</c>, increment <c>totalClose</c>. Next if
+      <c>totalClose</c> &gt; <c>totalOpen</c>, the method should return false. A
+      After the loop, return <c>totalOpen</c> == <c>totalClose</c>. This will
       return true if they are equal and false otherwise.
     </p>
 
