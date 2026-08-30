@@ -170,7 +170,7 @@ Image =
     attribute alt { text }?,
     attribute description { text }?,
     attribute title { text }?,
-    attribute placement { "inline" | "left" | "right" | "indent" }?,
+    attribute placement { "inline" | "icon" | "button" | "left" | "right" | "indent" }?,
     attribute shadow { "no" }?,
     attribute animated { "click-to-play" }?,
     element shortdescription { text }?

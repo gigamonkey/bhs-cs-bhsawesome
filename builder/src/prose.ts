@@ -447,28 +447,43 @@ const EMITTERS: Record<string, Emitter> = {
     const pixelWidth = el.attributes.width !== undefined && !el.attributes.width.endsWith('%');
     const animated = el.attributes.animated === 'click-to-play';
     if (placement !== undefined || pixelWidth || animated) {
+      // placement="inline" is pure inline flow (no class — a classless img
+      // sized by its attributes, like the old sites' bare in-paragraph
+      // images); "icon" and "button" are the styled inline treatments
+      // (vertical-align/height:auto, the 1.6rem button icons).
+      const PLACEMENT_CLASS: Record<string, string | undefined> = {
+        inline: undefined,
+        icon: 'inline',
+        button: 'button',
+        left: 'float-start',
+        right: 'float-end',
+        indent: 'indent',
+      };
       const classes =
         [
-          placement === 'inline'
-            ? 'inline'
-            : placement === 'left'
-              ? 'float-start'
-              : placement === 'right'
-                ? 'float-end'
-                : placement === 'indent'
-                  ? 'indent'
-                  : undefined,
+          placement !== undefined ? PLACEMENT_CLASS[placement] : undefined,
           el.attributes.shadow === 'no' ? 'noshadow' : undefined,
         ]
           .filter(Boolean)
           .join(' ') || undefined;
+      // A bare-number height/width is the HTML attribute; a unit value
+      // (1.5em, 230px) must be an inline style (attributes are px-only).
+      const dim = (v: string | undefined): { attr?: string; style?: string } =>
+        v === undefined ? {} : /^\d+$/.test(v) ? { attr: v } : { style: v };
+      const w = dim(pixelWidth ? el.attributes.width : undefined);
+      const hgt = dim(el.attributes.height);
+      const style =
+        [w.style ? `width: ${w.style};` : '', hgt.style ? `height: ${hgt.style};` : '']
+          .join(' ')
+          .trim() || undefined;
       return voidEl('img', {
         ...(animated ? { 'data-gifffer': src } : { src }),
         alt,
         title: el.attributes.title,
         class: classes,
-        width: pixelWidth ? el.attributes.width : undefined,
-        height: el.attributes.height,
+        width: w.attr,
+        height: hgt.attr,
+        style,
       });
     }
     const width = Number.parseFloat(el.attributes.width ?? '100');

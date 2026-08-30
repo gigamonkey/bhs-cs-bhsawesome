@@ -466,6 +466,8 @@
         <attribute name="placement">
           <choice>
             <value>inline</value>
+            <value>icon</value>
+            <value>button</value>
             <value>left</value>
             <value>right</value>
             <value>indent</value>
