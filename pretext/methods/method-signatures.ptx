@@ -53,25 +53,37 @@
     <p>
       For now don't worry about the <c>public static</c>, just treat that as
       boiler plate that all your methods will start with for now. (We’ll start
-      writing methods without <k>static</k> in <xref ref="classes" />.) The next
-      word, <k>int</k>, is the return type. It is the name of a type or the
-      special keyword <k>void</k> which means the method doesn't return any
-      value. Then comes the name of the method, in this case, <c>add</c>. And
-      finally, in parentheses, the method’s <term>parameter list</term>, a
-      comma-delimited list of variables which are the method's parameters.
-      Parameters are declared like other variables with a type and a name. In
-      this method there are two, named <c>a</c> and <c>b</c>, both of type
-      <k>int</k>.
+      writing methods without <k>static</k> in <xref ref="classes" />. And your
+      teacher may have you write methods in environments where the <k>static</k>
+      is not required before then.) The next word, <k>int</k>, is the return
+      type. It is the name of a type or the special keyword <k>void</k> which
+      means the method doesn't return any value. Then comes the name of the
+      method, in this case, <c>add</c>. And finally, in parentheses, the
+      method’s <term>parameter list</term>, a comma-delimited list of variables
+      which are the method's parameters. Parameters are declared like other
+      variables with a type and a name. In this method there are two, named
+      <c>a</c> and <c>b</c>, both of type <k>int</k>.
     </p>
 
     <p>
-      The signature of method that doesn’t return a value but which has some
-      side effects such drawing a square on the screen might look like this:
+      Method that doesn’t return a value use the special return type <k>void</k>
+      (as in the empty void of space). Methods that don’t return a value are
+      called for their <term>side effects</term>, either visible side effects a
+      user can perceive, such as drawing something on the screen, or invisible
+      side effects such as making some change to the state of the program that
+      will affect it’s future behavior. For example, the signature of method
+      that draws a square on the screen might look like this:
     </p>
 
     <program>
-      public static void drawSquare(int x, int y, int width, int height)
+      public static void drawSquare(int x, int y, int size)
     </program>
+
+    <p>
+      The return type is <k>void</k> since it returns no value but it takes
+      three arguments that specify where to draw the square and how big it
+      should be.
+    </p>
   </subsection>
 
   <subsection>
@@ -107,9 +119,9 @@
     </p>
 
     <p>
-      When a method, such as <c>add</c>, has a return type other than
-      <k>void</k> we can use the method call as an expression whose value will
-      be whatever value the method returns. In this case that means we can use a
+      When a method has a return type other than <k>void</k>, as <c>add</c>
+      does, we can use the method call as an expression whose value will be
+      whatever value the method returns. In this case that means we can use a
       call to <c>add</c> anywhere we need a value of type <k>int</k>. For
       example, we can use it to provide the initial value in a variable
       declaration:
@@ -131,7 +143,8 @@
       that can use the variables from the parameter list. And at any point in
       the method body we can use the keyword <k>return</k> followed by an
       expression to cause the method to return the value of that expression as
-      the value of the method call.
+      the value of the method call. Once a method returns no more code in the
+      method runs.
     </p>
 
     <p>
@@ -482,8 +495,8 @@
 
     <p>
       Let’s take another look at the Old MacDonald Song and see if we can remove
-      even more duplication by writing a with that takes arguments. To start, do
-      this activity to find some lines of code that are not identical but are
+      even more duplication by writing a method that takes arguments. To start,
+      do this activity to find some lines of code that are not identical but are
       quite similar.
     </p>
 
