@@ -587,9 +587,9 @@
       With this method, the <c>main</c> method can now just consist of calls to
       the <c>chorus</c> and <c>verse</c> methods, showing clearly the structure
       of the song in terms that might make sense to a musician. This is a common
-      effect of creating good abstractions: while the details—in this case of
-      what exactly is printed—are hidden, the higher-level structure is much
-      easier to see.
+      effect of creating good abstractions: when the details—in this case the
+      details of what exactly is printed—are hidden, it makes the higher-level
+      structure much easier to see.
     </p>
 
     <program>
@@ -628,8 +628,8 @@
       Java uses <term>call by value</term> when it passes arguments to methods.
       This means that a copy of the value in the argument is saved in the
       parameter variable. Call by value initializes the parameters with copies
-      of the arguments. If the parameter variable changes its value inside the
-      method, the original value outside the method is not changed.
+      of the arguments. Thus even if code in the method assigns a new value to a
+      parameter variable, the original value outside the method is not changed.
     </p>
 
     <activity label="codelensSong2-trace">

@@ -583,13 +583,6 @@
         </row>
 
         <row bottom="minor">
-          <cell><c>Math.random() * 100</c></cell>
-          <cell>0.0</cell>
-          <cell>100.0</cell>
-          <cell>Over 9 quadrillion</cell>
-        </row>
-
-        <row bottom="minor">
           <cell><c>(int) (Math.random() * 100)</c></cell>
           <cell>0</cell>
           <cell>100</cell>
@@ -625,6 +618,23 @@
         </row>
       </tabular>
     </table>
+
+    <note>
+      <p>
+        Due to the ways <k>double</k>s work, while <c>Math.random()</c> gives us
+        approximately 9 quadrillion (<m>2^{53}</m>) uniformly spaced values, an
+        expression like <c>Math.random() * 100</c> (with no cast to <k>int</k>)
+        does not. Because of the finite precision of doubles, values that are
+        very close together, such as those produced by <c>Math.random()</c>, can
+        multiply to the same value when multiplied by a number that is not a
+        power of two. So the expression <c>Math.random() * 100</c> will produce
+        fewer distinct values than <c>Math.random()</c> and they will no longer
+        be perfecetly uniformly distributed. Similarly the numbers produced by
+        <c>(int) (Math.random() * 100)</c> are not <em>exactly</em> uniformly
+        distributed. But the difference would not be statistically detectable
+        unless you draw more than ten octillion random numbers.
+      </p>
+    </note>
 
     <activity label="qrand_2">
       <title>Random number 1-5</title>

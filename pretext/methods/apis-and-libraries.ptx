@@ -53,7 +53,7 @@
       One of the great things about Java is the number of libraries written by
       other programmers that we can use. One such library is the <c>Turtle</c>
       Java library, written by one of the author’s of this book, Dr. Barbara
-      Ericson, and built into this book. It allows us to create drawings using
+      Ericson, and built into the book. It allows us to create drawings using
       animated turtles that move around the screen. Try clicking run below to
       see a turtle in action.
     </p>
