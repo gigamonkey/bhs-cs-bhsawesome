@@ -22,3 +22,7 @@ words.txt
 # The builder package publish build (scripts/prepack.mjs)
 builder/dist/
 builder/package.json.orig
+
+# test-idempotency.sh scratch output
+first.xml
+second.xml
