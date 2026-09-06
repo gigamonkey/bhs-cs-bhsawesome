@@ -581,6 +581,22 @@ const EMITTERS: Record<string, Emitter> = {
   tabular: (el, ctx) => {
     const cols = elements(el, 'col');
     const rows = elements(el, 'row');
+    // <col width="50%"> renders as a real colgroup (auto layout otherwise
+    // splits columns by content — two photos side by side get natural-width
+    // proportions instead of the authored split).
+    const colgroup = cols.some((c) => c.attributes.width !== undefined)
+      ? h(
+          'colgroup',
+          {},
+          cols
+            .map((c) =>
+              voidEl('col', {
+                style: c.attributes.width ? `width: ${c.attributes.width};` : undefined,
+              }),
+            )
+            .join(''),
+        )
+      : '';
     const rowHeaders = el.attributes['row-headers'] === 'yes';
     const level = (v: string | undefined): number =>
       v === 'minor' ? 1 : v === 'medium' ? 2 : v === 'major' ? 3 : 0;
@@ -613,7 +629,7 @@ const EMITTERS: Record<string, Emitter> = {
     return h(
       'div',
       { class: 'tabular-box' },
-      h('table', { class: 'tabular' }, trs),
+      h('table', { class: 'tabular' }, colgroup, trs),
     );
   },
   row: () => '', // handled by tabular
