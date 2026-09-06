@@ -246,6 +246,10 @@ export const trimText = (s: string) =>
 
 type Emitter = (el: XmlElement, ctx: Ctx) => string;
 
+// Fallback map names for hotspot images without an xml:id; build-order
+// deterministic, uniqueness matters only within a page.
+let imageMapSeq = 0;
+
 const EMITTERS: Record<string, Emitter> = {
   title: () => '', // consumed by the enclosing division/block emitter
 
@@ -438,6 +442,15 @@ const EMITTERS: Record<string, Emitter> = {
     const src = `${base()}/external/${source}`;
     const desc = el.children.find((c) => isElement(c) && c.name === 'shortdescription') as XmlElement | undefined;
     const alt = desc ? trimText(textContent(desc)).trim() : el.attributes.description;
+    // Hotspot children make this an image map: the img gets usemap and the
+    // hotspots become <map> > div.hoverinfo > (<area> + content) — the
+    // area's :hover reaches its ancestors, so the theme's .hoverinfo rules
+    // (hidden <p>, shown on hover) drive the popups with no JS. The map
+    // precedes the img so the out-of-flow popups anchor at the top of the
+    // wrapper, over the image.
+    const hotspots = el.children.filter(
+      (c): c is XmlElement => isElement(c) && c.name === 'hotspot',
+    );
     // The D8 extensions: an image with a @placement (inline | left | right
     // | indent), a pixel @width (no % sign), or @animated flows as a bare
     // <img> — in-sentence Snap! block pictures, floats, click-to-play GIFs
@@ -446,7 +459,7 @@ const EMITTERS: Record<string, Emitter> = {
     const placement = el.attributes.placement;
     const pixelWidth = el.attributes.width !== undefined && !el.attributes.width.endsWith('%');
     const animated = el.attributes.animated === 'click-to-play';
-    if (placement !== undefined || pixelWidth || animated) {
+    if (placement !== undefined || pixelWidth || animated || hotspots.length > 0) {
       // placement="inline" is pure inline flow (no class — a classless img
       // sized by its attributes, like the old sites' bare in-paragraph
       // images); "icon" and "button" are the styled inline treatments
@@ -476,7 +489,8 @@ const EMITTERS: Record<string, Emitter> = {
         [w.style ? `width: ${w.style};` : '', hgt.style ? `height: ${hgt.style};` : '']
           .join(' ')
           .trim() || undefined;
-      return voidEl('img', {
+      const mapName = hotspots.length > 0 ? (elementId(el) ?? `image-map-${++imageMapSeq}`) : undefined;
+      const img = voidEl('img', {
         ...(animated ? { 'data-gifffer': src } : { src }),
         alt,
         title: el.attributes.title,
@@ -484,7 +498,28 @@ const EMITTERS: Record<string, Emitter> = {
         width: w.attr,
         height: hgt.attr,
         style,
+        usemap: mapName ? `#${mapName}` : undefined,
       });
+      if (mapName === undefined) return img;
+      const map = h(
+        'map',
+        { name: mapName },
+        hotspots
+          .map((hs) =>
+            h(
+              'div',
+              { class: 'hoverinfo' },
+              voidEl('area', {
+                shape: hs.attributes.shape,
+                coords: hs.attributes.coords,
+                href: '#',
+              }),
+              emitChildren(hs, ctx),
+            ),
+          )
+          .join(''),
+      );
+      return h('div', { class: 'image-map' }, map, img);
     }
     const width = Number.parseFloat(el.attributes.width ?? '100');
     const margin = (100 - width) / 2;

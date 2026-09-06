@@ -173,7 +173,22 @@ Image =
     attribute placement { "inline" | "icon" | "button" | "left" | "right" | "indent" }?,
     attribute shadow { "no" }?,
     attribute animated { "click-to-play" }?,
-    element shortdescription { text }?
+    element shortdescription { text }?,
+    Hotspot*
+  }
+
+# Image-map hotspots (BJC's hover-a-number components diagram): each
+# hotspot is a region of the image whose content pops up on hover. The
+# coords are HTML <area> coords in the image's RENDERED pixel space —
+# image maps don't scale, so a hotspot image needs bare-number @width and
+# @height pinning its displayed size to the coord space. The hover
+# styling is the theme's .hoverinfo rules (hidden <p>, shown on :hover);
+# distinct from Area, the exercise clickable-area element.
+Hotspot =
+  element hotspot {
+    attribute shape { "rect" | "circle" | "poly" },
+    attribute coords { text },
+    BlockEl+
   }
 
 Video =

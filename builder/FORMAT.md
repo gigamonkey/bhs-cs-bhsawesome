@@ -105,6 +105,16 @@ text?>` (division refs link; block refs become knowl popups), `<fillin>`
 - `shadow="no"` — suppress the book's default image shadow.
 - `animated="click-to-play"` — a gifffer GIF: the runtime swaps the
   animation in on click (`data-gifffer`).
+- `<hotspot shape="rect|circle|poly" coords="…">` children make the image
+  an image map (BJC's hover-a-number components diagram): each hotspot's
+  block content pops up on hover over its region, driven purely by the
+  theme's `.hoverinfo` CSS (the `<area>`'s `:hover` reaches its ancestor
+  div). Coords are HTML `<area>` coords in the image's **rendered** pixel
+  space — image maps don't scale — so give a hotspot image bare-number
+  `width`/`height` pinning its displayed size to the coord space. Emitted
+  as `div.image-map` > (`map` > `div.hoverinfo` > `area` + content) +
+  `img[usemap]`; the map name is the image's `xml:id` (or a generated
+  `image-map-N`).
 
 ## Interactive payloads (inside activity/project/exercise)
 

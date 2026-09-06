@@ -489,6 +489,33 @@
           <text/>
         </element>
       </optional>
+      <zeroOrMore>
+        <ref name="Hotspot"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!--
+    Image-map hotspots (BJC's hover-a-number components diagram): each
+    hotspot is a region of the image whose content pops up on hover. The
+    coords are HTML <area> coords in the image's RENDERED pixel space —
+    image maps don't scale, so a hotspot image needs bare-number @width and
+    @height pinning its displayed size to the coord space. The hover
+    styling is the theme's .hoverinfo rules (hidden <p>, shown on :hover);
+    distinct from Area, the exercise clickable-area element.
+  -->
+  <define name="Hotspot">
+    <element name="hotspot">
+      <attribute name="shape">
+        <choice>
+          <value>rect</value>
+          <value>circle</value>
+          <value>poly</value>
+        </choice>
+      </attribute>
+      <attribute name="coords"/>
+      <oneOrMore>
+        <ref name="BlockEl"/>
+      </oneOrMore>
     </element>
   </define>
   <define name="Video">
