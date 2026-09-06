@@ -118,7 +118,10 @@ text?>` (division refs link; block refs become knowl popups), `<fillin>`
   `width`/`height` pinning its displayed size to the coord space. Emitted
   as `div.image-map` > (`map` > `div.hoverinfo` > `area` + content) +
   `img[usemap]`; the map name is the image's `xml:id` (or a generated
-  `image-map-N`).
+  `image-map-N`). The theme's `.hoverinfo` rules should include
+  `pointer-events: none` (with `auto` restored on the `area`s) so an
+  open popup's layout box can't trap the mouse and block the image's
+  other regions — see BJC's book.css.
 
 ## Interactive payloads (inside activity/project/exercise)
 
