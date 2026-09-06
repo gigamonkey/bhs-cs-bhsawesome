@@ -378,6 +378,25 @@ const EMITTERS: Record<string, Emitter> = {
     if (el.attributes.marker !== undefined) {
       ctx.warn(`<ul marker="${el.attributes.marker}"> — @marker is retired; markers are always disc`);
     }
+    // checklist="yes": markdown task-list items — each li's inline content
+    // behind a live (unpersisted) checkbox, inside the label so clicking
+    // the text toggles it. Item content must stay inline: a <label> can't
+    // hold blocks.
+    if (el.attributes.checklist === 'yes') {
+      const items = elements(el, 'li')
+        .map((li) => {
+          if (li.children.some((c) => isElement(c) && FLOW_BLOCKS.has(c.name))) {
+            ctx.warn('<ul checklist> item with block content — checkboxes take inline items');
+          }
+          return h(
+            'li',
+            { id: elementId(li) },
+            h('label', {}, `${voidEl('input', { type: 'checkbox' })}`, emitChildren(li, ctx)),
+          );
+        })
+        .join('');
+      return h('ul', { class: 'task-list', id: elementId(el) }, items);
+    }
     return h('ul', { id: elementId(el) }, emitBlocks(el, ctx));
   },
   ol: (el, ctx) => {

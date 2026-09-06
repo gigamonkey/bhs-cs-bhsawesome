@@ -36,6 +36,9 @@ segment and the filename). `<title>` conventionally comes first (after any
 
 - `<p>` — inline content only; block content lives as siblings.
 - `<ul>`, `<ol type="a|A|i|I|1">`, `<li>`, `<dl>` (li with `<title>`).
+  `<ul checklist="yes">` renders each item's inline content behind a
+  live (unpersisted) checkbox — markdown task lists (`- [ ]`); items
+  must stay inline.
 - `<figure align?>` + `<caption>` + content; numbered per section.
 - `<image source>` — block form renders a centered image-box sized by
   `%`-width. See "Images" below for the inline/float extensions.

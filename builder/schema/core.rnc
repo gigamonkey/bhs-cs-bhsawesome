@@ -144,7 +144,10 @@ Caption = element caption { Inline }
 
 P = element p { IdAtt, Inline }
 
-Ul = element ul { IdAtt, Li+ }
+# checklist="yes" renders each item's inline content behind a live
+# checkbox (ul.task-list — markdown task lists, "- [ ]"); the boxes are
+# unpersisted tick-off aids, exactly the old Quarto rendering.
+Ul = element ul { IdAtt, attribute checklist { "yes" }?, Li+ }
 Ol =
   element ol {
     IdAtt,

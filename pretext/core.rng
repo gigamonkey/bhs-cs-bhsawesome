@@ -385,9 +385,19 @@
       <ref name="Inline"/>
     </element>
   </define>
+  <!--
+    checklist="yes" renders each item's inline content behind a live
+    checkbox (ul.task-list — markdown task lists, "- [ ]"); the boxes are
+    unpersisted tick-off aids, exactly the old Quarto rendering.
+  -->
   <define name="Ul">
     <element name="ul">
       <ref name="IdAtt"/>
+      <optional>
+        <attribute name="checklist">
+          <value>yes</value>
+        </attribute>
+      </optional>
       <oneOrMore>
         <ref name="Li"/>
       </oneOrMore>
