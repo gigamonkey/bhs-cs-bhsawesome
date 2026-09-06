@@ -20,6 +20,11 @@
 #     derives the 'content'-scoped bearer key from (same value the
 #     bhs-cs-content repo uses)
 
+# The build ends by writing public/bhsawesome/version.txt (this checkout's
+# short sha), served at /bhsawesome/version.txt: the monorepo's
+# scripts/since-deployed compares it against origin/main to tell whether
+# this workflow has landed.
+
 name: publish
 
 on:

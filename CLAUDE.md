@@ -170,7 +170,11 @@ This repo is one of the bhs-cs content overlay's prefix-scoped publishers
 
 - `.github/workflows/publish.yml` runs `npm ci`, `node builder/build.ts`
   (which emits straight to `build/out/public/bhsawesome` — the
-  overlay-shaped tree push-content expects, no staging step), and mirrors
+  overlay-shaped tree push-content expects, no staging step — and finishes
+  by writing the slice's version stamp, `version.txt`: the short git sha,
+  `-dirty` if the tree had uncommitted changes, served at
+  `/bhsawesome/version.txt` so the monorepo's `scripts/since-deployed book`
+  can tell what's on origin/main but not yet published), and mirrors
   it to the server with `push-content --only public/bhsawesome/` (needs the
   `BHS_CS_SERVER` variable + `SERVICE_KEYS_SECRET` secret configured on
   GitHub — `./setup.sh` provisions both). Keep the workflow file named
