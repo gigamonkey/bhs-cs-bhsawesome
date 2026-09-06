@@ -368,6 +368,7 @@ const EMITTERS: Record<string, Emitter> = {
   sup: (el, ctx) => h('sup', {}, trimText(emitChildren(el, ctx))),
   sub: (el, ctx) => h('sub', {}, trimText(emitChildren(el, ctx))),
   small: (el, ctx) => h('small', {}, trimText(emitChildren(el, ctx))),
+  u: (el, ctx) => h('u', {}, trimText(emitChildren(el, ctx))),
 
   // -- lists -----------------------------------------------------------------
   // Bare elements: ols are the UA default (ol@type passes through for
@@ -505,7 +506,14 @@ const EMITTERS: Record<string, Emitter> = {
       const w = dim(pixelWidth ? el.attributes.width : undefined);
       const hgt = dim(el.attributes.height);
       const style =
-        [w.style ? `width: ${w.style};` : '', hgt.style ? `height: ${hgt.style};` : '']
+        [
+          w.style ? `width: ${w.style};` : '',
+          hgt.style ? `height: ${hgt.style};` : '',
+          // @style: the escape hatch for one-off presentation the format
+          // doesn't model (a float's clear, an oversized gutter, a white
+          // backing behind a transparent diagram).
+          el.attributes.style ?? '',
+        ]
           .join(' ')
           .trim() || undefined;
       const mapName = hotspots.length > 0 ? (elementId(el) ?? `image-map-${++imageMapSeq}`) : undefined;

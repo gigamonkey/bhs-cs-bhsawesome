@@ -134,6 +134,7 @@
       <ref name="Sup"/>
       <ref name="Sub"/>
       <ref name="Small"/>
+      <ref name="U"/>
       <ref name="Comment"/>
     </choice>
   </define>
@@ -294,6 +295,11 @@
           </element>
         </oneOrMore>
       </choice>
+    </element>
+  </define>
+  <define name="U">
+    <element name="u">
+      <ref name="Inline"/>
     </element>
   </define>
   <!--
@@ -493,6 +499,9 @@
         <attribute name="animated">
           <value>click-to-play</value>
         </attribute>
+      </optional>
+      <optional>
+        <attribute name="style"/>
       </optional>
       <optional>
         <element name="shortdescription">

@@ -57,7 +57,7 @@ AnyElement =
 InlineEl =
   C | K | Term | Em | Strong | Var | Pubtitle | TitleReference | Url
   | Reference | Target | M | Xref | Fillin | Idx | Assignment | Checkpoint
-  | InlineImage | Area | Br | Sup | Sub | Small | Comment
+  | InlineImage | Area | Br | Sup | Sub | Small | U | Comment
 
 Inline = (text | InlineEl)*
 
@@ -113,6 +113,7 @@ Fillin =
     empty
   }
 Idx = element idx { text | element h { text }+ }
+U = element u { Inline }
 
 # An image with a @placement (inline | left | right | indent), pixel
 # @width, or @animated flows inline (D8); Image below is the block form.
@@ -176,6 +177,7 @@ Image =
     attribute placement { "inline" | "icon" | "button" | "left" | "right" | "indent" }?,
     attribute shadow { "no" }?,
     attribute animated { "click-to-play" }?,
+    attribute style { text }?,
     element shortdescription { text }?,
     Hotspot*
   }

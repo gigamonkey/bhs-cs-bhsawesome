@@ -112,6 +112,10 @@ text?>` (division refs link; block refs become knowl popups), `<fillin>`
 - `shadow="no"` — suppress the book's default image shadow.
 - `animated="click-to-play"` — a gifffer GIF: the runtime swaps the
   animation in on click (`data-gifffer`).
+- `style` — verbatim inline CSS, the escape hatch for one-off
+  presentation the format doesn't model (a float's `clear`, an outsized
+  gutter margin, a white backing behind a transparent diagram). Prefer
+  the modeled attributes; reach for this last.
 - `<hotspot shape="rect|circle|poly" coords="…">` children make the image
   an image map (BJC's hover-a-number components diagram): each hotspot's
   block content pops up on hover over its region, driven purely by the
