@@ -857,12 +857,18 @@ const EMITTERS: Record<string, Emitter> = {
   // can style just it as the link-like toggle.
   reveal: (el, ctx) => {
     const titleEl = el.children.find((c) => isElement(c) && c.name === 'title') as XmlElement | undefined;
-    const label = h('span', { class: 'reveal-label' }, escapeHtml(el.attributes.label ?? 'Show'));
+    // The toggle text: a <label> child when it carries inline markup
+    // ("Hint about <c>average of list</c>"), else the plain @label.
+    const labelEl = el.children.find((c) => isElement(c) && c.name === 'label') as XmlElement | undefined;
+    const labelText = labelEl
+      ? trimText(emitChildren(labelEl, ctx)).trim()
+      : escapeHtml(el.attributes.label ?? 'Show');
+    const label = h('span', { class: 'reveal-label' }, labelText);
     const summary = titleEl
       ? h('summary', {}, `${trimText(emitChildren(titleEl, ctx)).trim()} `, label)
       : h('summary', {}, label);
     const body = el.children
-      .filter((c): c is XmlElement => isElement(c) && c.name !== 'title')
+      .filter((c): c is XmlElement => isElement(c) && c.name !== 'title' && c.name !== 'label')
       .map((c) => emitElement(c, ctx))
       .join('');
     return h(

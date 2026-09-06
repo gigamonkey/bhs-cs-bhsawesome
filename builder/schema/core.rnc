@@ -320,11 +320,13 @@ Standard = element standard { text }
 
 # Click-to-expand content (BJC's collapse hints). The optional Title is
 # inline content sharing the summary line before the label (icon pills,
-# lead-in text).
+# lead-in text). The label — the link-styled toggle text — is the plain
+# @label attribute, or a <label> child when it needs inline markup
+# (code/em/var in the toggle: "Hint about <c>average of list</c>").
 Reveal =
   element reveal {
     IdAtt,
-    attribute label { text },
+    (attribute label { text } | element label { Inline }),
     Title?,
     Block
   }

@@ -81,7 +81,11 @@ text?>` (division refs link; block refs become knowl popups), `<fillin>`
   preserved in source, emitted nowhere. `<standard>` carries a
   curriculum-standard code (the AP CSP EK annotations).
 - **`<reveal label="…">`** — click-to-expand content (renders as
-  `<details>`).
+  `<details>`). The link-styled toggle text is the plain `label`
+  attribute, or a `<label>` child when it needs inline markup ("Hint
+  about `<c>average of list</c>`"); an optional `<title>` child is
+  lead-in content sharing the summary line before the toggle (icon
+  pills, introductory text).
 - **`<iframe src width? height?>`** — the rare embedded page.
 - **`<assignment material="…" [assignment="kind/name"]>text?</assignment>`**
   — a BHS assignment link: emits the `bhs-assignment` contract
