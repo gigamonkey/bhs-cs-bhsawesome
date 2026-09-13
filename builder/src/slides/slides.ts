@@ -351,9 +351,12 @@ function renderCodeBlock(el: XmlElement, ctx: Ctx, classes: string[]): string {
   return `<pre${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}><code${attrs}>${escapeHtml(clean)}</code></pre>\n`;
 }
 
-/** The code text: verbatim, except that text starting with a newline (an
- * indented XML authoring style) is de-indented — first newline dropped, the
- * common leading indent stripped, trailing whitespace trimmed. */
+/** The code text: verbatim when it starts flush against the tag; text
+ * starting with a newline (the indented authoring style — content on its
+ * own lines, indented relative to the tags) is de-indented with the same
+ * rule as the book format (prose.ts dedent, kept in step by hand — the
+ * slides module deliberately doesn't import prose.ts's module graph):
+ * leading blank lines stripped, end trimmed, common space-indent removed. */
 function codeText(el: XmlElement): string {
   let text = '';
   for (const c of el.children) {
@@ -361,16 +364,10 @@ function codeText(el: XmlElement): string {
     else throw new Error(`<code> holds verbatim text only (got <${(c as XmlElement).name}>)`);
   }
   if (!text.startsWith('\n')) return text;
-  text = text.slice(1).replace(/[ \t\n]+$/, '');
-  const indents = text
-    .split('\n')
-    .filter((l) => l.trim() !== '')
-    .map((l) => l.match(/^[ \t]*/)![0].length);
-  const strip = indents.length ? Math.min(...indents) : 0;
-  return text
-    .split('\n')
-    .map((l) => l.slice(strip))
-    .join('\n');
+  const lines = text.replace(/^([ \t]*\n)+/, '').trimEnd().split('\n');
+  const indents = lines.filter((l) => l.trim() !== '').map((l) => l.match(/^ */)![0].length);
+  const min = indents.length ? Math.min(...indents) : 0;
+  return lines.map((l) => l.slice(min)).join('\n');
 }
 
 function extractHighlights(text: string): { clean: string; highlights: string | undefined } {

@@ -73,9 +73,12 @@ renders as reveal's `<pre><code data-trim data-noescape>`:
 </code>
 ```
 
-- Text starting with a newline is de-indented (first newline dropped,
-  common indent stripped, trailing whitespace trimmed) so the XML can stay
-  indented; text starting immediately after the tag is taken verbatim.
+- Text starting with a newline is de-indented exactly the way the book
+  format does it (leading blank lines stripped, end trimmed, the common
+  space-indent removed), so the content indents naturally relative to the
+  tags — the style above, and the style every deck uses. Text starting
+  immediately after the tag is taken verbatim instead, for the rare block
+  whose leading spaces are content (an ASCII-art table).
 - `{{hl:n[,n]}}` at the end of a line adds that line to highlight step n
   (`data-line-numbers` steps, grouped and ordered by n). A bare
   `{{linenumbers}}` marker asks for plain always-on line numbers.
