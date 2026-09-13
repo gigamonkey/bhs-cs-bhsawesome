@@ -30,12 +30,12 @@ without building. The module knows nothing about the content repo's layout
 ```
 
 - **`<deck>`** — the root. Its `<title>` renders the `<h1>` title slide,
-  the page's head title, and names the deck in the materials index; deck
-  content before the first `<slide>` joins the title slide. Metadata rides
-  as attributes — there is no metadata.yml: `courses="csa csp"`
-  (space-separated), `grading="…"` (default `none`), and `title="…"` as an
-  index-name override for the rare deck whose picker name differs from its
-  title slide.
+  the page's head title, and names the deck in the materials index — one
+  title, one place (a title-less deck falls back to its directory name in
+  the index); deck content before the first `<slide>` joins the title
+  slide. The rest of the metadata rides as attributes — there is no
+  metadata.yml: `courses="csa csp"` (space-separated) and `grading="…"`
+  (default `none`).
 
 - **`<slide>`** — one reveal `<section>`. An optional leading `<title>`
   renders as `<h2>` (`level="1"`/`"3"` for h1/h3). No `<title>` = an

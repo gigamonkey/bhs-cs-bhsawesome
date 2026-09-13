@@ -148,14 +148,14 @@ test('links: http gets target=_blank, explicit target wins', () => {
   assert.match(html, /<a target='_self' href='https:\/\/y\.test\/'>y<\/a>/);
 });
 
-test('deckMeta: attributes, defaults, title override', () => {
+test('deckMeta: the <title> is the title; directory-name fallback', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'slides-meta-'));
   try {
     const f = path.join(dir, 'slides.xml');
     fs.writeFileSync(f, `<deck courses="csa csp"><title>Real <c>Title</c></title></deck>`);
     assert.deepEqual(deckMeta(f), { title: 'Real Title', courses: ['csa', 'csp'], grading: 'none' });
-    fs.writeFileSync(f, `<deck title="Picker name" grading="none"><title>Slide name</title></deck>`);
-    assert.equal(deckMeta(f).title, 'Picker name');
+    fs.writeFileSync(f, `<deck grading="none"><slide><p>untitled deck</p></slide></deck>`);
+    assert.equal(deckMeta(f).title, path.basename(dir));
     assert.deepEqual(deckMeta(f).courses, []);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });

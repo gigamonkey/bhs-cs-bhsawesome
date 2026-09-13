@@ -38,11 +38,10 @@ export function deckMeta(deckFile: string): DeckMeta {
   const deck = loadDeck(deckFile);
   const title = child(deck, 'title');
   return {
-    // A title= attribute overrides the rendered <title> for the index (the
-    // rare deck whose picker name differs from its title slide).
-    title:
-      deck.attributes.title ??
-      (title ? collapse(textContent(title)) : path.basename(path.dirname(deckFile))),
+    // The <title> IS the title, everywhere it's needed — the title slide,
+    // the page head, and the materials index. A title-less deck falls back
+    // to its directory name.
+    title: title ? collapse(textContent(title)) : path.basename(path.dirname(deckFile)),
     courses: (deck.attributes.courses ?? '').split(/\s+/).filter(Boolean),
     grading: deck.attributes.grading ?? 'none',
   };

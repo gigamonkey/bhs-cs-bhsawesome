@@ -26,9 +26,6 @@ FormatAtts =
 
 Deck =
   element deck {
-    # title= overrides the <title> for the materials index only (the rare
-    # deck whose picker name differs from its title slide).
-    attribute title { text }?,
     attribute courses { text }?,
     attribute grading { text }?,
     attribute language { text }?,
