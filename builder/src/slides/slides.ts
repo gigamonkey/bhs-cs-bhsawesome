@@ -517,6 +517,14 @@ function inlineElement(el: XmlElement, ctx0: Ctx): string {
       return `\\(${escapeHtml(rawText(el))}\\)`;
     case 'vocab':
       return `<span${classAttr(['vocab', ...classes])}${findexAttr(el)}${styleAttr(el)}>${inline(el, ctx)}</span>`;
+    case 'url': {
+      // A link to itself: <url>https://x</url> -> <a href=…>…</a>. The
+      // text is the URL, so ALL whitespace is stripped (an 80-column fill
+      // may have wrapped it; URLs contain none).
+      const u = rawText(el).replace(/\s+/g, '');
+      const t = el.attributes.target ?? (u.startsWith('http') ? '_blank' : undefined);
+      return `<a${t !== undefined ? ` target='${escapeAttr(t)}'` : ''} href='${escapeAttr(u)}'${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${escapeHtml(u)}</a>`;
+    }
     case 'html':
       return el.attributes.src !== undefined
         ? fs.readFileSync(path.resolve(ctx.deckDir, el.attributes.src), 'utf8')

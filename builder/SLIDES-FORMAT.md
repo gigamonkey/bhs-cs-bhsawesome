@@ -68,7 +68,8 @@ paragraphs, code — when they need it). Inline: `<c>` (code), `<em>`,
 `<strong>`, `<vocab>` (a vocabulary term — semantic, not just styling),
 `<m>` (TeX math, rendered client-side by the deck's MathJax), `<sup>`,
 `<sub>`, `<a href="…">` (http links open in a new tab unless `target=` says
-otherwise), `<img src="…"/>`, `<br/>`.
+otherwise), `<url>https://…</url>` (a link to itself — the text is the
+href; same new-tab rule), `<img src="…"/>`, `<br/>`.
 
 **Anything else passes through**: an element the format doesn't model is
 emitted as the HTML element it names, attributes and all. That is the

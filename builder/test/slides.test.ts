@@ -191,3 +191,12 @@ test('style= lands on modeled elements, slides, and passthrough', () => {
   assert.match(html, /<pre style='font-size: 50%'>/);
   assert.match(html, /<div style='border: 1px solid'>d<\/div>/);
 });
+
+test('url: a link to itself', () => {
+  const html = build(
+    `<deck><slide><p><url>https://example.com/x</url> and <url>ftp://old.example/</url> and <url>\n      https://wrapped.example/by-the-formatter\n    </url></p></slide></deck>`,
+  );
+  assert.match(html, /<a target='_blank' href='https:\/\/example\.com\/x'>https:\/\/example\.com\/x<\/a>/);
+  assert.match(html, /<a href='ftp:\/\/old\.example\/'>ftp:\/\/old\.example\/<\/a>/);
+  assert.match(html, /<a target='_blank' href='https:\/\/wrapped\.example\/by-the-formatter'>/);
+});

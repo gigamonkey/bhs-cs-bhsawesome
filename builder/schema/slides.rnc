@@ -114,6 +114,11 @@ Inline =
       FormatAtts,
       Inline*
     }
+  | element url {                            # a link to itself: the text IS the href
+      attribute target { text }?,
+      FormatAtts,
+      text
+    }
   | Html
   | AnyElement
 
@@ -122,7 +127,7 @@ Inline =
 AnyElement =
   element * - (deck | slide | title | repl | in | out | p | ul | ol | li
                | code | fragments | table | tr | td | th | html | notes
-               | c | m | vocab | a) {
+               | c | m | vocab | a | url) {
     attribute * { text }*,
     (text | Inline | Block)*
   }
