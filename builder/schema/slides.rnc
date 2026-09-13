@@ -119,6 +119,11 @@ Inline =
       FormatAtts,
       text
     }
+  | element f {                              # inline fragment: <span class="fragment">
+      attribute index { text }?,             # data-fragment-index
+      FormatAtts,
+      Inline*
+    }
   | Html
   | AnyElement
 
@@ -127,7 +132,7 @@ Inline =
 AnyElement =
   element * - (deck | slide | title | repl | in | out | p | ul | ol | li
                | code | fragments | table | tr | td | th | html | notes
-               | c | m | vocab | a | url) {
+               | c | m | vocab | a | url | f) {
     attribute * { text }*,
     (text | Inline | Block)*
   }

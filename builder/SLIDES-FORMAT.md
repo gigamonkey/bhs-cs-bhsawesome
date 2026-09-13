@@ -113,6 +113,10 @@ The reveal.js control surface — the reason this format exists:
 - `fragment=""` on ANY element makes it a fragment; a value adds fragment
   styles (`fragment="fade-up"`, `"highlight-red"`); `findex="2"` sets
   `data-fragment-index`. This composes with `class="…"`.
+- `<f>…</f>` is the concise INLINE fragment — exactly
+  `<span class="fragment">…</span>`, with `index="2"` for
+  `data-fragment-index` and fragment styles riding `class=`
+  (`<f class="fade-up">`).
 - `<fragments>` wraps a run of blocks and makes each child a fragment.
   Two special cases carried over from the Markup pipeline: a single
   `<ul>`/`<ol>` child makes the *items* the fragments (use `fragment=""`

@@ -200,3 +200,12 @@ test('url: a link to itself', () => {
   assert.match(html, /<a target='_blank' href='ftp:\/\/old\.example\/'>ftp:\/\/old\.example\/<\/a>/, 'always _blank, whatever the scheme');
   assert.match(html, /<a target='_blank' href='https:\/\/wrapped\.example\/by-the-formatter'>/);
 });
+
+test('f: concise inline fragments', () => {
+  const html = build(
+    `<deck><slide><p><f>one</f> <f index="3">three</f> <f class="fade-up" style="color: red">styled</f></p></slide></deck>`,
+  );
+  assert.match(html, /<span class='fragment'>one<\/span>/);
+  assert.match(html, /<span class='fragment' data-fragment-index='3'>three<\/span>/);
+  assert.match(html, /<span class='fragment fade-up' style='color: red'>styled<\/span>/);
+});

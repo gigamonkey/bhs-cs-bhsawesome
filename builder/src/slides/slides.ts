@@ -517,6 +517,17 @@ function inlineElement(el: XmlElement, ctx0: Ctx): string {
       return `\\(${escapeHtml(rawText(el))}\\)`;
     case 'vocab':
       return `<span${classAttr(['vocab', ...classes])}${findexAttr(el)}${styleAttr(el)}>${inline(el, ctx)}</span>`;
+    case 'f': {
+      // Concise inline fragment: <f>x</f> == <span class="fragment">x</span>;
+      // index= is data-fragment-index. Fragment styles ride class=
+      // (<f class="fade-up">), which merges after 'fragment' as usual.
+      const idx = el.attributes.index;
+      return (
+        `<span${classAttr(['fragment', ...ownClasses(el)])}` +
+        `${idx !== undefined ? ` data-fragment-index='${escapeAttr(idx)}'` : findexAttr(el)}` +
+        `${styleAttr(el)}>${inline(el, ctx)}</span>`
+      );
+    }
     case 'url': {
       // A link to itself: <url>https://x</url> -> <a href=…>…</a>. The
       // text is the URL, so ALL whitespace is stripped (an 80-column fill
