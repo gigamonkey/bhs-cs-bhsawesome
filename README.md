@@ -1,8 +1,13 @@
 # BHSawesome
 
-BHSawesome is a revision of CSAwesome2, the Runestone book CSAwesome, a
-curriculum for the 2025 revision of the College Board AP Computer Science A
-Course and Exam Description.
+BHSawesome is a revision of Berkeley High of CSAwesome2, the Runestone book
+CSAwesome, a curriculum for the 2025 revision of the College Board AP Computer
+Science A Course and Exam Description.
+
+The version in this repo was adapted from the source published on Runestone and
+built with PreTeXt in order to serve it directly on my class website and use my
+own Java test runner and class database. I also moved off of PreTeXt, building
+directly from the source
 
 # Formatting `.ptx` files
 
