@@ -122,7 +122,11 @@ loaded in every deck; press S for the speaker view).
 ## class= and the stylesheet
 
 `class="…"` is legal on every element and lands on the emitted HTML,
-appended after any classes the emitter generates. The deck stylesheet is
-the website's `/reveal/dist/custom.css`; a one-off look is a `class=` in
-the deck plus (if it isn't one of the existing classes — `bigcode`,
-`smallcode`, `tinycode`, `smaller`, `hl`, `dbtable`, …) a rule there.
+appended after any classes the emitter generates. The deck stylesheet
+lives WITH the decks — bhs-cs-content's `materials/slides/custom.css`,
+served at the `/reveal/dist/custom.css` URL the shell links (the content
+build routes it there; the website's overlay-first static mounts serve
+it) — so a one-off look is one content-repo commit: a `class=` in the
+deck plus (if it isn't one of the existing classes — `bigcode`,
+`smallcode`, `tinycode`, `smaller`, `hl`, `dbtable`, …) a rule in that
+file. No website deploy involved.
