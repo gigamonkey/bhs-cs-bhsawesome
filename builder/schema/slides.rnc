@@ -1,0 +1,130 @@
+# The XML slide-deck grammar — @peterseibel/book-builder's second document
+# type (the bhs-cs monorepo's plans/xml-slides.md). SLIDES-FORMAT.md is the
+# prose companion; the emitter is src/slides/slides.ts.
+#
+# A sibling of core.rnc, not an extension: the inline vocabulary reuses
+# core's names where the meaning matches (<c>, <em>, <m>), but the block
+# structure is reveal.js-shaped. Elements the grammar doesn't model pass
+# through to the HTML verbatim (the custom-HTML half of the format's
+# purpose), so the grammar ends in a wildcard rather than a closed world.
+
+default namespace = ""
+
+start = Deck
+
+# fragment="" makes the element a reveal fragment; a non-empty value adds
+# fragment styles (fade-up, highlight-red, ...). findex is
+# data-fragment-index. class passes through to the emitted element,
+# appended to whatever classes the emitter generates. language sets the
+# code-block language for the element's subtree (nearest ancestor wins;
+# the build supplies the outermost default).
+FormatAtts =
+  attribute fragment { text }?,
+  attribute findex { text }?,
+  attribute class { text }?,
+  attribute language { text }?
+
+Deck =
+  element deck {
+    # title= overrides the <title> for the materials index only (the rare
+    # deck whose picker name differs from its title slide).
+    attribute title { text }?,
+    attribute courses { text }?,
+    attribute grading { text }?,
+    attribute language { text }?,
+    Title?,
+    Block*,
+    Slide*
+  }
+
+Slide =
+  element slide {
+    attribute level { "1" | "2" | "3" }?,
+    FormatAtts,
+    (Title | Repl)?,
+    Block*
+  }
+
+# Empty <title/> renders the deliberately blank heading (keeps the line box).
+Title = element title { Inline* }
+
+Repl =
+  element repl {
+    attribute level { "1" | "2" | "3" }?,
+    element in { Inline* },
+    element out { Inline* }
+  }
+
+Block =
+  P
+  | List
+  | Code
+  | Fragments
+  | Table
+  | Html
+  | Notes
+  | AnyElement
+
+P = element p { FormatAtts, Inline* }
+
+List =
+  element ul { FormatAtts, Li* }
+  | element ol { FormatAtts, Li* }
+
+Li = element li { FormatAtts, (Inline* | Block*) }
+
+# Verbatim text; {{hl:n[,n]}} markers at ends of lines become
+# data-line-numbers steps, a bare {{linenumbers}} marker plain numbering.
+# Text starting with a newline is de-indented (strip the common indent).
+Code = element code { FormatAtts, text }
+
+# Each child becomes a fragment; a single ul/ol child makes the ITEMS the
+# fragments; a table child takes the class itself.
+Fragments = element fragments { Block* }
+
+Table =
+  element table {
+    FormatAtts,
+    # rows / cells: the rows (or data cells) become the fragments.
+    attribute fragments { "rows" | "cells" }?,
+    AnyAttr*,
+    Tr*
+  }
+
+Tr = element tr { FormatAtts, AnyAttr*, Cell* }
+
+Cell =
+  element td { FormatAtts, AnyAttr*, (Inline* | Block*) }
+  | element th { FormatAtts, AnyAttr*, (Inline* | Block*) }
+
+# Raw HTML, block or inline: CDATA content, or src= naming a deck-local file.
+Html = element html { attribute src { text }?, text }
+
+# Speaker notes (reveal's notes plugin).
+Notes = element notes { Block* }
+
+Inline =
+  text
+  | element c { FormatAtts, Inline* }        # inline code
+  | element m { text }                       # TeX math (client-side MathJax)
+  | element vocab { FormatAtts, Inline* }    # a vocabulary term
+  | element a {
+      attribute href { text },
+      attribute target { text }?,            # default: _blank for http(s) links
+      FormatAtts,
+      Inline*
+    }
+  | Html
+  | AnyElement
+
+# The passthrough wildcard: any other element is emitted as the HTML
+# element it names, attributes and all (minus the format's own attributes).
+AnyElement =
+  element * - (deck | slide | title | repl | in | out | p | ul | ol | li
+               | code | fragments | table | tr | td | th | html | notes
+               | c | m | vocab | a) {
+    attribute * { text }*,
+    (text | Inline | Block)*
+  }
+
+AnyAttr = attribute * - (fragment | findex | class | language | fragments) { text }

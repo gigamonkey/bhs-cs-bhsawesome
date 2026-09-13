@@ -12,6 +12,7 @@ export { checkLinks } from './check-links.ts';
 export { serve } from './serve.ts';
 export { watchAndBuild } from './watch.ts';
 export { type Book, type Division, loadBook } from './book.ts';
+export { type DeckMeta, type SlideDeckConfig, buildSlideDeck, deckMeta, slideDeckHtml } from './slides/slides.ts';
 // Helpers a book config's hook functions (tocJs, pageHeading, …) need.
 export { href } from './urls.ts';
 export { escapeHtml, escapeAttr, h } from './html.ts';

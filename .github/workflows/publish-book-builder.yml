@@ -47,6 +47,10 @@ jobs:
 
       - run: npm run typecheck
 
+      # The slides document type has its own tests (the book build below
+      # doesn't exercise it).
+      - run: npm test
+
       # The whole-book build IS the test suite: a builder that can't build
       # this book cleanly must not publish.
       - run: node builder/build.ts && node builder/check-links.ts

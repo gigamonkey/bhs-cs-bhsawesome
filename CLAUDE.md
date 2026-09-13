@@ -68,10 +68,20 @@ either `.rnc`. A format change needs the matching emitter case in
 
 The builder itself is generic (everything book-specific is the
 `BookConfig` in `builder/bhsawesome.ts`) and is published to npm as
-**`@peterseibel/book-builder`** for the BJC build in bhs-cs-content
-(release with `make release-book-builder`, the monorepo's
-release-bhs-content pattern; the publish-book-builder workflow publishes
-on the tag via npm Trusted Publisher).
+**`@peterseibel/book-builder`** for bhs-cs-content's builds (release with
+`make release-book-builder`, the monorepo's release-bhs-content pattern;
+the publish-book-builder workflow publishes on the tag via npm Trusted
+Publisher — it runs `npm test` in builder/ first).
+
+The package also builds a second document type: **XML slide decks** (the
+monorepo's `plans/xml-slides.md`) — `buildSlideDeck`/`deckMeta` in
+`builder/src/slides/slides.ts`, grammar `builder/schema/slides.rnc`, prose
+companion `builder/SLIDES-FORMAT.md`, tests `builder/test/slides.test.ts`
+(`npm test` in builder/). bhs-cs-content's slides pass consumes it; this
+book doesn't use it. The emitted HTML is DOM-equivalent to the retired
+Lisp slides pipeline's — that parity is pinned by the tests, so treat any
+deliberate change to the emitted shapes as a format-version event for the
+content repo's decks.
 
 ## Document structure
 

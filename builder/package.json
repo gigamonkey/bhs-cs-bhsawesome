@@ -16,13 +16,15 @@
   "files": [
     "src",
     "schema",
-    "FORMAT.md"
+    "FORMAT.md",
+    "SLIDES-FORMAT.md"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "typecheck": "tsc -p . --noEmit",
+    "test": "node --test test/",
     "build": "tsc -p tsconfig.build.json",
     "prepack": "node scripts/prepack.mjs",
     "postpack": "node scripts/postpack.mjs"
