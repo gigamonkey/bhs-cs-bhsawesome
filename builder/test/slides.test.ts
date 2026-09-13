@@ -16,7 +16,7 @@ import { buildSlideDeck, deckMeta } from '../src/slides/slides.ts';
 function build(xml: string, defaultLanguage?: string, extraFiles?: Record<string, string>): string {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'slides-test-'));
   try {
-    const deckFile = path.join(dir, 'slides.xml');
+    const deckFile = path.join(dir, 'slides.deck');
     fs.writeFileSync(deckFile, xml);
     for (const [name, content] of Object.entries(extraFiles ?? {})) {
       fs.writeFileSync(path.join(dir, name), content);
@@ -151,7 +151,7 @@ test('links: http gets target=_blank, explicit target wins', () => {
 test('deckMeta: the <title> is the title; directory-name fallback', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'slides-meta-'));
   try {
-    const f = path.join(dir, 'slides.xml');
+    const f = path.join(dir, 'slides.deck');
     fs.writeFileSync(f, `<deck courses="csa csp"><title>Real <c>Title</c></title></deck>`);
     assert.deepEqual(deckMeta(f), { title: 'Real Title', courses: ['csa', 'csp'], grading: 'none' });
     fs.writeFileSync(f, `<deck grading="none"><slide><p>untitled deck</p></slide></deck>`);

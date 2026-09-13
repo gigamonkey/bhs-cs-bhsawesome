@@ -18,7 +18,7 @@ import { escapeAttr, escapeHtml } from '../html.ts';
 import { type XmlElement, child, elements, isElement, isText, loadXml, textContent } from '../xml.ts';
 
 export type SlideDeckConfig = {
-  /** Absolute path to the deck source (slides.xml). */
+  /** Absolute path to the deck source (slides.deck). */
   deckFile: string;
   /** Absolute path of the index.html to write. */
   outFile: string;
@@ -32,8 +32,8 @@ export type DeckMeta = {
   grading: string;
 };
 
-/** The deck's metadata, read from the XML (there is no metadata.yml — the
- * deck carries its own metadata: plans/xml-slides.md). */
+/** The deck's metadata, read from the deck itself (there is no
+ * metadata.yml: plans/xml-slides.md). */
 export function deckMeta(deckFile: string): DeckMeta {
   const deck = loadDeck(deckFile);
   const title = child(deck, 'title');
@@ -51,6 +51,7 @@ export function buildSlideDeck(config: SlideDeckConfig): void {
   const html = slideDeckHtml(loadDeck(config.deckFile), {
     deckDir: path.dirname(config.deckFile),
     defaultLanguage: config.defaultLanguage,
+    deckFile: config.deckFile,
   });
   fs.mkdirSync(path.dirname(config.outFile), { recursive: true });
   fs.writeFileSync(config.outFile, html);
@@ -130,12 +131,12 @@ const FORMAT_ATTRS = new Set(['fragment', 'findex', 'fragments', 'language', 'cl
 
 export function slideDeckHtml(
   deck: XmlElement,
-  opts: { deckDir: string; defaultLanguage?: string },
+  opts: { deckDir: string; defaultLanguage?: string; deckFile?: string },
 ): string {
   const ctx: Ctx = {
     deckDir: opts.deckDir,
     language: deck.attributes.language ?? opts.defaultLanguage,
-    file: path.join(opts.deckDir, 'slides.xml'),
+    file: opts.deckFile ?? path.join(opts.deckDir, 'slides.deck'),
   };
 
   const title = child(deck, 'title');
@@ -207,7 +208,7 @@ function heading(level: number, title: XmlElement, ctx: Ctx): string {
   // An empty <title/> is the deliberately blank heading (the old markup
   // decks' `** \empty{}` trick): the <empty> element keeps the h2's line
   // box so the slide's layout doesn't shift.
-  const body = title.children.length ? inline(title, ctx) : '<empty></empty>';
+  const body = title.children.length ? inlineBlock(title, ctx) : '<empty></empty>';
   return `<h${level}${classAttr(ownClasses(title))}${styleAttr(title)}>${body}</h${level}>\n`;
 }
 
@@ -218,7 +219,7 @@ function block(el: XmlElement, ctx0: Ctx, forced: string[]): string {
   const classes = [...forced, ...fragmentClasses(el), ...ownClasses(el)];
   switch (el.name) {
     case 'p':
-      return `<p${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${inline(el, ctx)}</p>\n`;
+      return `<p${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${inlineBlock(el, ctx)}</p>\n`;
     case 'ul':
     case 'ol':
       return renderList(el, ctx, classes, []);
@@ -314,7 +315,7 @@ function renderList(list: XmlElement, ctx: Ctx, classes: string[], liForced: str
       const liCtx = withLanguage(ctx, li);
       const body = hasBlockContent(li)
         ? `\n${blockChildren(li, liCtx)}`
-        : inline(li, liCtx);
+        : inlineBlock(li, liCtx);
       return `<li${classAttr(liClasses)}${findexAttr(li)}${styleAttr(li)}>${body}</li>\n`;
     })
     .join('');
@@ -413,7 +414,7 @@ function renderTable(table: XmlElement, ctx: Ctx, classes: string[]): string {
             ...ownClasses(cell),
           ];
           const cellCtx = withLanguage(ctx, cell);
-          const body = hasBlockContent(cell) ? `\n${blockChildren(cell, cellCtx)}` : inline(cell, cellCtx);
+          const body = hasBlockContent(cell) ? `\n${blockChildren(cell, cellCtx)}` : inlineBlock(cell, cellCtx);
           return `<${cell.name}${copiedAttrs(cell)}${classAttr(cellClasses)}${findexAttr(cell)}>${body}</${cell.name}>\n`;
         })
         .join('');
@@ -437,8 +438,8 @@ function renderRepl(el: XmlElement, ctx: Ctx): string {
   if (!input || !output) throw new Error(`${ctx.file}: <repl> needs <in> and <out>`);
   return (
     `<h${level}><div class='repl'>\n` +
-    `<div><span class='prompt'>» </span><span class='fragment'>${inline(input, ctx)}</span></div>\n` +
-    `<div class='fragment'>${inline(output, ctx)}</div>\n` +
+    `<div><span class='prompt'>» </span><span class='fragment'>${inlineBlock(input, ctx)}</span></div>\n` +
+    `<div class='fragment'>${inlineBlock(output, ctx)}</div>\n` +
     `</div></h${level}>\n`
   );
 }
@@ -481,13 +482,28 @@ function passthrough(el: XmlElement, ctx: Ctx, classes: string[], mode: 'block' 
 
 // -- Inline content -----------------------------------------------------------
 
+/*
+ * Inline text collapses whitespace runs to single spaces (the HTML
+ * rendering rule anyway — only <pre> is exempt, and block <code> takes the
+ * verbatim path), so the emitted page is independent of how the XML source
+ * is line-filled and indented: xml-format is a byte-level no-op on the
+ * output. Block-level containers (p, titles, list items, cells) also trim
+ * the ends; nested inline elements keep their boundary spaces (a space
+ * inside <c> can be deliberate).
+ */
+
 function inline(el: XmlElement, ctx: Ctx): string {
   let out = '';
   for (const c of el.children) {
-    if (isText(c)) out += escapeHtml(c.text);
+    if (isText(c)) out += escapeHtml(c.text.replace(/\s+/g, ' '));
     else if (isElement(c)) out += inlineElement(c, ctx);
   }
   return out;
+}
+
+/** Inline content of a block-level container: collapsed and end-trimmed. */
+function inlineBlock(el: XmlElement, ctx: Ctx): string {
+  return inline(el, ctx).trim();
 }
 
 function inlineElement(el: XmlElement, ctx0: Ctx): string {

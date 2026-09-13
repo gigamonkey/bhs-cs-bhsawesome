@@ -1,7 +1,7 @@
 # The XML slide-deck format
 
 The second document type @peterseibel/book-builder builds (the bhs-cs
-monorepo's `plans/xml-slides.md`): a `slides.xml` deck compiled into a
+monorepo's `plans/xml-slides.md`): a `slides.deck` deck compiled into a
 self-contained reveal.js page. It replaced the Lisp/Markup slides pipeline
 in bhs-cs-content; the emitter (`src/slides/slides.ts`) produces HTML
 DOM-equivalent to what that pipeline produced, which is how the migration
@@ -42,6 +42,24 @@ without building. The module knows nothing about the content repo's layout
   untitled slide; an empty `<title/>` renders a deliberately blank heading
   that keeps the heading's line box. A leading `<repl>` stands in title
   position instead (below).
+
+## Canonical formatting
+
+Decks are kept canonically formatted by `xml-format` (gigamonkey/xml-tools;
+the `.deck` extension exists so its config discovery — `.xml-formats/
+deck.json` at the content repo root — matches exactly these files). Run
+`xml-format -i <deck>` from the repo root after hand edits. Two rules the
+formatter imposes:
+
+- **Boundary spaces live outside inline elements**: write
+  `<c>,</c> <em>x</em>`, never `<c>, </c><em>x</em>` — the formatter
+  normalizes the latter's space away. (Renders identically; the emitter
+  collapses inline whitespace anyway.)
+
+- Prose is line-filled at 80 columns. The emitter collapses whitespace
+  runs in inline text (the HTML rendering rule — `<pre>` excepted), so
+  source layout never shows through in the page: formatting is a
+  byte-level no-op on the built HTML.
 
 ## Prose
 
@@ -137,7 +155,7 @@ narrowest wins:
   rule here. One content-repo commit; no website deploy.
 
 - **A deck's own stylesheet** — a `custom.css` next to the deck's
-  `slides.xml`: the shell links it (relative, so it serves at both the
+  `slides.deck`: the shell links it (relative, so it serves at both the
   `/m/` preview and the `/c/<course>/` URL) after the shared one, so its
   rules win ties. For classes only that deck uses.
 
