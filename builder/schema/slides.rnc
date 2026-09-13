@@ -114,7 +114,7 @@ Inline =
       FormatAtts,
       Inline*
     }
-  | element url {                            # a link to itself: the text IS the href
+  | element url {                            # a link to itself: the text IS the href; always target=_blank
       attribute target { text }?,
       FormatAtts,
       text

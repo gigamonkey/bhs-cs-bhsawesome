@@ -520,10 +520,11 @@ function inlineElement(el: XmlElement, ctx0: Ctx): string {
     case 'url': {
       // A link to itself: <url>https://x</url> -> <a href=…>…</a>. The
       // text is the URL, so ALL whitespace is stripped (an 80-column fill
-      // may have wrapped it; URLs contain none).
+      // may have wrapped it; URLs contain none). Always a new tab — a
+      // bare URL on a slide is by nature an external reference.
       const u = rawText(el).replace(/\s+/g, '');
-      const t = el.attributes.target ?? (u.startsWith('http') ? '_blank' : undefined);
-      return `<a${t !== undefined ? ` target='${escapeAttr(t)}'` : ''} href='${escapeAttr(u)}'${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${escapeHtml(u)}</a>`;
+      const t = el.attributes.target ?? '_blank';
+      return `<a target='${escapeAttr(t)}' href='${escapeAttr(u)}'${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${escapeHtml(u)}</a>`;
     }
     case 'html':
       return el.attributes.src !== undefined

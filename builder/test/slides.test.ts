@@ -197,6 +197,6 @@ test('url: a link to itself', () => {
     `<deck><slide><p><url>https://example.com/x</url> and <url>ftp://old.example/</url> and <url>\n      https://wrapped.example/by-the-formatter\n    </url></p></slide></deck>`,
   );
   assert.match(html, /<a target='_blank' href='https:\/\/example\.com\/x'>https:\/\/example\.com\/x<\/a>/);
-  assert.match(html, /<a href='ftp:\/\/old\.example\/'>ftp:\/\/old\.example\/<\/a>/);
+  assert.match(html, /<a target='_blank' href='ftp:\/\/old\.example\/'>ftp:\/\/old\.example\/<\/a>/, 'always _blank, whatever the scheme');
   assert.match(html, /<a target='_blank' href='https:\/\/wrapped\.example\/by-the-formatter'>/);
 });
