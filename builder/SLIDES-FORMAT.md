@@ -119,14 +119,26 @@ they need them.
 `<notes>` renders as reveal's `<aside class="notes">` (the notes plugin is
 loaded in every deck; press S for the speaker view).
 
-## class= and the stylesheet
+## class=, style=, and the stylesheets
 
 `class="…"` is legal on every element and lands on the emitted HTML,
-appended after any classes the emitter generates. The deck stylesheet
-lives WITH the decks — bhs-cs-content's `materials/slides/custom.css`,
-served at the `/reveal/dist/custom.css` URL the shell links (the content
-build routes it there; the website's overlay-first static mounts serve
-it) — so a one-off look is one content-repo commit: a `class=` in the
-deck plus (if it isn't one of the existing classes — `bigcode`,
-`smallcode`, `tinycode`, `smaller`, `hl`, `dbtable`, …) a rule in that
-file. No website deploy involved.
+appended after any classes the emitter generates. Three tiers of styling,
+narrowest wins:
+
+- **The shared stylesheet** — bhs-cs-content's
+  `materials/slides/custom.css`, served at the `/reveal/dist/custom.css`
+  URL the shell links (the content build routes it there; the website's
+  overlay-first static mounts serve it). A new class for all decks is a
+  `class=` in the deck plus (if it isn't one of the existing classes —
+  `bigcode`, `smallcode`, `tinycode`, `smaller`, `hl`, `dbtable`, …) a
+  rule here. One content-repo commit; no website deploy.
+
+- **A deck's own stylesheet** — a `custom.css` next to the deck's
+  `slides.xml`: the shell links it (relative, so it serves at both the
+  `/m/` preview and the `/c/<course>/` URL) after the shared one, so its
+  rules win ties. For classes only that deck uses.
+
+- **`style="…"`** — verbatim inline CSS, legal on every element (it also
+  works on `<slide>`, landing on the `<section>`). The escape hatch for
+  a truly one-off tweak; prefer `class=` + a stylesheet the moment a
+  second element wants the same look.

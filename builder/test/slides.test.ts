@@ -161,3 +161,33 @@ test('deckMeta: the <title> is the title; directory-name fallback', () => {
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('deck-local custom.css links relative, only when present', () => {
+  const with_ = build(`<deck><slide><p>x</p></slide></deck>`, undefined, { 'custom.css': '.x{}' });
+  assert.match(with_, /<link rel='stylesheet' href='custom\.css'>/);
+  assert.ok(
+    with_.indexOf("href='/reveal/dist/custom.css'") < with_.indexOf("href='custom.css'"),
+    'deck stylesheet loads after the shared one',
+  );
+  const without = build(`<deck><slide><p>x</p></slide></deck>`);
+  assert.doesNotMatch(without, /href='custom\.css'/);
+});
+
+test('style= lands on modeled elements, slides, and passthrough', () => {
+  const html = build(
+    `<deck><slide style="background: #123">
+       <title style="color: red">T</title>
+       <p style="margin-top: 2em">a <c style="color: lime">c</c></p>
+       <ul style="columns: 2"><li style="font-weight: bold">i</li></ul>
+       <code style="font-size: 50%">x</code>
+       <div style="border: 1px solid">d</div>
+     </slide></deck>`,
+  );
+  assert.match(html, /<section class='' style='background: #123'>|<section style='background: #123'>/);
+  assert.match(html, /<h2 style='color: red'>T<\/h2>/);
+  assert.match(html, /<p style='margin-top: 2em'>a <code style='color: lime'>c<\/code><\/p>/);
+  assert.match(html, /<ul style='columns: 2'>/);
+  assert.match(html, /<li style='font-weight: bold'>i<\/li>/);
+  assert.match(html, /<pre style='font-size: 50%'>/);
+  assert.match(html, /<div style='border: 1px solid'>d<\/div>/);
+});

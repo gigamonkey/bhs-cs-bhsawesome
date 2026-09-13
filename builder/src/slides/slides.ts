@@ -166,8 +166,16 @@ export function slideDeckHtml(
   }
 
   const headTitle = title ? collapse(textContent(title)) : null;
+  // A custom.css next to the deck source is the deck's own stylesheet,
+  // linked RELATIVE so it resolves at both the /m/ preview and the
+  // /c/<course>/ URL (both serve the deck dir's files). It loads after the
+  // shared stylesheet, so its rules win ties.
+  const deckCss = fs.existsSync(path.join(opts.deckDir, 'custom.css'))
+    ? "        <link rel='stylesheet' href='custom.css'>\n"
+    : '';
   return (
     HEAD +
+    deckCss +
     (headTitle !== null ? `        <title>${escapeHtml(headTitle)}</title>\n` : '') +
     BODY_TOP +
     sections.join('') +
@@ -188,11 +196,11 @@ function renderSlide(slide: XmlElement, outer: Ctx): string {
     }
     first = false;
   }
-  return section(parts);
+  return section(parts, `${classAttr(ownClasses(slide))}${styleAttr(slide)}`);
 }
 
-function section(parts: string[]): string {
-  return `<section>\n${parts.join('')}</section>\n`;
+function section(parts: string[], attrs = ''): string {
+  return `<section${attrs}>\n${parts.join('')}</section>\n`;
 }
 
 function heading(level: number, title: XmlElement, ctx: Ctx): string {
@@ -200,7 +208,7 @@ function heading(level: number, title: XmlElement, ctx: Ctx): string {
   // decks' `** \empty{}` trick): the <empty> element keeps the h2's line
   // box so the slide's layout doesn't shift.
   const body = title.children.length ? inline(title, ctx) : '<empty></empty>';
-  return `<h${level}>${body}</h${level}>\n`;
+  return `<h${level}${classAttr(ownClasses(title))}${styleAttr(title)}>${body}</h${level}>\n`;
 }
 
 /** Render a block-level element. `forced` is classes imposed by an enclosing
@@ -210,7 +218,7 @@ function block(el: XmlElement, ctx0: Ctx, forced: string[]): string {
   const classes = [...forced, ...fragmentClasses(el), ...ownClasses(el)];
   switch (el.name) {
     case 'p':
-      return `<p${classAttr(classes)}${findexAttr(el)}>${inline(el, ctx)}</p>\n`;
+      return `<p${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${inline(el, ctx)}</p>\n`;
     case 'ul':
     case 'ol':
       return renderList(el, ctx, classes, []);
@@ -287,6 +295,14 @@ function findexAttr(el: XmlElement): string {
   return i === undefined ? '' : ` data-fragment-index='${escapeAttr(i)}'`;
 }
 
+/** Verbatim inline CSS — the escape hatch for one-off presentation the
+ * format doesn't model. Prefer class= + the stylesheet; reach for this
+ * last. */
+function styleAttr(el: XmlElement): string {
+  const v = el.attributes.style;
+  return v === undefined ? '' : ` style='${escapeAttr(v)}'`;
+}
+
 // -- Lists --------------------------------------------------------------------
 
 function renderList(list: XmlElement, ctx: Ctx, classes: string[], liForced: string[]): string {
@@ -299,10 +315,10 @@ function renderList(list: XmlElement, ctx: Ctx, classes: string[], liForced: str
       const body = hasBlockContent(li)
         ? `\n${blockChildren(li, liCtx)}`
         : inline(li, liCtx);
-      return `<li${classAttr(liClasses)}${findexAttr(li)}>${body}</li>\n`;
+      return `<li${classAttr(liClasses)}${findexAttr(li)}${styleAttr(li)}>${body}</li>\n`;
     })
     .join('');
-  return `<${list.name}${classAttr(classes)}${findexAttr(list)}>\n${items}</${list.name}>\n`;
+  return `<${list.name}${classAttr(classes)}${findexAttr(list)}${styleAttr(list)}>\n${items}</${list.name}>\n`;
 }
 
 // -- Code blocks --------------------------------------------------------------
@@ -332,7 +348,7 @@ function renderCodeBlock(el: XmlElement, ctx: Ctx, classes: string[]): string {
     (lineNumbers !== undefined ? ` data-line-numbers='${escapeAttr(lineNumbers)}'` : '') +
     " data-trim='' data-noescape=''" +
     (lang !== undefined && lang !== 'none' ? ` class='language-${escapeAttr(lang)}'` : '');
-  return `<pre${classAttr(classes)}${findexAttr(el)}><code${attrs}>${escapeHtml(clean)}</code></pre>\n`;
+  return `<pre${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}><code${attrs}>${escapeHtml(clean)}</code></pre>\n`;
 }
 
 /** The code text: verbatim, except that text starting with a newline (an
@@ -482,12 +498,12 @@ function inlineElement(el: XmlElement, ctx0: Ctx): string {
   const classes = [...fragmentClasses(el), ...ownClasses(el)];
   switch (el.name) {
     case 'c':
-      return `<code${classAttr(classes)}${findexAttr(el)}>${inline(el, ctx)}</code>`;
+      return `<code${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${inline(el, ctx)}</code>`;
     case 'm':
       // TeX math, rendered client-side by the deck's MathJax script.
       return `\\(${escapeHtml(rawText(el))}\\)`;
     case 'vocab':
-      return `<span${classAttr(['vocab', ...classes])}${findexAttr(el)}>${inline(el, ctx)}</span>`;
+      return `<span${classAttr(['vocab', ...classes])}${findexAttr(el)}${styleAttr(el)}>${inline(el, ctx)}</span>`;
     case 'html':
       return el.attributes.src !== undefined
         ? fs.readFileSync(path.resolve(ctx.deckDir, el.attributes.src), 'utf8')
@@ -497,7 +513,7 @@ function inlineElement(el: XmlElement, ctx0: Ctx): string {
       const target =
         el.attributes.target ?? (href.startsWith('http') ? '_blank' : undefined);
       const t = target !== undefined ? ` target='${escapeAttr(target)}'` : '';
-      return `<a${t} href='${escapeAttr(href)}'${classAttr(classes)}${findexAttr(el)}>${inline(el, ctx)}</a>`;
+      return `<a${t} href='${escapeAttr(href)}'${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${inline(el, ctx)}</a>`;
     }
     default:
       return passthrough(el, ctx, classes, 'inline');

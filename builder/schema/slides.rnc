@@ -15,13 +15,16 @@ start = Deck
 # fragment="" makes the element a reveal fragment; a non-empty value adds
 # fragment styles (fade-up, highlight-red, ...). findex is
 # data-fragment-index. class passes through to the emitted element,
-# appended to whatever classes the emitter generates. language sets the
-# code-block language for the element's subtree (nearest ancestor wins;
-# the build supplies the outermost default).
+# appended to whatever classes the emitter generates. style is verbatim
+# inline CSS — the escape hatch for truly one-off tweaks; prefer class= +
+# the stylesheet. language sets the code-block language for the element's
+# subtree (nearest ancestor wins; the build supplies the outermost
+# default).
 FormatAtts =
   attribute fragment { text }?,
   attribute findex { text }?,
   attribute class { text }?,
+  attribute style { text }?,
   attribute language { text }?
 
 Deck =
@@ -43,7 +46,7 @@ Slide =
   }
 
 # Empty <title/> renders the deliberately blank heading (keeps the line box).
-Title = element title { Inline* }
+Title = element title { attribute class { text }?, attribute style { text }?, Inline* }
 
 Repl =
   element repl {
@@ -124,4 +127,4 @@ AnyElement =
     (text | Inline | Block)*
   }
 
-AnyAttr = attribute * - (fragment | findex | class | language | fragments) { text }
+AnyAttr = attribute * - (fragment | findex | class | style | language | fragments) { text }
