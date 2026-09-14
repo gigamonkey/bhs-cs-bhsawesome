@@ -126,8 +126,10 @@ The reveal.js control surface — the reason this format exists:
   within it into a fragment: `<ul fragments="li">`,
   `<table fragments="tr">` (by row), `<table fragments="td">` (by data
   cell — `<th>`s don't match), `<slide fragments="p">`, or something
-  fancier like `<table fragments="tr[2]/td">`. The expression is an
-  XPath subset (name and `*` steps, `/` and `//`, positional `[n]`
+  fancier like `<table fragments="tr[2]/td">` or
+  `<slide fragments="./*[not(self::title)]">` (everything on the slide
+  but its title). The expression is an XPath subset (name and `*`
+  steps, `/` and `//`, `[n]` / `[self::name]` / `[not(self::name)]`
   predicates), evaluated with the attribute's element as the context
   node; a bare leading step is implicitly `.//` — write `./li` for
   strict children-only. Unsupported syntax and zero matches are build

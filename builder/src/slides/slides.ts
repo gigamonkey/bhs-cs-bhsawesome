@@ -583,7 +583,11 @@ function withLanguage(ctx: Ctx, el: XmlElement): Ctx {
  * only). Unsupported syntax and zero matches are build errors.
  */
 
-type FragStep = { axis: 'child' | 'desc'; name: string; index?: number };
+type FragPredicate =
+  | { kind: 'index'; n: number }
+  | { kind: 'name'; name: string; negated: boolean };
+
+type FragStep = { axis: 'child' | 'desc'; name: string; predicates: FragPredicate[] };
 
 function parseFragmentsExpr(expr: string, ctx: Ctx): FragStep[] {
   let rest = expr.trim();
@@ -605,11 +609,24 @@ function parseFragmentsExpr(expr: string, ctx: Ctx): FragStep[] {
         `${ctx.file}: fragments='${expr}' — unsupported syntax at '${rest}' (name or * steps, / and //, [n] predicates)`,
       );
     }
-    const m = rest.match(/^([A-Za-z_][\w.-]*|\*)(?:\[([1-9]\d*)\])?/);
-    if (!m || m[0].length === 0) {
-      throw new Error(`${ctx.file}: fragments='${expr}' — unsupported syntax at '${rest}' (name or * steps, / and //, [n] predicates)`);
+    const m = rest.match(/^([A-Za-z_][\w.-]*|\*)((?:\[[^\]]*\])*)/);
+    if (!m || m[1] === undefined) {
+      throw new Error(`${ctx.file}: fragments='${expr}' — unsupported syntax at '${rest}' (name or * steps, / and //, [n] and [not(self::name)] predicates)`);
     }
-    steps.push({ axis, name: m[1], index: m[2] === undefined ? undefined : Number(m[2]) });
+    const predicates: FragPredicate[] = [];
+    for (const pm of m[2].matchAll(/\[([^\]]*)\]/g)) {
+      const body = pm[1].trim();
+      const pos = body.match(/^[1-9]\d*$/);
+      const name = body.match(/^(not\()?\s*self::([A-Za-z_][\w.-]*)\s*(\))?$/);
+      if (pos) {
+        predicates.push({ kind: 'index', n: Number(body) });
+      } else if (name && Boolean(name[1]) === Boolean(name[3])) {
+        predicates.push({ kind: 'name', name: name[2], negated: Boolean(name[1]) });
+      } else {
+        throw new Error(`${ctx.file}: fragments='${expr}' — unsupported predicate '[${body}]' ([n], [self::name], [not(self::name)])`);
+      }
+    }
+    steps.push({ axis, name: m[1], predicates });
     rest = rest.slice(m[0].length);
   }
   if (!steps.length) {
@@ -634,13 +651,15 @@ function matchFragments(context: XmlElement, expr: string, ctx: Ctx): Set<XmlEle
     for (const node of current) {
       const parents = step.axis === 'child' ? [node] : [node, ...descendantElements(node)];
       for (const parent of parents) {
-        const kids = elements(parent).filter((k) => step.name === '*' || k.name === step.name);
-        if (step.index !== undefined) {
-          const k = kids[step.index - 1];
-          if (k) next.add(k);
-        } else {
-          for (const k of kids) next.add(k);
+        let kids = elements(parent).filter((k) => step.name === '*' || k.name === step.name);
+        for (const pred of step.predicates) {
+          if (pred.kind === 'index') {
+            kids = kids[pred.n - 1] ? [kids[pred.n - 1]] : [];
+          } else {
+            kids = kids.filter((k) => (k.name === pred.name) !== pred.negated);
+          }
         }
+        for (const k of kids) next.add(k);
       }
     }
     current = next;

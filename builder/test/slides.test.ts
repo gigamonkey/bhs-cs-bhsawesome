@@ -238,6 +238,15 @@ test('fragments= xpath: deck-level expression', () => {
   assert.match(html, /<p>nested<\/p>/, 'slide/p is direct children of slide, not descendants');
 });
 
+test('fragments= xpath: name-test predicates', () => {
+  const html = build(
+    `<deck><slide fragments="./*[not(self::title)]"><title>t</title><p>a</p><code>x</code></slide></deck>`,
+  );
+  assert.match(html, /<h2>t<\/h2>/, 'the title is excluded');
+  assert.match(html, /<p class='fragment'>a<\/p>/);
+  assert.match(html, /<pre class='fragment'>/);
+});
+
 test('fragments= xpath: strict children, predicates, errors', () => {
   const strict = build(
     `<deck><slide><ul fragments="./li"><li><p>top</p><ul><li>nested</li></ul></li></ul></slide></deck>`,
@@ -256,6 +265,6 @@ test('fragments= xpath: strict children, predicates, errors', () => {
   );
   assert.throws(
     () => build(`<deck><slide><ul fragments="li[@x]"><li>a</li></ul></slide></deck>`),
-    /unsupported syntax/,
+    /unsupported predicate/,
   );
 });
