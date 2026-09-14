@@ -135,11 +135,14 @@ export function slideDeckHtml(
   deck: XmlElement,
   opts: { deckDir: string; defaultLanguage?: string; deckFile?: string },
 ): string {
-  const ctx: Ctx = {
+  let ctx: Ctx = {
     deckDir: opts.deckDir,
     language: deck.attributes.language ?? opts.defaultLanguage,
     file: opts.deckFile ?? path.join(opts.deckDir, 'slides.deck'),
   };
+  // A deck-level fragments= applies deck-wide: <deck fragments="slide/p">
+  // makes every slide's paragraphs fragments.
+  ctx = withFragments(ctx, deck);
 
   const title = child(deck, 'title');
   const sections: string[] = [];

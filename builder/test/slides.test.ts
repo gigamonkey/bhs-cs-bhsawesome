@@ -229,6 +229,15 @@ test('fragments= xpath: lists, tables, slide-level', () => {
   assert.doesNotMatch(html, /<ul class='fragment'>/);
 });
 
+test('fragments= xpath: deck-level expression', () => {
+  const html = build(
+    `<deck fragments="slide/p"><title>T</title><p>lead</p><slide><title>s</title><p>in slide</p><div><p>nested</p></div></slide></deck>`,
+  );
+  assert.match(html, /<p class='fragment'>in slide<\/p>/);
+  assert.match(html, /<p>lead<\/p>/, 'deck-level leading p is not a slide/p');
+  assert.match(html, /<p>nested<\/p>/, 'slide/p is direct children of slide, not descendants');
+});
+
 test('fragments= xpath: strict children, predicates, errors', () => {
   const strict = build(
     `<deck><slide><ul fragments="./li"><li><p>top</p><ul><li>nested</li></ul></li></ul></slide></deck>`,

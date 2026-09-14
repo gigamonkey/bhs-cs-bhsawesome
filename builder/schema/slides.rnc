@@ -37,6 +37,7 @@ Deck =
     attribute courses { text }?,
     attribute grading { text }?,
     attribute language { text }?,
+    attribute fragments { text }?,
     Title?,
     Block*,
     Slide*
