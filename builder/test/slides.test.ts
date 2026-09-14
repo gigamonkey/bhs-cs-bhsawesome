@@ -209,3 +209,13 @@ test('f: concise inline fragments', () => {
   assert.match(html, /<span class='fragment' data-fragment-index='3'>three<\/span>/);
   assert.match(html, /<span class='fragment fade-up' style='color: red'>styled<\/span>/);
 });
+
+test('list fragments attribute: items become fragments', () => {
+  const html = build(
+    `<deck><slide><ul fragments="items"><li>a</li><li findex="1">b</li></ul><ol fragments=""><li>c</li></ol></slide></deck>`,
+  );
+  assert.match(html, /<li class='fragment'>a<\/li>/);
+  assert.match(html, /<li class='fragment' data-fragment-index='1'>b<\/li>/);
+  assert.match(html, /<ol>\n<li class='fragment'>c<\/li>/);
+  assert.doesNotMatch(html, /<ul class='fragment'>/);
+});

@@ -122,6 +122,10 @@ The reveal.js control surface — the reason this format exists:
   `<ul>`/`<ol>` child makes the *items* the fragments (use `fragment=""`
   on the list itself to reveal it whole — the thing the old format
   couldn't say), and a `<table>` child takes the class itself.
+- `<ul fragments="items">` / `<ol fragments="items">` (bare
+  `fragments=""` works too) is the attribute spelling of that
+  single-list case: the items become the fragments, no wrapper needed.
+  Per-item `findex=`/`class=` still compose.
 - `<table fragments="rows">` / `fragments="cells"` reveal a table by rows
   or by data cells.
 

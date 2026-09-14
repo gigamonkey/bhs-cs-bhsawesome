@@ -308,6 +308,15 @@ function styleAttr(el: XmlElement): string {
 
 function renderList(list: XmlElement, ctx: Ctx, classes: string[], liForced: string[]): string {
   requireNoText(list, ctx);
+  // fragments="items" (or bare ""): the ITEMS become the fragments — the
+  // attribute spelling of wrapping just the list in <fragments>.
+  const mode = list.attributes.fragments;
+  if (mode !== undefined) {
+    if (mode !== '' && mode !== 'items') {
+      throw new Error(`${ctx.file}: <${list.name} fragments='${mode}'> — "items" (or empty)`);
+    }
+    if (!liForced.includes('fragment')) liForced = ['fragment', ...liForced];
+  }
   const items = elements(list)
     .map((li) => {
       if (li.name !== 'li') throw new Error(`${ctx.file}: <${li.name}> inside <${list.name}> — only <li> allowed`);

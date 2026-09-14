@@ -67,9 +67,11 @@ Block =
 
 P = element p { FormatAtts, Inline* }
 
+# fragments="items" (or "") reveals the list item by item — the attribute
+# spelling of wrapping just the list in <fragments>.
 List =
-  element ul { FormatAtts, Li* }
-  | element ol { FormatAtts, Li* }
+  element ul { FormatAtts, attribute fragments { "" | "items" }?, Li* }
+  | element ol { FormatAtts, attribute fragments { "" | "items" }?, Li* }
 
 Li = element li { FormatAtts, (Inline* | Block*) }
 
