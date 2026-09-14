@@ -11,5 +11,8 @@
     "playwright": "^1.62.1",
     "pngjs": "^7.0.0"
   },
-  "type": "module"
+  "type": "module",
+  "allowScripts": {
+    "fsevents@2.3.2": true
+  }
 }
