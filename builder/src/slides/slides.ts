@@ -123,6 +123,8 @@ type Ctx = {
   deckDir: string;
   language: string | undefined;
   file: string;
+  /** Elements matched by enclosing fragments= XPath expressions. */
+  fragmentSet?: Set<XmlElement>;
 };
 
 // The format's own attributes — consumed by the emitter, never copied onto
@@ -185,7 +187,7 @@ export function slideDeckHtml(
 }
 
 function renderSlide(slide: XmlElement, outer: Ctx): string {
-  const ctx = withLanguage(outer, slide);
+  const ctx = withFragments(withLanguage(outer, slide), slide);
   const level = slide.attributes.level ? Number(slide.attributes.level) : 2;
   const parts: string[] = [];
   let first = true;
@@ -209,14 +211,14 @@ function heading(level: number, title: XmlElement, ctx: Ctx): string {
   // decks' `** \empty{}` trick): the <empty> element keeps the h2's line
   // box so the slide's layout doesn't shift.
   const body = title.children.length ? inlineBlock(title, ctx) : '<empty></empty>';
-  return `<h${level}${classAttr(ownClasses(title))}${styleAttr(title)}>${body}</h${level}>\n`;
+  return `<h${level}${classAttr([...fragClasses(title, ctx), ...ownClasses(title)])}${styleAttr(title)}>${body}</h${level}>\n`;
 }
 
 /** Render a block-level element. `forced` is classes imposed by an enclosing
  * <fragments>. */
 function block(el: XmlElement, ctx0: Ctx, forced: string[]): string {
-  const ctx = withLanguage(ctx0, el);
-  const classes = [...forced, ...fragmentClasses(el), ...ownClasses(el)];
+  const ctx = withFragments(withLanguage(ctx0, el), el);
+  const classes = [...forced, ...fragClasses(el, ctx), ...ownClasses(el)];
   switch (el.name) {
     case 'p':
       return `<p${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${inlineBlock(el, ctx)}</p>\n`;
@@ -291,6 +293,12 @@ function fragmentClasses(el: XmlElement): string[] {
   return f === '' ? ['fragment'] : ['fragment', ...f.split(/\s+/)];
 }
 
+/** The element's fragment classes: its own fragment= attribute plus
+ * membership in an enclosing fragments= expression's matches. */
+function fragClasses(el: XmlElement, ctx: Ctx): string[] {
+  return [...(ctx.fragmentSet?.has(el) ? ['fragment'] : []), ...fragmentClasses(el)];
+}
+
 function findexAttr(el: XmlElement): string {
   const i = el.attributes.findex;
   return i === undefined ? '' : ` data-fragment-index='${escapeAttr(i)}'`;
@@ -308,20 +316,11 @@ function styleAttr(el: XmlElement): string {
 
 function renderList(list: XmlElement, ctx: Ctx, classes: string[], liForced: string[]): string {
   requireNoText(list, ctx);
-  // fragments="items" (or bare ""): the ITEMS become the fragments — the
-  // attribute spelling of wrapping just the list in <fragments>.
-  const mode = list.attributes.fragments;
-  if (mode !== undefined) {
-    if (mode !== '' && mode !== 'items') {
-      throw new Error(`${ctx.file}: <${list.name} fragments='${mode}'> — "items" (or empty)`);
-    }
-    if (!liForced.includes('fragment')) liForced = ['fragment', ...liForced];
-  }
   const items = elements(list)
     .map((li) => {
       if (li.name !== 'li') throw new Error(`${ctx.file}: <${li.name}> inside <${list.name}> — only <li> allowed`);
-      const liClasses = [...liForced, ...fragmentClasses(li), ...ownClasses(li)];
-      const liCtx = withLanguage(ctx, li);
+      const liClasses = [...liForced, ...fragClasses(li, ctx), ...ownClasses(li)];
+      const liCtx = withFragments(withLanguage(ctx, li), li);
       const body = hasBlockContent(li)
         ? `\n${blockChildren(li, liCtx)}`
         : inlineBlock(li, liCtx);
@@ -403,26 +402,19 @@ function extractHighlights(text: string): { clean: string; highlights: string | 
 // -- Tables -------------------------------------------------------------------
 
 function renderTable(table: XmlElement, ctx: Ctx, classes: string[]): string {
-  // fragments="rows" / "cells": the rows (or cells) become the fragments.
-  const mode = table.attributes.fragments;
-  if (mode !== undefined && mode !== 'rows' && mode !== 'cells') {
-    throw new Error(`${ctx.file}: <table fragments='${mode}'> — "rows" or "cells"`);
-  }
+  // A table's fragments= (e.g. "tr", "td") is the generic XPath mechanism —
+  // block() already folded its matches into ctx.fragmentSet.
   const rows = elements(table)
     .map((tr) => {
       if (tr.name !== 'tr') throw new Error(`${ctx.file}: <${tr.name}> inside <table> — only <tr> allowed`);
-      const trClasses = [...(mode === 'rows' ? ['fragment'] : []), ...fragmentClasses(tr), ...ownClasses(tr)];
+      const trClasses = [...fragClasses(tr, ctx), ...ownClasses(tr)];
       const cells = elements(tr)
         .map((cell) => {
           if (cell.name !== 'td' && cell.name !== 'th') {
             throw new Error(`${ctx.file}: <${cell.name}> inside <tr> — only <td>/<th> allowed`);
           }
-          const cellClasses = [
-            ...(mode === 'cells' && cell.name === 'td' ? ['fragment'] : []),
-            ...fragmentClasses(cell),
-            ...ownClasses(cell),
-          ];
-          const cellCtx = withLanguage(ctx, cell);
+          const cellClasses = [...fragClasses(cell, ctx), ...ownClasses(cell)];
+          const cellCtx = withFragments(withLanguage(ctx, cell), cell);
           const body = hasBlockContent(cell) ? `\n${blockChildren(cell, cellCtx)}` : inlineBlock(cell, cellCtx);
           return `<${cell.name}${copiedAttrs(cell)}${classAttr(cellClasses)}${findexAttr(cell)}>${body}</${cell.name}>\n`;
         })
@@ -516,8 +508,8 @@ function inlineBlock(el: XmlElement, ctx: Ctx): string {
 }
 
 function inlineElement(el: XmlElement, ctx0: Ctx): string {
-  const ctx = withLanguage(ctx0, el);
-  const classes = [...fragmentClasses(el), ...ownClasses(el)];
+  const ctx = withFragments(withLanguage(ctx0, el), el);
+  const classes = [...fragClasses(el, ctx), ...ownClasses(el)];
   switch (el.name) {
     case 'c':
       return `<code${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${inline(el, ctx)}</code>`;
@@ -578,12 +570,100 @@ function withLanguage(ctx: Ctx, el: XmlElement): Ctx {
   return lang === undefined ? ctx : { ...ctx, language: lang };
 }
 
+/*
+ * fragments="<xpath>" on any element turns every matched descendant into a
+ * reveal fragment: <ul fragments="li">, <table fragments="td">,
+ * <slide fragments="p">. The expression is an XPath subset — name and *
+ * steps, / and // combinators, positional [n] predicates — evaluated with
+ * the attribute's element as the context node, and a bare leading step
+ * gets an implicit .// (so "li" means .//li; write ./li for children
+ * only). Unsupported syntax and zero matches are build errors.
+ */
+
+type FragStep = { axis: 'child' | 'desc'; name: string; index?: number };
+
+function parseFragmentsExpr(expr: string, ctx: Ctx): FragStep[] {
+  let rest = expr.trim();
+  if (rest.startsWith('/')) {
+    throw new Error(`${ctx.file}: fragments='${expr}' — absolute paths aren't supported (the element is the context node)`);
+  }
+  rest = rest.startsWith('.') ? rest.slice(1) : `//${rest}`;
+  const steps: FragStep[] = [];
+  while (rest.length) {
+    let axis: 'child' | 'desc';
+    if (rest.startsWith('//')) {
+      axis = 'desc';
+      rest = rest.slice(2);
+    } else if (rest.startsWith('/')) {
+      axis = 'child';
+      rest = rest.slice(1);
+    } else {
+      throw new Error(
+        `${ctx.file}: fragments='${expr}' — unsupported syntax at '${rest}' (name or * steps, / and //, [n] predicates)`,
+      );
+    }
+    const m = rest.match(/^([A-Za-z_][\w.-]*|\*)(?:\[([1-9]\d*)\])?/);
+    if (!m || m[0].length === 0) {
+      throw new Error(`${ctx.file}: fragments='${expr}' — unsupported syntax at '${rest}' (name or * steps, / and //, [n] predicates)`);
+    }
+    steps.push({ axis, name: m[1], index: m[2] === undefined ? undefined : Number(m[2]) });
+    rest = rest.slice(m[0].length);
+  }
+  if (!steps.length) {
+    throw new Error(`${ctx.file}: fragments='${expr}' — empty expression`);
+  }
+  return steps;
+}
+
+function descendantElements(el: XmlElement): XmlElement[] {
+  const out: XmlElement[] = [];
+  for (const c of elements(el)) {
+    out.push(c, ...descendantElements(c));
+  }
+  return out;
+}
+
+function matchFragments(context: XmlElement, expr: string, ctx: Ctx): Set<XmlElement> {
+  const steps = parseFragmentsExpr(expr, ctx);
+  let current = new Set<XmlElement>([context]);
+  for (const step of steps) {
+    const next = new Set<XmlElement>();
+    for (const node of current) {
+      const parents = step.axis === 'child' ? [node] : [node, ...descendantElements(node)];
+      for (const parent of parents) {
+        const kids = elements(parent).filter((k) => step.name === '*' || k.name === step.name);
+        if (step.index !== undefined) {
+          const k = kids[step.index - 1];
+          if (k) next.add(k);
+        } else {
+          for (const k of kids) next.add(k);
+        }
+      }
+    }
+    current = next;
+  }
+  return current;
+}
+
+function withFragments(ctx: Ctx, el: XmlElement): Ctx {
+  const expr = el.attributes.fragments;
+  if (expr === undefined || el.name === 'fragments') return ctx;
+  const matched = matchFragments(el, expr, ctx);
+  if (!matched.size) {
+    throw new Error(`${ctx.file}: <${el.name} fragments='${expr}'> matches nothing`);
+  }
+  const set = new Set(ctx.fragmentSet ?? []);
+  for (const m of matched) set.add(m);
+  return { ...ctx, fragmentSet: set };
+}
+
 function ownClasses(el: XmlElement): string[] {
   return (el.attributes.class ?? '').split(/\s+/).filter(Boolean);
 }
 
 function classAttr(classes: string[]): string {
-  return classes.length ? ` class='${escapeAttr(classes.join(' '))}'` : '';
+  const unique = [...new Set(classes)];
+  return unique.length ? ` class='${escapeAttr(unique.join(' '))}'` : '';
 }
 
 /** The element's own attributes minus the format's, for passthrough. */

@@ -122,12 +122,16 @@ The reveal.js control surface — the reason this format exists:
   `<ul>`/`<ol>` child makes the *items* the fragments (use `fragment=""`
   on the list itself to reveal it whole — the thing the old format
   couldn't say), and a `<table>` child takes the class itself.
-- `<ul fragments="items">` / `<ol fragments="items">` (bare
-  `fragments=""` works too) is the attribute spelling of that
-  single-list case: the items become the fragments, no wrapper needed.
-  Per-item `findex=`/`class=` still compose.
-- `<table fragments="rows">` / `fragments="cells"` reveal a table by rows
-  or by data cells.
+- **`fragments="<xpath>"` on any element** turns every matched element
+  within it into a fragment: `<ul fragments="li">`,
+  `<table fragments="tr">` (by row), `<table fragments="td">` (by data
+  cell — `<th>`s don't match), `<slide fragments="p">`, or something
+  fancier like `<table fragments="tr[2]/td">`. The expression is an
+  XPath subset (name and `*` steps, `/` and `//`, positional `[n]`
+  predicates), evaluated with the attribute's element as the context
+  node; a bare leading step is implicitly `.//` — write `./li` for
+  strict children-only. Unsupported syntax and zero matches are build
+  errors. Per-element `findex=`/`class=` still compose.
 
 ## REPL slides
 

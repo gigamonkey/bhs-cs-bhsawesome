@@ -14,7 +14,11 @@ start = Deck
 
 # fragment="" makes the element a reveal fragment; a non-empty value adds
 # fragment styles (fade-up, highlight-red, ...). findex is
-# data-fragment-index. class passes through to the emitted element,
+# data-fragment-index. fragments="<xpath>" turns every element the
+# expression matches (context: this element; XPath subset — name/* steps,
+# / and //, [n] predicates; a bare leading step is implicitly .//) into a
+# fragment: <ul fragments="li">, <table fragments="td">,
+# <slide fragments="p">. class passes through to the emitted element,
 # appended to whatever classes the emitter generates. style is verbatim
 # inline CSS — the escape hatch for truly one-off tweaks; prefer class= +
 # the stylesheet. language sets the code-block language for the element's
@@ -23,6 +27,7 @@ start = Deck
 FormatAtts =
   attribute fragment { text }?,
   attribute findex { text }?,
+  attribute fragments { text }?,
   attribute class { text }?,
   attribute style { text }?,
   attribute language { text }?
@@ -67,11 +72,9 @@ Block =
 
 P = element p { FormatAtts, Inline* }
 
-# fragments="items" (or "") reveals the list item by item — the attribute
-# spelling of wrapping just the list in <fragments>.
 List =
-  element ul { FormatAtts, attribute fragments { "" | "items" }?, Li* }
-  | element ol { FormatAtts, attribute fragments { "" | "items" }?, Li* }
+  element ul { FormatAtts, Li* }
+  | element ol { FormatAtts, Li* }
 
 Li = element li { FormatAtts, (Inline* | Block*) }
 
@@ -87,8 +90,6 @@ Fragments = element fragments { Block* }
 Table =
   element table {
     FormatAtts,
-    # rows / cells: the rows (or data cells) become the fragments.
-    attribute fragments { "rows" | "cells" }?,
     AnyAttr*,
     Tr*
   }

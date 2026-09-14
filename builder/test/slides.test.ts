@@ -210,12 +210,43 @@ test('f: concise inline fragments', () => {
   assert.match(html, /<span class='fragment fade-up' style='color: red'>styled<\/span>/);
 });
 
-test('list fragments attribute: items become fragments', () => {
+test('fragments= xpath: lists, tables, slide-level', () => {
   const html = build(
-    `<deck><slide><ul fragments="items"><li>a</li><li findex="1">b</li></ul><ol fragments=""><li>c</li></ol></slide></deck>`,
+    `<deck>
+       <slide><ul fragments="li"><li>a</li><li findex="1">b</li></ul></slide>
+       <slide><table fragments="td"><tr><th>h</th><td>x</td></tr></table></slide>
+       <slide><table fragments="tr"><tr><td>y</td></tr></table></slide>
+       <slide fragments="p"><title>t</title><p>one</p><div><p>nested too</p></div></slide>
+     </deck>`,
   );
   assert.match(html, /<li class='fragment'>a<\/li>/);
   assert.match(html, /<li class='fragment' data-fragment-index='1'>b<\/li>/);
-  assert.match(html, /<ol>\n<li class='fragment'>c<\/li>/);
+  assert.match(html, /<th>h<\/th>/, 'th is not a td');
+  assert.match(html, /<td class='fragment'>x<\/td>/);
+  assert.match(html, /<tr class='fragment'>/);
+  assert.match(html, /<p class='fragment'>one<\/p>/);
+  assert.match(html, /<p class='fragment'>nested too<\/p>/, 'bare step is descendant search');
   assert.doesNotMatch(html, /<ul class='fragment'>/);
+});
+
+test('fragments= xpath: strict children, predicates, errors', () => {
+  const strict = build(
+    `<deck><slide><ul fragments="./li"><li><p>top</p><ul><li>nested</li></ul></li></ul></slide></deck>`,
+  );
+  assert.match(strict, /<li class='fragment'>\n/, 'outer item is a fragment');
+  assert.match(strict, /<li>nested<\/li>/, './li does not reach nested items');
+  const pred = build(
+    `<deck><slide><ul fragments="li[2]"><li>a</li><li>b</li></ul></slide></deck>`,
+  );
+  assert.match(pred, /<li>a<\/li>/);
+  assert.match(pred, /<li class='fragment'>b<\/li>/);
+  assert.throws(
+    () => build(`<deck><slide><ul fragments="items"><li>a</li></ul></slide></deck>`),
+    /matches nothing/,
+    'the old alias words are now just non-matching paths',
+  );
+  assert.throws(
+    () => build(`<deck><slide><ul fragments="li[@x]"><li>a</li></ul></slide></deck>`),
+    /unsupported syntax/,
+  );
 });
