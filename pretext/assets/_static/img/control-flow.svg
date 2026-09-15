@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="309" height="163" viewBox="0 0 309 163" role="img" aria-labelledby="title desc">
+  <title id="title">Sequence, Selection, and Repetition control-flow diagrams</title>
+  <desc id="desc">Three small diagrams showing sequence, selection, and repetition.</desc>
+
+  <rect width="309" height="163" fill="white"/>
+
+  <defs>
+    <style>
+      .label { font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; fill: #202020; }
+      .box { fill: #6a8dff; stroke: #111; stroke-width: 1.5; }
+      .flow { fill: none; stroke: #050505; stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter; }
+      .q { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 700; fill: #111; }
+    </style>
+  </defs>
+
+  <!-- Sequence -->
+  <text class="label" x="39" y="18" text-anchor="middle">Sequence</text>
+  <path class="flow" d="M37.5 27 V50 M29.5 42 L37.5 50 L45.5 42"/>
+  <rect class="box" x="20.5" y="54.5" width="37" height="21"/>
+  <path class="flow" d="M37.5 80 V103 M29.5 95 L37.5 103 L45.5 95"/>
+  <rect class="box" x="20.5" y="107.5" width="37" height="21"/>
+  <path class="flow" d="M37.5 133 V157 M29.5 149 L37.5 157 L45.5 149"/>
+
+  <!-- Selection -->
+  <text class="label" x="150" y="18" text-anchor="middle">Selection</text>
+  <path class="flow" d="M150 26 V51 M142 43 L150 51 L158 43"/>
+  <polygon points="150,55 173,67 150,79 127,67" fill="#fff176" stroke="#111" stroke-width="1.5"/>
+  <text class="q" x="150" y="72" text-anchor="middle">?</text>
+
+  <path class="flow" d="M127 69 L120 76 V94 M112 86 L120 94 L128 86"/>
+  <path class="flow" d="M173 69 L181 76 V94 M173 86 L181 94 L189 86"/>
+  <rect class="box" x="109.5" y="98.5" width="37" height="21"/>
+  <rect class="box" x="157.5" y="98.5" width="37" height="21"/>
+
+  <path class="flow" d="M127.5 123 C128 134 134 140 143 143 M132 143 L143 143 L141 132"/>
+  <path class="flow" d="M176.5 123 C176 134 169 140 157 143 M159 132 L157 143 L168 142"/>
+
+  <!-- Repetition -->
+  <text class="label" x="262" y="18" text-anchor="middle">Repetition</text>
+  <path class="flow" d="M261.5 26 V51 M253.5 43 L261.5 51 L269.5 43"/>
+
+  <!-- loop around the repeated block -->
+  <path class="flow" d="M261.5 60 H293 V113 H261.5 V105"/>
+  <path class="flow" d="M261.5 60 V78 M253.5 70 L261.5 78 L269.5 70"/>
+  <rect class="box" x="243.5" y="81.5" width="37" height="21"/>
+
+  <path class="flow" d="M261.5 122 V146 M253.5 138 L261.5 146 L269.5 138"/>
+</svg>
