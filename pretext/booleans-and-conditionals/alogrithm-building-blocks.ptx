@@ -32,8 +32,7 @@
 
     <figure align="center">
       <caption>Sequence, Selection, and Repetition</caption>
-
-      <image source="Unit2-Selection-and-Iteration/Figures/algorithms.png" width="63%" />
+      <image source="_static/img/control-flow.svg" width="63%" />
     </figure>
   </introduction>
 
