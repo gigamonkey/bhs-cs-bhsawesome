@@ -1607,7 +1607,11 @@ summary.knowl__link {
     --block-gap: 1em;
 }
 
-.ptx-content :is(ul,td,li,dd,.blockquote,.sbspanel)>*:not(:first-child) {
+/* Only block children get the gap: these containers also hold mixed
+   inline content, and inline <code> is inline-block (so it honors
+   margin-top) — a bare >* here shoved every non-first <code> in a
+   table cell down half a line. */
+.ptx-content :is(ul,td,li,dd,.blockquote,.sbspanel)>:is(p,ol,ul,dl,li,pre,figure,table,article,cite,.image-box,.ptx-runestone-container):not(:first-child) {
     margin-top: .5em;
 }
 
