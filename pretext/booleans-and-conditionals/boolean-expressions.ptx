@@ -658,7 +658,7 @@
           <statement>
             <program>
               <![CDATA[
-              if (Math.random() > 0.75) { System.out.println("Rain"); }
+              if (Math.random() >= 0.75) { System.out.println("Rain"); }
               ]]>
             </program>
           </statement>
