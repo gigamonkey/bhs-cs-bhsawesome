@@ -224,13 +224,12 @@
 
     <p>
       We can also simplify negated <k>boolean</k> expressions involving
-      comparison operators like <c>&lt;</c>, <c>&gt;</c>, and <c>==</c>. And we
-      can negate a comparison expression by flipping the comparison operator.
-      For instance, <c>!(a == b)</c> is flipped to <c>a != b</c>. The relational
-      operators can be flipped either by swapping the operands (<c>a &lt; b</c>
-      becomes <c>b &lt; a</c>) or by flipping the operator. But we need to
-      remember which are the actual flipped operators. For <c>&lt;</c> it is not
-      <c>&gt;</c> but <c>&gt;=</c> and likewise for <c>&gt;</c> and
+      comparison operators like <c>&lt;</c>, <c>&gt;</c>, and <c>==</c>. We can
+      negate an equality expression by flipping the equality operator: <c>==</c>
+      for <c>!=</c> and vice versa. For instance, <c>!(a == b)</c> is flipped to
+      <c>a != b</c>. The relational operators can also be flipped, but we need
+      to remember which are the actual flipped operators. For <c>&lt;</c> it is
+      not <c>&gt;</c> but <c>&gt;=</c> and likewise for <c>&gt;</c> and
       <c>&lt;=</c>. In other words, to flip a comparison operator change the
       <c>&lt;</c> or <c>&gt;</c> to the other symbol and add an <c>=</c> if
       there isn’t one or remove it if there is.
@@ -241,44 +240,37 @@
 
       <tabular halign="center">
         <row header="yes" bottom="minor">
-          <cell>Operator</cell>
-          <cell>Flip operands</cell>
-          <cell>Flip operator</cell>
+          <cell>Expression</cell>
+          <cell>Negation</cell>
         </row>
 
         <row>
           <cell><c>a == b</c></cell>
-          <cell>-</cell>
           <cell><c>a != b</c></cell>
         </row>
 
         <row>
           <cell><c>a != b</c></cell>
-          <cell>-</cell>
           <cell><c>a == b</c></cell>
         </row>
 
         <row>
           <cell><c>a &lt; b</c></cell>
-          <cell><c>b &lt; a</c></cell>
           <cell><c>a &gt;= b</c></cell>
         </row>
 
         <row>
           <cell><c>a &lt;= b</c></cell>
-          <cell><c>b &lt;= a</c></cell>
           <cell><c>a &gt; b</c></cell>
         </row>
 
         <row>
           <cell><c>a &gt; b</c></cell>
-          <cell><c>b &gt; a</c></cell>
           <cell><c>a &lt;= b</c></cell>
         </row>
 
         <row>
           <cell><c>a &gt;= b</c></cell>
-          <cell><c>b &gt;= a</c></cell>
           <cell><c>a &gt; b</c></cell>
         </row>
       </tabular>
