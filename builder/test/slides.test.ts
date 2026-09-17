@@ -268,3 +268,18 @@ test('fragments= xpath: strict children, predicates, errors', () => {
     /unsupported predicate/,
   );
 });
+
+test('fragment="none" and fragments="none": local opt-outs', () => {
+  const html = build(
+    `<deck fragments="slide/p">
+       <slide><p>frag</p><p fragment="none">not this one</p></slide>
+       <slide fragments="none"><p>quiet slide</p></slide>
+       <slide><fragments><p>wrapped</p><p fragment="none">opted out</p></fragments></slide>
+     </deck>`,
+  );
+  assert.match(html, /<p class='fragment'>frag<\/p>/);
+  assert.match(html, /<p>not this one<\/p>/);
+  assert.match(html, /<p>quiet slide<\/p>/, 'fragments="none" clears the inherited set');
+  assert.match(html, /<p class='fragment'>wrapped<\/p>/);
+  assert.match(html, /<p>opted out<\/p>/, 'opts out of a <fragments> wrapper too');
+});

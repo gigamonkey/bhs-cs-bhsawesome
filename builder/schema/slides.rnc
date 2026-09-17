@@ -13,12 +13,14 @@ default namespace = ""
 start = Deck
 
 # fragment="" makes the element a reveal fragment; a non-empty value adds
-# fragment styles (fade-up, highlight-red, ...). findex is
-# data-fragment-index. fragments="<xpath>" turns every element the
+# fragment styles (fade-up, highlight-red, ...); fragment="none" is the
+# local opt-out (never a fragment, whatever an enclosing wrapper or
+# fragments= expression matched). findex is data-fragment-index. fragments="<xpath>" turns every element the
 # expression matches (context: this element; XPath subset — name/* steps,
 # / and //, [n] predicates; a bare leading step is implicitly .//) into a
 # fragment: <ul fragments="li">, <table fragments="td">,
-# <slide fragments="p">. class passes through to the emitted element,
+# <slide fragments="p">; fragments="none" clears inherited matches for
+# the subtree. class passes through to the emitted element,
 # appended to whatever classes the emitter generates. style is verbatim
 # inline CSS — the escape hatch for truly one-off tweaks; prefer class= +
 # the stylesheet. language sets the code-block language for the element's

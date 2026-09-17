@@ -134,6 +134,11 @@ The reveal.js control surface — the reason this format exists:
   node; a bare leading step is implicitly `.//` — write `./li` for
   strict children-only. Unsupported syntax and zero matches are build
   errors. Per-element `findex=`/`class=` still compose.
+- **Opting back out**: `fragment="none"` on an element means it is never
+  a fragment, whatever an enclosing wrapper or expression matched;
+  `fragments="none"` on a container clears inherited expression matches
+  for its whole subtree (explicit `fragment=` and `<fragments>` wrappers
+  inside still apply).
 
 ## REPL slides
 

@@ -214,14 +214,14 @@ function heading(level: number, title: XmlElement, ctx: Ctx): string {
   // decks' `** \empty{}` trick): the <empty> element keeps the h2's line
   // box so the slide's layout doesn't shift.
   const body = title.children.length ? inlineBlock(title, ctx) : '<empty></empty>';
-  return `<h${level}${classAttr([...fragClasses(title, ctx), ...ownClasses(title)])}${styleAttr(title)}>${body}</h${level}>\n`;
+  return `<h${level}${classAttr(elementClasses(title, ctx))}${styleAttr(title)}>${body}</h${level}>\n`;
 }
 
 /** Render a block-level element. `forced` is classes imposed by an enclosing
  * <fragments>. */
 function block(el: XmlElement, ctx0: Ctx, forced: string[]): string {
   const ctx = withFragments(withLanguage(ctx0, el), el);
-  const classes = [...forced, ...fragClasses(el, ctx), ...ownClasses(el)];
+  const classes = elementClasses(el, ctx, forced);
   switch (el.name) {
     case 'p':
       return `<p${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${inlineBlock(el, ctx)}</p>\n`;
@@ -292,7 +292,7 @@ function renderFragments(el: XmlElement, ctx: Ctx): string {
 
 function fragmentClasses(el: XmlElement): string[] {
   const f = el.attributes.fragment;
-  if (f === undefined) return [];
+  if (f === undefined || f === 'none') return [];
   return f === '' ? ['fragment'] : ['fragment', ...f.split(/\s+/)];
 }
 
@@ -300,6 +300,14 @@ function fragmentClasses(el: XmlElement): string[] {
  * membership in an enclosing fragments= expression's matches. */
 function fragClasses(el: XmlElement, ctx: Ctx): string[] {
   return [...(ctx.fragmentSet?.has(el) ? ['fragment'] : []), ...fragmentClasses(el)];
+}
+
+/** The element's full class list. fragment="none" is the local opt-out: the
+ * element is never a fragment, whatever an enclosing <fragments> wrapper or
+ * fragments= expression matched. */
+function elementClasses(el: XmlElement, ctx: Ctx, forced: string[] = []): string[] {
+  const classes = [...forced, ...fragClasses(el, ctx), ...ownClasses(el)];
+  return el.attributes.fragment === 'none' ? classes.filter((c) => c !== 'fragment') : classes;
 }
 
 function findexAttr(el: XmlElement): string {
@@ -322,7 +330,7 @@ function renderList(list: XmlElement, ctx: Ctx, classes: string[], liForced: str
   const items = elements(list)
     .map((li) => {
       if (li.name !== 'li') throw new Error(`${ctx.file}: <${li.name}> inside <${list.name}> — only <li> allowed`);
-      const liClasses = [...liForced, ...fragClasses(li, ctx), ...ownClasses(li)];
+      const liClasses = elementClasses(li, ctx, liForced);
       const liCtx = withFragments(withLanguage(ctx, li), li);
       const body = hasBlockContent(li)
         ? `\n${blockChildren(li, liCtx)}`
@@ -410,13 +418,13 @@ function renderTable(table: XmlElement, ctx: Ctx, classes: string[]): string {
   const rows = elements(table)
     .map((tr) => {
       if (tr.name !== 'tr') throw new Error(`${ctx.file}: <${tr.name}> inside <table> — only <tr> allowed`);
-      const trClasses = [...fragClasses(tr, ctx), ...ownClasses(tr)];
+      const trClasses = elementClasses(tr, ctx);
       const cells = elements(tr)
         .map((cell) => {
           if (cell.name !== 'td' && cell.name !== 'th') {
             throw new Error(`${ctx.file}: <${cell.name}> inside <tr> — only <td>/<th> allowed`);
           }
-          const cellClasses = [...fragClasses(cell, ctx), ...ownClasses(cell)];
+          const cellClasses = elementClasses(cell, ctx);
           const cellCtx = withFragments(withLanguage(ctx, cell), cell);
           const body = hasBlockContent(cell) ? `\n${blockChildren(cell, cellCtx)}` : inlineBlock(cell, cellCtx);
           return `<${cell.name}${copiedAttrs(cell)}${classAttr(cellClasses)}${findexAttr(cell)}>${body}</${cell.name}>\n`;
@@ -512,7 +520,7 @@ function inlineBlock(el: XmlElement, ctx: Ctx): string {
 
 function inlineElement(el: XmlElement, ctx0: Ctx): string {
   const ctx = withFragments(withLanguage(ctx0, el), el);
-  const classes = [...fragClasses(el, ctx), ...ownClasses(el)];
+  const classes = elementClasses(el, ctx);
   switch (el.name) {
     case 'c':
       return `<code${classAttr(classes)}${findexAttr(el)}${styleAttr(el)}>${inline(el, ctx)}</code>`;
@@ -670,6 +678,9 @@ function matchFragments(context: XmlElement, expr: string, ctx: Ctx): Set<XmlEle
 function withFragments(ctx: Ctx, el: XmlElement): Ctx {
   const expr = el.attributes.fragments;
   if (expr === undefined || el.name === 'fragments') return ctx;
+  // fragments="none": clear inherited fragments= matches for this subtree
+  // (an explicit fragment= or a <fragments> wrapper inside still applies).
+  if (expr === 'none') return { ...ctx, fragmentSet: undefined };
   const matched = matchFragments(el, expr, ctx);
   if (!matched.size) {
     throw new Error(`${ctx.file}: <${el.name} fragments='${expr}'> matches nothing`);
