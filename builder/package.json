@@ -1,6 +1,6 @@
 {
   "name": "@peterseibel/book-builder",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "PreTeXt-derived XML book builder for the BHS CS books (BHSawesome, BJC).",
   "type": "module",
   "license": "MIT",
