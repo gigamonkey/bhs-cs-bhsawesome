@@ -1647,7 +1647,12 @@ ol>li {
     padding-left: .25em;
 }
 
-:root.dark-mode {
+/* The one Runestone code rule above that hardcodes its light colors; the
+   dark values match the book's dark Prism palette below. */
+:root.dark-mode .ptx-runestone-container code[class*=language-],
+:root.dark-mode .ptx-runestone-container pre[class*=language-] {
+    color: #fff;
+    background: #141414;
 }
 
 .heading:is(h1,h2,h3,h4,h5,h6) {

@@ -10,6 +10,12 @@
 <!-- All refs are root-relative (/bhsawesome/...): pages live at multiple
      directory depths (plans/bhsawesome-index-html-urls.md), so relative
      refs would break page-to-page. -->
+<!-- Theme boot (bhs-cs plans/dark-mode.md): the monorepo-served script that
+     stamps the dark-mode class (and data-theme) before first paint, from
+     the same localStorage `theme` key the Readability dialog writes — this
+     kills the light flash pretext-core.js's DOMContentLoaded apply left.
+     Deliberately synchronous and ahead of book.css. -->
+<script src="/js/theme-boot.js"></script>
 <link href="/bhsawesome/book.css" rel="stylesheet" type="text/css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
