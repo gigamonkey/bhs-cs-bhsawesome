@@ -16,10 +16,10 @@
      theme:bhsawesome), else the site `theme` preference. theme-boot OWNS
      the stamp: pretext-core's own dark-mode machinery is disabled via
      data-darkmode="disabled" on <html> and the Readability dialog's Theme
-     fieldset is removed, so the profile page is the one control. (The
-     dialog's Reset All still clears the site `theme` key — PreTeXt
-     behavior, harmless: that resets the site to System.) Deliberately
-     synchronous and ahead of book.css. -->
+     fieldset is replaced by one on the book's own surface preference, so
+     the book can never change the site-wide theme (/js/bhsawesome.js also
+     undoes Reset All's site-key clear, PreTeXt's one remaining writer).
+     Deliberately synchronous and ahead of book.css. -->
 <script src="/js/theme-boot.js" data-surface="bhsawesome"></script>
 <link href="/bhsawesome/book.css" rel="stylesheet" type="text/css">
 
