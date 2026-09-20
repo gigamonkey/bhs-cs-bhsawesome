@@ -3,7 +3,7 @@
      builder fills the title/toc/treebuttons/content slots (renderChrome in
      builder/src/chrome.ts). Originally extracted from a PreTeXt salem-theme
      page. -->
-<html lang="en-US" dir="ltr">
+<html lang="en-US" dir="ltr" data-darkmode="disabled">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{{TITLE}}</title>
@@ -11,11 +11,16 @@
      directory depths (plans/bhsawesome-index-html-urls.md), so relative
      refs would break page-to-page. -->
 <!-- Theme boot (bhs-cs plans/dark-mode.md): the monorepo-served script that
-     stamps the dark-mode class (and data-theme) before first paint, from
-     the same localStorage `theme` key the Readability dialog writes — this
-     kills the light flash pretext-core.js's DOMContentLoaded apply left.
-     Deliberately synchronous and ahead of book.css. -->
-<script src="/js/theme-boot.js"></script>
+     stamps the dark-mode class (and data-theme) before first paint — the
+     book's effective theme is its profile-page override (localStorage
+     theme:bhsawesome), else the site `theme` preference. theme-boot OWNS
+     the stamp: pretext-core's own dark-mode machinery is disabled via
+     data-darkmode="disabled" on <html> and the Readability dialog's Theme
+     fieldset is removed, so the profile page is the one control. (The
+     dialog's Reset All still clears the site `theme` key — PreTeXt
+     behavior, harmless: that resets the site to System.) Deliberately
+     synchronous and ahead of book.css. -->
+<script src="/js/theme-boot.js" data-surface="bhsawesome"></script>
 <link href="/bhsawesome/book.css" rel="stylesheet" type="text/css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,10 +134,9 @@ eBookConfig.runestone_version = '8.2.2';
 <div class="ptx-readability-options-group">
 <label class="ptx-readability-slider-label" for="ptx-readability-font-size"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe245;</span><span>Content font size</span><output id="ptx-readability-font-size-value" for="ptx-readability-font-size">100%</output></label><input type="range" id="ptx-readability-font-size" min="0.8" max="1.5" step="0.05" value="1">
 </div>
-<fieldset class="ptx-readability-options-group ptx-readability-options-group-theme">
-<legend>Theme</legend>
-<label for="ptx-readability-theme-system"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-system" value="system"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe1ab;</span><span>System</span></label><label for="ptx-readability-theme-light"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-light" value="light"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe518;</span><span>Light</span></label><label for="ptx-readability-theme-dark"><input type="radio" name="ptx-readability-theme" id="ptx-readability-theme-dark" value="dark"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span>Dark</span></label>
-</fieldset>
+<!-- The Theme fieldset that used to sit here moved to the bhs-cs profile
+     page (plans/dark-mode.md): theme-boot.js owns the book's theme now
+     (data-darkmode="disabled" above turns pretext-core's stamping off). -->
 <fieldset class="ptx-readability-options-group">
 <legend>Assistive technologies</legend>
 <label for="ptx-readability-accessible-permalinks"><input type="checkbox" id="ptx-readability-accessible-permalinks"><span>🔗</span><span>Expose permalinks</span></label>
