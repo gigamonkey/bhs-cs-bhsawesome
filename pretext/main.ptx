@@ -17,7 +17,7 @@
 
     <rename element="inlineexercise">Activity</rename>
 
-    <brandlogo url="./bhsawesome.html" source="_static/BHSawesomeLogo.png" alt="BHSawesome" />
+    <brandlogo url="./bhsawesome.html" source="_static/BHSawesomeLogo.svg" alt="BHSawesome" />
     <cross-references text="type-global-title" />
     <programs language="java" />
     <parsons language="java" />
