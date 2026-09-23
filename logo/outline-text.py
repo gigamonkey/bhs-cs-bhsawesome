@@ -6,7 +6,7 @@
 the same everywhere, independent of the reader's installed fonts.
 
   uv run logo/outline-text.py logo/bhsawesome-logo.svg VarelaRound-Regular.ttf \\
-      logo/bhsawesome-logo-varela.svg --stroke 7 --letter-spacing -1
+      logo/bhsawesome-logo-varela.svg --stroke 7 --letter-spacing -3
 
 --stroke adds a same-color round-joined stroke to embolden a font that
 has no bold weight; it widens each glyph by the stroke width, so raise
