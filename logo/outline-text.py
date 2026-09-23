@@ -6,11 +6,15 @@
 the same everywhere, independent of the reader's installed fonts.
 
   uv run logo/outline-text.py logo/bhsawesome-logo-old.svg VarelaRound-Regular.ttf \\
-      logo/bhsawesome-logo.svg --stroke 7 --letter-spacing -3
+      logo/bhsawesome-logo.svg --stroke 7 --letter-spacing -3 \\
+      --viewbox '13 0 1087 221'
 
 --stroke adds a same-color round-joined stroke to embolden a font that
 has no bold weight; it widens each glyph by the stroke width, so raise
 --letter-spacing to match.
+
+--viewbox crops the canvas to the artwork (plus the ~8px margin the
+old PNG logo had) so it fills the banner's box.
 Varela Round is at https://github.com/google/fonts/raw/main/ofl/varelaround/VarelaRound-Regular.ttf
 """
 import argparse, re
@@ -26,6 +30,7 @@ ap.add_argument('out')
 ap.add_argument('--size', type=float, default=150, help='font size in px')
 ap.add_argument('--baseline', type=float, help="override the <text>s' y")
 ap.add_argument('--letter-spacing', type=float, default=-3)
+ap.add_argument('--viewbox', help='crop to "x y w h" (also sets width/height)')
 ap.add_argument('--stroke', type=float, default=0, help='embolden by this stroke width')
 args = ap.parse_args()
 src, fontfile, out = args.src, args.fontfile, args.out
@@ -63,6 +68,10 @@ def outline(m):
     return f'<path fill="{fill}"{stroke} d="{pen.getCommands()}"/><!-- {text} -->'
 
 svg = re.sub(r'<text x="([\d.]+)"\s+y="([\d.]+)" fill="([^"]+)">([^<]+)</text>', outline, svg)
+if args.viewbox:
+    _, _, w, h = args.viewbox.split()
+    svg = re.sub(r'<svg([^>]*?) width="[^"]*" height="[^"]*" viewBox="[^"]*"',
+                 f'<svg\\1 width="{w}" height="{h}" viewBox="{args.viewbox}"', svg, count=1)
 svg = re.sub(r'\s*<style>.*?</style>', '', svg, flags=re.S)
 svg = svg.replace('<g class="wordmark">', f'<g class="wordmark">\n    <!-- Varela Round (SIL OFL), {FONT_SIZE:g}px, letter-spacing {LETTER_SPACING:g}px, stroke {args.stroke:g}, converted to outlines -->')
 open(out, 'w').write(svg)
