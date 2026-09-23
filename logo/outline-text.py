@@ -6,19 +6,30 @@
 the same everywhere, independent of the reader's installed fonts.
 
   uv run logo/outline-text.py logo/bhsawesome-logo.svg VarelaRound-Regular.ttf \\
-      logo/bhsawesome-logo-varela.svg 135 165
+      logo/bhsawesome-logo-varela.svg --stroke 7 --letter-spacing -1
 
-Args: source svg, font file, output svg, font size, baseline y (optional).
+--stroke adds a same-color round-joined stroke to embolden a font that
+has no bold weight; it widens each glyph by the stroke width, so raise
+--letter-spacing to match.
 Varela Round is at https://github.com/google/fonts/raw/main/ofl/varelaround/VarelaRound-Regular.ttf
 """
-import re, sys
+import argparse, re
 import uharfbuzz as hb
 from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 
-src, fontfile, out = sys.argv[1:4]
-FONT_SIZE, LETTER_SPACING = float(sys.argv[4]), -3
+ap = argparse.ArgumentParser()
+ap.add_argument('src')
+ap.add_argument('fontfile')
+ap.add_argument('out')
+ap.add_argument('--size', type=float, default=150, help='font size in px')
+ap.add_argument('--baseline', type=float, help="override the <text>s' y")
+ap.add_argument('--letter-spacing', type=float, default=-3)
+ap.add_argument('--stroke', type=float, default=0, help='embolden by this stroke width')
+args = ap.parse_args()
+src, fontfile, out = args.src, args.fontfile, args.out
+FONT_SIZE, LETTER_SPACING = args.size, args.letter_spacing
 
 svg = open(src).read()
 font = TTFont(fontfile)
@@ -32,7 +43,7 @@ hbfont = hb.Font(face)
 pen_x = None
 def outline(m):
     global pen_x
-    y, fill, text = float(sys.argv[5]) if len(sys.argv) > 5 else float(m[2]), m[3], m[4]
+    y, fill, text = args.baseline if args.baseline is not None else float(m[2]), m[3], m[4]
     # Flow the colored runs as one word (the source x's were tuned for
     # another font's widths); only the first run's x is honored.
     x = float(m[1]) if pen_x is None else pen_x
@@ -48,10 +59,11 @@ def outline(m):
             TransformPen(pen, (scale, 0, 0, -scale, gx, gy)))
         x += pos.x_advance * scale + LETTER_SPACING
     pen_x = x
-    return f'<path fill="{fill}" d="{pen.getCommands()}"/><!-- {text} -->'
+    stroke = f' stroke="{fill}" stroke-width="{args.stroke:g}" stroke-linejoin="round"' if args.stroke else ''
+    return f'<path fill="{fill}"{stroke} d="{pen.getCommands()}"/><!-- {text} -->'
 
 svg = re.sub(r'<text x="([\d.]+)"\s+y="([\d.]+)" fill="([^"]+)">([^<]+)</text>', outline, svg)
 svg = re.sub(r'\s*<style>.*?</style>', '', svg, flags=re.S)
-svg = svg.replace('<g class="wordmark">', f'<g class="wordmark">\n    <!-- Varela Round (SIL OFL), {FONT_SIZE:g}px, letter-spacing -3px, converted to outlines -->')
+svg = svg.replace('<g class="wordmark">', f'<g class="wordmark">\n    <!-- Varela Round (SIL OFL), {FONT_SIZE:g}px, letter-spacing {LETTER_SPACING:g}px, stroke {args.stroke:g}, converted to outlines -->')
 open(out, 'w').write(svg)
 print('end x', pen_x)
