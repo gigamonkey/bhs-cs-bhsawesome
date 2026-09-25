@@ -65,9 +65,10 @@ function loadDeck(deckFile: string): XmlElement {
 
 // -- Page shell ---------------------------------------------------------------
 //
-// Byte-for-byte the shell the Lisp slides-html emitted (single quotes and
-// all), so a converted deck's page differs from its golden only where the
-// content differs.
+// Originally byte-for-byte the shell the Lisp slides-html emitted (single
+// quotes and all), so a converted deck's page differed from its golden only
+// where the content differed; it has since grown print support (the theme
+// swap and pdfSeparateFragments below).
 
 const HEAD = `<!doctype html>
 <html lang='en'>
@@ -76,11 +77,17 @@ const HEAD = `<!doctype html>
         <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
         <link rel='stylesheet' href='/reveal/dist/reset.css'>
         <link rel='stylesheet' href='/reveal/dist/reveal.css'>
-        <link rel='stylesheet' href='/reveal/dist/theme/black.css'>
+        <link id='theme' rel='stylesheet' href='/reveal/dist/theme/black.css'>
         <link rel='stylesheet' href='/reveal/dist/custom.css'>
         <link rel='stylesheet' href='/reveal/plugin/highlight/monokai.css'>
         <link rel='stylesheet' href='/css/bootstrap-icons.css'>
         <link rel='stylesheet' href='/css/logo.css'>
+        <script>// Print mode (?print-pdf): light theme instead of white-on-black.
+            // Reveal handles the print layout itself and marks <html> with
+            // .reveal-print, which custom.css uses to fix dark-theme colors.
+            if (/print-pdf/gi.test(location.search)) {
+                document.getElementById('theme').href = '/reveal/dist/theme/white.css';
+            }</script>
 `;
 
 const BODY_TOP = `    </head>
@@ -104,6 +111,8 @@ const TAIL = `            </div>
             // - https://revealjs.com/config/
             Reveal.initialize({
               hash: true,
+              // Print each slide once, fully built, not one page per fragment step.
+              pdfSeparateFragments: false,
               // Learn about plugins: https://revealjs.com/plugins/
               plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
             });</script>
