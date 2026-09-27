@@ -7,7 +7,7 @@
  */
 
 export { type BookConfig, getConfig, setConfig } from './config.ts';
-export { type BuildOptions, buildBook } from './build.ts';
+export { type BuildOptions, NotPagesError, buildBook, pagesForFiles } from './build.ts';
 export { checkLinks } from './check-links.ts';
 export { serve } from './serve.ts';
 export { watchAndBuild } from './watch.ts';

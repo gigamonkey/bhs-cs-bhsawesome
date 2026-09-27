@@ -24,7 +24,9 @@ The build is Node only (`npm ci` once; Node 26 type-strips the TypeScript):
 
 ```bash
 node builder/build.ts        # the whole site -> build/out/public/bhsawesome/ (~400ms)
-node builder/watch.ts        # rebuild on any pretext/, builder/, or vendor/ change
+node builder/watch.ts        # rebuild on any pretext/, builder/, or vendor/ change:
+                             #   a page edit re-emits just that page (build.ts --only-files),
+                             #   the whole book catching up once edits pause
 node builder/serve.ts        # preview the built site at localhost:8237/bhsawesome/
 node builder/check-links.ts  # verify every internal ref resolves (CI runs it)
 ```

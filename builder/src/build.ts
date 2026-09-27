@@ -13,7 +13,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { type Division, loadBook } from './book.ts';
+import { type Book, type Division, loadBook } from './book.ts';
 import { type BookConfig, setConfig } from './config.ts';
 import { navFor, renderChrome } from './chrome.ts';
 import { tocJs } from './toc.ts';
@@ -33,23 +33,79 @@ import {
 import { emitElement } from './prose.ts';
 import { knowlTargets } from './prose.ts';
 import { fileFor, href } from './urls.ts';
+import { type XmlElement, elements, sourceFile } from './xml.ts';
 
 export type BuildOptions = {
   /** Restrict emission to these page paths ('' = the contents page). */
   only?: Set<string> | null;
+  /** Restrict emission to the pages these source files render on (a watch
+   * mode's fast path). Throws NotPagesError, before writing anything, when
+   * a file isn't confined to one page — see pagesForFiles. */
+  onlyFiles?: string[] | null;
   /** Copy the configured asset trees (default true). */
   withAssets?: boolean;
 };
 
+/** onlyFiles named a file a page-only build can't cover. */
+export class NotPagesError extends Error {}
+
+/*
+ * The pages these source files render on, or null when any of them isn't
+ * confined to a single page — a file holding several pages' worth of
+ * structure (main, a chapter's or lab's toctree), a division that holds a
+ * page without being it, or a file the book doesn't (yet) include. A file
+ * that IS a page, or a fragment included inside one (an exercise, a
+ * subsection), maps to that page. What such an edit shows on OTHER pages
+ * (its title in the contents and prev/next, its numbers in their
+ * cross-references) is left for a full build.
+ */
+export function pagesForFiles(book: Book, files: string[]): Set<string> | null {
+  const wanted = new Set(files.map((f) => path.resolve(f)));
+  // Each wanted file's root element(s): where the source file changes from
+  // the parent's (xml.ts records every element's file, includes spliced).
+  const roots = new Map<string, XmlElement[]>();
+  const walk = (el: XmlElement, parentFile: string | undefined): void => {
+    const f = sourceFile(el);
+    if (f && f !== parentFile && wanted.has(f)) roots.set(f, [...(roots.get(f) ?? []), el]);
+    for (const c of elements(el)) walk(c, f);
+  };
+  walk(book.root, undefined);
+  const within = (el: XmlElement, root: XmlElement): boolean => {
+    for (let a: unknown = el; a; a = (a as XmlElement).parent) if (a === root) return true;
+    return false;
+  };
+  const pageByEl = new Map(book.pages.map((d) => [d.el, d]));
+  const out = new Set<string>();
+  for (const f of wanted) {
+    const rs = roots.get(f);
+    if (!rs?.length) return null;
+    for (const r of rs) {
+      const inside = book.pages.filter((d) => within(d.el, r));
+      let page: Division | undefined;
+      if (inside.length === 1 && inside[0].el === r) page = inside[0];
+      else if (inside.length === 0) {
+        for (let a: unknown = r.parent; a && !page; a = (a as XmlElement).parent) page = pageByEl.get(a as XmlElement);
+      }
+      if (page?.page == null) return null;
+      out.add(page.page);
+    }
+  }
+  return out;
+}
+
 export async function buildBook(config: BookConfig, opts: BuildOptions = {}): Promise<number> {
   setConfig(config);
-  const only = opts.only ?? null;
   const withAssets = opts.withAssets !== false;
   const OUT = config.siteDir;
 
   const started = performance.now();
   await initMath(); // the speech engine loads its locale async; emission is sync
   const book = loadBook(config.mainPtx);
+  let only = opts.only ?? null;
+  if (opts.onlyFiles) {
+    only = pagesForFiles(book, opts.onlyFiles);
+    if (!only) throw new NotPagesError(`not confined to single pages: ${opts.onlyFiles.join(', ')}`);
+  }
   for (const page of book.pages) {
     numberBlocks(page);
     numberTasks(page);
