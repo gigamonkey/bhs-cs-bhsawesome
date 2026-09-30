@@ -84,7 +84,7 @@
     <p>
       For example, the Snap! block below that loops until <c>x</c> is 100 would
       need to be written in Java with a <k>while</k> loop that runs as long as
-      <c>x</c> is not yet 100, which can be written as <c>x &lt; 100</c>.
+      <c>x</c> is not yet 100, which can be written as <c>x != 100</c>.
     </p>
 
     <figure>
@@ -496,9 +496,9 @@
     <program>
       while (true) {
           if (tooHot()) {
-              turnOnFurnace();
-          } else {
               turnOffFurnace();
+          } else {
+              turnOnFurnace();
           }
       }
     </program>

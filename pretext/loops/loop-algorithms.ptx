@@ -59,8 +59,8 @@
 
       <li>
         <p>
-          A loop that loops sum number of times to produce the values we want to
-          distill into our accumulator variable.
+          A loop that loops some number of times to produce the values we want
+          to distill into our accumulator variable.
         </p>
       </li>
 
@@ -109,9 +109,9 @@
 
     <p>
       For the next few examples, let’s assume we are working in a program for
-      anayzing rainfall data in which we have a method <c>nextMeasurement()</c>
-      which every time it is called returns a <k>double</k> representing an
-      amount of rainfall per hour from some sequence of data.
+      anayzing rainfall data in which we have a method <c>hourlyRainfall(int
+      hour)</c> which returns a <k>double</k> representing the centimeters of
+      rainfall in the given hour.
     </p>
 
     <p>
@@ -122,8 +122,8 @@
     <program>
       <![CDATA[
       double total = 0;
-      for (int i = 0; i < 24; i++) {
-          total += nextMeasurement();
+      for (int h = 0; h < 24; h++) {
+          total += hourlyRainfall(h);
       }
       System.out.println(total + " cm of total rainfall.");
       ]]>
@@ -139,8 +139,8 @@
     <program>
       <![CDATA[
       int count = 0;
-      for (int i = 0; i < 24; i++) {
-          if (nextMeasurement() > 12.0) {
+      for (int h = 0; h < 24; h++) {
+          if (hourlyRainfall(h) > 12.0) {
               count++;
           }
       }
@@ -172,8 +172,8 @@
     <program>
       <![CDATA[
       int count = 0;
-      for (int i = 0; i < 24; i++) {
-          if (extraRainy(nextMeasurement())) { // change the condition to use the provided method
+      for (int h = 0; h < 24; h++) {
+          if (extraRainy(hourlyRainfall(h))) { // change the condition to use the provided method
               count++;
           }
       }
@@ -197,8 +197,8 @@
     <program>
       <![CDATA[
       double total = 0;
-      for (int i = 0; i < 24; i++) {
-          total += nextMeasurement();
+      for (int h = 0; h < 24; h++) {
+          total += hourlyRainfall(h);
       }
       System.out.println("Average rainfall: " + total / 24);
       ]]>
@@ -214,10 +214,10 @@
       <![CDATA[
       double total = 0;
       int count = 0;
-      for (int i = 0; i < 24; i++) {
-          double m = nextMeasurement();
+      for (int h = 0; h < 24; h++) {
+          double m = hourlyRainfall(h);
           if (m > 12.0) {
-              total += nextMeasurement();
+              total += m;
               count++;
           }
       }
@@ -415,7 +415,7 @@
       that the first version always assigns a value to <c>min</c>, but sometimes
       it’s the current value, and in the second version we only assign to
       <c>min</c> when we’ve actually found a smaller value. Either way is fine,
-      though avoiding <k>if</k> statements that we don’t need often leads to
+      but avoiding <k>if</k> statements that we don’t need often leads to
       clearer code.
     </p>
 
@@ -481,13 +481,13 @@
     <p>
       Before we got to the loop part of this problem, there are two key facts to
       keep in mind about some arithmetic operators we first talked about in
-      <xref ref="expressions" />. First off, we need to realize that to get the
-      rightmost digit of any <k>int</k> value is the remainder when divided by
-      ten. For example, <c>1234 % 10</c> ⟹ <c>4</c>. Second, dividing an
-      <k>int</k> value by ten effectively throws away the rightmost digit
-      because of truncation. <c>1234 / 10</c> ⟹ <c>123</c>. Also note that if we
-      divide an <k>int</k> value less than ten by ten, we get <c>0</c> after the
-      last digit is thrown away: <c>9 / 10</c> ⟹ <c>0</c>.
+      <xref ref="expressions" />. First off, we need to realize that we can get
+      the rightmost digit of any <k>int</k> value by taking the reminder when
+      dividing by ten. For example, <c>1234 % 10</c> ⟹ <c>4</c>. Second,
+      dividing an <k>int</k> value by ten effectively throws away the rightmost
+      digit because of truncation. <c>1234 / 10</c> ⟹ <c>123</c>. Also note that
+      if we divide an <k>int</k> value less than ten by ten, we get <c>0</c>
+      after the last digit is thrown away: <c>9 / 10</c> ⟹ <c>0</c>.
     </p>
 
     <p>

@@ -263,13 +263,7 @@
     <title>Nested loops with Turtles</title>
 
     <p>
-      Try nested loops with turtles to create a snowflake design! If the code
-      below does not work in your browser, you can copy the code into this <url
-      href="https://replit.com/@BerylHoffman/Java-Swing-Turtle">replit
-      link</url> (refresh page after forking and if it gets stuck) or download
-      the files <url
-      href="https://github.com/bhoffman0/APCSA-2019/tree/master/_sources/Unit2-Using-Objects/TurtleJavaSwingCode.zip">here</url>
-      to use in your own IDE.
+      Try nested loops with turtles to create a snowflake design!
     </p>
 
     <activity label="TurtleNestedLoop">
