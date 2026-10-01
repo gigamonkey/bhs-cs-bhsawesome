@@ -56,6 +56,11 @@
     <p>
       In this lesson, we’ll look at all three of these ways of analyzing loops.
     </p>
+    <figure align="center">
+      <image source="_static/img/fencepost.png" width="100%" />
+      <caption>A 100’ fence</caption>
+    </figure>
+
   </introduction>
 
   <subsection>
