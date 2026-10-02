@@ -493,12 +493,11 @@
           // make a copy
           public Person(String initName, Address initAddr) {
               name = initName;
-              addr =
-                      new Address(
-                              initAddr.getStreet(),
-                              initAddr.getCity(),
-                              initAddr.getState(),
-                              initAddr.getZipcode());
+              addr = new Address(
+                  initAddr.getStreet(),
+                  initAddr.getCity(),
+                  initAddr.getState(),
+                  initAddr.getZipcode());
           }
       }
     </program>
