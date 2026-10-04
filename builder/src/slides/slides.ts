@@ -428,13 +428,16 @@ function renderTable(table: XmlElement, ctx: Ctx, classes: string[]): string {
     .map((tr) => {
       if (tr.name !== 'tr') throw new Error(`${ctx.file}: <${tr.name}> inside <table> — only <tr> allowed`);
       const trClasses = elementClasses(tr, ctx);
+      // The row's own fragments= (<tr fragments="td">) and language apply to
+      // its cells — a row isn't a block, so block() didn't fold them in.
+      const trCtx = withFragments(withLanguage(ctx, tr), tr);
       const cells = elements(tr)
         .map((cell) => {
           if (cell.name !== 'td' && cell.name !== 'th') {
             throw new Error(`${ctx.file}: <${cell.name}> inside <tr> — only <td>/<th> allowed`);
           }
-          const cellClasses = elementClasses(cell, ctx);
-          const cellCtx = withFragments(withLanguage(ctx, cell), cell);
+          const cellClasses = elementClasses(cell, trCtx);
+          const cellCtx = withFragments(withLanguage(trCtx, cell), cell);
           const body = hasBlockContent(cell) ? `\n${blockChildren(cell, cellCtx)}` : inlineBlock(cell, cellCtx);
           return `<${cell.name}${copiedAttrs(cell)}${classAttr(cellClasses)}${findexAttr(cell)}>${body}</${cell.name}>\n`;
         })

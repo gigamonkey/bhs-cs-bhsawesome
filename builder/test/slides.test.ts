@@ -216,6 +216,7 @@ test('fragments= xpath: lists, tables, slide-level', () => {
        <slide><ul fragments="li"><li>a</li><li findex="1">b</li></ul></slide>
        <slide><table fragments="td"><tr><th>h</th><td>x</td></tr></table></slide>
        <slide><table fragments="tr"><tr><td>y</td></tr></table></slide>
+       <slide><table><tr><td>plain</td></tr><tr fragments="td"><td>rowwise</td></tr></table></slide>
        <slide fragments="p"><title>t</title><p>one</p><div><p>nested too</p></div></slide>
      </deck>`,
   );
@@ -224,6 +225,8 @@ test('fragments= xpath: lists, tables, slide-level', () => {
   assert.match(html, /<th>h<\/th>/, 'th is not a td');
   assert.match(html, /<td class='fragment'>x<\/td>/);
   assert.match(html, /<tr class='fragment'>/);
+  assert.match(html, /<td>plain<\/td>/, 'a row-level expression is scoped to its row');
+  assert.match(html, /<td class='fragment'>rowwise<\/td>/, 'fragments= on a <tr> applies to its cells');
   assert.match(html, /<p class='fragment'>one<\/p>/);
   assert.match(html, /<p class='fragment'>nested too<\/p>/, 'bare step is descendant search');
   assert.doesNotMatch(html, /<ul class='fragment'>/);
