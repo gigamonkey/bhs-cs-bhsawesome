@@ -20,6 +20,5 @@ words.txt
 builder/dist/
 builder/package.json.orig
 
-# test-idempotency.sh scratch output
-first.xml
-second.xml
+# scripts/shoot.mjs output
+shots/

@@ -53,7 +53,7 @@ jobs:
 
       # The whole-book build IS the test suite: a builder that can't build
       # this book cleanly must not publish.
-      - run: node builder/build.ts && node builder/check-links.ts
+      - run: node scripts/build.ts bhsawesome && node scripts/check-links.ts bhsawesome
         working-directory: .
 
       # Pack (prepack builds dist/ and stages the manifest at it) and prove

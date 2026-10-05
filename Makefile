@@ -1,20 +1,48 @@
-words.txt: bhsawesome/source/main.ptx words.py
-	./words.py -x activity $< > $@
+# The BHS CS books. Everything book-level takes BOOK (a book directory —
+# holds book.ts, schema.rnc, source/main.ptx); the scripts/ tools take the
+# same argument directly.
+BOOK ?= bhsawesome
 
-# The book schema: bhsawesome/schema.rnc (which includes the shared
-# builder/schema/core.rnc) compiles to the committed schema.rng that
-# ./validate.py (and CI) validate against. Regenerate after editing either
-# .rnc (needs trang; brew install jing-trang / apt install trang).
-schema: bhsawesome/schema.rng
+build:
+	node scripts/build.ts $(BOOK)
 
-bhsawesome/schema.rng: bhsawesome/schema.rnc builder/schema/core.rnc
-	trang -I rnc -O rng bhsawesome/schema.rnc $@
+watch:
+	node scripts/watch.ts $(BOOK)
 
-validate: bhsawesome/schema.rng
-	./validate.py
+serve:
+	node scripts/serve.ts $(BOOK)
+
+check-links:
+	node scripts/check-links.ts $(BOOK)
+
+validate: $(BOOK)/schema.rng
+	uv run scripts/validate.py $(BOOK)
+
+check-ids:
+	uv run scripts/check-ids.py $(BOOK)/source/main.ptx
+
+# Every file reachable from the book root, in reading order.
+files:
+	uv run scripts/list-files.py $(BOOK)/source/main.ptx
+
+# Per-section word counts (an outline-mode file), written into the book dir.
+words: $(BOOK)/words.txt
+
+$(BOOK)/words.txt: $(BOOK)/source/main.ptx scripts/words.py
+	uv run scripts/words.py -x activity $< > $@
+
+# The book schema: <book>/schema.rnc (which includes the shared
+# builder/schema/core.rnc) compiles to the committed <book>/schema.rng (plus
+# core.rng beside it) that scripts/validate.py (and CI) validate against.
+# Regenerate after editing either .rnc (needs trang; brew install jing-trang
+# / apt install trang).
+schema: $(BOOK)/schema.rng
+
+$(BOOK)/schema.rng: $(BOOK)/schema.rnc builder/schema/core.rnc
+	trang -I rnc -O rng $< $@
 
 clean:
-	rm -f words.txt
+	rm -rf build $(BOOK)/words.txt
 
 # ---------------------------------------------------------------------------
 # Releasing @peterseibel/book-builder (the builder/ workspace, consumed by
@@ -41,4 +69,4 @@ release-book-builder:
 	echo "Pushing $$tag (and the current branch) to origin…"; \
 	git push --follow-tags origin HEAD
 
-.PHONY: release-book-builder schema validate
+.PHONY: build watch serve check-links validate check-ids files words schema clean release-book-builder

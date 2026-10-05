@@ -1,4 +1,9 @@
 #!/usr/bin/env perl -i
+#
+# Point every Oracle javadoc link at $JDK_VERSION's docs. Bump the version
+# and run it over the source at each JDK upgrade:
+#
+#     scripts/fix-javadocs.pl $(fd -e ptx . <book>/source)
 
 use warnings;
 use strict;

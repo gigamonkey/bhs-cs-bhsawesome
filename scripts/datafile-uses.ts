@@ -1,6 +1,7 @@
 /*
- * Print the live book's activecode datafile usage as JSON on stdout:
+ * Print a book's activecode datafile usage as JSON on stdout:
  *
+ *     node scripts/datafile-uses.ts <book>
  *     { "<label>": ["file", ...], ... }
  *
  * Consumed by extract-datafiles.py (which turns the non-jar entries into
@@ -9,13 +10,14 @@
  * trees are excluded and no rendered pages are involved.
  */
 
-import { config } from '../bhsawesome/book.ts';
-import { loadBook } from './src/book.ts';
-import { setConfig } from './src/config.ts';
-import { attr, elements, type XmlElement } from './src/xml.ts';
+import { loadBook as loadBookModel } from '../builder/src/book.ts';
+import { setConfig } from '../builder/src/config.ts';
+import { attr, elements, type XmlElement } from '../builder/src/xml.ts';
+import { loadBook } from './lib/book.ts';
 
+const { config } = await loadBook(process.argv.slice(2), 'usage: node scripts/datafile-uses.ts <book>');
 setConfig(config);
-const book = loadBook(config.mainPtx);
+const book = loadBookModel(config.mainPtx);
 
 const uses: Record<string, string[]> = {};
 

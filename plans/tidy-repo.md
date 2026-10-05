@@ -341,3 +341,33 @@ new tree:
 - TODO.md's "Remove `language="java"`" and "Strip unneeded `<code>` child"
   items are now a one-off `transform` run with a two-template stylesheet,
   if still wanted.
+
+## Changes to the plan
+
+- **Phases 2 and 3 swapped** — the book moved first (its own green
+  commit, with the root scripts' path literals updated), then the scripts
+  moved to `scripts/` and took the book argument. Writing the scripts for
+  the final layout while the book still sat in `pretext/` would have meant
+  writing them twice.
+- **`watchAndBuild` grew a `baseArgs` option** (`builder/src/watch.ts`):
+  the page-only rebuild spawned `build.ts --only-files …` without the
+  pass-through args, so the book argument never reached it. `baseArgs` is
+  prefixed to every spawned build; a package consumer that doesn't set it
+  sees no change. Needs a book-builder release before bhs-cs-content can
+  use it (nothing there needs it today).
+- **The shot list lives in `<book>/shots.mjs`**, not in `book.ts` or the
+  harness: `BookConfig` stayed untouched and the harness stayed generic.
+  The two shooters share `scripts/lib/site-server.mjs`, which mounts the
+  built site at the book's `base` and serves `/js/<id>.js` from a sibling
+  bhs-cs checkout or a stub.
+- **`make files` replaced `make-file-list.sh`** rather than folding it in
+  verbatim (the Emacs jumper-mode header went with it; `pretext/files.txt`
+  is gone).
+- **`rename-files.py` lost `check_publication`**, which looked for the
+  PreTeXt `publication/*.xml` and `project.ptx` files that no longer exist.
+- **`traces/README.md` needed an `assetFilter`** in `book.ts` so the
+  README isn't copied into the site beside the traces.
+- **`test-idempotency.sh` writes to `mktemp` files** instead of
+  `first.xml`/`second.xml` in the cwd (their `.gitignore` lines went too).
+- **Not pruned after all:** nothing — every delete in the phase 1 table
+  happened, including the logo scratch.

@@ -1,7 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env -S uv run
 
 """
-Dump SHA1 hash
+Hash every element of a book into a SQLite db to find duplicated content:
+
+    scripts/hash-contents.py hashes.db <book>/source/main.ptx
+    scripts/show-dupes.sh hashes.db
 """
 
 from lxml import etree

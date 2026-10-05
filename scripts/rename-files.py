@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env -S uv run
 
 """
 Rename .ptx files and keep their xml:ids in sync with the new file names.
@@ -31,6 +31,14 @@ list-files.py uses. Dead/orphan .ptx files that the book never includes are igno
 their ids never block a rename. Pass --all-files to fall back to scanning every
 git-tracked .ptx instead.
 
+Usage:
+
+    scripts/rename-files.py -n <book> <config>   # dry run (recommended first)
+    scripts/rename-files.py    <book> <config>   # apply
+
+<book> is the book directory (e.g. bhsawesome); bare names resolve under its
+source/ and the id scan is rooted at source/main.ptx.
+
 Config file format -- one mapping per line, blank lines and #-comments ignored:
 
     # old path (or unambiguous bare name)   ->   new name
@@ -58,7 +66,7 @@ XML_ID = "{http://www.w3.org/XML/1998/namespace}id"
 XI_NS = "http://www.w3.org/2001/XInclude"
 XI_INCLUDE = f"{{{XI_NS}}}include"
 
-SCRIPT_DIR = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent  # the repo root
 
 # Attributes whose values reference an xml:id and so must follow a renamed id.
 # Only "ref" is used in this book today; first/last/provisional are the other
@@ -237,19 +245,15 @@ def main():
         prog="rename-files",
         description="Rename .ptx files and sync their xml:ids and references.",
     )
+    parser.add_argument("book", help="Book directory (bare names resolve under its source/)")
     parser.add_argument("config", help="Mapping file (old -> new per line)")
-    parser.add_argument(
-        "--book-dir",
-        default=str(SCRIPT_DIR / "bhsawesome" / "source"),
-        help="Directory to resolve bare base names and scan (default: bhsawesome/source)",
-    )
     parser.add_argument(
         "-n", "--dry-run", action="store_true",
         help="Print what would change without touching anything",
     )
     parser.add_argument(
         "--root", default=None,
-        help="Book root to scope the id scan to (default: <book-dir>/main.ptx)",
+        help="Book root to scope the id scan to (default: <book>/source/main.ptx)",
     )
     parser.add_argument(
         "--all-files", action="store_true",
@@ -267,7 +271,9 @@ def main():
     )
     args = parser.parse_args()
 
-    book_dir = Path(args.book_dir).resolve()
+    book_dir = Path(args.book).resolve() / "source"
+    if not book_dir.is_dir():
+        die(f"not a book directory (no source/): {args.book}")
     book_root = Path(args.root).resolve() if args.root else book_dir / "main.ptx"
 
     # 1. Resolve every config mapping into a record
@@ -402,7 +408,6 @@ def main():
                 cur_path.write_text(new_text)
 
     # 5. Warn about references this script does not touch (publication config).
-    check_publication(id_map)
 
     if args.dry_run:
         print("\n(dry run -- nothing written)")
@@ -462,9 +467,9 @@ def git_ptx_files(book_dir, no_git):
         return [str(p) for p in book_dir.rglob("*.ptx")]
     out = subprocess.run(
         ["git", "ls-files", "--", "*.ptx"],
-        cwd=SCRIPT_DIR, capture_output=True, text=True, check=True,
+        cwd=ROOT, capture_output=True, text=True, check=True,
     ).stdout
-    return [str((SCRIPT_DIR / line).resolve()) for line in out.splitlines() if line]
+    return [str((ROOT / line).resolve()) for line in out.splitlines() if line]
 
 
 def git_mv(old_abs, new_abs, no_git):
@@ -497,7 +502,7 @@ def _do_mv(old_abs, new_abs, no_git, force=False):
     if force:
         cmd.append("-f")
     cmd += [str(old_abs), str(new_abs)]
-    subprocess.run(cmd, cwd=SCRIPT_DIR, check=True)
+    subprocess.run(cmd, cwd=ROOT, check=True)
 
 
 def run_format(paths):
@@ -505,22 +510,8 @@ def run_format(paths):
     print(f"\nFormatting {len(paths)} file(s) with xml-format ...")
     subprocess.run(
         ["xml-format", "-q", "-i", *paths],
-        cwd=SCRIPT_DIR, check=True,
+        cwd=ROOT, check=True,
     )
-
-
-def check_publication(id_map):
-    if not id_map:
-        return
-    for name in ("publication/html.xml", "publication/runestone.xml", "project.ptx"):
-        p = SCRIPT_DIR / name
-        if not p.exists():
-            continue
-        text = p.read_text()
-        for old_id in id_map:
-            if re.search(rf'"{re.escape(old_id)}"', text):
-                print(f"  warning: {name} mentions {old_id!r}; "
-                      f"check it manually (not auto-edited)", file=sys.stderr)
 
 
 if __name__ == "__main__":

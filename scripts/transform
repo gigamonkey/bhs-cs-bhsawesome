@@ -3,7 +3,10 @@
 set -euo pipefail
 
 #
-# Run an XSLT transformation on all files listed on standard in.
+# Run an XSLT transformation in place on all files listed on standard in,
+# reformatting each afterwards:
+#
+#     fd -e ptx . <book>/source | scripts/transform some.xsl
 #
 
 xsl="$1"

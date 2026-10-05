@@ -11,7 +11,7 @@
  *
  * Idempotent: a clean re-run converts nothing and reports nothing.
  *
- * Usage: node fix-keywords.mjs [--check]   (--check: report, don't write)
+ * Usage: node scripts/fix-keywords.mjs <book> [--check]   (--check: report, don't write)
  */
 
 import fs from 'node:fs';
@@ -30,7 +30,12 @@ const KEYWORDS = new Set([
   'transient', 'try', 'void', 'volatile', 'while',
 ]);
 
-const check = process.argv.includes('--check');
+const [book, ...flags] = process.argv.slice(2);
+if (!book || book.startsWith('-')) {
+  console.error('usage: node scripts/fix-keywords.mjs <book> [--check]');
+  process.exit(2);
+}
+const check = flags.includes('--check');
 
 function* ptxFiles(dir) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -46,7 +51,7 @@ function lineOf(text, index) {
 
 let converted = 0;
 const violations = [];
-for (const file of ptxFiles('bhsawesome/source')) {
+for (const file of ptxFiles(path.join(book, 'source'))) {
   const text = fs.readFileSync(file, 'utf8');
 
   // 1. <c>keyword</c> -> <k>keyword</k> (plain-text content only —

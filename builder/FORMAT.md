@@ -14,7 +14,8 @@ Source files are `.ptx`, assembled from a book root (`main.ptx`) via
 `xi:include`, formatted canonically by `xml-format` (2-space indent,
 80-column fill), and validated in CI against the book's compiled `.rng`.
 File-naming convention: a division file is named `<its-xml:id>.ptx`; a
-chapter's directory equals the chapter's `xml:id` (`check-ids.py`).
+chapter's directory equals the chapter's `xml:id` (the book repo's
+`scripts/check-ids.py`).
 
 ## Divisions
 

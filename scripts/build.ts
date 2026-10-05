@@ -1,12 +1,12 @@
 /*
- * The BHSawesome build (plans/rehost-bhsawesome.md phase 3):
+ * Build a book:
  *
- *     node builder/build.ts [--only <page-path>...] [--no-assets]
- *     node builder/build.ts --only-files <source-file>...
+ *     node scripts/build.ts <book> [--only <page-path>...] [--no-assets]
+ *     node scripts/build.ts <book> --only-files <source-file>...
  *
- * A thin wrapper: the book-specific facts live in bhsawesome/book.ts,
- * the build itself in the generic builder/src/build.ts (a --only key is
- * the page's URL path, e.g. `introduction/intro-to-java`, or `` for the
+ * A thin wrapper: the book-specific facts live in <book>/book.ts, the
+ * build itself in the generic builder/src/build.ts (a --only key is the
+ * page's URL path, e.g. `introduction/intro-to-java`, or `` for the
  * contents page). --only-files is watch.ts's fast path: rebuild just the
  * pages those source files render on (no assets); it exits 3, writing
  * nothing, when a file isn't confined to one page, meaning "build it all".
@@ -16,10 +16,13 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { config } from '../bhsawesome/book.ts';
-import { NotPagesError, buildBook } from './src/build.ts';
+import { NotPagesError, buildBook } from '../builder/src/build.ts';
+import { ROOT, loadBook } from './lib/book.ts';
 
-const args = process.argv.slice(2);
+const { config, rest: args } = await loadBook(
+  process.argv.slice(2),
+  'usage: node scripts/build.ts <book> [--only <page>...] [--no-assets] | --only-files <file>...',
+);
 const onlyIdx = args.indexOf('--only');
 const only = onlyIdx === -1 ? null : new Set(args.slice(onlyIdx + 1).filter((a) => !a.startsWith('--')));
 const filesIdx = args.indexOf('--only-files');
@@ -46,17 +49,18 @@ await build({ only, withAssets: !args.includes('--no-assets') });
 
 /*
  * The version stamp this publisher leaves at the root of the overlay slice
- * it owns (public/bhsawesome/version.txt, served at /bhsawesome/version.txt):
- * the short sha of the source tree the build came from, `-dirty` when it had
- * uncommitted changes — the same shape as the website image's GET /version
- * and the bhs-cs-content publishers' /version.txt and /bjc/version.txt. The
- * monorepo's scripts/since-deployed reads it to report what's on origin/main
- * but not yet published. Falls back to GITHUB_SHA, then 'unknown'.
+ * it owns (e.g. public/bhsawesome/version.txt, served at
+ * /bhsawesome/version.txt): the short sha of the source tree the build came
+ * from, `-dirty` when it had uncommitted changes — the same shape as the
+ * website image's GET /version and the bhs-cs-content publishers'
+ * /version.txt and /bjc/version.txt. The monorepo's scripts/since-deployed
+ * reads it to report what's on origin/main but not yet published. Falls
+ * back to GITHUB_SHA, then 'unknown'.
  */
 function gitVersion(): string {
   try {
     return execFileSync('git', ['describe', '--always', '--dirty', '--abbrev=7', '--exclude=*'], {
-      cwd: path.resolve(import.meta.dirname, '..'),
+      cwd: ROOT,
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore'],
     }).trim();

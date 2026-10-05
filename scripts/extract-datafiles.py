@@ -4,7 +4,7 @@
 (the monorepo's plans/done/rehost-bhsawesome.md, phase 4a datafile
 support):
 
-    python3 extract-datafiles.py --monorepo <path-to-bhs-cs>
+    scripts/extract-datafiles.py <book> --monorepo <path-to-bhs-cs>
 
 Plain data files (dictionary.txt, *.csv) go to the monorepo's
 `java/src/main/resources/book-datafiles/`, and each exercise that reads
@@ -12,9 +12,9 @@ them gets a `book-tests/<label>.datafiles` manifest (one filename per
 line) so BookTestRunner copies them into the run's working directory.
 
 Which exercise uses which files comes from the source model
-(`node builder/datafile-uses.ts` — the `datafile` attributes on live
+(`node scripts/datafile-uses.ts <book>` — the `datafile` attributes on live
 `<program>` elements), and the file contents come straight from
-`bhsawesome/source/assets/_static/datasets/` (every plain datafile lives there;
+`<book>/source/assets/_static/datasets/` (every plain datafile lives there;
 the old `<datafile>`-element harvest is gone with the PreTeXt
 toolchain). Jar "datafiles" (turtleClasses.jar & co — concatenated Java
 source Runestone's client used to split per-class) are skipped entirely:
@@ -32,14 +32,13 @@ from argparse import ArgumentParser
 from pathlib import Path
 from subprocess import run
 
-ROOT = Path(__file__).resolve().parent
-DATASETS = ROOT / "bhsawesome" / "source" / "assets" / "_static" / "datasets"
+ROOT = Path(__file__).resolve().parent.parent
 
 
-def label_datafiles() -> dict[str, list[str]]:
+def label_datafiles(book: Path) -> dict[str, list[str]]:
     """label -> datafile filenames, from the builder's source model."""
     out = run(
-        ["node", str(ROOT / "builder" / "datafile-uses.ts")],
+        ["node", str(ROOT / "scripts" / "datafile-uses.ts"), str(book)],
         capture_output=True,
         text=True,
         check=True,
@@ -51,8 +50,11 @@ def label_datafiles() -> dict[str, list[str]]:
 
 def main() -> int:
     parser = ArgumentParser(description="Extract activecode datafiles for the native runner.")
+    parser.add_argument("book", help="book directory (e.g. bhsawesome)")
     parser.add_argument("--monorepo", required=True, help="path to the bhs-cs monorepo")
     args = parser.parse_args()
+    book = Path(args.book).resolve()
+    datasets = book / "source" / "assets" / "_static" / "datasets"
 
     monorepo = Path(args.monorepo)
     resources = monorepo / "java" / "src" / "main" / "resources"
@@ -63,13 +65,13 @@ def main() -> int:
         print(f"error: {tests_dir} is not a directory")
         return 1
 
-    uses = label_datafiles()
+    uses = label_datafiles(book)
     plain_needed = sorted(
         {f for files in uses.values() for f in files if not f.endswith(".jar")}
     )
 
     for fname in plain_needed:
-        src = DATASETS / fname
+        src = datasets / fname
         if not src.is_file():
             print(f"error: no {src} for datafile {fname}")
             return 1

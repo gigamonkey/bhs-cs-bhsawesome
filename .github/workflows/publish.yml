@@ -6,8 +6,8 @@
 # so it can never touch the bhs-cs-content publishers' files (whose main
 # workflow correspondingly pushes with --exclude public/bhsawesome/).
 #
-# The build is builder/build.ts — the PreTeXt toolchain is fully retired
-# (bhsawesome-next-steps.md phase 1); nothing but Node runs here.
+# The build is scripts/build.ts bhsawesome — the PreTeXt toolchain is fully
+# retired (bhsawesome-next-steps.md phase 1); nothing but Node runs here.
 #
 # NOTE: the monorepo's scripts/republish dispatches this workflow by this
 # exact filename (publish.yml) — rename it and republish breaks.
@@ -57,15 +57,15 @@ jobs:
       - uses: astral-sh/setup-uv@v7
 
       - name: Validate the source against the schema
-        run: uv run ./validate.py
+        run: uv run scripts/validate.py bhsawesome
 
-      - name: Build the site (builder/build.ts)
-        run: node builder/build.ts
+      - name: Build the site (scripts/build.ts)
+        run: node scripts/build.ts bhsawesome
 
       # Every emitted /bhsawesome/... href/src/data-knowl must resolve
       # inside the built site — a dead internal link fails the publish.
       - name: Check internal links
-        run: node builder/check-links.ts
+        run: node scripts/check-links.ts bhsawesome
 
       # The builder emits straight to build/out/public/bhsawesome — the
       # overlay-shaped tree push-content pushes (it hardcodes build/out) —

@@ -2,7 +2,7 @@
  * The public API of @peterseibel/book-builder: build a PreTeXt-derived XML
  * book (a BookConfig names everything book-specific), check its links,
  * preview it, and watch-rebuild it. The BHSawesome repo consumes this
- * directly (builder/*.ts wrappers); other books consume the published
+ * directly (the scripts/*.ts wrappers); other books consume the published
  * package (the monorepo's plans/bjc-quarto-to-xml.md).
  */
 

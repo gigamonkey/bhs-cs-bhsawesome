@@ -21,6 +21,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export type WatchOptions = {
+  /** Arguments every spawned build gets first, before the full build's
+   * pass-through args or a page build's `--only-files` (e.g. the book
+   * directory a multi-book build script takes). */
+  baseArgs?: string[];
   /** The book's source dir, enabling the page-only fast path. */
   sourceDir?: string;
   /** How long edits must pause after a page build before the catch-up full
@@ -41,6 +45,7 @@ export function watchAndBuild(
   passThrough: string[],
   options: WatchOptions = {},
 ): void {
+  const baseArgs = options.baseArgs ?? [];
   const sourceDir = options.sourceDir ? path.resolve(options.sourceDir) : null;
   const catchUpMs = options.catchUpMs ?? 5000;
   let running = false;
@@ -51,7 +56,7 @@ export function watchAndBuild(
 
   function run(args: string[], done: (code: number | null) => void): void {
     running = true;
-    const child = spawn(process.execPath, [buildScript, ...args], { stdio: 'inherit' });
+    const child = spawn(process.execPath, [buildScript, ...baseArgs, ...args], { stdio: 'inherit' });
     child.on('exit', (code) => {
       running = false;
       done(code);

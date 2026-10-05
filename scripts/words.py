@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env -S uv run
 
 import re
 from argparse import ArgumentParser

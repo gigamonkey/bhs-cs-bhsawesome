@@ -58,7 +58,7 @@ find ~/3rdparty/rs/bases/rsptx/interactives/runestone/dist -maxdepth 1 -type f \
 is Runestone's server-side grading engine; `.gz`/`.map` are compression and
 sourcemap artifacts. None are referenced.)
 
-Finally update `builder/chrome.html`: the three `data-bhs-defer-src` bundle
+Finally update each book's chrome (`bhsawesome/chrome.html`): the three `data-bhs-defer-src` bundle
 names and the two entry CSS links must match the new
 `vendor/_static/webpack_static_imports.json` (contenthashes change on every
 rebuild), and revert the patch in the rs checkout (`git checkout -- .`)

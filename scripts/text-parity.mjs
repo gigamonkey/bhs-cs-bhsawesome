@@ -5,9 +5,9 @@
  * can prove it didn't alter what the book SAYS.
  *
  * Usage:
- *   node migration-tools/text-parity.mjs > /tmp/text-before.txt
- *   ...change emitters, node builder/build.ts...
- *   node migration-tools/text-parity.mjs > /tmp/text-after.txt
+ *   node scripts/text-parity.mjs <book> > /tmp/text-before.txt
+ *   ...change emitters, node scripts/build.ts <book>...
+ *   node scripts/text-parity.mjs <book> > /tmp/text-after.txt
  *   diff /tmp/text-before.txt /tmp/text-after.txt
  *
  * Extraction is tag-stripping (scripts/styles dropped, entities decoded,
@@ -18,8 +18,10 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { loadBook } from './lib/book.ts';
 
-const SITE = path.join(import.meta.dirname, '..', 'build', 'out', 'public', 'bhsawesome');
+const { config } = await loadBook(process.argv.slice(2), 'usage: node scripts/text-parity.mjs <book>');
+const SITE = config.siteDir;
 
 function walk(dir) {
   const out = [];

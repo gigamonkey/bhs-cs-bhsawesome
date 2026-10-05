@@ -19,7 +19,7 @@
  *
  * Design tokens live on :root (fonts, accents, content sizing) with dark
  * values in the :root.dark-mode token block; every defined custom
- * property is used (the census in migration-tools enforces the hygiene).
+ * property is used.
  */
 
 /* == self-hosted fonts (formerly Google Fonts CDN; files in fonts/) == */

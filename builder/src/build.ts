@@ -1,6 +1,6 @@
 /*
  * The whole-book build as a function of a BookConfig (the monorepo's
- * plans/bjc-quarto-to-xml.md P1 — formerly the body of builder/build.ts).
+ * plans/bjc-quarto-to-xml.md P1 — formerly the body of the build entry point).
  * Emits the complete site into config.siteDir (overlay-shaped, so
  * push-content and the monorepo's dev-all consume it with no staging
  * step): every page an index.html in its own directory

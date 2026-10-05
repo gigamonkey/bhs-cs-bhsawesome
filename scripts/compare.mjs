@@ -3,7 +3,7 @@
  * Pixel-compare two shoot.mjs output directories.
  *
  * Usage:
- *   node migration-tools/compare.mjs shots/before shots/after [--diffs shots/diff]
+ *   node scripts/compare.mjs shots/before shots/after [--diffs shots/diff]
  *
  * Reports per-shot differing-pixel counts; with --diffs, writes a diff PNG
  * for each differing shot. Height differences are padded (pad counts as
@@ -21,7 +21,7 @@ const [dirA, dirB] = process.argv.slice(2, 4);
 const diffFlag = process.argv.indexOf('--diffs');
 const diffDir = diffFlag > -1 ? process.argv[diffFlag + 1] : null;
 if (!dirA || !dirB) {
-  console.error('usage: node migration-tools/compare.mjs <dirA> <dirB> [--diffs <dir>]');
+  console.error('usage: node scripts/compare.mjs <dirA> <dirB> [--diffs <dir>]');
   process.exit(2);
 }
 if (diffDir) fs.mkdirSync(diffDir, { recursive: true });
