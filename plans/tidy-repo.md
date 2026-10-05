@@ -51,6 +51,22 @@ Emacs nxml the schema for every `.ptx` beneath. The output stays at
 `build/out/public/<base>` — the monorepo's dev-all and push-content both
 read `build/out`, so nothing outside this repo moves.
 
+**Why the schema files are per book.** The grammar is already split in
+two: `builder/schema/core.rnc` is the shared vocabulary (shipped in the
+npm package; a new element means editing it and the emitter), and each
+book has a thin driver that includes it and adds the book-specific part —
+today just the enumerations of its `<box kind="…">` and `<aside kind="…">`
+values, which must agree with the book's `BookConfig.boxKinds`/`asideKinds`
+and its stylesheet. BJC (built from the same package in bhs-cs-content)
+has its own driver with its own kinds. BHSawesome's driver currently has
+empty enumerations because the book uses neither element yet, so for this
+book the per-book schema is mostly a placeholder — but it is the shape a
+second book needs, and keeping it in the book directory means adding a
+book never touches `builder/`. The compiled `schema.rng` + `core.rng`
+travel with the driver (trang emits `core.rng` beside its output and the
+validator reads the `.rng`), and `schemas.xml` has to sit at or above the
+source because nxml finds it by walking up from a `.ptx` file.
+
 **Not in scope:** renaming the GitHub repo (`gigamonkey/bhs-cs-bhsawesome`
 is baked into the npm Trusted Publisher link, `builder/package.json`'s
 `repository.url`, and `setup.sh`); templating `chrome.html` so sibling
