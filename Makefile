@@ -1,16 +1,16 @@
-words.txt: pretext/main.ptx words.py
+words.txt: bhsawesome/source/main.ptx words.py
 	./words.py -x activity $< > $@
 
-# The book schema: bhsawesome.rnc (which includes the shared
-# builder/schema/core.rnc) compiles to the committed bhsawesome.rng that
+# The book schema: bhsawesome/schema.rnc (which includes the shared
+# builder/schema/core.rnc) compiles to the committed schema.rng that
 # ./validate.py (and CI) validate against. Regenerate after editing either
 # .rnc (needs trang; brew install jing-trang / apt install trang).
-schema: pretext/bhsawesome.rng
+schema: bhsawesome/schema.rng
 
-pretext/bhsawesome.rng: pretext/bhsawesome.rnc builder/schema/core.rnc
-	trang -I rnc -O rng pretext/bhsawesome.rnc $@
+bhsawesome/schema.rng: bhsawesome/schema.rnc builder/schema/core.rnc
+	trang -I rnc -O rng bhsawesome/schema.rnc $@
 
-validate: pretext/bhsawesome.rng
+validate: bhsawesome/schema.rng
 	./validate.py
 
 clean:

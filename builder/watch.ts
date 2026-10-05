@@ -5,7 +5,7 @@
  */
 
 import path from 'node:path';
-import { config } from './bhsawesome.ts';
+import { config } from '../bhsawesome/book.ts';
 import { watchAndBuild } from './src/watch.ts';
 
 watchAndBuild(

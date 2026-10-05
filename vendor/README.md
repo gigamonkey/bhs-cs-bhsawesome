@@ -1,22 +1,10 @@
 # Vendored frozen assets
 
-Committed copies of the two asset trees the builder can't produce itself.
-`builder/build.ts` copies them into `build/out/public/bhsawesome/` verbatim.
-
-## `generated/` — CodeLens traces
-
-The 5 pregenerated pythontutor execution traces for the book's embedded
-`codelens` programs. Regenerate only if one of the 5 codelens programs'
-source changes — against OUR tracer (the runner's `POST /api/trace/`,
-the vendored traceprinter; the monorepo's
-`java/src/main/java/traceprinter/VENDORED.md`), which since 2026-08-08
-is also what the live "Show CodeLens" button uses. The trace request is
-`{"code": <program source>, "stdin": ""}`; the response body is the
-trace JSON, which these files wrap in the small
-`allTraceData[codelensID] = …` IIFE — copy the wrapper shape from an
-existing file. (Historically these came from Runestone's public
-`tracer.runestone.academy:5000` service via PreTeXt's `generate trace`;
-that dependency is gone.)
+Committed copies of the asset tree the builder can't produce itself,
+shared by every book in this repo (a book's `book.ts` lists it under
+`assetTrees`; the build copies it verbatim to `<site>/_static/`). A
+book's own frozen assets — BHSawesome's CodeLens traces — live with the
+book (`bhsawesome/traces/`).
 
 ## `_static/` — Runestone component bundles + PreTeXt theme files
 

@@ -5,8 +5,8 @@
 """Convert the logo's <text> wordmark to outlined <path>s so it renders
 the same everywhere, independent of the reader's installed fonts.
 
-  uv run logo/outline-text.py logo/bhsawesome-logo-old.svg VarelaRound-Regular.ttf \\
-      logo/bhsawesome-logo.svg --stroke 7 --letter-spacing -3 \\
+  uv run bhsawesome/logo/outline-text.py <wordmark-as-text.svg> VarelaRound-Regular.ttf \\
+      bhsawesome/logo/bhsawesome-logo.svg --stroke 7 --letter-spacing -3 \\
       --viewbox '13 0 1087 221'
 
 --stroke adds a same-color round-joined stroke to embolden a font that

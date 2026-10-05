@@ -14,7 +14,7 @@ line) so BookTestRunner copies them into the run's working directory.
 Which exercise uses which files comes from the source model
 (`node builder/datafile-uses.ts` — the `datafile` attributes on live
 `<program>` elements), and the file contents come straight from
-`pretext/assets/_static/datasets/` (every plain datafile lives there;
+`bhsawesome/source/assets/_static/datasets/` (every plain datafile lives there;
 the old `<datafile>`-element harvest is gone with the PreTeXt
 toolchain). Jar "datafiles" (turtleClasses.jar & co — concatenated Java
 source Runestone's client used to split per-class) are skipped entirely:
@@ -33,7 +33,7 @@ from pathlib import Path
 from subprocess import run
 
 ROOT = Path(__file__).resolve().parent
-DATASETS = ROOT / "pretext" / "assets" / "_static" / "datasets"
+DATASETS = ROOT / "bhsawesome" / "source" / "assets" / "_static" / "datasets"
 
 
 def label_datafiles() -> dict[str, list[str]]:

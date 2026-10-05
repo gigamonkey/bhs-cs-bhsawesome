@@ -9,7 +9,7 @@
  * trees are excluded and no rendered pages are involved.
  */
 
-import { config } from './bhsawesome.ts';
+import { config } from '../bhsawesome/book.ts';
 import { loadBook } from './src/book.ts';
 import { setConfig } from './src/config.ts';
 import { attr, elements, type XmlElement } from './src/xml.ts';

@@ -4,7 +4,7 @@
  *     node builder/build.ts [--only <page-path>...] [--no-assets]
  *     node builder/build.ts --only-files <source-file>...
  *
- * A thin wrapper: the book-specific facts live in builder/bhsawesome.ts,
+ * A thin wrapper: the book-specific facts live in bhsawesome/book.ts,
  * the build itself in the generic builder/src/build.ts (a --only key is
  * the page's URL path, e.g. `introduction/intro-to-java`, or `` for the
  * contents page). --only-files is watch.ts's fast path: rebuild just the
@@ -16,7 +16,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { config } from './bhsawesome.ts';
+import { config } from '../bhsawesome/book.ts';
 import { NotPagesError, buildBook } from './src/build.ts';
 
 const args = process.argv.slice(2);

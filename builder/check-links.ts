@@ -5,7 +5,7 @@
  *     node builder/check-links.ts
  */
 
-import { config } from './bhsawesome.ts';
+import { config } from '../bhsawesome/book.ts';
 import { checkLinks } from './src/check-links.ts';
 
 if (checkLinks(config).length) process.exit(1);

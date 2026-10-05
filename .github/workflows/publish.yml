@@ -52,7 +52,7 @@ jobs:
 
       - run: npm ci
 
-      # Schema validation (pretext/bhsawesome.rng, compiled from the rnc by
+      # Schema validation (bhsawesome/schema.rng, compiled from the rnc by
       # `make schema`): invalid source fails the publish.
       - uses: astral-sh/setup-uv@v7
 

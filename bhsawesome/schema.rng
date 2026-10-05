@@ -5,8 +5,8 @@
     (builder/schema/core.rnc) with this book's <box>/<aside> kinds. This book
     currently uses neither element, so the enumerations are empty-ish
     placeholders — add kinds here (plus BookConfig boxKinds + css) as they're
-    adopted. Regenerate the committed bhsawesome.rng with `make schema` after
-    editing.
+    adopted. Regenerate the committed schema.rng (and core.rng beside it) with
+    `make schema` after editing.
   -->
   <include href="core.rng"/>
 </grammar>

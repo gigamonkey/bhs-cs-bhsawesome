@@ -1,7 +1,7 @@
 {
-  "name": "bhs-cs-bhsawesome",
+  "name": "bhs-cs-books",
   "private": true,
-  "description": "BHSawesome book source. The builder/ workspace is the generic book builder (@peterseibel/book-builder, published for the BJC build in bhs-cs-content); npm here also carries the push-content bin (@peterseibel/bhs-content) that mirrors build/out to the bhs-cs website's content overlay, and the migration-tools deps.",
+  "description": "The BHS CS books (bhsawesome/, one directory per book). The builder/ workspace is the generic book builder (@peterseibel/book-builder, published for the BJC build in bhs-cs-content); npm here also carries the push-content bin (@peterseibel/bhs-content) that mirrors build/out to the bhs-cs website's content overlay, and the deps of the screenshot/parity harness in scripts/.",
   "workspaces": [
     "builder"
   ],

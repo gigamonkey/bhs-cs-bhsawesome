@@ -34,7 +34,7 @@ git-tracked .ptx instead.
 Config file format -- one mapping per line, blank lines and #-comments ignored:
 
     # old path (or unambiguous bare name)   ->   new name
-    pretext/loops/topic-2-7-while-loops.ptx  ->  while-loops.ptx
+    bhsawesome/source/loops/topic-2-7-while-loops.ptx  ->  while-loops.ptx
     topic-2-8-for-loops.ptx                      for-loops.ptx
 
 The separator may be "->", "=>", "=", or just whitespace. If the OLD side has
@@ -240,8 +240,8 @@ def main():
     parser.add_argument("config", help="Mapping file (old -> new per line)")
     parser.add_argument(
         "--book-dir",
-        default=str(SCRIPT_DIR / "pretext"),
-        help="Directory to resolve bare base names and scan (default: pretext)",
+        default=str(SCRIPT_DIR / "bhsawesome" / "source"),
+        help="Directory to resolve bare base names and scan (default: bhsawesome/source)",
     )
     parser.add_argument(
         "-n", "--dry-run", action="store_true",

@@ -1,10 +1,10 @@
 #!/usr/bin/env -S uv run
 """Validate every book source file against the book schema.
 
-    ./validate.py [files...]        # default: all pretext/**/*.ptx
+    ./validate.py [files...]        # default: all bhsawesome/source/**/*.ptx
 
-Validates against the committed pretext/bhsawesome.rng — the trang-compiled
-form of pretext/bhsawesome.rnc (which includes the shared
+Validates against the committed bhsawesome/schema.rng — the trang-compiled
+form of bhsawesome/schema.rnc (which includes the shared
 builder/schema/core.rnc). After editing either .rnc, regenerate the .rng
 with `make schema` (needs trang). Files are validated as authored —
 xi:include elements are part of the schema, not resolved first.
@@ -16,13 +16,13 @@ from pathlib import Path
 from lxml import etree
 
 ROOT = Path(__file__).parent
-SCHEMA = ROOT / "pretext" / "bhsawesome.rng"
+SCHEMA = ROOT / "bhsawesome" / "schema.rng"
 
 
 def main() -> int:
     relaxng = etree.RelaxNG(etree.parse(str(SCHEMA)))
     files = [Path(a) for a in sys.argv[1:]] or sorted(
-        (ROOT / "pretext").glob("**/*.ptx")
+        (ROOT / "bhsawesome" / "source").glob("**/*.ptx")
     )
     bad = 0
     for f in files:

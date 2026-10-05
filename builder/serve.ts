@@ -4,7 +4,7 @@
  *     node builder/serve.ts [port]      # default 8237; / redirects to /bhsawesome/
  */
 
-import { config } from './bhsawesome.ts';
+import { config } from '../bhsawesome/book.ts';
 import { serve } from './src/serve.ts';
 
 serve(config, Number(process.argv[2] ?? 8237));

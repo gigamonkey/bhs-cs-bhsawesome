@@ -46,7 +46,7 @@ function lineOf(text, index) {
 
 let converted = 0;
 const violations = [];
-for (const file of ptxFiles('pretext')) {
+for (const file of ptxFiles('bhsawesome/source')) {
   const text = fs.readFileSync(file, 'utf8');
 
   // 1. <c>keyword</c> -> <k>keyword</k> (plain-text content only —
