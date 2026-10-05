@@ -27,9 +27,7 @@ the canonical layout (rewriting a shorter/longer id can change line wrapping).
 
 The id-uniqueness check and the include/reference rewrite only consider files
 reachable from the book root (main.ptx) via <xi:include> -- the same set
-list-files.py and the full-main.ptx Make rule use (commented-out chapter
-includes in main.ptx are uncommented first, so not-yet-ready chapters still
-count). Dead/orphan .ptx files that the book never includes are ignored, so
+list-files.py uses. Dead/orphan .ptx files that the book never includes are ignored, so
 their ids never block a rename. Pass --all-files to fall back to scanning every
 git-tracked .ptx instead.
 
@@ -425,16 +423,14 @@ def main():
 def book_ptx_files(main_ptx):
     """Resolved paths of every .ptx reachable from the book root via xi:include.
 
-    Mirrors list-files.py / the full-main.ptx Make rule: commented-out chapter
-    includes in main.ptx are uncommented first (perl -pe 's/<!-- (.*) -->/$1/')
-    so not-yet-ready chapters still count, then <xi:include> is followed
-    recursively. Dead/orphan .ptx files that nothing includes are excluded --
-    their ids are irrelevant to the published book and must not block a rename.
+    Mirrors list-files.py: <xi:include> is followed recursively from the root.
+    Dead/orphan .ptx files that nothing includes are excluded -- their ids are
+    irrelevant to the published book and must not block a rename.
     """
     main_ptx = Path(main_ptx).resolve()
     if not main_ptx.exists():
         die(f"book root does not exist: {main_ptx}")
-    root_text = re.sub(r"<!-- (.*) -->", r"\1", main_ptx.read_text())
+    root_text = main_ptx.read_text()
 
     found = [main_ptx]
     seen = {main_ptx}

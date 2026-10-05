@@ -12,9 +12,6 @@ node_modules/
 .vscode/
 
 # Some files I generate
-all-files.mk
-pretext/files.txt
-pretext/full-main.ptx
 words.txt
 
 # SQLite db files
