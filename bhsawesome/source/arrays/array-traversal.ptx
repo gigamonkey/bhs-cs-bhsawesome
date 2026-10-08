@@ -602,7 +602,7 @@
     <title>More complex loops</title>
 
     <p>
-      While we should us the enhanced <k>for</k> loop when we can, there are
+      While we should use the enhanced <k>for</k> loop when we can, there are
       cases where we will need the flexibility of a regular loop, such as if we
       want to loop over a specific range in the array, to process the array in
       reverse order, or to use the index for something beyond just getting the
