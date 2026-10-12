@@ -126,14 +126,23 @@ The reveal.js control surface — the reason this format exists:
   within it into a fragment: `<ul fragments="li">`,
   `<table fragments="tr">` (by row), `<table fragments="td">` (by data
   cell — `<th>`s don't match), `<slide fragments="p">`, or something
-  fancier like `<table fragments="tr[2]/td">` or
+  fancier like `<table fragments="tr[2]/td">`,
   `<slide fragments="./*[not(self::title)]">` (everything on the slide
-  but its title). The expression is an XPath subset (name and `*`
-  steps, `/` and `//`, `[n]` / `[self::name]` / `[not(self::name)]`
-  predicates), evaluated with the attribute's element as the context
-  node; a bare leading step is implicitly `.//` — write `./li` for
-  strict children-only. Unsupported syntax and zero matches are build
-  errors. Per-element `findex=`/`class=` still compose.
+  but its title) or
+  `<deck fragments="slide/*[position() > 1][not(self::title)]">` (every
+  slide reveals its first block at once — the title where there is one,
+  else the opening paragraph — and the rest step by step). The
+  expression is full XPath (3.1, evaluated by fontoxpath) with the
+  attribute's element as the context node, so predicates, `position()`,
+  `last()`, unions, string functions and the rest all work. One
+  convenience: a bare leading name step is implicitly `.//` (`li` means
+  `.//li`, which is how `<table fragments="td">` reaches through the
+  rows) — write `./li` for strict children-only. The matches must be
+  elements inside the attribute's own element: an expression that
+  reaches outside it (an absolute path, or `//p` from a slide, which
+  means the whole document) is a build error, as are a syntax error, a
+  non-node result (`count(p)`) and zero matches. Per-element
+  `findex=`/`class=` still compose.
 - **Opting back out**: `fragment="none"` on an element means it is never
   a fragment, whatever an enclosing wrapper or expression matched;
   `fragments="none"` on a container clears inherited expression matches

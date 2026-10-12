@@ -16,6 +16,7 @@ import path from 'node:path';
 
 import { escapeAttr, escapeHtml } from '../html.ts';
 import { type XmlElement, child, elements, isElement, isText, loadXml, textContent } from '../xml.ts';
+import { selectNodes, within } from '../xpath.ts';
 
 export type SlideDeckConfig = {
   /** Absolute path to the deck source (slides.deck). */
@@ -594,97 +595,46 @@ function withLanguage(ctx: Ctx, el: XmlElement): Ctx {
 }
 
 /*
- * fragments="<xpath>" on any element turns every matched descendant into a
- * reveal fragment: <ul fragments="li">, <table fragments="td">,
- * <slide fragments="p">. The expression is an XPath subset — name and *
- * steps, / and // combinators, positional [n] predicates — evaluated with
- * the attribute's element as the context node, and a bare leading step
- * gets an implicit .// (so "li" means .//li; write ./li for children
- * only). Unsupported syntax and zero matches are build errors.
+ * fragments="<xpath>" on any element turns every matched element inside it
+ * into a reveal fragment: <ul fragments="li">, <table fragments="td">,
+ * <slide fragments="p">, <deck fragments="slide/*[position() > 1][not(self::title)]">.
+ * The expression is full XPath (3.1, via fontoxpath — see ../xpath.ts),
+ * evaluated with the attribute's element as the context node. One
+ * convenience on top: a bare leading name step gets an implicit .// (so
+ * "li" means .//li and <table fragments="td"> reaches through the rows;
+ * write ./li for children only). The matches must be elements within the
+ * attribute's element — an expression that reaches outside it (an absolute
+ * path, or // from a slide) is an error, as are a non-node result, a syntax
+ * error, and zero matches.
  */
 
-type FragPredicate =
-  | { kind: 'index'; n: number }
-  | { kind: 'name'; name: string; negated: boolean };
-
-type FragStep = { axis: 'child' | 'desc'; name: string; predicates: FragPredicate[] };
-
-function parseFragmentsExpr(expr: string, ctx: Ctx): FragStep[] {
-  let rest = expr.trim();
-  if (rest.startsWith('/')) {
-    throw new Error(`${ctx.file}: fragments='${expr}' — absolute paths aren't supported (the element is the context node)`);
-  }
-  rest = rest.startsWith('.') ? rest.slice(1) : `//${rest}`;
-  const steps: FragStep[] = [];
-  while (rest.length) {
-    let axis: 'child' | 'desc';
-    if (rest.startsWith('//')) {
-      axis = 'desc';
-      rest = rest.slice(2);
-    } else if (rest.startsWith('/')) {
-      axis = 'child';
-      rest = rest.slice(1);
-    } else {
-      throw new Error(
-        `${ctx.file}: fragments='${expr}' — unsupported syntax at '${rest}' (name or * steps, / and //, [n] predicates)`,
-      );
-    }
-    const m = rest.match(/^([A-Za-z_][\w.-]*|\*)((?:\[[^\]]*\])*)/);
-    if (!m || m[1] === undefined) {
-      throw new Error(`${ctx.file}: fragments='${expr}' — unsupported syntax at '${rest}' (name or * steps, / and //, [n] and [not(self::name)] predicates)`);
-    }
-    const predicates: FragPredicate[] = [];
-    for (const pm of m[2].matchAll(/\[([^\]]*)\]/g)) {
-      const body = pm[1].trim();
-      const pos = body.match(/^[1-9]\d*$/);
-      const name = body.match(/^(not\()?\s*self::([A-Za-z_][\w.-]*)\s*(\))?$/);
-      if (pos) {
-        predicates.push({ kind: 'index', n: Number(body) });
-      } else if (name && Boolean(name[1]) === Boolean(name[3])) {
-        predicates.push({ kind: 'name', name: name[2], negated: Boolean(name[1]) });
-      } else {
-        throw new Error(`${ctx.file}: fragments='${expr}' — unsupported predicate '[${body}]' ([n], [self::name], [not(self::name)])`);
-      }
-    }
-    steps.push({ axis, name: m[1], predicates });
-    rest = rest.slice(m[0].length);
-  }
-  if (!steps.length) {
-    throw new Error(`${ctx.file}: fragments='${expr}' — empty expression`);
-  }
-  return steps;
-}
-
-function descendantElements(el: XmlElement): XmlElement[] {
-  const out: XmlElement[] = [];
-  for (const c of elements(el)) {
-    out.push(c, ...descendantElements(c));
-  }
-  return out;
-}
+// A bare leading name test or * (not an axis, a function call, `.`, `/`,
+// `(` or `@`): the step the implicit .// goes in front of.
+const BARE_LEADING_STEP = /^(?:\*|[A-Za-z_][\w.-]*)(?=$|[\s/[|])/;
 
 function matchFragments(context: XmlElement, expr: string, ctx: Ctx): Set<XmlElement> {
-  const steps = parseFragmentsExpr(expr, ctx);
-  let current = new Set<XmlElement>([context]);
-  for (const step of steps) {
-    const next = new Set<XmlElement>();
-    for (const node of current) {
-      const parents = step.axis === 'child' ? [node] : [node, ...descendantElements(node)];
-      for (const parent of parents) {
-        let kids = elements(parent).filter((k) => step.name === '*' || k.name === step.name);
-        for (const pred of step.predicates) {
-          if (pred.kind === 'index') {
-            kids = kids[pred.n - 1] ? [kids[pred.n - 1]] : [];
-          } else {
-            kids = kids.filter((k) => (k.name === pred.name) !== pred.negated);
-          }
-        }
-        for (const k of kids) next.add(k);
-      }
-    }
-    current = next;
+  const trimmed = expr.trim();
+  const xpath = BARE_LEADING_STEP.test(trimmed) ? `.//${trimmed}` : trimmed;
+  const error = (what: string): Error =>
+    new Error(`${ctx.file}: <${context.name} fragments='${expr}'> ${what}`);
+  let nodes: ReturnType<typeof selectNodes>;
+  try {
+    nodes = selectNodes(xpath, context);
+  } catch (e) {
+    throw error(`— ${e instanceof Error ? e.message : String(e)}`);
   }
-  return current;
+  const matched = new Set<XmlElement>();
+  for (const node of nodes) {
+    if (!isElement(node)) throw error(`matches a ${node.type} node, not an element`);
+    if (!within(node, context)) {
+      throw error(
+        `matches <${node.name}> outside the <${context.name}> it is on` +
+          " (an absolute path? write ./… or .//… for the element's own subtree)",
+      );
+    }
+    matched.add(node);
+  }
+  return matched;
 }
 
 function withFragments(ctx: Ctx, el: XmlElement): Ctx {

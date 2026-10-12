@@ -268,7 +268,59 @@ test('fragments= xpath: strict children, predicates, errors', () => {
   );
   assert.throws(
     () => build(`<deck><slide><ul fragments="li[@x]"><li>a</li></ul></slide></deck>`),
-    /unsupported predicate/,
+    /matches nothing/,
+    'a predicate the old subset refused is now just XPath',
+  );
+});
+
+test('fragments= xpath: full XPath (fontoxpath)', () => {
+  // The expression that motivated the switch: on a title-less slide the
+  // first paragraph shows at once; with a title every paragraph is a fragment.
+  const html = build(
+    `<deck fragments="slide/*[not(self::title or (self::p and position() = 1))]">
+       <title>T</title>
+       <slide><p>lead</p><p>then</p><ul><li>list</li></ul></slide>
+       <slide><title>titled</title><p>first</p><p>second</p></slide>
+     </deck>`,
+  );
+  assert.match(html, /<p>lead<\/p>/, 'first paragraph of an untitled slide is not a fragment');
+  assert.match(html, /<p class='fragment'>then<\/p>/);
+  assert.match(html, /<ul class='fragment'>/);
+  assert.match(html, /<h2>titled<\/h2>/);
+  assert.match(html, /<p class='fragment'>first<\/p>/, 'with a title, the first paragraph IS a fragment');
+  assert.match(html, /<p class='fragment'>second<\/p>/);
+
+  const fancy = build(
+    `<deck>
+       <slide fragments="./*[position() > 1][not(self::title)]"><title>t</title><p>a</p><p>b</p></slide>
+       <slide fragments="p[last()] | ul/li[@class]"><p>x</p><p>y</p><ul><li class="hot">h</li><li>c</li></ul></slide>
+       <slide fragments="p[contains(., 'yes')]"><p>yes</p><p>no</p></slide>
+     </deck>`,
+  );
+  assert.match(fancy, /<p class='fragment'>a<\/p>/);
+  assert.match(fancy, /<p>x<\/p>/);
+  assert.match(fancy, /<p class='fragment'>y<\/p>/, 'last()');
+  assert.match(fancy, /<li class='fragment hot'>h<\/li>/, 'union + attribute predicate');
+  assert.match(fancy, /<li>c<\/li>/);
+  assert.match(fancy, /<p class='fragment'>yes<\/p>/, 'string functions');
+  assert.match(fancy, /<p>no<\/p>/);
+});
+
+test('fragments= xpath: what is refused', () => {
+  const throws = (deck: string, re: RegExp, why: string) => assert.throws(() => build(deck), re, why);
+  throws(`<deck><slide fragments="p["><p>a</p></slide></deck>`, /XPST0003/, 'a syntax error names the XPath error');
+  throws(`<deck><slide fragments="count(p)"><p>a</p></slide></deck>`, /sequence of Nodes/, 'a non-node result');
+  throws(`<deck><slide fragments="text()"><p>a</p>loose</slide></deck>`, /matches a text node/, 'a non-element match');
+  throws(`<deck><slide fragments="p/@class"><p class="c">a</p></slide></deck>`, /selects an attribute/, 'attributes are not nodes we hand back');
+  throws(
+    `<deck><slide><p>other</p></slide><slide fragments="//p"><p>mine</p></slide></deck>`,
+    /matches <p> outside the <slide>/,
+    '// from a slide reaches the whole deck; .//p is what was meant',
+  );
+  throws(
+    `<deck><slide fragments="/deck/slide/p"><p>a</p></slide><slide><p>b</p></slide></deck>`,
+    /matches <p> outside the <slide>/,
+    'an absolute path resolves against the whole deck',
   );
 });
 
