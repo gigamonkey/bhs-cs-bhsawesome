@@ -604,8 +604,9 @@ function withLanguage(ctx: Ctx, el: XmlElement): Ctx {
  * "li" means .//li and <table fragments="td"> reaches through the rows;
  * write ./li for children only). The matches must be elements within the
  * attribute's element — an expression that reaches outside it (an absolute
- * path, or // from a slide) is an error, as are a non-node result, a syntax
- * error, and zero matches.
+ * path, or // from a slide) is an error, as are a non-node result and a
+ * syntax error. Zero matches is fine: a deck-wide expression needn't apply
+ * to every slide, and a slide with nothing to reveal just shows itself.
  */
 
 // A bare leading name test or * (not an axis, a function call, `.`, `/`,
@@ -643,12 +644,8 @@ function withFragments(ctx: Ctx, el: XmlElement): Ctx {
   // fragments="none": clear inherited fragments= matches for this subtree
   // (an explicit fragment= or a <fragments> wrapper inside still applies).
   if (expr === 'none') return { ...ctx, fragmentSet: undefined };
-  const matched = matchFragments(el, expr, ctx);
-  if (!matched.size) {
-    throw new Error(`${ctx.file}: <${el.name} fragments='${expr}'> matches nothing`);
-  }
   const set = new Set(ctx.fragmentSet ?? []);
-  for (const m of matched) set.add(m);
+  for (const m of matchFragments(el, expr, ctx)) set.add(m);
   return { ...ctx, fragmentSet: set };
 }
 

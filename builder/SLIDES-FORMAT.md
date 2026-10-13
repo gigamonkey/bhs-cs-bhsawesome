@@ -140,8 +140,9 @@ The reveal.js control surface — the reason this format exists:
   rows) — write `./li` for strict children-only. The matches must be
   elements inside the attribute's own element: an expression that
   reaches outside it (an absolute path, or `//p` from a slide, which
-  means the whole document) is a build error, as are a syntax error, a
-  non-node result (`count(p)`) and zero matches. Per-element
+  means the whole document) is a build error, as are a syntax error and
+  a non-node result (`count(p)`). Zero matches is not an error: a
+  deck-wide expression needn't apply to every slide. Per-element
   `findex=`/`class=` still compose.
 - **Opting back out**: `fragment="none"` on an element means it is never
   a fragment, whatever an enclosing wrapper or expression matched;

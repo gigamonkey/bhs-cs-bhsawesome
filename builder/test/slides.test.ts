@@ -261,16 +261,13 @@ test('fragments= xpath: strict children, predicates, errors', () => {
   );
   assert.match(pred, /<li>a<\/li>/);
   assert.match(pred, /<li class='fragment'>b<\/li>/);
-  assert.throws(
-    () => build(`<deck><slide><ul fragments="items"><li>a</li></ul></slide></deck>`),
-    /matches nothing/,
-    'the old alias words are now just non-matching paths',
+  // Zero matches is not an error: the old alias words are just
+  // non-matching paths, and a deck-wide expression needn't apply everywhere.
+  const none = build(
+    `<deck fragments="slide/p"><slide><ul fragments="items"><li>a</li></ul></slide><slide><ul fragments="li[@x]"><li>b</li></ul></slide></deck>`,
   );
-  assert.throws(
-    () => build(`<deck><slide><ul fragments="li[@x]"><li>a</li></ul></slide></deck>`),
-    /matches nothing/,
-    'a predicate the old subset refused is now just XPath',
-  );
+  assert.match(none, /<li>a<\/li>/);
+  assert.match(none, /<li>b<\/li>/);
 });
 
 test('fragments= xpath: full XPath (fontoxpath)', () => {
